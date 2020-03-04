@@ -58,7 +58,7 @@ public class CreateASLButtons : MonoBehaviour {
 	static void CreateGameObjects()
 	{
 		//Declare some variables + settings.
-		Animator nanaanimator = GameObject.Find ("/Nana Avatar").GetComponent<Animator> (); //finds target avatar animator for mocap signs
+		//Animator nanaanimator = GameObject.Find ("/Nana Avatar").GetComponent<Animator> (); //finds target avatar animator for mocap signs
 
 	string [][,] ASLlessons = { //creates an array of arrays
 		new string[,]{//lesson 1 (Daily Use) creates a multidimentional array. First value displays what you want to show on the UI, the 2nd is the name of the person recording mocap.
@@ -136,12 +136,12 @@ public class CreateASLButtons : MonoBehaviour {
 				asllessonmenu.layer = 8;
 				for (int x = 0; x < ASLlessons.Length; x++)
 				{
-					createlessonboard(aslroot,ASLlessons[x],"ASL",x,asllessonmenu,rootcanvas);//Loops and creates lesson boards for all initialized lessons in the lessonarray.
+					createlessonboard(aslroot,ASLlessons[x],ASLlessonnames[x],"ASL",x,asllessonmenu,rootcanvas);//Loops and creates lesson boards for all initialized lessons in the lessonarray.
 				}
 				
 				 createmenu(aslroot,"ASL",ASLlessonnames,asllessonmenu,langselectmenu); //creates the lesson chooser menu
 				//createlessonbackmenu(aslroot,"ASL"); //language issue. Does the triggers find all languages? Back menu all the way back to language select? Another back menu once on main menu to get to language select?
-				createandreturnlanguageselect(langselectmenu,signlanguages); //creates main language selection menu
+				createlanguageselect(langselectmenu,signlanguages); //creates main language selection menu
 				aslvideocontainer.SetActive(false);
 /*
 			//Cleanup existing triggers to reference new menu root
@@ -202,7 +202,7 @@ static int[] getUniqueRandomArray(int min, int max, int count) {
     return result;
 }
 
-static GameObject createbutton2(GameObject parent, string name,int sizedeltax,int sizedeltay,int rotatex,int rotatey,int rotatez,int anchoredPositionx,int anchoredPositiony,string text,int fontSize,int txtsizeDeltax,int txtsizeDeltay,int txtanchoredPositionx,int txtanchoredPositiony){
+static GameObject createbutton2(GameObject parent, string name,int sizedeltax,int sizedeltay,int rotatex,int rotatey,int rotatez,int anchoredPositionx,int anchoredPositiony,string text,int fontSize,int txtsizeDeltax,int txtsizeDeltay,int txtanchoredPositionx,int txtanchoredPositiony, TextAnchor alignment){
 		Navigation no_nav = new Navigation();
 	no_nav.mode=Navigation.Mode.None; 
 
@@ -225,7 +225,7 @@ static GameObject createbutton2(GameObject parent, string name,int sizedeltax,in
 	go.GetComponent<RectTransform> ().pivot = new Vector2 (0, 0);
 	go.transform.Find("Text").gameObject.GetComponent<Text>().text = text;
 	go.transform.Find("Text").gameObject.GetComponent<Text>().fontSize = fontSize;
-	go.transform.Find("Text").gameObject.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
+	go.transform.Find("Text").gameObject.GetComponent<Text>().alignment = alignment;
 	go.transform.Find("Text").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (txtsizeDeltax, txtsizeDeltay);
 	go.transform.Find("Text").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (txtanchoredPositionx,txtanchoredPositiony);
 	go.transform.Find("Text").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
@@ -238,7 +238,7 @@ static void createbackmenu(GameObject parent, string lang, string[] lessonname, 
 	Navigation no_nav = new Navigation();
 	no_nav.mode=Navigation.Mode.None; 
 
-	GameObject go = createbutton2(parent,"Return to VR-" + lang + " Lesson Menu",1500,100,0,0,90,100,0,"Return to VR-" + lang + " Lesson Menu",50,1500,100,0,0);
+	GameObject go = createbutton2(parent,"Return to VR-" + lang + " Lesson Menu",1500,100,0,0,90,100,0,"Return to VR-" + lang + " Lesson Menu",50,1500,100,0,0,TextAnchor.MiddleCenter);
 	Button b = go.GetOrAddComponent<Button>();
 	b.onClick = new Button.ButtonClickedEvent();
 
@@ -262,6 +262,8 @@ go.SetActive(false);
 
 		for (int lessonnum = 0; lessonnum < lessons.Length; lessonnum++) //for each sub-array do:
 			{
+				GameObject videolessoncontainer = new GameObject(lang+" Video L"+(lessonnum+1));
+				videolessoncontainer.transform.SetParent(videocontainer.transform, false);
 				for (int signnum = 0; signnum < lessons[lessonnum].GetLength(0); signnum++) //for each row in the subarray,
 				{
 					//Debug.Log("Sign Num L" + lessonnum+ " S" + signnum + " length"+lessons[lessonnum].GetLength(0));
@@ -270,7 +272,7 @@ go.SetActive(false);
 					go.name=lang+" Video L"+(lessonnum+1) +" S"+(signnum+1);
 					//GameObject go = new GameObject("Video L"+(lessonnum+1) +" S"+(signnum+1));
 					go.layer = 8;
-					go.transform.SetParent(videocontainer.transform, false);
+					go.transform.SetParent(videolessoncontainer.transform, false);
 					//go.GetOrAddComponent<MeshFilter>().sharedMesh = quadGO.GetComponent<MeshFilter>().sharedMesh;
 					//go.GetOrAddComponent<MeshFilter>().sharedMesh=myquad.GetComponent<MeshFilter>().mesh;
 					//go.GetOrAddComponent<MeshFilter>().mesh = (Mesh)AssetDatabase.LoadAssetAtPath("Library/unity default resources/Quad",typeof(Mesh));
@@ -284,20 +286,21 @@ go.SetActive(false);
 					//https://vrsignlanguage.net/ASL_videos/sheet01/01-01.mp4
 					go.SetActive(false);
 				}
+				videolessoncontainer.SetActive(false);
 			}
 		//quadGO.SetActive(false);
 		return videocontainer;
 	}
-	static GameObject createandreturnlanguageselect(GameObject go,string[,] signlanguages){//
+	static void createlanguageselect(GameObject parent,string[,] signlanguages){//creates language select menu
 
 	Navigation no_nav = new Navigation();
 	no_nav.mode=Navigation.Mode.None; 
 
-	GameObject menuheaderresourcesuitext = createheadertext(go,"VR Sign Language Select Menu");//Add menu header text:
+	GameObject menuheaderresourcesuitext = createheadertext(parent,"VR Sign Language Select Menu");//Add menu header text:
 	//for (int x = 0; x < signlanguages.GetLength(0); x++){
 		//Debug.Log(signlanguages.GetLength(0) + " " +x);
 		int x=0;
-		GameObject bgo = createbutton2(go,signlanguages[x,1],900,100,0,0,0,200,1350-(x*150),signlanguages[x,1],50,900,100,20,0);
+		GameObject bgo = createbutton2(parent,signlanguages[x,1],900,100,0,0,0,200,1350-(x*150),signlanguages[x,1],50,900,100,20,0,TextAnchor.MiddleLeft);
 		Button b = bgo.GetOrAddComponent<Button>();
 		b.onClick = new Button.ButtonClickedEvent();
 		UnityAction<bool> enableaslroot = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(signlanguages[x,0]+" Root"), "SetActive") as UnityAction<bool>;
@@ -311,10 +314,7 @@ go.SetActive(false);
 		//activates video container for specific language
 		UnityAction<bool> enablevideolanguage = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), GameObject.Find("Menu Root/Video Container/"+signlanguages[x,0]+" Video Container"), "SetActive") as UnityAction<bool>;
 		UnityEventTools.AddBoolPersistentListener(b.onClick, enablevideolanguage, true);
-
-
 	//}
-	return go;
 	}
 	static GameObject createandreturncanvas(string name,GameObject parent){//creates and returns canvas gameobject
 		GameObject go = new GameObject (name);
@@ -355,6 +355,7 @@ static GameObject createheadertext(GameObject parent, string txt){
 		DefaultControls.Resources resources = new DefaultControls.Resources();
 		GameObject go = DefaultControls.CreateText(resources);
 		go.transform.SetParent (parent.transform, false);
+		go.name="Header";
 		go.layer = 8;
 		go.GetComponent<Text> ().text = txt;
 		go.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
@@ -367,22 +368,6 @@ static GameObject createheadertext(GameObject parent, string txt){
 		go.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 0);
 		go.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 0);
 		go.GetComponent<RectTransform> ().pivot = new Vector2 (0, 0);
-	return go;
-}
-static GameObject createbutton(GameObject parent, string name){
-		Navigation no_nav = new Navigation();
-	no_nav.mode=Navigation.Mode.None; 
-
-    DefaultControls.Resources resources = new DefaultControls.Resources();
-    //Set the Button Background Image someBgSprite;
-    resources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
-	//toggleresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
-    GameObject go = DefaultControls.CreateButton(resources);
-	go.layer = 8;
-    go.transform.SetParent(parent.transform, false);
-	go.name = name;	
-	Button b = go.GetOrAddComponent<Button>();
-	b.navigation = no_nav;
 	return go;
 }
 static GameObject FindInActiveObjectByName(string name)
@@ -423,14 +408,18 @@ static GameObject createmenu(GameObject parent, string lang, string[] lessonname
 				}
 			}
 			//GameObject go = createbutton(menu,lang+" L" + (x+1) + "("+lessonname[x]+") - Button");
-			GameObject go = createbutton2(menu,lang+" L" + (x+1) + "("+lessonname[x]+") - Button",900,100,0,0,0,(200 +(column*1000)),(1350+(row*-150)),(x+1)+ ") " + lessonname[x],50,880,100,20,0);
+			GameObject go = createbutton2(menu,lang+" L" + (x+1) + "("+lessonname[x]+") - Button",900,100,0,0,0,(200 +(column*1000)),(1350+(row*-150)),(x+1)+ ") " + lessonname[x],50,880,100,20,0,TextAnchor.MiddleLeft);
 			//Debug.Log("Position: " + column + ", " + row + ", arraynum" + x + " ArrayValue: " + lesson1signarray[x] + " pos: " + (70 +(column*1000)) + "," + (1400+(row*-150)));
 			Button b = go.GetOrAddComponent<Button>();
 			b.onClick = new Button.ButtonClickedEvent();
 			//Debug.Log("/Menu Root/Menu Root Canvas - "+lang+" Lesson "+(x+1));
 			
+			
 			UnityAction<bool> enablelesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(lang+" Lesson "+(x+1)), "SetActive") as UnityAction<bool>;
             UnityEventTools.AddBoolPersistentListener(b.onClick, enablelesson, true);
+
+			UnityAction<bool> enablevideocontainerlesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(lang+" Video L"+(x+1)), "SetActive") as UnityAction<bool>;
+            UnityEventTools.AddBoolPersistentListener(b.onClick, enablevideocontainerlesson, true);
 
 			UnityAction<bool> disablemenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), menu, "SetActive") as UnityAction<bool>;
             UnityEventTools.AddBoolPersistentListener(b.onClick, disablemenu, false);
@@ -444,16 +433,17 @@ static GameObject createmenu(GameObject parent, string lang, string[] lessonname
 }
 
 
-	static void createlessonboard(GameObject parent, string[,] signarray, string lang, int lessonnum,GameObject lessonmenu,GameObject rootcanvas) //, int arraypos, int anchoredposx, int anchoredposy, string alignment, int layernum, string text, int posx, int posy
+	static void createlessonboard(GameObject parent, string[,] signarray,string ASLlessonnames, string lang, int lessonnum,GameObject lessonmenu,GameObject rootcanvas) //, int arraypos, int anchoredposx, int anchoredposy, string alignment, int layernum, string text, int posx, int posy
 	{
 		Navigation no_nav = new Navigation();
 		no_nav.mode=Navigation.Mode.None; //disables navigation so people can't operate ui by moving avatar.
 //createcanvas(menuroot,"Menu Root Canvas - " + lang + " Lesson " + lessonnum);
-GameObject lessongo = new GameObject(lang + " Lesson " + (lessonnum+1));
+GameObject lessongo = new GameObject(lang+" Lesson "+(lessonnum+1));
 lessongo.transform.SetParent(parent.transform, false);
-createheadertext(lessongo,"VR-"+lang+" Sign Language for Index Controllers - Lesson " + (lessonnum+1) + " - Daily Use");
+createheadertext(lessongo,"VR-"+lang+" Sign Language for Index Controllers - Lesson " + (lessonnum+1) + " - "+ASLlessonnames);
 
-
+		//Debug.Log(lessonnum);
+				
 
 		int column = 0;
 		int row = 0;
@@ -467,7 +457,7 @@ createheadertext(lessongo,"VR-"+lang+" Sign Language for Index Controllers - Les
 			}
 			
 			//create the sign trigger helper first otherwise toggle has no target
-			GameObject go = new GameObject(lang+" L" + lessonnum + " - S" + (x+1) +"("+signarray[x,0]+") - Trigger");//helper gameobject with vrc_trigger. needed for toggle?
+			GameObject go = new GameObject(lang+" L" + (lessonnum+1) + " - S" + (x+1) +"("+signarray[x,0]+") - Trigger");//helper gameobject with vrc_trigger. needed for toggle?
 			go.transform.SetParent (lessongo.transform, false);
 			go.layer = 8;
 			go.AddComponent<VRC_Trigger>();
@@ -514,15 +504,15 @@ createheadertext(lessongo,"VR-"+lang+" Sign Language for Index Controllers - Les
 
 
 			
-		//declare toggle resource settings
-		DefaultControls.Resources toggleresources = new DefaultControls.Resources();
-		//Set the Toggle Background Image someBgSprite;
-		toggleresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
-		//Set the Toggle Checkmark Image someCheckmarkSprite;
-		toggleresources.checkmark = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
+			//declare toggle resource settings
+			DefaultControls.Resources toggleresources = new DefaultControls.Resources();
+			//Set the Toggle Background Image someBgSprite;
+			toggleresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
+			//Set the Toggle Checkmark Image someCheckmarkSprite;
+			toggleresources.checkmark = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
 			GameObject uiToggle = DefaultControls.CreateToggle(toggleresources);
 			Toggle t = uiToggle.GetOrAddComponent<Toggle>();
-			uiToggle.gameObject.name = lang+" L" + lessonnum + " - S" + (x+1) +"("+signarray[x,0]+") - Toggle";				
+			uiToggle.gameObject.name = lang+" L" + (lessonnum+1) + " - S" + (x+1) +"("+signarray[x,0]+") - Toggle";				
 			uiToggle.transform.SetParent(lessongo.transform, false);
 			uiToggle.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0, 0);
 			uiToggle.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((240 +(column*1000)),(1400+(row*-150)));
@@ -545,9 +535,10 @@ createheadertext(lessongo,"VR-"+lang+" Sign Language for Index Controllers - Les
 
 			UnityEventTools.AddPersistentListener(t.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), go, "SetActive") as UnityAction<bool>);
 
-		//GameObject videogo = GameObject.Find("/Menu Root/Videos Container/"+lang+" Video Container");
-		GameObject videogo = GameObject.Find("/Menu Root/Video Container/"+lang+" Video Container/"+lang+" Video L"+(lessonnum+1)+" S"+(x+1));
-		//Debug.Log("/Menu Root/Video Container/"+lang+" Video Container/"+lang+" Video L"+(lessonnum+1)+" S"+(x+1));
+			//GameObject videogo = GameObject.Find("/Menu Root/Videos Container/"+lang+" Video Container");
+			//Debug.Log("/Menu Root/Video Container/"+lang+" Video Container/"+lang+" Video L"+(lessonnum+1)+"/"+lang+" Video L"+(lessonnum+1)+" S"+(x+1));
+			GameObject videogo = GameObject.Find("/Menu Root/Video Container/"+lang+" Video Container/"+lang+" Video L"+(lessonnum+1)+"/"+lang+" Video L"+(lessonnum+1)+" S"+(x+1));
+		
 			UnityEventTools.AddPersistentListener(t.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videogo, "SetActive") as UnityAction<bool>);
 			
 
@@ -558,11 +549,11 @@ createheadertext(lessongo,"VR-"+lang+" Sign Language for Index Controllers - Les
 			uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").gameObject.layer=8;
 
-			uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().text = x+1+ ") " + signarray[x,0];
+			uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().text ="    "+ (x+1)+ ") " + signarray[x,0];
 			uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().fontSize = 50;
 			uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
 			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (750, 100);
-			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (80,-50);
+			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (40,-50);
 			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
@@ -575,50 +566,35 @@ createheadertext(lessongo,"VR-"+lang+" Sign Language for Index Controllers - Les
 			uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").gameObject.layer=8;
 				//Debug.Log("Position: " + column + ", " + row + ", arraynum" + x + " ArrayValue: " + lesson1signarray[x]);
+				
 			row++;
 		}
 
 //static void createlessonbackmenu(GameObject parent, string lang){
 
-	GameObject backtolessongo = createbutton(lessongo,"Return to VR-" + lang + " Lesson Menu");
-	backtolessongo.layer = 8;
-	backtolessongo.GetComponent<RectTransform> ().sizeDelta = new Vector2 (1500, 100);
-	backtolessongo.GetComponent<RectTransform> ().eulerAngles = new Vector3(0, 0, 90);//x,y,z
-	backtolessongo.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (100,0);
-	backtolessongo.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 0);
-	backtolessongo.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 0);
-	backtolessongo.GetComponent<RectTransform> ().pivot = new Vector2 (0, 0);
+	GameObject backtolessongo = createbutton2(lessongo,"Return to VR-" + lang + " Lesson Menu",1500,100,0,0,90,100,0,"Return to VR-" + lang + " Lesson Menu",50,1500,100,0,0,TextAnchor.MiddleCenter);
 	Button b = backtolessongo.GetOrAddComponent<Button>();
-	b.navigation = no_nav;
 	b.onClick = new Button.ButtonClickedEvent();
 
 	//disable the current active lesson when clicked
 	UnityAction<bool> disablecurrentlesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(lang+" Lesson "+(lessonnum+1)), "SetActive") as UnityAction<bool>;
 	UnityEventTools.AddBoolPersistentListener(b.onClick, disablecurrentlesson, false);
 
-	//enable the lesson select ===problem because the lesson menu doesn't exist. 
+	//enable the lesson select
 	UnityAction<bool> enablelessonmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(lang+" Lesson Menu"), "SetActive") as UnityAction<bool>;
 	UnityEventTools.AddBoolPersistentListener(b.onClick, enablelessonmenu, true);
 
-	backtolessongo.transform.Find("Text").gameObject.GetComponent<Text>().text = "Return to VR-" + lang + " Lesson Menu";
-	backtolessongo.transform.Find("Text").gameObject.GetComponent<Text>().fontSize = 50;
-	backtolessongo.transform.Find("Text").gameObject.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
-	backtolessongo.transform.Find("Text").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (1500, 100);
-	backtolessongo.transform.Find("Text").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,0);
-	backtolessongo.transform.Find("Text").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-	backtolessongo.transform.Find("Text").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-	backtolessongo.transform.Find("Text").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
-//backtolessongo.SetActive(false);
-//}
-
-
+	//UnityAction<bool> disablevideolessoncontainer = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), GameObject.Find("/Menu Root/Video Container/"+lang+" Video Container/"+lang+" Video L"+(lessonnum+1)), "SetActive") as UnityAction<bool>;
+	UnityAction<bool> disablevideolessoncontainer = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(lang+" Video L"+(lessonnum+1)), "SetActive") as UnityAction<bool>;
+	UnityEventTools.AddBoolPersistentListener(b.onClick, disablevideolessoncontainer, false);
+	//}
 		parent.SetActive(false);
 		lessongo.SetActive(false);
 	}
 
 
 }
-	//function example for later modularization.
+	//function example for later modularization.a
 	/*
 	void CreateText(GameObject canvas, string text)
 	{
