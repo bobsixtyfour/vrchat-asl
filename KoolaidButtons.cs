@@ -15,7 +15,63 @@ public class HH_HQ : MonoBehaviour {
             {"When","언제","Quand"},{"Where","어디","Où"},{"Why","왜","Pourquoi"},{"Which","어떤것","Lequel"},{"Understand","이해하다","Comprendre"},{"Don’t Understand","이해를 못했다","Ne pas comprendre"},{"Yes","네","Oui"},
             {"No","아니","Non"},{"Please","부탁","S’il vous plaît"},{"Thanks","고마워","Merci"},{"Sorry","미안","Désolé"},{"Deaf","청각장애인(농아인)","Sourd"},{"Hard of Hearing","청력이 약하다","Dur d’oreille"},
             {"Hearing","청력","Entendant"},{"Mute","말하지 않는다","Muet"}
-            }/*,
+            },
+			new string[,]{//lesson 2+ below
+            {"Hello/Hi","안녕하세요","Allo"},{"Bye","안녕(작별)","Au Revoir"},{"How","어떻게","Comment"},{"You","너","Toi/Tu"},{"How are you?","어떻게 지냈어?","Comment vas-tu?"},{"Nice","멋지다","Agréable"},
+            {"Meet","만나다","Rencontrer"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer."},{"Good","좋아","Bon"},{"Bad","나빠","Mal"},{"Fine","괜찮아","Bien"},{"Who","누구","Qui"},{"What","무엇을","Quoi"},
+            {"When","언제","Quand"},{"Where","어디","Où"},{"Why","왜","Pourquoi"},{"Which","어떤것","Lequel"},{"Understand","이해하다","Comprendre"},{"Don’t Understand","이해를 못했다","Ne pas comprendre"},{"Yes","네","Oui"},
+            {"No","아니","Non"},{"Please","부탁","S’il vous plaît"},{"Thanks","고마워","Merci"},{"Sorry","미안","Désolé"},{"Deaf","청각장애인(농아인)","Sourd"},{"Hard of Hearing","청력이 약하다","Dur d’oreille"},
+            {"Hearing","청력","Entendant"},{"Mute","말하지 않는다","Muet"}
+			},
+			new string[,]{//lesson 2+ below
+            {"Hello/Hi","안녕하세요","Allo"},{"Bye","안녕(작별)","Au Revoir"},{"How","어떻게","Comment"},{"You","너","Toi/Tu"},{"How are you?","어떻게 지냈어?","Comment vas-tu?"},{"Nice","멋지다","Agréable"},
+            {"Meet","만나다","Rencontrer"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer."},{"Good","좋아","Bon"},{"Bad","나빠","Mal"},{"Fine","괜찮아","Bien"},{"Who","누구","Qui"},{"What","무엇을","Quoi"},
+            {"When","언제","Quand"},{"Where","어디","Où"},{"Why","왜","Pourquoi"},{"Which","어떤것","Lequel"},{"Understand","이해하다","Comprendre"},{"Don’t Understand","이해를 못했다","Ne pas comprendre"},{"Yes","네","Oui"},
+            {"No","아니","Non"},{"Please","부탁","S’il vous plaît"},{"Thanks","고마워","Merci"},{"Sorry","미안","Désolé"},{"Deaf","청각장애인(농아인)","Sourd"},{"Hard of Hearing","청력이 약하다","Dur d’oreille"},
+            {"Hearing","청력","Entendant"},{"Mute","말하지 않는다","Muet"}
+			},
+			new string[,]{//lesson 2+ below
+            {"Hello/Hi","안녕하세요","Allo"},{"Bye","안녕(작별)","Au Revoir"},{"How","어떻게","Comment"},{"You","너","Toi/Tu"},{"How are you?","어떻게 지냈어?","Comment vas-tu?"},{"Nice","멋지다","Agréable"},
+            {"Meet","만나다","Rencontrer"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer."},{"Good","좋아","Bon"},{"Bad","나빠","Mal"},{"Fine","괜찮아","Bien"},{"Who","누구","Qui"},{"What","무엇을","Quoi"},
+            {"When","언제","Quand"},{"Where","어디","Où"},{"Why","왜","Pourquoi"},{"Which","어떤것","Lequel"},{"Understand","이해하다","Comprendre"},{"Don’t Understand","이해를 못했다","Ne pas comprendre"},{"Yes","네","Oui"},
+            {"No","아니","Non"},{"Please","부탁","S’il vous plaît"},{"Thanks","고마워","Merci"},{"Sorry","미안","Désolé"},{"Deaf","청각장애인(농아인)","Sourd"},{"Hard of Hearing","청력이 약하다","Dur d’oreille"},
+            {"Hearing","청력","Entendant"},{"Mute","말하지 않는다","Muet"}
+			},
+			new string[,]{//lesson 2+ below
+            {"Hello/Hi","안녕하세요","Allo"},{"Bye","안녕(작별)","Au Revoir"},{"How","어떻게","Comment"},{"You","너","Toi/Tu"},{"How are you?","어떻게 지냈어?","Comment vas-tu?"},{"Nice","멋지다","Agréable"},
+            {"Meet","만나다","Rencontrer"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer."},{"Good","좋아","Bon"},{"Bad","나빠","Mal"},{"Fine","괜찮아","Bien"},{"Who","누구","Qui"},{"What","무엇을","Quoi"},
+            {"When","언제","Quand"},{"Where","어디","Où"},{"Why","왜","Pourquoi"},{"Which","어떤것","Lequel"},{"Understand","이해하다","Comprendre"},{"Don’t Understand","이해를 못했다","Ne pas comprendre"},{"Yes","네","Oui"},
+            {"No","아니","Non"},{"Please","부탁","S’il vous plaît"},{"Thanks","고마워","Merci"},{"Sorry","미안","Désolé"},{"Deaf","청각장애인(농아인)","Sourd"},{"Hard of Hearing","청력이 약하다","Dur d’oreille"},
+            {"Hearing","청력","Entendant"},{"Mute","말하지 않는다","Muet"}
+			},
+			new string[,]{//lesson 2+ below
+            {"Hello/Hi","안녕하세요","Allo"},{"Bye","안녕(작별)","Au Revoir"},{"How","어떻게","Comment"},{"You","너","Toi/Tu"},{"How are you?","어떻게 지냈어?","Comment vas-tu?"},{"Nice","멋지다","Agréable"},
+            {"Meet","만나다","Rencontrer"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer."},{"Good","좋아","Bon"},{"Bad","나빠","Mal"},{"Fine","괜찮아","Bien"},{"Who","누구","Qui"},{"What","무엇을","Quoi"},
+            {"When","언제","Quand"},{"Where","어디","Où"},{"Why","왜","Pourquoi"},{"Which","어떤것","Lequel"},{"Understand","이해하다","Comprendre"},{"Don’t Understand","이해를 못했다","Ne pas comprendre"},{"Yes","네","Oui"},
+            {"No","아니","Non"},{"Please","부탁","S’il vous plaît"},{"Thanks","고마워","Merci"},{"Sorry","미안","Désolé"},{"Deaf","청각장애인(농아인)","Sourd"},{"Hard of Hearing","청력이 약하다","Dur d’oreille"},
+            {"Hearing","청력","Entendant"},{"Mute","말하지 않는다","Muet"}
+			},
+			new string[,]{//lesson 2+ below
+            {"Hello/Hi","안녕하세요","Allo"},{"Bye","안녕(작별)","Au Revoir"},{"How","어떻게","Comment"},{"You","너","Toi/Tu"},{"How are you?","어떻게 지냈어?","Comment vas-tu?"},{"Nice","멋지다","Agréable"},
+            {"Meet","만나다","Rencontrer"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer."},{"Good","좋아","Bon"},{"Bad","나빠","Mal"},{"Fine","괜찮아","Bien"},{"Who","누구","Qui"},{"What","무엇을","Quoi"},
+            {"When","언제","Quand"},{"Where","어디","Où"},{"Why","왜","Pourquoi"},{"Which","어떤것","Lequel"},{"Understand","이해하다","Comprendre"},{"Don’t Understand","이해를 못했다","Ne pas comprendre"},{"Yes","네","Oui"},
+            {"No","아니","Non"},{"Please","부탁","S’il vous plaît"},{"Thanks","고마워","Merci"},{"Sorry","미안","Désolé"},{"Deaf","청각장애인(농아인)","Sourd"},{"Hard of Hearing","청력이 약하다","Dur d’oreille"},
+            {"Hearing","청력","Entendant"},{"Mute","말하지 않는다","Muet"}
+			},
+			new string[,]{//lesson 2+ below
+            {"Hello/Hi","안녕하세요","Allo"},{"Bye","안녕(작별)","Au Revoir"},{"How","어떻게","Comment"},{"You","너","Toi/Tu"},{"How are you?","어떻게 지냈어?","Comment vas-tu?"},{"Nice","멋지다","Agréable"},
+            {"Meet","만나다","Rencontrer"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer."},{"Good","좋아","Bon"},{"Bad","나빠","Mal"},{"Fine","괜찮아","Bien"},{"Who","누구","Qui"},{"What","무엇을","Quoi"},
+            {"When","언제","Quand"},{"Where","어디","Où"},{"Why","왜","Pourquoi"},{"Which","어떤것","Lequel"},{"Understand","이해하다","Comprendre"},{"Don’t Understand","이해를 못했다","Ne pas comprendre"},{"Yes","네","Oui"},
+            {"No","아니","Non"},{"Please","부탁","S’il vous plaît"},{"Thanks","고마워","Merci"},{"Sorry","미안","Désolé"},{"Deaf","청각장애인(농아인)","Sourd"},{"Hard of Hearing","청력이 약하다","Dur d’oreille"},
+            {"Hearing","청력","Entendant"},{"Mute","말하지 않는다","Muet"}
+			},
+			new string[,]{//lesson 2+ below
+            {"Hello/Hi","안녕하세요","Allo"},{"Bye","안녕(작별)","Au Revoir"},{"How","어떻게","Comment"},{"You","너","Toi/Tu"},{"How are you?","어떻게 지냈어?","Comment vas-tu?"},{"Nice","멋지다","Agréable"},
+            {"Meet","만나다","Rencontrer"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer."},{"Good","좋아","Bon"},{"Bad","나빠","Mal"},{"Fine","괜찮아","Bien"},{"Who","누구","Qui"},{"What","무엇을","Quoi"},
+            {"When","언제","Quand"},{"Where","어디","Où"},{"Why","왜","Pourquoi"},{"Which","어떤것","Lequel"},{"Understand","이해하다","Comprendre"},{"Don’t Understand","이해를 못했다","Ne pas comprendre"},{"Yes","네","Oui"},
+            {"No","아니","Non"},{"Please","부탁","S’il vous plaît"},{"Thanks","고마워","Merci"},{"Sorry","미안","Désolé"},{"Deaf","청각장애인(농아인)","Sourd"},{"Hard of Hearing","청력이 약하다","Dur d’oreille"},
+            {"Hearing","청력","Entendant"},{"Mute","말하지 않는다","Muet"}
+			},
 			new string[,]{//lesson 2+ below
             {"Hello/Hi","안녕하세요","Allo"},{"Bye","안녕(작별)","Au Revoir"},{"How","어떻게","Comment"},{"You","너","Toi/Tu"},{"How are you?","어떻게 지냈어?","Comment vas-tu?"},{"Nice","멋지다","Agréable"},
             {"Meet","만나다","Rencontrer"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer."},{"Good","좋아","Bon"},{"Bad","나빠","Mal"},{"Fine","괜찮아","Bien"},{"Who","누구","Qui"},{"What","무엇을","Quoi"},
@@ -26,28 +82,31 @@ public class HH_HQ : MonoBehaviour {
 				*/
         };
 		string [] lessonnames = new string[]{//array of lesson names - I guess rename to Lesson 1, Lesson 2 and so on if you don't have names
-		"Daily Use","Pointing use Question/Answer","Common","People","Feelings / Reactions","Value","Time","VRChat","Alphabet / Numbers","Verbs & Actions p1","Verbs & Actions p2","Verbs & Actions p3",
-		"Verbs & Actions p4","Verbs & Actions p5","Verbs & Actions p6","Verbs & Actions p7","Verbs & Actions p8","Food","Animals / Machines","Places","Stuff / Weather","Clothes / Equipment","Fantasy / Characters",
-		"Holidays / Special Days","Home stuff","Nature / Environment","Talk / Asking exercises","Name sign users","Countries","Colors","Medical"};
+		"Lesson 1","Lesson 2","Lesson 3","Lesson 4","Lesson 5","Lesson 6","Lesson 7","Lesson 8","Lesson 9","Lesson 10","Lesson 11","Lesson 12","Lesson 13","Lesson 14","Lesson 15","Lesson 16","Lesson 17","Lesson 18","Lesson 19","Lesson 20"};
 		
 		int layer=0;
-		int rowoffset=860;
-		int columnoffset=200;
+		int rowoffset=650;
+		int columnoffset=100;
 
-		int projectionsizex=6400;
-		int projectionsizey=4800;
+		int projectionsizex=5000;
+		int projectionsizey=4000;
 		
-		int teachermenusizex=2700;
-		int teachermenusizey=1000;
+		int teachermenusizex=1100;
+		int teachermenusizey=750;
 
         GameObject menuroot = new GameObject("HH Root"); //creates a new "Menu Root gameobject which will be the parent of all newly created objects in the script.
 		menuroot.transform.position = new Vector3(0, 0, 0);
 		menuroot.layer = layer;
 			GameObject rootcanvas = createandreturncanvas("Root Canvas",menuroot,teachermenusizex,teachermenusizey,layer);
+			rootcanvas.transform.position = new Vector3(-18.653f,-2.585f, -2.178f);
+			
+			//rootcanvas.GetComponent<RectTransform> ().localScale=new Vector3(.0004149436f,.0007330904f,.001f);
 			createpanel(rootcanvas,teachermenusizex,teachermenusizey,layer); //Creates panel under rootcanvas.
 			
             GameObject displaycanvas = createandreturncanvas("MainDisplay",menuroot,projectionsizex,projectionsizey,layer);
-			displaycanvas.transform.position = new Vector3(0, 2, 0);
+
+			displaycanvas.transform.position = new Vector3(-19.881f, -1.307f, -1.453f);
+			//displaycanvas.GetComponent<RectTransform> ().localScale=new Vector3(.0007777605f,.0008309863f,.001f);
             createpanel(displaycanvas,projectionsizex, projectionsizey,layer);
 
 			DefaultControls.Resources resources = new DefaultControls.Resources();
@@ -55,18 +114,18 @@ public class HH_HQ : MonoBehaviour {
 			displaytext.transform.SetParent (displaycanvas.transform, false);
 			displaytext.name="DisplayText";
 			displaytext.layer = layer;
-			displaytext.GetComponent<Text> ().text = "";
+			displaytext.GetComponent<Text> ().text = "test";
 			displaytext.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font; //change font file here
 			displaytext.GetComponent<Text> ().fontStyle = FontStyle.Bold;
 			displaytext.GetComponent<Text> ().fontSize = 250;		
 			displaytext.GetComponent<Text> ().color = Color.black; 
 			displaytext.GetComponent<Text> ().alignment = TextAnchor.MiddleCenter;
-			displaytext.GetComponent<RectTransform> ().sizeDelta = new Vector2 (projectionsizex/2, projectionsizey/2);
+			displaytext.GetComponent<RectTransform> ().sizeDelta = new Vector2 (projectionsizex, projectionsizey);
 			displaytext.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (0, 0);
 			displaytext.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 0);
 			displaytext.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 0);
 			displaytext.GetComponent<RectTransform> ().pivot = new Vector2 (0, 0);
-			displaytext.GetComponent<RectTransform> ().localScale=new Vector3(2,2,1);
+			displaytext.GetComponent<RectTransform> ().localScale=new Vector3(1,1,1);
 
 			
 			GameObject aslroot= new GameObject("ASL Root");
@@ -76,10 +135,13 @@ public class HH_HQ : MonoBehaviour {
 				asllessonmenu.layer = layer;
 				for (int x = 0; x < ASLlessons.Length; x++)
 				{
-					createlessonboard(aslroot,ASLlessons[x],lessonnames[x],"ASL",x,rootcanvas,rowoffset,columnoffset,80,850,layer);//Loops and creates lesson boards for all initialized lessons in the lessonarray.
+					createlessonboard(aslroot,ASLlessons[x],"ASL",x,rootcanvas,rowoffset,columnoffset,40,300,layer);//Loops and creates lesson boards for all initialized lessons in the lessonarray.
 				}
-				 createmenu(aslroot,"ASL",lessonnames,ASLlessons,asllessonmenu,840,100,800,160,100,1000,layer); //creates the lesson chooser menu
-	}
+				 createmenu(aslroot,"ASL",ASLlessons,asllessonmenu,teachermenusizex,teachermenusizey,300,40,(teachermenusizey-100),80,40,300,layer); //creates the lesson chooser menu
+
+			rootcanvas.GetComponent<RectTransform> ().eulerAngles = new Vector3(0, 90, 0);//x,y,z
+			displaycanvas.GetComponent<RectTransform> ().eulerAngles = new Vector3(0, -90, 0);//x,y,z
+	}	
 static GameObject createbutton2(GameObject parent, string name,int sizedeltax,int sizedeltay,int rotatex,int rotatey,int rotatez,int anchoredPositionx,int anchoredPositiony,string text,int fontSize,int txtsizeDeltax,int txtsizeDeltay,int txtanchoredPositionx,int txtanchoredPositiony, TextAnchor alignment,int layer){
 		Navigation no_nav = new Navigation();
 	no_nav.mode=Navigation.Mode.None; 
@@ -153,7 +215,7 @@ static GameObject createheadertext(GameObject parent, string txt,int sizedeltax,
 		go.GetComponent<Text> ().text = txt;
 		go.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 		go.GetComponent<Text> ().fontStyle = FontStyle.Bold;
-		go.GetComponent<Text> ().fontSize = 50;		
+		go.GetComponent<Text> ().fontSize = 25;		
 		go.GetComponent<Text> ().color = Color.black;
 		go.GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
 		go.GetComponent<RectTransform> ().sizeDelta = new Vector2 (sizedeltax, sizedeltay);
@@ -179,11 +241,11 @@ static GameObject FindInActiveObjectByName(string name)
     return null;
 }
 
-static GameObject createmenu(GameObject parent, string lang, string[] lessonname,string[][,] ASLlessons, GameObject menu,int buttonsizex,int buttonsizey,int rowoffset,int columnoffset,int rowseperation,int columnseperation,int layer){	
+static GameObject createmenu(GameObject parent, string lang, string[][,] ASLlessons, GameObject menu,int canvassizex,int canvassizey,int buttonsizex,int buttonsizey,int rowoffset,int columnoffset,int rowseperation,int columnseperation,int layer){	
 			Navigation no_nav = new Navigation();
 		no_nav.mode=Navigation.Mode.None; 
-
-	createheadertext(menu,"Lesson Menu",3000,60,160,920,layer);//Add menu header text:
+int headerheight=60;
+	createheadertext(menu,"Lesson Menu",canvassizex,headerheight,80,canvassizey-headerheight,layer);//Add menu header text:
 		int column = 0;
 		int row = 0;
 		for (int x = 0; x < ASLlessons.Length; x++) //this is the main loop that processes the array and creates + organizes the buttons in rows+columns.
@@ -195,7 +257,8 @@ static GameObject createmenu(GameObject parent, string lang, string[] lessonname
 				}
 			}
 			
-			GameObject go = createbutton2(menu,lang+" L" + (x+1) + "("+lessonname[x]+") - Button",buttonsizex,buttonsizey,0,0,0,(columnoffset +(column*columnseperation)),(rowoffset+(row*-rowseperation)),(x+1)+ ") " + lessonname[x],50,880,100,20,0,TextAnchor.MiddleLeft,layer);
+			GameObject go = createbutton2(menu,lang+" Lesson " + (x+1) + " - Button",buttonsizex,buttonsizey,0,0,0,
+			(columnoffset +(column*columnseperation)),(rowoffset+(row*-rowseperation)),"Lesson "+(x+1),25,buttonsizex,buttonsizey,20,0,TextAnchor.MiddleLeft,layer);
 			Button b = go.GetOrAddComponent<Button>();
 			b.onClick = new Button.ButtonClickedEvent();
 					
@@ -212,13 +275,13 @@ static GameObject createmenu(GameObject parent, string lang, string[] lessonname
 		return menu;
 }
 
-	static void createlessonboard(GameObject parent, string[,] signarray,string ASLlessonnames, string lang, int lessonnum,GameObject rootcanvas,int rowoffset,int columnoffset,int rowseperation,int columnseperation,int layer) //, int arraypos, int anchoredposx, int anchoredposy, string alignment, int layernum, string text, int posx, int posy
+	static void createlessonboard(GameObject parent, string[,] signarray,string lang, int lessonnum,GameObject rootcanvas,int rowoffset,int columnoffset,int rowseperation,int columnseperation,int layer) //, int arraypos, int anchoredposx, int anchoredposy, string alignment, int layernum, string text, int posx, int posy
 	{
 		Navigation no_nav = new Navigation();
 		no_nav.mode=Navigation.Mode.None; //disables navigation so people can't operate ui by moving avatar.
 		GameObject lessongo = new GameObject(lang+" Lesson "+(lessonnum+1));
 		lessongo.transform.SetParent(parent.transform, false);
-		createheadertext(lessongo,"Lesson " + (lessonnum+1) + " - "+ASLlessonnames,3000,60,160,920,layer);
+		createheadertext(lessongo,"Lesson " + (lessonnum+1),1100,30,80,705,layer);
 
 		int column = 0;
 		int row = 0;
@@ -280,24 +343,24 @@ static GameObject createmenu(GameObject parent, string lang, string[] lessonname
 			
 			UnityEventTools.AddPersistentListener(t.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), go, "SetActive") as UnityAction<bool>);
 			
-			uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (80, 80);
-			uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (-40,-40);
+			uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (40, 40);
+			uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (-20,-20);
 			uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").gameObject.layer=layer;
 
 			uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().text =" "+ (x+1)+ ") " + signarray[x,0];
-			uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().fontSize = 50;
+			uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().fontSize = 25;
 			uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
-			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (750, 100);
-			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (40,-50);
+			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (375, 50);
+			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (20,-25);
 			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").gameObject.layer=layer;
 			
-			uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (80, 80);
+			uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (40, 40);
 			uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,0);
 			uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
@@ -307,7 +370,7 @@ static GameObject createmenu(GameObject parent, string lang, string[] lessonname
 			row++;
 		}
 //makes back button
-	GameObject backtolessongo = createbutton2(lessongo,"Return to VR-" + lang + " Lesson Menu",900,100,0,0,90,100,0,"Return to Lesson Menu",50,900,100,0,0,TextAnchor.MiddleCenter,layer);
+	GameObject backtolessongo = createbutton2(lessongo,"Return to VR-" + lang + " Lesson Menu",750,50,0,0,90,50,0,"Return to Lesson Menu",25,750,50,0,0,TextAnchor.MiddleCenter,layer);
 	Button b = backtolessongo.GetOrAddComponent<Button>();
 	b.onClick = new Button.ButtonClickedEvent();
 
