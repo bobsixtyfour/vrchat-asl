@@ -94,6 +94,14 @@ public class HH_HQ : MonoBehaviour {
 			//displaycanvas.GetComponent<RectTransform> ().localScale=new Vector3(.0007777605f,.0008309863f,.001f);
             createpanel(displaycanvas,projectionsizex, projectionsizey,layer);
 			GameObject.Find ("/HH Root/MainDisplay/Panel").GetComponent<Image>().color = new Color32( 0x21, 0x21, 0x21, 0xFF ); 
+			GameObject maindisplay=GameObject.Find ("/HH Root/MainDisplay/Panel");
+			maindisplay.GetComponent<Image>().raycastTarget=false;
+			GraphicRaycaster deletethisgraphicraycaster = GameObject.Find ("/HH Root/MainDisplay").GetComponent<GraphicRaycaster>();
+			DestroyImmediate(deletethisgraphicraycaster);
+			VRC_UiShape deletethisvrcuishape = GameObject.Find ("/HH Root/MainDisplay").GetComponent<VRC_UiShape>();
+			DestroyImmediate(deletethisvrcuishape);
+			ToggleGroup deletethistogglegroup = GameObject.Find ("/HH Root/MainDisplay").GetComponent<ToggleGroup>();
+			DestroyImmediate(deletethistogglegroup);
 
 			DefaultControls.Resources resources = new DefaultControls.Resources();
 			GameObject displaytext = DefaultControls.CreateText(resources);
@@ -128,7 +136,7 @@ public class HH_HQ : MonoBehaviour {
 
 			rootcanvas.GetComponent<RectTransform> ().eulerAngles = new Vector3(0, 90, 0);//x,y,z
 			displaycanvas.GetComponent<RectTransform> ().eulerAngles = new Vector3(0, -90, 0);//x,y,z
-	}	
+	}
 static GameObject createbutton2(GameObject parent, string name,int sizedeltax,int sizedeltay,int rotatex,int rotatey,int rotatez,int anchoredPositionx,int anchoredPositiony,string text,int fontSize,int txtsizeDeltax,int txtsizeDeltay,int txtanchoredPositionx,int txtanchoredPositiony, TextAnchor alignment,int layer){
 		Navigation no_nav = new Navigation();
 	no_nav.mode=Navigation.Mode.None; 
