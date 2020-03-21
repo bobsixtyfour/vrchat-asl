@@ -97,7 +97,7 @@ new string[,]{//Lesson 9 (Alphabet / Numbers)
 new string[,]{//Lesson 10 (Verbs & Actions p1)
 {"Overlook","ASL-Overlook","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-01.mp4","0","0",""},{"Punish","ASL-Punish","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-02.mp4","0","0",""},{"Edit","ASL-Edit","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-03.mp4","0","0",""},{"Erase","ASL-Erase","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-04.mp4","0","0",""},{"Write","ASL-Write","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-05.mp4","0","0",""},{"Proposal","ASL-Proposal","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-06.mp4","0","0",""},{"Add","ASL-Add","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-07.mp4","0","0",""},{"Remove","ASL-Remove","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-08.mp4","0","0",""},{"Agree","ASL-Agree","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-09.mp4","0","0",""},{"Disagree","ASL-Disagree","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-10.mp4","0","0",""},{"Admit","ASL-Admit","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-11.mp4","0","0",""},{"Allow","ASL-Allow","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-12.mp4","0","0",""},{"Attack","ASL-Attack","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-13.mp4","0","0",""},{"Fight","ASL-Fight","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-14.mp4","0","0",""},{"Defend","ASL-Defend","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-15.mp4","0","0",""},{"Defeat","ASL-Defeat","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-16.mp4","0","0",""},{"Win","ASL-Win","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-17.mp4","0","0",""},{"Lose","ASL-Lose","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-18.mp4","0","0",""},{"Draw (game)","ASL-Draw (game)","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-19.mp4","0","0",""},{"Give up","ASL-Give up","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-20.mp4","0","0",""},{"Skip","ASL-Skip","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-21.mp4","0","0",""},{"Ask","ASL-Ask","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-22.mp4","0","0",""},{"Attach","ASL-Attach","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-23.mp4","0","0",""},{"Assist","ASL-Assist","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-24.mp4","0","0",""},{"Bait","ASL-Bait","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-25.mp4","0","0",""},{"Battle","ASL-Battle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-26.mp4","0","0",""},{"Beat","ASL-Beat","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-27.mp4","0","0",""},{"Become","ASL-Become","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-28.mp4","0","0",""},{"Beg","ASL-Beg","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-29.mp4","0","0",""},{"Begin","ASL-Begin","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-30.mp4","0","0",""},{"Behave","ASL-Behave","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-31.mp4","0","0",""},{"Believe","ASL-Believe","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-32.mp4","0","0",""},{"Blame","ASL-Blame","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-33.mp4","0","0",""},{"Blow","ASL-Blow","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-34.mp4","0","0",""},{"Blush","ASL-Blush","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-35.mp4","0","0",""},{"Bother/Harass","ASL-Bother","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-36.mp4","0","0",""}},
 new string[,]{//Lesson 11 (Verbs & Actions p2)
-{"Bend","ASL-Bend","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-01.mp4","0","0",""},{"Bow","ASL-Bow","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-02.mp4","0","0",""},{"Break","ASL-Break","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-03.mp4","0","0",""},{"Breathe","ASL-Breathe","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-04.mp4","0","0",""},{"Bring","ASL-Bring","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-05.mp4","0","0",""},{"Build","ASL-Build","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-06.mp4","0","0",""},{"Bully","ASL-Bully","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-07.mp4","0","0",""},{"Burn","ASL-Burn","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-08.mp4","0","0",""},{"Buy","ASL-Buy","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-09.mp4","0","0",""},{"Call","ASL-Call","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-10.mp4","0","0",""},{"Cancel","ASL-Cancel","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-11.mp4","0","0",""},{"Care","ASL-Care","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-12.mp4","0","0",""},{"Carry","ASL-Carry","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-13.mp4","0","0",""},{"Catch","ASL-Catch","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-14.mp4","0","0",""},{"Cause","ASL-Cause","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-15.mp4","0","0",""},{"Challenge","ASL-Challenge","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-16.mp4","0","0",""},{"Chance","ASL-Chance","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-17.mp4","0","0",""},{"Cheat","ASL-Cheat","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-18.mp4","0","0",""},{"Check","ASL-Check","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-19.mp4","0","0",""},{"Choose","ASL-Choose","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-20.mp4","0","0",""},{"Claim","ASL-Claim","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-21.mp4","0","0",""},{"Clean","ASL-Clean","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-22.mp4","0","0",""},{"Clear","ASL-Clear","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-23.mp4","0","0",""},{"Close","ASL-Close","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-24.mp4","0","0",""},{"Comfort","ASL-Comfort","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-25.mp4","0","0",""},{"Command","ASL-Command","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-26.mp4","0","0",""},{"Communicate","ASL-Communicate","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-27.mp4","0","0",""},{"Compare","ASL-Compare","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-28.mp4","0","0",""},{"Complain","ASL-Complain","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-29.mp4","0","0",""},{"Compliment","ASL-Compliment","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-30.mp4","0","0",""},{"Concentrate","ASL-Concentrate","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-31.mp4","0","0",""},{"Construct","ASL-Construct","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-32.mp4","0","0",""},{"Control","ASL-Control","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-33.mp4","0","0",""},{"Cook","ASL-Cook","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-34.mp4","0","0",""},{"Copy","ASL-Copy","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-35.mp4","0","0",""},{"Correct","ASL-Correct","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-36.mp4","0","0",""}},
+{"Bend","ASL-Bend","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-01.mp4","0","0",""},{"Bow","ASL-Bow","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-02.mp4","0","0",""},{"Break","ASL-Break","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-03.mp4","0","0",""},{"Breathe","ASL-Breathe","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-04.mp4","0","0",""},{"Bring","ASL-Bring","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-05.mp4","0","0","(Directional Sign)"},{"Build/Construct","ASL-Build","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-06.mp4","0","0",""},{"Bully","ASL-Bully","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-07.mp4","0","0",""},{"Burn","ASL-Burn","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-08.mp4","0","0",""},{"Buy","ASL-Buy","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-09.mp4","0","0",""},{"Call","ASL-Call","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-10.mp4","0","0",""},{"Cancel","ASL-Cancel","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-11.mp4","0","0",""},{"Care","ASL-Care","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-12.mp4","0","0",""},{"Carry","ASL-Carry","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-13.mp4","0","0",""},{"Catch","ASL-Catch","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-14.mp4","0","0",""},{"Cause","ASL-Cause","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-15.mp4","0","0",""},{"Challenge","ASL-Challenge","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-16.mp4","0","0",""},{"Chance","ASL-Chance","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-17.mp4","0","0","C Handshape"},{"Cheat","ASL-Cheat","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-18.mp4","0","0",""},{"Check","ASL-Check","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-19.mp4","0","0",""},{"Choose","ASL-Choose","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-20.mp4","0","0",""},{"Claim","ASL-Claim","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-21.mp4","0","0",""},{"Clean","ASL-Clean","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-22.mp4","0","0",""},{"Clear","ASL-Clear","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-23.mp4","0","0",""},{"Close","ASL-Close","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-24.mp4","0","0",""},{"Comfort","ASL-Comfort","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-25.mp4","0","0",""},{"Command","ASL-Command","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-26.mp4","0","0",""},{"Communicate","ASL-Communicate","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-27.mp4","0","0",""},{"Compare","ASL-Compare","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-28.mp4","0","0",""},{"Complain","ASL-Complain","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-29.mp4","0","0",""},{"Compliment","ASL-Compliment","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-30.mp4","0","0",""},{"Concentrate","ASL-Concentrate","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-31.mp4","0","0",""},{"Construct/Build","ASL-Construct","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-32.mp4","0","0",""},{"Control","ASL-Control","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-33.mp4","0","0",""},{"Cook","ASL-Cook","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-34.mp4","0","0",""},{"Copy","ASL-Copy","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-35.mp4","0","0",""},{"Correct","ASL-Correct","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet11/11-36.mp4","0","0",""}},
 new string[,]{//Lesson 12 (Verbs & Actions p3)
 {"Cough","ASL-Cough","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-01.mp4","0","0",""},{"Count","ASL-Count","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-02.mp4","0","0",""},{"Create","ASL-Create","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-03.mp4","0","0",""},{"Cuddle","ASL-Cuddle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-04.mp4","0","0",""},{"Cut","ASL-Cut","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-05.mp4","0","0",""},{"Dab","ASL-Dab","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-06.mp4","0","0",""},{"Dance","ASL-Dance","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-07.mp4","0","0",""},{"Dare","ASL-Dare","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-08.mp4","0","0",""},{"Date","ASL-Date","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-09.mp4","0","0",""},{"Deal","ASL-Deal","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-10.mp4","0","0",""},{"Deliver","ASL-Deliver","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-11.mp4","0","0",""},{"Depend","ASL-Depend","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-12.mp4","0","0",""},{"Describe","ASL-Describe","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-13.mp4","0","0",""},{"Dirty","ASL-Dirty","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-14.mp4","0","0",""},{"Disappear","ASL-Disappear","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-15.mp4","0","0",""},{"Disappoint","ASL-Disappoint","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-16.mp4","0","0",""},{"Disapprove","ASL-Disapprove","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-17.mp4","0","0",""},{"Discuss","ASL-Discuss","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-18.mp4","0","0",""},{"Disguise","ASL-Disguise","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-19.mp4","0","0",""},{"Disgust","ASL-Disgust","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-20.mp4","0","0",""},{"Dismiss","ASL-Dismiss","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-21.mp4","0","0",""},{"Disturb","ASL-Disturb","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-22.mp4","0","0",""},{"Doubt","ASL-Doubt","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-23.mp4","0","0",""},{"Dream","ASL-Dream","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-24.mp4","0","0",""},{"Dress","ASL-Dress","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-25.mp4","0","0",""},{"Drunk","ASL-Drunk","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-26.mp4","0","0",""},{"Drop","ASL-Drop","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-27.mp4","0","0",""},{"Drown","ASL-Drown","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-28.mp4","0","0",""},{"Dry","ASL-Dry","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-29.mp4","0","0",""},{"Dump","ASL-Dump","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-30.mp4","0","0",""},{"Dust","ASL-Dust","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-31.mp4","0","0",""},{"Earn","ASL-Earn","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-32.mp4","0","0",""},{"Effect","ASL-Effect","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-33.mp4","0","0",""},{"End","ASL-End","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-34.mp4","0","0",""},{"Escape","ASL-Escape","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-35.mp4","0","0",""},{"Escort","ASL-Escort","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet12/12-36.mp4","0","0",""}},
 new string[,]{//Lesson 13 (Verbs & Actions p4)
@@ -135,6 +135,15 @@ new string[,]{//Lesson 16 (Verbs & Actions p7)
 	Navigation no_nav = new Navigation();
 	no_nav.mode=Navigation.Mode.None;
 
+	//declare toggle resource settings
+	DefaultControls.Resources toggleresources = new DefaultControls.Resources();
+	//Set the Toggle Background Image someBgSprite;
+	toggleresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
+	//Set the Toggle Checkmark Image someCheckmarkSprite;
+	toggleresources.checkmark = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
+	DefaultControls.Resources rootpanelresources = new DefaultControls.Resources();
+	rootpanelresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
+	DefaultControls.Resources txtresources = new DefaultControls.Resources();
 	int layer=8;
 	int rowoffset=860;
 	int columnoffset=200;
@@ -143,14 +152,17 @@ new string[,]{//Lesson 16 (Verbs & Actions p7)
 
 	int rowseperation=100;
 	int columnseperation=1000;
-
+	int togglesizedelta=80;
+int numberpercolumn = 10;
 int menusizex = 4900;
 int menusizey = 1600;
 int headersizey=60;
 int textpadding=10;
+int headerbuttonspacing=100;
 int buttonsizey=100;
 int buttonsizex=900;
 int menubuttonystart=textpadding+headersizey+buttonsizey + 80;
+Vector2 backbuttonsize=new Vector2(menusizey-headersizey-textpadding-headerbuttonspacing,buttonsizey);
 
 Vector2 buttonsize=new Vector2(buttonsizex,buttonsizey);
 Vector2 menusize=new Vector2(menusizex,menusizey);
@@ -182,8 +194,8 @@ menuroot.layer = layer;
 	videocontainer.layer = layer;
 
 	GameObject triggercontainer = new GameObject("Trigger Container"); //container go to hold all the triggers. Allows a world option that turns on/off global triggers.
-	videocontainer.transform.SetParent(menuroot.transform, false);
-	videocontainer.layer = layer;
+	triggercontainer.transform.SetParent(menuroot.transform, false);
+	triggercontainer.layer = layer;
 
 		GameObject globaltriggercontainer = new GameObject("Global Trigger Container"); //container go to hold all the gloval triggers.
 		globaltriggercontainer.transform.SetParent(triggercontainer.transform, false);
@@ -212,8 +224,7 @@ menuroot.layer = layer;
 	rootcanvas.AddComponent<ToggleGroup>();
 
 		//GameObject rootpanel = new GameObject ("Root Panel"); //Creates panel under rootcanvas.
-		DefaultControls.Resources rootpanelresources = new DefaultControls.Resources();
-		rootpanelresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
+
 		GameObject rootpanel = DefaultControls.CreatePanel(rootpanelresources);
 		rootpanel.transform.SetParent(rootcanvas.transform, false);
 		rootpanel.layer = layer;
@@ -227,7 +238,7 @@ menuroot.layer = layer;
 		langselectmenu.transform.SetParent(rootcanvas.transform, false);
 		langselectmenu.layer = layer;
 
-		DefaultControls.Resources txtresources = new DefaultControls.Resources();
+		
 		GameObject langselectmenuheader = DefaultControls.CreateText(txtresources);
 		langselectmenuheader.transform.SetParent (langselectmenu.transform, false);
 		langselectmenuheader.name="VR Sign Language Select Menu Header";
@@ -251,6 +262,13 @@ MAIN LANGUAGE LOOP HERE
 *****************************************/
         for (int languagenum=0; languagenum<AllLessons.Length;languagenum++) //for every language in signlanguages do this once:
         {
+			GameObject langvideocontainer = new GameObject(signlanguagenames[languagenum,0]+" Video Container");
+			langvideocontainer.transform.position = new Vector3(0, 0, 0);
+			langvideocontainer.transform.SetParent(videocontainer.transform, false);
+			langvideocontainer.layer = layer;
+
+
+
 			//create a root gameobject for each language
 			GameObject langroot = new GameObject(signlanguagenames[languagenum,0]+" Root"); //creates language container for a given language.
 			langroot.transform.SetParent(rootcanvas.transform, false);
@@ -260,14 +278,14 @@ MAIN LANGUAGE LOOP HERE
 			GameObject globallanguagetriggercontainer = new GameObject(signlanguagenames[languagenum,0]+" Global Trigger Container"); //create language container for a given language to house global triggers.
 			globallanguagetriggercontainer.transform.SetParent(globaltriggercontainer.transform, false);
 			globallanguagetriggercontainer.layer = layer;
-			GameObject locallanguagetriggercontainer = new GameObject(signlanguagenames[languagenum,0]+" Global Trigger Container"); //create language container for a given language to house local triggers.
-			globallanguagetriggercontainer.transform.SetParent(localtriggercontainer.transform, false);
-			globallanguagetriggercontainer.layer = layer;
+			GameObject locallanguagetriggercontainer = new GameObject(signlanguagenames[languagenum,0]+" Local Trigger Container"); //create language container for a given language to house local triggers.
+			locallanguagetriggercontainer.transform.SetParent(localtriggercontainer.transform, false);
+			locallanguagetriggercontainer.layer = layer;
 			//localtriggercontainer//globaltriggercontainer
 
 			//create language select button
-			GameObject bgo = createbutton2(parent:langselectmenu, name:signlanguagenames[languagenum,1], sizedelta:buttonsize,
-            anchoredPosition: new Vector2(columnoffset+(languagenum*columnseperation), menubuttonystart-(languagenum*rowseperation)),
+			GameObject langselectgo = createbutton2(parent:langselectmenu, name:signlanguagenames[languagenum,1], sizedelta:buttonsize,
+            anchoredPosition: new Vector2(columnoffset+(languagenum*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(languagenum*rowseperation)),
             text: signlanguagenames[languagenum,1], fontSize:50, txtsizedelta:buttonsize, txtanchoredPosition:new Vector2(20,0),
             alignment:TextAnchor.MiddleLeft, nav:no_nav, layer:layer);
 
@@ -277,8 +295,8 @@ MAIN LANGUAGE LOOP HERE
 				lessonmenu.layer = layer;
 					//Create lesson menu header
 					GameObject lessonselectmenuheader = DefaultControls.CreateText(txtresources);
-					lessonselectmenuheader.transform.SetParent (rootcanvas.transform, false);
-					lessonselectmenuheader.name=signlanguagenames[languagenum,0]+"Lesson Menu";
+					lessonselectmenuheader.transform.SetParent (lessonmenu.transform, false);
+					lessonselectmenuheader.name=signlanguagenames[languagenum,0]+" Lesson Menu Header";
 					lessonselectmenuheader.layer = layer;
 					lessonselectmenuheader.GetComponent<Text> ().text = "VR-"+signlanguagenames[languagenum,0]+" Sign Language - Lesson Menu (Green = contains \"verified\" motion data.) (Yellow = contains \"Unverified\" motion data and verified videos) (Red = no motion data, but contains verified videos)";
 					lessonselectmenuheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
@@ -294,22 +312,44 @@ MAIN LANGUAGE LOOP HERE
 /*****************************************
 MAIN LESSON LOOP HERE
 *****************************************/
+					int menucolumn=0;
+					int menurow=0;
 				for (int lessonnum = 0; lessonnum < AllLessons[languagenum].Length; lessonnum++){ //for every lesson inside of ASLlessons do:
-					
 
-					
+				if (lessonnum != 0){
+					if (lessonnum % numberpercolumn == 0){ //display 9 items per column
+					menucolumn++;
+					menurow=0;
+					}
+				}
+				//Debug.Log(" menusizey="+menusizey+" headersizey="+headersizey+" textpadding="+textpadding+" buttonsizey="+buttonsizey+" menurow="+menurow+" rowseperation="+rowseperation+" menusizey-headersizey-textpadding-buttonsizex-(menurow*rowseperation)="+(menusizey-headersizey-textpadding-buttonsizex-(menurow*rowseperation)));
 					//create lesson menu button here for lessonmenu.-one at a time
-					GameObject leesonbgo = createbutton2(parent:lessonmenu, name:signlanguagenames[languagenum,1], sizedelta:buttonsize,
-					anchoredPosition: new Vector2(columnoffset+(languagenum*columnseperation), menusizey-headersizey-textpadding-(lessonnum*rowseperation)),
-					text: signlanguagenames[languagenum,0]+" L"+(lessonnum+1)+"("+lessonnames[lessonnum]+") - Button", fontSize:50, txtsizedelta:buttonsize, txtanchoredPosition:new Vector2(20,0),
+					GameObject lessonbgo = createbutton2(parent:lessonmenu, name:signlanguagenames[languagenum,0]+" L"+(lessonnum+1)+"("+lessonnames[lessonnum]+") - Button", sizedelta:buttonsize,
+					//anchoredPosition: new Vector2(columnoffset+(menucolumn*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(menurow*rowseperation)),
+					anchoredPosition: new Vector2(columnoffset+(menucolumn*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(menurow*rowseperation)),
+					text: (lessonnum+1)+ ") " + lessonnames[lessonnum], fontSize:50, txtsizedelta:buttonsize, txtanchoredPosition:new Vector2(20,0),
 					alignment:TextAnchor.MiddleLeft, nav:no_nav, layer:layer);
-
+					Button b = lessonbgo.GetOrAddComponent<Button>();
+					b.onClick = new Button.ButtonClickedEvent();
+					//colors the buttons to indicate what's working and what's not.
+					if(lessonnum>=2){
+						//b.colo
+						var colors = b.colors;
+						colors.normalColor = new Color32( 0xFF, 0x98, 0x98, 0xFF ); //FF9898FF light red
+						b.colors = colors;
+					}
+					if(lessonnum<2){
+						//b.colo
+						var colors = b.colors;
+						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
+						b.colors = colors;
+					}
+					menurow++;
 					//create lesson x gameobject eg: ASL Lesson x
 					GameObject lessongo = new GameObject(signlanguagenames[languagenum,0]+" Lesson "+(lessonnum+1));
 					lessongo.transform.SetParent(langroot.transform, false);
 					lessongo.layer = layer;
 					
-
 					//create lesson x header
 					GameObject lessongoheader = DefaultControls.CreateText(txtresources);
 					lessongoheader.transform.SetParent (lessongo.transform, false);
@@ -327,11 +367,18 @@ MAIN LESSON LOOP HERE
 					lessongoheader.GetComponent<RectTransform> ().anchorMin = zerovector2;
 					lessongoheader.GetComponent<RectTransform> ().pivot = zerovector2;
 					
-					GameObject videolessoncontainer = new GameObject(signlanguagenames[languagenum,0]+" Video L"+(lessonnum+1));
-					videolessoncontainer.transform.SetParent(videocontainer.transform, false);
-					videolessoncontainer.layer=layer;
+					//GameObject videolessoncontainer = new GameObject(signlanguagenames[languagenum,0]+" Video L"+(lessonnum+1));
+					//videolessoncontainer.transform.SetParent(langvideocontainer.transform, false);
+					//videolessoncontainer.layer=layer;
                     
+					UnityAction<bool> enablelesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessongo, "SetActive") as UnityAction<bool>;
+					UnityEventTools.AddBoolPersistentListener(b.onClick, enablelesson, true);
 
+					//UnityAction<bool> enablevideocontainerlesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videolessoncontainer, "SetActive") as UnityAction<bool>;
+					//UnityEventTools.AddBoolPersistentListener(b.onClick, enablevideocontainerlesson, true);
+
+					UnityAction<bool> disablemenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
+					UnityEventTools.AddBoolPersistentListener(b.onClick, disablemenu, false);
 					
                     //add a back button
 
@@ -340,15 +387,19 @@ MAIN LESSON LOOP HERE
 MAIN WORD LOOP HERE
 *****************************************/
 					//initialize row/columns at start of word processing to create lesson boards
-					int column = 0;
-					int row = 0;
+					int wordcolumn = 0;
+					int wordrow = 0;
                     for (int wordnum = 0; wordnum < ASLlessons[lessonnum].GetLength(0); wordnum++){ //gets total rows in lesson. getlength(1) gets total columns, which is unneeded since we're using both columns at once.
-
+				if (wordnum != 0){
+					if (wordnum % numberpercolumn == 0){ //display 9 items per column
+					wordcolumn++;
+					wordrow=0;
+					}
+				}
 					//create two helpers, one under global, one under local
 					GameObject localtrigger = new GameObject(signlanguagenames[languagenum,0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Local Trigger");//helper gameobject with vrc_trigger. 
 					localtrigger.transform.SetParent (locallanguagetriggercontainer.transform, false);
 					localtrigger.layer = layer;
-					
 
 					GameObject globaltrigger = new GameObject(signlanguagenames[languagenum,0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Global Trigger");//helper gameobject with vrc_trigger. 
 					globaltrigger.transform.SetParent (globallanguagetriggercontainer.transform, false);
@@ -359,10 +410,15 @@ MAIN WORD LOOP HERE
 					helperglobaltrigger.UsesAdvancedOptions = true;
 					helperlocaltrigger.UsesAdvancedOptions = true;
 
-					VRC_Trigger.TriggerEvent customTrig = new VRC_Trigger.TriggerEvent ();
-					customTrig.BroadcastType = VRC_EventHandler.VrcBroadcastType.Local;
-					customTrig.TriggerType = VRC_Trigger.TriggerType.OnEnable;
-					customTrig.TriggerIndividuals = true;
+					VRC_Trigger.TriggerEvent localtriggerevent = new VRC_Trigger.TriggerEvent ();
+					localtriggerevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.Local;
+					localtriggerevent.TriggerType = VRC_Trigger.TriggerType.OnEnable;
+					localtriggerevent.TriggerIndividuals = true;
+
+					VRC_Trigger.TriggerEvent globaltriggerevent = new VRC_Trigger.TriggerEvent ();
+					globaltriggerevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered;
+					globaltriggerevent.TriggerType = VRC_Trigger.TriggerType.OnEnable;
+					globaltriggerevent.TriggerIndividuals = true;
 
 					VRC_EventHandler.VrcEvent setanimationtrigger;
 					setanimationtrigger = new VRC_EventHandler.VrcEvent ();
@@ -370,56 +426,55 @@ MAIN WORD LOOP HERE
 					setanimationtrigger.ParameterString = AllLessons[languagenum][lessonnum][wordnum,1];
 					setanimationtrigger.ParameterObject = GameObject.Find ("/Nana Avatar");
 					//eventAction.ParameterInt = 1;
-					customTrig.Events.Add (setanimationtrigger); //this eventaction sets animation trigger on avatar controller
+					localtriggerevent.Events.Add (setanimationtrigger); //this eventaction sets animation trigger on avatar controller
+					globaltriggerevent.Events.Add (setanimationtrigger); //this eventaction sets animation trigger on avatar controller
 					
 					VRC_EventHandler.VrcEvent setcurrentsigntext;
 					setcurrentsigntext = new VRC_EventHandler.VrcEvent ();
 					setcurrentsigntext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
 					setcurrentsigntext.ParameterString = AllLessons[languagenum][lessonnum][wordnum,0];
 					setcurrentsigntext.ParameterObject = GameObject.Find ("/Nana Avatar/Canvas/Current Sign Panel/Current Sign Text");
-					customTrig.Events.Add (setcurrentsigntext); //this eventaction sets uitext on current sign text
+					localtriggerevent.Events.Add (setcurrentsigntext); //this eventaction sets uitext on current sign text
+					globaltriggerevent.Events.Add (setcurrentsigntext); //this eventaction sets uitext on current sign text
 
 					VRC_EventHandler.VrcEvent setspeechbubbletext;
 					setspeechbubbletext = new VRC_EventHandler.VrcEvent ();
 					setspeechbubbletext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
 					setspeechbubbletext.ParameterString = AllLessons[languagenum][lessonnum][wordnum,0];
 					setspeechbubbletext.ParameterObject = GameObject.Find ("/Nana Avatar/Armature/Canvas/Bubble/text");
-					customTrig.Events.Add (setspeechbubbletext); //this eventaction sets uitext on avatar speech bubble text
+					localtriggerevent.Events.Add (setspeechbubbletext); //this eventaction sets uitext on avatar speech bubble text
+					globaltriggerevent.Events.Add (setspeechbubbletext); //this eventaction sets uitext on avatar speech bubble text
 
 					VRC_EventHandler.VrcEvent setcredittext;
 					setcredittext = new VRC_EventHandler.VrcEvent ();
 					setcredittext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
 					setcredittext.ParameterString = "This sign was recorded by: " + AllLessons[languagenum][lessonnum][wordnum,2];
 					setcredittext.ParameterObject = GameObject.Find ("/Nana Avatar/Canvas/Credit Panel/Credit Text");
-					customTrig.Events.Add (setcredittext); //this eventaction sets uitext on avatar speech bubble text
+					localtriggerevent.Events.Add (setcredittext); //this eventaction sets uitext on credit boxt
+					globaltriggerevent.Events.Add (setcredittext); //this eventaction sets uitext on credit box
 					
 					VRC_EventHandler.VrcEvent setdescription;
 					setdescription = new VRC_EventHandler.VrcEvent ();
 					setdescription.EventType = VRC_EventHandler.VrcEventType.SetUIText;
 					setdescription.ParameterString = "This sign was recorded by: " + AllLessons[languagenum][lessonnum][wordnum,6];
-					setdescription.ParameterObject = GameObject.Find ("/Nana Avatar/Canvas/Credit Panel/Credit Text");
-					customTrig.Events.Add (setdescription); //this eventaction sets uitext on avatar speech bubble text
+					setdescription.ParameterObject = GameObject.Find ("/Nana Avatar/Canvas/Description Panel/Description Text");
+					localtriggerevent.Events.Add (setdescription); //this eventaction sets uitext on avatar speech bubble text
+					globaltriggerevent.Events.Add (setdescription); //this eventaction sets uitext on avatar speech bubble text
 
-					helperglobaltrigger.Triggers.Add(customTrig); //adds all event actions to the trigger for this helper gameobject.
-					helperlocaltrigger.Triggers.Add(customTrig); //adds all event actions to the trigger for this helper gameobject.
+					helperglobaltrigger.Triggers.Add(globaltriggerevent); //adds all event actions to the trigger for this helper gameobject.
+					helperlocaltrigger.Triggers.Add(localtriggerevent); //adds all event actions to the trigger for this helper gameobject.
 					localtrigger.SetActive(false); //disables the gameobject since the UI toggle with enable them to activate the triggers.
 					globaltrigger.SetActive(false); //disables the gameobject since the UI toggle with enable them to activate the triggers.
 					//create lesson toggles
 					
-					//declare toggle resource settings
-					DefaultControls.Resources toggleresources = new DefaultControls.Resources();
-					//Set the Toggle Background Image someBgSprite;
-					toggleresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
-					//Set the Toggle Checkmark Image someCheckmarkSprite;
-					toggleresources.checkmark = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
+
 					GameObject uiToggle = DefaultControls.CreateToggle(toggleresources);
 					Toggle t = uiToggle.GetOrAddComponent<Toggle>();
 					uiToggle.gameObject.name = signlanguagenames[languagenum,0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Toggle";				
 					uiToggle.transform.SetParent(lessongo.transform, false);
 					uiToggle.layer=layer;
 					uiToggle.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0, 0);
-					uiToggle.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((columnoffset +(column*columnseperation)),(rowoffset+(row*rowseperation)));
-					//uiToggle.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((240 +(column*1000)),(1400+(row*-150)));
+					uiToggle.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((columnoffset +(wordcolumn*columnseperation)),(menusizey-headersizey-textpadding-buttonsizey-togglesizedelta/2-(wordrow*rowseperation)));
 					uiToggle.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 0);
 					uiToggle.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 0);
 					uiToggle.GetComponent<RectTransform> ().pivot = new Vector2 (0, 0);
@@ -429,56 +484,141 @@ MAIN WORD LOOP HERE
 					t.toggleTransition= Toggle.ToggleTransition.None;
 					t.group=rootcanvas.gameObject.GetComponent<ToggleGroup>();
 					t.onValueChanged = new Toggle.ToggleEvent();
+					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (80, 80);
+					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (-40,-40);
+					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").gameObject.layer=layer;
 
+					uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().text ="    "+ (wordnum+1)+ ") " + AllLessons[languagenum][lessonnum][wordnum,0];
+					uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().fontSize = 50;
+					uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (750, 100);
+					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (40,-50);
+					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
+					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
+					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+					uiToggle.transform.Find("Label").gameObject.layer=layer;
+					
+					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (80, 80);
+					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,0);
+					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").gameObject.layer=layer;
 
 					UnityEventTools.AddPersistentListener(t.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), localtrigger, "SetActive") as UnityAction<bool>);
 					UnityEventTools.AddPersistentListener(t.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), globaltrigger, "SetActive") as UnityAction<bool>);
+					
 					GameObject videogo = GameObject.CreatePrimitive(PrimitiveType.Quad);
 					videogo.name=signlanguagenames[languagenum,0]+" Video L"+(lessonnum+1) +" S"+(wordnum+1);
 					videogo.layer = layer;
-					videogo.transform.SetParent(videolessoncontainer.transform, false);
-					//GameObject videogo = GameObject.Find("/Menu Root/Video Container/"+lang+" Video Container/"+lang+" Video L"+(lessonnum+1)+"/"+lang+" Video L"+(lessonnum+1)+" S"+(x+1));
-
+					videogo.transform.SetParent(langvideocontainer.transform, false);
+					videogo.GetOrAddComponent<MeshRenderer>().sharedMaterial=(Material)AssetDatabase.LoadAssetAtPath("Assets/VRCSDK/Examples/Sample Assets/Materials/Screen.mat",typeof(Material));
+					videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().url=AllLessons[languagenum][lessonnum][wordnum,3];
+					videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().isLooping=true;
+					videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().renderMode=VideoRenderMode.MaterialOverride;
+					videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().audioOutputMode=VideoAudioOutputMode.None;
+					videogo.SetActive(false);
+					
+					UnityEventTools.AddPersistentListener(t.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videogo, "SetActive") as UnityAction<bool>);
+					wordrow++;
                     } //end of word loop.
 
-				//back button triggers?
+				//back button
+				GameObject backtolessongo = createbutton2(parent:lessongo, name:"Return to VR-" + signlanguagenames[languagenum,0] + " Lesson Menu", sizedelta:backbuttonsize,
+				anchoredPosition: new Vector2(buttonsizey, 0),
+				text: "Return to VR-" + signlanguagenames[languagenum,0] + " Lesson Menu", fontSize:50, txtsizedelta:backbuttonsize, txtanchoredPosition:new Vector2(20,0), 
+				alignment:TextAnchor.MiddleCenter, nav:no_nav,rotatez:90, layer:layer);
 
-				} //end of lesson loop.
+				Button backbutton = backtolessongo.GetOrAddComponent<Button>();
+				backbutton.onClick = new Button.ButtonClickedEvent();
+
+				//disable the current active lesson when clicked
+				UnityAction<bool> disablecurrentlesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessongo, "SetActive") as UnityAction<bool>;
+				UnityEventTools.AddBoolPersistentListener(backbutton.onClick, disablecurrentlesson, false);
+
+				//enable the lesson select
+				UnityAction<bool> enablelessonmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
+				UnityEventTools.AddBoolPersistentListener(backbutton.onClick, enablelessonmenu, true);
+
+				//UnityAction<bool> disablevideolessoncontainer = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), GameObject.Find("/Menu Root/Video Container/"+lang+" Video Container/"+lang+" Video L"+(lessonnum+1)), "SetActive") as UnityAction<bool>;
+				//UnityAction<bool> disablevideolessoncontainer = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videolessoncontainer, "SetActive") as UnityAction<bool>;
+				//UnityEventTools.AddBoolPersistentListener(backbutton.onClick, disablevideolessoncontainer, false);
+				//}
+				langroot.SetActive(false);
+				lessongo.SetActive(false);
+				//videolessoncontainer.SetActive(false);
+				
+
+				} //end of lesson loop. 
 
 
 			//assign triggers after lessons created. Triggers for Language Chooser menu buttons.
-			Button b = bgo.GetOrAddComponent<Button>();
-			b.onClick = new Button.ButtonClickedEvent();
+			Button langselectbutton = langselectgo.GetOrAddComponent<Button>();
+			langselectbutton.onClick = new Button.ButtonClickedEvent();
 			UnityAction<bool> enableaslroot = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(signlanguagenames[languagenum,0]+" Root"), "SetActive") as UnityAction<bool>;
-			UnityEventTools.AddBoolPersistentListener(b.onClick, enableaslroot, true);
+			UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, enableaslroot, true);
 
 			UnityAction<bool> enableaslmenuselect = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(signlanguagenames[languagenum,0]+" Lesson Menu"), "SetActive") as UnityAction<bool>;//GameObject.Find("Menu Root/Root Canvas/ASL Root/ASL Lesson Menu")
-			UnityEventTools.AddBoolPersistentListener(b.onClick, enableaslmenuselect, true);
+			UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, enableaslmenuselect, true);
 
-			UnityAction<bool> disablelanguageselect = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), GameObject.Find("Menu Root/Root Canvas/VR Sign Language Select Menu"), "SetActive") as UnityAction<bool>;
-			UnityEventTools.AddBoolPersistentListener(b.onClick, disablelanguageselect, false);
+			UnityAction<bool> disablelanguageselect = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), langselectmenu, "SetActive") as UnityAction<bool>;
+			UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, disablelanguageselect, false);
 			//activates video container for specific language
-			UnityAction<bool> enablevideolanguage = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), GameObject.Find("Menu Root/Video Container/"+signlanguagenames[languagenum,0]+" Video Container"), "SetActive") as UnityAction<bool>;
-			UnityEventTools.AddBoolPersistentListener(b.onClick, enablevideolanguage, true);
+			UnityAction<bool> enablevideolanguage = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), langvideocontainer, "SetActive") as UnityAction<bool>;
+			UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, enablevideolanguage, true);
 
-			
+			//back button here?
+				GameObject backtolanguagemenu = createbutton2(parent:lessonmenu, name:"Return to Language Menu", sizedelta:backbuttonsize,
+				anchoredPosition: new Vector2(buttonsizey, 0),
+				text: "Return to Language Menu", fontSize:50, txtsizedelta:backbuttonsize, txtanchoredPosition:new Vector2(20,0), 
+				alignment:TextAnchor.MiddleCenter, nav:no_nav,rotatez:90, layer:layer);
+
+				Button languagebackbutton = backtolanguagemenu.GetOrAddComponent<Button>();
+				languagebackbutton.onClick = new Button.ButtonClickedEvent();
+
+				//disable the current active lesson when clicked
+				UnityAction<bool> disablelessonmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
+				UnityEventTools.AddBoolPersistentListener(languagebackbutton.onClick, disablelessonmenu, false);
+
+				//enable the lesson select
+				UnityAction<bool> enablelangmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), langselectmenu, "SetActive") as UnityAction<bool>;
+				UnityEventTools.AddBoolPersistentListener(languagebackbutton.onClick, enablelangmenu, true);
+
+
+
+			langvideocontainer.SetActive(false);
+			globaltriggercontainer.SetActive(false);
 	} //end of language loop
 
 /*****************************************
 Update menu system to point to newly created objects.
 *****************************************/
 //recreate toggle to fix reference?
-			Toggle oldvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
-			DestroyImmediate(oldvideotoggle);
-			Toggle newvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
-			newvideotoggle.navigation = no_nav;
-			newvideotoggle.isOn = true;
-			newvideotoggle.transition= Selectable.Transition.None;
-			newvideotoggle.toggleTransition= Toggle.ToggleTransition.None;
-			newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
-UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videocontainer, "SetActive") as UnityAction<bool>);
+	Toggle oldvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
+	DestroyImmediate(oldvideotoggle);
+	Toggle newvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
+	newvideotoggle.navigation = no_nav;
+	newvideotoggle.isOn = true;
+	newvideotoggle.graphic=newvideotoggle.transform.Find("Background").gameObject.transform.Find("Checkmark").GetComponent<Image>();
+	newvideotoggle.transition= Selectable.Transition.None;
+	newvideotoggle.toggleTransition= Toggle.ToggleTransition.None;
+	newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
+	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videocontainer, "SetActive") as UnityAction<bool>);
 
-
+	Toggle oldglobaltoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode").GetOrAddComponent<Toggle>();
+	DestroyImmediate(oldglobaltoggle);
+	Toggle newglobaltoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode").GetOrAddComponent<Toggle>();
+	newglobaltoggle.navigation = no_nav;
+	newglobaltoggle.isOn = false;
+	newglobaltoggle.graphic=newglobaltoggle.transform.Find("Background").gameObject.transform.Find("Checkmark").GetComponent<Image>();
+	newglobaltoggle.transition= Selectable.Transition.None;
+	newglobaltoggle.toggleTransition= Toggle.ToggleTransition.None;
+	newglobaltoggle.onValueChanged = new Toggle.ToggleEvent();
+	UnityEventTools.AddPersistentListener(newglobaltoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), globaltriggercontainer, "SetActive") as UnityAction<bool>);
+	UnityEventTools.AddPersistentListener(newglobaltoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), localtriggercontainer, "SetActive") as UnityAction<bool>);
 
 
 }//End of main program
