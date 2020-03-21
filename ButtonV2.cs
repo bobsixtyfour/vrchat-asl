@@ -456,7 +456,7 @@ MAIN WORD LOOP HERE
 					VRC_EventHandler.VrcEvent setdescription;
 					setdescription = new VRC_EventHandler.VrcEvent ();
 					setdescription.EventType = VRC_EventHandler.VrcEventType.SetUIText;
-					setdescription.ParameterString = "This sign was recorded by: " + AllLessons[languagenum][lessonnum][wordnum,6];
+					setdescription.ParameterString = AllLessons[languagenum][lessonnum][wordnum,6];
 					setdescription.ParameterObject = GameObject.Find ("/Nana Avatar/Canvas/Description Panel/Description Text");
 					localtriggerevent.Events.Add (setdescription); //this eventaction sets uitext on avatar speech bubble text
 					globaltriggerevent.Events.Add (setdescription); //this eventaction sets uitext on avatar speech bubble text
@@ -607,7 +607,51 @@ Update menu system to point to newly created objects.
 	newvideotoggle.toggleTransition= Toggle.ToggleTransition.None;
 	newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
 	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videocontainer, "SetActive") as UnityAction<bool>);
+	//Cleanup existing triggers to reference global/local container
+	//VRC_Trigger oldglobalhelpertrigger = GameObject.Find ("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Helper").GetOrAddComponent<VRC_Trigger>();
+	//DestroyImmediate(oldglobalhelpertrigger);
+	//VRC_Trigger oldglobalhelpertrigger = GameObject.Find ("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Helper").GetOrAddComponent<VRC_Trigger>();
+	DestroyImmediate(GameObject.Find ("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Helper").GetOrAddComponent<VRC_Trigger>());
 
+	VRC_Trigger newglobalhelpertrigger = GameObject.Find ("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Helper").GetOrAddComponent<VRC_Trigger>();
+	newglobalhelpertrigger.UsesAdvancedOptions = true;
+
+	VRC_Trigger.TriggerEvent ondisableglobalhelpertriggerevent = new VRC_Trigger.TriggerEvent ();
+	ondisableglobalhelpertriggerevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysBufferOne;
+	ondisableglobalhelpertriggerevent.TriggerType = VRC_Trigger.TriggerType.OnDisable;
+	ondisableglobalhelpertriggerevent.TriggerIndividuals = true;
+	VRC_EventHandler.VrcEvent enablelocalcontainer = new VRC_EventHandler.VrcEvent ();
+	enablelocalcontainer.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
+	enablelocalcontainer.ParameterBoolOp = VRC_EventHandler.VrcBooleanOp.True;
+	enablelocalcontainer.ParameterObject = localtriggercontainer;
+	ondisableglobalhelpertriggerevent.Events.Add (enablelocalcontainer);
+
+	VRC_EventHandler.VrcEvent disableglobalcontainer = new VRC_EventHandler.VrcEvent ();
+	disableglobalcontainer.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
+	disableglobalcontainer.ParameterBoolOp = VRC_EventHandler.VrcBooleanOp.False;
+	disableglobalcontainer.ParameterObject = globaltriggercontainer ;
+	ondisableglobalhelpertriggerevent.Events.Add (disableglobalcontainer);
+	
+	VRC_Trigger.TriggerEvent onenableglobalhelpertriggerevent = new VRC_Trigger.TriggerEvent ();
+	onenableglobalhelpertriggerevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysBufferOne;
+	onenableglobalhelpertriggerevent.TriggerType = VRC_Trigger.TriggerType.OnEnable;
+	onenableglobalhelpertriggerevent.TriggerIndividuals = true;
+
+	VRC_EventHandler.VrcEvent enableglobalcontainer = new VRC_EventHandler.VrcEvent ();
+	enableglobalcontainer.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
+	enableglobalcontainer.ParameterBoolOp = VRC_EventHandler.VrcBooleanOp.True;
+	enableglobalcontainer.ParameterObject = globaltriggercontainer ;
+	onenableglobalhelpertriggerevent.Events.Add (enableglobalcontainer);
+
+	VRC_EventHandler.VrcEvent disablelocalcontainer = new VRC_EventHandler.VrcEvent ();
+	disablelocalcontainer.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
+	disablelocalcontainer.ParameterBoolOp = VRC_EventHandler.VrcBooleanOp.False;
+	disablelocalcontainer.ParameterObject = localtriggercontainer;
+	onenableglobalhelpertriggerevent.Events.Add (disablelocalcontainer);
+
+	newglobalhelpertrigger.Triggers.Add(onenableglobalhelpertriggerevent);
+	newglobalhelpertrigger.Triggers.Add(ondisableglobalhelpertriggerevent);
+/*
 	Toggle oldglobaltoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode").GetOrAddComponent<Toggle>();
 	DestroyImmediate(oldglobaltoggle);
 	Toggle newglobaltoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode").GetOrAddComponent<Toggle>();
@@ -617,9 +661,9 @@ Update menu system to point to newly created objects.
 	newglobaltoggle.transition= Selectable.Transition.None;
 	newglobaltoggle.toggleTransition= Toggle.ToggleTransition.None;
 	newglobaltoggle.onValueChanged = new Toggle.ToggleEvent();
-	UnityEventTools.AddPersistentListener(newglobaltoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), globaltriggercontainer, "SetActive") as UnityAction<bool>);
-	UnityEventTools.AddPersistentListener(newglobaltoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), localtriggercontainer, "SetActive") as UnityAction<bool>);
-
+	UnityEventTools.AddPersistentListener(newglobaltoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Helper"), "SetActive") as UnityAction<bool>);
+	//UnityEventTools.AddPersistentListener(newglobaltoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), localtriggercontainer, "SetActive") as UnityAction<bool>);
+*/
 
 }//End of main program
 
