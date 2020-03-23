@@ -14,14 +14,14 @@ public class CreateASLButtons3 : MonoBehaviour {
 	static void ButtonV3()
 	{
 			Navigation no_nav = new Navigation();
-	no_nav.mode=Navigation.Mode.None;
+	no_nav.mode=Navigation.Mode.None; //why create two copies? Too hard to sync all the different active/inactive gameobjects if everyone isn't on the same "page".
 GameObject globalmenu = CreateMenu("Global");
 GameObject localmenu = CreateMenu("Local");
 /*****************************************
 Update menu system to point to newly created objects.
 *****************************************/
-//recreate toggle to fix reference?
-/*
+//recreate toggle to fix reference? 
+
 	Toggle oldvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
 	DestroyImmediate(oldvideotoggle);
 	Toggle newvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
@@ -32,10 +32,11 @@ Update menu system to point to newly created objects.
 	newvideotoggle.toggleTransition= Toggle.ToggleTransition.None;
 	newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
 	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
-	GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle"), "SetActive") as UnityAction<bool>);
+	GameObject.Find("/Local Menu Root/Local Video Container"), "SetActive") as UnityAction<bool>);
 
+	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
+	GameObject.Find("/Global Menu Root/Global Video Container"), "SetActive") as UnityAction<bool>);
 
-*/
 	//Cleanup existing triggers to reference global/local container
 	//VRC_Trigger oldglobalhelpertrigger = GameObject.Find ("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Helper").GetOrAddComponent<VRC_Trigger>();
 	//DestroyImmediate(oldglobalhelpertrigger);
@@ -402,14 +403,19 @@ MAIN WORD LOOP HERE
                     VRC_Trigger helpertrigger = trigger.GetOrAddComponent<VRC_Trigger>();
                     helpertrigger.UsesAdvancedOptions = true;
 					VRC_Trigger.TriggerEvent triggeronenableevent = new VRC_Trigger.TriggerEvent ();
+					VRC_Trigger.TriggerEvent triggerondisableevent = new VRC_Trigger.TriggerEvent ();
 					if(mode=="Global"){
 					triggeronenableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered;
+					triggerondisableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered;
 					}
 					else {
 					triggeronenableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.Local;
+					triggerondisableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.Local;
 					}
 					triggeronenableevent.TriggerType = VRC_Trigger.TriggerType.OnEnable;
 					triggeronenableevent.TriggerIndividuals = true;
+					triggerondisableevent.TriggerType = VRC_Trigger.TriggerType.OnDisable;
+					triggerondisableevent.TriggerIndividuals = true;
 
 					VRC_EventHandler.VrcEvent setanimationtrigger = new VRC_EventHandler.VrcEvent ();
 					setanimationtrigger.EventType = VRC_EventHandler.VrcEventType.AnimationTrigger;
@@ -419,7 +425,7 @@ MAIN WORD LOOP HERE
 
 					VRC_EventHandler.VrcEvent setcurrentsigntext = new VRC_EventHandler.VrcEvent ();
 					setcurrentsigntext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
-					setcurrentsigntext.ParameterString = lessonnum+"-"+wordnum+": "+AllLessons[languagenum][lessonnum][wordnum,0];
+					setcurrentsigntext.ParameterString = (lessonnum+1)+"-"+(wordnum+1)+": "+AllLessons[languagenum][lessonnum][wordnum,0];
 					setcurrentsigntext.ParameterObject = GameObject.Find ("/Nana Avatar/Canvas/Current Sign Panel/Current Sign Text");
 					triggeronenableevent.Events.Add (setcurrentsigntext); //this eventaction sets uitext on current sign text
 
@@ -445,7 +451,7 @@ MAIN WORD LOOP HERE
 
 
 					//since I'm forking the wordlists from Mr.Dummy, there will be a scenario where there is no video.
-					if(AllLessons[languagenum][lessonnum][wordnum,3]!=""){
+					if(AllLessons[languagenum][lessonnum][wordnum,3]!=""){ //if url is blank, then don't create video.
 
 					
 						//creates the video gameobjects
@@ -460,36 +466,25 @@ MAIN WORD LOOP HERE
 						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().audioOutputMode=VideoAudioOutputMode.None;
 						videogo.SetActive(false);
 						//ondisable trigger to remove video once disabled.
-						VRC_Trigger.TriggerEvent localtriggerondisableevent = new VRC_Trigger.TriggerEvent ();
-						localtriggerondisableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.Local;
-						localtriggerondisableevent.TriggerType = VRC_Trigger.TriggerType.OnDisable;
-						localtriggerondisableevent.TriggerIndividuals = true;
 
-						VRC_Trigger.TriggerEvent globaltriggerondisableevent = new VRC_Trigger.TriggerEvent ();
-						globaltriggerondisableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered;
-						globaltriggerondisableevent.TriggerType = VRC_Trigger.TriggerType.OnDisable;
-						globaltriggerondisableevent.TriggerIndividuals = true;
-
-						VRC_EventHandler.VrcEvent activatevideogo;
-						activatevideogo = new VRC_EventHandler.VrcEvent ();
+						VRC_EventHandler.VrcEvent activatevideogo = new VRC_EventHandler.VrcEvent ();
 						activatevideogo.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
 						activatevideogo.ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True;
 						activatevideogo.ParameterObject = videogo;
 						triggeronenableevent.Events.Add (activatevideogo); //this eventaction activates the video (if the sign has one)
 						
 
-						VRC_EventHandler.VrcEvent deactivatevideogo;
-						deactivatevideogo = new VRC_EventHandler.VrcEvent ();
+						VRC_EventHandler.VrcEvent deactivatevideogo = new VRC_EventHandler.VrcEvent ();
 						deactivatevideogo.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
 						deactivatevideogo.ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False;
 						deactivatevideogo.ParameterObject = videogo;
-						triggeronenableevent.Events.Add (deactivatevideogo); //this eventaction deactivates the video (if the sign has one)
+						triggerondisableevent.Events.Add (deactivatevideogo); //this eventaction deactivates the video (if the sign has one)
 					}
 					helpertrigger.Triggers.Add(triggeronenableevent); //adds all event actions to the trigger for this helper gameobject.
+					helpertrigger.Triggers.Add(triggerondisableevent); //adds all event actions to the trigger for this helper gameobject.
 					trigger.SetActive(false); //disables the gameobject since the UI toggle with enable them to activate the triggers.
 					
-					
-					
+
 					//create lesson toggles
 					GameObject uiToggle = DefaultControls.CreateToggle(toggleresources);
 					Toggle t = uiToggle.GetOrAddComponent<Toggle>();
