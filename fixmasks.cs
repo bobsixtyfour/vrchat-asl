@@ -1,12 +1,3 @@
-//saves you from agonizing manual clicking "Fix Mask" on each user-created clip,
-//when you have updated/edited the original FBX changing the skeleton hierarchy
- 
-//drop this in your Scripts/Editor folder,
-//select FBX's and right click context menu Fix Animation Masks
-//tested on Unity 4.7
- 
-//minor update, sets all transforms of the avatarMask to active (assuming you are just using 'Mask Definition Create From This Model' with all transforms active (Default behavior)
- 
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -99,7 +90,7 @@ public class FixMask
         static void SetAnimationImporterSettings(ModelImporter importer)
     {
         //AvatarMask avatarMask= AssetDatabase.LoadAssetAtPath("Assets/upperbody.mask",typeof(AvatarMask)) as AvatarMask;
-        AvatarMask avatarMask= AssetDatabase.LoadAssetAtPath<AvatarMask>("Assets/upperbody.mask");
+        AvatarMask avatarMask= AssetDatabase.LoadAssetAtPath<AvatarMask>("Assets/upperbodynospinenohead.mask");
         var clips = importer.clipAnimations;
 
 /*
@@ -121,10 +112,20 @@ public class FixMask
 
         if (clips.Length == 0) clips = importer.defaultClipAnimations;
         foreach (var clip in clips) {
-            
+            if (clip.name.StartsWith("_a|")==true){
+            clip.name=clip.name.Replace("_a|", "ASL-");
+            }
+clip.name=clip.name.Replace("_a|", "");
             if (clip.name.StartsWith("ASL")==false){
             clip.name="ASL-"+clip.name;
             }
+            if (clip.name.StartsWith("ASL")==true){
+clip.name=clip.name.Replace("ASL", "ASL-");
+            }
+            if (clip.name.StartsWith("ASL--")==true){
+clip.name=clip.name.Replace("ASL--", "ASL-");
+            }
+
             clip.lockRootHeightY = true;
             clip.keepOriginalPositionY = false;
             clip.heightFromFeet = true;

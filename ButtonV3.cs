@@ -1,5 +1,5 @@
 ﻿//using System.Collections;
-using System.Collections.Generic;
+using System.Collections.Generic; //for lists if I ever use em.
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
@@ -9,14 +9,39 @@ using UnityEditor.Events;
 using UnityEngine.Video;
 using UnityEngine.Audio;
 
+/*
+						VRC_Trigger vrctrigtest = new VRC_Trigger{
+							UsesAdvancedOptions=true,
+							Triggers=new List<VRC_Trigger.TriggerEvent>(){
+								new VRC_Trigger.TriggerEvent{
+									BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
+									TriggerType = VRC_Trigger.TriggerType.OnEnable,
+									TriggerIndividuals = true,
+									Events=new List<VRC_EventHandler.VrcEvent>(){
+										new VRC_EventHandler.VrcEvent{
+											EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+											ParameterObjects=new GameObject[] {testgo},
+											ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+										}
+									}
+								}
+							}
+						};
+*/
 public class CreateASLButtons3 : MonoBehaviour {
 	[MenuItem("ASLWorld/ButtonV3")]
 	static void ButtonV3()
 	{
-			Navigation no_nav = new Navigation();
+	Navigation no_nav = new Navigation();
 	no_nav.mode=Navigation.Mode.None; //why create two copies? Too hard to sync all the different active/inactive gameobjects if everyone isn't on the same "page".
-GameObject globalmenu = CreateMenu("Global");
-GameObject localmenu = CreateMenu("Local");
+
+	GameObject rootmenu = new GameObject("Menu Root");
+
+	GameObject globalmenu = CreateMenu(rootmenu,"Global");
+	GameObject localmenu = CreateMenu(rootmenu,"Local");
+
+
+	
 /*****************************************
 Update menu system to point to newly created objects.
 *****************************************/
@@ -32,10 +57,13 @@ Update menu system to point to newly created objects.
 	newvideotoggle.toggleTransition= Toggle.ToggleTransition.None;
 	newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
 	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
-	GameObject.Find("/Local Menu Root/Local Video Container"), "SetActive") as UnityAction<bool>);
+	GameObject.Find("/Menu Root/Local Menu Root/Local Video Container"), "SetActive") as UnityAction<bool>);
+
+
+
 
 	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
-	GameObject.Find("/Global Menu Root/Global Video Container"), "SetActive") as UnityAction<bool>);
+	GameObject.Find("/Menu Root/Global Menu Root/Global Video Container"), "SetActive") as UnityAction<bool>);
 
 	//Cleanup existing triggers to reference global/local container
 	//VRC_Trigger oldglobalhelpertrigger = GameObject.Find ("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Helper").GetOrAddComponent<VRC_Trigger>();
@@ -82,8 +110,10 @@ Update menu system to point to newly created objects.
 	newglobalhelpertrigger.Triggers.Add(onenabletriggerevent);
 	newglobalhelpertrigger.Triggers.Add(ondisabletriggerevent);
 globalmenu.SetActive(false);
+
+
     }
-    static GameObject CreateMenu(string mode){
+    static GameObject CreateMenu(GameObject parent, string mode){
 	
     	//Declare some variables + settings.
 		//Animator nanaanimator = GameObject.Find ("/Nana Avatar").GetComponent<Animator> (); //finds target avatar animator for mocap signs
@@ -94,16 +124,20 @@ Start of Arrays variable declarations
 *****************************************/
 
         //creates an array of arrays. Grouped by lessons. 
-        //First value is the word 
-        //Second value is the name of the animation trigger (needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
-        //Third value is mocap credits. 
-        //Fourth value is video URL.
-        //home sign indicator 0 = normal, 1=homesign
-        //VR index or regular 0=indexonly , 1=generalvr,2=both
-        //Sign description string
+        //0th value is the word 
+        //1st value is the name of the animation trigger (needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
+        //2nd value is mocap credits. 
+        //3rd value is video URL.
+        //4th value is home sign indicator 0 = normal, 1=homesign
+        //5th value is VR index or regular 0=indexonly , 1=generalvr,2=both
+        //6th value is Sign description string
 string [][,] ASLlessons = {
+new string[,]{//Fingerspelling
+{"Fingerspell","ASL-Fingerspell","Placeholder.","","0","0",""},{"Fingerspell","ASL-Fingerspell","No Data Yet.","","0","1",""},{"A","ASL-A","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-01.mp4","1","2",""},{"B","ASL-B","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-02.mp4","0","0",""},{"B","ASL-B","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-02.mp4","1","1",""},{"C","ASL-C","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-03.mp4","0","2",""},{"D","ASL-D","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-04.mp4","0","2",""},{"E","ASL-E","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-05.mp4","1","2",""},{"F","ASL-F","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-06.mp4","0","0",""},{"F","ASL-F","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-06.mp4","1","1",""},{"G","ASL-G","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-07.mp4","0","2",""},{"H","ASL-H","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-08.mp4","0","2",""},{"I","ASL-I","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-09.mp4","0","0",""},{"I","ASL-I","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-09.mp4","1","1",""},{"J","ASL-J","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-10.mp4","0","0","Trace out a 'J' midair with your pinky using a rotation of your wrist"},{"J","ASL-J","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-10.mp4","1","1","Indicate your pinky is out, then trace out a 'J' midair with your pinky using a rotation of your wrist"},{"K","ASL-K","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-11.mp4","1","0",""},{"K","ASL-K","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-11.mp4","1","2",""},{"L","ASL-L","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-12.mp4","0","2",""},{"M","ASL-M","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-13.mp4","1","2",""},{"N","ASL-N","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-14.mp4","1","2",""},{"O","ASL-O","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-15.mp4","0","2",""},{"P","ASL-P","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-16.mp4","0","2",""},{"Q","ASL-Q","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-17.mp4","0","2",""},{"R","ASL-R","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-18.mp4","1","2",""},{"S","ASL-S","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-19.mp4","0","2",""},{"T","ASL-T","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-20.mp4","1","2",""},{"U","ASL-U","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-21.mp4","0","0",""},{"U","ASL-U","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-21.mp4","1","1",""},{"V","ASL-V","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-22.mp4","1","0",""},{"V","ASL-U","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-22.mp4","0","1",""},{"W","ASL-W","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-23.mp4","0","0",""},{"W","ASL-W","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-23.mp4","1","2",""},{"X","ASL-X","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-24.mp4","0","0",""},{"X","ASL-X","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-24.mp4","1","2",""},{"Y","ASL-Y","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-25.mp4","0","0",""},{"Y","ASL-Y","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-25.mp4","1","1",""},{"Z","ASL-Z","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-26.mp4","0","0",""},{"Comma","ASL-Comma","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-41.mp4","0","0",""},{"Space","ASL-Space","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-42.mp4","0","0","To indicate a space between fingerspelled words, you simply insert a very small pause between letters."}},
+new string[,]{//Numbers
+{"Number","ASL-Number","Placeholder.","","0","2","Pinch fingers together"},{"0","ASL-0","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-27.mp4","0","0",""},{"1","ASL-1","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-28.mp4","0","0",""},{"2","ASL-2","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-29.mp4","0","0",""},{"3","ASL-3","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-30.mp4","0","0",""},{"4","ASL-4","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-31.mp4","0","0",""},{"5","ASL-5","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-32.mp4","0","0",""},{"6","ASL-6","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-33.mp4","0","0",""},{"7","ASL-7","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-34.mp4","0","0",""},{"8","ASL-8","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-35.mp4","0","0",""},{"9","ASL-9","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-36.mp4","0","0",""},{"10","ASL-10","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-37.mp4","0","0",""},{"100","ASL-100","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-38.mp4","0","0",""},{"1000","ASL-1000","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-39.mp4","0","0",""},{"1000000","ASL-1000000","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet09/09-40.mp4","0","0",""}},
 new string[,]{//Lesson 1 (Daily Use)
-{"Hello","ASL-Hello","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-01.mp4","0","0",""},{"How are you","ASL-How are you","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-02.mp4","0","0",""},{"What's up?","ASL-What's up?","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-03.mp4","0","0",""},{"Nice to meet you","ASL-Nice to meet you","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-04.mp4","0","0",""},{"Good","ASL-Good","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-05.mp4","0","0",""},{"Bad","ASL-Bad","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-06.mp4","0","0",""},{"Yes","ASL-Yes","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-07.mp4","0","0",""},{"No","ASL-No","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-08.mp4","0","0",""},{"So-So","ASL-So-So","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-09.mp4","0","0",""},{"Sick","ASL-Sick","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-10.mp4","0","0",""},{"Hurt","ASL-Hurt","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-11.mp4","0","0",""},{"You're welcome","ASL-You're welcome","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-12.mp4","0","0",""},{"Good bye","ASL-Good bye","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-13.mp4","0","0",""},{"Good morning","ASL-Good morning","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-14.mp4","0","0",""},{"Good afternoon","ASL-Good afternoon","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-15.mp4","0","0",""},{"Good evening","ASL-Good evening","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-16.mp4","0","0",""},{"Good night","ASL-Good night","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-17.mp4","0","0",""},{"See you later","ASL-See you later","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-18.mp4","0","0",""},{"Please","ASL-Please","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-19.mp4","0","0",""},{"Sorry","ASL-Sorry","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-20.mp4","0","0",""},{"Forgotten","ASL-Forgotten","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-21.mp4","0","0",""},{"Sleep","ASL-Sleep","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-22.mp4","0","0",""},{"Bed","ASL-Bed","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-23.mp4","0","0",""},{"Jump/Change world","ASL-Jump/Change world","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-24.mp4","0","0",""},{"Thank you","ASL-Thank you","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-25.mp4","0","0",""},{"I love you","ASL-I love you","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-26.mp4","0","0",""},{"Go away","ASL-Go away","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-27.mp4","0","0",""},{"Going to","ASL-Going to","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-28.mp4","0","0",""},{"Follow","ASL-Follow","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-29.mp4","0","0",""},{"Come","ASL-Come","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-30.mp4","0","0",""},{"Hearing","ASL-Hearing","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-31.mp4","0","0",""},{"Deaf","ASL-Deaf","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-32.mp4","0","0",""},{"Hard of Hearing","ASL-Hard of Hearing","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-33.mp4","0","0",""},{"Mute","ASL-Mute","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-34.mp4","0","0",""},{"Write slow","ASL-Write slow","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-35.mp4","0","0",""},{"Cannot read","ASL-Cannot read","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-36.mp4","0","0",""}},
+{"Hello","ASL-Hello","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-01.mp4","0","0",""},{"How are you","ASL-How are you","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-02.mp4","0","0",""},{"What's up?","ASL-What's up?(nonindexversion)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-03.mp4","0","0",""},{"What's up?","ASL-What's up?","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet01/01-03.mp4","0","2",""},{"Nice to meet you","ASL-Nice to meet you","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-04.mp4","0","0",""},{"Good","ASL-Good","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-05.mp4","0","0",""},{"Bad","ASL-Bad","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-06.mp4","0","0",""},{"Yes","ASL-Yes","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-07.mp4","0","0",""},{"No","ASL-No","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-08.mp4","0","0",""},{"So-So","ASL-So-So","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-09.mp4","0","0",""},{"Sick","ASL-Sick","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-10.mp4","0","0",""},{"Hurt","ASL-Hurt","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-11.mp4","0","0",""},{"You're welcome","ASL-You're welcome","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-12.mp4","0","0",""},{"Good bye","ASL-Good bye","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-13.mp4","0","0",""},{"Good morning","ASL-Good morning","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-14.mp4","0","0",""},{"Good afternoon","ASL-Good afternoon","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-15.mp4","0","0",""},{"Good evening","ASL-Good evening","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-16.mp4","0","0",""},{"Good night","ASL-Good night","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-17.mp4","0","0",""},{"See you later","ASL-See you later","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-18.mp4","0","0",""},{"Please","ASL-Please","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-19.mp4","0","0",""},{"Sorry","ASL-Sorry","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-20.mp4","0","0",""},{"Forgotten","ASL-Forgotten","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-21.mp4","0","0",""},{"Sleep","ASL-Sleep","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-22.mp4","0","0",""},{"Bed","ASL-Bed","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-23.mp4","0","0",""},{"Jump/Change world","ASL-Jump/Change world","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-24.mp4","0","0",""},{"Thank you","ASL-Thank you","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-25.mp4","0","0",""},{"I love you","ASL-I love you","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-26.mp4","0","0",""},{"Go away","ASL-Go away","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-27.mp4","0","0",""},{"Going to","ASL-Going to","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-28.mp4","0","0",""},{"Follow","ASL-Follow","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-29.mp4","0","0",""},{"Come","ASL-Come","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-30.mp4","0","0",""},{"Hearing","ASL-Hearing","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-31.mp4","0","0",""},{"Deaf","ASL-Deaf","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-32.mp4","0","0",""},{"Hard of Hearing","ASL-Hard of Hearing","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-33.mp4","0","0",""},{"Mute","ASL-Mute","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-34.mp4","0","0",""},{"Write slow","ASL-Write slow","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-35.mp4","0","0",""},{"Cannot read","ASL-Cannot read","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-36.mp4","0","0",""}},
 new string[,]{//Lesson 2 (Pointing use Question/Answer)
 {"I (Me)","ASL-I (Me)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-01.mp4","0","0",""},{"My","ASL-My","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-02.mp4","0","0",""},{"Your","ASL-Your","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-03.mp4","0","0",""},{"His","ASL-His","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-04.mp4","0","0",""},{"Her","ASL-Her","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-05.mp4","0","0",""},{"We","ASL-We","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-06.mp4","0","0",""},{"They","ASL-They","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-07.mp4","0","0",""},{"Their","ASL-Their","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-08.mp4","0","0",""},{"Over there","ASL-Over there","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-09.mp4","0","0",""},{"Our","ASL-Our","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-10.mp4","0","0",""},{"It's","ASL-It's","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-11.mp4","0","0",""},{"Inside","ASL-Inside","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-12.mp4","0","0",""},{"Outside","ASL-Outside","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-13.mp4","0","0",""},{"Hidden","ASL-Hidden","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-14.mp4","0","0",""},{"Behind","ASL-Behind","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-15.mp4","0","0",""},{"Above","ASL-Above","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-16.mp4","0","0",""},{"Below","ASL-Below","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-17.mp4","0","0",""},{"Here","ASL-Here","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-18.mp4","0","0",""},{"Beside","ASL-Beside","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-19.mp4","0","0",""},{"Back","ASL-Back","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-20.mp4","0","0",""},{"Front","ASL-Front","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-21.mp4","0","0",""},{"Who","ASL-Who","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-22.mp4","0","0",""},{"Where","ASL-Where","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-23.mp4","0","0",""},{"When","ASL-When","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-24.mp4","0","0",""},{"Why","ASL-Why","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-25.mp4","0","0",""},{"Which","ASL-Which","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-26.mp4","0","0",""},{"What","ASL-What","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-27.mp4","0","0",""},{"How","ASL-How","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-28.mp4","0","0",""},{"How many","ASL-How many","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-29.mp4","0","0",""},{"Can","ASL-Can","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-30.mp4","0","0",""},{"Can't","ASL-Can't","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-31.mp4","0","0",""},{"Want","ASL-Want","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-32.mp4","0","0",""},{"Have","ASL-Have","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-33.mp4","0","0",""},{"Get","ASL-Get","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-34.mp4","0","0",""},{"Will","ASL-Will","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-35.mp4","0","0",""},{"Take","ASL-Take","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-36.mp4","0","0",""},{"Need","ASL-Need","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-37.mp4","0","0",""},{"Not","ASL-Not","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-38.mp4","0","0",""},{"Or","ASL-Or","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-39.mp4","0","0",""},{"And","ASL-And","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-40.mp4","0","0",""},{"For","ASL-For","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-41.mp4","0","0",""},{"At","ASL-At","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-42.mp4","0","0",""}},
 new string[,]{//Lesson 3 (Common)
@@ -117,9 +151,7 @@ new string[,]{//Lesson 6 (Value)
 new string[,]{//Lesson 7 (Time)
 {"Time","ASL-Time","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-01.mp4","0","0",""},{"Year","ASL-Year","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-02.mp4","0","0",""},{"Season","ASL-Season","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-03.mp4","0","0",""},{"Month","ASL-Month","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-04.mp4","0","0",""},{"Week","ASL-Week","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-05.mp4","0","0",""},{"Day","ASL-Day","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-06.mp4","0","0",""},{"Weekend","ASL-Weekend","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-07.mp4","0","0",""},{"Hours","ASL-Hours","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-08.mp4","0","0",""},{"Minutes","ASL-Minutes","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-09.mp4","0","0",""},{"Seconds","ASL-Seconds","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-10.mp4","0","0",""},{"Today","ASL-Today","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-11.mp4","0","0",""},{"Tomorrow","ASL-Tomorrow","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-12.mp4","0","0",""},{"Yesterday","ASL-Yesterday","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-13.mp4","0","0",""},{"Morning","ASL-Morning","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-14.mp4","0","0",""},{"Afternoon","ASL-Afternoon","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-15.mp4","0","0",""},{"Evening","ASL-Evening","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-16.mp4","0","0",""},{"Night","ASL-Night","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-17.mp4","0","0",""},{"Sunrise","ASL-Sunrise","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-18.mp4","0","0",""},{"Sunset","ASL-Sunset","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-19.mp4","0","0",""},{"All night","ASL-All night","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-20.mp4","0","0",""},{"All Day","ASL-All Day","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-21.mp4","0","0",""},{"Sunday","ASL-Sunday","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-22.mp4","0","0",""},{"Monday","ASL-Monday","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-23.mp4","0","0",""},{"Tuesday","ASL-Tuesday","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-24.mp4","0","0",""},{"Wednesday","ASL-Wednesday","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-25.mp4","0","0",""},{"Thursday","ASL-Thursday","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-26.mp4","0","0",""},{"Friday","ASL-Friday","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-27.mp4","0","0",""},{"Saturday","ASL-Saturday","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-28.mp4","0","0",""},{"Autumn (Fall)","ASL-Autumn (Fall)","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-29.mp4","0","0",""},{"Winter","ASL-Winter","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-30.mp4","0","0",""},{"Spring","ASL-Spring","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-31.mp4","0","0",""},{"Summer","ASL-Summer","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-32.mp4","0","0",""},{"Now","ASL-Now","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-33.mp4","0","0",""},{"Never","ASL-Never","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-34.mp4","0","0",""},{"Soon","ASL-Soon","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-35.mp4","0","0",""},{"Later","ASL-Later","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-36.mp4","0","0",""},{"Past","ASL-Past","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-37.mp4","0","0",""},{"Future","ASL-Future","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-38.mp4","0","0",""},{"Earlier","ASL-Earlier","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-39.mp4","0","0",""},{"Midweek","ASL-Midweek","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-40.mp4","0","0",""},{"Next Week","ASL-Next Week","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-41.mp4","0","0",""},{"Late Afternoon","ASL-Late Afternoon","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-42.mp4","0","0",""}},
 new string[,]{//Lesson 8 (VRChat)
-{"Gestures","ASL-Gestures","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-01.mp4","0","0",""},{"World","ASL-World","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-02.mp4","0","0",""},{"Record","ASL-Record","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-03.mp4","0","0",""},{"Discord","ASL-Discord","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-04.mp4","0","0",""},{"Streaming","ASL-Streaming","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-05.mp4","0","0",""},{"Headset (VR)","ASL-Headset (VR)","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-06.mp4","0","0",""},{"Desktop","ASL-Desktop","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-07.mp4","0","0",""},{"Computer","ASL-Computer","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-08.mp4","0","0",""},{"Instance","ASL-Instance","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-09.mp4","0","0",""},{"Public","ASL-Public","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-10.mp4","0","0",""},{"Invite","ASL-Invite","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-11.mp4","0","0",""},{"Private","ASL-Private","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-12.mp4","0","0",""},{"Add friend","ASL-Add friend","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-13.mp4","0","0",""},{"Menu","ASL-Menu","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-14.mp4","0","0",""},{"Recharge","ASL-Recharge","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-15.mp4","0","0",""},{"Visit","ASL-Visit","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-16.mp4","0","0",""},{"Request","ASL-Request","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-17.mp4","0","0",""},{"Login","ASL-Login","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-18.mp4","0","0",""},{"Logout","ASL-Logout","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-19.mp4","0","0",""},{"Schedule","ASL-Schedule","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-20.mp4","0","0",""},{"Event","ASL-Event","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-21.mp4","0","0",""},{"Online","ASL-Online","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-22.mp4","0","0",""},{"Offline","ASL-Offline","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-23.mp4","0","0",""},{"Cancel","ASL-Cancel","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-24.mp4","0","0",""},{"Portal","ASL-Portal","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-25.mp4","0","0",""},{"Camera","ASL-Camera","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-26.mp4","0","0",""},{"Avatar","ASL-Avatar","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-27.mp4","0","0",""},{"Photo","ASL-Photo","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-28.mp4","0","0",""},{"Join","ASL-Join","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-29.mp4","0","0",""},{"Leave","ASL-Leave","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-30.mp4","0","0",""},{"Climbing","ASL-Climbing","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-31.mp4","0","0",""},{"Falling","ASL-Falling","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-32.mp4","0","0",""},{"Walk","ASL-Walk","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-33.mp4","0","0",""},{"Hide","ASL-Hide","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-34.mp4","0","0",""},{"Block","ASL-Block","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-35.mp4","0","0",""},{"Crash","ASL-Crash","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-36.mp4","0","0",""},{"Lagging","ASL-Lagging","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-37.mp4","0","0",""},{"Restart","ASL-Restart","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-38.mp4","0","0",""},{"Send","ASL-Send","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-39.mp4","0","0",""},{"Receive","ASL-Receive","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-40.mp4","0","0",""},{"Security","ASL-Security","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-41.mp4","0","0",""},{"Donation","ASL-Donation","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-42.mp4","0","0",""}},
-new string[,]{//Lesson 9 (Alphabet / Numbers)
-{"A","ASL-A","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-01.mp4","0","0",""},{"B","ASL-B","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-02.mp4","0","0",""},{"C","ASL-C","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-03.mp4","0","0",""},{"D","ASL-D","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-04.mp4","0","0",""},{"E","ASL-E","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-05.mp4","0","0",""},{"F","ASL-F","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-06.mp4","0","0",""},{"G","ASL-G","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-07.mp4","0","0",""},{"H","ASL-H","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-08.mp4","0","0",""},{"I","ASL-I","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-09.mp4","0","0",""},{"J","ASL-J","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-10.mp4","0","0",""},{"K","ASL-K","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-11.mp4","0","0",""},{"L","ASL-L","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-12.mp4","0","0",""},{"M","ASL-M","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-13.mp4","0","0",""},{"N","ASL-N","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-14.mp4","0","0",""},{"O","ASL-O","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-15.mp4","0","0",""},{"P","ASL-P","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-16.mp4","0","0",""},{"Q","ASL-Q","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-17.mp4","0","0",""},{"R","ASL-R","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-18.mp4","0","0",""},{"S","ASL-S","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-19.mp4","0","0",""},{"T","ASL-T","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-20.mp4","0","0",""},{"U","ASL-U","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-21.mp4","0","0",""},{"V","ASL-V","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-22.mp4","0","0",""},{"W","ASL-W","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-23.mp4","0","0",""},{"X","ASL-X","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-24.mp4","0","0",""},{"Y","ASL-Y","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-25.mp4","0","0",""},{"Z","ASL-Z","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-26.mp4","0","0",""},{"0","ASL-0","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-27.mp4","0","0",""},{"1","ASL-1","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-28.mp4","0","0",""},{"2","ASL-2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-29.mp4","0","0",""},{"3","ASL-3","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-30.mp4","0","0",""},{"4","ASL-4","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-31.mp4","0","0",""},{"5","ASL-5","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-32.mp4","0","0",""},{"6","ASL-6","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-33.mp4","0","0",""},{"7","ASL-7","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-34.mp4","0","0",""},{"8","ASL-8","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-35.mp4","0","0",""},{"9","ASL-9","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-36.mp4","0","0",""},{"10","ASL-10","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-37.mp4","0","0",""},{"100","ASL-100","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-38.mp4","0","0",""},{"1000","ASL-1000","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-39.mp4","0","0",""},{"1000000","ASL-1000000","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-40.mp4","0","0",""},{"Comma","ASL-Comma","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-41.mp4","0","0",""},{"Space","ASL-Space","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-42.mp4","0","0",""}},
+{"Gestures","ASL-Gestures","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-01.mp4","0","0",""},{"World","ASL-World","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-02.mp4","1","2",""},{"Record","ASL-Record","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-03.mp4","0","0",""},{"Discord","ASL-Discord","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-04.mp4","1","0",""},{"Streaming","ASL-Streaming","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-05.mp4","0","0",""},{"Headset (VR)","ASL-Headset (VR)","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-06.mp4","1","2",""},{"Desktop","ASL-Desktop","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-07.mp4","0","0",""},{"Computer","ASL-Computer","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-08.mp4","0","0",""},{"Instance","ASL-Instance","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-09.mp4","0","0",""},{"Public","ASL-Public","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-10.mp4","0","0",""},{"Invite","ASL-Invite","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-11.mp4","0","0",""},{"Private","ASL-Private","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-12.mp4","0","0",""},{"Add friend","ASL-Add friend","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-13.mp4","0","0",""},{"Menu","ASL-Menu","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-14.mp4","0","0",""},{"Recharge","ASL-Recharge","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-15.mp4","0","0",""},{"Visit","ASL-Visit","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-16.mp4","0","0",""},{"Request","ASL-Request","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-17.mp4","0","0",""},{"Login","ASL-Login","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-18.mp4","0","0",""},{"Logout","ASL-Logout","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-19.mp4","0","0",""},{"Schedule","ASL-Schedule","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-20.mp4","0","0",""},{"Event","ASL-Event","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-21.mp4","0","0",""},{"Online","ASL-Online","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-22.mp4","0","0",""},{"Offline","ASL-Offline","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-23.mp4","0","0",""},{"Cancel","ASL-Cancel","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-24.mp4","0","0",""},{"Portal","ASL-Portal","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-25.mp4","1","2",""},{"Camera","ASL-Camera","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-26.mp4","0","0",""},{"Avatar","ASL-Avatar","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-27.mp4","1","2",""},{"Photo","ASL-Photo","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-28.mp4","0","0",""},{"Join","ASL-Join","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-29.mp4","0","0",""},{"Leave","ASL-Leave","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-30.mp4","0","0",""},{"Climbing","ASL-Climbing","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-31.mp4","0","0",""},{"Falling","ASL-Falling","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-32.mp4","0","0",""},{"Walk","ASL-Walk","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-33.mp4","0","0",""},{"Hide","ASL-Hide","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-34.mp4","0","0",""},{"Block","ASL-Block","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-35.mp4","0","0",""},{"Crash","ASL-Crash","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-36.mp4","0","0",""},{"Lagging","ASL-Lagging","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-37.mp4","1","2",""},{"Restart","ASL-Restart","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-38.mp4","0","0",""},{"Send","ASL-Send","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-39.mp4","0","0",""},{"Receive","ASL-Receive","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-40.mp4","0","0",""},{"Security","ASL-Security","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-41.mp4","0","0",""},{"Donation","ASL-Donation","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet08/08-42.mp4","0","0",""}},
 new string[,]{//Lesson 10 (Verbs & Actions p1)
 {"Overlook","ASL-Overlook","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-01.mp4","0","0",""},{"Punish","ASL-Punish","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-02.mp4","0","0",""},{"Edit","ASL-Edit","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-03.mp4","0","0",""},{"Erase","ASL-Erase","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-04.mp4","0","0",""},{"Write","ASL-Write","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-05.mp4","0","0",""},{"Proposal","ASL-Proposal","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-06.mp4","0","0",""},{"Add","ASL-Add","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-07.mp4","0","0",""},{"Remove","ASL-Remove","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-08.mp4","0","0",""},{"Agree","ASL-Agree","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-09.mp4","0","0",""},{"Disagree","ASL-Disagree","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-10.mp4","0","0",""},{"Admit","ASL-Admit","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-11.mp4","0","0",""},{"Allow","ASL-Allow","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-12.mp4","0","0",""},{"Attack","ASL-Attack","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-13.mp4","0","0",""},{"Fight","ASL-Fight","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-14.mp4","0","0",""},{"Defend","ASL-Defend","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-15.mp4","0","0",""},{"Defeat","ASL-Defeat","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-16.mp4","0","0",""},{"Win","ASL-Win","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-17.mp4","0","0",""},{"Lose","ASL-Lose","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-18.mp4","0","0",""},{"Draw (game)","ASL-Draw (game)","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-19.mp4","0","0",""},{"Give up","ASL-Give up","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-20.mp4","0","0",""},{"Skip","ASL-Skip","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-21.mp4","0","0",""},{"Ask","ASL-Ask","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-22.mp4","0","0",""},{"Attach","ASL-Attach","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-23.mp4","0","0",""},{"Assist","ASL-Assist","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-24.mp4","0","0",""},{"Bait","ASL-Bait","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-25.mp4","0","0",""},{"Battle","ASL-Battle","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-26.mp4","0","0",""},{"Beat","ASL-Beat","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-27.mp4","0","0",""},{"Become","ASL-Become","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-28.mp4","0","0",""},{"Beg","ASL-Beg","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-29.mp4","0","0",""},{"Begin","ASL-Begin","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-30.mp4","0","0",""},{"Behave","ASL-Behave","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-31.mp4","0","0",""},{"Believe","ASL-Believe","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-32.mp4","0","0",""},{"Blame","ASL-Blame","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-33.mp4","0","0",""},{"Blow","ASL-Blow","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-34.mp4","0","0",""},{"Blush","ASL-Blush","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-35.mp4","0","0",""},{"Bother/Harass","ASL-Bother","Placeholder.","https://vrsignlanguage.net/ASL_videos/sheet10/10-36.mp4","0","0",""}},
 new string[,]{//Lesson 11 (Verbs & Actions p2)
@@ -141,7 +173,7 @@ new string[,]{//Lesson 16 (Verbs & Actions p7)
     string [][][,] AllLessons = { ASLlessons}; //adds array of arrays into another array for easy looping.
 
 	string [] lessonnames = new string[]{//array of ASL (and possibilly other language) lesson names - can be unique per language.
-	"Daily Use","Pointing use Question/Answer","Common","People","Feelings / Reactions","Value","Time","VRChat","Alphabet / Numbers","Verbs & Actions p1","Verbs & Actions p2","Verbs & Actions p3",
+	"Alphabet (Fingerspelling)","Numbers","Daily Use","Pointing use Question/Answer","Common","People","Feelings / Reactions","Value","Time","VRChat","Verbs & Actions p1","Verbs & Actions p2","Verbs & Actions p3",
 	"Verbs & Actions p4","Verbs & Actions p5","Verbs & Actions p6","Verbs & Actions p7","Verbs & Actions p8","Food","Animals / Machines","Places","Stuff / Weather","Clothes / Equipment","Fantasy / Characters",
 	"Holidays / Special Days","Home stuff","Nature / Environment","Talk / Asking exercises","Name sign users","Countries","Colors","Medical"};
 	string [,] signlanguagenames = new string[,]{{"ASL","American Sign Language"},{"BSL","British Sign Language"}};
@@ -166,7 +198,7 @@ new string[,]{//Lesson 16 (Verbs & Actions p7)
 	int rowseperation=100;
 	int columnseperation=1000;
 	int togglesizedelta=80;
-	int numberpercolumn = 10;
+	int numberpercolumn = 14;
 	int menusizex = 4900;
 	int menusizey = 1600;
 	int headersizey=60;
@@ -190,6 +222,7 @@ START OF PROGRAM
 
 GameObject menuroot = new GameObject(mode +" Menu Root"); //creates a new "Menu Root gameobject which will be the parent of all newly created objects in the script.
 menuroot.transform.position = menurootposition;
+menuroot.transform.SetParent(parent.transform, false);
 menuroot.layer = layer;
 	GameObject videocontainer = new GameObject(mode +" Video Container"); //container go to hold all videos. Allows a world option that turns on/off videos completely.
 	videocontainer.transform.position = new Vector3(8.75f, 1, 0);
@@ -329,18 +362,23 @@ MAIN LESSON LOOP HERE
 					Button b = lessonbgo.GetOrAddComponent<Button>();
 					b.onClick = new Button.ButtonClickedEvent();
 					//colors the buttons to indicate what's working and what's not.
-					if(lessonnum>=2){
-						//b.colo
+					if(lessonnum<2){
 						var colors = b.colors;
 						colors.normalColor = new Color32( 0xFF, 0x98, 0x98, 0xFF ); //FF9898FF light red
 						b.colors = colors;
 					}
-					if(lessonnum<2){
-						//b.colo
+					if(lessonnum>1 & lessonnum<=3){
 						var colors = b.colors;
 						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
 						b.colors = colors;
 					}
+					if(lessonnum>=4){
+						var colors = b.colors;
+						colors.normalColor = new Color32( 0xFF, 0x98, 0x98, 0xFF ); //FF9898FF light red
+						b.colors = colors;
+					}
+
+
 					menurow++;
 					//create lesson x gameobject eg: ASL Lesson x
 					GameObject lessongo = new GameObject(signlanguagenames[languagenum,0]+" Lesson "+(lessonnum+1));
@@ -403,76 +441,63 @@ MAIN WORD LOOP HERE
 					trigger.layer = layer;
                     VRC_Trigger helpertrigger = trigger.GetOrAddComponent<VRC_Trigger>();
                     helpertrigger.UsesAdvancedOptions = true;
+
 					VRC_Trigger.TriggerEvent triggeronenableevent = new VRC_Trigger.TriggerEvent ();
-					VRC_Trigger.TriggerEvent triggerondisableevent = new VRC_Trigger.TriggerEvent ();
-					if(mode=="Global"){
-					triggeronenableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered;
-					triggerondisableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered;
-					}
-					else {
 					triggeronenableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.Local;
-					triggerondisableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.Local;
-					}
 					triggeronenableevent.TriggerType = VRC_Trigger.TriggerType.OnEnable;
 					triggeronenableevent.TriggerIndividuals = true;
-					triggerondisableevent.TriggerType = VRC_Trigger.TriggerType.OnDisable;
-					triggerondisableevent.TriggerIndividuals = true;
-
+					//nomotion data handling - sets trigger to standidle
 					if(AllLessons[languagenum][lessonnum][wordnum,2]!="No Data Yet."){
-					VRC_EventHandler.VrcEvent setanimationtrigger = new VRC_EventHandler.VrcEvent ();
-					setanimationtrigger.EventType = VRC_EventHandler.VrcEventType.AnimationTrigger;
-					setanimationtrigger.ParameterString = AllLessons[languagenum][lessonnum][wordnum,1];
-					setanimationtrigger.ParameterObject = GameObject.Find ("/Nana Avatar");
-					triggeronenableevent.Events.Add (setanimationtrigger); //this eventaction sets animation trigger on avatar controller
-					
-					VRC_EventHandler.VrcEvent setspeechbubbletext = new VRC_EventHandler.VrcEvent ();
-					setspeechbubbletext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
-					setspeechbubbletext.ParameterString = AllLessons[languagenum][lessonnum][wordnum,0];
-					setspeechbubbletext.ParameterObject = GameObject.Find ("/Nana Avatar/Armature/Canvas/Bubble/text");
-					triggeronenableevent.Events.Add (setspeechbubbletext); //this eventaction sets uitext on avatar speech bubble text
+						VRC_EventHandler.VrcEvent setanimationtrigger = new VRC_EventHandler.VrcEvent ();
+						setanimationtrigger.EventType = VRC_EventHandler.VrcEventType.AnimationTrigger;
+						setanimationtrigger.ParameterString = AllLessons[languagenum][lessonnum][wordnum,1];
+						setanimationtrigger.ParameterObject = GameObject.Find ("/Nana Avatar");
+						triggeronenableevent.Events.Add (setanimationtrigger); //this eventaction sets animation trigger on avatar controller
+						
+						VRC_EventHandler.VrcEvent setspeechbubbletext = new VRC_EventHandler.VrcEvent ();
+						setspeechbubbletext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
+						setspeechbubbletext.ParameterString = AllLessons[languagenum][lessonnum][wordnum,0];
+						setspeechbubbletext.ParameterObject = GameObject.Find ("/Nana Avatar/Armature/Canvas/Bubble/text");
+						triggeronenableevent.Events.Add (setspeechbubbletext); //this eventaction sets uitext on avatar speech bubble text
 					}else
 					{
-					VRC_EventHandler.VrcEvent setanimationtrigger = new VRC_EventHandler.VrcEvent ();
-					setanimationtrigger.EventType = VRC_EventHandler.VrcEventType.AnimationTrigger;
-					setanimationtrigger.ParameterString = "StandIdle";
-					setanimationtrigger.ParameterObject = GameObject.Find ("/Nana Avatar");
-					triggeronenableevent.Events.Add (setanimationtrigger); //this eventaction sets animation trigger on avatar controller
-					
-					VRC_EventHandler.VrcEvent setspeechbubbletext = new VRC_EventHandler.VrcEvent ();
-					setspeechbubbletext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
-					setspeechbubbletext.ParameterString = "No Data Yet";
-					setspeechbubbletext.ParameterObject = GameObject.Find ("/Nana Avatar/Armature/Canvas/Bubble/text");
-					triggeronenableevent.Events.Add (setspeechbubbletext); //this eventaction sets uitext on avatar speech bubble text
+						VRC_EventHandler.VrcEvent setanimationtrigger = new VRC_EventHandler.VrcEvent ();
+						setanimationtrigger.EventType = VRC_EventHandler.VrcEventType.AnimationTrigger;
+						setanimationtrigger.ParameterString = "StandIdle";
+						setanimationtrigger.ParameterObject = GameObject.Find ("/Nana Avatar");
+						triggeronenableevent.Events.Add (setanimationtrigger); //this eventaction sets animation trigger on avatar controller
+						
+						VRC_EventHandler.VrcEvent setspeechbubbletext = new VRC_EventHandler.VrcEvent ();
+						setspeechbubbletext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
+						setspeechbubbletext.ParameterString = "No Data Yet";
+						setspeechbubbletext.ParameterObject = GameObject.Find ("/Nana Avatar/Armature/Canvas/Bubble/text");
+						triggeronenableevent.Events.Add (setspeechbubbletext); //this eventaction sets uitext on avatar speech bubble text
 					}
-
-
 					VRC_EventHandler.VrcEvent setcurrentsigntext = new VRC_EventHandler.VrcEvent ();
 					setcurrentsigntext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
 					setcurrentsigntext.ParameterString = (lessonnum+1)+"-"+(wordnum+1)+": "+AllLessons[languagenum][lessonnum][wordnum,0];
 					setcurrentsigntext.ParameterObject = GameObject.Find ("/Nana Avatar/Canvas/Current Sign Panel/Current Sign Text");
 					triggeronenableevent.Events.Add (setcurrentsigntext); //this eventaction sets uitext on current sign text
-
-
-
 					VRC_EventHandler.VrcEvent setcredittext = new VRC_EventHandler.VrcEvent ();
 					setcredittext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
 					setcredittext.ParameterString = "This sign was recorded by: " + AllLessons[languagenum][lessonnum][wordnum,2];
 					setcredittext.ParameterObject = GameObject.Find ("/Nana Avatar/Canvas/Credit Panel/Credit Text");
 					triggeronenableevent.Events.Add (setcredittext); //this eventaction sets uitext on credit box
-
 					VRC_EventHandler.VrcEvent setdescription = new VRC_EventHandler.VrcEvent ();
 					setdescription.EventType = VRC_EventHandler.VrcEventType.SetUIText;
 					setdescription.ParameterString = AllLessons[languagenum][lessonnum][wordnum,6];
 					setdescription.ParameterObject = GameObject.Find ("/Nana Avatar/Canvas/Description Panel/Description Text");
 					triggeronenableevent.Events.Add (setdescription); //this eventaction sets uitext on avatar speech bubble text
-                   
-
-
-
+					
+					helpertrigger.Triggers.Add(triggeronenableevent); //adds all event actions to the trigger for this helper gameobject.
+					
+					
 					//since I'm forking the wordlists from Mr.Dummy, there will be a scenario where there is no video.
 					if(AllLessons[languagenum][lessonnum][wordnum,3]!=""){ //if url is blank, then don't create video.
-
-					
+						VRC_Trigger.TriggerEvent triggerondisableevent = new VRC_Trigger.TriggerEvent ();
+						triggerondisableevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.Local;
+						triggerondisableevent.TriggerType = VRC_Trigger.TriggerType.OnDisable;
+						triggerondisableevent.TriggerIndividuals = true;
 						//creates the video gameobjects
 						GameObject videogo = GameObject.CreatePrimitive(PrimitiveType.Quad);
 						videogo.name=signlanguagenames[languagenum,0]+" Video L"+(lessonnum+1) +" S"+(wordnum+1);
@@ -485,23 +510,24 @@ MAIN WORD LOOP HERE
 						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().audioOutputMode=VideoAudioOutputMode.None;
 						videogo.SetActive(false);
 						//ondisable trigger to remove video once disabled.
-
 						VRC_EventHandler.VrcEvent activatevideogo = new VRC_EventHandler.VrcEvent ();
 						activatevideogo.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
 						activatevideogo.ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True;
 						activatevideogo.ParameterObject = videogo;
 						triggeronenableevent.Events.Add (activatevideogo); //this eventaction activates the video (if the sign has one)
 						
-
 						VRC_EventHandler.VrcEvent deactivatevideogo = new VRC_EventHandler.VrcEvent ();
 						deactivatevideogo.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
 						deactivatevideogo.ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False;
 						deactivatevideogo.ParameterObject = videogo;
 						triggerondisableevent.Events.Add (deactivatevideogo); //this eventaction deactivates the video (if the sign has one)
+						
+						helpertrigger.Triggers.Add(triggerondisableevent); //adds all event actions to the trigger for this helper gameobject.
 					}
-					helpertrigger.Triggers.Add(triggeronenableevent); //adds all event actions to the trigger for this helper gameobject.
-					helpertrigger.Triggers.Add(triggerondisableevent); //adds all event actions to the trigger for this helper gameobject.
-					trigger.SetActive(false); //disables the gameobject since the UI toggle with enable them to activate the triggers.
+					
+				
+
+				trigger.SetActive(false); //disables the gameobject since the UI toggle with enable them to activate the triggers.
 					
 
 					//create lesson toggles
@@ -521,36 +547,168 @@ MAIN WORD LOOP HERE
 					t.toggleTransition= Toggle.ToggleTransition.None;
 					t.group=rootcanvas.gameObject.GetComponent<ToggleGroup>();
 					t.onValueChanged = new Toggle.ToggleEvent();
-					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (80, 80);
-					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (-40,-40);
+					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (64, 64);
+					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (-32,-32);
 					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
 					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 					uiToggle.transform.Find("Background").gameObject.layer=layer;
 
-					uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().text ="    "+ (wordnum+1)+ ") " + AllLessons[languagenum][lessonnum][wordnum,0];
+					uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().text ="          "+ (wordnum+1)+ ") " + AllLessons[languagenum][lessonnum][wordnum,0];
 					uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().fontSize = 50;
 					uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
-					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (750, 100);
-					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (40,-50);
+					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (750, 100);//maybe ,64
+					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (32,-50); //maybe ,-32
 					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
 					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 					uiToggle.transform.Find("Label").gameObject.layer=layer;
 					
-					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (80, 80);
+					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (64, 64);
 					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,0);
 					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
 					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 					uiToggle.transform.Find("Background").gameObject.layer=layer;
 
+					//0th value is the word 
+					//1st value is the name of the animation trigger (needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
+					//2nd value is mocap credits. 
+					//3rd value is video URL.
+					//4th value is home sign indicator 0 = normal, 1=homesign
+					//5th value is VR index or regular 0=indexonly , 1=generalvr,2=both
+					//6th value is Sign description string
+					switch (AllLessons[languagenum][lessonnum][wordnum,4])
+					{
+						case "0":
+							//no icon for normal signs?
+							break;
+						case "1": //homesign
+							GameObject homeicongo = new GameObject("Home Icon");
+							homeicongo.transform.SetParent(uiToggle.transform, false);
+							homeicongo.layer=layer;
+							homeicongo.AddComponent<RectTransform> ();
+							homeicongo.GetComponent<RectTransform> ().localPosition = new Vector3(40,-32,0);
+							homeicongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
+							homeicongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
+							homeicongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
+							homeicongo.GetComponent<RectTransform> ().pivot = zerovector2;
+							Image homeicon= homeicongo.AddComponent<Image>();
+							homeicon.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Icons/homeicon3.png");
+							break;
+
+					}
+					//5th value is VR index or regular 0=indexonly , 1=generalvr,2=both
+					switch (AllLessons[languagenum][lessonnum][wordnum,5])
+					{
+						case "0": //indexvr
+							GameObject indexicongo = new GameObject("Index VR Icon");
+							indexicongo.transform.SetParent(uiToggle.transform, false);
+							indexicongo.layer=layer;
+							indexicongo.AddComponent<RectTransform> ();
+							indexicongo.GetComponent<RectTransform> ().localPosition = new Vector3(104,-32,0);
+							indexicongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
+							indexicongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
+							indexicongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
+							indexicongo.GetComponent<RectTransform> ().pivot = zerovector2;
+							Image indexicon= indexicongo.AddComponent<Image>();
+							indexicon.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Icons/left_index_controller.png");
+							break;
+						case "1": //general vr
+							GameObject vricongo = new GameObject("Regular VR Icon");
+							vricongo.transform.SetParent(uiToggle.transform, false);
+							vricongo.layer=layer;
+							vricongo.AddComponent<RectTransform> ();
+							vricongo.GetComponent<RectTransform> ().localPosition = new Vector3(104,-32,0);
+							vricongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
+							vricongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
+							vricongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
+							vricongo.GetComponent<RectTransform> ().pivot = zerovector2;
+							Image vricon= vricongo.AddComponent<Image>();
+							vricon.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Icons/left_htc_controller.png");
+							break;
+						case "2":
+							//no icon for bothvr?
+							break;
+
+					}
+
+//If I make these buttons, I need to convert this to a custom trigger event + vrctrigger creation on the new button itself. Set to buffer once.
 					UnityEventTools.AddPersistentListener(t.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), trigger, "SetActive") as UnityAction<bool>);
 					wordrow++;
                     } 
 					/*****************************************
 					End of word loop.
 					*****************************************/
+				if(mode=="Global"){
+				//I need another loop to add all the triggers to deactivate videos for global mode
+				//these triggers belong on the helper gameobjects.
+				//Debug.Log("beginning list creation");
+					for (int wordnum = 0; wordnum < AllLessons[languagenum][lessonnum].GetLength(0); wordnum++){ //gets total rows in lesson. getlength(1) gets total columns, which is unneeded since we're using both columns at once.
+					//Debug.Log("wordnumber is now:" +wordnum);
+					List<GameObject> listofvideos = new List<GameObject>();
+					//i need another for loop to add every single video gameobject EXCEPT the current word.
+						for(int x=0;x<AllLessons[languagenum][lessonnum].GetLength(0); x++){
+							//Debug.Log("wordnumber is: " +wordnum + " x is :" +x);
+							//if(x==wordnum){Debug.Log("true");}
+							if(x!=wordnum){//exclude the one I want to play- build list of all others in the lesson.
+								//if(x==wordnum){
+								//Debug.Log("false");}
+								//Debug.Log("searching for"+(lessonnum+1)+"-"+(x+1));
+								if(GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Video Container/"+signlanguagenames[languagenum,0]+" Video Container/"+
+								signlanguagenames[languagenum,0]+" Video L"+(lessonnum+1)+"/"+
+								signlanguagenames[languagenum,0]+" Video L"+(lessonnum+1) +" S"+(x+1))){//if it's not null then add it
+									Debug.Log("Added: "+(lessonnum+1)+"-"+(x+1));
+									listofvideos.Add(GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Video Container/"+signlanguagenames[languagenum,0]+" Video Container/"+
+									signlanguagenames[languagenum,0]+" Video L"+(lessonnum+1)+"/"+
+									signlanguagenames[languagenum,0]+" Video L"+(lessonnum+1) +" S"+(x+1)));
+								}
+							}
+						}
+						/*
+						GameObject[] arrayofvideos = listofvideos.ToArray();
+						Debug.Log("length of listofvideos: "+arrayofvideos.GetLength(0));
+						for (int x = 0;x<arrayofvideos.GetLength(0);x++){
+							Debug.Log("name in list# " + wordnum +" "+ arrayofvideos[x].name);
+						}
+
+*/
+
+							VRC_Trigger vrctrigger = GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Trigger Container/" +signlanguagenames[languagenum,0]+ " Trigger Container/"+ signlanguagenames[languagenum,0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Trigger").GetOrAddComponent<VRC_Trigger>();//helper gameobject with vrc_trigger. 
+							GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Trigger Container/" +signlanguagenames[languagenum,0]+ " Trigger Container/"+ 
+							signlanguagenames[languagenum,0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Trigger").
+							GetComponent<VRC_Trigger>().Triggers[0].Events.Add(
+								new VRC_EventHandler.VrcEvent{
+									EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+									ParameterObjects=listofvideos.ToArray(),
+									ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+								}
+							);
+
+					}; //end for loop
+				} //endif global
+/*
+						VRC_Trigger vrctrigtest = new VRC_Trigger{
+							UsesAdvancedOptions=true,
+							Triggers=new List<VRC_Trigger.TriggerEvent>(){
+								new VRC_Trigger.TriggerEvent{
+									BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
+									TriggerType = VRC_Trigger.TriggerType.OnEnable,
+									TriggerIndividuals = true,
+									Events=new List<VRC_EventHandler.VrcEvent>(){
+										new VRC_EventHandler.VrcEvent{
+											EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+											ParameterObjects=new GameObject[] {testgo},
+											ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+										}
+									}
+								}
+							}
+						};
+*/
+	
+
+
 
 				//Create back button
 				GameObject backtolessongo = createbutton2(parent:lessongo, name:"Return to VR-" + signlanguagenames[languagenum,0] + " Lesson Menu", sizedelta:backbuttonsize,
@@ -585,6 +743,9 @@ MAIN WORD LOOP HERE
 				/*****************************************
 				End of lesson loop.
 				*****************************************/
+
+
+
 
 			//assign triggers after lessons created. Triggers for Language Chooser menu buttons.
 			Button langselectbutton = langselectgo.GetOrAddComponent<Button>();
@@ -641,6 +802,7 @@ MAIN WORD LOOP HERE
 			Button languagebackbutton = backtolanguagemenu.GetOrAddComponent<Button>();
 			languagebackbutton.onClick = new Button.ButtonClickedEvent();
 
+			if(mode=="Local"){
 			//disable the current active lesson when clicked
 			UnityAction<bool> disablelessonmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
 			UnityEventTools.AddBoolPersistentListener(languagebackbutton.onClick, disablelessonmenu, false);
@@ -648,6 +810,35 @@ MAIN WORD LOOP HERE
 			//enable the lesson select
 			UnityAction<bool> enablelangmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), langselectmenu, "SetActive") as UnityAction<bool>;
 			UnityEventTools.AddBoolPersistentListener(languagebackbutton.onClick, enablelangmenu, true);
+			}else if(mode=="Global")
+			{
+		VRC_Trigger vrcdisablelessonmenu = backtolanguagemenu.GetOrAddComponent<VRC_Trigger>();
+			vrcdisablelessonmenu.UsesAdvancedOptions = true;
+
+			VRC_Trigger.TriggerEvent disablelessonmenutrigger = new VRC_Trigger.TriggerEvent ();
+			disablelessonmenutrigger.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysBufferOne;
+			disablelessonmenutrigger.Name="vrcdisablelessonmenu";
+			disablelessonmenutrigger.TriggerType = VRC_Trigger.TriggerType.Custom;
+			disablelessonmenutrigger.TriggerIndividuals = true;
+			VRC_EventHandler.VrcEvent disablelessonevent;
+			disablelessonevent = new VRC_EventHandler.VrcEvent ();
+			disablelessonevent.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
+			disablelessonevent.ParameterObject = lessonmenu;
+			disablelessonevent.ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False;
+			disablelessonmenutrigger.Events.Add (disablelessonevent);
+			
+			VRC_EventHandler.VrcEvent enablelangmenuevent;
+			enablelangmenuevent = new VRC_EventHandler.VrcEvent ();
+			enablelangmenuevent.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
+			enablelangmenuevent.ParameterObject = langselectmenu;
+			enablelangmenuevent.ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True;
+			disablelessonmenutrigger.Events.Add (enablelangmenuevent);
+			vrcdisablelessonmenu.Triggers.Add(disablelessonmenutrigger);
+
+			UnityAction<string> disablelessonmenu = System.Delegate.CreateDelegate(typeof(UnityAction<string>), vrcdisablelessonmenu,"ExecuteCustomTrigger") as UnityAction<string>;
+			UnityEventTools.AddStringPersistentListener(languagebackbutton.onClick, disablelessonmenu,"vrcdisablelessonmenu");
+			}
+
 
 			langvideocontainer.SetActive(false);
 			//globaltriggercontainer.SetActive(false);
