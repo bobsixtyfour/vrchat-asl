@@ -63,7 +63,7 @@ public string [] lessonnames = new string[]{//array of ASL (and possibilly other
     public Text descriptiontext = GameObject.Find ("/Nana Avatar/Canvas/Description Panel/Description Text").GetComponent<Text>();
 
     GameObject[] buttons = new GameObject[56];
-    GameObject[] backbuttons = new GameObject[]{
+    public GameObject[] backbuttons = new GameObject[]{
         GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Left Back Button"),GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Right Back Button")
     };
 
@@ -73,19 +73,8 @@ public string [] lessonnames = new string[]{//array of ASL (and possibilly other
     Text[] buttontext = new Text[56];
     
 
-
-/*
-        char seperator = '|';
-        string[] split1 = ASLL1.Split(seperator);
-        string[] signwordarray = new string[split1.Length];
-        for (int wordnum = 0; wordnum < split1.Length; wordnum++){
-            char seperator2 = ',';
-            string[] split2 = split1[wordnum].Split(seperator2);
-            //Debug.Log("wtf"+split2[0]);
-            buttontext.text=
-        }
-*/
 public Text menuheadertext = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header").GetComponent<Text>();
+public GameObject menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header");
 
 //public GameObject videotest;
     void Start()
@@ -256,8 +245,16 @@ Debug.Log("Entering changeword with buttonbumber of: "+buttonnumber);
                         nana.SetInteger("sign",int.Parse(langnum+string.Format("{0:D2}",lessonnum)+string.Format("{0:D2}",wordnum))); 
                         speechbubbletext.text=wordparameters[0];
                         currentsigntext.text=wordparameters[0];
-                        signcredittext.text=wordparameters[3];
+                        signcredittext.text=wordparameters[2];
                         descriptiontext.text=wordparameters[6];
+
+        //0th value is the word 
+        //1st value is the name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
+        //2nd value is mocap credits. 
+        //3rd value is video URL.
+        //4th value is home sign indicator 0 = used in real world ASL, 1= vr only homesign
+        //5th value is VR index or regular 0=indexonly , 1=generalvr,2=both
+        //6th value is Sign description string
                 }
                 else
                 {
