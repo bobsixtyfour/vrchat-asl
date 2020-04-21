@@ -5,7 +5,9 @@ using System.Collections.Generic; //for lists if I ever use em.
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using VRC.SDKBase;
 using VRC.Udon;
+using VRC.SDK3.Components;
 using UnityEngine.Events;
 using UnityEditor.Events;
 using UnityEngine.Video;
@@ -80,7 +82,7 @@ new string[,]{//Lesson 16 (Verbs & Actions p7)
 
 		int rowseperation=100;
 		int columnseperation=1000;
-		int togglesizedelta=80;
+		//int togglesizedelta=80;
 		int numberpercolumn = 14;
 		int menusizex = 4300;
 		int menusizey = 1600;
@@ -128,7 +130,7 @@ new string[,]{//Lesson 16 (Verbs & Actions p7)
 		rootcanvas.GetComponent<Canvas> ().renderMode = RenderMode.WorldSpace;
 		rootcanvas.AddComponent<CanvasScaler>();
 		rootcanvas.AddComponent<GraphicRaycaster>();
-		//rootcanvas.AddComponent<VRC_UiShape>();
+		rootcanvas.AddComponent<VRCUiShape>(); //wtf
 		ToggleGroup rootcanvastogglegroup = rootcanvas.AddComponent<ToggleGroup>();
 		rootcanvastogglegroup.allowSwitchOff=true;
 		GameObject rootpanel = DefaultControls.CreatePanel(rootpanelresources);
@@ -152,10 +154,10 @@ new string[,]{//Lesson 16 (Verbs & Actions p7)
 		menubuttons.layer = layer;
 
 		GameObject menubuttonsheader = DefaultControls.CreateText(txtresources);
-		menubuttonsheader.transform.SetParent (menubuttons.transform, false);
+		menubuttonsheader.transform.SetParent (rootcanvas.transform, false);
 		menubuttonsheader.name="Menu Header";
 		menubuttonsheader.layer = layer;
-		menubuttonsheader.GetComponent<Text> ().text = "VR Sign Language Select Menu";
+		menubuttonsheader.GetComponent<Text> ().text = "Header";
 		menubuttonsheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 		menubuttonsheader.GetComponent<Text> ().fontStyle = FontStyle.Bold;
 		menubuttonsheader.GetComponent<Text> ().fontSize = 50;		
