@@ -388,7 +388,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
     //Set the Slider Fill Image someFillSprite;
     scrollviewresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
     //Set the Slider Knob Image someKnobSprite;
-    scrollviewresources.knob = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
+    scrollviewresources.knob = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
     GameObject scrollview = DefaultControls.CreateScrollView(scrollviewresources);
 	scrollview.GetComponent<RectTransform>().pivot=new Vector2(0,0);
 	scrollview.GetComponent<RectTransform>().sizeDelta=new Vector2(1050,500);
