@@ -526,8 +526,8 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
 			uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").gameObject.layer=layer;
-			GameObject checkboxtextgo = new GameObject("Text");
-						
+			
+            GameObject checkboxtextgo = new GameObject("Text");
 			checkboxtextgo.transform.SetParent(uiToggle.transform.Find("Background").transform, false);
 			Text checkboxtext = checkboxtextgo.AddComponent<Text>();
 			checkboxtextgo.GetComponent<RectTransform>().sizeDelta= new Vector2(0,0);
