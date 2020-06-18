@@ -179,7 +179,7 @@ new string[]{"Drink","ASL-Drink","Anonymous","https://vrsignlanguage.net/ASL_vid
 new string[]{"Watch","ASL-Watch","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-34.mp4","0",""},
 new string[]{"Work","ASL-Work","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-35.mp4","2",""},
 new string[]{"Live","ASL-Live","Anonymous","","2","This version is done with 'A' handshapes on both hands."},
-new string[]{"Live (Variant 2)","ASL-GT4tube-Live","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet03/03-36.mp4","2","Initialized variant, done with 'L' handshapes on both hands."},
+new string[]{"Live (Variant 2)","ASL-Live (Variant 2)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet03/03-36.mp4","2","Initialized variant, done with 'L' handshapes on both hands."},
 new string[]{"Play Game","ASL-Play Game","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-37.mp4","0",""},
 new string[]{"Same","ASL-Same","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-38.mp4","0","This is a directional sign."},
 new string[]{"Alright","ASL-Alright","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-39.mp4","2",""},
@@ -258,7 +258,7 @@ new string[]{"Surprised","ASL-Surprised","Anonymous","https://vrsignlanguage.net
 new string[]{"Careful","ASL-Careful","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet05/05-30.mp4","0",""},
 new string[]{"Enjoy","ASL-Enjoy","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet05/05-31.mp4","2",""},
 new string[]{"Disgusted","ASL-Disgusted","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet05/05-32.mp4","2",""},
-new string[]{"Embarassed","ASL-Embarassed","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet05/05-33.mp4","2",""},
+new string[]{"Embarrassed","ASL-Embarrassed","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet05/05-33.mp4","2",""},
 new string[]{"Shy","ASL-Shy","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet05/05-34.mp4","2",""},
 new string[]{"Lonely","ASL-Lonely","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet05/05-35.mp4","2",""},
 new string[]{"Stressed","ASL-Stressed","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet05/05-36.mp4","2",""},
@@ -323,7 +323,7 @@ new string[]{"Day","ASL-Day","Anonymous","https://vrsignlanguage.net/ASL_videos/
 new string[]{"Weekend","ASL-Weekend","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet07/07-07.mp4","2",""},
 new string[]{"Hours","ASL-Hours","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet07/07-08.mp4","2",""},
 new string[]{"Minutes","ASL-Minutes","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet07/07-09.mp4","2",""},
-new string[]{"Seconds","","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-10.mp4","2",""},
+new string[]{"Seconds","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet07/07-10.mp4","2","A small mistake in the editing of the video: Catman signs SEC + minute sign for seconds of time. Ray signs Second, as in something is in second place in the video."},
 new string[]{"Today","ASL-Today","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet07/07-11.mp4","0",""},
 new string[]{"Tomorrow","ASL-Tomorrow","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet07/07-12.mp4","2",""},
 new string[]{"Yesterday","ASL-Yesterday","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet07/07-13.mp4","0","'Y' handshape initialized variant. Can also be done with an 'A' handshape."},
@@ -399,7 +399,7 @@ new string[]{"Lagging","ASL-Lagging","Anonymous","https://vrsignlanguage.net/ASL
 new string[]{"Restart","ASL-Restart","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet08/08-38.mp4","2",""},
 new string[]{"Send","ASL-Send","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet08/08-39.mp4","2",""},
 new string[]{"Receive","ASL-Receive","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet08/08-40.mp4","2",""},
-new string[]{"Security","ASL-Security","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet08/08-41.mp4","2  ",""},
+new string[]{"Security","ASL-Security","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet08/08-41.mp4","2",""},
 new string[]{"Donation","ASL-Donation","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet08/08-42.mp4","0",""}
 },
 new string[][]{//Alphabet/Numbers (fingerspelling) (lesson9)
@@ -486,171 +486,172 @@ new string[]{"Give Up","ASL-Give Up","Anonymous","https://vrsignlanguage.net/ASL
 new string[]{"Skip","ASL-Skip","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-21.mp4","2",""},
 new string[]{"Ask","ASL-Ask","Anonymous","","0","Less formal version of request."},//Vid is for request
 new string[]{"Attach","ASL-Attach","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-23.mp4","0",""},
-new string[]{"Assist","ASL-Assist","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-24.mp4","0",""},
-new string[]{"Bait","ASL-Bait","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-25.mp4","0",""},
-new string[]{"Battle","ASL-Battle","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-26.mp4","0",""},
-new string[]{"Beat (Overcome)","ASL-Beat (Overcome)","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-27.mp4","0",""},
-new string[]{"Become","ASL-Become","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-28.mp4","0",""},
+new string[]{"Assistant","ASL-Assistant","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-24.mp4","2",""},
+new string[]{"Assist / Help","ASL-Assist / Help","Anonymous","","2",""},//video shows assistant
+new string[]{"Bait","ASL-Bait","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-25.mp4","2",""},
+new string[]{"Battle","ASL-Battle","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-26.mp4","2",""},
+new string[]{"Beat (Overcome)","ASL-Beat (Overcome)","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-27.mp4","2",""},
+new string[]{"Become","ASL-Become","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-28.mp4","2",""},
 new string[]{"Beg","ASL-Beg","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-29.mp4","0",""},
-new string[]{"Begin","ASL-Begin","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-30.mp4","0",""},
-new string[]{"Behave","ASL-Behave","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-31.mp4","0",""},
-new string[]{"Believe","ASL-Believe","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-32.mp4","0",""},
-new string[]{"Blame","ASL-Blame","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-33.mp4","0",""},
-new string[]{"Blow","ASL-Blow","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-34.mp4","0",""},
-new string[]{"Blush","ASL-Blush","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-35.mp4","0",""},
-new string[]{"Bother / Harass","ASL-Bother / Harass","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-36.mp4","0",""}
+new string[]{"Begin / Start","ASL-Begin / Start","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-30.mp4","2",""},
+new string[]{"Behave","ASL-Behave","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-31.mp4","2",""},
+new string[]{"Believe","ASL-Believe","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-32.mp4","2",""},
+new string[]{"Blame","ASL-Blame","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-33.mp4","2",""},
+new string[]{"Blow","ASL-Blow","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-34.mp4","2",""},
+new string[]{"Blush","ASL-Blush","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-35.mp4","2",""},
+new string[]{"Bother / Harass","ASL-Bother / Harass","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-36.mp4","2",""}
 },
 new string[][]{//Lesson 11 (Verbs & Actions p2)
-new string[]{"Bend","ASL-Bend","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-01.mp4","0",""},
+new string[]{"Bend","ASL-Bend","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-01.mp4","2",""},
 new string[]{"Bow","ASL-Bow","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-02.mp4","0",""},
-new string[]{"Break","ASL-Break","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-03.mp4","0",""},
-new string[]{"Breathe","ASL-Breathe","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-04.mp4","0",""},
-new string[]{"Bring","ASL-Bring","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-05.mp4","0","This is a directional sign."},
-new string[]{"Build / Construct","ASL-Build / Construct","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-06.mp4","0",""},
+new string[]{"Break","ASL-Break","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-03.mp4","2",""},
+new string[]{"Breathe","ASL-Breathe","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-04.mp4","2",""},
+new string[]{"Bring","ASL-Bring","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-05.mp4","2","This is a directional sign."},
+new string[]{"Build / Construct","ASL-Build / Construct","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-06.mp4","2",""},
 new string[]{"Bully","ASL-Bully","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-07.mp4","0",""},
 new string[]{"Burn","ASL-Burn","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-08.mp4","0",""},
-new string[]{"Buy","ASL-Buy","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-09.mp4","0",""},
-new string[]{"Call","ASL-Call","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-10.mp4","0",""},
-new string[]{"Cancel","ASL-Cancel","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-11.mp4","0",""},
-new string[]{"Care","ASL-Care","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-12.mp4","0",""},
-new string[]{"Carry","ASL-Carry","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-13.mp4","0",""},
-new string[]{"Catch","ASL-Catch","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-14.mp4","0",""},
-new string[]{"Cause","ASL-Cause","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-15.mp4","0",""},
-new string[]{"Challenge","ASL-Challenge","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-16.mp4","0",""},
-new string[]{"Chance","ASL-Chance","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-17.mp4","0","'C' handshape. This sign is the Signed Exact English variant."},
-new string[]{"Cheat","ASL-Cheat","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-18.mp4","0",""},
-new string[]{"Check","ASL-Check","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-19.mp4","0",""},
-new string[]{"Choose","ASL-Choose","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-20.mp4","0",""},
-new string[]{"Claim","ASL-Claim","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-21.mp4","0",""},
-new string[]{"Clean","ASL-Clean","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-22.mp4","0",""},
-new string[]{"Clear","ASL-Clear","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-23.mp4","0",""},
-new string[]{"Close","ASL-Close","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-24.mp4","0","Close as in 'near'"},
-new string[]{"Comfort","ASL-Comfort","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-25.mp4","0",""},
-new string[]{"Command","ASL-Command","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-26.mp4","0",""},
-new string[]{"Communicate","ASL-Communicate","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-27.mp4","0","This sign is the Signed Exact English variant."},
-new string[]{"Compare","ASL-Compare","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-28.mp4","0",""},
-new string[]{"Complain","ASL-Complain","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-29.mp4","0",""},
-new string[]{"Compliment","ASL-Compliment","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-30.mp4","0",""},
-new string[]{"Concentrate","ASL-Concentrate","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-31.mp4","0",""},
-new string[]{"Construct / Build","ASL-Construct / Build","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-32.mp4","0",""},
-new string[]{"Control","ASL-Control","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-33.mp4","0",""},
-new string[]{"Cook","ASL-Cook","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-34.mp4","0",""},
-new string[]{"Copy","ASL-Copy","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-35.mp4","0",""},
-new string[]{"Correct","ASL-Correct","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-36.mp4","0",""}
+new string[]{"Buy","ASL-Buy","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-09.mp4","2",""},
+new string[]{"Call","ASL-Call","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-10.mp4","0","This is a directional sign."},
+new string[]{"Cancel","ASL-Cancel","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-11.mp4","2",""},
+new string[]{"Care","ASL-Care","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-12.mp4","2",""},
+new string[]{"Carry","ASL-Carry","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-13.mp4","2",""},
+new string[]{"Catch","ASL-Catch","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-14.mp4","2",""},
+new string[]{"Cause","ASL-Cause","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-15.mp4","2",""},
+new string[]{"Challenge","ASL-Challenge","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-16.mp4","2",""},
+new string[]{"Chance","ASL-Chance","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-17.mp4","2","'C' handshape. This sign is the Signed Exact English variant."},
+new string[]{"Cheat","ASL-Cheat","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-18.mp4","2",""},
+new string[]{"Check","ASL-Check","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-19.mp4","2",""},
+new string[]{"Choose","ASL-Choose","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-20.mp4","2",""},
+new string[]{"Claim","ASL-Claim","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-21.mp4","2",""},
+new string[]{"Clean","ASL-Clean","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-22.mp4","2",""},
+new string[]{"Clear","ASL-Clear","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-23.mp4","2",""},
+new string[]{"Close","ASL-Close","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-24.mp4","2","Close as in 'near'"},
+new string[]{"Comfort","ASL-Comfort","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-25.mp4","2",""},
+new string[]{"Command","ASL-Command","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-26.mp4","2",""},
+new string[]{"Communicate","ASL-Communicate","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-27.mp4","2","This sign is the Signed Exact English variant."},
+new string[]{"Compare","ASL-Compare","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-28.mp4","2",""},
+new string[]{"Complain","ASL-Complain","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-29.mp4","2",""},
+new string[]{"Compliment","ASL-Compliment","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-30.mp4","2",""},
+new string[]{"Concentrate","ASL-Concentrate","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-31.mp4","2",""},
+new string[]{"Construct / Build","ASL-Construct / Build","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-32.mp4","2",""},
+new string[]{"Control","ASL-Control","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-33.mp4","2",""},
+new string[]{"Cook","ASL-Cook","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-34.mp4","2",""},
+new string[]{"Copy","ASL-Copy","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-35.mp4","2",""},
+new string[]{"Correct","ASL-Correct","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-36.mp4","2",""}
 },
 new string[][]{//Lesson 12 (Verbs & Actions p3)
-new string[]{"Cough","ASL-Cough","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-01.mp4","0",""},
-new string[]{"Count","ASL-Count","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-02.mp4","0",""},
-new string[]{"Create","ASL-Create","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-03.mp4","0",""},
-new string[]{"Cuddle","ASL-Cuddle","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-04.mp4","0",""},
-new string[]{"Cut","ASL-Cut","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-05.mp4","0",""},
-new string[]{"Dab","ASL-Dab","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-06.mp4","0",""},
-new string[]{"Dance","ASL-Dance","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-07.mp4","0",""},
-new string[]{"Dare","ASL-Dare","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-08.mp4","0",""},
-new string[]{"Date","ASL-Date","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-09.mp4","0",""},
-new string[]{"Deal","ASL-Deal","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-10.mp4","0",""},
-new string[]{"Deliver","ASL-Deliver","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-11.mp4","0",""},
-new string[]{"Depend","ASL-Depend","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-12.mp4","0",""},
-new string[]{"Describe","ASL-Describe","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-13.mp4","0",""},
-new string[]{"Dirty","ASL-Dirty","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-14.mp4","0",""},
-new string[]{"Disappear","ASL-Disappear","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-15.mp4","0",""},
-new string[]{"Disappoint","ASL-Disappoint","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-16.mp4","0",""},
-new string[]{"Disapprove","ASL-Disapprove","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-17.mp4","0",""},
-new string[]{"Discuss","ASL-Discuss","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-18.mp4","0",""},
-new string[]{"Disguise","ASL-Disguise","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-19.mp4","0",""},
-new string[]{"Disgust","ASL-Disgust","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-20.mp4","0",""},
-new string[]{"Dismiss","ASL-Dismiss","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-21.mp4","0",""},
-new string[]{"Disturb","ASL-Disturb","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-22.mp4","0",""},
-new string[]{"Doubt","ASL-Doubt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-23.mp4","0",""},
-new string[]{"Dream","ASL-Dream","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-24.mp4","0",""},
-new string[]{"Dress","ASL-Dress","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-25.mp4","0",""},
-new string[]{"Drunk","ASL-Drunk","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-26.mp4","0",""},
-new string[]{"Drop","ASL-Drop","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-27.mp4","0",""},
-new string[]{"Drown","ASL-Drown","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-28.mp4","0",""},
-new string[]{"Dry","ASL-Dry","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-29.mp4","0",""},
-new string[]{"Dump","ASL-Dump","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-30.mp4","0",""},
-new string[]{"Dust","ASL-Dust","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-31.mp4","0",""},
-new string[]{"Earn","ASL-Earn","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-32.mp4","0",""},
-new string[]{"Effect","ASL-Effect","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-33.mp4","0",""},
-new string[]{"End","ASL-End","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-34.mp4","0",""},
-new string[]{"Escape","ASL-Escape","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-35.mp4","0",""},
-new string[]{"Escort","ASL-Escort","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-36.mp4","0",""}
+new string[]{"Cough","ASL-Cough","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-01.mp4","2",""},
+new string[]{"Count","ASL-Count","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-02.mp4","2",""},
+new string[]{"Create","ASL-Create","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-03.mp4","2",""},
+new string[]{"Cuddle","ASL-Cuddle","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-04.mp4","2",""},
+new string[]{"Cut","ASL-Cut","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-05.mp4","2",""},
+new string[]{"Dab","ASL-Dab","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-06.mp4","2",""},
+new string[]{"Dance","ASL-Dance","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-07.mp4","2",""},
+new string[]{"Dare","ASL-Dare","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-08.mp4","2",""},
+new string[]{"Date","ASL-Date","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-09.mp4","2",""},
+new string[]{"Deal","ASL-Deal","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-10.mp4","2",""},
+new string[]{"Deliver","ASL-Deliver","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-11.mp4","2",""},
+new string[]{"Depend","ASL-Depend","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-12.mp4","2",""},
+new string[]{"Describe","ASL-Describe","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-13.mp4","2",""},
+new string[]{"Dirty","ASL-Dirty","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-14.mp4","2",""},
+new string[]{"Disappear","ASL-Disappear","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-15.mp4","2",""},
+new string[]{"Disappoint","ASL-Disappoint","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-16.mp4","2",""},
+new string[]{"Disapprove","ASL-Disapprove","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-17.mp4","2",""},
+new string[]{"Discuss","ASL-Discuss","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-18.mp4","2",""},
+new string[]{"Disguise","ASL-Disguise","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-19.mp4","2",""},
+new string[]{"Disgust","ASL-Disgust","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-20.mp4","2",""},
+new string[]{"Dismiss","ASL-Dismiss","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-21.mp4","2",""},
+new string[]{"Disturb","ASL-Disturb","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-22.mp4","2",""},
+new string[]{"Doubt","ASL-Doubt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-23.mp4","2",""},
+new string[]{"Dream","ASL-Dream","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-24.mp4","2",""},
+new string[]{"Dress","ASL-Dress","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-25.mp4","2",""},
+new string[]{"Drunk","ASL-Drunk","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-26.mp4","2",""},
+new string[]{"Drop","ASL-Drop","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-27.mp4","2",""},
+new string[]{"Drown","ASL-Drown","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-28.mp4","2",""},
+new string[]{"Dry","ASL-Dry","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-29.mp4","2",""},
+new string[]{"Dump","ASL-Dump","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-30.mp4","2",""},
+new string[]{"Dust","ASL-Dust","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-31.mp4","2",""},
+new string[]{"Earn","ASL-Earn","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-32.mp4","2",""},
+new string[]{"Effect","ASL-Effect","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-33.mp4","2",""},
+new string[]{"End","ASL-End","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-34.mp4","2",""},
+new string[]{"Escape","ASL-Escape","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-35.mp4","2",""},
+new string[]{"Escort","ASL-Escort","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-36.mp4","2",""}
 },
 new string[][]{//Lesson 13 (Verbs & Actions p4)
-new string[]{"Excuse","ASL-Excuse","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-01.mp4","0",""},
-new string[]{"Expose","ASL-Expose","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-02.mp4","0",""},
-new string[]{"Exist","ASL-Exist","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-03.mp4","0",""},
-new string[]{"Fail","ASL-Fail","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-04.mp4","0",""},
-new string[]{"Faint","ASL-Faint","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-05.mp4","0",""},
-new string[]{"Fake","ASL-Fake","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-06.mp4","0",""},
-new string[]{"Fart","ASL-Fart","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-07.mp4","0",""},
-new string[]{"Fear","ASL-Fear","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-08.mp4","0",""},
-new string[]{"Fill","ASL-Fill","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-09.mp4","0",""},
-new string[]{"Find","ASL-Find","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-10.mp4","0",""},
-new string[]{"Finish","ASL-Finish","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-11.mp4","0",""},
-new string[]{"Fix","ASL-Fix","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-12.mp4","0",""},
-new string[]{"Flip","ASL-Flip","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-13.mp4","0",""},
-new string[]{"Flirt","ASL-Flirt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-14.mp4","0",""},
-new string[]{"Fly","ASL-Fly","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-15.mp4","0",""},
-new string[]{"Forbid","ASL-Forbid","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-16.mp4","0",""},
-new string[]{"Forgive","ASL-Forgive","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-17.mp4","0",""},
-new string[]{"Gain","ASL-Gain","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-18.mp4","0",""},
-new string[]{"Give","ASL-Give","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-19.mp4","0",""},
-new string[]{"Glow","ASL-Glow","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-20.mp4","0",""},
-new string[]{"Grab","ASL-Grab","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-21.mp4","0",""},
-new string[]{"Grow","ASL-Grow","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-22.mp4","0",""},
-new string[]{"Guard","ASL-Guard","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-23.mp4","0",""},
-new string[]{"Guess","ASL-Guess","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-24.mp4","0",""},
-new string[]{"Guide","ASL-Guide","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-25.mp4","0",""},
-new string[]{"Harass / Bother","ASL-Harass / Bother","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-26.mp4","0",""},
-new string[]{"Harm","ASL-Harm","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-27.mp4","0",""},
-new string[]{"Hit","ASL-Hit","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-28.mp4","0",""},
-new string[]{"Hold","ASL-Hold","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-29.mp4","0",""},
-new string[]{"Hop","ASL-Hop","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-30.mp4","0",""},
-new string[]{"Hope","ASL-Hope","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-31.mp4","0",""},
-new string[]{"Hunt","ASL-Hunt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-32.mp4","0",""},
-new string[]{"Ignore","ASL-Ignore","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-33.mp4","0",""},
-new string[]{"Imagine","ASL-Imagine","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-34.mp4","0",""},
-new string[]{"Imitate","ASL-Imitate","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-35.mp4","0",""},
-new string[]{"Insult","ASL-Insult","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-36.mp4","0",""}
+new string[]{"Excuse","ASL-Excuse","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-01.mp4","2",""},
+new string[]{"Expose","ASL-Expose","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-02.mp4","2",""},
+new string[]{"Exist","ASL-Exist","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-03.mp4","2",""},
+new string[]{"Fail","ASL-Fail","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-04.mp4","2",""},
+new string[]{"Faint","ASL-Faint","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-05.mp4","2",""},
+new string[]{"Fake","ASL-Fake","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-06.mp4","2",""},
+new string[]{"Fart","ASL-Fart","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-07.mp4","2",""},
+new string[]{"Fear","ASL-Fear","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-08.mp4","2",""},
+new string[]{"Fill","ASL-Fill","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-09.mp4","2",""},
+new string[]{"Find","ASL-Find","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-10.mp4","2",""},
+new string[]{"Finish","ASL-Finish","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-11.mp4","2",""},
+new string[]{"Fix","ASL-Fix","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-12.mp4","2",""},
+new string[]{"Flip","ASL-Flip","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-13.mp4","2",""},
+new string[]{"Flirt","ASL-Flirt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-14.mp4","2",""},
+new string[]{"Fly","ASL-Fly","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-15.mp4","2",""},
+new string[]{"Forbid","ASL-Forbid","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-16.mp4","2",""},
+new string[]{"Forgive","ASL-Forgive","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-17.mp4","2",""},
+new string[]{"Gain","ASL-Gain","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-18.mp4","2",""},
+new string[]{"Give","ASL-Give","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-19.mp4","2",""},
+new string[]{"Glow","ASL-Glow","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-20.mp4","2",""},
+new string[]{"Grab","ASL-Grab","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-21.mp4","2",""},
+new string[]{"Grow","ASL-Grow","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-22.mp4","2",""},
+new string[]{"Guard","ASL-Guard","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-23.mp4","2",""},
+new string[]{"Guess","ASL-Guess","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-24.mp4","2",""},
+new string[]{"Guide","ASL-Guide","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-25.mp4","2",""},
+new string[]{"Harass / Bother","ASL-Harass / Bother","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-26.mp4","2",""},
+new string[]{"Harm","ASL-Harm","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-27.mp4","2",""},
+new string[]{"Hit","ASL-Hit","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-28.mp4","2",""},
+new string[]{"Hold","ASL-Hold","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-29.mp4","2",""},
+new string[]{"Hop","ASL-Hop","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-30.mp4","2",""},
+new string[]{"Hope","ASL-Hope","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-31.mp4","2",""},
+new string[]{"Hunt","ASL-Hunt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-32.mp4","2",""},
+new string[]{"Ignore","ASL-Ignore","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-33.mp4","2",""},
+new string[]{"Imagine","ASL-Imagine","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-34.mp4","2",""},
+new string[]{"Imitate","ASL-Imitate","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-35.mp4","2",""},
+new string[]{"Insult","ASL-Insult","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-36.mp4","2",""}
 },
 new string[][]{//Lesson 14 (Verbs & Actions p5)
-new string[]{"Interact","ASL-Interact","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-01.mp4","0",""},
-new string[]{"Interfere","ASL-Interfere","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-02.mp4","0",""},
-new string[]{"Judge","ASL-Judge","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-03.mp4","0",""},
-new string[]{"Jump","ASL-Jump","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-04.mp4","0",""},
-new string[]{"Justify","ASL-Justify","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-05.mp4","0",""},
-new string[]{"Just Kidding","ASL-Just Kidding","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-06.mp4","0",""},
-new string[]{"Keep","ASL-Keep","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-07.mp4","0",""},
-new string[]{"Kick","ASL-Kick","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-08.mp4","0",""},
-new string[]{"Kill","ASL-Kill","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-09.mp4","0",""},
-new string[]{"Knock","ASL-Knock","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-10.mp4","0",""},
-new string[]{"Lead","ASL-Lead","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-11.mp4","0",""},
-new string[]{"Lick","ASL-Lick","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-12.mp4","0",""},
-new string[]{"Lock","ASL-Lock","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-13.mp4","0",""},
-new string[]{"Manipulate","ASL-Manipulate","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-14.mp4","0",""},
-new string[]{"Melt","ASL-Melt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-15.mp4","0",""},
-new string[]{"Mess","ASL-Mess","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-16.mp4","0",""},
-new string[]{"Miss","ASL-Miss","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-17.mp4","0",""},
-new string[]{"Mistake","ASL-Mistake","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-18.mp4","0",""},
-new string[]{"Mount","ASL-Mount","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-19.mp4","0",""},
-new string[]{"Move","ASL-Move","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-20.mp4","0",""},
-new string[]{"Murder","ASL-Murder","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-21.mp4","0",""},
-new string[]{"Nod","ASL-Nod","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-22.mp4","0",""},
-new string[]{"Note","ASL-Note","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-23.mp4","0",""},
-new string[]{"Notice","ASL-Notice","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-24.mp4","0",""},
-new string[]{"Obey","ASL-Obey","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-25.mp4","0",""},
-new string[]{"Obsess","ASL-Obsess","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-26.mp4","0",""},
-new string[]{"Obtain","ASL-Obtain","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-27.mp4","0",""},
-new string[]{"Occupy","ASL-Occupy","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-28.mp4","0",""},
-new string[]{"Offend","ASL-Offend","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-29.mp4","0",""},
-new string[]{"Offer","ASL-Offer","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-30.mp4","0",""},
-new string[]{"Okay","ASL-Okay","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-31.mp4","0",""},
-new string[]{"Open","ASL-Open","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-32.mp4","0",""},
-new string[]{"Order","ASL-Order","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-33.mp4","0",""},
-new string[]{"Owe","ASL-Owe","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-34.mp4","0",""},
-new string[]{"Own","ASL-Own","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-35.mp4","0",""},
-new string[]{"Pass","ASL-Pass","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-36.mp4","0",""}
+new string[]{"Interact","ASL-Interact","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-01.mp4","2",""},
+new string[]{"Interfere","ASL-Interfere","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-02.mp4","2",""},
+new string[]{"Judge","ASL-Judge","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-03.mp4","2",""},
+new string[]{"Jump","ASL-Jump","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-04.mp4","2",""},
+new string[]{"Justify","ASL-Justify","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-05.mp4","2",""},
+new string[]{"Just Kidding","ASL-Just Kidding","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-06.mp4","2",""},
+new string[]{"Keep","ASL-Keep","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-07.mp4","2",""},
+new string[]{"Kick","ASL-Kick","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-08.mp4","2",""},
+new string[]{"Kill","ASL-Kill","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-09.mp4","2",""},
+new string[]{"Knock","ASL-Knock","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-10.mp4","2",""},
+new string[]{"Lead","ASL-Lead","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-11.mp4","2",""},
+new string[]{"Lick","ASL-Lick","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-12.mp4","2",""},
+new string[]{"Lock","ASL-Lock","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-13.mp4","2",""},
+new string[]{"Manipulate","ASL-Manipulate","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-14.mp4","2",""},
+new string[]{"Melt","ASL-Melt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-15.mp4","2",""},
+new string[]{"Mess","ASL-Mess","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-16.mp4","2",""},
+new string[]{"Miss","ASL-Miss","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-17.mp4","2",""},
+new string[]{"Mistake","ASL-Mistake","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-18.mp4","2",""},
+new string[]{"Mount","ASL-Mount","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-19.mp4","2",""},
+new string[]{"Move","ASL-Move","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-20.mp4","2",""},
+new string[]{"Murder","ASL-Murder","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-21.mp4","2",""},
+new string[]{"Nod","ASL-Nod","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-22.mp4","2",""},
+new string[]{"Note","ASL-Note","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-23.mp4","2",""},
+new string[]{"Notice","ASL-Notice","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-24.mp4","2",""},
+new string[]{"Obey","ASL-Obey","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-25.mp4","2",""},
+new string[]{"Obsess","ASL-Obsess","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-26.mp4","2",""},
+new string[]{"Obtain","ASL-Obtain","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-27.mp4","2",""},
+new string[]{"Occupy","ASL-Occupy","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-28.mp4","2",""},
+new string[]{"Offend","ASL-Offend","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-29.mp4","2",""},
+new string[]{"Offer","ASL-Offer","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-30.mp4","2",""},
+new string[]{"Okay","ASL-Okay","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-31.mp4","2",""},
+new string[]{"Open","ASL-Open","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-32.mp4","2",""},
+new string[]{"Order","ASL-Order","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-33.mp4","2",""},
+new string[]{"Owe","ASL-Owe","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-34.mp4","2",""},
+new string[]{"Own","ASL-Own","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-35.mp4","2",""},
+new string[]{"Pass","ASL-Pass","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet14/14-36.mp4","2",""}
 },
 new string[][]{//Lesson 15 (Verbs & Actions p6)
 new string[]{"Pat","ASL-Pat","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet15/15-01.mp4","2",""},
@@ -760,7 +761,7 @@ new string[]{"Calculate","ASL-Calculate","GT4tube","https://vrsignlanguage.net/A
 new string[]{"Shower","ASL-Shower","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet17/17-27.mp4","2",""},
 new string[]{"Bathe","ASL-Bathe","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet17/17-28.mp4","2",""},
 new string[]{"Socialize","ASL-Socialize","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet17/17-29.mp4","2",""},
-new string[]{"Help","ASL-Help","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet17/17-30.mp4","2",""},
+new string[]{"Help / Assist","ASL-Help / Assist","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet17/17-30.mp4","2",""},
 new string[]{"Support","ASL-Support","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet17/17-31.mp4","2",""},
 new string[]{"Take Care","ASL-Take Care","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet17/17-32.mp4","2",""},
 new string[]{"Drive","ASL-Drive","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet17/17-33.mp4","2",""},
@@ -769,49 +770,48 @@ new string[]{"Trip","ASL-Trip","GT4tube","https://vrsignlanguage.net/ASL_videos/
 new string[]{"Fiction","ASL-Fiction","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet17/17-36.mp4","2",""},
 },
 new string[][]{//Lesson 18 (Food)
-new string[]{"Custard","Idle","No Data Yet.","","2",""},
-new string[]{"Corn","Idle","No Data Yet.","","2",""},
-new string[]{"Vegtable","Idle","No Data Yet.","","2",""},
-new string[]{"Cookie","Idle","No Data Yet.","","2",""},
-new string[]{"Cake","Idle","No Data Yet.","","2",""},
-new string[]{"Yogurt","Idle","No Data Yet.","","2",""},
-new string[]{"Lemon","Idle","No Data Yet.","","2",""},
-new string[]{"Nuts","Idle","No Data Yet.","","2",""},
-new string[]{"Grapes","Idle","No Data Yet.","","2",""},
-new string[]{"Peas","Idle","No Data Yet.","","2",""},
-new string[]{"Beans","Idle","No Data Yet.","","2",""},
-new string[]{"Pear","Idle","No Data Yet.","","2",""},
-new string[]{"Butter","Idle","No Data Yet.","","2",""},
-new string[]{"Banana","Idle","No Data Yet.","","2",""},
-new string[]{"Pumpkin","Idle","No Data Yet.","","2",""},
-new string[]{"Fruit","Idle","No Data Yet.","","2",""},
-new string[]{"Apple","Idle","No Data Yet.","","2",""},
-new string[]{"Tomato","Idle","No Data Yet.","","2",""},
-new string[]{"Orange","Idle","No Data Yet.","","2",""},
-new string[]{"Bread","Idle","No Data Yet.","","2",""},
-new string[]{"Cheese","Idle","No Data Yet.","","2",""},
-new string[]{"Water","Idle","No Data Yet.","","2",""},
-new string[]{"Hamburger","Idle","No Data Yet.","","2",""},
-new string[]{"Hot Dog","Idle","No Data Yet.","","2",""},
-new string[]{"Curry","Idle","No Data Yet.","","2",""},
-new string[]{"Rice","Idle","No Data Yet.","","2",""},
-new string[]{"Noodles","Idle","No Data Yet.","","2",""},
-new string[]{"Eggs","Idle","No Data Yet.","","2",""},
-new string[]{"Salt","Idle","No Data Yet.","","2",""},
-new string[]{"Meat","Idle","No Data Yet.","","2",""},
-new string[]{"Carrot","Idle","No Data Yet.","","2",""},
-new string[]{"Cabbage","Idle","No Data Yet.","","2",""},
-new string[]{"Spaghetti","Idle","No Data Yet.","","2",""},
-new string[]{"Pizza","Idle","No Data Yet.","","2",""},
-new string[]{"Sushi","Idle","No Data Yet.","","2",""},
-new string[]{"Potato","Idle","No Data Yet.","","2",""},
-new string[]{"Juice","Idle","No Data Yet.","","2",""},
-new string[]{"Cola","Idle","No Data Yet.","","2",""},
-new string[]{"Beer","Idle","No Data Yet.","","2",""},
-new string[]{"Wine","Idle","No Data Yet.","","2",""},
-new string[]{"Champagne","Idle","No Data Yet.","","2",""},
-new string[]{"Milk","Idle","No Data Yet.","","2",""},
-new string[]{"Sugar","Idle","No Data Yet.","","2",""},
+new string[]{"Corn","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-01.mp4","2",""},
+new string[]{"Vegetable","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-02.mp4","2",""},
+new string[]{"Cookie","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-03.mp4","2",""},
+new string[]{"Cake","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-04.mp4","2",""},
+new string[]{"Yogurt","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-05.mp4","2",""},
+new string[]{"Lemon","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-06.mp4","2",""},
+new string[]{"Nuts","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-07.mp4","2",""},
+new string[]{"Grapes","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-08.mp4","2",""},
+new string[]{"Peas","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-09.mp4","2",""},
+new string[]{"Icecream","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-10.mp4","2",""},
+new string[]{"Pear","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-11.mp4","2",""},
+new string[]{"Butter","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-12.mp4","2",""},
+new string[]{"Banana","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-13.mp4","2",""},
+new string[]{"Pumpkin","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-14.mp4","2",""},
+new string[]{"Fruit","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-15.mp4","2",""},
+new string[]{"Apple","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-16.mp4","2",""},
+new string[]{"Tomato","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-17.mp4","2",""},
+new string[]{"Orange","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-18.mp4","2",""},
+new string[]{"Bread","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-19.mp4","2",""},
+new string[]{"Cheese","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-20.mp4","2",""},
+new string[]{"Water","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-21.mp4","2",""},
+new string[]{"Hamburger","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-22.mp4","2",""},
+new string[]{"Hot dog","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-23.mp4","2",""},
+new string[]{"Sandwich","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-24.mp4","2",""},
+new string[]{"Taco","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-25.mp4","2",""},
+new string[]{"Noodles","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-26.mp4","2",""},
+new string[]{"Eggs","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-27.mp4","2",""},
+new string[]{"Salt","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-28.mp4","2",""},
+new string[]{"Meat","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-29.mp4","2",""},
+new string[]{"Carrot","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-30.mp4","2",""},
+new string[]{"Cabbage","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-31.mp4","2",""},
+new string[]{"Spaghetti","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-32.mp4","2",""},
+new string[]{"Pizza","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-33.mp4","2",""},
+new string[]{"Sushi","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-34.mp4","2",""},
+new string[]{"Potato","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-35.mp4","2",""},
+new string[]{"Juice","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-36.mp4","2",""},
+new string[]{"Cola","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-37.mp4","2",""},
+new string[]{"Beer","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-38.mp4","2",""},
+new string[]{"Wine","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-39.mp4","2",""},
+new string[]{"Champagne","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-40.mp4","2",""},
+new string[]{"Milk","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-41.mp4","2",""},
+new string[]{"Sugar","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet18/18-42.mp4","2",""},
 },
 new string[][]{//Lesson 19 (Animals / Machines)
 new string[]{"Dog","Idle","No Data Yet.","","2",""},
@@ -1034,85 +1034,90 @@ new string[]{"Ammo","Idle","No Data Yet.","","2",""},
 new string[]{"Ranged","Idle","No Data Yet.","","2",""},
 },
 new string[][]{//Lesson 24 (Holidays / Special Days)
-new string[]{"Holiday","Idle","No Data Yet.","","2",""},
-new string[]{"Pentecost","Idle","No Data Yet.","","2",""},
-new string[]{"Christmas","Idle","No Data Yet.","","2",""},
-new string[]{"Easter","Idle","No Data Yet.","","2",""},
-new string[]{"New Year's Day","Idle","No Data Yet.","","2",""},
-new string[]{"New Year's Eve","Idle","No Data Yet.","","2",""},
-new string[]{"Ascension Day","Idle","No Data Yet.","","2",""},
-new string[]{"Labor Day","Idle","No Data Yet.","","2",""},
-new string[]{"Columbus Day","Idle","No Data Yet.","","2",""},
-new string[]{"Veterans Day","Idle","No Data Yet.","","2",""},
-new string[]{"Thanksgiving Day","Idle","No Data Yet.","","2",""},
-new string[]{"Memorial Day","Idle","No Data Yet.","","2",""},
-new string[]{"M. Luther King, Jr. Day","Idle","No Data Yet.","","2",""},
-new string[]{"Presidents' Day","Idle","No Data Yet.","","2",""},
-new string[]{"St. Andrew's Day","Idle","No Data Yet.","","2",""},
-new string[]{"St. David's Day","Idle","No Data Yet.","","2",""},
-new string[]{"Father's Day","Idle","No Data Yet.","","2",""},
-new string[]{"Mother's Day","Idle","No Data Yet.","","2",""},
-new string[]{"Independence Day","Idle","No Data Yet.","","2",""},
-new string[]{"National Day","Idle","No Data Yet.","","2",""},
-new string[]{"Valentine's Day","Idle","No Data Yet.","","2",""},
-new string[]{"White Day","Idle","No Data Yet.","","2",""},
-new string[]{"Black Friday","Idle","No Data Yet.","","2",""},
-new string[]{"Cyber Monday","Idle","No Data Yet.","","2",""},
-new string[]{"Golden Week","Idle","No Data Yet.","","2",""},
-new string[]{"Doll's Festival (Hina Matsuri)","Idle","No Data Yet.","","2",""},
-new string[]{"Coming of Age Day","Idle","No Data Yet.","","2",""},
-new string[]{"Culture Day","Idle","No Data Yet.","","2",""},
-new string[]{"Children's Day","Idle","No Data Yet.","","2",""},
-new string[]{"Seollal Holiday","Idle","No Data Yet.","","2",""},
-new string[]{"Chinese New Year","Idle","No Data Yet.","","2",""},
-new string[]{"Groundhog Day","Idle","No Data Yet.","","2",""},
-new string[]{"Carnival","Idle","No Data Yet.","","2",""},
-new string[]{"Holloween","Idle","No Data Yet.","","2",""},
-new string[]{"St. Patrick's Day","Idle","No Data Yet.","","2",""},
-new string[]{"Parent's Day","Idle","No Data Yet.","","2",""},
+new string[]{"Holiday","ASL-Holiday","Anonymous","","2",""},
+new string[]{"Pentecost","ASL-Pentecost","Anonymous","","2",""},
+new string[]{"Christmas","ASL-Christmas","Anonymous","","2",""},
+new string[]{"Easter","ASL-Easter","Anonymous","","2",""},
+new string[]{"New Year's Day","ASL-New Year's Day","Anonymous","","2",""},
+new string[]{"New Year's Eve","ASL-New Year's Eve","Anonymous","","2",""},
+new string[]{"Ascension Day","ASL-Ascension Day","Anonymous","","2",""},
+new string[]{"Labor Day","ASL-Labor Day","Anonymous","","2",""},
+new string[]{"Columbus Day","ASL-Columbus Day","Anonymous","","2",""},
+new string[]{"Veterans Day","ASL-Veterans Day","Anonymous","","2",""},
+new string[]{"Thanksgiving Day","ASL-Thanksgiving Day","Anonymous","","2",""},
+new string[]{"Memorial Day","ASL-Memorial Day","Anonymous","","2",""},
+new string[]{"Martin Luther King Jr. Day","ASL-Martin Luther King Jr Day","Anonymous","","2",""},
+new string[]{"Presidents' Day","ASL-Presidents' Day","Anonymous","","2",""},
+new string[]{"St. Andrew's Day","ASL-St Andrew's Day","Anonymous","","2",""},
+new string[]{"St. David's Day","ASL-St David's Day","Anonymous","","2",""},
+new string[]{"Father's Day","ASL-Father's Day","Anonymous","","2",""},
+new string[]{"Mother's Day","ASL-Mother's Day","Anonymous","","2",""},
+new string[]{"Independence Day","ASL-Independence Day","Anonymous","","2",""},
+new string[]{"National Day","ASL-National Day","Anonymous","","2",""},
+new string[]{"Valentine's Day","ASL-Valentine's Day","Anonymous","","2",""},
+new string[]{"White Day","ASL-White Day","Anonymous","","2",""},
+new string[]{"Black Friday","ASL-Black Friday","Anonymous","","2",""},
+new string[]{"Cyber Monday","ASL-Cyber Monday","Anonymous","","2",""},
+new string[]{"Golden Week","ASL-Golden Week","Anonymous","","2",""},
+new string[]{"Doll's Festival (Hina Matsuri)","ASL-Doll's Festival (Hina Matsuri)","Anonymous","","2","JSL Sign"},
+new string[]{"Coming of Age Day","ASL-Coming of Age Day","Anonymous","","2",""},
+new string[]{"Culture Day","ASL-Culture Day","Anonymous","","2",""},
+new string[]{"Children's Day","ASL-Children's Day","Anonymous","","2",""},
+new string[]{"Seollal Holiday","ASL-Seollal Holiday","Anonymous","","2","KSL sign"},
+new string[]{"Chinese New Year","ASL-Chinese New Year","Anonymous","","2",""},
+new string[]{"Groundhog Day","ASL-Groundhog Day","Anonymous","","2",""},
+new string[]{"Carnival","ASL-Carnival","Anonymous","","2",""},
+new string[]{"Halloween","ASL-Halloween","Anonymous","","2",""},
+new string[]{"St. Patrick's Day","ASL-St Patrick's Day","Anonymous","","2",""},
+new string[]{"Parent's Day","ASL-Parent's Day","Anonymous","","2",""},
 },
 new string[][]{//Lesson 25 (Home stuff)
-new string[]{"Chair","Idle","No Data Yet.","","2",""},
-new string[]{"Bench","Idle","No Data Yet.","","2",""},
-new string[]{"Lounger","Idle","No Data Yet.","","2",""},
-new string[]{"Table","Idle","No Data Yet.","","2",""},
-new string[]{"Desk","Idle","No Data Yet.","","2",""},
-new string[]{"Closet","Idle","No Data Yet.","","2",""},
-new string[]{"Lavatory","Idle","No Data Yet.","","2",""},
-new string[]{"Door","Idle","No Data Yet.","","2",""},
-new string[]{"Window","Idle","No Data Yet.","","2",""},
-new string[]{"Carpet","Idle","No Data Yet.","","2",""},
-new string[]{"Floor","Idle","No Data Yet.","","2",""},
-new string[]{"Rack","Idle","No Data Yet.","","2",""},
-new string[]{"Safe","Idle","No Data Yet.","","2",""},
-new string[]{"Stairs","Idle","No Data Yet.","","2",""},
-new string[]{"Television","Idle","No Data Yet.","","2",""},
-new string[]{"Radio","Idle","No Data Yet.","","2",""},
-new string[]{"Receiver","Idle","No Data Yet.","","2",""},
-new string[]{"Speakers","Idle","No Data Yet.","","2",""},
-new string[]{"Microphone","Idle","No Data Yet.","","2",""},
-new string[]{"Guitar","Idle","No Data Yet.","","2",""},
-new string[]{"Drum Kit","Idle","No Data Yet.","","2",""},
-new string[]{"Headphone","Idle","No Data Yet.","","2",""},
-new string[]{"Washing Machine","Idle","No Data Yet.","","2",""},
-new string[]{"Regrigerator","Idle","No Data Yet.","","2",""},
-new string[]{"Freezer","Idle","No Data Yet.","","2",""},
-new string[]{"Broom","Idle","No Data Yet.","","2",""},
-new string[]{"Sweeper","Idle","No Data Yet.","","2",""},
-new string[]{"Stove","Idle","No Data Yet.","","2",""},
-new string[]{"Sink","Idle","No Data Yet.","","2",""},
-new string[]{"Dishwasher","Idle","No Data Yet.","","2",""},
-new string[]{"Pan","Idle","No Data Yet.","","2",""},
-new string[]{"Plate","Idle","No Data Yet.","","2",""},
-new string[]{"Fork","Idle","No Data Yet.","","2",""},
-new string[]{"Knife","Idle","No Data Yet.","","2",""},
-new string[]{"Spoon","Idle","No Data Yet.","","2",""},
-new string[]{"Wall Outlet","Idle","No Data Yet.","","2",""},
-new string[]{"Bath","Idle","No Data Yet.","","2",""},
-new string[]{"Shower","Idle","No Data Yet.","","2",""},
-new string[]{"Crane","Idle","No Data Yet.","","2",""},
-new string[]{"Heating","Idle","No Data Yet.","","2",""},
-new string[]{"Air Conditioner","Idle","No Data Yet.","","2",""},
+new string[]{"Chair","ASL-Chair","GT4tube","","2",""},
+new string[]{"Bench","ASL-Bench","GT4tube","","2",""},
+new string[]{"Couch","ASL-Couch","GT4tube","","2",""},
+new string[]{"Table","ASL-Table","GT4tube","","2",""},
+new string[]{"Desktop Computer","ASL-Desktop Computer","GT4tube","","2",""},
+new string[]{"Closet","ASL-Closet","GT4tube","","2",""},
+new string[]{"Toilet","ASL-Toilet","GT4tube","","2",""},
+new string[]{"Door","ASL-Door","GT4tube","","2",""},
+new string[]{"Window","ASL-Window","GT4tube","","2",""},
+new string[]{"Ceiling","ASL-Ceiling","GT4tube","","2",""},
+new string[]{"Roof","ASL-Roof","GT4tube","","2",""},
+new string[]{"Floor / Carpet","ASL-Floor / Carpet","GT4tube","","2",""},
+//new string[]{"Rack","Idle","No Data Yet.","","2",""},
+new string[]{"Safe","ASL-Safe","GT4tube","","2",""},
+new string[]{"Stairs","ASL-Stairs","GT4tube","","2",""},
+new string[]{"Television","ASL-Television","GT4tube","","2",""},
+new string[]{"Radio","ASL-Radio","GT4tube","","2",""},
+//new string[]{"Speakers","Idle","No Data Yet.","","2",""},
+new string[]{"Microphone","ASL-Microphone","GT4tube","","2",""},
+new string[]{"Guitar","ASL-Guitar","GT4tube","","0","F-hand variant, like your holding a guitar pick."},
+new string[]{"Guitar (Variant 2)","ASL-Guitar (Variant 2)","GT4tube","","2","Open-hand variant."},
+new string[]{"Drum Kit","ASL-Drum Kit","GT4tube","","2",""},
+new string[]{"Headphones","ASL-Headphones","GT4tube","","2","Just mime the act of putting on headphones. The cupping motion is supposed to be where your ears are."},
+new string[]{"Headphones (Variant 2)","ASL-Headphones (Variant 2)","GT4tube","","2",""},
+new string[]{"Washing Machine","ASL-Washing Machine","GT4tube","","2",""},
+new string[]{"Refrigerator","ASL-Refrigerator","GT4tube","","2",""},
+new string[]{"Dryer","ASL-Dryer","GT4tube","","2",""},
+new string[]{"Broom","ASL-Broom","GT4tube","","2",""},
+new string[]{"Sweeper","ASL-Sweeper","GT4tube","","2",""},
+//new string[]{"Vacuum Cleaner","Idle","No Data Yet.","","2",""},
+new string[]{"Sink","ASL-Sink","No Data Yet.","","2",""},
+new string[]{"Dishwasher","ASL-Dishwasher","GT4tube","","2",""},
+//new string[]{"Cooking Pan","Idle","No Data Yet.","","2",""},
+new string[]{"Oven","ASL-Oven","GT4tube","","2",""},
+new string[]{"Fork","ASL-Fork","GT4tube","","2",""},
+new string[]{"Knife","ASL-Knife","GT4tube","","2",""},
+new string[]{"Spoon","ASL-Spoon","GT4tube","","2",""},
+new string[]{"Bowl","ASL-Bowl","GT4tube","","2",""},
+new string[]{"Plate","ASL-Plate","GT4tube","","2",""},
+new string[]{"Wall Outlet","ASL-Wall Outlet","GT4tube","","2",""},
+new string[]{"Bath","ASL-Bath","GT4tube","","2",""},
+new string[]{"Shower","ASL-Shower","GT4tube","","2",""},
+new string[]{"Fireplace","ASL-Fireplace","GT4tube","","0",""},
+new string[]{"Fireplace (Variant 2)","ASL-Fireplace (Variant 2)","GT4tube","","2","General VR Variant"},
+new string[]{"Air Conditioner","ASL-Air Conditioner","GT4tube","","2",""},
+//new string[]{"Parasol","Idle","No Data Yet.","","2",""},
 },
 new string[][]{//Lesson 26 (Nature / Environment)
 new string[]{"Nature","Idle","No Data Yet.","","2",""},
@@ -1159,125 +1164,129 @@ new string[]{"Growth","Idle","No Data Yet.","","2",""},
 new string[]{"Microbes","Idle","No Data Yet.","","2",""},
 },
 new string[][]{//Lesson 27 (Talk / Asking exercises)
-new string[]{"Can you teach me?","Idle","No Data Yet.","","2",""},
-new string[]{"Sorry, I don't understand.","Idle","No Data Yet.","","2",""},
-new string[]{"I want to learn sign language.","Idle","No Data Yet.","","2",""},
-new string[]{"My name is…","Idle","No Data Yet.","","2",""},
-new string[]{"Please wait for it.","Idle","No Data Yet.","","2",""},
-new string[]{"My friend wants to join.","Idle","No Data Yet.","","2",""},
-new string[]{"I want to play with you.","Idle","No Data Yet.","","2",""},
-new string[]{"I'm slow at learning.","Idle","No Data Yet.","","2",""},
-new string[]{"Can you repeat it?","Idle","No Data Yet.","","2",""},
-new string[]{"Shall we begin?","Idle","No Data Yet.","","2",""},
-new string[]{"I'm busy streaming.","Idle","No Data Yet.","","2",""},
-new string[]{"Please don't distrub me.","Idle","No Data Yet.","","2",""},
-new string[]{"Can you stop that?","Idle","No Data Yet.","","2",""},
-new string[]{"Please follow me.","Idle","No Data Yet.","","2",""},
-new string[]{"I want to change the world.","Idle","No Data Yet.","","2",""},
-new string[]{"Can you write it down?","Idle","No Data Yet.","","2",""},
-new string[]{"Please don't speak.","Idle","No Data Yet.","","2",""},
-new string[]{"I can't hear you.","Idle","No Data Yet.","","2",""},
-new string[]{"What are the rules?","Idle","No Data Yet.","","2",""},
-new string[]{"Can you explain that to me?","Idle","No Data Yet.","","2",""},
-new string[]{"Can you help me?","Idle","No Data Yet.","","2",""},
-new string[]{"Please lead me.","Idle","No Data Yet.","","2",""},
-new string[]{"I have a good idea.","Idle","No Data Yet.","","2",""},
-new string[]{"I'm not feeling good.","Idle","No Data Yet.","","2",""},
-new string[]{"How old are you?","Idle","No Data Yet.","","2",""},
-new string[]{"Where do you come from?","Idle","No Data Yet.","","2",""},
-new string[]{"Do you want to be my friend?","Idle","No Data Yet.","","2",""},
-new string[]{"I'm going to sleep.","Idle","No Data Yet.","","2",""},
-new string[]{"I have to work soon.","Idle","No Data Yet.","","2",""},
-new string[]{"What is your Discord?","Idle","No Data Yet.","","2",""},
-new string[]{"Can we talk on Discord?","Idle","No Data Yet.","","2",""},
-new string[]{"Check your Discord.","Idle","No Data Yet.","","2",""},
-new string[]{"I am lost here.","Idle","No Data Yet.","","2",""},
-new string[]{"I'm going to my friend's.","Idle","No Data Yet.","","2",""},
-new string[]{"I have some free time now.","Idle","No Data Yet.","","2",""},
-new string[]{"I don't have much time.","Idle","No Data Yet.","","2",""},
+new string[]{"Can you teach me?","ASL-Can you teach me?","Anonymous","","2",""},
+new string[]{"Sorry, I don't understand.","ASL-Sorry, I don't understand","Anonymous","","2",""},
+new string[]{"I want to learn sign language.","ASL-I want to learn sign language","Anonymous","","2",""},
+new string[]{"My name is...","ASL-My name is","Anonymous","","2",""},
+new string[]{"Please wait for it.","ASL-Please wait for it","Anonymous","","2",""},
+new string[]{"My friend wants to join.","ASL-My friend wants to join","Anonymous","","2",""},
+new string[]{"I want to play with you.","ASL-I want to play with you","Anonymous","","2",""},
+new string[]{"I'm slow at learning.","ASL-I'm slow at learning","Anonymous","","2",""},
+new string[]{"Can you repeat it?","ASL-Can you repeat it?","Anonymous","","2",""},
+new string[]{"Shall we begin?","ASL-Shall we begin?","Anonymous","","2",""},
+new string[]{"I'm busy streaming.","ASL-I'm busy streaming","Anonymous","","2",""},
+new string[]{"Please don't disturb me.","ASL-Please don't disturb me","Anonymous","","2",""},
+new string[]{"Can you stop that?","ASL-Can you stop that?","Anonymous","","2",""},
+new string[]{"Please follow me.","ASL-Please follow me","Anonymous","","2",""},
+new string[]{"I want to change the world.","ASL-I want to change the world","Anonymous","","2",""},
+new string[]{"Can you write it down?","ASL-Can you write it down?","Anonymous","","2",""},
+new string[]{"Please don't speak.","ASL-Please don't speak","Anonymous","","2",""},
+new string[]{"I can't hear you.","ASL-I can't hear you","Anonymous","","2",""},
+new string[]{"What are the rules?","ASL-What are the rules?","Anonymous","","2",""},
+new string[]{"Can you explain that to me?","ASL-Can you explain that to me?","Anonymous","","2",""},
+new string[]{"Can you help me?","ASL-Can you help me?","Anonymous","","2",""},
+new string[]{"Please lead me.","ASL-Please lead me","Anonymous","","2",""},
+new string[]{"I have a good idea.","ASL-I have a good idea","Anonymous","","2",""},
+new string[]{"I'm not feeling good.","ASL-I'm not feeling good","Anonymous","","2",""},
+new string[]{"How old are you?","ASL-How old are you?","Anonymous","","2",""},
+new string[]{"Where are you from?","ASL-Where are you from?","Anonymous","","2",""},
+new string[]{"Do you want to become friends?","ASL-Do you want to become friends?","Anonymous","","2",""},
+new string[]{"I'm going to sleep.","ASL-I'm going to sleep","Anonymous","","2",""},
+new string[]{"I have to work soon.","ASL-I have to work soon","Anonymous","","2",""},
+new string[]{"What is your Discord?","ASL-What is your Discord?","Anonymous","","2",""},
+new string[]{"Can we talk on Discord?","ASL-Can we talk on Discord?","Anonymous","","2",""},
+new string[]{"Check your Discord.","ASL-Check your Discord","Anonymous","","2",""},
+new string[]{"I'm lost here.","ASL-I'm lost here","Anonymous","","2",""},
+new string[]{"I'm going to my friend's.","ASL-I'm going to my friend's","Anonymous","","2",""},
+new string[]{"I have some free time now.","ASL-I have some free time now","Anonymous","","2",""},
+new string[]{"I don't have much time.","ASL-I don't have much time","Anonymous","","2",""},
+
 },
 new string[][]{//Lesson 28 (Name sign users)
-new string[]{"Sio","ASL-Sio","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-01.mp4","2",""},
-new string[]{"MrDummy_NED","ASL-MrDummy_NED","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-02.mp4","2",""},
-new string[]{"Wardragon","ASL-Wardragon","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-03.mp4","2",""},
-new string[]{"QQuentin","ASL-QQuentin","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-04.mp4","2",""},
-new string[]{"Ray_is_deaf","ASL-Ray_is_deaf","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-05.mp4","2",""},
-new string[]{"CTLucina","ASL-CTLucina","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-06.mp4","2",""},
-new string[]{"Fazzion","ASL-Fazzion","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-07.mp4","2",""},
-new string[]{"Jenny0629","ASL-Jenny0629","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-08.mp4","2",""},
-new string[]{"Wubbles","ASL-Wubbles","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-09.mp4","2",""},
-new string[]{"Sqweekslj","ASL-Sqweekslj","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-10.mp4","2",""},
-new string[]{"Freddex1337","ASL-Freddex1337","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-11.mp4","2",""},
-new string[]{"Max DEAF FR","ASL-Max DEAF FR","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-12.mp4","2",""},
-new string[]{"Korea_Saro","ASL-Korea_Saro","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-13.mp4","2",""},
-new string[]{"_MINT_","ASL-_MINT_","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-14.mp4","2",""},
-new string[]{"Divamage","ASL-Divamage","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-15.mp4","2",""},
-new string[]{"DeafDragon22","ASL-DeafDragon22","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-16.mp4","2",""},
-new string[]{"Cha714_Deaf","ASL-Cha714_Deaf","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-17.mp4","2",""},
-new string[]{"AlexDeafHero","ASL-AlexDeafHero","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-18.mp4","2",""},
-new string[]{"Papa Thelius","ASL-Papa Thelius","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-19.mp4","2",""},
-new string[]{"DalekTheGamer","ASL-DalekTheGamer","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-20.mp4","2",""},
-new string[]{"Fearlesskoolaid","ASL-Fearlesskoolaid","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-21.mp4","2",""},
-new string[]{"Korea_Yujin","ASL-Korea_Yujin","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-22.mp4","2",""},
-
-new string[]{"Ailuro","ASL-Ailuro","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-24.mp4","2",""},
-new string[]{"Robyn / QueenHidi","ASL-Robyn / QueenHidi","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-25.mp4","2",""},
-new string[]{"CraftyHayley","ASL-CraftyHayley","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-26.mp4","2",""},
-new string[]{"[ DEAF-2030 ]","ASL-[ DEAF-2030 ]","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-27.mp4","2",""},
-new string[]{"Catman2010","ASL-Catman2010","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-28.mp4","2",""},
-new string[]{"Danyy59","ASL-Danyy59","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-29.mp4","2",""},
-new string[]{"Darkers","ASL-Darkers","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-30.mp4","2",""},
-new string[]{"Yun Big Eater","ASL-Yun Big Eater","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-31.mp4","2",""},
-
-new string[]{"UnrealPanda","ASL-UnrealPanda","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-33.mp4","2",""},
-new string[]{"Mr_Voodoo","ASL-Mr_Voodoo","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-34.mp4","2",""},
-new string[]{"GT4tube","ASL-GT4tube","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-35.mp4","2",""},
-new string[]{"CathDeafGamer","ASL-CathDeafGamer","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-36.mp4","2",""},
-new string[]{"Angél","ASL-Angél","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-37.mp4","2",""},
-new string[]{"RomainDEAF","ASL-RomainDEAF","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-38.mp4","2",""},
-new string[]{"Peppers","ASL-Peppers","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet28/28-39.mp4","2",""},
+new string[]{"Sio","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-01.mp4","2",""},
+new string[]{"MrDummy_NED","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-02.mp4","2",""},
+new string[]{"Wardragon","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-03.mp4","2",""},
+new string[]{"QQuentin","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-04.mp4","2",""},
+new string[]{"Ray_is_deaf","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-05.mp4","2",""},
+new string[]{"CTLucina","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-06.mp4","2",""},
+new string[]{"Fazzion","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-07.mp4","2",""},
+new string[]{"Jenny0629","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-08.mp4","2",""},
+new string[]{"Wubbles","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-09.mp4","2",""},
+new string[]{"Sqweekslj","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-10.mp4","2",""},
+new string[]{"Freddex1337","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-11.mp4","2",""},
+new string[]{"Max DEAF FR","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-12.mp4","2",""},
+new string[]{"Korea_Saro","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-13.mp4","2",""},
+new string[]{"_MINT_","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-14.mp4","2",""},
+new string[]{"Divamage","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-15.mp4","2",""},
+new string[]{"DeafDragon22","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-16.mp4","2",""},
+new string[]{"Cha714_Deaf","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-17.mp4","2",""},
+new string[]{"AlexDeafHero","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-18.mp4","2",""},
+new string[]{"Papa Thelius","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-19.mp4","2",""},
+new string[]{"DalekTheGamer","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-20.mp4","2",""},
+new string[]{"Fearlesskoolaid","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-21.mp4","2",""},
+new string[]{"Korea_Yujin","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-22.mp4","2",""},
+new string[]{"Mute Raven","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-23.mp4","2",""},
+new string[]{"Ailuro","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-24.mp4","2",""},
+new string[]{"Robyn / QueenHidi","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-25.mp4","2",""},
+new string[]{"CraftyHayley","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-26.mp4","2",""},
+new string[]{"[ DEAF-2030 ]","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-27.mp4","2",""},
+new string[]{"Catman2010","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-28.mp4","2",""},
+new string[]{"Danyy59","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-29.mp4","2",""},
+new string[]{"Darkers","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-30.mp4","2",""},
+new string[]{"Yun Big Eater","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-31.mp4","2",""},
+new string[]{"Deaf_Danielo_89","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-32.mp4","2",""},
+new string[]{"UnrealPanda","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-33.mp4","2",""},
+new string[]{"Mr_Voodoo","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-34.mp4","2",""},
+new string[]{"GT4tube","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-35.mp4","2",""},
+new string[]{"CathDeafGamer","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-36.mp4","2",""},
+new string[]{"Angél","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-37.mp4","2",""},
+new string[]{"RomainDEAF","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-38.mp4","2",""},
+new string[]{"Peppers","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-39.mp4","2",""},
+new string[]{"Taboot62","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-40.mp4","2",""},
+new string[]{"Ja_Hyuni","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-41.mp4","2",""},
+new string[]{"MrRikuG935","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-42.mp4","2",""},
 },
 new string[][]{//Lesson 29 (Countries)
-new string[]{"World","Idle","No Data Yet.","","2",""},
-new string[]{"Europe","Idle","No Data Yet.","","2",""},
-new string[]{"Asia","Idle","No Data Yet.","","2",""},
-new string[]{"Country","Idle","No Data Yet.","","2",""},
-new string[]{"North America","Idle","No Data Yet.","","2",""},
-new string[]{"Central America","Idle","No Data Yet.","","2",""},
-new string[]{"South America","Idle","No Data Yet.","","2",""},
-new string[]{"America/USA","Idle","No Data Yet.","","2",""},
-new string[]{"Canada","Idle","No Data Yet.","","2",""},
-new string[]{"Mexico","Idle","No Data Yet.","","2",""},
-new string[]{"Spain","Idle","No Data Yet.","","2",""},
-new string[]{"France","Idle","No Data Yet.","","2",""},
-new string[]{"England","Idle","No Data Yet.","","2",""},
-new string[]{"Netherlands","Idle","No Data Yet.","","2",""},
-new string[]{"Germany","Idle","No Data Yet.","","2",""},
-new string[]{"Scandinavia","Idle","No Data Yet.","","2",""},
-new string[]{"Middle East","Idle","No Data Yet.","","2",""},
-new string[]{"Austrailia","Idle","No Data Yet.","","2",""},
-new string[]{"Japan","Idle","No Data Yet.","","2",""},
-new string[]{"China","Idle","No Data Yet.","","2",""},
-new string[]{"South Korea","Idle","No Data Yet.","","2",""},
-new string[]{"Russia","Idle","No Data Yet.","","2",""},
-new string[]{"New Zealand","Idle","No Data Yet.","","2",""},
-new string[]{"Brazil","Idle","No Data Yet.","","2",""},
-new string[]{"Poland","Idle","No Data Yet.","","2",""},
-new string[]{"Turkey","Idle","No Data Yet.","","2",""},
-new string[]{"Isreal","Idle","No Data Yet.","","2",""},
-new string[]{"Egypt","Idle","No Data Yet.","","2",""},
-new string[]{"Africa","Idle","No Data Yet.","","2",""},
-new string[]{"South Africa","Idle","No Data Yet.","","2",""},
-new string[]{"Norway","Idle","No Data Yet.","","2",""},
-new string[]{"Sweden","Idle","No Data Yet.","","2",""},
-new string[]{"Finland","Idle","No Data Yet.","","2",""},
-new string[]{"Austria","Idle","No Data Yet.","","2",""},
-new string[]{"Italy","Idle","No Data Yet.","","2",""},
-new string[]{"Portugal","Idle","No Data Yet.","","2",""},
-new string[]{"Romania","Idle","No Data Yet.","","2",""},
-new string[]{"Saudi Arabia","Idle","No Data Yet.","","2",""},
-new string[]{"Ireland","Idle","No Data Yet.","","2",""},
-new string[]{"Scotland","Idle","No Data Yet.","","2",""},
+new string[]{"World","ASL-World","Anonymous","","2",""},
+new string[]{"Europe","ASL-Europe","Anonymous","","2",""},
+new string[]{"Asia","ASL-Asia","Anonymous","","2",""},
+new string[]{"Country","ASL-Country","Anonymous","","2",""},
+new string[]{"North America","ASL-North America","Anonymous","","2",""},
+new string[]{"Central America","ASL-Central America","Anonymous","","2",""},
+new string[]{"South America","ASL-South America","Anonymous","","2",""},
+new string[]{"America / USA","ASL-America / USA","Anonymous","","2",""},
+new string[]{"Canada","ASL-Canada","Anonymous","","2",""},
+new string[]{"Mexico","ASL-Mexico","Anonymous","","2",""},
+new string[]{"Spain","ASL-Spain","Anonymous","","2",""},
+new string[]{"France","ASL-France","Anonymous","","2",""},
+new string[]{"England","ASL-England","Anonymous","","2",""},
+new string[]{"Netherlands","ASL-Netherlands","Anonymous","","2",""},
+new string[]{"Germany","ASL-Germany","Anonymous","","2",""},
+new string[]{"Scandinavia","ASL-Scandinavia","Anonymous","","2",""},
+new string[]{"Middle East","ASL-Middle East","Anonymous","","2",""},
+new string[]{"Australia","ASL-Australia","Anonymous","","2",""},
+new string[]{"Japan","ASL-Japan","Anonymous","","2",""},
+new string[]{"China","ASL-China","Anonymous","","2",""},
+new string[]{"South Korea","ASL-South Korea","Anonymous","","2",""},
+new string[]{"Russia","ASL-Russia","Anonymous","","2",""},
+new string[]{"New Zealand","ASL-New Zealand","Anonymous","","2",""},
+new string[]{"Brazil","ASL-Brazil","Anonymous","","2",""},
+new string[]{"Poland","ASL-Poland","Anonymous","","2",""},
+new string[]{"Turkey","ASL-Turkey","Anonymous","","2",""},
+new string[]{"Israel","ASL-Israel","Anonymous","","2",""},
+new string[]{"Egypt","ASL-Egypt","Anonymous","","2",""},
+new string[]{"Africa","ASL-Africa","Anonymous","","2",""},
+new string[]{"South Africa","ASL-South Africa","Anonymous","","2",""},
+new string[]{"Norway","ASL-Norway","Anonymous","","2",""},
+new string[]{"Sweden","ASL-Sweden","Anonymous","","2",""},
+new string[]{"Finland","ASL-Finland","Anonymous","","2",""},
+new string[]{"Austria","ASL-Austria","Anonymous","","2",""},
+new string[]{"Italy","ASL-Italy","Anonymous","","2",""},
+new string[]{"Portugal","ASL-Portugal","Anonymous","","2",""},
+new string[]{"Romania","ASL-Romania","Anonymous","","2",""},
+new string[]{"Saudi Arabia","ASL-Saudi Arabia","Anonymous","","2",""},
+new string[]{"Ireland","ASL-Ireland","Anonymous","","2",""},
+new string[]{"Scotland","ASL-Scotland","Anonymous","","2",""},
 },
 new string[][]{//Lesson 30 (Colors)
 new string[]{"Color","ASL-Color","Anonymous","","2",""},
@@ -1328,7 +1337,7 @@ new string[]{"Nurse","ASL-Nurse","Anonymous","","2",""},
 new string[]{"Hospital","ASL-Hospital","Anonymous","","2",""},
 new string[]{"Sick","ASL-Sick","Anonymous","","2",""},
 new string[]{"Hurt","ASL-Hurt","Anonymous","","2",""},
-new string[]{"Feaver","ASL-Feaver","Anonymous","","2",""},
+new string[]{"Fever","ASL-Fever","Anonymous","","2",""},
 new string[]{"Diarrhea","ASL-Diarrhea","Anonymous","","2",""},
 new string[]{"Vomit","ASL-Vomit","Anonymous","","2",""},
 new string[]{"Healthy","ASL-Healthy","Anonymous","","2",""},
@@ -1372,11 +1381,11 @@ new string[]{"Skin","ASL-Skin","Anonymous","","2",""},
 
 	static string [][] lessonnames ={
 	new string[]{//array of ASL (and possibilly other language) lesson names - can be unique per language.
-	"Daily Use","Pointing use Question/Answer","Common",
-	"People","Feelings/Reactions","Value","Time","VRChat","Alphabet/Numbers (Fingerspelling)","Verbs & Actions p1","Verbs & Actions p2: Ben-Cor",
+	"Daily Use","Pointing use Question / Answer","Common",
+	"People","Feelings / Reactions","Value","Time","VRChat","Alphabet / Numbers (Fingerspelling)","Verbs & Actions p1","Verbs & Actions p2: Ben-Cor",
 	"Verbs & Actions p3: Cou-Esc","Verbs & Actions p4: Exc-Ins","Verbs & Actions p5: Int-Pas","Verbs & Actions p6: Pat-Sav","Verbs & Actions p7: Say-Try",
 	"Verbs & Actions p8","Food",
-	"Animals/Machines","Places","Stuff/Weather","Clothes/Equipment","Fantasy/Characters","Holidays/Special Days","Home stuff","Nature/Environment","Talk/Asking exercises",
+	"Animals / Machines","Places","Stuff / Weather","Clothes / Equipment","Fantasy / Characters","Holidays / Special Days","Home stuff","Nature / Environment","Talk / Asking exercises",
 	"Name sign users","Countries","Colors","Medical"}
 	};
 	static string [][] signlanguagenames = {
@@ -1399,12 +1408,13 @@ new string[]{"Skin","ASL-Skin","Anonymous","","2",""},
 
 	//why create two copies? Too hard to sync all the different active/inactive gameobjects if everyone isn't on the same "page".
 	GameObject rootmenu = new GameObject("Menu Root");
+	rootmenu.layer=11;
 	GameObject globalmenu = CreateMenu(rootmenu,"Global");
 	GameObject localmenu = CreateMenu(rootmenu,"Local");
 
 
 /*****************************************
-Update menu system to point to newly created objects.
+Update preferences menu to point to newly created objects.
 *****************************************/
 //recreate toggle to fix reference? 
 
@@ -1587,15 +1597,29 @@ Update menu system to point to newly created objects.
 			}
 		}
 	};
-	nanapc.SetActive(true);
+	#if UNITY_ANDROID
+	nanapc.SetActive(false);
 	nanaquest.SetActive(true);
+	#else
+	nanapc.SetActive(true);
+	nanaquest.SetActive(false);
+	#endif
+
 	globalmenu.SetActive(false);
 
     }
     static GameObject CreateMenu(GameObject parent, string mode){
-
-
-
+	//declare uiresource settings
+	DefaultControls.Resources uiresources = new DefaultControls.Resources();
+	uiresources.background=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
+	//uiresources.checkmark=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
+	uiresources.checkmark = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VRCSDK/Dependencies/VRChat/Resources/PerformanceIcons/Perf_Great_32.png");
+	uiresources.dropdown=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/DropdownArrow.psd");
+	uiresources.inputField=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
+	uiresources.knob=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Knob.psd");
+	uiresources.mask=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/UIMask.psd");
+	uiresources.standard=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/UISprite.psd");
+	/*
 	//declare toggle resource settings
 	DefaultControls.Resources toggleresources = new DefaultControls.Resources();
 	//Set the Toggle Background Image someBgSprite;
@@ -1604,8 +1628,8 @@ Update menu system to point to newly created objects.
 	toggleresources.checkmark = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
 	DefaultControls.Resources rootpanelresources = new DefaultControls.Resources();
 	rootpanelresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
-	DefaultControls.Resources txtresources = new DefaultControls.Resources();
-
+	//DefaultControls.Resources txtresources = new DefaultControls.Resources();
+*/
 	int layer=8;
 	//int rowoffset=860;
 	int columnoffset=200;
@@ -1687,15 +1711,15 @@ menuroot.layer = layer;
 	rootcanvas.GetComponent<RectTransform> ().anchorMax = zerovector2;
 	rootcanvas.GetComponent<RectTransform> ().anchorMin = zerovector2;
 	rootcanvas.GetComponent<RectTransform> ().pivot = zerovector2;
-	rootcanvas.AddComponent<Canvas> (); //adds canvas to root canvas gameobject
-	rootcanvas.GetComponent<Canvas> ().renderMode = RenderMode.WorldSpace;
+	//rootcanvas.AddComponent<Canvas> (); //adds canvas to root canvas gameobject
+	rootcanvas.GetOrAddComponent<Canvas> ().renderMode = RenderMode.WorldSpace;
 	rootcanvas.AddComponent<CanvasScaler>();
 	rootcanvas.AddComponent<GraphicRaycaster>();
 	rootcanvas.AddComponent<VRC_UiShape>();
 	ToggleGroup rootcanvastogglegroup = rootcanvas.AddComponent<ToggleGroup>();
 	rootcanvastogglegroup.allowSwitchOff=true;
 
-		GameObject rootpanel = DefaultControls.CreatePanel(rootpanelresources);
+		GameObject rootpanel = DefaultControls.CreatePanel(uiresources);
 		rootpanel.transform.SetParent(rootcanvas.transform, false);
 		rootpanel.layer = layer;
 		rootpanel.GetComponent<RectTransform> ().sizeDelta = menusize;
@@ -1714,7 +1738,7 @@ menuroot.layer = layer;
 		langselectmenu.transform.SetParent(rootcanvas.transform, false);
 		langselectmenu.layer = layer;
 		
-		GameObject langselectmenuheader = DefaultControls.CreateText(txtresources);
+		GameObject langselectmenuheader = DefaultControls.CreateText(uiresources);
 		langselectmenuheader.transform.SetParent (langselectmenu.transform, false);
 		langselectmenuheader.name="VR Sign Language Select Menu Header";
 		langselectmenuheader.layer = layer;
@@ -1733,10 +1757,16 @@ menuroot.layer = layer;
 /*****************************************
 MAIN LANGUAGE LOOP HERE
 *****************************************/
+		int langmenucolumn=0;
+		int langmenurow=0;
         for (int languagenum=0; languagenum<AllLessons.Length;languagenum++) //for every language in signlanguages do this once:
         {
-
-
+				if (languagenum != 0){
+					if (languagenum % numberpercolumn == 0){ //display 9 items per column
+					langmenucolumn++;
+					langmenurow=0;
+					}
+				}
 			        var wordlookup = new Dictionary<string, int>();
                     //int dictlessonnum=1;
                     //int dictwordnum=1;
@@ -1778,7 +1808,7 @@ MAIN LANGUAGE LOOP HERE
 
 			//create language select button
 			GameObject langselectgo = createbutton2(parent:langselectmenu, name:signlanguagenames[languagenum][1], sizedelta:buttonsize,
-            localPosition: new Vector3(columnoffset+(languagenum*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(languagenum*rowseperation),0),
+            localPosition: new Vector3(columnoffset+(langmenucolumn*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(langmenurow*rowseperation),0),
             text: signlanguagenames[languagenum][1], fontSize:50, txtsizedelta:buttonsize, txtanchoredPosition:new Vector2(20,0),
             alignment:TextAnchor.MiddleLeft, nav:no_nav, layer:layer);
 
@@ -1787,7 +1817,7 @@ MAIN LANGUAGE LOOP HERE
 				lessonmenu.transform.SetParent(langroot.transform, false);
 				lessonmenu.layer = layer;
 					//Create lesson menu header
-					GameObject lessonselectmenuheader = DefaultControls.CreateText(txtresources);
+					GameObject lessonselectmenuheader = DefaultControls.CreateText(uiresources);
 					lessonselectmenuheader.transform.SetParent (lessonmenu.transform, false);
 					lessonselectmenuheader.name=signlanguagenames[languagenum][0]+" Lesson Menu Header";
 					lessonselectmenuheader.layer = layer;
@@ -1802,6 +1832,8 @@ MAIN LANGUAGE LOOP HERE
 					lessonselectmenuheader.GetComponent<RectTransform> ().anchorMax = zerovector2;
 					lessonselectmenuheader.GetComponent<RectTransform> ().anchorMin = zerovector2;
 					lessonselectmenuheader.GetComponent<RectTransform> ().pivot = zerovector2;
+
+			langmenurow++;
 /*****************************************
 MAIN LESSON LOOP HERE
 *****************************************/
@@ -1854,26 +1886,35 @@ MAIN LESSON LOOP HERE
 						b.colors = colors;
 					}
 					*/
-					if(lessonnum<2){
+					var defaultcolors = b.colors;
+					defaultcolors.normalColor = new Color32( 0xFF, 0x98, 0x98, 0xFF ); //FF9898FF light red
+					b.colors = defaultcolors;
+					if(lessonnum+1<3){
 						var colors = b.colors;
 						colors.normalColor = new Color32( 0x98, 0xFF, 0x98, 0xFF ); //FF9898FF light green
 						b.colors = colors;
 					}
-					if(lessonnum>=2){
+					if(lessonnum+1>=3&&lessonnum+1<=17){
 						var colors = b.colors;
 						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
 						b.colors = colors;
 					}
-					if(lessonnum>=17){
-						var colors = b.colors;
-						colors.normalColor = new Color32( 0xFF, 0x98, 0x98, 0xFF ); //FF9898FF light red
-						b.colors = colors;
-					}
-					if(lessonnum>=29){
+					if(lessonnum+1>=24&&lessonnum+1<=25){
 						var colors = b.colors;
 						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
 						b.colors = colors;
 					}
+					if(lessonnum+1==27){
+						var colors = b.colors;
+						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
+						b.colors = colors;
+					}
+					if(lessonnum+1>=29&&lessonnum+1<=31){
+						var colors = b.colors;
+						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
+						b.colors = colors;
+					}
+
 					menurow++;
 					//create lesson x gameobject eg: ASL Lesson x
 					GameObject lessongo = new GameObject(signlanguagenames[languagenum][0]+" Lesson "+(lessonnum+1));
@@ -1881,7 +1922,7 @@ MAIN LESSON LOOP HERE
 					lessongo.layer = layer;
 					
 					//create lesson x header
-					GameObject lessongoheader = DefaultControls.CreateText(txtresources);
+					GameObject lessongoheader = DefaultControls.CreateText(uiresources);
 					lessongoheader.transform.SetParent (lessongo.transform, false);
 					lessongoheader.name=signlanguagenames[languagenum][0]+" Lesson "+(lessonnum+1) + "- Header"; //ASL Lesson X Lesson Header
 					lessongoheader.layer = layer;
@@ -1977,28 +2018,6 @@ MAIN WORD LOOP HERE
 							}
 						}
 						
-//create previous next button paren
-/*
-if(wordnum!=0){
-	
-	//GameObject prevbutton = new GameObject(signlanguagenames[languagenum][0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Prevbutton");
-	//prevbutton.transform.SetParent(lessongo.transform, false);
-	
-
-					GameObject prevbutton=createbutton2(parent=lessongo, name:signlanguagenames[languagenum][0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Prevbutton",
-					sizedelta:buttonsize,localPosition:new Vector3 (-2125,600,-2000),
-					text:"Previous Sign",txtsizedelta:new Vector2 (625, 100),txtanchoredPosition:new Vector2 (0,0), alignment:TextAnchor.MiddleCenter,
-					nav:no_nav,layer:layer);
-
-
-}
-if(wordnum!=AllLessons[languagenum][lessonnum].GetLength(0)){
-					GameObject nextbutton=createbutton2(parent=lessongo, name:signlanguagenames[languagenum][0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Prevbutton",
-					sizedelta:buttonsize,localPosition:new Vector3 (-1500,600,-2000),
-					text:"Next Sign",txtsizedelta:new Vector2 (625, 100),txtanchoredPosition:new Vector2 (0,0), alignment:TextAnchor.MiddleCenter,
-					nav:no_nav,layer:layer);
-}
-*/
 
 			GameObject wordtriggercontainer = new GameObject(signlanguagenames[languagenum][0]+" L"+(lessonnum+1)+"-W"+(wordnum+1)+" Trigger Container"); //create lesson container for a given language to house global triggers. 
 
@@ -2057,7 +2076,7 @@ if(wordnum!=AllLessons[languagenum][lessonnum].GetLength(0)){
 							indexicongo.transform.SetParent(buttonoffgo.transform, false);
 							indexicongo.layer=layer;
 							indexicongo.AddComponent<RectTransform> ();
-							indexicongo.GetComponent<RectTransform> ().localPosition = new Vector3(514,68,0);
+							indexicongo.GetComponent<RectTransform> ().localPosition = new Vector3(460,68,0);
 							indexicongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
 							indexicongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
 							indexicongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
@@ -2070,7 +2089,7 @@ if(wordnum!=AllLessons[languagenum][lessonnum].GetLength(0)){
 							vricongo.transform.SetParent(buttonoffgo.transform, false);
 							vricongo.layer=layer;
 							vricongo.AddComponent<RectTransform> ();
-							vricongo.GetComponent<RectTransform> ().localPosition = new Vector3(514,68,0);
+							vricongo.GetComponent<RectTransform> ().localPosition = new Vector3(460,68,0);
 							vricongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
 							vricongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
 							vricongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
@@ -2083,7 +2102,7 @@ if(wordnum!=AllLessons[languagenum][lessonnum].GetLength(0)){
 							allvricongo.transform.SetParent(buttonoffgo.transform, false);
 							allvricongo.layer=layer;
 							allvricongo.AddComponent<RectTransform> ();
-							allvricongo.GetComponent<RectTransform> ().localPosition = new Vector3(514,68,0);
+							allvricongo.GetComponent<RectTransform> ().localPosition = new Vector3(460,68,0);
 							allvricongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
 							allvricongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
 							allvricongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
@@ -2339,45 +2358,60 @@ wordrow++;
 
 if(mode=="Local"){
 					//create lesson toggles
-					GameObject uiToggle = DefaultControls.CreateToggle(toggleresources);
+					GameObject uiToggle = DefaultControls.CreateToggle(uiresources);
 					Toggle t = uiToggle.GetOrAddComponent<Toggle>();
 					uiToggle.gameObject.name = signlanguagenames[languagenum][0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Toggle";				
 					uiToggle.transform.SetParent(lessongo.transform, false);
 					uiToggle.layer=layer;
 					uiToggle.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0, 0);
 					uiToggle.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((columnoffset +(wordcolumn*columnseperation)),(menusizey-headersizey-textpadding-buttonsizey-togglesizedelta/2-(wordrow*rowseperation)));
-					uiToggle.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 0);
-					uiToggle.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 0);
+					uiToggle.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 1);
+					uiToggle.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 1);
 					uiToggle.GetComponent<RectTransform> ().pivot = new Vector2 (0, 0);
 					t.navigation = no_nav;
 					t.isOn = false;
 					t.transition= Selectable.Transition.None;
 					t.toggleTransition= Toggle.ToggleTransition.None;
-					t.group=rootcanvas.gameObject.GetComponent<ToggleGroup>();
+					t.group=rootcanvas.GetComponent<ToggleGroup>();
 					t.onValueChanged = new Toggle.ToggleEvent();
-					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (64, 64);
-					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (-32,-32);
-					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-					uiToggle.transform.Find("Background").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").GetComponent<RectTransform>().sizeDelta = new Vector2 (64, 64);
+					uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchoredPosition = new Vector2 (-32,-32);
+					uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 					uiToggle.transform.Find("Background").gameObject.layer=layer;
 
-					uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().text ="          "+ (wordnum+1)+ ") " + AllLessons[languagenum][lessonnum][wordnum][0];
-					uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().fontSize = 50;
-					uiToggle.transform.Find("Label").gameObject.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
-					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (750, 100);//maybe ,64
-					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (32,-50); //maybe ,-32
-					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+					GameObject checkboxtextgo = new GameObject("Text");
+					checkboxtextgo.transform.SetParent(uiToggle.transform.Find("Background").transform, false);
+					Text checkboxtext = checkboxtextgo.AddComponent<Text>();
+					checkboxtextgo.GetComponent<RectTransform>().sizeDelta= new Vector2(0,0);
+					checkboxtextgo.GetComponent<RectTransform>().anchorMax = new Vector2 (1, 1);
+					checkboxtextgo.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
+					checkboxtextgo.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+
+					checkboxtext.alignment = TextAnchor.MiddleCenter;
+					checkboxtext.text=(wordnum+1)+"";
+					checkboxtext.color = Color.black;
+					checkboxtext.fontSize = 40;
+
+					uiToggle.transform.Find("Label").GetComponent<Text>().text ="      " + AllLessons[languagenum][lessonnum][wordnum][0];
+					uiToggle.transform.Find("Label").GetComponent<Text>().fontSize = 50;
+					uiToggle.transform.Find("Label").GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+					uiToggle.transform.Find("Label").GetComponent<RectTransform>().sizeDelta = new Vector2 (750, 100);//maybe ,64
+					uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchoredPosition = new Vector2 (32,-50); //maybe ,-32
+					uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
+					uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
+					uiToggle.transform.Find("Label").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 					uiToggle.transform.Find("Label").gameObject.layer=layer;
 					
-					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (64, 64);
-					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,0);
-					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().sizeDelta = new Vector2 (64, 64);
+					uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,0);
+					uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
+					uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 					uiToggle.transform.Find("Background").gameObject.layer=layer;
+
+					uiToggle.transform.Find("Background").transform.Find("Checkmark").GetComponent<Image> ().color = new Color(0,0,0,1);
 
 					//0th value is the word 
 					//1st value is the name of the animation trigger (needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
@@ -2415,7 +2449,7 @@ if(mode=="Local"){
 							indexicongo.transform.SetParent(uiToggle.transform, false);
 							indexicongo.layer=layer;
 							indexicongo.AddComponent<RectTransform> ();
-							indexicongo.GetComponent<RectTransform> ().localPosition = new Vector3(104,-32,0);
+							indexicongo.GetComponent<RectTransform> ().localPosition = new Vector3(36,-32,0);
 							indexicongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
 							indexicongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
 							indexicongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
@@ -2428,7 +2462,7 @@ if(mode=="Local"){
 							vricongo.transform.SetParent(uiToggle.transform, false);
 							vricongo.layer=layer;
 							vricongo.AddComponent<RectTransform> ();
-							vricongo.GetComponent<RectTransform> ().localPosition = new Vector3(104,-32,0);
+							vricongo.GetComponent<RectTransform> ().localPosition = new Vector3(36,-32,0);
 							vricongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
 							vricongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
 							vricongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
@@ -2441,7 +2475,7 @@ if(mode=="Local"){
 							allvricongo.transform.SetParent(uiToggle.transform, false);
 							allvricongo.layer=layer;
 							allvricongo.AddComponent<RectTransform> ();
-							allvricongo.GetComponent<RectTransform> ().localPosition = new Vector3(104,-32,0);
+							allvricongo.GetComponent<RectTransform> ().localPosition = new Vector3(36,-32,0);
 							allvricongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
 							allvricongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
 							allvricongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
@@ -2568,147 +2602,7 @@ if(mode=="Local"){
 									ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
 								}
 							);
-/*
-//prev/next button here assign trigger
-//
-if((wordnum+1) < AllLessons[languagenum][lessonnum].GetLength(0)){
-VRC_Trigger nextbuttontrigger = GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Root Canvas/"+signlanguagenames[languagenum][0]+" Root/"
-+signlanguagenames[languagenum][0]+" Lesson "+(lessonnum+1)+
-	signlanguagenames[languagenum][0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Nextbutton").GetOrAddComponent<VRC_Trigger>();
-	nextbuttontrigger.Triggers=new List<VRC_Trigger.TriggerEvent>(){
-		new VRC_Trigger.TriggerEvent{
-			BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysBufferOne,
-			TriggerType = VRC_Trigger.TriggerType.OnEnable,
-			TriggerIndividuals = true,
-			Events=new List<VRC_EventHandler.VrcEvent>(){
-									new VRC_EventHandler.VrcEvent{
-										EventType=VRC_EventHandler.VrcEventType.AnimationInt,
-										ParameterObject=GameObject.Find ("/Signing Avatars/Nana Avatar"),
-										ParameterString="sign",
-										ParameterInt=int.Parse((languagenum+1)+string.Format("{0:D2}",lessonnum+1)+string.Format("{0:D2}",wordnum+2))
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = AllLessons[languagenum][lessonnum][wordnum][0],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Armature/Canvas/Bubble/text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = (lessonnum+1)+"-"+(wordnum+1)+": "+AllLessons[languagenum][lessonnum][wordnum+1,0],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Current Sign Panel/Current Sign Text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = "This sign was recorded by: " + AllLessons[languagenum][lessonnum][wordnum+1,2],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Credit Panel/Credit Text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = AllLessons[languagenum][lessonnum][wordnum][5],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Description Panel/Description Text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType=VRC_EventHandler.VrcEventType.AnimationInt,
-										ParameterObject=GameObject.Find ("/Signing Avatars/Nana Quest"),
-										ParameterString="sign",
-										ParameterInt=int.Parse((languagenum+1)+string.Format("{0:D2}",lessonnum+1)+string.Format("{0:D2}",wordnum+2))
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = AllLessons[languagenum][lessonnum][wordnum][0],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Quest/Armature/Canvas/Bubble/text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = (lessonnum+1)+"-"+(wordnum+1)+": "+AllLessons[languagenum][lessonnum][wordnum+1,0],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Quest/Canvas/Current Sign Panel/Current Sign Text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = "This sign was recorded by: " + AllLessons[languagenum][lessonnum][wordnum+1,2],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Quest/Canvas/Credit Panel/Credit Text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = AllLessons[languagenum][lessonnum][wordnum+1,6],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Quest/Canvas/Description Panel/Description Text")
-									}
 
-			}
-		}
-	};
-
-}
-
-if((wordnum-1) !=0){
-VRC_Trigger prevbuttontrigger = GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Root Canvas/"+signlanguagenames[languagenum][0]+" Root/"
-+signlanguagenames[languagenum][0]+" Lesson "+(lessonnum+1)+
-	signlanguagenames[languagenum][0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Prevbutton").GetOrAddComponent<VRC_Trigger>();
-	prevbuttontrigger.Triggers=new List<VRC_Trigger.TriggerEvent>(){
-		new VRC_Trigger.TriggerEvent{
-			BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysBufferOne,
-			TriggerType = VRC_Trigger.TriggerType.OnEnable,
-			TriggerIndividuals = true,
-			Events=new List<VRC_EventHandler.VrcEvent>(){
-									new VRC_EventHandler.VrcEvent{
-										EventType=VRC_EventHandler.VrcEventType.AnimationInt,
-										ParameterObject=GameObject.Find ("/Signing Avatars/Nana Avatar"),
-										ParameterString="sign",
-										ParameterInt=int.Parse((languagenum+1)+string.Format("{0:D2}",lessonnum+1)+string.Format("{0:D2}",wordnum))
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = AllLessons[languagenum][lessonnum][wordnum][0],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Armature/Canvas/Bubble/text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = (lessonnum+1)+"-"+(wordnum+1)+": "+AllLessons[languagenum][lessonnum][wordnum-1,0],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Current Sign Panel/Current Sign Text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = "This sign was recorded by: " + AllLessons[languagenum][lessonnum][wordnum-1,2],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Credit Panel/Credit Text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = AllLessons[languagenum][lessonnum][wordnum][5],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Description Panel/Description Text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType=VRC_EventHandler.VrcEventType.AnimationInt,
-										ParameterObject=GameObject.Find ("/Signing Avatars/Nana Quest"),
-										ParameterString="sign",
-										ParameterInt=int.Parse((languagenum+1)+string.Format("{0:D2}",lessonnum+1)+string.Format("{0:D2}",wordnum))
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = AllLessons[languagenum][lessonnum][wordnum][0],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Quest/Armature/Canvas/Bubble/text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = (lessonnum+1)+"-"+(wordnum+1)+": "+AllLessons[languagenum][lessonnum][wordnum-1,0],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Quest/Canvas/Current Sign Panel/Current Sign Text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = "This sign was recorded by: " + AllLessons[languagenum][lessonnum][wordnum-1,2],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Quest/Canvas/Credit Panel/Credit Text")
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = AllLessons[languagenum][lessonnum][wordnum-1,6],
-										ParameterObject = GameObject.Find ("/Signing Avatars/Nana Quest/Canvas/Description Panel/Description Text")
-									}
-
-			}
-		}
-	};
-
-}
-*/
 
 					}; //end for loop
 				} //endif global
@@ -2868,6 +2762,37 @@ lessontriggercontainertrigger.Triggers.Add(
 				/*****************************************
 				End of lesson loop.
 				*****************************************/
+
+
+				if(mode=="Global"){
+				//I need another loop to add all the triggers to deactivate lessons for global mode
+				//these triggers belong on the helper gameobjects.
+					for (int lessonnum = 0; lessonnum < AllLessons[languagenum].Length; lessonnum++){ //gets total rows in lesson. getlength(1) gets total columns, which is unneeded since we're using both columns at once.
+					List<GameObject> listoflessons = new List<GameObject>();
+					//i need another for loop to add every single video gameobject EXCEPT the current word.
+						for(int x=0;x<AllLessons[languagenum].Length; x++){
+							if(x!=lessonnum){//exclude the one I want to play- build list of all others in the lesson.
+								listoflessons.Add(GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Root Canvas/"+signlanguagenames[languagenum][0]+" Root/"+signlanguagenames[languagenum][0]+" Lesson " + (x +1)));
+							}
+
+						}//end for loop
+							//disables nonselected lessons
+							GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Trigger Container/" +signlanguagenames[languagenum][0]+ " Trigger Container/"
+							+ signlanguagenames[languagenum][0] + " L" + (lessonnum+1)+" Trigger Container").
+							GetComponent<VRC_Trigger>().Triggers[0].Events.Add(
+								new VRC_EventHandler.VrcEvent{
+									EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+									ParameterObjects=listoflessons.ToArray(),
+									ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+								}
+							);
+
+
+					}; //end for loop
+				} //endif global
+
+
+
 
 			//assign triggers after lessons created. Triggers for Language Chooser menu buttons.
 			Button langselectbutton = langselectgo.GetOrAddComponent<Button>();
