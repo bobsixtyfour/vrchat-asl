@@ -14,123 +14,123 @@ public class Squrrel_HQ : MonoBehaviour
     {
         string[][,] ASLlessons = { //creates an array of arrays
 			new string[,]{//lesson 1
-            {"Hello/Hi","안녕하세요","Bonjour/Salut"},{"Bye","안녕(작별)","AuRevoir"},{"How","어떻게","Comment"},{"You","너","Toi/Tu"},{"How are you?","어떻게 지냈어?","Comment vas-tu?"},
-            {"Nice","멋지다","Agréable"},{"Meet","만나다","Rencontrer"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer."},{"Good","좋아,훌륭해","Bon"},{"Bad","나빠","Mauvais"},
-            {"Fine","괜찮아","Bien"},{"Who","누구","Qui"},{"What","무엇을","Quoi"},{"When","언제","Quand"},{"Where","어디","Où"},{"Why","왜","Pourquoi"},{"Which","어떤것","Lequel"},{"Understand","이해하다","Comprendre"},
-            {"Don’t Understand","이해하지 못하다","Ne pas comprendre"},{"Yes","네,예","Oui"},{"No","아니","Non"},{"Please","제발,부디","S’il vous plaît"},{"Thanks","고마워","Merci"},{"Sorry","미안해","Désolé"},
-            {"Deaf","청각장애인(농아인)","Sourd"},{"Hard of Hearing","난청인","Malententand"},{"Hearing","청력,청인","Entendant"},{"Mute","말을 못하다","Muet"}
+            {"Hello/Hi","안녕하세요","Bonjour/Salut","Hallo"},{"Bye","안녕(작별)","AuRevoir","Tschus"},{"How","어떻게","Comment","Wie"},{"You","너","Toi/Tu","du/dir"},{"How are you?","어떻게 지냈어?","Comment vas-tu?","Wie geht es dir?"},
+            {"Nice","멋지다","Agréable","Nett"},{"Meet","만나다","Rencontrer","Treffen"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer.","Freut mich, dich kennenzulernen"},{"Good","좋아,훌륭해","Bon","Gut"},{"Bad","나빠","Mauvais","Schlecht"},
+            {"Fine","괜찮아","Bien","fein"},{"Who","누구","Qui","Wer"},{"What","무엇을","Quoi","Was"},{"When","언제","Quand","Wann"},{"Where","어디","Où","Wo"},{"Why","왜","Pourquoi","Warum"},{"Which","어떤것","Lequel","Welche"},{"Understand","이해하다","Comprendre","Verstehen"},
+            {"Don’t Understand","이해하지 못하다","Ne pas comprendre","Verstehe nicht"},{"Yes","네,예","Oui","Ja"},{"No","아니","Non","Nein"},{"Please","제발,부디","S’il vous plaît","Bitte"},{"Thanks","고마워","Merci","Vielen Dank"},{"Sorry","미안해","Désolé","Es tut uns leid"},
+            {"Deaf","청각장애인(농아인)","Sourd","gehörlos},{"Hard of Hearing","난청인","Malententand","schwerhörig"},{"Hearing","청력,청인","Entendant";"Hören"},{"Mute","말을 못하다","Muet","Stumm"}
             },
             new string[,]{//lesson 2
-			{"Person","사람","Personne"},{"Learn","배우다","Apprendre"},{"Student","학생","Étudiant"},{"Teach","가르치다","Enseigner"},{"Teacher","선생님","Enseignant"},
-            {"Friend","친구","Ami"},{"Slow","느리다","Lent"},{"Fast","빠르다","Rapide"},{"Like","좋다","Aimer"},{"Don’t Like","싫다","Ne pas aimer"},{"Want","원하다","Vouloir"},
-            {"Don’t Want","원하지 않다","Ne pas vouloir"},{"Need","필요하다","Besoin"},{"Change","바꾸다","Changer"},{"Same","같다","Même"},{"Different","다르다","Different"},{"Can","할수있다","Pouvoir"},
-            {"Can’t","못하다","Ne pas pouvoir"},{"Not","그것은 아니다","Pas"},{"Use","사용하다","Utiliser"},{"Follow","따라가다","Suivre"},{"Easy","쉽다","Facile"},{"Difficult","어렵다","Difficile"},
-            {"Soft","부드럽다","Doux"},{"Hard","단단하다","Dure"},{"New","새롭다","Nouveau"},{"Old","나이,늙은","Vieux"},{"Much/Alot","많다","Beaucoup"}
+			{"Person","사람","Personne",""Person""},{"Learn","배우다","Apprendre",""Lernen},{"Student","학생","Étudiant","Student"},{"Teach","가르치다","Enseigner","Lehren"},{"Teacher","선생님","Enseignant","Lehrer"},
+            {"Friend","친구","Ami","Freund"},{"Slow","느리다","Lent","Langsam"},{"Fast","빠르다","Rapide","Schnell"},{"Like","좋다","Aimer","mögen"},{"Don’t Like","싫다","Ne pas aimer","mag nicht"},{"Want","원하다","Vouloir",""wollen},
+            {"Don’t Want","원하지 않다","Ne pas vouloir","will nicht"},{"Need","필요하다","Besoin","brauchen"},{"Change","바꾸다","Changer";"Veränderung"},{"Same","같다","Même","gleich"},{"Different","다르다","Different","anders"},{"Can","할수있다","Pouvoir","können"},
+            {"Can’t","못하다","Ne pas pouvoir","Kann nicht"},{"Not","그것은 아니다","Pas","Nicht"},{"Use","사용하다","Utiliser","verwenden"},{"Follow","따라가다","Suivre","Folgen"},{"Easy","쉽다","Facile","einfach"},{"Difficult","어렵다","Difficile","Schwer"},
+            {"Soft","부드럽다","Doux","Sanft"},{"Hard","단단하다","Dure","Hart"},{"New","새롭다","Nouveau","Neu"},{"Old","나이,늙은","Vieux","alt"},{"Much/Alot","많다","Beaucoup","Viel"}
             },
             new string[,]{//lesson 3
-			{"Time","시간","Temps"},{"Tomorrow","내일","Demain"},{"Yesterday","어제","Hier"},{"Today","오늘","Aujourd'hui"},{"Second","초","Seconde"},{"Minute","분","Minute"},
-            {"Hour","시, 1시간","Heure"},{"Day","하루","Journée"},{"Week","일주일","Semaine"},{"Month","개월,달","Mois"},{"Year","년도","Année"},{"Past","과거","Passé"},{"Future/Will","미래","Future"},
-            {"Before","전에","Avant"},{"Now","지금","Maintenant"},{"After","후에","Après"},{"Someday/Eventually","언젠가/결국","un Jour/Éventuellement"},{"Everyday","매일","Tous les jours"},
-            {"Next","다음","Suivant"},{"Done/Finished","완료","Termier"},{"Late","나중에","Tard"},{"Near","가깝다","Près"},
-            {"Far","멀다","Loin"},{"House","집","Maison"},{"Home","집","Maison"},{"Live","살다","Vivre"},{"True/Sure/Real","진실,정말,진짜","Vrai"},{"Fake","거짓말,가짜","Faux"}
+			{"Time","시간","Temps","Zeit"},{"Tomorrow","내일","Demain","Morgen"},{"Yesterday","어제","Hier","Gestern"},{"Today","오늘","Aujourd'hui","heute"},{"Second","초","Seconde","Sekunde"},{"Minute","분","Minute","Minute"},
+            {"Hour","시, 1시간","Heure","Stunde"},{"Day","하루","Journée","Tag"},{"Week","일주일","Semaine","Woche"},{"Month","개월,달","Mois","Monat"},{"Year","년도","Année","Jahr"},{"Past","과거","Passé","Vergangenheit"},{"Future/Will","미래","Future","Zukunft/Wille"},
+            {"Before","전에","Avant","Vor"},{"Now","지금","Maintenant","Jetzt"},{"After","후에","Après","Nach"},{"Someday/Eventually","언젠가/결국","un Jour/Éventuellement","Irgendwann mal/Schließlich"},{"Everyday","매일","Tous les jours","Täglich"},
+            {"Next","다음","Suivant","Nächster"},{"Done/Finished","완료","Termier","Fertig"},{"Late","나중에","Tard","Spät"},{"Near","가깝다","Près","In der Nähe von"},
+            {"Far","멀다","Loin","Weit"},{"House","집","Maison","Haus"},{"Home","집","Maison","Zuhause"},{"Live","살다","Vivre","Leben"},{"True/Sure/Real","진실,정말,진짜","Vrai","Richtig/Sicher/Real"},{"Fake","거짓말,가짜","Faux","Fälschung"}
             },
             new string[,]{//lesson 4
-			{"Normal","평범,보통","Normal"},{"Any","전혀,어느","N'importequel"},{"Continue","계속","Continuer"},{"Stay","계속있다,머물러있다","Rester"},{"Still","여전하다","Encore"},
-            {"Copy","복사","Copier"},{"Notice","공지,안내","Remarquer"},{"Improve","개선","Ameliorer"},{"Gone","사라지다","Disparu"},{"Test","시험,테스트","Tester"},{"Visit","방문하다","Visiter"},
-            {"With","와(과)함께","Avec"},{"Without","없이","Sans"},{"Away","없이떨어져/저리가!","Auloin"},{"Weird","기괴하다,이상하다","Bizarre"},{"Turn","돌다,돌리다","Tourner"},
+			{"Normal","평범,보통","Normal";"Normal"},{"Any","전혀,어느","N'importequel","beliebig"},{"Continue","계속","Continuer","Fortsetzen"},{"Stay","계속있다,머물러있다","Rester","Bleibe"},{"Still","여전하다","Encore","Noch"},
+            {"Copy","복사","Copier","Kopieren"},{"Notice","공지,안내","Remarquer","bemerken"},{"Improve","개선","Ameliorer","Verbessern"},{"Gone","사라지다","Disparu","Weg"},{"Test","시험,테스트","Tester","Test"},{"Visit","방문하다","Visiter","Besuch"},
+            {"With","와(과)함께","Avec","Mit"},{"Without","없이","Sans","Ohne"},{"Away","없이떨어져/저리가!","Auloin","Weg"},{"Weird","기괴하다,이상하다","Bizarre","Seltsam"},{"Turn","돌다,돌리다","Tourner","abbiegen"},
             {"More Than","보다 많다","Plusque"},{"Less Than","보다 적다","Moinsque"},{"Correct","옳다,맞다","Correct"},{"High","높다","Haut"},{"Low","낮다","Bas"},{"Way","방식","Chemin"},{"Wish","원하다,바라다","Souhait"},
-            {"Later","늦다","Tard"},{"Perfect","완벽하다","Parfait"},{"Fun","재미,재밌어","Amusant"},{"Every","모든,모두","Tout"},{"Funny","우습다,웃기다","Drôle"}
+            {"Later","늦다","Tard","Später"},{"Perfect","완벽하다","Parfait","Perfekt"},{"Fun","재미,재밌어","Amusant","Spaß"},{"Every","모든,모두","Tout","Jeden"},{"Funny","우습다,웃기다","Drôle","Lustig"}
             },
             new string[,]{//lesson 5
-			{"Jealous","질투","Jaloux"},{"Idea","아이디어,발상","Idée"},{"Mountain","산","Montagne"},{"Blame","탓하다","Accuser"},{"Babysitter","육아도우미","Gardienne d'enfants"},
-            {"Behavior","행동","Agissement"},{"Butter","버터","Beurre"},{"Farm","농장","Ferme"},{"Fault","잘못","Faute"},{"Fall","떨어지다/빠지다","Tomber"},{"Man","남자","Homme"},
-            {"Woman","여자","Femme"},{"Mom","엄마","Mère"},{"Dad","아빠","Père"},{"Uncle","삼촌","Oncle"},{"Aunt","고모,이모","Tante"},{"Grandma","할머니","Grand-mère"},{"Grandpa","할아버지","Grand-père"},
-            {"Sister","언니,누나","Sœur"},{"Brother","오빠,형","Frère"},{"Kid","꼬마,어린이","Enfant"},{"Sunday","일요일","Dimanche"},{"Monday","월요일","Lundi"},
-            {"Tuesday","화요일","Mardi"},{"Wednesday","수요일","Mercredi"},{"Thursday","목요일","Jeudi"},{"Friday","금요일","Vendredi"},{"Saturday","토요일","Samedi"}
+			{"Jealous","질투","Jaloux","Eifersüchtig"},{"Idea","아이디어,발상","Idée","Idee"},{"Mountain","산","Montagne","Berg"},{"Blame","탓하다","Accuser","Schuld"},{"Babysitter","육아도우미","Gardienne d'enfants","Babysitter"},
+            {"Behavior","행동","Agissement","Verhalten"},{"Butter","버터","Beurre","Butter"},{"Farm","농장","Ferme","Bauernhof"},{"Fault","잘못","Faute","Fehler"},{"Fall","떨어지다/빠지다","Tomber","Fallen"},{"Man","남자","Homme","Mann"},
+            {"Woman","여자","Femme","Frauen"},{"Mom","엄마","Mère","Mama"},{"Dad","아빠","Père","Papa"},{"Uncle","삼촌","Oncle","Uncle"},{"Aunt","고모,이모","Tante","Tante"},{"Grandma","할머니","Grand-mère","Oma"},{"Grandpa","할아버지","Grand-père","Opa"},
+            {"Sister","언니,누나","Sœur","Schwester"},{"Brother","오빠,형","Frère","Bruder"},{"Kid","꼬마,어린이","Enfant","Kind"},{"Sunday","일요일","Dimanche","Sonntag"},{"Monday","월요일","Lundi","Montag"},
+            {"Tuesday","화요일","Mardi","Dienstag"},{"Wednesday","수요일","Mercredi","Mittwoch"},{"Thursday","목요일","Jeudi","Donnerstag"},{"Friday","금요일","Vendredi","Freitag"},{"Saturday","토요일","Samedi","Samstag"}
             },
             new string[,]{//lesson 6
-			{"Account","계좌","Compte"},{"Abandon","버리다","Abandonner"},{"Balance","균형(상태)","Balancer"},{"Bath","목욕","Bain"},{"Excited","야구","Excité"},{"Because","때문에,왜냐면","Parce que"},
-            {"Become","되다","Devenir"},{"Call","부르다","Appeler"},{"Careful","조심하다","Prudent"},{"Choose","선택하다","Choisir"},{"Red","빨간색","Rouge"},{"Blue","파랑색","Bleu"},{"Green","초록색","Vert"},
-            {"Yellow","노란색","Jaune"},{"Orange","주황색","Orange"},{"Purple","보라색","Purple"},{"Pink","분홍색","Rose"},{"Black","검은색","Noir"},{"White","하얀색","Blanc"},{"Grey","회색","Gris"},
-            {"Brown","갈색","Brun"},{"Tan","황갈색,선탠","Hâlé"},{"Gold","골드,황금색","Or"},{"Silver","실버,은색","Argent"},
-            {"Bright-(Color)","밝다","Brillant"},{"Shiny-(Color)","빛나다,반짝이다","Étincelant"},{"Light-(Color)","연하다","Clair"},{"Dark-(Color)","어둡다","Foncé"}
+			{"Account","계좌","Compte","Konto"},{"Abandon","버리다","Abandonner","Verlassen"},{"Balance","균형(상태)","Balancer","Balance"},{"Bath","목욕","Bain","Bad"},{"Excited","야구","Excité","Aufgeregt"},{"Because","때문에,왜냐면","Parce que","weil"},
+            {"Become","되다","Devenir","Werden"},{"Call","부르다","Appeler","Anruf"},{"Careful","조심하다","Prudent","Vorsichtig"},{"Choose","선택하다","Choisir","Wählen"},{"Red","빨간색","Rouge","Rot"},{"Blue","파랑색","Bleu","Blau"},{"Green","초록색","Vert","Grün"},
+            {"Yellow","노란색","Jaune","Gelb"},{"Orange","주황색","Orange","Orange"},{"Purple","보라색","Purple","Lila"},{"Pink","분홍색","Rose","Rosa"},{"Black","검은색","Noir","Schwarz"},{"White","하얀색","Blanc","Weiß"},{"Grey","회색","Gris","Grau"},
+            {"Brown","갈색","Brun","Braun"},{"Tan","황갈색,선탠","Hâlé","Bräunen"},{"Gold","골드,황금색","Or","Gold"},{"Silver","실버,은색","Argent","Silber"},
+            {"Bright-(Color)","밝다","Brillant","Hell (Frabe)"},{"Shiny-(Color)","빛나다,반짝이다","Étincelant","Glänzend- (Farbe)"},{"Light-(Color)","연하다","Clair","Licht-(Frabe)"},{"Dark-(Color)","어둡다","Foncé","Dunkle (Farbe)"}
             },
             new string[,]{//lesson 7
-			{"Fly","날다","Voler"},{"Schedule","일정,스케줄","Emploi du temps"},{"Frustrated","좌절하다","Frustré"},{"Don’t Worry","걱정마세요","Ne t'inquiète pas"},{"Embarrassed","당황하다","Embarassé"},
-            {"Polite","공손하다","Poli"},{"Rude","무례하다","Rude"},{"Strong","강하다","Fort"},{"Brave","용감하다,용기 있는","Brave"},{"Experience","경험하다,체험하다","Expérience"},{"Expensive","비싸다","Coûteux"},
-            {"Curious","궁금하다,호기심이많다","Curieux"},{"Money","돈","Argent"},{"Lazy","게으른다","Lâche"},{"Hungry","배고프다","Faim"},{"Important","중요하다","Important"},{"Family","가족","Famille"},
-            {"Worry","걱정하다","Inquiêtude"},{"Worse","더나쁘다,심하다","Pire"},{"Here","여기,여기서","Ici"},{"Area","지역(구역)","Zone"},{"E-Mail","전자메일(이메일)","Courriel"},{"Discord","디스코드","Discorde"},
-            {"Drama","드라마","Drame"},{"Hot","뜨겁다,덥다","Chaud"},{"Cold","차갑다,춥다","Froid"},{"Music","음악","Musique"},{"Avatar","아바타","Avatar"}
+			{"Fly","날다","Voler","Fliege"},{"Schedule","일정,스케줄","Emploi du temps","Zeitplan"},{"Frustrated","좌절하다","Frustré","Frustriert"},{"Don’t Worry","걱정마세요","Ne t'inquiète pas","Mach dir keine Sorgen"},{"Embarrassed","당황하다","Embarassé","Verlegen"},
+            {"Polite","공손하다","Poli","Höflich"},{"Rude","무례하다","Rude","Unhöflich"},{"Strong","강하다","Fort","Stark"},{"Brave","용감하다,용기 있는","Brave","Mutig"},{"Experience","경험하다,체험하다","Expérience","Erfahrung"},{"Expensive","비싸다","Coûteux","Teuer"},
+            {"Curious","궁금하다,호기심이많다","Curieux","Neugierig"},{"Money","돈","Argent","Geld"},{"Lazy","게으른다","Lâche","Faul"},{"Hungry","배고프다","Faim","Hungrig"},{"Important","중요하다","Important","Wichtig"},{"Family","가족","Famille","Familie"},
+            {"Worry","걱정하다","Inquiêtude","Sorge"},{"Worse","더나쁘다,심하다","Pire","Schlechter"},{"Here","여기,여기서","Ici","Hier"},{"Area","지역(구역)","Zone","Bereich"},{"E-Mail","전자메일(이메일)","Courriel","E-Mail"},{"Discord","디스코드","Discorde","Discord"},
+            {"Drama","드라마","Drame","Theater"},{"Hot","뜨겁다,덥다","Chaud","Heiß"},{"Cold","차갑다,춥다","Froid","Kalt"},{"Music","음악","Musique","Musik"},{"Avatar","아바타","Avatar","Benutzerbild"}
             },
             new string[,]{//lesson 8
-			{"Cochlear Implant","인공와우","Implant Cochéaire"},{"Hearing Aid","보청기","Aide auditoire"},{"Disorder","엉망,어수선,장애","Désordre"},{"Together","함께하다","Ensemble"},
-            {"Nothing","아무것도 아니다","Rien"},{"Selective Mutism","불안장애","Mustisme sélectif"},{"Restaurant","레스토랑,식당","Restaurant"},{"Order","주문,질서","Ordre"},{"Serve","제공,서비스","Service"},
-            {"Buy","구매,사다","Acheter"},{"Sell","팔다","Vendre"},{"Taco","타코","Taco"},{"Burrito","브리또","Burrito"},{"Hamburger","햄버거","Hamburger"},{"Spaghetti","스파게티","Spaghetti"},{"Pizza","피자","Pizza"},
-            {"IceCream","아이스크림","Crème glacée"},{"Cake","케이크","Gâteaux"},{"Cookie","과자/쿠키","Biscuit"},{"Police","경찰","Police"},{"FireMan","소방관","Pompier"},{"Doctor","의사","Docteur"},
-            {"Wonder","궁금하다","Se demander"},{"Water","물","Eau"},{"Flower","꽃","Fleur"},{"Tree","나무","Arbre"},{"Sea","바다","Océan"},{"Rock","바위","Roche"}
+			{"Cochlear Implant","인공와우","Implant Cochéaire","Cochleaimplantat"},{"Hearing Aid","보청기","Aide auditoire","Höhrgerät"},{"Disorder","엉망,어수선,장애","Désordre","Störung"},{"Together","함께하다","Ensemble","Zusammen"},
+            {"Nothing","아무것도 아니다","Rien","Nichts"},{"Selective Mutism","불안장애","Mustisme sélectif","Selektive Stummheit"},{"Restaurant","레스토랑,식당","Restaurant","Restaurant"},{"Order","주문,질서","Ordre","Auftrag"},{"Serve","제공,서비스","Service","Dienen"},
+            {"Buy","구매,사다","Acheter","Kaufen"},{"Sell","팔다","Vendre","Verkaufen"},{"Taco","타코","Taco","Taco"},{"Burrito","브리또","Burrito","Burrito"},{"Hamburger","햄버거","Hamburger","Hamburger"},{"Spaghetti","스파게티","Spaghetti","Spaghetti"},{"Pizza","피자","Pizza","Pizza"},
+            {"IceCream","아이스크림","Crème glacée","Eiscreme"},{"Cake","케이크","Gâteaux","Kuchen"},{"Cookie","과자/쿠키","Biscuit","Plätzchen"},{"Police","경찰","Police","Polizei"},{"FireMan","소방관","Pompier","Feuerwehrmann"},{"Doctor","의사","Docteur","Ärzt"},
+            {"Wonder","궁금하다","Se demander"},{"Water","물","Eau","Wasser"},{"Flower","꽃","Fleur","Blume"},{"Tree","나무","Arbre","Baum"},{"Sea","바다","Océan","Meer"},{"Rock","바위","Roche","Felsen"}
             },
             new string[,]{//lesson 9
-            {"Forgive","용서","Pardonner"},{"Leave","떠나다","Partir"},{"Ready","준비","Prêt"},{"Skill","솜씨,기술","Abilité"},{"Joke","농담","Blague"},{"Mistake","실수","Erreur"},
-            {"Move","행동","Bouger"},{"Lost","잃다","Perdu"},{"Work","일하다","Travail"},{"Talk","말하다","Parler"},{"Not Yet","아직","Pas encore"},{"Equal","동등하다","Égal"},
-            {"Number","숫자,번호","Nombre"},{"Letter","편지","Lettre"},{"Place","장소","Lieu"},{"Start","시작","Commencer"},{"Say/Tell","말하다","Dire"},{"Fill","채우다","Remplir"},
+            {"Forgive","용서","Pardonner","Verzeihen"},{"Leave","떠나다","Partir","Verlassen"},{"Ready","준비","Prêt","Bereit"},{"Skill","솜씨,기술","Abilité","Fertigkeit"},{"Joke","농담","Blague","Scherz"},{"Mistake","실수","Erreur","Fehler"},
+            {"Move","행동","Bouger","Bewegung"},{"Lost","잃다","Perdu","Hat verloren"},{"Work","일하다","Travail","Arbeit"},{"Talk","말하다","Parler","Sich unterhalten"},{"Not Yet","아직","Pas encore","Sich unterhalten"},{"Equal","동등하다","Égal","Gleich"},
+            {"Number","숫자,번호","Nombre","Nummer"},{"Letter","편지","Lettre","Brief"},{"Place","장소","Lieu","Platz"},{"Start","시작","Commencer","Anfang"},{"Say/Tell","말하다","Dire","Sagen/Erzählen"},{"Fill","채우다","Remplir","Füllen"},
             {"Tea","차/찻잎","Thé"},{"Come","오다","Venir"},{"Bring","가져오다","Apporter"},{"Explain","설명","Expliquer"},{"Size","크기,사이즈","Taille"},
-            {"Retreat","물러가다,후퇴","Fuir"},{"Return","반환,반납","Retourner"},{"Taste","맛(미각)","Goût"},{"Enjoy","즐기다","Apprécier"},{"Reason","이유","Raison"}
+            {"Retreat","물러가다,후퇴","Fuir","Rückzug"},{"Return","반환,반납","Retourner","Rückkehr"},{"Taste","맛(미각)","Goût","Geschmack"},{"Enjoy","즐기다","Apprécier","Genießen"},{"Reason","이유","Raison","Grund"}
             },
             new string[,]{//lesson 10
-            {"Kind/Type","종류/형태","Sorte/Type"},{"Limit","제한","Limite"},{"Have","가지다","Avoir"},{"Plan","계획","Plan"},{"Won","이기다","Gagné"},{"Lost","지다","Perdu"},
-            {"Decide","결정","Décider"},{"Keep","지키다","Garder"},{"Act","행동","Agir"},{"Guess","추측","Deviner"},{"Search","찾다,검색","Chercher"},{"Lock","잠그다","Verrouiller"},
-            {"Listen","듣다","Écouter"},{"Special","특별하다,특히","Spéciale"},{"Favor","친절","Faveur"},{"Owe/Debt","빚지다,부채","Dette"},{"Argue","다투다","Argumenter"},{"Wonder","궁금하다","Se questionner"},
-            {"Join","가입","Joindre"},{"Realize","깨닫다","Réaliser"},{"Animal","동물","Animale"},{"Skip","넘어가다","Passer"},{"Calm","차분하다,침착하다","Calme"},
-            {"Progress","진행하다","Progrès"},{"Option","반대","Option"},{"Annoy","짜증","Embêter"},{"Opposite","반대로","Opposer"},{"Satisfy","만족,충족시키다","Satisfaire"}
+            {"Kind/Type","종류/형태","Sorte/Type"."Art/yp"},{"Limit","제한","Limite","Limit"},{"Have","가지다","Avoir","Haben"},{"Plan","계획","Plan","Planen"},{"Won","이기다","Gagné","Gewonnen"},{"Lost","지다","Perdu","Hat verloren"},
+            {"Decide","결정","Décider","Entscheiden"},{"Keep","지키다","Garder","Behalten"},{"Act","행동","Agir","Handlung"},{"Guess","추측","Deviner","Vermuten"},{"Search","찾다,검색","Chercher","Suche"},{"Lock","잠그다","Verrouiller","Sperren"},
+            {"Listen","듣다","Écouter","Hör mal zu"},{"Special","특별하다,특히","Spéciale","Besondere"},{"Favor","친절","Faveur","Gefallen"},{"Owe/Debt","빚지다,부채","Dette","Verdanken/Schuld"},{"Argue","다투다","Argumenter","Streiten"},{"Wonder","궁금하다","Se questionner","Wunder"},
+            {"Join","가입","Joindre","Beitreten"},{"Realize","깨닫다","Réaliser","Realisieren"},{"Animal","동물","Animale","Tier"},{"Skip","넘어가다","Passer","Überspringen"},{"Calm","차분하다,침착하다","Calme","Ruhe"},
+            {"Progress","진행하다","Progrès","Fortschritt"},{"Option","반대","Option","Möglichkeit"},{"Annoy","짜증","Embêter","Nerven"},{"Opposite","반대로","Opposer","Gegenteil"},{"Satisfy","만족,충족시키다","Satisfaire","Erfüllen"}
             },
             new string[,]{//lesson 11
-            {"Over","지나치다,과하다","Sur"},{"Holiday","휴일","Temps des fêtes"},{"Freeze","얼다,얼음","Geler"},{"Discuss","상의","Discuter"},{"Rule","규칙","Règle"},
-            {"Awkward","어색하다","Gênant"},{"Strange","낯설다","Étrange"},{"Bored","심심하다","Ennuyant"},{"Hurt","아프다","Douleur"},{"Love","사랑","Amour"},{"Silly","바보","Ridicule"},
-            {"Damaged","손해,피해","Endommager"},{"Jail","감옥","Prison"},{"Show","보여주다","Montrer"},{"Dress","드레스","Robe"},{"Pants","바지","Pantalon"},{"Shoes","신발","Chaussures"},
-            {"Shirt","셔츠","Chandail"},{"Bed","침대","Lit"},{"Sleep","자다","Dormir"},{"Drink","마시다","Boire"},{"Sit","앉다","S'assoir"},{"Stand","서다","Se tenir debout"},
-            {"Jump","뛰다","Sauter"},{"Picture","사진","Photo"},{"Happen","우연히","Se produire"},{"Communicate","의사소통","Communiquer"},{"Play","놀다","Jouer"}
+            {"Over","지나치다,과하다","Sur","Über"},{"Holiday","휴일","Temps des fêtes","Urlaub"},{"Freeze","얼다,얼음","Geler","Einfrieren"},{"Discuss","상의","Discuter","Diskutieren"},{"Rule","규칙","Règle","Regel"},
+            {"Awkward","어색하다","Gênant","Peinlich"},{"Strange","낯설다","Étrange","Seltsam"},{"Bored","심심하다","Ennuyant","Gelangweilt"},{"Hurt","아프다","Douleur","Verletzt"},{"Love","사랑","Amour","Liebe"},{"Silly","바보","Ridicule","Dumm"},
+            {"Damaged","손해,피해","Endommager","Beschädigt"},{"Jail","감옥","Prison";"Gefängnis"},{"Show","보여주다","Montrer","Anzeigen"},{"Dress","드레스","Robe","Kleid"},{"Pants","바지","Pantalon","Hose"},{"Shoes","신발","Chaussures","Schuhe"},
+            {"Shirt","셔츠","Chandail","Hemd"},{"Bed","침대","Lit","Bett"},{"Sleep","자다","Dormir","Schlaf"},{"Drink","마시다","Boire","Getränk"},{"Sit","앉다","S'assoir","Sitzen"},{"Stand","서다","Se tenir debout","Stand"},
+            {"Jump","뛰다","Sauter","Springen"},{"Picture","사진","Photo","Bild"},{"Happen","우연히","Se produire","Geschehen"},{"Communicate","의사소통","Communiquer","Kommunizieren"},{"Play","놀다","Jouer","abspielen"}
             },
             new string[,]{//lesson 12
-            {"End","끝","Terminer"},{"Confused","혼란","Confus"},{"Empty","비다","Vide"},{"Touch","만지다","Toucher"},{"Car","자동차","Voiture"},{"Drive","운전하다","Conduire"},
-            {"Above","보다위에","Au dessus"},{"Stop","정지","Arrêt"},{"Hate","미워","Haïr"},{"Run","달리다","Courir"},{"Walk","걷다","Marcher"},{"Story","이야기","Histoire"},{"Promise","약속","Promettre"},
-            {"Help","돕다","Aider"},{"Agree","동의하다","Être en accord"},{"Disagree","동의하지 않다","Être en désaccord"},{"Add","더하다","Ajouter"},{"Trust","신뢰","Faire Confiance"},
-            {"Trouble","곤란","Trouble"},{"Gain","얻다","Prendre"},{"Challenge","도전","Défier"},{"Replace","대신,교체","Remplacer"},
-            {"Proud","자랑스럽다","Fier"},{"Expert","전문가","Expert"},{"Soda","탄산음료","Soda"},{"Eat","먹다","Manger"},{"Food","음식","Nourriture"},{"Name","이름","Nom"}
+            {"End","끝","Terminer","Ende"},{"Confused","혼란","Confus","Verwirrung"},{"Empty","비다","Vide","Leer"},{"Touch","만지다","Toucher"},{"Car","자동차","Voiture","Auto"},{"Drive","운전하다","Conduire","Fahrt"},
+            {"Above","보다위에","Au dessus","Über"},{"Stop","정지","Arrêt","Halt/Stopp!"},{"Hate","미워","Haïr","Hassen"},{"Run","달리다","Courir","Lauf"},{"Walk","걷다","Marcher","Gehen"},{"Story","이야기","Histoire","Geschichte"},{"Promise","약속","Promettre","Versprechen"},
+            {"Help","돕다","Aider","Hilfe"},{"Agree","동의하다","Être en accord","Zustimmen"},{"Disagree","동의하지 않다","Être en désaccord","Nicht zustimmen"},{"Add","더하다","Ajouter","Hinzufügen"},{"Trust","신뢰","Faire Confiance","Vertrauen"},
+            {"Trouble","곤란","Trouble","Schwierigkeiten/Beunruhigen"},{"Gain","얻다","Prendre","Gewinnen"},{"Challenge","도전","Défier","Herausforderung"},{"Replace","대신,교체","Remplacer","Ersetzen"},
+            {"Proud","자랑스럽다","Fier","Stolz"},{"Expert","전문가","Expert","Experte"},{"Soda","탄산음료","Soda","Sprudel"},{"Eat","먹다","Manger","Essen"},{"Food","음식","Nourriture","Essen"},{"Name","이름","Nom","Name"}
             },
             new string[,]{//lesson 13
-            {"Big/Huge","크다","Gros/Grand"},{"Small","작다","Petit"},{"Beautiful","아름답다","Beau/Belle"},{"Ugly","못생기다","Laid"},{"Fat","뚱뚱하다","Gras"},
-            {"Skinny","날씬하다","Mince"},{"Weak","약하다","Faible"},{"Health","건강","Santé"},{"Medicine","약","Médicament"},{"Build","짓다","Construire"},{"Break","부러지다","Briser"},
-            {"Make","만들다","Faire"},{"Find","찾다","Trouver"},{"Bully","괴롭히다","Intimider"},{"Insult","모욕","Insulter"},{"Simple","간단하다","Simple"},{"Complicated","복잡하다","Compliqué"},
-            {"Open","열다","Ouvert"},{"Close","닫다","Fermer"},{"Hit","때리다","Frapper"},{"Meat","고기","Viande"},{"Bread","빵","Pain"},{"Chips","과자","Croustilles"},{"Melon","메론","Melon"},
-            {"Event","행사","Évênement"},{"Socialize","사교","Socialiser"},{"Hangout/chill","쌀쌀하다","Trainer/Ensemble"},{"Relax","편하게하다","Relaxer"}
+            {"Big/Huge","크다","Gros/Grand","Groß/Riesig"},{"Small","작다","Petit"."Klein"},{"Beautiful","아름답다","Beau/Belle","Wunderschönen"},{"Ugly","못생기다","Laid","Hässlich"},{"Fat","뚱뚱하다","Gras","Fett"},
+            {"Skinny","날씬하다","Mince","dünn"},{"Weak","약하다","Faible","Schwach"},{"Health","건강","Santé","Gesundheit"},{"Medicine","약","Médicament","Medizin"},{"Build","짓다","Construire","Bauen"},{"Break","부러지다","Briser","Pause"},
+            {"Make","만들다","Faire","Machen"},{"Find","찾다","Trouver","Finden"},{"Bully","괴롭히다","Intimider","Schikanieren"},{"Insult","모욕","Insulter","Beleidigung"},{"Simple","간단하다","Simple","Einfach"},{"Complicated","복잡하다","Compliqué","Kompliziert"},
+            {"Open","열다","Ouvert","Öffnen"},{"Close","닫다","Fermer","Schließen"},{"Hit","때리다","Frapper","Schlagen"},{"Meat","고기","Viande","Fleisch"},{"Bread","빵","Pain","Brot"},{"Chips","과자","Croustilles","Chips"},{"Melon","메론","Melon","Melone"},
+            {"Event","행사","Évênement","Veranstaltung"},{"Socialize","사교","Socialiser"},"Sozialisieren",{"Hangout/chill","쌀쌀하다","Trainer/Ensemble","Aushängen/Ausruhen"},{"Relax","편하게하다","Relaxer","Entspannen"}
             },
             new string[,]{//lesson 14
-            {"Under","아래","En dessous"},{"Private/Secret","개인/비밀","Privé/Secret"},{"Emergency","비상/사태","Urgence"},{"Favorite","마음에 들다","Favori"},{"Class","수업","Classe"},
-            {"Proof","증명,증거","Preuve"},{"Switch","스위치","Transférer"},{"Angry","화나다","Faché"},{"Store","상점,가게","Magasin"},{"Respect","존경","Respect"},{"Ask","물어보다","Demander"},
-            {"Suggest","제안","Suggerer"},{"Trash","쓰레기","Déchet"},{"Clean","깨끗하다","Propre"},{"Age","나이","Age"},{"Try","노력","Éssayer"},{"Pay","지불","Payer"},
-            {"Hide","감추다,숨다","Cacher"},{"Random","무작위","Aléatoire"},{"Flag","깃발","Drapeau"},{"Judge","심판","Juge"},{"Warn","경고","Avertissement"},{"See","보다","Voir"},
-            {"Collect","수집","Collecte"},{"Some/Part","일부,부분","Quelque"},{"Goal","목표","But"},{"Pet","애완동물","Animale de Compagnie"},{"Communicate","소통하다","Communiquer"}
+            {"Under","아래","En dessous","Unter"},{"Private/Secret","개인/비밀","Privé/Secret","Privat/Geheimnis"},{"Emergency","비상/사태","Urgence","Notfall"},{"Favorite","마음에 들다","Favori","Lieblings"},{"Class","수업","Classe","Klasse"},
+            {"Proof","증명,증거","Preuve","Beweis"},{"Switch","스위치","Transférer","Schalter"},{"Angry","화나다","Faché","Wütend"},{"Store","상점,가게","Magasin","Geschäft"},{"Respect","존경","Respect","Respekt"},{"Ask","물어보다","Demander","Fragen"},
+            {"Suggest","제안","Suggerer","Vorschlagen"},{"Trash","쓰레기","Déchet","Müll"},{"Clean","깨끗하다","Propre","Reinigen"},{"Age","나이","Age","Alter"},{"Try","노력","Éssayer","Versuchen"},{"Pay","지불","Payer","Zahlen"},
+            {"Hide","감추다,숨다","Cacher","Ausblenden"},{"Random","무작위","Aléatoire","Zufällig"},{"Flag","깃발","Drapeau","Flagge"},{"Judge","심판","Juge","Richter"},{"Warn","경고","Avertissement","Warnen"},{"See","보다","Voir","Sehen"},
+            {"Collect","수집","Collecte","Sammeln"},{"Some/Part","일부,부분","Quelque","Etwas/Teil"},{"Goal","목표","But","Tor"},{"Pet","애완동물","Animale de Compagnie","Haustier"},{"Communicate","소통하다","Communiquer","Kommunizieren"}
             },
             new string[,]{//lesson 15
-            {"Yesterday I worked 6 hours.","어제 나는 6시간 일했다.","Hier, j'ai travaillé 6 heures."},{"I think that you are a great friend.","나는 네가 좋은 친구라고 생각해.","Je pense que tu es un bon ami."},
-            {"Do you work or have school?","너는 일하니 아니면학교니?","Est-ce que tu travailles ou vas à l'école?"},{"I went to the hospital, but don't worry.","병원에 갔지만 걱정하지마.","Je suis allé à l'hôpital,mais ne tèinquiète pas."},
-            {"All the food at the store was gone.","가게의 모든 음식은사 라졌다.","Toute la nourriture au magasin était parti."},{"Please repeat, I am a new student.","반복해줘,나는 새로운 학생입니다.","Répète s'il te plait,je suis un nouvel étudiant."},
-            {"I don't understand a lot, but I am improving.","많이 이해하지는 못하지만, 발전하고 있어.","Je ne comprend pas beaucoup mais je m'améliore."},{"Where is the teacher?","선생님은 어디 계시니?","Où est l'enseignant?"},
-            {"I don't like drama.","나는 드라마를 좋아하지 않는다.","Je n'aime pas le drame."},{"What did you do today?","오늘 뭐했어?","Qu'as-tu fait aujourd'hui?"},{"What is your favorite food?","가장 좋아하는 음식이 무엇입니까?","Quelle est ta nourriture préféré?"},
-            {"Where can I learn more sign?","더많은 수화를 어디서배울수 있니?","Où puis-je apprendre plus de signes?"},{"Are you alright? What happened?","괜찮아? 어떻게 된 거야?","Est-ce que çava? Que s'est-t'il passé?"},
-            {"I like turtles.","나는 거북이를 좋아한다.","J'aime les tortues."},{"I love Deaf culture!","나는 청각장애인 문화를 좋아해!","J'aime la cultures des sourds."},{"You're a great person!","넌 훌륭한 사람이야!","Tu es une bonne personne."},
-            {"I like to eat bread.","나는 빵 먹는 것을 좋아한다.","J'aime manger du pain."},{"I hate taking pictures.","나는 사진찍는 것을싫어한다.","Je déteste prendre des photos."},{"I respect my friends.","나는 내친구들을 존중합니다.","Je respect mes amis."},
-            {"Do you understand, need me to repeat?","알아들었어? 반복할 필요가 있어?","Est-ce que tu comprends, besoin de répéter?"},{"I cannot hear,I am Deaf.","나는 들을 수 없다. 나는 청각장애인이다.","Je ne peux pas entendre,je suis sourd."},
-            {"I need an interpreter, who can help me?","통역사가 필요해, 누가 날 도와줄 수 있지?","J'ai besoin d'un interprètre, qui peut m'aider?"},{"Are you Deaf, mute, hard of hearing, hearing?","청각장애인? 말을못해? 난청인? 청인?","Es-tu sourd, muet, malentendant ou entendant?"},
-            {"Are you streaming on youtube or twitch?","유투브 or 트위치에서 스트리밍하고 있니?","Est-ce que tu diffuses sur youtube ou twitch?"},{"I don't like running.","나는 달리기를 좋아하지 않는다.","Je n'aime pas courir."},{"Can you lock that door?","문을 잠글수 있니?","Peux-tu verrouiller cette porte?"},
-            {"I feel sick, I need to rest.","몸이 아파서 쉬어야겠어.","Je me sens malade, j'ai besoin de me reposer."},{"Please stop doing that, it's rude.","제발 그렇게하지 마, 무례한 짓이야.","S'il te plait arrête de faire ça, c'est rude."}
+            {"Yesterday I worked 6 hours.","어제 나는 6시간 일했다.","Hier, j'ai travaillé 6 heures.","Gestern habe ich 6 Stunden gearbeitet"},{"I think that you are a great friend.","나는 네가 좋은 친구라고 생각해.","Je pense que tu es un bon ami.","denke, dass du ein guter Freund bist"},
+            {"Do you work or have school?","너는 일하니 아니면학교니?","Est-ce que tu travailles ou vas à l'école?","Arbeitest du oder hast du eine Schule?"},{"I went to the hospital, but don't worry.","병원에 갔지만 걱정하지마.","Je suis allé à l'hôpital,mais ne tèinquiète pas.","Ich ging ins Krankenhaus, aber mach dir keine Sorgen."},
+            {"All the food at the store was gone.","가게의 모든 음식은사 라졌다.","Toute la nourriture au magasin était parti.","Das Essen im Laden war weg."},{"Please repeat, I am a new student.","반복해줘,나는 새로운 학생입니다.","Répète s'il te plait,je suis un nouvel étudiant.","Bitte wiederholen Sie, ich bin ein neuer Student."},
+            {"I don't understand a lot, but I am improving.","많이 이해하지는 못하지만, 발전하고 있어.","Je ne comprend pas beaucoup mais je m'améliore.","Ich verstehe nicht viel, aber ich verbessere mich."},{"Where is the teacher?","선생님은 어디 계시니?","Où est l'enseignant?","Wo ist der Lehrer?"},
+            {"I don't like drama.","나는 드라마를 좋아하지 않는다.","Je n'aime pas le drame.","Ich mag kein Drama."},{"What did you do today?","오늘 뭐했어?","Qu'as-tu fait aujourd'hui?","Was hast du heute so gemacht?"},{"What is your favorite food?","가장 좋아하는 음식이 무엇입니까?","Quelle est ta nourriture préféré?","Was ist dein Lieblingsessen?"},
+            {"Where can I learn more sign?","더많은 수화를 어디서배울수 있니?","Où puis-je apprendre plus de signes?","Wo kann ich mehr Zeichen lernen?"},{"Are you alright? What happened?","괜찮아? 어떻게 된 거야?","Est-ce que çava? Que s'est-t'il passé?","Geht es dir gut? Was ist passiert?"},
+            {"I like turtles.","나는 거북이를 좋아한다.","J'aime les tortues.","Ich mag Schildkröten."},{"I love Deaf culture!","나는 청각장애인 문화를 좋아해!","J'aime la cultures des sourds.","Ich liebe gehörlose Kultur!"},{"You're a great person!","넌 훌륭한 사람이야!","Tu es une bonne personne.","Du bist eine großartige Person!"},
+            {"I like to eat bread.","나는 빵 먹는 것을 좋아한다.","J'aime manger du pain.","Ich esse gerne Brot."},{"I hate taking pictures.","나는 사진찍는 것을싫어한다.","Je déteste prendre des photos.","Ich hasse es, Bilder zu machen."},{"I respect my friends.","나는 내친구들을 존중합니다.","Je respect mes amis.","I respect my friends."},
+            {"Do you understand, need me to repeat?","알아들었어? 반복할 필요가 있어?","Est-ce que tu comprends, besoin de répéter?","Verstehst du, muss ich wiederholen?"},{"I cannot hear,I am Deaf.","나는 들을 수 없다. 나는 청각장애인이다.","Je ne peux pas entendre,je suis sourd.","Ich kann nicht hören, ich bin Gehörlos(Taub)."},
+            {"I need an interpreter, who can help me?","통역사가 필요해, 누가 날 도와줄 수 있지?","J'ai besoin d'un interprètre, qui peut m'aider?","Ich brauche einen Dolmetscher, der mir helfen kann?"},{"Are you Deaf, mute, hard of hearing, hearing?","청각장애인? 말을못해? 난청인? 청인?","Es-tu sourd, muet, malentendant ou entendant?","Sind Sie Gehörlos, stumm, schwerhörig, hörend?"},
+            {"Are you streaming on youtube or twitch?","유투브 or 트위치에서 스트리밍하고 있니?","Est-ce que tu diffuses sur youtube ou twitch?","Streamen Sie auf Youtube oder Twitch?"},{"I don't like running.","나는 달리기를 좋아하지 않는다.","Je n'aime pas courir.","Ich laufe nicht gern"},{"Can you lock that door?","문을 잠글수 있니?","Peux-tu verrouiller cette porte?","Kannst du diese Tür abschließen?"},
+            {"I feel sick, I need to rest.","몸이 아파서 쉬어야겠어.","Je me sens malade, j'ai besoin de me reposer.","Mir ist schlecht, ich muss mich ausruhen."},{"Please stop doing that, it's rude.","제발 그렇게하지 마, 무례한 짓이야.","S'il te plait arrête de faire ça, c'est rude.","Bitte hör auf damit, es ist unhöflich."}
             },
             new string[,]{//lesson 16
-            {"Door","문","Porte"},{"Dangerous","위험하다","Dangereux"},{"Barrow","빌리다","Brouette"},{"Army","군대","Armée"},{"Group","그룹,모임","Groupe"},{"Team","팀","Équipe"},
-            {"Alright","괜찮다","Bien"},{"Gross","역겹다","Dégueux"},{"Feel","느끼다","Sentir"},{"Depression","우울증","Depression"},{"Anxiety/anxious","불안","Anxiété"},{"Nervous","긴장하다","Nerveux"},
-            {"Kiss","키스,뽀뽀","Embrasser"},{"Date","날짜","Date"},{"Sweetheart","애인,연인","Cœurtendre"},{"Fall in love","사랑에 빠진다","Tomber en amour"},{"Just/Only","그냥/오직","Seulement"},
-            {"Sneeze","재채기","Éternuer"},{"Cough","기침","Tousser"},{"Blessyou","축복하다","À tes souhaits"},{"University","종합대학","Université"},{"Church","교회","Église"},{"Library","도서관","Bibliothèque"},
-            {"Office","사무실","Bureau"},{"Fancy","공상","Qualité supérieure"},{"College","전문대학","Collège"},{"Gym","체육관","Gymnase"},{"Workout","운동","Exercicer"}
+            {"Door","문","Porte"},{"Dangerous","위험하다","Dangereux","Tür"},{"Barrow","빌리다","Brouette","Karren"},{"Army","군대","Armée","Armee"},{"Group","그룹,모임","Groupe"},{"Team","팀","Équipe","Mannschaft"},
+            {"Alright","괜찮다","Bien","In Ordung"},{"Gross","역겹다","Dégueux","Brutto"},{"Feel","느끼다","Sentir","Gefühl"},{"Depression","우울증","Depression","Depression"},{"Anxiety/anxious","불안","Anxiété","Angst/ängstlich"},{"Nervous","긴장하다","Nerveux","Nervös"},
+            {"Kiss","키스,뽀뽀","Embrasser","Kuss"},{"Date","날짜","Date","Datum"},{"Sweetheart","애인,연인","Cœurtendre","Schatz"},{"Fall in love","사랑에 빠진다","Tomber en amour","Sich verlieben"},{"Just/Only","그냥/오직","Seulement","Gerade/Nur"},
+            {"Sneeze","재채기","Éternuer","Niesen"},{"Cough","기침","Tousser","Husten"},{"Blessyou","축복하다","À tes souhaits","Gesundheit"},{"University","종합대학","Université","Universität"},{"Church","교회","Église","Kirche"},{"Library","도서관","Bibliothèque","Bibliothek"},
+            {"Office","사무실","Bureau","Büro"},{"Fancy","공상","Qualité supérieure","Schick"},{"College","전문대학","Collège","Hochschule"},{"Gym","체육관","Gymnase","Fitnessstudio"},{"Workout","운동","Exercicer","Trainieren"}
             }/*if this is the last lesson, don't put a comma after the } 
 
 				*/
@@ -167,7 +167,7 @@ public class Squrrel_HQ : MonoBehaviour
         podiumtext.transform.SetParent(podiumpanel.transform, false);
         podiumtext.name = "DisplayText";
         podiumtext.layer = layer;
-        podiumtext.GetComponent<Text>().text = "Welcome to the Helping Hands Headquarters!\n돕는 손 본부에 오신 것을 환영합니다!\nBienvenue au siège social de Helping Hands!";
+        podiumtext.GetComponent<Text>().text = "Welcome to the Helping Hands Headquarters!\n돕는 손 본부에 오신 것을 환영합니다!\nBienvenue au siège social de Helping Hands!\nWillkommen im Hauptquartier von Helping Hands!";
         podiumtext.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; //change font file here
         podiumtext.GetComponent<Text>().fontStyle = FontStyle.Bold;
         podiumtext.GetComponent<Text>().fontSize = 50;
@@ -201,7 +201,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         leftdisplaytext.transform.SetParent(leftdisplaycanvas.transform, false);
         leftdisplaytext.name = "LeftDisplayText";
         leftdisplaytext.layer = layer;
-        leftdisplaytext.GetComponent<Text>().text = "Welcome to the Helping Hands Headquarters!\n\n돕는 손 본부에 오신 것을 환영합니다!\n\nBienvenue au siège social de Helping Hands!";
+        leftdisplaytext.GetComponent<Text>().text = "Welcome to the Helping Hands Headquarters!\n\n돕는 손 본부에 오신 것을 환영합니다!\n\nBienvenue au siège social de Helping Hands!\n\nWillkommen im Hauptquartier von Helping Hands!";
         leftdisplaytext.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; //change font file here
         leftdisplaytext.GetComponent<Text>().fontStyle = FontStyle.Bold;
         leftdisplaytext.GetComponent<Text>().fontSize = 300;
@@ -234,7 +234,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         rightdisplaytext.transform.SetParent(rightdisplaycanvas.transform, false);
         rightdisplaytext.name = "RightDisplayText";
         rightdisplaytext.layer = layer;
-        rightdisplaytext.GetComponent<Text>().text = "Welcome to the Helping Hands Headquarters!\n\n돕는 손 본부에 오신 것을 환영합니다!\n\nBienvenue au siège social de Helping Hands!";
+        rightdisplaytext.GetComponent<Text>().text = "Welcome to the Helping Hands Headquarters!\n\n돕는 손 본부에 오신 것을 환영합니다!\n\nBienvenue au siège social de Helping Hands!\n\nWillkommen im Hauptquartier von Helping Hands!";
         rightdisplaytext.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; //change font file here
         rightdisplaytext.GetComponent<Text>().fontStyle = FontStyle.Bold;
         rightdisplaytext.GetComponent<Text>().fontSize = 300;
