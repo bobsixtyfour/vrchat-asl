@@ -11,21 +11,23 @@ using UnityEditor.Events;
 using UnityEngine.Video;
 //using UnityEngine.Audio;
 
-namespace BobsMenuSystem {
-public class CreateGSLButtons6 : MonoBehaviour 
+namespace BobsMenuSystem
 {
+    public class CreateGSLButtons6 : MonoBehaviour
+    {
 
-	/*****************************************
-	Start of Arrays variable declarations
-	*****************************************/
+        /*****************************************
+        Start of Arrays variable declarations
+        *****************************************/
 
-	    //creates an array of arrays. Grouped by lessons. 
+        //creates an array of arrays. Grouped by lessons. 
         //0th value is the English translation of the word
-		//1st value is the German translation of the word
+        //1st value is the German translation of the word
         //2nd value is video URL.
-
-static 
-string [][][] DGSlessons = {
+        const string MODE_GLOBAL = "Global";
+        const string MODE_LOCAL = "Local";
+        static
+        string[][][] DGSlessons = {
 new string[][]{//Lesson 1(Daily Use)
 new string[]{"Hello","Hallo","https://vrchat.germany-sl.com/Lesson01/hallo.mp4"},
 new string[]{"How (are) You","Wie geht es Ihnen","https://vrchat.germany-sl.com/Lesson01/wiegehts.mp4"},
@@ -1325,1151 +1327,1281 @@ new string[]{"Spine","Spine",""},
 new string[]{"Skeleton","Skeleton",""},
 new string[]{"Skin","Skin",""},
 }};
-    static string [][][][] AllLessons = { DGSlessons}; //adds array of arrays into another array for easy looping. 
+        static string[][][][] AllLessons = { DGSlessons }; //adds array of arrays into another array for easy looping. 
 
-//lessonnames[x][y][z]
-//x=languagenumber
-//y=lessonnumber
-//z=lessonname translation, 0=english, 1=german
+        //lessonnames[x][y][z]
+        //x=languagenumber
+        //y=lessonnumber
+        //z=lessonname translation, 0=english, 1=german
 
-//0th value is the English translation of the lesson
-//1st value is the German translation of the lesson
-static string[][][] lessonnames ={
-	new string[][]{
-		new string[]{"Daily Use","Täglicher Gebrauch"},
-		new string[]{"Pointing use Question / Answer","Hinweis auf Frage / Antwort"},
-		new string[]{"Common","Allgemein"},
-		new string[]{"People","Menschen"},
-		new string[]{"Feelings / Reactions","Gefühle / Reaktionen"},
-		new string[]{"Value","Wert"},
-		new string[]{"Time","Zeit"},
-		new string[]{"VRChat","VRChat"},
-		new string[]{"Alphabet/Numbers","Alphabet / Zahlen"},     
-		new string[]{"Verbs & Actions p1","Verben & Aktionen p1"},
-		new string[]{"Verbs & Actions p2: Ben-Cor","Verben & Aktionen p2: Ben-Cor"},
-		new string[]{"Verbs & Actions p3: Cou-Esc","Verben & Aktionen p3: Cou-Esc"},
-		new string[]{"Verbs & Actions p4: Exc-Ins","Verben & Aktionen p4: Exc-Ins"},
-		new string[]{"Verbs & Actions p5: Int-Pas","Verben & Aktionen p5: Int-Pas"},
-		new string[]{"Verbs & Actions p6: Pat-Sav","Verben & Aktionen p6: Pat-Sav"},
-		new string[]{"Verbs & Actions p7: Say-Try","Verben & Aktionen p7: Say-Try "},
-		new string[]{"Verbs & Actions p8","Verben & Aktionen p8"},
-		new string[]{"Food","Essen"},
-		new string[]{"Animals / Machines","Tiere / Maschinen"},
-		new string[]{"Places","Orte"},
-		new string[]{"Stuff / Weather","Sachen / Wetter"},
-		new string[]{"Clothes / Equipment","Kleidung / Ausrüstung"},
-		new string[]{"Fantasy / Characters","Fantasie / Charaktere"},
-		new string[]{"Holidays/Special Days","Feiertage / besondere Tage"},
-		new string[]{"Home stuff","Heimzeug"},
-		new string[]{"Nature / Environment","Natur / Umwelt"},
-		new string[]{"Talk/Asking exercises","Sprech- / Fragübungen"},
-		new string[]{"Name sign users","Namensschildbenutzer"},
-		new string[]{"Countries","Länder"},
-		new string[]{"Colors","Farben"},
-		new string[]{"Medical","Medizin"},
-	}
-};
-	static string [][] signlanguagenames = {
-		new string[]{"DGS","German Sign Language\nDeutsche Gebärdensprache"}
-		};
-
-	[MenuItem("ASLWorld/DGSButtonV5")]
-	static void DGSButtonV5()
-	{
-	//declare uiresource settings
-	DefaultControls.Resources uiresources = new DefaultControls.Resources();
-	uiresources.background=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
-	//uiresources.checkmark=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
-	uiresources.checkmark = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VRCSDK/Dependencies/VRChat/Resources/PerformanceIcons/Perf_Great_32.png");
-	uiresources.dropdown=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/DropdownArrow.psd");
-	uiresources.inputField=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
-	uiresources.knob=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Knob.psd");
-	uiresources.mask=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/UIMask.psd");
-	uiresources.standard=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/UISprite.psd");
-
-
-
-	Vector3 menurootpos = new Vector3(-29.45f,4.5f,25);
-	int layer=8;
-	Vector2 zerovector2=new Vector2(0,0);
-
-	//DefaultControls.Resources txtresources = new DefaultControls.Resources();
-	//DefaultControls.Resources rootpanelresources = new DefaultControls.Resources();
-	//rootpanelresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
-   	//Declare some variables + settings.
-	Navigation no_nav = new Navigation();
-	no_nav.mode=Navigation.Mode.None;
-
-	GameObject rootmenu = new GameObject("Menu Root");
-	//create sign display canvas/panel/text
-	GameObject rootmenucanvas = new GameObject("Menu Root Canvas");//create canvas for current sign display
-	rootmenucanvas.transform.SetParent(rootmenu.transform, false); 
-	rootmenucanvas.layer = layer;
-	rootmenucanvas.GetOrAddComponent<RectTransform> ().localPosition = new Vector3(.5f,.135f,16);
-	rootmenucanvas.GetOrAddComponent<RectTransform> ().sizeDelta = new Vector2(2000,265);
-	rootmenucanvas.transform.localScale = new Vector3(.001f,.001f,.001f);
-	rootmenucanvas.GetOrAddComponent<RectTransform> ().anchorMin = new Vector2(.5f,.5f);
-	rootmenucanvas.GetOrAddComponent<RectTransform> ().anchorMax = new Vector2(.5f,.5f);
-	rootmenucanvas.GetOrAddComponent<RectTransform> ().pivot = new Vector2(.5f,.5f);
-	rootmenucanvas.GetOrAddComponent<Canvas> (); //adds canvas to root canvas gameobject
-	rootmenucanvas.GetOrAddComponent<Canvas> ().renderMode = RenderMode.WorldSpace;
-	rootmenucanvas.GetOrAddComponent<CanvasScaler>();
-	rootmenucanvas.GetOrAddComponent<GraphicRaycaster>();
-	rootmenucanvas.GetOrAddComponent<VRC_UiShape>();
-	GameObject rootmenucanvaspanel = DefaultControls.CreatePanel(uiresources);
-	rootmenucanvaspanel.transform.SetParent(rootmenucanvas.transform, false);
-	rootmenucanvaspanel.layer=layer;
-	rootmenucanvaspanel.name="Current Sign Panel";
-	rootmenucanvaspanel.GetOrAddComponent<Image> ().color = new Color(1,1,1,1);
-	rootmenucanvaspanel.GetOrAddComponent<RectTransform> ().localPosition = new Vector3(0,0,0);
-	rootmenucanvaspanel.GetOrAddComponent<RectTransform> ().sizeDelta = new Vector2(2000,265);
-	rootmenucanvaspanel.GetOrAddComponent<RectTransform> ().anchorMin = new Vector2(.5f,.5f);
-	rootmenucanvaspanel.GetOrAddComponent<RectTransform> ().anchorMax = new Vector2(.5f,.5f);
-	rootmenucanvaspanel.GetOrAddComponent<RectTransform> ().pivot = new Vector2(.5f,.5f);
-	GameObject rootmenucanvaspaneltext = DefaultControls.CreateText(uiresources);
-	rootmenucanvaspaneltext.transform.SetParent(rootmenucanvaspanel.transform, false);
-	rootmenucanvaspaneltext.name="Current Sign Text";
-	rootmenucanvaspaneltext.layer=layer;
-	rootmenucanvaspaneltext.GetOrAddComponent<RectTransform> ().localPosition = new Vector3(0,0,0);
-	rootmenucanvaspaneltext.GetOrAddComponent<RectTransform> ().sizeDelta = new Vector2(2000,265);
-	rootmenucanvaspaneltext.GetOrAddComponent<RectTransform> ().anchorMin = new Vector2(.5f,.5f);
-	rootmenucanvaspaneltext.GetOrAddComponent<RectTransform> ().anchorMax = new Vector2(.5f,.5f);
-	rootmenucanvaspaneltext.GetOrAddComponent<Text>().text="The sign that's currently playing will show here.\nDas Zeichen, das gerade abgespielt wird, wird hier angezeigt.";
-	rootmenucanvaspaneltext.GetOrAddComponent<Text>().alignment=TextAnchor.MiddleCenter;
-	rootmenucanvaspaneltext.GetOrAddComponent<Text>().fontSize=70;
-	rootmenucanvaspaneltext.GetOrAddComponent<Text>().resizeTextMaxSize=70;
-	rootmenucanvaspaneltext.GetOrAddComponent<Text>().resizeTextMinSize=50;
-	rootmenucanvaspaneltext.GetOrAddComponent<Text>().resizeTextForBestFit=true;
-
-//"/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text"
-
-	//why create two copies? Too hard to sync all the different active/inactive gameobjects if everyone isn't on the same "page".
-	GameObject globalmenu = CreateMenu(rootmenu,"Global");
-	GameObject localmenu = CreateMenu(rootmenu,"Local");
-
-rootmenu.GetOrAddComponent<Transform>().localPosition =menurootpos;
-
-
-/*****************************************
-Update preferences menu to point to newly created objects.
-*****************************************/
-//recreate toggle to fix reference? 
-/*
-	Toggle oldvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
-	DestroyImmediate(oldvideotoggle);
-	Toggle newvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
-	newvideotoggle.navigation = no_nav;
-	newvideotoggle.isOn = true;
-	newvideotoggle.graphic=newvideotoggle.transform.Find("Background").gameObject.transform.Find("Checkmark").GetComponent<Image>();
-	newvideotoggle.transition= Selectable.Transition.None;
-	newvideotoggle.toggleTransition= Toggle.ToggleTransition.None;
-	newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
-	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
-	GameObject.Find("/Menu Root/Local Menu Root/Local Video Container"), "SetActive") as UnityAction<bool>);
-
-	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
-	GameObject.Find("/Menu Root/Global Menu Root/Global Video Container"), "SetActive") as UnityAction<bool>);
-
-	//Cleanup existing triggers to reference global/local container
-	DestroyImmediate(GameObject.Find ("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode/Background/Global Helper").GetOrAddComponent<VRC_Trigger>());
-
-	VRC_Trigger newglobalhelpertrigger = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode/Background/Global Helper").GetOrAddComponent<VRC_Trigger>();
-	newglobalhelpertrigger.Triggers=new List<VRC_Trigger.TriggerEvent>(){
-		new VRC_Trigger.TriggerEvent{
-			BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
-			TriggerType = VRC_Trigger.TriggerType.OnEnable,
-			TriggerIndividuals = true,
-			Events=new List<VRC_EventHandler.VrcEvent>(){
-				new VRC_EventHandler.VrcEvent{
-					EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-					ParameterObject=localmenu,
-					ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
-				},
-				new VRC_EventHandler.VrcEvent{
-					EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-					ParameterObject=globalmenu,
-					ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-				},
-				new VRC_EventHandler.VrcEvent{
-					EventType = VRC_EventHandler.VrcEventType.SetUIText,
-					ParameterString = "The sign that's currently playing will show here.",
-					ParameterObject = GameObject.Find ("/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text")
-				},
-				new VRC_EventHandler.VrcEvent{
-					EventType = VRC_EventHandler.VrcEventType.SetUIText,
-					ParameterString = "Do not use this world to learn yet. These motions are a Anonymous",
-					ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Credit Panel/Credit Text")
-				},
-				new VRC_EventHandler.VrcEvent{
-					EventType = VRC_EventHandler.VrcEventType.SetUIText,
-					ParameterString = "Description of movements here. (Slowly being added)",
-					ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Description Panel/Description Text")
-				},
-			}
-		},
-		new VRC_Trigger.TriggerEvent{
-			BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
-			TriggerType = VRC_Trigger.TriggerType.OnDisable,
-			TriggerIndividuals = true,
-			Events=new List<VRC_EventHandler.VrcEvent>(){
-				new VRC_EventHandler.VrcEvent{
-					EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-					ParameterObject=localmenu,
-					ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-				},
-				new VRC_EventHandler.VrcEvent{
-					EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-					ParameterObject=globalmenu,
-					ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
-				},
-				new VRC_EventHandler.VrcEvent{
-					EventType = VRC_EventHandler.VrcEventType.SetUIText,
-					ParameterString = "The sign that's currently playing will show here.",
-					ParameterObject = GameObject.Find ("/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text")
-				},
-				new VRC_EventHandler.VrcEvent{
-					EventType = VRC_EventHandler.VrcEventType.SetUIText,
-					ParameterString = "Don't use this world to learn yet.",
-					ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Credit Panel/Credit Text")
-				},
-				new VRC_EventHandler.VrcEvent{
-					EventType = VRC_EventHandler.VrcEventType.SetUIText,
-					ParameterString = "Description of movements here. (Slowly being added)",
-					ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Description Panel/Description Text")
-				}
-			}
-		}
-	};*/
-
-	globalmenu.SetActive(false);
-
+        //0th value is the English translation of the lesson
+        //1st value is the German translation of the lesson
+        static string[][][] lessonnames ={
+    new string[][]{
+        new string[]{"Daily Use","Täglicher Gebrauch"},
+        new string[]{"Pointing use Question / Answer","Hinweis auf Frage / Antwort"},
+        new string[]{"Common","Allgemein"},
+        new string[]{"People","Menschen"},
+        new string[]{"Feelings / Reactions","Gefühle / Reaktionen"},
+        new string[]{"Value","Wert"},
+        new string[]{"Time","Zeit"},
+        new string[]{"VRChat","VRChat"},
+        new string[]{"Alphabet/Numbers","Alphabet / Zahlen"},
+        new string[]{"Verbs & Actions p1","Verben & Aktionen p1"},
+        new string[]{"Verbs & Actions p2: Ben-Cor","Verben & Aktionen p2: Ben-Cor"},
+        new string[]{"Verbs & Actions p3: Cou-Esc","Verben & Aktionen p3: Cou-Esc"},
+        new string[]{"Verbs & Actions p4: Exc-Ins","Verben & Aktionen p4: Exc-Ins"},
+        new string[]{"Verbs & Actions p5: Int-Pas","Verben & Aktionen p5: Int-Pas"},
+        new string[]{"Verbs & Actions p6: Pat-Sav","Verben & Aktionen p6: Pat-Sav"},
+        new string[]{"Verbs & Actions p7: Say-Try","Verben & Aktionen p7: Say-Try "},
+        new string[]{"Verbs & Actions p8","Verben & Aktionen p8"},
+        new string[]{"Food","Essen"},
+        new string[]{"Animals / Machines","Tiere / Maschinen"},
+        new string[]{"Places","Orte"},
+        new string[]{"Stuff / Weather","Sachen / Wetter"},
+        new string[]{"Clothes / Equipment","Kleidung / Ausrüstung"},
+        new string[]{"Fantasy / Characters","Fantasie / Charaktere"},
+        new string[]{"Holidays/Special Days","Feiertage / besondere Tage"},
+        new string[]{"Home stuff","Heimzeug"},
+        new string[]{"Nature / Environment","Natur / Umwelt"},
+        new string[]{"Talk/Asking exercises","Sprech- / Fragübungen"},
+        new string[]{"Name sign users","Namensschildbenutzer"},
+        new string[]{"Countries","Länder"},
+        new string[]{"Colors","Farben"},
+        new string[]{"Medical","Medizin"},
     }
-    static GameObject CreateMenu(GameObject parent, string mode){
-	//declare uiresource settings
-	DefaultControls.Resources uiresources = new DefaultControls.Resources();
-	uiresources.background=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
-	//uiresources.checkmark=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
-	uiresources.checkmark = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VRCSDK/Dependencies/VRChat/Resources/PerformanceIcons/Perf_Great_32.png");
-	uiresources.dropdown=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/DropdownArrow.psd");
-	uiresources.inputField=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
-	uiresources.knob=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Knob.psd");
-	uiresources.mask=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/UIMask.psd");
-	uiresources.standard=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/UISprite.psd");
+};
+        static string[][] signlanguagenames = {
+        new string[]{"DGS","German Sign Language\nDeutsche Gebärdensprache"}
+        };
 
-/*
-	//declare toggle resource settings
-	DefaultControls.Resources toggleresources = new DefaultControls.Resources();
-	//Set the Toggle Background Image someBgSprite;
-	toggleresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
-	//Set the Toggle Checkmark Image someCheckmarkSprite;
-	toggleresources.checkmark = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
-	DefaultControls.Resources rootpanelresources = new DefaultControls.Resources();
-	rootpanelresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
-	DefaultControls.Resources txtresources = new DefaultControls.Resources();
-*/
-	int layer=8;
-	//int rowoffset=860;
-	int columnoffset=200;
-
-	int rowseperation=150;
-	int columnseperation=1000;
-	int togglesizedelta=80;
-	int numberpercolumn = 9;
-	int menusizex = 5200;
-	int menusizey = 1600;
-	int headersizey=60;
-	int textpadding=10;
-	int headerbuttonspacing=100;
-	int buttonsizey=130;
-	int buttonsizex=950;
-	int menubuttonystart=textpadding+headersizey+buttonsizey + 80;
-	Vector2 backbuttonsize=new Vector2(menusizey-headersizey-textpadding-headerbuttonspacing,100);
-
-	Vector2 buttonsize=new Vector2(buttonsizex,buttonsizey);
-	Vector2 menusize=new Vector2(menusizex,menusizey);
-	Vector3 menurootposition = new Vector3(1.5f, 0, 16);
-	Vector3 canvasscale=new Vector3(.001f,.001f,.001f);
-	Vector2 zerovector2=new Vector2(0,0);
-	Vector3 zerovector3=new Vector3(0,0,0);
-
-	Navigation no_nav = new Navigation();
-	no_nav.mode=Navigation.Mode.None; 
-
-/*****************************************
-START OF PROGRAM
-*****************************************/
-
-GameObject menuroot = new GameObject(mode +" Menu Root"); //creates a new "Menu Root gameobject which will be the parent of all newly created objects in the script.
-menuroot.transform.position = menurootposition;
-menuroot.transform.SetParent(parent.transform, false);
-menuroot.layer = layer;
-
-	GameObject triggercontainer = new GameObject(mode +" Trigger Container"); //container go to hold all videos. Allows a world option that turns on/off videos completely.
-	triggercontainer.transform.SetParent(menuroot.transform, false);//maybe this needs to reparented to menuroot?
-	triggercontainer.layer = layer;
-
-	GameObject videocontainer = new GameObject(mode +" Video Container"); //container go to hold all videos. Allows a world option that turns on/off videos completely.
-	//videocontainer.transform.position = new Vector3(-1f, 1, 0);
-	videocontainer.transform.SetParent(menuroot.transform, false);
-	videocontainer.layer = layer;
-
-	GameObject rootcanvas = new GameObject (mode +" Root Canvas");
-	rootcanvas.transform.SetParent(menuroot.transform, false);
-	rootcanvas.layer = layer;
-	rootcanvas.transform.localScale = canvasscale;
-	rootcanvas.AddComponent<RectTransform> ();
-	rootcanvas.GetComponent<RectTransform> ().localPosition = zerovector3;
-	rootcanvas.GetComponent<RectTransform> ().sizeDelta = menusize;
-	rootcanvas.GetComponent<RectTransform> ().anchorMax = zerovector2;
-	rootcanvas.GetComponent<RectTransform> ().anchorMin = zerovector2;
-	rootcanvas.GetComponent<RectTransform> ().pivot = zerovector2;
-	//rootcanvas.AddComponent<Canvas> (); //adds canvas to root canvas gameobject
-	rootcanvas.GetOrAddComponent<Canvas> ().renderMode = RenderMode.WorldSpace;
-	rootcanvas.AddComponent<CanvasScaler>();
-	rootcanvas.AddComponent<GraphicRaycaster>();
-	rootcanvas.AddComponent<VRC_UiShape>();
-	ToggleGroup rootcanvastogglegroup = rootcanvas.AddComponent<ToggleGroup>();
-	rootcanvastogglegroup.allowSwitchOff=true;
-
-		GameObject rootpanel = DefaultControls.CreatePanel(uiresources);
-		rootpanel.transform.SetParent(rootcanvas.transform, false);
-		rootpanel.layer = layer;
-		rootpanel.GetComponent<RectTransform> ().sizeDelta = menusize;
-		rootpanel.GetComponent<RectTransform> ().anchorMax = zerovector2;
-		rootpanel.GetComponent<RectTransform> ().anchorMin = zerovector2;
-		rootpanel.GetComponent<RectTransform> ().pivot = zerovector2;
-		//rootpanel.GetComponent<Image> ().color = new Color(1,1,1,1); //gets rid of transparency - also can change panel color if I want here. 1=255.
-		if(mode=="Global"){
-			rootpanel.GetComponent<Image> ().color = new Color(1,.90f,.90f,1); //gets rid of transparency - also can change panel color if I want here. 1=255.
-		}
-		else{
-			rootpanel.GetComponent<Image> ().color = new Color(.90f,.90f,1,1); //gets rid of transparency - also can change panel color if I want here. 1=255.
-		}
-		
-		GameObject langselectmenu = new GameObject("VR Sign Language Select Menu");
-		langselectmenu.transform.SetParent(rootcanvas.transform, false);
-		langselectmenu.layer = layer;
-		
-		GameObject langselectmenuheader = DefaultControls.CreateText(uiresources);
-		langselectmenuheader.transform.SetParent (langselectmenu.transform, false);
-		langselectmenuheader.name="VR Sign Language Select Menu Header";
-		langselectmenuheader.layer = layer;
-		langselectmenuheader.GetComponent<Text> ().text = "VR Sign Language Select Menu - "+mode;
-		langselectmenuheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
-		langselectmenuheader.GetComponent<Text> ().fontStyle = FontStyle.Bold;
-		langselectmenuheader.GetComponent<Text> ().fontSize = 50;		
-		langselectmenuheader.GetComponent<Text> ().color = Color.black;
-		langselectmenuheader.GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
-		langselectmenuheader.GetComponent<RectTransform> ().sizeDelta = new Vector2 (menusizex, headersizey);
-		langselectmenuheader.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (textpadding, menusizey-headersizey-textpadding);
-		langselectmenuheader.GetComponent<RectTransform> ().anchorMax = zerovector2;
-		langselectmenuheader.GetComponent<RectTransform> ().anchorMin = zerovector2;
-		langselectmenuheader.GetComponent<RectTransform> ().pivot = zerovector2;
-
-/*****************************************
-MAIN LANGUAGE LOOP HERE
-*****************************************/
-		int langmenucolumn=0;
-		int langmenurow=0;
-        for (int languagenum=0; languagenum<AllLessons.Length;languagenum++) //for every language in signlanguages do this once:
+        [MenuItem("ASLWorld/DGSButtonV5")]
+        static void DGSButtonV5()
         {
-				if (languagenum != 0){
-					if (languagenum % numberpercolumn == 0){ //display 9 items per column
-					langmenucolumn++;
-					langmenurow=0;
-					}
-				}
-/*
-			        var wordlookup = new Dictionary<string, int>();
-                    //int dictlessonnum=1;
-                    //int dictwordnum=1;
-                    int dictwordnumber=1;//since idle=0
-                    foreach(var lesson in AllLessons[languagenum]){
-                        foreach(var word in lesson){
-                            int value;
-                            if (!wordlookup.TryGetValue(word[0], out value)) {
-                                wordlookup.Add(word[0],dictwordnumber);
-								//Debug.Log("Added: "+"ASL-"+word[0]);
-                                dictwordnumber++;
-                            }else{
-                                Debug.Log("Warning when building dictionary: Word already exists: "+word[0]);
-                            }
+            //declare uiresource settings
+            DefaultControls.Resources uiresources = new DefaultControls.Resources();
+            uiresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
+            //uiresources.checkmark=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
+            uiresources.checkmark = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VRCSDK/Dependencies/VRChat/Resources/PerformanceIcons/Perf_Great_32.png");
+            uiresources.dropdown = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/DropdownArrow.psd");
+            uiresources.inputField = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/InputFieldBackground.psd");
+            uiresources.knob = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
+            uiresources.mask = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
+            uiresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
 
-                            //dictwordnum++;
+
+
+            Vector3 menurootpos = new Vector3(-29.45f, 4.5f, 25);
+            int layer = 8;
+            Vector2 zerovector2 = new Vector2(0, 0);
+
+            //DefaultControls.Resources txtresources = new DefaultControls.Resources();
+            //DefaultControls.Resources rootpanelresources = new DefaultControls.Resources();
+            //rootpanelresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
+            //Declare some variables + settings.
+            Navigation no_nav = new Navigation();
+            no_nav.mode = Navigation.Mode.None;
+
+            GameObject rootmenu = new GameObject("Menu Root");
+            //create sign display canvas/panel/text
+            GameObject rootmenucanvas = new GameObject("Menu Root Canvas");//create canvas for current sign display
+            rootmenucanvas.transform.SetParent(rootmenu.transform, false);
+            rootmenucanvas.layer = layer;
+            rootmenucanvas.GetOrAddComponent<RectTransform>().localPosition = new Vector3(.5f, .135f, 16);
+            rootmenucanvas.GetOrAddComponent<RectTransform>().sizeDelta = new Vector2(2000, 265);
+            rootmenucanvas.transform.localScale = new Vector3(.001f, .001f, .001f);
+            rootmenucanvas.GetOrAddComponent<RectTransform>().anchorMin = new Vector2(.5f, .5f);
+            rootmenucanvas.GetOrAddComponent<RectTransform>().anchorMax = new Vector2(.5f, .5f);
+            rootmenucanvas.GetOrAddComponent<RectTransform>().pivot = new Vector2(.5f, .5f);
+            rootmenucanvas.GetOrAddComponent<Canvas>(); //adds canvas to root canvas gameobject
+            rootmenucanvas.GetOrAddComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+            rootmenucanvas.GetOrAddComponent<CanvasScaler>();
+            rootmenucanvas.GetOrAddComponent<GraphicRaycaster>();
+            rootmenucanvas.GetOrAddComponent<VRC_UiShape>();
+            GameObject rootmenucanvaspanel = DefaultControls.CreatePanel(uiresources);
+            rootmenucanvaspanel.transform.SetParent(rootmenucanvas.transform, false);
+            rootmenucanvaspanel.layer = layer;
+            rootmenucanvaspanel.name = "Current Sign Panel";
+            rootmenucanvaspanel.GetOrAddComponent<Image>().color = new Color(1, 1, 1, 1);
+            rootmenucanvaspanel.GetOrAddComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+            rootmenucanvaspanel.GetOrAddComponent<RectTransform>().sizeDelta = new Vector2(2000, 265);
+            rootmenucanvaspanel.GetOrAddComponent<RectTransform>().anchorMin = new Vector2(.5f, .5f);
+            rootmenucanvaspanel.GetOrAddComponent<RectTransform>().anchorMax = new Vector2(.5f, .5f);
+            rootmenucanvaspanel.GetOrAddComponent<RectTransform>().pivot = new Vector2(.5f, .5f);
+            GameObject rootmenucanvaspaneltext = DefaultControls.CreateText(uiresources);
+            rootmenucanvaspaneltext.transform.SetParent(rootmenucanvaspanel.transform, false);
+            rootmenucanvaspaneltext.name = "Current Sign Text";
+            rootmenucanvaspaneltext.layer = layer;
+            rootmenucanvaspaneltext.GetOrAddComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+            rootmenucanvaspaneltext.GetOrAddComponent<RectTransform>().sizeDelta = new Vector2(2000, 265);
+            rootmenucanvaspaneltext.GetOrAddComponent<RectTransform>().anchorMin = new Vector2(.5f, .5f);
+            rootmenucanvaspaneltext.GetOrAddComponent<RectTransform>().anchorMax = new Vector2(.5f, .5f);
+            rootmenucanvaspaneltext.GetOrAddComponent<Text>().text = "The sign that's currently playing will show here.\nDas Zeichen, das gerade abgespielt wird, wird hier angezeigt.";
+            rootmenucanvaspaneltext.GetOrAddComponent<Text>().alignment = TextAnchor.MiddleCenter;
+            rootmenucanvaspaneltext.GetOrAddComponent<Text>().fontSize = 70;
+            rootmenucanvaspaneltext.GetOrAddComponent<Text>().resizeTextMaxSize = 70;
+            rootmenucanvaspaneltext.GetOrAddComponent<Text>().resizeTextMinSize = 50;
+            rootmenucanvaspaneltext.GetOrAddComponent<Text>().resizeTextForBestFit = true;
+
+            //"/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text"
+
+            //why create two copies? Too hard to sync all the different active/inactive gameobjects if everyone isn't on the same "page".
+            GameObject globalmenu = CreateMenu(rootmenu, MODE_GLOBAL);
+            GameObject localmenu = CreateMenu(rootmenu, MODE_LOCAL);
+
+            rootmenu.GetOrAddComponent<Transform>().localPosition = menurootpos;
+
+
+            /*****************************************
+            Update preferences menu to point to newly created objects.
+            *****************************************/
+            //recreate toggle to fix reference? 
+            /*
+                Toggle oldvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
+                DestroyImmediate(oldvideotoggle);
+                Toggle newvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
+                newvideotoggle.navigation = no_nav;
+                newvideotoggle.isOn = true;
+                newvideotoggle.graphic=newvideotoggle.transform.Find("Background").gameObject.transform.Find("Checkmark").GetComponent<Image>();
+                newvideotoggle.transition= Selectable.Transition.None;
+                newvideotoggle.toggleTransition= Toggle.ToggleTransition.None;
+                newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
+                UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
+                GameObject.Find("/Menu Root/Local Menu Root/Local Video Container"), "SetActive") as UnityAction<bool>);
+
+                UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
+                GameObject.Find("/Menu Root/Global Menu Root/Global Video Container"), "SetActive") as UnityAction<bool>);
+
+                //Cleanup existing triggers to reference global/local container
+                DestroyImmediate(GameObject.Find ("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode/Background/Global Helper").GetOrAddComponent<VRC_Trigger>());
+
+                VRC_Trigger newglobalhelpertrigger = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode/Background/Global Helper").GetOrAddComponent<VRC_Trigger>();
+                newglobalhelpertrigger.Triggers=new List<VRC_Trigger.TriggerEvent>(){
+                    new VRC_Trigger.TriggerEvent{
+                        BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
+                        TriggerType = VRC_Trigger.TriggerType.OnEnable,
+                        TriggerIndividuals = true,
+                        Events=new List<VRC_EventHandler.VrcEvent>(){
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                ParameterObject=localmenu,
+                                ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                ParameterObject=globalmenu,
+                                ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType = VRC_EventHandler.VrcEventType.SetUIText,
+                                ParameterString = "The sign that's currently playing will show here.",
+                                ParameterObject = GameObject.Find ("/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text")
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType = VRC_EventHandler.VrcEventType.SetUIText,
+                                ParameterString = "Do not use this world to learn yet. These motions are a Anonymous",
+                                ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Credit Panel/Credit Text")
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType = VRC_EventHandler.VrcEventType.SetUIText,
+                                ParameterString = "Description of movements here. (Slowly being added)",
+                                ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Description Panel/Description Text")
+                            },
                         }
-                        //dictlessonnum++;
+                    },
+                    new VRC_Trigger.TriggerEvent{
+                        BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
+                        TriggerType = VRC_Trigger.TriggerType.OnDisable,
+                        TriggerIndividuals = true,
+                        Events=new List<VRC_EventHandler.VrcEvent>(){
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                ParameterObject=localmenu,
+                                ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                ParameterObject=globalmenu,
+                                ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType = VRC_EventHandler.VrcEventType.SetUIText,
+                                ParameterString = "The sign that's currently playing will show here.",
+                                ParameterObject = GameObject.Find ("/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text")
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType = VRC_EventHandler.VrcEventType.SetUIText,
+                                ParameterString = "Don't use this world to learn yet.",
+                                ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Credit Panel/Credit Text")
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType = VRC_EventHandler.VrcEventType.SetUIText,
+                                ParameterString = "Description of movements here. (Slowly being added)",
+                                ParameterObject = GameObject.Find ("/Signing Avatars/Nana Avatar/Canvas/Description Panel/Description Text")
+                            }
+                        }
                     }
-*/
-			GameObject languagetriggercontainer = new GameObject(signlanguagenames[languagenum][0]+" Trigger Container"); //create language container for a given language to house global triggers. 
-			languagetriggercontainer.transform.SetParent(triggercontainer.transform, false);
-			languagetriggercontainer.layer = layer;
-			VRC_Trigger languagetriggercontainertrigger = languagetriggercontainer.AddComponent<VRC_Trigger>();
-			languagetriggercontainertrigger.Triggers=new List<VRC_Trigger.TriggerEvent>();
-			if(mode=="Local"){
-				DestroyImmediate(languagetriggercontainer);
-			}
+                };*/
 
-			GameObject langvideocontainer = new GameObject(signlanguagenames[languagenum][0]+" Video Container");
-			langvideocontainer.transform.position = new Vector3(0, 0, 0);
-			langvideocontainer.transform.SetParent(videocontainer.transform, false);
-			langvideocontainer.layer = layer;
+            globalmenu.SetActive(false);
 
-			//create a root gameobject for each language
-			GameObject langroot = new GameObject(signlanguagenames[languagenum][0]+" Root"); //creates language container for a given language.
-			langroot.transform.SetParent(rootcanvas.transform, false);
-			langroot.layer = layer;
+        }
+        static GameObject CreateMenu(GameObject parent, string mode)
+        {
+            //declare uiresource settings
+            DefaultControls.Resources uiresources = new DefaultControls.Resources();
+            uiresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Background.psd");
+            //uiresources.checkmark=AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
+            uiresources.checkmark = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VRCSDK/Dependencies/VRChat/Resources/PerformanceIcons/Perf_Great_32.png");
+            uiresources.dropdown = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/DropdownArrow.psd");
+            uiresources.inputField = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/InputFieldBackground.psd");
+            uiresources.knob = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/Knob.psd");
+            uiresources.mask = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UIMask.psd");
+            uiresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/UISprite.psd");
 
-			//create language select button
-			GameObject langselectgo = createbutton2(parent:langselectmenu, name:signlanguagenames[languagenum][1], sizedelta:buttonsize,
-            localPosition: new Vector3(columnoffset+(langmenucolumn*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(langmenurow*rowseperation),0),
-            text: signlanguagenames[languagenum][1], fontSize:50, txtsizedelta:buttonsize, txtanchoredPosition:new Vector2(20,0),
-            alignment:TextAnchor.MiddleLeft, nav:no_nav, layer:layer);
+            /*
+                //declare toggle resource settings
+                DefaultControls.Resources toggleresources = new DefaultControls.Resources();
+                //Set the Toggle Background Image someBgSprite;
+                toggleresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
+                //Set the Toggle Checkmark Image someCheckmarkSprite;
+                toggleresources.checkmark = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Checkmark.psd");
+                DefaultControls.Resources rootpanelresources = new DefaultControls.Resources();
+                rootpanelresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
+                DefaultControls.Resources txtresources = new DefaultControls.Resources();
+            */
+            int layer = 8;
+            //int rowoffset=860;
+            int columnoffset = 200;
 
-				//Create lesson sub-menu for nested loop to parent buttons to.
-				GameObject lessonmenu = new GameObject(signlanguagenames[languagenum][0]+" Lesson Menu");
-				lessonmenu.transform.SetParent(langroot.transform, false);
-				lessonmenu.layer = layer;
-					//Create lesson menu header
-					GameObject lessonselectmenuheader = DefaultControls.CreateText(uiresources);
-					lessonselectmenuheader.transform.SetParent (lessonmenu.transform, false);
-					lessonselectmenuheader.name=signlanguagenames[languagenum][0]+" Lesson Menu Header";
-					lessonselectmenuheader.layer = layer;
-					lessonselectmenuheader.GetComponent<Text> ().text = "VR-"+signlanguagenames[languagenum][0]+" Sign Language - Lesson Menu - " +mode+ " (Green = Videos Available.) (Red = No Videos Yet)";
-					lessonselectmenuheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
-					lessonselectmenuheader.GetComponent<Text> ().fontStyle = FontStyle.Bold;
-					lessonselectmenuheader.GetComponent<Text> ().fontSize = 50;		
-					lessonselectmenuheader.GetComponent<Text> ().color = Color.black;
-					lessonselectmenuheader.GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
-					lessonselectmenuheader.GetComponent<RectTransform> ().sizeDelta = new Vector2 (menusizex, headersizey);
-					lessonselectmenuheader.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (textpadding, menusizey-headersizey-textpadding);
-					lessonselectmenuheader.GetComponent<RectTransform> ().anchorMax = zerovector2;
-					lessonselectmenuheader.GetComponent<RectTransform> ().anchorMin = zerovector2;
-					lessonselectmenuheader.GetComponent<RectTransform> ().pivot = zerovector2;
-			langmenurow++;
-/*****************************************
-MAIN LESSON LOOP HERE
-*****************************************/
-					int menucolumn=0;
-					int menurow=0;
-				for (int lessonnum = 0; lessonnum < AllLessons[languagenum].Length; lessonnum++){ //for every lesson inside of ASLlessons do:
+            int rowseperation = 150;
+            int columnseperation = 1000;
+            int togglesizedelta = 80;
+            int numberpercolumn = 9;
+            int menusizex = 5200;
+            int menusizey = 1600;
+            int headersizey = 60;
+            int textpadding = 10;
+            int headerbuttonspacing = 100;
+            int buttonsizey = 130;
+            int buttonsizex = 950;
+            int menubuttonystart = textpadding + headersizey + buttonsizey + 80;
+            Vector2 backbuttonsize = new Vector2(menusizey - headersizey - textpadding - headerbuttonspacing, 100);
 
-			GameObject lessontriggercontainer = new GameObject(signlanguagenames[languagenum][0]+" L"+(lessonnum+1)+" Trigger Container"); //create lesson container for a given language to house global triggers. 
-			
-			lessontriggercontainer.layer = layer;
-			VRC_Trigger lessontriggercontainertrigger = lessontriggercontainer.AddComponent<VRC_Trigger>();
-			lessontriggercontainertrigger.Triggers=new List<VRC_Trigger.TriggerEvent>();
-			if(mode=="Global"){
-				lessontriggercontainer.transform.SetParent(languagetriggercontainer.transform, false);
-			}
-			else{
-				DestroyImmediate(lessontriggercontainer);
-			}
+            Vector2 buttonsize = new Vector2(buttonsizex, buttonsizey);
+            Vector2 menusize = new Vector2(menusizex, menusizey);
+            Vector3 menurootposition = new Vector3(1.5f, 0, 16);
+            Vector3 canvasscale = new Vector3(.001f, .001f, .001f);
+            Vector2 zerovector2 = new Vector2(0, 0);
+            Vector3 zerovector3 = new Vector3(0, 0, 0);
+
+            Navigation no_nav = new Navigation();
+            no_nav.mode = Navigation.Mode.None;
+
+            /*****************************************
+            START OF PROGRAM
+            *****************************************/
+
+            GameObject menuroot = new GameObject(mode + " Menu Root"); //creates a new "Menu Root gameobject which will be the parent of all newly created objects in the script.
+            menuroot.transform.position = menurootposition;
+            menuroot.transform.SetParent(parent.transform, false);
+            menuroot.layer = layer;
+
+            GameObject triggercontainer = new GameObject(mode + " Trigger Container"); //container go to hold all videos. Allows a world option that turns on/off videos completely.
+            triggercontainer.transform.SetParent(menuroot.transform, false);//maybe this needs to reparented to menuroot?
+            triggercontainer.layer = layer;
+
+            GameObject videocontainer = new GameObject(mode + " Video Container"); //container go to hold all videos. Allows a world option that turns on/off videos completely.
+                                                                                   //videocontainer.transform.position = new Vector3(-1f, 1, 0);
+            videocontainer.transform.SetParent(menuroot.transform, false);
+            videocontainer.layer = layer;
+
+            GameObject rootcanvas = new GameObject(mode + " Root Canvas");
+            rootcanvas.transform.SetParent(menuroot.transform, false);
+            rootcanvas.layer = layer;
+            rootcanvas.transform.localScale = canvasscale;
+            rootcanvas.AddComponent<RectTransform>();
+            rootcanvas.GetComponent<RectTransform>().localPosition = zerovector3;
+            rootcanvas.GetComponent<RectTransform>().sizeDelta = menusize;
+            rootcanvas.GetComponent<RectTransform>().anchorMax = zerovector2;
+            rootcanvas.GetComponent<RectTransform>().anchorMin = zerovector2;
+            rootcanvas.GetComponent<RectTransform>().pivot = zerovector2;
+            //rootcanvas.AddComponent<Canvas> (); //adds canvas to root canvas gameobject
+            rootcanvas.GetOrAddComponent<Canvas>().renderMode = RenderMode.WorldSpace;
+            rootcanvas.AddComponent<CanvasScaler>();
+            rootcanvas.AddComponent<GraphicRaycaster>();
+            rootcanvas.AddComponent<VRC_UiShape>();
+            ToggleGroup rootcanvastogglegroup = rootcanvas.AddComponent<ToggleGroup>();
+            rootcanvastogglegroup.allowSwitchOff = true;
+
+            GameObject rootpanel = DefaultControls.CreatePanel(uiresources);
+            rootpanel.transform.SetParent(rootcanvas.transform, false);
+            rootpanel.layer = layer;
+            rootpanel.GetComponent<RectTransform>().sizeDelta = menusize;
+            rootpanel.GetComponent<RectTransform>().anchorMax = zerovector2;
+            rootpanel.GetComponent<RectTransform>().anchorMin = zerovector2;
+            rootpanel.GetComponent<RectTransform>().pivot = zerovector2;
+            //rootpanel.GetComponent<Image> ().color = new Color(1,1,1,1); //gets rid of transparency - also can change panel color if I want here. 1=255.
+            if (mode == MODE_GLOBAL)
+            {
+                rootpanel.GetComponent<Image>().color = new Color(1, .90f, .90f, 1); //gets rid of transparency - also can change panel color if I want here. 1=255.
+            }
+            else
+            {
+                rootpanel.GetComponent<Image>().color = new Color(.90f, .90f, 1, 1); //gets rid of transparency - also can change panel color if I want here. 1=255.
+            }
+
+            GameObject langselectmenu = new GameObject("VR Sign Language Select Menu");
+            langselectmenu.transform.SetParent(rootcanvas.transform, false);
+            langselectmenu.layer = layer;
+
+            GameObject langselectmenuheader = DefaultControls.CreateText(uiresources);
+            langselectmenuheader.transform.SetParent(langselectmenu.transform, false);
+            langselectmenuheader.name = "VR Sign Language Select Menu Header";
+            langselectmenuheader.layer = layer;
+            langselectmenuheader.GetComponent<Text>().text = "VR Sign Language Select Menu - " + mode;
+            langselectmenuheader.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+            langselectmenuheader.GetComponent<Text>().fontStyle = FontStyle.Bold;
+            langselectmenuheader.GetComponent<Text>().fontSize = 50;
+            langselectmenuheader.GetComponent<Text>().color = Color.black;
+            langselectmenuheader.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+            langselectmenuheader.GetComponent<RectTransform>().sizeDelta = new Vector2(menusizex, headersizey);
+            langselectmenuheader.GetComponent<RectTransform>().anchoredPosition = new Vector2(textpadding, menusizey - headersizey - textpadding);
+            langselectmenuheader.GetComponent<RectTransform>().anchorMax = zerovector2;
+            langselectmenuheader.GetComponent<RectTransform>().anchorMin = zerovector2;
+            langselectmenuheader.GetComponent<RectTransform>().pivot = zerovector2;
+
+            /*****************************************
+            MAIN LANGUAGE LOOP HERE
+            *****************************************/
+            int langmenucolumn = 0;
+            int langmenurow = 0;
+            for (int languagenum = 0; languagenum < AllLessons.Length; languagenum++) //for every language in signlanguages do this once:
+            {
+                if (languagenum != 0)
+                {
+                    if (languagenum % numberpercolumn == 0)
+                    { //display 9 items per column
+                        langmenucolumn++;
+                        langmenurow = 0;
+                    }
+                }
+                /*
+                                    var wordlookup = new Dictionary<string, int>();
+                                    //int dictlessonnum=1;
+                                    //int dictwordnum=1;
+                                    int dictwordnumber=1;//since idle=0
+                                    foreach(var lesson in AllLessons[languagenum]){
+                                        foreach(var word in lesson){
+                                            int value;
+                                            if (!wordlookup.TryGetValue(word[0], out value)) {
+                                                wordlookup.Add(word[0],dictwordnumber);
+                                                //Debug.Log("Added: "+"ASL-"+word[0]);
+                                                dictwordnumber++;
+                                            }else{
+                                                Debug.Log("Warning when building dictionary: Word already exists: "+word[0]);
+                                            }
+
+                                            //dictwordnum++;
+                                        }
+                                        //dictlessonnum++;
+                                    }
+                */
+                GameObject languagetriggercontainer = new GameObject(signlanguagenames[languagenum][0] + " Trigger Container"); //create language container for a given language to house global triggers. 
+                languagetriggercontainer.transform.SetParent(triggercontainer.transform, false);
+                languagetriggercontainer.layer = layer;
+                VRC_Trigger languagetriggercontainertrigger = languagetriggercontainer.AddComponent<VRC_Trigger>();
+                languagetriggercontainertrigger.Triggers = new List<VRC_Trigger.TriggerEvent>();
+                if (mode == MODE_LOCAL)
+                {
+                    DestroyImmediate(languagetriggercontainer);
+                }
+
+                GameObject langvideocontainer = new GameObject(signlanguagenames[languagenum][0] + " Video Container");
+                langvideocontainer.transform.position = new Vector3(0, 0, 0);
+                langvideocontainer.transform.SetParent(videocontainer.transform, false);
+                langvideocontainer.layer = layer;
+
+                //create a root gameobject for each language
+                GameObject langroot = new GameObject(signlanguagenames[languagenum][0] + " Root"); //creates language container for a given language.
+                langroot.transform.SetParent(rootcanvas.transform, false);
+                langroot.layer = layer;
+
+                //create language select button
+                GameObject langselectgo = createbutton2(mode: "numtext2", parent: langselectmenu, name: signlanguagenames[languagenum][1], sizedelta: buttonsize,
+                localPosition: new Vector3(columnoffset + (langmenucolumn * columnseperation), menusizey - headersizey - textpadding - buttonsizey - headerbuttonspacing - (langmenurow * rowseperation), 0),
+                text1: signlanguagenames[languagenum][1], fontSize: 50, txtsizedelta: buttonsize, txtanchoredPosition: new Vector2(20, 0),
+                alignment: TextAnchor.MiddleLeft, nav: no_nav, layer: layer);
+
+                //Create lesson sub-menu for nested loop to parent buttons to.
+                GameObject lessonmenu = new GameObject(signlanguagenames[languagenum][0] + " Lesson Menu");
+                lessonmenu.transform.SetParent(langroot.transform, false);
+                lessonmenu.layer = layer;
+                //Create lesson menu header
+                GameObject lessonselectmenuheader = DefaultControls.CreateText(uiresources);
+                lessonselectmenuheader.transform.SetParent(lessonmenu.transform, false);
+                lessonselectmenuheader.name = signlanguagenames[languagenum][0] + " Lesson Menu Header";
+                lessonselectmenuheader.layer = layer;
+                lessonselectmenuheader.GetComponent<Text>().text = "VR-" + signlanguagenames[languagenum][0] + " Sign Language - Lesson Menu - " + mode + " (Green = Videos Available.) (Red = No Videos Yet)";
+                lessonselectmenuheader.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+                lessonselectmenuheader.GetComponent<Text>().fontStyle = FontStyle.Bold;
+                lessonselectmenuheader.GetComponent<Text>().fontSize = 50;
+                lessonselectmenuheader.GetComponent<Text>().color = Color.black;
+                lessonselectmenuheader.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+                lessonselectmenuheader.GetComponent<RectTransform>().sizeDelta = new Vector2(menusizex, headersizey);
+                lessonselectmenuheader.GetComponent<RectTransform>().anchoredPosition = new Vector2(textpadding, menusizey - headersizey - textpadding);
+                lessonselectmenuheader.GetComponent<RectTransform>().anchorMax = zerovector2;
+                lessonselectmenuheader.GetComponent<RectTransform>().anchorMin = zerovector2;
+                lessonselectmenuheader.GetComponent<RectTransform>().pivot = zerovector2;
+                langmenurow++;
+                /*****************************************
+                MAIN LESSON LOOP HERE
+                *****************************************/
+                int menucolumn = 0;
+                int menurow = 0;
+                for (int lessonnum = 0; lessonnum < AllLessons[languagenum].Length; lessonnum++)
+                { //for every lesson inside of ASLlessons do:
+
+                    GameObject lessontriggercontainer = new GameObject(signlanguagenames[languagenum][0] + " L" + (lessonnum + 1) + " Trigger Container"); //create lesson container for a given language to house global triggers. 
+
+                    lessontriggercontainer.layer = layer;
+                    VRC_Trigger lessontriggercontainertrigger = lessontriggercontainer.AddComponent<VRC_Trigger>();
+                    lessontriggercontainertrigger.Triggers = new List<VRC_Trigger.TriggerEvent>();
+                    if (mode == MODE_GLOBAL)
+                    {
+                        lessontriggercontainer.transform.SetParent(languagetriggercontainer.transform, false);
+                    }
+                    else
+                    {
+                        DestroyImmediate(lessontriggercontainer);
+                    }
 
 
-				if (lessonnum != 0){
-					if (lessonnum % numberpercolumn == 0){ //display 9 items per column
-					menucolumn++;
-					menurow=0;
-					}
-				}
-					//create lesson menu button here for lessonmenu.-one at a time
-					GameObject lessonbgo = createbutton2(parent:lessonmenu, name:signlanguagenames[languagenum][0]+" L"+(lessonnum+1)+"("+lessonnames[languagenum][lessonnum][0]+") - Button", sizedelta:buttonsize,
-					//anchoredPosition: new Vector2(columnoffset+(menucolumn*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(menurow*rowseperation)),
-					localPosition: new Vector3(columnoffset+(menucolumn*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(menurow*rowseperation),0),
-					textnumber: (lessonnum+1)+ ")",
-					text: lessonnames[languagenum][lessonnum][0]+"\n"+lessonnames[languagenum][lessonnum][1], fontSize:50, txtsizedelta:buttonsize, txtanchoredPosition:new Vector2(120,0),
-					alignment:TextAnchor.MiddleLeft, nav:no_nav, layer:layer);
-					Button b = lessonbgo.GetOrAddComponent<Button>();
-					b.onClick = new Button.ButtonClickedEvent();
-					//colors the buttons to indicate what's working and what's not.
-					var defaultcolors = b.colors;
-					defaultcolors.normalColor = new Color32( 0xFF, 0x98, 0x98, 0xFF ); //FF9898FF light red
-					b.colors = defaultcolors;
-					
-					if((lessonnum+1) <= 2){
-						var colors = b.colors;
-						colors.normalColor = new Color32( 0x98, 0xFF, 0x98, 0xFF ); //FF9898FF light green
-						b.colors = colors;
-					}
-					/*
+                    if (lessonnum != 0)
+                    {
+                        if (lessonnum % numberpercolumn == 0)
+                        { //display 9 items per column
+                            menucolumn++;
+                            menurow = 0;
+                        }
+                    }
+                    //create lesson menu button here for lessonmenu.-one at a time
+                    GameObject lessonbgo = createbutton2(mode: "numtext2", parent: lessonmenu, name: signlanguagenames[languagenum][0] + " L" + (lessonnum + 1) + "(" + lessonnames[languagenum][lessonnum][0] + ") - Button", sizedelta: buttonsize,
+                    //anchoredPosition: new Vector2(columnoffset+(menucolumn*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(menurow*rowseperation)),
+                    localPosition: new Vector3(columnoffset + (menucolumn * columnseperation), menusizey - headersizey - textpadding - buttonsizey - headerbuttonspacing - (menurow * rowseperation), 0),
+                    textnumber: (lessonnum + 1) + ")",
+                    text1: lessonnames[languagenum][lessonnum][0] + "\n" + lessonnames[languagenum][lessonnum][1], fontSize: 50, txtsizedelta: buttonsize, txtanchoredPosition: new Vector2(120, 0),
+                    alignment: TextAnchor.MiddleLeft, nav: no_nav, layer: layer);
+                    Button b = lessonbgo.GetOrAddComponent<Button>();
+                    b.onClick = new Button.ButtonClickedEvent();
+                    //colors the buttons to indicate what's working and what's not.
+                    var defaultcolors = b.colors;
+                    defaultcolors.normalColor = new Color32(0xFF, 0x98, 0x98, 0xFF); //FF9898FF light red
+                    b.colors = defaultcolors;
+
+                    if ((lessonnum + 1) <= 2)
+                    {
+                        var colors = b.colors;
+                        colors.normalColor = new Color32(0x98, 0xFF, 0x98, 0xFF); //FF9898FF light green
+                        b.colors = colors;
+                    }
+                    /*
 					if((lessonnum+1)>=2){
 						var colors = b.colors;
 						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
 						b.colors = colors;
 					}*/
-					menurow++;
-					//create lesson x gameobject eg: ASL Lesson x
-					GameObject lessongo = new GameObject(signlanguagenames[languagenum][0]+" Lesson "+(lessonnum+1));
-					lessongo.transform.SetParent(langroot.transform, false);
-					lessongo.layer = layer;
-					
-					//create lesson x header
-					GameObject lessongoheader = DefaultControls.CreateText(uiresources);
-					lessongoheader.transform.SetParent (lessongo.transform, false);
-					lessongoheader.name=signlanguagenames[languagenum][0]+" Lesson "+(lessonnum+1) + "- Header"; //ASL Lesson X Lesson Header
-					lessongoheader.layer = layer;
-					lessongoheader.GetComponent<Text> ().text = "VR-"+signlanguagenames[languagenum][0]+" Sign Language - Lesson " + (lessonnum+1) + " - " + lessonnames[languagenum][lessonnum][0]+" - "+mode;
-					lessongoheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
-					lessongoheader.GetComponent<Text> ().fontStyle = FontStyle.Bold;
-					lessongoheader.GetComponent<Text> ().fontSize = 50;		
-					lessongoheader.GetComponent<Text> ().color = Color.black;
-					lessongoheader.GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
-					lessongoheader.GetComponent<RectTransform> ().sizeDelta = new Vector2 (menusizex, headersizey);
-					lessongoheader.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (textpadding, menusizey-headersizey-textpadding);
-					lessongoheader.GetComponent<RectTransform> ().anchorMax = zerovector2;
-					lessongoheader.GetComponent<RectTransform> ().anchorMin = zerovector2;
-					lessongoheader.GetComponent<RectTransform> ().pivot = zerovector2;
-					
-					//create video lesson container
-					GameObject videolessoncontainer = new GameObject(signlanguagenames[languagenum][0]+" Video L"+(lessonnum+1));
-					videolessoncontainer.transform.SetParent(langvideocontainer.transform, false);
-					videolessoncontainer.layer=layer;
+                    menurow++;
+                    //create lesson x gameobject eg: ASL Lesson x
+                    GameObject lessongo = new GameObject(signlanguagenames[languagenum][0] + " Lesson " + (lessonnum + 1));
+                    lessongo.transform.SetParent(langroot.transform, false);
+                    lessongo.layer = layer;
 
-if(mode=="Global"){
-//adds a broadcast trigger to the lesson button, which activates a trigger on a trigger container (which hopefully is active if global mode is on?)
-					VRC_Trigger lessonbuttonvrctrigger = lessonbgo.AddComponent<VRC_Trigger>();
-					lessonbuttonvrctrigger.Triggers=new List<VRC_Trigger.TriggerEvent>(){
-						new VRC_Trigger.TriggerEvent{
-							BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
-							TriggerType = VRC_Trigger.TriggerType.Custom,
-							TriggerIndividuals = true,
-							Name="globaltrigger",
-							Events=new List<VRC_EventHandler.VrcEvent>(){
-								new VRC_EventHandler.VrcEvent{
-									EventType=VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
-									ParameterObject=lessontriggercontainer,
-									ParameterString="L"+(lessonnum+1),
-								}
-							}
-						},
-					};
+                    //create lesson x header
+                    GameObject lessongoheader = DefaultControls.CreateText(uiresources);
+                    lessongoheader.transform.SetParent(lessongo.transform, false);
+                    lessongoheader.name = signlanguagenames[languagenum][0] + " Lesson " + (lessonnum + 1) + "- Header"; //ASL Lesson X Lesson Header
+                    lessongoheader.layer = layer;
+                    lessongoheader.GetComponent<Text>().text = "VR-" + signlanguagenames[languagenum][0] + " Sign Language - Lesson " + (lessonnum + 1) + " - " + lessonnames[languagenum][lessonnum][0] + " - " + mode;
+                    lessongoheader.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font;
+                    lessongoheader.GetComponent<Text>().fontStyle = FontStyle.Bold;
+                    lessongoheader.GetComponent<Text>().fontSize = 50;
+                    lessongoheader.GetComponent<Text>().color = Color.black;
+                    lessongoheader.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+                    lessongoheader.GetComponent<RectTransform>().sizeDelta = new Vector2(menusizex, headersizey);
+                    lessongoheader.GetComponent<RectTransform>().anchoredPosition = new Vector2(textpadding, menusizey - headersizey - textpadding);
+                    lessongoheader.GetComponent<RectTransform>().anchorMax = zerovector2;
+                    lessongoheader.GetComponent<RectTransform>().anchorMin = zerovector2;
+                    lessongoheader.GetComponent<RectTransform>().pivot = zerovector2;
 
-	lessontriggercontainertrigger.Triggers.Add(
-		new VRC_Trigger.TriggerEvent{
-			BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
-			Name="L"+(lessonnum+1),
-			TriggerType = VRC_Trigger.TriggerType.Custom,
-			TriggerIndividuals = true,
-			Events=new List<VRC_EventHandler.VrcEvent>(){
-				new VRC_EventHandler.VrcEvent{
-					EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-					ParameterObject=lessongo,
-					ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-				},
-				new VRC_EventHandler.VrcEvent{
-					EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive,
-					ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True,
-					ParameterObject = videolessoncontainer
-				},
-				new VRC_EventHandler.VrcEvent{
-					EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive,
-					ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False,
-					ParameterObject = lessonmenu
-				}
-			}
-		}
-	);
-			
-			UnityEventTools.AddStringPersistentListener(b.onClick,
-			System.Delegate.CreateDelegate(typeof(UnityAction<string>), lessonbuttonvrctrigger,"ExecuteCustomTrigger") as UnityAction<string>
-			,"globaltrigger");
+                    //create video lesson container
+                    GameObject videolessoncontainer = new GameObject(signlanguagenames[languagenum][0] + " Video L" + (lessonnum + 1));
+                    videolessoncontainer.transform.SetParent(langvideocontainer.transform, false);
+                    videolessoncontainer.layer = layer;
 
-}else if(mode=="Local"){
+                    if (mode == MODE_GLOBAL)
+                    {
+                        //adds a broadcast trigger to the lesson button, which activates a trigger on a trigger container (which hopefully is active if global mode is on?)
+                        VRC_Trigger lessonbuttonvrctrigger = lessonbgo.AddComponent<VRC_Trigger>();
+                        lessonbuttonvrctrigger.Triggers = new List<VRC_Trigger.TriggerEvent>(){
+                        new VRC_Trigger.TriggerEvent{
+                            BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
+                            TriggerType = VRC_Trigger.TriggerType.Custom,
+                            TriggerIndividuals = true,
+                            Name="globaltrigger",
+                            Events=new List<VRC_EventHandler.VrcEvent>(){
+                                new VRC_EventHandler.VrcEvent{
+                                    EventType=VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
+                                    ParameterObject=lessontriggercontainer,
+                                    ParameterString="L"+(lessonnum+1),
+                                }
+                            }
+                        },
+                    };
 
-					UnityAction<bool> enablelesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessongo, "SetActive") as UnityAction<bool>;
-					UnityEventTools.AddBoolPersistentListener(b.onClick, enablelesson, true);
+                        lessontriggercontainertrigger.Triggers.Add(
+                            new VRC_Trigger.TriggerEvent
+                            {
+                                BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
+                                Name = "L" + (lessonnum + 1),
+                                TriggerType = VRC_Trigger.TriggerType.Custom,
+                                TriggerIndividuals = true,
+                                Events = new List<VRC_EventHandler.VrcEvent>(){
+                new VRC_EventHandler.VrcEvent{
+                    EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                    ParameterObject=lessongo,
+                    ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                },
+                new VRC_EventHandler.VrcEvent{
+                    EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                    ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True,
+                    ParameterObject = videolessoncontainer
+                },
+                new VRC_EventHandler.VrcEvent{
+                    EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                    ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False,
+                    ParameterObject = lessonmenu
+                }
+                                }
+                            }
+                        );
 
-					UnityAction<bool> enablevideocontainerlesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videolessoncontainer, "SetActive") as UnityAction<bool>;
-					UnityEventTools.AddBoolPersistentListener(b.onClick, enablevideocontainerlesson, true);
+                        UnityEventTools.AddStringPersistentListener(b.onClick,
+                        System.Delegate.CreateDelegate(typeof(UnityAction<string>), lessonbuttonvrctrigger, "ExecuteCustomTrigger") as UnityAction<string>
+                        , "globaltrigger");
 
-					UnityAction<bool> disablemenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
-					UnityEventTools.AddBoolPersistentListener(b.onClick, disablemenu, false);
-}
+                    }
+                    else if (mode == MODE_LOCAL)
+                    {
 
-/*****************************************
-MAIN WORD LOOP HERE
-*****************************************/
-					//initialize row/columns at start of word processing to create lesson boards
-					int wordcolumn = 0;
-					int wordrow = 0;
-                    for (int wordnum = 0; wordnum < AllLessons[languagenum][lessonnum].Length; wordnum++){ //gets total rows in lesson.
-						if (wordnum != 0){
-							if (wordnum % numberpercolumn == 0){ //display 9 items per column
-								wordcolumn++;
-								wordrow=0;
-							}
-						}
+                        UnityAction<bool> enablelesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessongo, "SetActive") as UnityAction<bool>;
+                        UnityEventTools.AddBoolPersistentListener(b.onClick, enablelesson, true);
 
-			GameObject wordtriggercontainer = new GameObject(signlanguagenames[languagenum][0]+" L"+(lessonnum+1)+"-W"+(wordnum+1)+" Trigger Container"); //create lesson container for a given language to house global triggers. 
+                        UnityAction<bool> enablevideocontainerlesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videolessoncontainer, "SetActive") as UnityAction<bool>;
+                        UnityEventTools.AddBoolPersistentListener(b.onClick, enablevideocontainerlesson, true);
 
-			wordtriggercontainer.layer = layer;
-			VRC_Trigger wordtriggercontainertrigger = wordtriggercontainer.AddComponent<VRC_Trigger>();
-			wordtriggercontainertrigger.Triggers=new List<VRC_Trigger.TriggerEvent>();
+                        UnityAction<bool> disablemenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
+                        UnityEventTools.AddBoolPersistentListener(b.onClick, disablemenu, false);
+                    }
 
-			if(mode=="Global"){
-			wordtriggercontainer.transform.SetParent(lessontriggercontainer.transform, false);
-			}
-			else{
-				DestroyImmediate(wordtriggercontainer);
-			}
+                    /*****************************************
+                    MAIN WORD LOOP HERE
+                    *****************************************/
+                    //initialize row/columns at start of word processing to create lesson boards
+                    int wordcolumn = 0;
+                    int wordrow = 0;
+                    for (int wordnum = 0; wordnum < AllLessons[languagenum][lessonnum].Length; wordnum++)
+                    { //gets total rows in lesson.
+                        if (wordnum != 0)
+                        {
 
-					if(mode=="Global"){
-					GameObject buttonoffgo=createbutton2(parent=lessongo, name:signlanguagenames[languagenum][0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Button Off",
-					sizedelta:buttonsize,localPosition:new Vector3(columnoffset +(wordcolumn*columnseperation),(menusizey-headersizey-textpadding-buttonsizey-100-(wordrow*rowseperation)),0),
-					textnumber: (wordnum+1)+ ")",
-					text: AllLessons[languagenum][lessonnum][wordnum][0]+"\n"+AllLessons[languagenum][lessonnum][wordnum][1],
-					txtsizedelta:new Vector2 (900, 100),txtanchoredPosition:new Vector2 (0,0), alignment:TextAnchor.MiddleLeft,
-					nav:no_nav,layer:layer);
-//Don't forget to create the "selected" button with checkmark (optional)
+                            if ((lessonnum+1) != 28)
+                            {
+                                if (wordnum % numberpercolumn == 0)
+                                { //display 9 items per column
+                                    wordcolumn++;
+                                    wordrow = 0;
+                                }
+                            }
+                            else
+                            {
+                                if (wordnum % 13 == 0)
+                                { //display 9 items per column
+                                    wordcolumn++;
+                                    wordrow = 0;
+                                }
+                            }
+                        }
 
-					VRC_Trigger buttontriggers = buttonoffgo.AddComponent<VRC_Trigger>();
-					//I need to add triggers to nagivate late-joiners to the current menu by disabling earlier menus and enabling the lesson menu.
+                        GameObject wordtriggercontainer = new GameObject(signlanguagenames[languagenum][0] + " L" + (lessonnum + 1) + "-W" + (wordnum + 1) + " Trigger Container"); //create lesson container for a given language to house global triggers. 
 
-						wordtriggercontainertrigger.Triggers.Add(
-							new VRC_Trigger.TriggerEvent{
-								BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
-								Name="L"+(lessonnum+1)+"-W"+(wordnum+1),
-								TriggerType = VRC_Trigger.TriggerType.Custom,
-								TriggerIndividuals = true,
-								Events=new List<VRC_EventHandler.VrcEvent>(){
-									new VRC_EventHandler.VrcEvent{
-										EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-										ParameterObject=langselectmenu,
-										ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-										ParameterObject=langroot,
-										ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-									},
-									new VRC_EventHandler.VrcEvent{
-									EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-									ParameterObject=langvideocontainer,
-									ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-									},
-									new VRC_EventHandler.VrcEvent{
-									EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-									ParameterObject=videolessoncontainer,
-									ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-										ParameterObject=lessonmenu,
-										ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-										ParameterObject=lessongo,
-										ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-									},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = (lessonnum+1)+"-"+(wordnum+1)+": "+AllLessons[languagenum][lessonnum][wordnum][0],
-										ParameterObject = GameObject.Find ("/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text")
-									}
-								}
-							}
-						); 
-					
-					if(AllLessons[languagenum][lessonnum][wordnum][2]!=""){ //if url is blank, then don't create video.
-						//creates the video gameobjects
-						GameObject videogo = GameObject.CreatePrimitive(PrimitiveType.Quad);
-						videogo.name=signlanguagenames[languagenum][0]+" Video L"+(lessonnum+1) +" S"+(wordnum+1);
-						videogo.layer = layer;
-						videogo.transform.position = new Vector3(-1f, 0.934f, 0);
-						videogo.transform.localScale = new Vector3(2, 1.33f, 1);
-						videogo.transform.SetParent(videolessoncontainer.transform, false);
-						videogo.GetOrAddComponent<MeshRenderer>().sharedMaterial=(Material)AssetDatabase.LoadAssetAtPath("Assets/VRCSDK/Sample Assets/Materials/Screen.mat",typeof(Material));
-						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().url=AllLessons[languagenum][lessonnum][wordnum][2];
-						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().isLooping=true;
-						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().renderMode=VideoRenderMode.MaterialOverride;
-						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().audioOutputMode=VideoAudioOutputMode.None;
-						videogo.SetActive(false);
-						wordtriggercontainertrigger.Triggers[0].Events.Add(//there should only be one trigger to add events to on this list.					
-							new VRC_EventHandler.VrcEvent{
-								EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-								ParameterObject=videogo,
-								ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-							}
-						);
-					}
+                        wordtriggercontainer.layer = layer;
+                        VRC_Trigger wordtriggercontainertrigger = wordtriggercontainer.AddComponent<VRC_Trigger>();
+                        wordtriggercontainertrigger.Triggers = new List<VRC_Trigger.TriggerEvent>();
 
-			//assign unity triggers to button 
-			Button buttonoffbutton = buttonoffgo.GetOrAddComponent<Button>();
-			buttonoffbutton.onClick = new Button.ButtonClickedEvent();
-			UnityAction<string> worduiaction = System.Delegate.CreateDelegate(typeof(UnityAction<string>), buttontriggers,"ExecuteCustomTrigger") as UnityAction<string>;
-			UnityEventTools.AddStringPersistentListener(buttonoffbutton.onClick, worduiaction,"L"+(lessonnum+1)+"-W"+(wordnum+1)+" globaltrigger");
+                        if (mode == MODE_GLOBAL)
+                        {
+                            wordtriggercontainer.transform.SetParent(lessontriggercontainer.transform, false);
+                        }
+                        else
+                        {
+                            DestroyImmediate(wordtriggercontainer);
+                        }
 
-			buttontriggers.Triggers.Add(
-				new VRC_Trigger.TriggerEvent{
-					BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
-					TriggerType = VRC_Trigger.TriggerType.Custom,
-					TriggerIndividuals = true,
-					Name="L"+(lessonnum+1)+"-W"+(wordnum+1)+" globaltrigger",
-					Events=new List<VRC_EventHandler.VrcEvent>(){
-						new VRC_EventHandler.VrcEvent{
-							EventType=VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
-							ParameterObject=wordtriggercontainer,
-							ParameterString="L"+(lessonnum+1)+"-W"+(wordnum+1),
+                        if (mode == MODE_GLOBAL)
+                        {
+                            GameObject buttonoffgo;
+                            if ((lessonnum + 1) == 28)
+                            {//signle line
+                                buttonoffgo = createbutton2(mode: "numtext", parent = lessongo, name: signlanguagenames[languagenum][0] + " " + (lessonnum + 1) + "-" + (wordnum + 1) + " - Button Off",
+                                sizedelta: new Vector2(buttonsizex, 100),
+                                localPosition: new Vector3(columnoffset + (wordcolumn * columnseperation), (menusizey - headersizey - textpadding - 100 - 100 - (wordrow * 100)), 0),
+                                textnumber: (wordnum + 1) + ")",
+                                text1: AllLessons[languagenum][lessonnum][wordnum][0],
+                                txtsizedelta: new Vector2(900, 100), txtanchoredPosition: new Vector2(0, 0), alignment: TextAnchor.MiddleLeft,
+                                nav: no_nav, layer: layer);
+                            }
+                            else
+                            {//double line mode
+                                buttonoffgo = createbutton2(mode: "numtext2", parent = lessongo, name: signlanguagenames[languagenum][0] + " " + (lessonnum + 1) + "-" + (wordnum + 1) + " - Button Off",
+                                sizedelta: buttonsize,
+                                localPosition: new Vector3(columnoffset + (wordcolumn * columnseperation), (menusizey - headersizey - textpadding - buttonsizey - 100 - (wordrow * rowseperation)), 0),
+                                textnumber: (wordnum + 1) + ")",
+                                text1: AllLessons[languagenum][lessonnum][wordnum][0],
+                                text2: AllLessons[languagenum][lessonnum][wordnum][1],
+                                txtsizedelta: new Vector2(900, 130), txtanchoredPosition: new Vector2(0, 0), alignment: TextAnchor.MiddleLeft,
+                                nav: no_nav, layer: layer);
+                            }
+
+
+                            //Don't forget to create the "selected" button with checkmark (optional)
+
+                            VRC_Trigger buttontriggers = buttonoffgo.AddComponent<VRC_Trigger>();
+                            //I need to add triggers to nagivate late-joiners to the current menu by disabling earlier menus and enabling the lesson menu.
+
+                            wordtriggercontainertrigger.Triggers.Add(
+                                new VRC_Trigger.TriggerEvent
+                                {
+                                    BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
+                                    Name = "L" + (lessonnum + 1) + "-W" + (wordnum + 1),
+                                    TriggerType = VRC_Trigger.TriggerType.Custom,
+                                    TriggerIndividuals = true,
+                                    Events = new List<VRC_EventHandler.VrcEvent>(){
+                                    new VRC_EventHandler.VrcEvent{
+                                        EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                        ParameterObject=langselectmenu,
+                                        ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+                                    },
+                                    new VRC_EventHandler.VrcEvent{
+                                        EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                        ParameterObject=langroot,
+                                        ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                                    },
+                                    new VRC_EventHandler.VrcEvent{
+                                    EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                    ParameterObject=langvideocontainer,
+                                    ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                                    },
+                                    new VRC_EventHandler.VrcEvent{
+                                    EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                    ParameterObject=videolessoncontainer,
+                                    ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                                    },
+                                    new VRC_EventHandler.VrcEvent{
+                                        EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                        ParameterObject=lessonmenu,
+                                        ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+                                    },
+                                    new VRC_EventHandler.VrcEvent{
+                                        EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                        ParameterObject=lessongo,
+                                        ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                                    },
+                                    new VRC_EventHandler.VrcEvent{
+                                        EventType = VRC_EventHandler.VrcEventType.SetUIText,
+                                        ParameterString = (lessonnum+1)+"-"+(wordnum+1)+": "+AllLessons[languagenum][lessonnum][wordnum][0],
+                                        ParameterObject = GameObject.Find ("/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text")
+                                    }
+                                    }
+                                }
+                            );
+
+                            if (AllLessons[languagenum][lessonnum][wordnum][2] != "")
+                            { //if url is blank, then don't create video.
+                              //creates the video gameobjects
+                                GameObject videogo = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                                videogo.name = signlanguagenames[languagenum][0] + " Video L" + (lessonnum + 1) + " S" + (wordnum + 1);
+                                videogo.layer = layer;
+                                videogo.transform.position = new Vector3(-1f, 0.934f, 0);
+                                videogo.transform.localScale = new Vector3(2, 1.33f, 1);
+                                videogo.transform.SetParent(videolessoncontainer.transform, false);
+                                videogo.GetOrAddComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/VRCSDK/Sample Assets/Materials/Screen.mat", typeof(Material));
+                                videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().url = AllLessons[languagenum][lessonnum][wordnum][2];
+                                videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().isLooping = true;
+                                videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().renderMode = VideoRenderMode.MaterialOverride;
+                                videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().audioOutputMode = VideoAudioOutputMode.None;
+                                videogo.SetActive(false);
+                                wordtriggercontainertrigger.Triggers[0].Events.Add(//there should only be one trigger to add events to on this list.					
+                                    new VRC_EventHandler.VrcEvent
+                                    {
+                                        EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                        ParameterObject = videogo,
+                                        ParameterBoolOp = VRC_EventHandler.VrcBooleanOp.True
+                                    }
+                                );
+                            }
+
+                            //assign unity triggers to button 
+                            Button buttonoffbutton = buttonoffgo.GetOrAddComponent<Button>();
+                            buttonoffbutton.onClick = new Button.ButtonClickedEvent();
+                            UnityAction<string> worduiaction = System.Delegate.CreateDelegate(typeof(UnityAction<string>), buttontriggers, "ExecuteCustomTrigger") as UnityAction<string>;
+                            UnityEventTools.AddStringPersistentListener(buttonoffbutton.onClick, worduiaction, "L" + (lessonnum + 1) + "-W" + (wordnum + 1) + " globaltrigger");
+
+                            buttontriggers.Triggers.Add(
+                                new VRC_Trigger.TriggerEvent
+                                {
+                                    BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
+                                    TriggerType = VRC_Trigger.TriggerType.Custom,
+                                    TriggerIndividuals = true,
+                                    Name = "L" + (lessonnum + 1) + "-W" + (wordnum + 1) + " globaltrigger",
+                                    Events = new List<VRC_EventHandler.VrcEvent>(){
+                        new VRC_EventHandler.VrcEvent{
+                            EventType=VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
+                            ParameterObject=wordtriggercontainer,
+                            ParameterString="L"+(lessonnum+1)+"-W"+(wordnum+1),
 							//ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
 						}
-					}
-				}
-			);
+                                    }
+                                }
+                            );
 
-wordrow++;
+                            wordrow++;
 
-}//end Global word processing
+                        }//end Global word processing
 
-if(mode=="Local"){
-					//create lesson toggles
-					GameObject uiToggle = DefaultControls.CreateToggle(uiresources);
-					Toggle t = uiToggle.GetOrAddComponent<Toggle>();
-					uiToggle.gameObject.name = signlanguagenames[languagenum][0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Toggle";				
-					uiToggle.transform.SetParent(lessongo.transform, false);
-					uiToggle.layer=layer;
-					uiToggle.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0, 0);
-					uiToggle.GetComponent<RectTransform> ().anchoredPosition = new Vector2 ((columnoffset +(wordcolumn*columnseperation)),(menusizey-headersizey-textpadding-buttonsizey-togglesizedelta/2-(wordrow*rowseperation)));
-					uiToggle.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 0);
-					uiToggle.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 0);
-					uiToggle.GetComponent<RectTransform> ().pivot = new Vector2 (0, 0);
-					t.navigation = no_nav;
-					t.isOn = false;
-					t.transition= Selectable.Transition.None;
-					t.toggleTransition= Toggle.ToggleTransition.None;
-					t.group=rootcanvas.GetComponent<ToggleGroup>();
-					t.onValueChanged = new Toggle.ToggleEvent();
-					uiToggle.transform.Find("Background").GetComponent<RectTransform>().sizeDelta = new Vector2 (64, 64);
-					uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchoredPosition = new Vector2 (-32,-32);
-					uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-					uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-					uiToggle.transform.Find("Background").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
-					uiToggle.transform.Find("Background").gameObject.layer=layer;
+                        if (mode == MODE_LOCAL)
+                        {
+                            //create lesson toggles
+                            GameObject uiToggle = DefaultControls.CreateToggle(uiresources);
+                            Toggle t = uiToggle.GetOrAddComponent<Toggle>();
+                            uiToggle.gameObject.name = signlanguagenames[languagenum][0] + " " + (lessonnum + 1) + "-" + (wordnum + 1) + " - Toggle";
+                            uiToggle.transform.SetParent(lessongo.transform, false);
+                            uiToggle.layer = layer;
+                            uiToggle.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+                            uiToggle.GetComponent<RectTransform>().anchoredPosition = new Vector2((columnoffset + (wordcolumn * columnseperation)), (menusizey - headersizey - textpadding - buttonsizey - togglesizedelta / 2 - (wordrow * rowseperation)));
+                            uiToggle.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+                            uiToggle.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+                            uiToggle.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+                            t.navigation = no_nav;
+                            t.isOn = false;
+                            t.transition = Selectable.Transition.None;
+                            t.toggleTransition = Toggle.ToggleTransition.None;
+                            t.group = rootcanvas.GetComponent<ToggleGroup>();
+                            t.onValueChanged = new Toggle.ToggleEvent();
+                            uiToggle.transform.Find("Background").GetComponent<RectTransform>().sizeDelta = new Vector2(64, 64);
+                            uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchoredPosition = new Vector2(-32, -32);
+                            uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+                            uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+                            uiToggle.transform.Find("Background").GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+                            uiToggle.transform.Find("Background").gameObject.layer = layer;
 
-					GameObject checkboxtextgo = new GameObject("Text");
-					checkboxtextgo.transform.SetParent(uiToggle.transform.Find("Background").transform, false);
-					Text checkboxtext = checkboxtextgo.AddComponent<Text>();
-					checkboxtextgo.GetComponent<RectTransform>().sizeDelta= new Vector2(0,0);
-					checkboxtextgo.GetComponent<RectTransform>().anchorMax = new Vector2 (1, 1);
-					checkboxtextgo.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-					checkboxtextgo.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+                            GameObject checkboxtextgo = new GameObject("Text");
+                            checkboxtextgo.transform.SetParent(uiToggle.transform.Find("Background").transform, false);
+                            Text checkboxtext = checkboxtextgo.AddComponent<Text>();
+                            checkboxtextgo.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
+                            checkboxtextgo.GetComponent<RectTransform>().anchorMax = new Vector2(1, 1);
+                            checkboxtextgo.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+                            checkboxtextgo.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
 
-					checkboxtext.alignment = TextAnchor.MiddleCenter;
-					checkboxtext.text=(wordnum+1)+"";
-					checkboxtext.color = Color.black;
-					checkboxtext.fontSize = 40;
+                            checkboxtext.alignment = TextAnchor.MiddleCenter;
+                            checkboxtext.text = (wordnum + 1) + "";
+                            checkboxtext.color = Color.black;
+                            checkboxtext.fontSize = 40;
+                            if (AllLessons[languagenum][lessonnum][wordnum][0] == AllLessons[languagenum][lessonnum][wordnum][0])
+                            {
+                                uiToggle.transform.Find("Label").GetComponent<Text>().text = AllLessons[languagenum][lessonnum][wordnum][0];
+                            }
+                            else
+                            {
+                                uiToggle.transform.Find("Label").GetComponent<Text>().text = AllLessons[languagenum][lessonnum][wordnum][0] + "\n" + AllLessons[languagenum][lessonnum][wordnum][1];
+                            }
+                            uiToggle.transform.Find("Label").GetComponent<Text>().fontSize = 50;
+                            uiToggle.transform.Find("Label").GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+                            uiToggle.transform.Find("Label").GetComponent<RectTransform>().sizeDelta = new Vector2(750, 130);//maybe ,64
+                            uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchoredPosition = new Vector2(50, -65); //maybe ,-32
+                            uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+                            uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+                            uiToggle.transform.Find("Label").GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+                            uiToggle.transform.Find("Label").gameObject.layer = layer;
 
-					uiToggle.transform.Find("Label").GetComponent<Text>().text = AllLessons[languagenum][lessonnum][wordnum][0]+"\n"+AllLessons[languagenum][lessonnum][wordnum][1];
-					uiToggle.transform.Find("Label").GetComponent<Text>().fontSize = 50;
-					uiToggle.transform.Find("Label").GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
-					uiToggle.transform.Find("Label").GetComponent<RectTransform>().sizeDelta = new Vector2 (750, 130);//maybe ,64
-					uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchoredPosition = new Vector2 (50,-65); //maybe ,-32
-					uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-					uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-					uiToggle.transform.Find("Label").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
-					uiToggle.transform.Find("Label").gameObject.layer=layer;
-					
-					/*
-					GameObject label2=new GameObject("Label2");
-					label2.transform.SetParent(uiToggle.transform, false);
-					label2.layer=layer;
-					label2.GetOrAddComponent<Text>().text =AllLessons[languagenum][lessonnum][wordnum][0]+"\n"+AllLessons[languagenum][lessonnum][wordnum][1];
-					label2.GetComponent<Text>().fontSize = 50;
-					label2.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
-					label2.GetOrAddComponent<RectTransform>().sizeDelta = new Vector2 (90, 130);//maybe ,64
-					label2.GetComponent<RectTransform>().anchoredPosition = new Vector2 (32,-65); //maybe ,-32
-					label2.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-					label2.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-					label2.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
-					*/
+                            /*
+                            GameObject label2=new GameObject("Label2");
+                            label2.transform.SetParent(uiToggle.transform, false);
+                            label2.layer=layer;
+                            label2.GetOrAddComponent<Text>().text =AllLessons[languagenum][lessonnum][wordnum][0]+"\n"+AllLessons[languagenum][lessonnum][wordnum][1];
+                            label2.GetComponent<Text>().fontSize = 50;
+                            label2.GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+                            label2.GetOrAddComponent<RectTransform>().sizeDelta = new Vector2 (90, 130);//maybe ,64
+                            label2.GetComponent<RectTransform>().anchoredPosition = new Vector2 (32,-65); //maybe ,-32
+                            label2.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
+                            label2.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
+                            label2.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+                            */
 
 
-					uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().sizeDelta = new Vector2 (64, 64);
-					uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,0);
-					uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-					uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-					uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
-					uiToggle.transform.Find("Background").gameObject.layer=layer;
+                            uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().sizeDelta = new Vector2(64, 64);
+                            uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+                            uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+                            uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+                            uiToggle.transform.Find("Background").Find("Checkmark").GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+                            uiToggle.transform.Find("Background").gameObject.layer = layer;
 
-					uiToggle.transform.Find("Background").transform.Find("Checkmark").GetComponent<Image> ().color = new Color(0,0,0,1);
+                            uiToggle.transform.Find("Background").transform.Find("Checkmark").GetComponent<Image>().color = new Color(0, 0, 0, 1);
 
-					if(AllLessons[languagenum][lessonnum][wordnum][2]!=""){ //if url is blank, then don't create video.
+                            if (AllLessons[languagenum][lessonnum][wordnum][2] != "")
+                            { //if url is blank, then don't create video.
 
-						//creates the video gameobjects
-						GameObject videogo = GameObject.CreatePrimitive(PrimitiveType.Quad);
-						videogo.name=signlanguagenames[languagenum][0]+" Video L"+(lessonnum+1) +" S"+(wordnum+1);
-						videogo.layer = layer;
-						videogo.transform.position = new Vector3(-1f, 0.934f, 0);
-						videogo.transform.localScale = new Vector3(2, 1.33f, 1);
-						videogo.transform.SetParent(videolessoncontainer.transform, false);
-						videogo.GetOrAddComponent<MeshRenderer>().sharedMaterial=(Material)AssetDatabase.LoadAssetAtPath("Assets/VRCSDK/Sample Assets/Materials/Screen.mat",typeof(Material));
-						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().url=AllLessons[languagenum][lessonnum][wordnum][2];
-						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().isLooping=true;
-						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().renderMode=VideoRenderMode.MaterialOverride;
-						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().audioOutputMode=VideoAudioOutputMode.None;
-						videogo.SetActive(false);
-						UnityEventTools.AddPersistentListener(t.onValueChanged, //the button/toggle that triggers the action
-						System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videogo//the target of the action
-						, "set_active") as UnityAction<bool>);
-						}
-					
-					UnityEventTools.AddStringPersistentListener(t.onValueChanged, //the button/toggle that triggers the action
-					System.Delegate.CreateDelegate(typeof(UnityAction<string>), GameObject.Find ("/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text").GetComponent<Text>()//the target of the action
-					, "set_text") as UnityAction<string>,(lessonnum+1)+"-"+(wordnum+1)+": "+AllLessons[languagenum][lessonnum][wordnum][0]);
+                                //creates the video gameobjects
+                                GameObject videogo = GameObject.CreatePrimitive(PrimitiveType.Quad);
+                                videogo.name = signlanguagenames[languagenum][0] + " Video L" + (lessonnum + 1) + " S" + (wordnum + 1);
+                                videogo.layer = layer;
+                                videogo.transform.position = new Vector3(-1f, 0.934f, 0);
+                                videogo.transform.localScale = new Vector3(2, 1.33f, 1);
+                                videogo.transform.SetParent(videolessoncontainer.transform, false);
+                                videogo.GetOrAddComponent<MeshRenderer>().sharedMaterial = (Material)AssetDatabase.LoadAssetAtPath("Assets/VRCSDK/Sample Assets/Materials/Screen.mat", typeof(Material));
+                                videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().url = AllLessons[languagenum][lessonnum][wordnum][2];
+                                videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().isLooping = true;
+                                videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().renderMode = VideoRenderMode.MaterialOverride;
+                                videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().audioOutputMode = VideoAudioOutputMode.None;
+                                videogo.SetActive(false);
+                                UnityEventTools.AddPersistentListener(t.onValueChanged, //the button/toggle that triggers the action
+                                System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videogo//the target of the action
+                                , "set_active") as UnityAction<bool>);
+                            }
 
-					wordrow++;
-}
+                            UnityEventTools.AddStringPersistentListener(t.onValueChanged, //the button/toggle that triggers the action
+                            System.Delegate.CreateDelegate(typeof(UnityAction<string>), GameObject.Find("/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text").GetComponent<Text>()//the target of the action
+                            , "set_text") as UnityAction<string>, (lessonnum + 1) + "-" + (wordnum + 1) + ": " + AllLessons[languagenum][lessonnum][wordnum][0]);
+
+                            wordrow++;
+                        }
                     } //end local
-					/*****************************************
+                    /*****************************************
 					End of word loop.
 					*****************************************/
 
 
-				if(mode=="Global"){
-				//I need another loop to add all the triggers to deactivate videos for global mode
-				//these triggers belong on the helper gameobjects.
-					for (int wordnum = 0; wordnum < AllLessons[languagenum][lessonnum].Length; wordnum++){ //gets total rows in lesson. getlength(1) gets total columns, which is unneeded since we're using both columns at once.
-					List<GameObject> listofvideos = new List<GameObject>();
-					//i need another for loop to add every single video gameobject EXCEPT the current word.
-						for(int x=0;x<AllLessons[languagenum][lessonnum].Length; x++){
-							if(x!=wordnum){//exclude the one I want to play- build list of all others in the lesson.
-								if(GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Video Container/"+signlanguagenames[languagenum][0]+" Video Container/"+
-								signlanguagenames[languagenum][0]+" Video L"+(lessonnum+1)+"/"+
-								signlanguagenames[languagenum][0]+" Video L"+(lessonnum+1) +" S"+(x+1))){//if it's not null then add it
-									listofvideos.Add(GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Video Container/"+signlanguagenames[languagenum][0]+" Video Container/"+
-									signlanguagenames[languagenum][0]+" Video L"+(lessonnum+1)+"/"+
-									signlanguagenames[languagenum][0]+" Video L"+(lessonnum+1) +" S"+(x+1)));
-								}
-							}//end exclusion loop
-						}//end for loop
-							//disables nonselected videos
-							GameObject.Find("/Menu Root/"+mode+" Menu Root/"+mode+" Trigger Container/" +signlanguagenames[languagenum][0]+ " Trigger Container/"
-							+ signlanguagenames[languagenum][0] + " L" + (lessonnum+1)+" Trigger Container/"+
-							signlanguagenames[languagenum][0]+" L" + (lessonnum+1) + "-W" + (wordnum+1) +" Trigger Container").
-							GetComponent<VRC_Trigger>().Triggers[0].Events.Add(
-								new VRC_EventHandler.VrcEvent{
-									EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-									ParameterObjects=listofvideos.ToArray(),
-									ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
-								}
-							);
-					}; //end for loop
-				} //endif global
+                    if (mode == MODE_GLOBAL)
+                    {
+                        //I need another loop to add all the triggers to deactivate videos for global mode
+                        //these triggers belong on the helper gameobjects.
+                        for (int wordnum = 0; wordnum < AllLessons[languagenum][lessonnum].Length; wordnum++)
+                        { //gets total rows in lesson. getlength(1) gets total columns, which is unneeded since we're using both columns at once.
+                            List<GameObject> listofvideos = new List<GameObject>();
+                            //i need another for loop to add every single video gameobject EXCEPT the current word.
+                            for (int x = 0; x < AllLessons[languagenum][lessonnum].Length; x++)
+                            {
+                                if (x != wordnum)
+                                {//exclude the one I want to play- build list of all others in the lesson.
+                                    if (GameObject.Find("/Menu Root/" + mode + " Menu Root/" + mode + " Video Container/" + signlanguagenames[languagenum][0] + " Video Container/" +
+                                    signlanguagenames[languagenum][0] + " Video L" + (lessonnum + 1) + "/" +
+                                    signlanguagenames[languagenum][0] + " Video L" + (lessonnum + 1) + " S" + (x + 1)))
+                                    {//if it's not null then add it
+                                        listofvideos.Add(GameObject.Find("/Menu Root/" + mode + " Menu Root/" + mode + " Video Container/" + signlanguagenames[languagenum][0] + " Video Container/" +
+                                        signlanguagenames[languagenum][0] + " Video L" + (lessonnum + 1) + "/" +
+                                        signlanguagenames[languagenum][0] + " Video L" + (lessonnum + 1) + " S" + (x + 1)));
+                                    }
+                                }//end exclusion loop
+                            }//end for loop
+                             //disables nonselected videos
+                            GameObject.Find("/Menu Root/" + mode + " Menu Root/" + mode + " Trigger Container/" + signlanguagenames[languagenum][0] + " Trigger Container/"
+                            + signlanguagenames[languagenum][0] + " L" + (lessonnum + 1) + " Trigger Container/" +
+                            signlanguagenames[languagenum][0] + " L" + (lessonnum + 1) + "-W" + (wordnum + 1) + " Trigger Container").
+                            GetComponent<VRC_Trigger>().Triggers[0].Events.Add(
+                                new VRC_EventHandler.VrcEvent
+                                {
+                                    EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                    ParameterObjects = listofvideos.ToArray(),
+                                    ParameterBoolOp = VRC_EventHandler.VrcBooleanOp.False
+                                }
+                            );
+                        }; //end for loop
+                    } //endif global
 
-				//Create back button
-				GameObject backtolessongo = createbutton2(parent:lessongo, name:"Return to VR-" + signlanguagenames[languagenum][0] + " Lesson Menu", sizedelta:backbuttonsize,
-				localPosition: new Vector3(buttonsizey, 0,0),
-				text: "Return to VR-" + signlanguagenames[languagenum][0] + " Lesson Menu", fontSize:50, txtsizedelta:backbuttonsize, txtanchoredPosition:new Vector2(20,0), 
-				alignment:TextAnchor.MiddleCenter, nav:no_nav,rotatez:90, layer:layer);
+                    //Create back button
+                    GameObject backtolessongo = createbutton2(mode: "mainbutton", parent: lessongo, name: "Return to VR-" + signlanguagenames[languagenum][0] + " Lesson Menu", sizedelta: backbuttonsize,
+                    localPosition: new Vector3(buttonsizey, 0, 0),
+                    text1: "Return to VR-" + signlanguagenames[languagenum][0] + " Lesson Menu", fontSize: 50, txtsizedelta: backbuttonsize, txtanchoredPosition: new Vector2(20, 0),
+                    alignment: TextAnchor.MiddleCenter, nav: no_nav, rotatez: 90, layer: layer);
 
-				Button backbutton = backtolessongo.GetOrAddComponent<Button>();
-				backbutton.onClick = new Button.ButtonClickedEvent();
-				
-				if(mode=="Local"){
-				//try disabling all the checkboxes first before doing anything else?
-				UnityAction disablealltoggles = System.Delegate.CreateDelegate(typeof(UnityAction), rootcanvastogglegroup,"SetAllTogglesOff") as UnityAction;
-				UnityEventTools.AddPersistentListener(backbutton.onClick, disablealltoggles);
+                    Button backbutton = backtolessongo.GetOrAddComponent<Button>();
+                    backbutton.onClick = new Button.ButtonClickedEvent();
 
-				//disable the current active lesson when clicked
-				UnityAction<bool> disablecurrentlesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessongo, "SetActive") as UnityAction<bool>;
-				UnityEventTools.AddBoolPersistentListener(backbutton.onClick, disablecurrentlesson, false);
+                    if (mode == MODE_LOCAL)
+                    {
+                        //try disabling all the checkboxes first before doing anything else?
+                        UnityAction disablealltoggles = System.Delegate.CreateDelegate(typeof(UnityAction), rootcanvastogglegroup, "SetAllTogglesOff") as UnityAction;
+                        UnityEventTools.AddPersistentListener(backbutton.onClick, disablealltoggles);
 
-				//enable the lesson select
-				UnityAction<bool> enablelessonmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
-				UnityEventTools.AddBoolPersistentListener(backbutton.onClick, enablelessonmenu, true);
+                        //disable the current active lesson when clicked
+                        UnityAction<bool> disablecurrentlesson = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessongo, "SetActive") as UnityAction<bool>;
+                        UnityEventTools.AddBoolPersistentListener(backbutton.onClick, disablecurrentlesson, false);
 
-				UnityAction<bool> disablevideolessoncontainer = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videolessoncontainer, "SetActive") as UnityAction<bool>;
-				UnityEventTools.AddBoolPersistentListener(backbutton.onClick, disablevideolessoncontainer, false);
-				}else if(mode=="Global")
-				{
-					VRC_Trigger vrcbacktolessontrigger = backtolessongo.GetOrAddComponent<VRC_Trigger>();
-					
-					vrcbacktolessontrigger.Triggers=new List<VRC_Trigger.TriggerEvent>(){
-						new VRC_Trigger.TriggerEvent{
-							BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
-							TriggerType = VRC_Trigger.TriggerType.Custom,
-							TriggerIndividuals = true,
-							Name="L"+(lessonnum+1)+" globaltrigger",
-							Events=new List<VRC_EventHandler.VrcEvent>(){
-								new VRC_EventHandler.VrcEvent{
-									EventType=VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
-									ParameterObject=lessontriggercontainer,
-									ParameterString="L"+(lessonnum+1)+" back button",
-								}
-							}
-						}
-					};
-lessontriggercontainertrigger.Triggers.Add(
-							new VRC_Trigger.TriggerEvent{
-							BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
-							Name="L"+(lessonnum+1)+" back button",
-							TriggerType = VRC_Trigger.TriggerType.Custom,
-							TriggerIndividuals = true,
-							Events=new List<VRC_EventHandler.VrcEvent>(){
-								new VRC_EventHandler.VrcEvent{
-									EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-									ParameterObject=lessongo,
-									ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
-								},
-								new VRC_EventHandler.VrcEvent{
-									EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-									ParameterObject=lessonmenu,
-									ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-								},
-								new VRC_EventHandler.VrcEvent{
-									EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-									ParameterObject=videolessoncontainer,
-									ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
-								},
-								new VRC_EventHandler.VrcEvent{
-									EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-									ParameterObject=langvideocontainer,
-									ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-								},
-									new VRC_EventHandler.VrcEvent{
-										EventType = VRC_EventHandler.VrcEventType.SetUIText,
-										ParameterString = "",
-										ParameterObject = GameObject.Find ("/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text")
-									}
-							}
-						}//add something to disable all videos in the lesson
-);
+                        //enable the lesson select
+                        UnityAction<bool> enablelessonmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
+                        UnityEventTools.AddBoolPersistentListener(backbutton.onClick, enablelessonmenu, true);
 
-					UnityEventTools.AddStringPersistentListener(backbutton.onClick, 
-					System.Delegate.CreateDelegate(typeof(UnityAction<string>), vrcbacktolessontrigger,"ExecuteCustomTrigger") as UnityAction<string>,
-					"L"+(lessonnum+1)+" globaltrigger");
-				}
-				
-				langroot.SetActive(false);
-				lessongo.SetActive(false);
-				videolessoncontainer.SetActive(false);
+                        UnityAction<bool> disablevideolessoncontainer = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), videolessoncontainer, "SetActive") as UnityAction<bool>;
+                        UnityEventTools.AddBoolPersistentListener(backbutton.onClick, disablevideolessoncontainer, false);
+                    }
+                    else if (mode == MODE_GLOBAL)
+                    {
+                        VRC_Trigger vrcbacktolessontrigger = backtolessongo.GetOrAddComponent<VRC_Trigger>();
 
-				} 
-				/*****************************************
+                        vrcbacktolessontrigger.Triggers = new List<VRC_Trigger.TriggerEvent>(){
+                        new VRC_Trigger.TriggerEvent{
+                            BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
+                            TriggerType = VRC_Trigger.TriggerType.Custom,
+                            TriggerIndividuals = true,
+                            Name="L"+(lessonnum+1)+" globaltrigger",
+                            Events=new List<VRC_EventHandler.VrcEvent>(){
+                                new VRC_EventHandler.VrcEvent{
+                                    EventType=VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
+                                    ParameterObject=lessontriggercontainer,
+                                    ParameterString="L"+(lessonnum+1)+" back button",
+                                }
+                            }
+                        }
+                    };
+                        lessontriggercontainertrigger.Triggers.Add(
+                                                    new VRC_Trigger.TriggerEvent
+                                                    {
+                                                        BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
+                                                        Name = "L" + (lessonnum + 1) + " back button",
+                                                        TriggerType = VRC_Trigger.TriggerType.Custom,
+                                                        TriggerIndividuals = true,
+                                                        Events = new List<VRC_EventHandler.VrcEvent>(){
+                                new VRC_EventHandler.VrcEvent{
+                                    EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                    ParameterObject=lessongo,
+                                    ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+                                },
+                                new VRC_EventHandler.VrcEvent{
+                                    EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                    ParameterObject=lessonmenu,
+                                    ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                                },
+                                new VRC_EventHandler.VrcEvent{
+                                    EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                    ParameterObject=videolessoncontainer,
+                                    ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+                                },
+                                new VRC_EventHandler.VrcEvent{
+                                    EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                    ParameterObject=langvideocontainer,
+                                    ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                                },
+                                    new VRC_EventHandler.VrcEvent{
+                                        EventType = VRC_EventHandler.VrcEventType.SetUIText,
+                                        ParameterString = "",
+                                        ParameterObject = GameObject.Find ("/Menu Root/Menu Root Canvas/Current Sign Panel/Current Sign Text")
+                                    }
+                                                    }
+                                                    }//add something to disable all videos in the lesson
+                        );
+
+                        UnityEventTools.AddStringPersistentListener(backbutton.onClick,
+                        System.Delegate.CreateDelegate(typeof(UnityAction<string>), vrcbacktolessontrigger, "ExecuteCustomTrigger") as UnityAction<string>,
+                        "L" + (lessonnum + 1) + " globaltrigger");
+                    }
+
+                    langroot.SetActive(false);
+                    lessongo.SetActive(false);
+                    videolessoncontainer.SetActive(false);
+
+                }
+                /*****************************************
 				End of lesson loop.
 				*****************************************/
 
-			//assign triggers after lessons created. Triggers for Language Chooser menu buttons.
-			Button langselectbutton = langselectgo.GetOrAddComponent<Button>();
-			langselectbutton.onClick = new Button.ButtonClickedEvent();
-			if(mode=="Local"){
-			UnityAction<bool> enableaslroot = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(signlanguagenames[languagenum][0]+" Root"), "SetActive") as UnityAction<bool>;
-			UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, enableaslroot, true);
+                //assign triggers after lessons created. Triggers for Language Chooser menu buttons.
+                Button langselectbutton = langselectgo.GetOrAddComponent<Button>();
+                langselectbutton.onClick = new Button.ButtonClickedEvent();
+                if (mode == MODE_LOCAL)
+                {
+                    UnityAction<bool> enableaslroot = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(signlanguagenames[languagenum][0] + " Root"), "SetActive") as UnityAction<bool>;
+                    UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, enableaslroot, true);
 
-			UnityAction<bool> enableaslmenuselect = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(signlanguagenames[languagenum][0]+" Lesson Menu"), "SetActive") as UnityAction<bool>;//GameObject.Find("Menu Root/Root Canvas/ASL Root/ASL Lesson Menu")
-			UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, enableaslmenuselect, true);
+                    UnityAction<bool> enableaslmenuselect = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), FindInActiveObjectByName(signlanguagenames[languagenum][0] + " Lesson Menu"), "SetActive") as UnityAction<bool>;//GameObject.Find("Menu Root/Root Canvas/ASL Root/ASL Lesson Menu")
+                    UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, enableaslmenuselect, true);
 
-			UnityAction<bool> disablelanguageselect = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), langselectmenu, "SetActive") as UnityAction<bool>;
-			UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, disablelanguageselect, false);
-			//activates video container for specific language
-			UnityAction<bool> enablevideolanguage = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), langvideocontainer, "SetActive") as UnityAction<bool>;
-			UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, enablevideolanguage, true);
-			}else if(mode=="Global")
-			{
-				VRC_Trigger vrclangselecttrigger = langselectgo.GetOrAddComponent<VRC_Trigger>();
-				
-				vrclangselecttrigger.Triggers=new List<VRC_Trigger.TriggerEvent>(){
-					new VRC_Trigger.TriggerEvent{
-						BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
-						TriggerType = VRC_Trigger.TriggerType.Custom,
-						TriggerIndividuals = true,
-						Name="globaltrigger",
-						Events=new List<VRC_EventHandler.VrcEvent>(){
-							new VRC_EventHandler.VrcEvent{
-								EventType=VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
-								ParameterObject=languagetriggercontainer,
-								ParameterString=signlanguagenames[languagenum][0]+" Trigger",
-							}
-						}
-					}
-				};
+                    UnityAction<bool> disablelanguageselect = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), langselectmenu, "SetActive") as UnityAction<bool>;
+                    UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, disablelanguageselect, false);
+                    //activates video container for specific language
+                    UnityAction<bool> enablevideolanguage = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), langvideocontainer, "SetActive") as UnityAction<bool>;
+                    UnityEventTools.AddBoolPersistentListener(langselectbutton.onClick, enablevideolanguage, true);
+                }
+                else if (mode == MODE_GLOBAL)
+                {
+                    VRC_Trigger vrclangselecttrigger = langselectgo.GetOrAddComponent<VRC_Trigger>();
 
-				languagetriggercontainertrigger.Triggers.Add(
-					new VRC_Trigger.TriggerEvent{
-						BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
-						Name=signlanguagenames[languagenum][0]+" Trigger",
-						TriggerType = VRC_Trigger.TriggerType.Custom,
-						TriggerIndividuals = true,
-						Events=new List<VRC_EventHandler.VrcEvent>(){
-							new VRC_EventHandler.VrcEvent{
-								EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-								ParameterObject=FindInActiveObjectByName(signlanguagenames[languagenum][0]+" Root"),
-								ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-							},
-							new VRC_EventHandler.VrcEvent{
-								EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-								ParameterObject=FindInActiveObjectByName(signlanguagenames[languagenum][0]+" Lesson Menu"),
-								ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-							},
-							new VRC_EventHandler.VrcEvent{
-								EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-								ParameterObject=langselectmenu,
-								ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
-							},
-							new VRC_EventHandler.VrcEvent{
-								EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-								ParameterObject=langvideocontainer,
-								ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-							}
-						}
-					}
-				);
-				UnityEventTools.AddStringPersistentListener(langselectbutton.onClick, 
-				System.Delegate.CreateDelegate(typeof(UnityAction<string>), vrclangselecttrigger,"ExecuteCustomTrigger") as UnityAction<string>,
-				"globaltrigger");
-			}
-			
-			//Create return to Language Menu
-			GameObject backtolanguagemenu = createbutton2(parent:lessonmenu, name:"Return to Language Menu", sizedelta:backbuttonsize,
-			localPosition: new Vector3(buttonsizey, 0,0),
-			text: "Return to Language Menu", fontSize:50, txtsizedelta:backbuttonsize, txtanchoredPosition:new Vector2(20,0), 
-			alignment:TextAnchor.MiddleCenter, nav:no_nav,rotatez:90, layer:layer);
+                    vrclangselecttrigger.Triggers = new List<VRC_Trigger.TriggerEvent>(){
+                    new VRC_Trigger.TriggerEvent{
+                        BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
+                        TriggerType = VRC_Trigger.TriggerType.Custom,
+                        TriggerIndividuals = true,
+                        Name="globaltrigger",
+                        Events=new List<VRC_EventHandler.VrcEvent>(){
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
+                                ParameterObject=languagetriggercontainer,
+                                ParameterString=signlanguagenames[languagenum][0]+" Trigger",
+                            }
+                        }
+                    }
+                };
 
-			Button languagebackbutton = backtolanguagemenu.GetOrAddComponent<Button>();
-			languagebackbutton.onClick = new Button.ButtonClickedEvent();
+                    languagetriggercontainertrigger.Triggers.Add(
+                        new VRC_Trigger.TriggerEvent
+                        {
+                            BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
+                            Name = signlanguagenames[languagenum][0] + " Trigger",
+                            TriggerType = VRC_Trigger.TriggerType.Custom,
+                            TriggerIndividuals = true,
+                            Events = new List<VRC_EventHandler.VrcEvent>(){
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                ParameterObject=FindInActiveObjectByName(signlanguagenames[languagenum][0]+" Root"),
+                                ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                ParameterObject=FindInActiveObjectByName(signlanguagenames[languagenum][0]+" Lesson Menu"),
+                                ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                ParameterObject=langselectmenu,
+                                ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                ParameterObject=langvideocontainer,
+                                ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                            }
+                            }
+                        }
+                    );
+                    UnityEventTools.AddStringPersistentListener(langselectbutton.onClick,
+                    System.Delegate.CreateDelegate(typeof(UnityAction<string>), vrclangselecttrigger, "ExecuteCustomTrigger") as UnityAction<string>,
+                    "globaltrigger");
+                }
 
-			if(mode=="Local"){
-			//disable the current active lesson when back button clicked
-			UnityAction<bool> disablelessonmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
-			UnityEventTools.AddBoolPersistentListener(languagebackbutton.onClick, disablelessonmenu, false);
+                //Create return to Language Menu
+                GameObject backtolanguagemenu = createbutton2(mode: "mainbutton", parent: lessonmenu, name: "Return to Language Menu", sizedelta: backbuttonsize,
+                localPosition: new Vector3(buttonsizey, 0, 0),
+                text1: "Return to Language Menu", fontSize: 50, txtsizedelta: backbuttonsize, txtanchoredPosition: new Vector2(20, 0),
+                alignment: TextAnchor.MiddleCenter, nav: no_nav, rotatez: 90, layer: layer);
 
-			//enable the lesson select  when back button clicked
-			UnityAction<bool> enablelangmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), langselectmenu, "SetActive") as UnityAction<bool>;
-			UnityEventTools.AddBoolPersistentListener(languagebackbutton.onClick, enablelangmenu, true);
-			}else if(mode=="Global")
-			{
-				VRC_Trigger backtolanguagemenutrigger = backtolanguagemenu.GetOrAddComponent<VRC_Trigger>();
-				
-				backtolanguagemenutrigger.Triggers=new List<VRC_Trigger.TriggerEvent>(){
-					new VRC_Trigger.TriggerEvent{
-						BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
-						TriggerType = VRC_Trigger.TriggerType.Custom,
-						TriggerIndividuals = true,
-						Name="globaltrigger",
-						Events=new List<VRC_EventHandler.VrcEvent>(){
-							new VRC_EventHandler.VrcEvent{
-								EventType=VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
-								ParameterObject=languagetriggercontainer,
-								ParameterString="backtolangselectfrom"+signlanguagenames[languagenum][0],
-							}
-						}
-					}
-				};
-languagetriggercontainertrigger.Triggers.Add(
-					new VRC_Trigger.TriggerEvent{
-						BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
-						Name="backtolangselectfrom"+signlanguagenames[languagenum][0],
-						TriggerType = VRC_Trigger.TriggerType.Custom,
-						TriggerIndividuals = true,
-						Events=new List<VRC_EventHandler.VrcEvent>(){
-							new VRC_EventHandler.VrcEvent{
-								EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-								ParameterObject=langselectmenu,
-								ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
-							},
-							new VRC_EventHandler.VrcEvent{
-								EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
-								ParameterObject=lessonmenu,
-								ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
-							}
-						}
-					}
-);
+                Button languagebackbutton = backtolanguagemenu.GetOrAddComponent<Button>();
+                languagebackbutton.onClick = new Button.ButtonClickedEvent();
 
-				UnityEventTools.AddStringPersistentListener(languagebackbutton.onClick, 
-				System.Delegate.CreateDelegate(typeof(UnityAction<string>), backtolanguagemenutrigger,"ExecuteCustomTrigger") as UnityAction<string>,
-				"globaltrigger");
-				}
+                if (mode == MODE_LOCAL)
+                {
+                    //disable the current active lesson when back button clicked
+                    UnityAction<bool> disablelessonmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
+                    UnityEventTools.AddBoolPersistentListener(languagebackbutton.onClick, disablelessonmenu, false);
 
+                    //enable the lesson select  when back button clicked
+                    UnityAction<bool> enablelangmenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), langselectmenu, "SetActive") as UnityAction<bool>;
+                    UnityEventTools.AddBoolPersistentListener(languagebackbutton.onClick, enablelangmenu, true);
+                }
+                else if (mode == MODE_GLOBAL)
+                {
+                    VRC_Trigger backtolanguagemenutrigger = backtolanguagemenu.GetOrAddComponent<VRC_Trigger>();
 
-				langvideocontainer.SetActive(false);
-			//globaltriggercontainer.SetActive(false);
-			
-	}
-	/*****************************************
-	End of language loop.
-	*****************************************/
+                    backtolanguagemenutrigger.Triggers = new List<VRC_Trigger.TriggerEvent>(){
+                    new VRC_Trigger.TriggerEvent{
+                        BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysUnbuffered,
+                        TriggerType = VRC_Trigger.TriggerType.Custom,
+                        TriggerIndividuals = true,
+                        Name="globaltrigger",
+                        Events=new List<VRC_EventHandler.VrcEvent>(){
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.ActivateCustomTrigger,
+                                ParameterObject=languagetriggercontainer,
+                                ParameterString="backtolangselectfrom"+signlanguagenames[languagenum][0],
+                            }
+                        }
+                    }
+                };
+                    languagetriggercontainertrigger.Triggers.Add(
+                                        new VRC_Trigger.TriggerEvent
+                                        {
+                                            BroadcastType = VRC_EventHandler.VrcBroadcastType.Local,
+                                            Name = "backtolangselectfrom" + signlanguagenames[languagenum][0],
+                                            TriggerType = VRC_Trigger.TriggerType.Custom,
+                                            TriggerIndividuals = true,
+                                            Events = new List<VRC_EventHandler.VrcEvent>(){
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                ParameterObject=langselectmenu,
+                                ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True
+                            },
+                            new VRC_EventHandler.VrcEvent{
+                                EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
+                                ParameterObject=lessonmenu,
+                                ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False
+                            }
+                                            }
+                                        }
+                    );
 
-return menuroot;
-}//End of main program
-
-/*****************************************
-Helper Methods Below:
-*****************************************/
+                    UnityEventTools.AddStringPersistentListener(languagebackbutton.onClick,
+                    System.Delegate.CreateDelegate(typeof(UnityAction<string>), backtolanguagemenutrigger, "ExecuteCustomTrigger") as UnityAction<string>,
+                    "globaltrigger");
+                }
 
 
-static GameObject FindInActiveObjectByName(string name){
-    Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
-    for (int i = 0; i < objs.Length; i++){
-        if (objs[i].hideFlags == HideFlags.None)
-        {
-            if (objs[i].name == name){
-                return objs[i].gameObject;
+                langvideocontainer.SetActive(false);
+                //globaltriggercontainer.SetActive(false);
+
             }
+            /*****************************************
+            End of language loop.
+            *****************************************/
+
+            return menuroot;
+        }//End of main program
+
+        /*****************************************
+        Helper Methods Below:
+        *****************************************/
+
+
+        static GameObject FindInActiveObjectByName(string name)
+        {
+            Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+            for (int i = 0; i < objs.Length; i++)
+            {
+                if (objs[i].hideFlags == HideFlags.None)
+                {
+                    if (objs[i].name == name)
+                    {
+                        return objs[i].gameObject;
+                    }
+                }
+            }
+            return null;
+        }
+
+        //the latest button creation code. now with default values - allowing for optional arguments
+        static GameObject createbutton2(string mode, GameObject parent, string name, Vector2 sizedelta, Vector3 localPosition,//Vector2 anchoredPosition
+        string text1, Vector2 txtsizedelta, Vector2 txtanchoredPosition, TextAnchor alignment, Navigation nav, int layer, int rotatex = 0, int rotatey = 0, int rotatez = 0, int fontSize = 50, string textnumber = "", string text2 = "")
+        {
+
+            DefaultControls.Resources buttonresources = new DefaultControls.Resources();
+            buttonresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/InputFieldBackground.psd");
+            //toggleresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
+            GameObject go = DefaultControls.CreateButton(buttonresources);
+            go.layer = layer;
+            go.transform.SetParent(parent.transform, false);
+            go.name = name;
+            Button b = go.GetOrAddComponent<Button>();
+            b.navigation = nav;
+
+            go.GetComponent<RectTransform>().sizeDelta = sizedelta;
+
+            go.GetComponent<RectTransform>().eulerAngles = new Vector3(rotatex, rotatey, rotatez);//x,y,z
+                                                                                                  //go.GetComponent<RectTransform> ().anchoredPosition = anchoredPosition;
+            go.GetComponent<RectTransform>().localPosition = localPosition;
+            go.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+            go.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+            go.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+            switch (mode)
+            {
+                case "mainbutton":
+                    {
+						go.transform.Find("Text").GetComponent<Text>().resizeTextForBestFit = true;
+                        go.transform.Find("Text").GetComponent<Text>().text = text1;
+                        go.transform.Find("Text").GetComponent<Text>().fontSize = fontSize;
+                        go.transform.Find("Text").GetComponent<Text>().alignment = alignment;
+                        go.transform.Find("Text").GetComponent<Text>().color = Color.black;
+                        go.transform.Find("Text").GetComponent<RectTransform>().sizeDelta = txtsizedelta;
+                        go.transform.Find("Text").GetComponent<RectTransform>().anchoredPosition = txtanchoredPosition;
+                        go.transform.Find("Text").GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+
+                        break;
+                    }
+                case "numtext":
+                    {	
+						go.transform.Find("Text").GetComponent<Text>().resizeTextForBestFit = true;
+                        go.transform.Find("Text").GetComponent<Text>().text = textnumber;
+                        go.transform.Find("Text").GetComponent<Text>().fontSize = 68;
+                        go.transform.Find("Text").GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+                        go.transform.Find("Text").GetComponent<Text>().color = Color.black;
+                        go.transform.Find("Text").GetComponent<RectTransform>().sizeDelta = txtsizedelta;
+                        go.transform.Find("Text").GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<Text>().resizeTextForBestFit = true;
+                        GameObject gotext = new GameObject("Text2");
+                        gotext.layer = layer;
+                        gotext.transform.SetParent(go.transform, false);
+                        gotext.GetOrAddComponent<Text>().text = text1;
+                        go.transform.Find("Text").GetComponent<RectTransform>().sizeDelta = txtsizedelta;
+                        gotext.GetOrAddComponent<Text>().fontSize = fontSize;
+                        gotext.GetOrAddComponent<Text>().alignment = alignment;
+                        gotext.GetOrAddComponent<Text>().color = Color.black;
+                        gotext.GetComponent<RectTransform>().sizeDelta = new Vector2(780, 100);
+                        gotext.GetComponent<RectTransform>().anchoredPosition = new Vector2(120, 0);
+                        gotext.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+                        gotext.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+                        gotext.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+
+                        break;
+                    }
+                case "numtext2":
+                    {
+						go.transform.Find("Text").GetComponent<Text>().resizeTextForBestFit = true;
+                        go.transform.Find("Text").GetComponent<Text>().text = textnumber;
+                        go.transform.Find("Text").GetComponent<Text>().fontSize = 68;
+                        go.transform.Find("Text").GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
+                        go.transform.Find("Text").GetComponent<Text>().color = Color.black;
+                        go.transform.Find("Text").GetComponent<RectTransform>().sizeDelta = txtsizedelta;
+                        go.transform.Find("Text").GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<Text>().resizeTextForBestFit = true;
+                        GameObject gotext = new GameObject("Text2");
+                        gotext.layer = layer;
+                        gotext.transform.SetParent(go.transform, false);
+                        go.transform.Find("Text").GetComponent<RectTransform>().sizeDelta = new Vector2(100, 130);
+                        gotext.GetOrAddComponent<Text>().text = text1 + "\n" + text2;
+                        gotext.GetOrAddComponent<Text>().fontSize = fontSize;
+                        gotext.GetOrAddComponent<Text>().alignment = alignment;
+                        gotext.GetOrAddComponent<Text>().color = Color.black;
+                        gotext.GetComponent<RectTransform>().sizeDelta = new Vector2(780, 130);
+                        gotext.GetComponent<RectTransform>().anchoredPosition = new Vector2(120, 0);
+                        gotext.GetComponent<RectTransform>().anchorMax = new Vector2(0, 0);
+                        gotext.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
+                        gotext.GetComponent<RectTransform>().pivot = new Vector2(0, 0);
+                        go.transform.Find("Text").GetComponent<Text>().resizeTextForBestFit = true;
+                        break;
+                    }
+                default:
+                    break;
+            }
+
+
+
+
+            return go;
         }
     }
-return null;
-}
-
-//the latest button creation code. now with default values - allowing for optional arguments
-static GameObject createbutton2(GameObject parent, string name,Vector2 sizedelta,Vector3 localPosition,//Vector2 anchoredPosition
-string text,Vector2 txtsizedelta,Vector2 txtanchoredPosition, TextAnchor alignment,Navigation nav,int layer,int rotatex=0,int rotatey=0,int rotatez=0,int fontSize=50,string textnumber=""){
-
-DefaultControls.Resources buttonresources = new DefaultControls.Resources();
-buttonresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
-//toggleresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
-GameObject go = DefaultControls.CreateButton(buttonresources);
-go.layer = layer;
-go.transform.SetParent(parent.transform, false);
-go.name = name;	
-Button b = go.GetOrAddComponent<Button>();
-b.navigation = nav;
-go.GetComponent<RectTransform> ().sizeDelta = sizedelta;
-go.GetComponent<RectTransform> ().eulerAngles = new Vector3(rotatex, rotatey, rotatez);//x,y,z
-//go.GetComponent<RectTransform> ().anchoredPosition = anchoredPosition;
-go.GetComponent<RectTransform> ().localPosition = localPosition;
-go.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 0);
-go.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 0);
-go.GetComponent<RectTransform> ().pivot = new Vector2 (0, 0);
-if(textnumber==""){
-	go.transform.Find("Text").GetComponent<Text>().text = text;
-	go.transform.Find("Text").GetComponent<Text>().fontSize = fontSize;
-	go.transform.Find("Text").GetComponent<Text>().alignment = alignment;
-	go.transform.Find("Text").GetComponent<Text>().color=Color.black;
-	go.transform.Find("Text").GetComponent<RectTransform>().sizeDelta = txtsizedelta;
-	go.transform.Find("Text").GetComponent<RectTransform>().anchoredPosition = txtanchoredPosition;
-	go.transform.Find("Text").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-	go.transform.Find("Text").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-	go.transform.Find("Text").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
-}
-else
-{
-	go.transform.Find("Text").GetComponent<Text>().text = textnumber;
-	go.transform.Find("Text").GetComponent<Text>().fontSize = 68;
-	go.transform.Find("Text").GetComponent<Text>().alignment = TextAnchor.MiddleRight;
-	go.transform.Find("Text").GetComponent<Text>().color=Color.black;
-	go.transform.Find("Text").GetComponent<RectTransform>().sizeDelta = new Vector2(100,130);
-	go.transform.Find("Text").GetComponent<RectTransform>().anchoredPosition = new Vector2(0,0);
-	go.transform.Find("Text").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-	go.transform.Find("Text").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-	go.transform.Find("Text").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
-	
-	GameObject gotext = new GameObject("Text2");
-	gotext.layer = layer;
-	gotext.transform.SetParent(go.transform, false);
-	gotext.GetOrAddComponent<Text>().text=text;
-	gotext.GetOrAddComponent<Text>().fontSize=fontSize;
-	gotext.GetOrAddComponent<Text>().alignment = alignment;
-	gotext.GetOrAddComponent<Text>().color=Color.black;
-	gotext.GetComponent<RectTransform>().sizeDelta = new Vector2(780,130);
-	gotext.GetComponent<RectTransform>().anchoredPosition = new Vector2(120,0);
-	gotext.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-	gotext.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-	gotext.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
-}
-
-return go;
-}
-}
 }
 #endif
