@@ -8,41 +8,724 @@ using VRC.Udon;
 public class Udonmenusystem : UdonSharpBehaviour
 {
 
-public string [][][] Alllessons = {
-    new string [][]{
-new string[]{//Lesson 1 (Daily Use)
-"Hello,ASL-Hello,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-01.mp4,0,2,","How (are) You,ASL-How Are You,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-02.mp4,0,2,","What's Up?,ASL-What's Up?,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-03.mp4,0,0,","What's Up? (Variant 2),ASL-What's Up?2,Bob64,https://vrsignlanguage.net/ASL_videos/sheet01/01-03.mp4,1,2,","Nice (to) Meet You,ASL-Nice (to) Meet You,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-04.mp4,0,2,","Good,ASL-Good,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-05.mp4,0,2,","Bad,ASL-Bad,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-06.mp4,0,2,","Yes,ASL-Yes,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-07.mp4,0,2,","No,ASL-No,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-08.mp4,0,2,","So-So,ASL-So-So,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-09.mp4,0,2,","Sick,ASL-Sick,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-10.mp4,0,0,","Sick,ASL-Sick2,Bob64,https://vrsignlanguage.net/ASL_videos/sheet01/01-10.mp4,1,2,","Hurt,ASL-Hurt,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-11.mp4,0,2,","You're Welcome,ASL-You're Welcome,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-12.mp4,0,2,","Goodbye,ASL-Goodbye,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-13.mp4,0,2,","Good Morning,ASL-Good Morning,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-14.mp4,0,2,","Good Afternoon,ASL-Good Afternoon,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-15.mp4,0,2,","Good Evening,ASL-Good Evening,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-16.mp4,0,2,","Good Night,ASL-Good Night,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-17.mp4,0,2,","See You Later,ASL-See You Later,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-18.mp4,0,2,","Please,ASL-Please,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-19.mp4,0,2,","Sorry,ASL-Sorry,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-20.mp4,0,2,","Forget,ASL-Forget,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-21.mp4,0,2,","Sleep,ASL-Sleep,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-22.mp4,0,2,","Bed,ASL-Bed,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-23.mp4,0,2,","Jump/Change World,ASL-Jump/Change World,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-24.mp4,0,2,","Thank You,ASL-Thank You,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-25.mp4,0,2,","I Love You,ASL-I Love You,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-26.mp4,0,2,","ILK (I Love You),ASL-ILY,No Data Yet.,,0,0,This sign is the combinations of the letters I, L, and Y. It's the compact version of I Love You.","Go Away,ASL-Go Away,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-27.mp4,0,2,","Going To,ASL-Going To,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-28.mp4,0,2,Directional Sign, you point to where you're going.","Follow,ASL-Follow,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-29.mp4,0,2,","Come,ASL-Come,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-30.mp4,0,2,","Hearing (Person),ASL-Hearing (Person),GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-31.mp4,0,2,Use this when discussing a person that can hear.","Deaf,ASL-Deaf,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-32.mp4,0,2,","Deaf (Variant 2),ASL-Deaf2,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-32.mp4,0,2,","Hard of Hearing,ASL-Hard of Hearing,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-33.mp4,0,2,","Mute,ASL-Mute,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-34.mp4,0,2,","Write Slow,ASL-Write Slow,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-35.mp4,0,2,","Can't Read,ASL-Can't Read,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet01/01-36.mp4,0,2,"},
-new string[]{//Lesson 2 (Pointing use Question/Answer)
-"I (Me),ASL-I (Me),GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-01.mp4,0,2,","My,ASL-My,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-02.mp4,0,2,Open palm implies possessive. eg: That wallet is mine.","Your,ASL-Your,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-03.mp4,0,2,A possessive form of 'you'. eg: That's your wallet.","His,ASL-His,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-04.mp4,0,2,","Her,ASL-Her,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-05.mp4,0,2,","We,ASL-We,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-06.mp4,0,2,","They,ASL-They,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-07.mp4,0,2,You sweep your pointer over the people you're referring to.","Their,ASL-Their,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-08.mp4,0,2,Possessive form of they. eg: This is their house.","Over There,ASL-Over There,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-09.mp4,0,2,","Our,ASL-Our,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-10.mp4,0,2,","It's,ASL-It's,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-11.mp4,0,1,","Inside,ASL-Inside,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-12.mp4,0,2,","Outside,ASL-Outside,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-13.mp4,0,2,","Hidden,ASL-Hidden,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-14.mp4,0,2,","Behind,ASL-Behind,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-15.mp4,0,2,","Above,ASL-Above,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-16.mp4,0,2,","Below,ASL-Below,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-17.mp4,0,2,","Here,ASL-Here,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-18.mp4,0,2,","Beside,ASL-Beside,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-19.mp4,0,2,","Back,ASL-Back,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-20.mp4,0,2,","Front,ASL-Front,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-21.mp4,0,2,","Who,ASL-Who,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-22.mp4,0,2,","Where,ASL-Where,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-23.mp4,0,2,","When,ASL-When,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-24.mp4,0,2,","Why,ASL-Why,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-25.mp4,0,2,","Which,ASL-Which,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-26.mp4,0,2,","What,ASL-What,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-27.mp4,0,1,This variant is perferred over variant 2, as variant 2 is a Signed Exact English Variant","What (Variant 2),ASL-What2,Bob64,https://vrsignlanguage.net/ASL_videos/sheet02/02-27.mp4,0,0,A Signed Exact English variant of What.","How,ASL-How,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-28.mp4,0,2,","How (Variant 2),ASL-How2,No Data Yet.,,0,2,This version is done with two A-hands next to each other and a twisting motion of your dominate hand.","How Many,ASL-How Many,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-29.mp4,0,2,","Can,ASL-Can,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-30.mp4,0,2,","Can't,ASL-Can't,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-31.mp4,0,2,","Want,ASL-Want,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-32.mp4,0,2,","Have,ASL-Have,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-33.mp4,0,2,","Get,ASL-Get,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-34.mp4,0,2,","Will/Future,ASL-Will,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-35.mp4,0,2,This is also the sign for Future","Take (Up),ASL-Take,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-36.mp4,0,2,Take as in 'take-up a class' or 'take-up a child (like you're adopting one)'","Need,ASL-Need,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-37.mp4,0,2,","Not,ASL-Not,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-38.mp4,0,0,","Or,ASL-Or,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-39.mp4,0,0,This is just O and R fingerspelled.","And,ASL-And,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-40.mp4,0,0,","For,ASL-For,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-41.mp4,0,0,","At,ASL-At,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-42.mp4,0,0,","At (Variant 2),ASL-At2,GT4tube,https://vrsignlanguage.net/ASL_videos/sheet02/02-42.mp4,0,0,"},
-new string[]{//Lesson 3 (Common)
-"Teach,ASL-Teach,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-01.mp4,0,0,","Learn,ASL-Learn,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-02.mp4,0,0,","Person,ASL-Person,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-03.mp4,0,0,","Student,ASL-Student,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-04.mp4,0,0,","Teacher,ASL-Teacher,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-05.mp4,0,0,","Friend,ASL-Friend,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-06.mp4,0,0,","Sign,ASL-Sign,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-07.mp4,0,0,","Language,ASL-Language,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-08.mp4,0,0,","Understand,ASL-Understand,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-09.mp4,0,0,","Know,ASL-Know,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-10.mp4,0,0,","Don't Know,ASL-Don't Know,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-11.mp4,0,0,","Be Right Back (BRB),ASL-Be Right Back (BRB),Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-12.mp4,0,0,","Accept,ASL-Accept,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-13.mp4,0,0,","Denied,ASL-Denied,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-14.mp4,0,0,","Name,ASL-Name,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-15.mp4,0,0,","New,ASL-New,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-16.mp4,0,0,","Old,ASL-Old2,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-17.mp4,0,0,","Very,ASL-Very,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-18.mp4,0,0,","Jokes,ASL-Jokes,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-19.mp4,0,0,","Funny,ASL-Funny,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-20.mp4,0,0,","Play,ASL-Play,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-21.mp4,0,0,","Favorite,ASL-Favorite,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-22.mp4,0,0,","Draw (Pencil),ASL-Draw (Pencil),Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-23.mp4,0,0,","Stop,ASL-Stop,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-24.mp4,0,0,","Read,ASL-Read,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-25.mp4,0,0,","Make,ASL-Make,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-26.mp4,0,0,","Write,ASL-Write2,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-27.mp4,0,0,","Again / Repeat,ASL-Again / Repeat,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-28.mp4,0,0,","Slow,ASL-Slow,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-29.mp4,0,0,","Fast,ASL-Fast,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-30.mp4,0,0,","Rude,ASL-Rude,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-31.mp4,0,0,","Eat,ASL-Eat,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-32.mp4,0,0,","Drink,ASL-Drink,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-33.mp4,0,0,","Watch,ASL-Watch,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-34.mp4,0,0,","Work,ASL-Work,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-35.mp4,0,0,","Live,ASL-Live,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-36.mp4,0,0,","Play Game,ASL-Play Game,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-37.mp4,0,0,","Same,ASL-Same,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-38.mp4,0,0,","Alright,ASL-Alright,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-39.mp4,0,0,","People,ASL-People,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-40.mp4,0,0,","Browsing the Internet,ASL-Browsing the Internet,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-41.mp4,0,0,","Movie,ASL-Movie,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet03/03-42.mp4,0,0,"},
-new string[]{//Lesson 4 (People)
-"Family,ASL-Family,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-01.mp4,0,0,","Boy,ASL-Boy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-02.mp4,0,0,","Girl,ASL-Girl,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-03.mp4,0,0,","Brother,ASL-Brother,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-04.mp4,0,0,","Sister,ASL-Sister,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-05.mp4,0,0,","Brother-in-law,ASL-Brother-in-law,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-06.mp4,0,0,","Sister-in-law,ASL-Sister-in-law,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-07.mp4,0,0,","Father,ASL-Father,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-08.mp4,0,0,","Grandpa,ASL-Grandpa,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-09.mp4,0,0,","Mother,ASL-Mother,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-10.mp4,0,0,","Grandma,ASL-Grandma,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-11.mp4,0,0,","Baby,ASL-Baby,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-12.mp4,0,0,","Child,ASL-Child,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-13.mp4,0,0,","Teen,ASL-Teen,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-14.mp4,0,0,","Adult,ASL-Adult,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-15.mp4,0,0,","Aunt,ASL-Aunt,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-16.mp4,0,0,","Uncle,ASL-Uncle,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-17.mp4,0,0,","Stranger,ASL-Stranger,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-18.mp4,0,0,","Acquaintance,ASL-Acquaintance,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-19.mp4,0,0,","Parents,ASL-Parents,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-20.mp4,0,0,","Born,ASL-Born,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-21.mp4,0,0,","Dead,ASL-Dead,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-22.mp4,0,0,","Marriage,ASL-Marriage,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-23.mp4,0,0,","Divorce,ASL-Divorce,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-24.mp4,0,0,","Single,ASL-Single,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-25.mp4,0,0,","Young,ASL-Young,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-26.mp4,0,0,","Old,ASL-Old,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-27.mp4,0,0,","Age,ASL-Age,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-28.mp4,0,0,","Birthday,ASL-Birthday,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-29.mp4,0,0,","Celebrate,ASL-Celebrate,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-30.mp4,0,0,","Enemy,ASL-Enemy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-31.mp4,0,0,","Interpreter,ASL-Interpreter,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-32.mp4,0,0,","No One,ASL-No One,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-33.mp4,0,0,","Anyone,ASL-Anyone,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-34.mp4,0,0,","Someone,ASL-Someone,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-35.mp4,0,0,","Everyone,ASL-Everyone,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet04/04-36.mp4,0,0,"},
-new string[]{//Lesson 5 (Feelings / Reactions)
-"Like,ASL-Like,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-01.mp4,0,0,","Hate,ASL-Hate,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-02.mp4,0,0,","Fine,ASL-Fine,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-03.mp4,0,0,","Tired,ASL-Tired,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-04.mp4,0,0,","Sleepy,ASL-Sleep2,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-05.mp4,0,0,","Confused,ASL-Confused,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-06.mp4,0,0,","Smart,ASL-Smart,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-07.mp4,0,0,","Attention / Focus,ASL-Attention / Focus,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-08.mp4,0,0,","Nevermind,ASL-Nevermind,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-09.mp4,0,0,","Angry,ASL-Angry,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-10.mp4,0,0,","Laughing,ASL-Laughing,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-11.mp4,0,0,","LOL,ASL-LOL,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-12.mp4,0,0,","Curious,ASL-Curious,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-13.mp4,0,0,","In Love,ASL-In Love,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-14.mp4,0,0,","Awesome,ASL-Awesome,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-15.mp4,0,0,","Great,ASL-Great,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-16.mp4,0,0,","Nice,ASL-Nice,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-17.mp4,0,0,","Cute,ASL-Cute,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-18.mp4,0,0,","Feel,ASL-Feel,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-19.mp4,0,0,","Pity,ASL-Pity,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-20.mp4,0,0,","Envy,ASL-Envy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-21.mp4,0,0,","Hungry,ASL-Hungry,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-22.mp4,0,0,","Alive,ASL-Alive,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-23.mp4,0,0,","Bored,ASL-Bored,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-24.mp4,0,0,","Cry,ASL-Cry,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-25.mp4,0,0,","Happy,ASL-Happy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-26.mp4,0,0,","Sad,ASL-Sad,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-27.mp4,0,0,","Suffering,ASL-Suffering,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-28.mp4,0,0,","Surprised,ASL-Surprised,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-29.mp4,0,0,","Careful,ASL-Careful,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-30.mp4,0,0,","Enjoy,ASL-Enjoy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-31.mp4,0,0,","Disgusted,ASL-Disgusted,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-32.mp4,0,0,","Embarassed,ASL-Embarassed,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-33.mp4,0,0,","Shy,ASL-Shy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-34.mp4,0,0,","Lonely,ASL-Lonely,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-35.mp4,0,0,","Stressed,ASL-Stressed,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-36.mp4,0,0,","Scared,ASL-Scared,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-37.mp4,0,0,","Excited,ASL-Excited,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-38.mp4,0,0,","Shame,ASL-Shame,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-39.mp4,0,0,","Struggle,ASL-Struggle,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-40.mp4,0,0,","Friendly,ASL-Friendly,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-41.mp4,0,0,","Mean,ASL-Mean,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet05/05-42.mp4,0,0,"},
-new string[]{//Lesson 6 (Value) 
-"More,ASL-More,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-01.mp4,0,0,","Less,ASL-Less,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-02.mp4,0,0,","Big,ASL-Big,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-03.mp4,0,0,","Small/A Little,ASL-Small,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-04.mp4,0,0,","Full,ASL-Full,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-05.mp4,0,0,","Empty,ASL-Empty,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-06.mp4,0,0,","Half,ASL-Half,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-07.mp4,0,0,","Quarter,ASL-Quarter,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-08.mp4,0,0,","Long,ASL-Long,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-09.mp4,0,0,","Short (Time),ASL-Short (Time),Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-10.mp4,0,0,","A Lot/Many,ASL-A Lot/Many,Placeholder.,,0,0,","Unlimited,ASL-Unlimited,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-13.mp4,0,0,","Limited,ASL-Limited,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-14.mp4,0,0,","All,ASL-All,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-15.mp4,0,0,","Nothing,ASL-Nothing,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-16.mp4,0,0,","Ever,ASL-Ever,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-17.mp4,0,0,","Everything,ASL-Everything,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-18.mp4,0,0,","Everytime,ASL-Everytime,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-19.mp4,0,0,","Always,ASL-Always,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-20.mp4,0,0,","Often,ASL-Often,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-21.mp4,0,0,","Sometimes,ASL-Sometimes,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-22.mp4,0,0,","Heavy,ASL-Heavy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-23.mp4,0,0,","Lightweight,ASL-Lightweight,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-24.mp4,0,0,","Hard,ASL-Hard,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-25.mp4,0,0,","Soft,ASL-Soft,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-26.mp4,0,0,","Strong,ASL-Strong,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-27.mp4,0,0,","Weak,ASL-Weak,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-28.mp4,0,0,","First,ASL-First,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-29.mp4,0,0,","Second,ASL-Second,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-30.mp4,0,0,","Third,ASL-Third,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-31.mp4,0,0,","Next,ASL-Next,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-32.mp4,0,0,","Last,ASL-Last,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-33.mp4,0,0,","Before,ASL-Before,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-34.mp4,0,0,","After,ASL-After,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-35.mp4,0,0,","Busy,ASL-Busy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-36.mp4,0,0,","Free,ASL-Free,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-37.mp4,0,0,Signed Exact English variant","High,ASL-High,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-38.mp4,0,0,","Low,ASL-Low,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-39.mp4,0,0,","Fat,ASL-Fat,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-40.mp4,0,0,","Thin,ASL-Thin,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-41.mp4,0,0,","Value,ASL-Value,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet06/06-42.mp4,0,0,"},
-new string[]{//Lesson 7 (Time)
-"Time,ASL-Time,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-01.mp4,0,0,","Year,ASL-Year,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-02.mp4,0,0,","Season,ASL-Season,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-03.mp4,0,0,","Month,ASL-Month,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-04.mp4,0,0,","Week,ASL-Week,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-05.mp4,0,0,","Day,ASL-Day,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-06.mp4,0,0,","Weekend,ASL-Weekend,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-07.mp4,0,0,","Hours,ASL-Hours,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-08.mp4,0,0,","Minutes,ASL-Minutes,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-09.mp4,0,0,","Seconds,ASL-Seconds,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-10.mp4,0,0,","Today,ASL-Today,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-11.mp4,0,0,","Tomorrow,ASL-Tomorrow,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-12.mp4,0,0,","Yesterday,ASL-Yesterday,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-13.mp4,0,0,","Morning,ASL-Morning,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-14.mp4,0,0,","Afternoon,ASL-Afternoon,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-15.mp4,0,0,","Evening,ASL-Evening,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-16.mp4,0,0,","Night,ASL-Night,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-17.mp4,0,0,","Sunrise,ASL-Sunrise,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-18.mp4,0,0,","Sunset,ASL-Sunset,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-19.mp4,0,0,","All Night,ASL-All Night,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-20.mp4,0,0,","All Day,ASL-All Day,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-21.mp4,0,0,","Sunday,ASL-Sunday,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-22.mp4,0,0,","Monday,ASL-Monday,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-23.mp4,0,0,","Tuesday,ASL-Tuesday,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-24.mp4,0,0,","Wednesday,ASL-Wednesday,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-25.mp4,0,0,","Thursday,ASL-Thursday,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-26.mp4,0,0,","Friday,ASL-Friday,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-27.mp4,0,0,","Saturday,ASL-Saturday,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-28.mp4,0,0,","Autumn,ASL-Autumn,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-29.mp4,0,0,","Winter,ASL-Winter,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-30.mp4,0,0,","Spring,ASL-Spring,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-31.mp4,0,0,","Summer,ASL-Summer,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-32.mp4,0,0,","Now,ASL-Now,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-33.mp4,0,0,","Never,ASL-Never,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-34.mp4,0,0,","Soon,ASL-Soon,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-35.mp4,0,0,","Later,ASL-Later,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-36.mp4,0,0,","Past,ASL-Past,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-37.mp4,0,0,","Future,ASL-Future,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-38.mp4,0,0,","Earlier,ASL-Earlier,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-39.mp4,0,0,","Midweek,ASL-Midweek,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-40.mp4,0,0,","Next Week,ASL-Next Week,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet07/07-41.mp4,0,0,"},
-new string[]{//Lesson 8 (VRChat)
-"Gestures,ASL-Gestures,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-01.mp4,0,0,","World,ASL-World,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-02.mp4,1,2,","Record,ASL-Record,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-03.mp4,0,0,","Discord,ASL-Discord,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-04.mp4,1,0,","Streaming,ASL-Streaming,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-05.mp4,0,0,","Headset (VR),ASL-Headset (VR),Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-06.mp4,1,2,","Desktop,ASL-Desktop,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-07.mp4,0,0,","Computer,ASL-Computer,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-08.mp4,0,0,","Instance,ASL-Instance,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-09.mp4,0,0,","Public,ASL-Public,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-10.mp4,0,0,","Invite,ASL-Invite,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-11.mp4,0,0,","Private,ASL-Private,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-12.mp4,0,0,","Add Friend,ASL-Add Friend,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-13.mp4,0,0,","Menu,ASL-Menu,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-14.mp4,0,0,","Recharge,ASL-Recharge,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-15.mp4,0,0,","Visit,ASL-Visit,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-16.mp4,0,0,","Request,ASL-Request,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-17.mp4,0,0,","Login,ASL-Login,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-18.mp4,0,0,","Logout,ASL-Logout,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-19.mp4,0,0,","Schedule,ASL-Schedule,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-20.mp4,0,0,","Event,ASL-Event,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-21.mp4,0,0,","Online,ASL-Online,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-22.mp4,0,0,","Offline,ASL-Offline,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-23.mp4,0,0,","Cancel,ASL-Cancel,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-24.mp4,0,0,","Portal,ASL-Portal,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-25.mp4,1,2,","Camera,ASL-Camera,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-26.mp4,0,0,","Avatar,ASL-Avatar,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-27.mp4,1,2,","Photo,ASL-Photo,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-28.mp4,0,0,","Join,ASL-Join,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-29.mp4,0,0,","Leave,ASL-Leave,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-30.mp4,0,0,","Climbing,ASL-Climbing,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-31.mp4,0,0,","Falling,ASL-Falling,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-32.mp4,0,0,","Walk,ASL-Walk,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-33.mp4,0,0,","Hide,ASL-Hide,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-34.mp4,0,0,","Block,ASL-Block,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-35.mp4,0,0,","Crash,ASL-Crash,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-36.mp4,0,0,","Lagging,ASL-Lagging,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-37.mp4,1,2,","Restart,ASL-Restart,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-38.mp4,0,0,","Send,ASL-Send,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-39.mp4,0,0,","Receive,ASL-Receive,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-40.mp4,0,0,","Security,ASL-Security,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-41.mp4,0,0,","Donation,ASL-Donation,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet08/08-42.mp4,0,0,"},
-new string[]{//Alphabet / Numbers (fingerspelling) (lesson9)
-"Fingerspell,ASL-Fingerspell,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-16.mp4,0,0,","Fingerspell (Variant 2),ASL-Fingerspell2,No Data Yet.,https://vrsignlanguage.net/ASL_videos/sheet16/16-16.mp4,0,1,","A,ASL-A,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-01.mp4,1,2,","B,ASL-B,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-02.mp4,0,0,","B (Variant 2),ASL-B2,No Data Yet.,https://vrsignlanguage.net/ASL_videos/sheet09/09-02.mp4,1,1,","C,ASL-C,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-03.mp4,0,2,","D,ASL-D,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-04.mp4,0,2,","E,ASL-E,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-05.mp4,1,2,","F,ASL-F,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-06.mp4,0,0,","F (Variant 2),ASL-F2,No Data Yet.,https://vrsignlanguage.net/ASL_videos/sheet09/09-06.mp4,1,1,","G,ASL-G,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-07.mp4,0,2,","H,ASL-H,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-08.mp4,0,2,","I,ASL-I,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-09.mp4,0,0,","I (Variant 2),ASL-I2,No Data Yet.,https://vrsignlanguage.net/ASL_videos/sheet09/09-09.mp4,1,1,","J,ASL-J,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-10.mp4,0,0,Trace out a 'J' midair with your pinky using a rotation of your wrist","J (Variant 2),ASL-J2,No Data Yet.,https://vrsignlanguage.net/ASL_videos/sheet09/09-10.mp4,1,1,Indicate your pinky is out, then trace out a 'J' midair with your pinky using a rotation of your wrist","K,ASL-K,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-11.mp4,1,0,","K (Variant 2),ASL-K2,No Data Yet.,https://vrsignlanguage.net/ASL_videos/sheet09/09-11.mp4,1,2,","L,ASL-L,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-12.mp4,0,2,","M,ASL-M,Placeholder.,,1,2,","M (Variant 2),ASL-M2,No Data Yet.,https://vrsignlanguage.net/ASL_videos/sheet09/09-13.mp4,1,2,","N,ASL-N,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-14.mp4,1,2,","N,ASL-N2,No Data Yet.d,https://vrsignlanguage.net/ASL_videos/sheet09/09-14.mp4,1,2,","O,ASL-O,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-15.mp4,0,2,","P,ASL-P,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-16.mp4,0,2,","Q,ASL-Q,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-17.mp4,0,2,","R,ASL-R,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-18.mp4,1,2,","S,ASL-S,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-19.mp4,0,2,","T,ASL-T,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-20.mp4,1,2,","U,ASL-U,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-21.mp4,0,0,","U (Variant 2),ASL-U2,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-21.mp4,1,1,The 'Peace Sign' on Regular VR looks like a V, so emphasise U shape by moving it in the shape of a U.","V,ASL-V,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-22.mp4,1,0,The 'Peace Sign' on the Index looks like a U, so emphhasise a V shape by moving it in the shape of a V.","V (Variant 2),ASL-V2,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-22.mp4,0,1,","W,ASL-W,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-23.mp4,0,0,","W (Variant 2),ASL-W2,No Data Yet.,https://vrsignlanguage.net/ASL_videos/sheet09/09-23.mp4,1,2,","X,ASL-X,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-24.mp4,0,0,","X (Variant 2),ASL-X2,No Data Yet.,https://vrsignlanguage.net/ASL_videos/sheet09/09-24.mp4,1,2,","Y,ASL-Y,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-25.mp4,0,0,","Y (Variant 2),ASL-Y2,No Data Yet.,https://vrsignlanguage.net/ASL_videos/sheet09/09-25.mp4,1,1,","Z,ASL-Z,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-26.mp4,0,0,","Comma,ASL-Comma,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-41.mp4,0,0,","Space,ASL-Space,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-42.mp4,0,0,To indicate a space between fingerspelled words, you simply insert a very small pause between letters.","@,ASL-@,Placeholder.,,0,2,Use for the symbol @, like in an email address.","Number,ASL-Number,Placeholder.,,0,2,Pinch fingers together","0,ASL-0,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-27.mp4,0,0,","1,ASL-1,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-28.mp4,0,0,","2,ASL-2,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-29.mp4,0,0,","3,ASL-3,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-30.mp4,0,0,","4,ASL-4,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-31.mp4,0,0,","5,ASL-5,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-32.mp4,0,0,","6,ASL-6,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-33.mp4,0,0,","7,ASL-7,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-34.mp4,0,0,","8,ASL-8,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-35.mp4,0,0,","9,ASL-9,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-36.mp4,0,0,","10,ASL-10,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-37.mp4,0,0,","100,ASL-100,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-38.mp4,0,0,","1000,ASL-1000,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-39.mp4,0,0,","1000000,ASL-1000000,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet09/09-40.mp4,0,0,"},
-new string[]{//Lesson 10 (Verbs & Actions p1)
-"Overlook,ASL-Overlook,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-01.mp4,0,0,","Punish,ASL-Punish,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-02.mp4,0,0,","Edit,ASL-Edit,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-03.mp4,0,0,","Erase,ASL-Erase,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-04.mp4,0,0,","Write,ASL-Write,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-05.mp4,0,0,","Proposal,ASL-Proposal,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-06.mp4,0,0,","Add,ASL-Add,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-07.mp4,0,0,","Remove,ASL-Remove,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-08.mp4,0,0,","Agree,ASL-Agree,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-09.mp4,0,0,","Disagree,ASL-Disagree,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-10.mp4,0,0,","Admit,ASL-Admit,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-11.mp4,0,0,","Allow,ASL-Allow,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-12.mp4,0,0,","Attack,ASL-Attack,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-13.mp4,0,0,","Fight,ASL-Fight,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-14.mp4,0,0,","Defend,ASL-Defend,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-15.mp4,0,0,","Defeat (Overcome),ASL-Defeat (Overcome),Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-16.mp4,0,0,","Win,ASL-Win,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-17.mp4,0,0,","Lose,ASL-Lose,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-18.mp4,0,0,","Draw (Game),ASL-Draw (Game),Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-19.mp4,0,0,","Give Up,ASL-Give Up,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-20.mp4,0,0,","Skip,ASL-Skip,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-21.mp4,0,0,","Ask,ASL-Ask,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-22.mp4,0,0,","Attach,ASL-Attach,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-23.mp4,0,0,","Assist,ASL-Assist,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-24.mp4,0,0,","Bait,ASL-Bait,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-25.mp4,0,0,","Battle,ASL-Battle,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-26.mp4,0,0,","Beat (Overcome),ASL-Beat (Overcome),Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-27.mp4,0,0,","Become,ASL-Become,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-28.mp4,0,0,","Beg,ASL-Beg,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-29.mp4,0,0,","Begin,ASL-Begin,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-30.mp4,0,0,","Behave,ASL-Behave,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-31.mp4,0,0,","Believe,ASL-Believe,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-32.mp4,0,0,","Blame,ASL-Blame,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-33.mp4,0,0,","Blow,ASL-Blow,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-34.mp4,0,0,","Blush,ASL-Blush,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-35.mp4,0,0,","Bother/Harass,ASL-Bother/Harass,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet10/10-36.mp4,0,0,"},
-new string[]{//Lesson 11 (Verbs & Actions p2)
-"Bend,ASL-Bend,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-01.mp4,0,0,","Bow,ASL-Bow,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-02.mp4,0,0,","Break,ASL-Break,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-03.mp4,0,0,","Breathe,ASL-Breathe,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-04.mp4,0,0,","Bring,ASL-Bring,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-05.mp4,0,0,(Directional Sign)","Build/Construct,ASL-Build/Construct,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-06.mp4,0,0,","Bully,ASL-Bully,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-07.mp4,0,0,","Burn,ASL-Burn,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-08.mp4,0,0,","Buy,ASL-Buy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-09.mp4,0,0,","Call,ASL-Call,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-10.mp4,0,0,","Cancel,ASL-Cancel2,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-11.mp4,0,0,","Care,ASL-Care,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-12.mp4,0,0,","Carry,ASL-Carry,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-13.mp4,0,0,","Catch,ASL-Catch,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-14.mp4,0,0,","Cause,ASL-Cause,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-15.mp4,0,0,","Challenge,ASL-Challenge,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-16.mp4,0,0,","Chance,ASL-Chance,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-17.mp4,0,0,C Handshape. This sign is the Signed Exact English variant.","Cheat,ASL-Cheat,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-18.mp4,0,0,","Check,ASL-Check,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-19.mp4,0,0,","Choose,ASL-Choose,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-20.mp4,0,0,","Claim,ASL-Claim,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-21.mp4,0,0,","Clean,ASL-Clean,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-22.mp4,0,0,","Clear,ASL-Clear,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-23.mp4,0,0,","Close,ASL-Close,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-24.mp4,0,0,Close as in 'near'","Comfort,ASL-Comfort,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-25.mp4,0,0,","Command,ASL-Command,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-26.mp4,0,0,","Communicate,ASL-Communicate,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-27.mp4,0,0,This sign is the Signed Exact English variant.","Compare,ASL-Compare,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-28.mp4,0,0,","Complain,ASL-Complain,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-29.mp4,0,0,","Compliment,ASL-Compliment,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-30.mp4,0,0,","Concentrate,ASL-Concentrate,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-31.mp4,0,0,","Construct/Build,ASL-Construct/Build,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-32.mp4,0,0,","Control,ASL-Control,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-33.mp4,0,0,","Cook,ASL-Cook,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-34.mp4,0,0,","Copy,ASL-Copy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-35.mp4,0,0,","Correct,ASL-Correct,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet11/11-36.mp4,0,0,"},
-new string[]{//Lesson 12 (Verbs & Actions p3)
-"Cough,ASL-Cough,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-01.mp4,0,0,","Count,ASL-Count,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-02.mp4,0,0,","Create,ASL-Create,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-03.mp4,0,0,","Cuddle,ASL-Cuddle,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-04.mp4,0,0,","Cut,ASL-Cut,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-05.mp4,0,0,","Dab,ASL-Dab,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-06.mp4,0,0,","Dance,ASL-Dance,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-07.mp4,0,0,","Dare,ASL-Dare,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-08.mp4,0,0,","Date,ASL-Date,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-09.mp4,0,0,","Deal,ASL-Deal,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-10.mp4,0,0,","Deliver,ASL-Deliver,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-11.mp4,0,0,","Depend,ASL-Depend,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-12.mp4,0,0,","Describe,ASL-Describe,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-13.mp4,0,0,","Dirty,ASL-Dirty,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-14.mp4,0,0,","Disappear,ASL-Disappear,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-15.mp4,0,0,","Disappoint,ASL-Disappoint,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-16.mp4,0,0,","Disapprove,ASL-Disapprove,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-17.mp4,0,0,","Discuss,ASL-Discuss,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-18.mp4,0,0,","Disguise,ASL-Disguise,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-19.mp4,0,0,","Disgust,ASL-Disgust,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-20.mp4,0,0,","Dismiss,ASL-Dismiss,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-21.mp4,0,0,","Disturb,ASL-Disturb,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-22.mp4,0,0,","Doubt,ASL-Doubt,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-23.mp4,0,0,","Dream,ASL-Dream,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-24.mp4,0,0,","Dress,ASL-Dress,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-25.mp4,0,0,","Drunk,ASL-Drunk,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-26.mp4,0,0,","Drop,ASL-Drop,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-27.mp4,0,0,","Drown,ASL-Drown,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-28.mp4,0,0,","Dry,ASL-Dry,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-29.mp4,0,0,","Dump,ASL-Dump,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-30.mp4,0,0,","Dust,ASL-Dust,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-31.mp4,0,0,","Earn,ASL-Earn,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-32.mp4,0,0,","Effect,ASL-Effect,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-33.mp4,0,0,","End,ASL-End,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-34.mp4,0,0,","Escape,ASL-Escape,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-35.mp4,0,0,","Escort,ASL-Escort,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet12/12-36.mp4,0,0,"},
-new string[]{//Lesson 13 (Verbs & Actions p4)
-"Excuse,ASL-Excuse,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-01.mp4,0,0,","Expose,ASL-Expose,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-02.mp4,0,0,","Exist,ASL-Exist,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-03.mp4,0,0,","Fail,ASL-Fail,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-04.mp4,0,0,","Faint,ASL-Faint,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-05.mp4,0,0,","Fake,ASL-Fake,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-06.mp4,0,0,","Fart,ASL-Fart,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-07.mp4,0,0,","Fear,ASL-Fear,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-08.mp4,0,0,","Fill,ASL-Fill,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-09.mp4,0,0,","Find,ASL-Find,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-10.mp4,0,0,","Finish,ASL-Finish,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-11.mp4,0,0,","Fix,ASL-Fix,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-12.mp4,0,0,","Flip,ASL-Flip,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-13.mp4,0,0,","Flirt,ASL-Flirt,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-14.mp4,0,0,","Fly,ASL-Fly,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-15.mp4,0,0,","Forbid,ASL-Forbid,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-16.mp4,0,0,","Forgive,ASL-Forgive,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-17.mp4,0,0,","Gain,ASL-Gain,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-18.mp4,0,0,","Give,ASL-Give,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-19.mp4,0,0,","Glow,ASL-Glow,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-20.mp4,0,0,","Grab,ASL-Grab,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-21.mp4,0,0,","Grow,ASL-Grow,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-22.mp4,0,0,","Guard,ASL-Guard,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-23.mp4,0,0,","Guess,ASL-Guess,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-24.mp4,0,0,","Guide,ASL-Guide,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-25.mp4,0,0,","Harass/Bother,ASL-Harass/Bother,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-26.mp4,0,0,","Harm,ASL-Harm,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-27.mp4,0,0,","Hit,ASL-Hit,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-28.mp4,0,0,","Hold,ASL-Hold,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-29.mp4,0,0,","Hop,ASL-Hop,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-30.mp4,0,0,","Hope,ASL-Hope,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-31.mp4,0,0,","Hunt,ASL-Hunt,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-32.mp4,0,0,","Ignore,ASL-Ignore,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-33.mp4,0,0,","Imagine,ASL-Imagine,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-34.mp4,0,0,","Imitate,ASL-Imitate,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-35.mp4,0,0,","Insult,ASL-Insult,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet13/13-36.mp4,0,0,"},
-new string[]{//Lesson 14 (Verbs & Actions p5)
-"Interact,ASL-Interact,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-01.mp4,0,0,","Interfere,ASL-Interfere,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-02.mp4,0,0,","Judge,ASL-Judge,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-03.mp4,0,0,","Jump,ASL-Jump,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-04.mp4,0,0,","Justify,ASL-Justify,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-05.mp4,0,0,","Just Kidding,ASL-Just Kidding,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-06.mp4,0,0,","Keep,ASL-Keep,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-07.mp4,0,0,","Kick,ASL-Kick,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-08.mp4,0,0,","Kill,ASL-Kill,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-09.mp4,0,0,","Knock,ASL-Knock,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-10.mp4,0,0,","Lead,ASL-Lead,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-11.mp4,0,0,","Lick,ASL-Lick,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-12.mp4,0,0,","Lock,ASL-Lock,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-13.mp4,0,0,","Manipulate,ASL-Manipulate,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-14.mp4,0,0,","Melt,ASL-Melt,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-15.mp4,0,0,","Mess,ASL-Mess,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-16.mp4,0,0,","Miss,ASL-Miss,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-17.mp4,0,0,","Mistake,ASL-Mistake,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-18.mp4,0,0,","Mount,ASL-Mount,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-19.mp4,0,0,","Move,ASL-Move,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-20.mp4,0,0,","Murder,ASL-Murder,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-21.mp4,0,0,","Nod,ASL-Nod,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-22.mp4,0,0,","Note,ASL-Note,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-23.mp4,0,0,","Notice,ASL-Notice,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-24.mp4,0,0,","Obey,ASL-Obey,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-25.mp4,0,0,","Obsess,ASL-Obsess,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-26.mp4,0,0,","Obtain,ASL-Obtain,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-27.mp4,0,0,","Occupy,ASL-Occupy,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-28.mp4,0,0,","Offend,ASL-Offend,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-29.mp4,0,0,","Offer,ASL-Offer,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-30.mp4,0,0,","Okay,ASL-Okay,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-31.mp4,0,0,","Open,ASL-Open,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-32.mp4,0,0,","Order,ASL-Order,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-33.mp4,0,0,","Owe,ASL-Owe,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-34.mp4,0,0,","Own,ASL-Own,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-35.mp4,0,0,","Pass,ASL-Pass,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet14/14-36.mp4,0,0,"},
-new string[]{//Lesson 15 (Verbs & Actions p6)
-"Pat,ASL-Pat,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-01.mp4,0,2,","Party,ASL-Party,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-02.mp4,0,0,","Pet,ASL-Pet,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-03.mp4,0,2,","Pick,ASL-Pick,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-04.mp4,0,2,","Plug,ASL-Plug,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-05.mp4,0,2,","Point,ASL-Point,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-06.mp4,0,2,","Poke,ASL-Poke,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-07.mp4,0,2,","Pray,ASL-Pray,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-08.mp4,0,2,","Prepare,ASL-Prepare,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-09.mp4,1,2,","Present,ASL-Present,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-10.mp4,0,0,","Pretend,ASL-Pretend,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-11.mp4,0,2,","Protect,ASL-Protect,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-12.mp4,0,2,","Prove,ASL-Prove,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-13.mp4,0,2,","Publish,ASL-Publish,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-14.mp4,0,2,","Puke,ASL-Puke,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-15.mp4,0,2,","Pull,ASL-Pull,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-16.mp4,0,2,","Punch,ASL-Punch,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-17.mp4,0,2,","Put,ASL-Put,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-18.mp4,0,2,","Push,ASL-Push,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-19.mp4,0,2,","Question,ASL-Question,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-20.mp4,0,2,","Quit,ASL-Quit,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-21.mp4,0,2,","Quote,ASL-Quote,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-22.mp4,0,0,","Race,ASL-Race,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-23.mp4,0,2,","React,ASL-React,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-24.mp4,0,2,","Recommended,ASL-Recommended,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-25.mp4,0,0,","Refuse,ASL-Refuse,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-26.mp4,0,2,","Regret,ASL-Regret,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-27.mp4,0,2,","Remember,ASL-Remember,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-28.mp4,0,2,","Replace,ASL-Replace,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-29.mp4,0,0,","Report,ASL-Report,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-30.mp4,0,2,","Reset,ASL-Reset,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-31.mp4,0,2,","Ride,ASL-Ride,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-32.mp4,0,2,","Rub,ASL-Rub,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-33.mp4,0,2,","Rule,ASL-Rule,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-34.mp4,1,2,","Run,ASL-Run,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-35.mp4,0,0,","Save,ASL-Save,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet15/15-36.mp4,0,2,"},
-new string[]{//Lesson 16 (Verbs & Actions p7)
-"Say,ASL-Say,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-01.mp4,0,2,","Search,ASL-Search,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-02.mp4,0,2,","See,ASL-See,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-03.mp4,0,2,","Share,ASL-Share,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-04.mp4,0,2,","Shock,ASL-Shock,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-05.mp4,0,2,","Shop (Store),ASL-Shop,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-06.mp4,0,2,","Show,ASL-Show,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-07.mp4,0,2,Directional Sign","Shut Up,ASL-Shut Up,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-08.mp4,0,2,","Shut Down,ASL-Shut Down,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-09.mp4,0,2,","Sing,ASL-Sing,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-10.mp4,0,2,","Sit,ASL-Sit,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-11.mp4,0,2,","Smell,ASL-Smell,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-12.mp4,0,2,","Smile,ASL-Smile,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-13.mp4,0,2,","Smoke (Airborn),ASL-Smoke,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-14.mp4,0,2,","Speak,ASL-Speak,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-15.mp4,0,0,","Spell (Fingerspelling),ASL-Spell,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-16.mp4,0,0,","Spit,ASL-Spit,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-17.mp4,0,0,","Stand,ASL-Stand,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-18.mp4,0,2,","Start,ASL-Start,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-19.mp4,0,2,","Stay,ASL-Stay,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-20.mp4,0,0,","Steal,ASL-Steal,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-21.mp4,0,2,","Stop,ASL-Stop2,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-22.mp4,0,2,","Study,ASL-Study,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-23.mp4,0,2,","Suffer,ASL-Suffer,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-24.mp4,0,2,","Swim,ASL-Swim,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-25.mp4,0,2,","Switch,ASL-Switch,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-26.mp4,0,2,","Take (from),ASL-Take2,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-27.mp4,0,2,Like taking candy from a baby","Talk,ASL-Talk,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-28.mp4,0,2,","Tell,ASL-Tell,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-29.mp4,0,2,","Test,ASL-Test,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-30.mp4,0,2,","Text,ASL-Text,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-31.mp4,0,2,","Think,ASL-Think,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-32.mp4,0,2,","Throw,ASL-Throw,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-33.mp4,0,2,","Tie,ASL-Tie,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-34.mp4,0,2,","Truth,ASL-Truth,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-35.mp4,0,2,","Try,ASL-Try,Placeholder.,https://vrsignlanguage.net/ASL_videos/sheet16/16-36.mp4,0,2,"}
-}};
+public string [][][][] Alllessons = {
+new string [][][]{
+new string[][]{//Lesson 1 (Daily Use)
+new string[]{"Hello","ASL-Hello","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-01.mp4","2",""},
+new string[]{"How (are) You","ASL-How Are You","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-02.mp4","2",""},
+new string[]{"What's Up?","ASL-What's Up?","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-03.mp4","0",""},
+new string[]{"What's Up? (Variant 2)","ASL-What's Up?2","Bob64","https://vrsignlanguage.net/ASL_videos/sheet01/01-03.mp4","2",""},
+new string[]{"Nice (to) Meet You","ASL-Nice (to) Meet You","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-04.mp4","2",""},
+new string[]{"Good","ASL-Good","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-05.mp4","2",""},
+new string[]{"Bad","ASL-Bad","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-06.mp4","2","1-handed version. Also can be done with two hands - see the sign for 'Good' note the palm direction."},
+new string[]{"Yes","ASL-Yes","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-07.mp4","2",""},
+new string[]{"No","ASL-No","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-08.mp4","2",""},
+new string[]{"So-So","ASL-So-So","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-09.mp4","2",""},
+new string[]{"Sick","ASL-Sick","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-10.mp4","0",""},
+new string[]{"Sick","ASL-Sick2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet01/01-10.mp4","2",""},
+new string[]{"Hurt","ASL-Hurt","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-11.mp4","2",""},
+new string[]{"You're Welcome","ASL-You're Welcome","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-12.mp4","2",""},
+new string[]{"Goodbye","ASL-Goodbye","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-13.mp4","2",""},
+new string[]{"Good Morning","ASL-Good Morning","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-14.mp4","2",""},
+new string[]{"Good Afternoon","ASL-Good Afternoon","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-15.mp4","2",""},
+new string[]{"Good Evening","ASL-Good Evening","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-16.mp4","2",""},
+new string[]{"Good Night","ASL-Good Night","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-17.mp4","2",""},
+new string[]{"See You Later","ASL-See You Later","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-18.mp4","2",""},
+new string[]{"Please","ASL-Please","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-19.mp4","2",""},
+new string[]{"Sorry","ASL-Sorry","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-20.mp4","2",""},
+new string[]{"Forget","ASL-Forget","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-21.mp4","2",""},
+new string[]{"Sleep","ASL-Sleep","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-22.mp4","2",""},
+new string[]{"Bed","ASL-Bed","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-23.mp4","2",""},
+new string[]{"Jump/Change World","ASL-Jump/Change World","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-24.mp4","2",""},
+new string[]{"Thank You","ASL-Thank You","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-25.mp4","2",""},
+new string[]{"I Love You","ASL-I Love You","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-26.mp4","2",""},
+new string[]{"ILY (I Love You)","ASL-ILY","GT4tube","","0","This sign is the combinations of the letters I, L, and Y. It's the abbreviated version of I Love You."},
+new string[]{"Go Away","ASL-Go Away","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-27.mp4","2",""},
+new string[]{"Going To","ASL-Going To","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-28.mp4","2","This is a directional sign. You point to where you're going."},
+new string[]{"Follow","ASL-Follow","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-29.mp4","2",""},
+new string[]{"Come","ASL-Come","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-30.mp4","2",""},
+new string[]{"Hearing (Person)","ASL-Hearing (Person)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-31.mp4","2","Use this when discussing a person that can hear."},
+new string[]{"Deaf","ASL-Deaf","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-32.mp4","2",""},
+new string[]{"Deaf (Variant 2)","ASL-Deaf2","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-32.mp4","2",""},
+new string[]{"Hard of Hearing","ASL-Hard of Hearing","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-33.mp4","2",""},
+new string[]{"Mute","ASL-Mute","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-34.mp4","2",""},
+new string[]{"Write Slow","ASL-Write Slow","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-35.mp4","2",""},
+new string[]{"Can't Read","ASL-Can't Read","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-36.mp4","2",""},
+new string[]{"Away","ASL-Away","GT4tube","","2",""}
+},
+new string[][]{//Lesson 2 (Pointing use Question/Answer)
+new string[]{"I (Me)","ASL-I (Me)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-01.mp4","2",""},
+new string[]{"My","ASL-My","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-02.mp4","2","Open palm implies possessive. eg: That wallet is mine."},
+new string[]{"Your","ASL-Your","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-03.mp4","2","A possessive form of 'you'. eg: That's your wallet."},
+new string[]{"His","ASL-His","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-04.mp4","2",""},
+new string[]{"Her","ASL-Her","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-05.mp4","2",""},
+new string[]{"We","ASL-We","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-06.mp4","2",""},
+new string[]{"They","ASL-They","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-07.mp4","2","You sweep your pointer over the people you're referring to."},
+new string[]{"Their","ASL-Their","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-08.mp4","2","Possessive form of they. eg: This is their house."},
+new string[]{"Over There","ASL-Over There","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-09.mp4","2",""},
+new string[]{"Our","ASL-Our","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-10.mp4","2",""},
+new string[]{"It's","ASL-It's","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-11.mp4","0",""},
+new string[]{"Inside","ASL-Inside","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-12.mp4","2",""},
+new string[]{"Outside","ASL-Outside","GT4tube","","2","General version of outside."},
+new string[]{"Outside (Outdoors)","ASL-Outside (Outdoors)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-13.mp4","2",""},
+new string[]{"Hidden","ASL-Hidden","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-14.mp4","2",""},
+new string[]{"Behind","ASL-Behind","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-15.mp4","2",""},
+new string[]{"Above","ASL-Above","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-16.mp4","2",""},
+new string[]{"Below","ASL-Below","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-17.mp4","2",""},
+new string[]{"Here","ASL-Here","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-18.mp4","2",""},
+new string[]{"Beside","ASL-Beside","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-19.mp4","2",""},
+new string[]{"Back","ASL-Back","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-20.mp4","2",""},
+new string[]{"Front","ASL-Front","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-21.mp4","2",""},
+new string[]{"Who","ASL-Who","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-22.mp4","2",""},
+new string[]{"Where","ASL-Where","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-23.mp4","2",""},
+new string[]{"When","ASL-When","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-24.mp4","2",""},
+new string[]{"Why","ASL-Why","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-25.mp4","2",""},
+new string[]{"Which","ASL-Which","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-26.mp4","2",""},
+new string[]{"What","ASL-What","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-27.mp4","2","This variant is perferred over variant 2, as variant 2 is a Signed Exact English Variant"},
+new string[]{"What (Variant 2)","ASL-What2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet02/02-27.mp4","2","A Signed Exact English variant of What."},
+new string[]{"How","ASL-How","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-28.mp4","2",""},
+new string[]{"How (Variant 2)","ASL-How2","GT4tube","","2","This version is done with two A-hands next to each other and a twisting motion of your dominate hand."},
+new string[]{"How Many","ASL-How Many","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-29.mp4","2",""},
+new string[]{"How Many (Variant 2)","ASL-How Many2","Anonymous.","","2",""},
+new string[]{"Can","ASL-Can","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-30.mp4","2",""},
+new string[]{"Can't","ASL-Can't","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-31.mp4","2",""},
+new string[]{"Want","ASL-Want","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-32.mp4","2",""},
+new string[]{"Have","ASL-Have","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-33.mp4","2",""},
+new string[]{"Get","ASL-Get","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-34.mp4","2",""},
+new string[]{"Will/Future","ASL-Will","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-35.mp4","2","This is also the sign for Future"},
+new string[]{"Take (Up)","ASL-Take (Up)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-36.mp4","2","Take as in 'take-up a class' or 'take-up a child (like you're adopting one)'"},
+new string[]{"Need","ASL-Need","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-37.mp4","0","Like the sign for 'Must' except with a double motion."},
+new string[]{"Must","ASL-Must","GT4tube","","0","Like the sign for 'Need', except with a single strong movement."},
+new string[]{"Not","ASL-Not","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-38.mp4","2",""},
+new string[]{"Or","ASL-Or","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-39.mp4","2","This is just O and R fingerspelled."},
+new string[]{"And","ASL-And","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-40.mp4","2",""},
+new string[]{"For","ASL-For","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-41.mp4","2",""},
+new string[]{"At","ASL-At","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-42.mp4","2",""},
+new string[]{"At (Variant 2)","ASL-At2","GT4tube","","2",""}
+},
+new string[][]{//Lesson 3 (Common) DarkEternal
+new string[]{"Teach","ASL-Teach","GT4tube.","https://vrsignlanguage.net/ASL_videos/sheet03/03-01.mp4","2","This sign can use either a double movement or a single movement. Both are fine."},
+new string[]{"Learn","ASL-Learn","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-02.mp4","2",""},
+new string[]{"Person","ASL-Person","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-03.mp4","2",""},
+new string[]{"Student","ASL-Student","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-04.mp4","2",""},
+new string[]{"Teacher","ASL-Teacher","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-05.mp4","2",""},
+new string[]{"Friend","ASL-Friend","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet03/03-06.mp4","2","The IRL sign has your two index fingers hooking around the other."},
+new string[]{"Sign","ASL-Sign","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-07.mp4","2",""},
+new string[]{"Language","ASL-Language","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-08.mp4","2",""},
+new string[]{"Understand","ASL-Understand","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-09.mp4","2",""},
+new string[]{"Know","ASL-Know","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-10.mp4","2",""},
+new string[]{"Don't Know","ASL-Don't Know","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-11.mp4","2",""},
+new string[]{"Be Right Back (BRB)","ASL-Be Right Back (BRB)","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-12.mp4","2",""},
+new string[]{"Accept","ASL-Accept","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-13.mp4","2",""},
+new string[]{"Denied","ASL-Denied","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-14.mp4","2",""},
+new string[]{"Name","ASL-Name","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-15.mp4","2",""},
+new string[]{"New","ASL-New","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-16.mp4","2",""},
+new string[]{"Old","ASL-Old2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-17.mp4","2",""},
+new string[]{"Very","ASL-Very","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-18.mp4","2",""},
+new string[]{"Jokes","ASL-Jokes","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-19.mp4","0",""},
+new string[]{"Funny","ASL-Funny","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-20.mp4","2",""},
+new string[]{"Play","ASL-Play","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-21.mp4","0",""},
+new string[]{"Favorite","ASL-Favorite","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-22.mp4","0",""},
+new string[]{"Draw","ASL-Draw","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-23.mp4","2",""},
+new string[]{"Stop","ASL-Stop","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-24.mp4","2",""},
+new string[]{"Read","ASL-Read","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-25.mp4","2",""},
+new string[]{"Make","ASL-Make","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-26.mp4","2",""},
+new string[]{"Write","ASL-Write2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-27.mp4","2",""},
+new string[]{"Again/Repeat","ASL-Again/Repeat","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-28.mp4","2",""},
+new string[]{"Slow","ASL-Slow","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-29.mp4","2",""},
+new string[]{"Fast","ASL-Fast","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-30.mp4","2",""},
+new string[]{"Rude","ASL-Rude","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-31.mp4","0",""},
+new string[]{"Eat","ASL-Eat","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-32.mp4","2",""},
+new string[]{"Drink","ASL-Drink","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-33.mp4","2",""},
+new string[]{"Watch","ASL-Watch","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-34.mp4","0",""},
+new string[]{"Work","ASL-Work","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-35.mp4","2",""},
+new string[]{"Live","ASL-Live","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-36.mp4","2",""},
+new string[]{"Play Game","ASL-Play Game","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-37.mp4","0",""},
+new string[]{"Same","ASL-Same","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-38.mp4","0","This is a directional sign."},
+new string[]{"Alright","ASL-Alright","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-39.mp4","2",""},
+new string[]{"People","ASL-People","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-40.mp4","0",""},
+new string[]{"Browsing the Internet","ASL-Browsing the Internet","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-41.mp4","0",""},
+new string[]{"Movie","ASL-Movie","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet03/03-42.mp4","2",""}
+},
+new string[][]{//Lesson 4 (People)
+new string[]{"Family","ASL-Family","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-01.mp4","0",""},
+new string[]{"Boy","ASL-Boy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-02.mp4","2",""},
+new string[]{"Girl","ASL-Girl","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-03.mp4","2",""},
+new string[]{"Brother","ASL-Brother","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-04.mp4","2",""},
+new string[]{"Sister","ASL-Sister","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-05.mp4","2",""},
+new string[]{"Brother-in-law","ASL-Brother-in-law","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-06.mp4","2",""},
+new string[]{"Sister-in-law","ASL-Sister-in-law","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-07.mp4","2",""},
+new string[]{"Father","ASL-Father","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-08.mp4","2",""},
+new string[]{"Grandpa","ASL-Grandpa","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-09.mp4","2",""},
+new string[]{"Mother","ASL-Mother","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-10.mp4","2",""},
+new string[]{"Grandma","ASL-Grandma","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-11.mp4","0",""},
+new string[]{"Baby","ASL-Baby","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-12.mp4","2",""},
+new string[]{"Child","ASL-Child","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-13.mp4","2",""},
+new string[]{"Teen","ASL-Teen","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-14.mp4","2",""},
+new string[]{"Adult","ASL-Adult","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-15.mp4","2",""},
+new string[]{"Aunt","ASL-Aunt","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-16.mp4","2",""},
+new string[]{"Uncle","ASL-Uncle","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-17.mp4","2",""},
+new string[]{"Stranger","ASL-Stranger","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-18.mp4","2",""},
+new string[]{"Acquaintance","ASL-Acquaintance","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-19.mp4","2","A person you know."},
+new string[]{"Parents","ASL-Parents","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-20.mp4","2",""},
+new string[]{"Born","ASL-Born","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-21.mp4","2",""},
+new string[]{"Dead","ASL-Dead","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-22.mp4","2",""},
+new string[]{"Marriage","ASL-Marriage","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-23.mp4","2",""},
+new string[]{"Divorce","ASL-Divorce","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-24.mp4","2",""},
+new string[]{"Single","ASL-Single","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-25.mp4","2",""},
+new string[]{"Young","ASL-Young","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-26.mp4","2",""},
+new string[]{"Old","ASL-Old","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-27.mp4","2",""},
+new string[]{"Age","ASL-Age","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-28.mp4","2",""},
+new string[]{"Birthday","ASL-Birthday","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-29.mp4","0",""},
+new string[]{"Celebrate","ASL-Celebrate","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-30.mp4","0",""},
+new string[]{"Enemy","ASL-Enemy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-31.mp4","2",""},
+new string[]{"Interpreter","ASL-Interpreter","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-32.mp4","0",""},
+new string[]{"No One","ASL-No One","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-33.mp4","2",""},
+new string[]{"Anyone","ASL-Anyone","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-34.mp4","2",""},
+new string[]{"Someone","ASL-Someone","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-35.mp4","0","Similar motion to 'Always'. Someone is done with a small circle."},
+new string[]{"Everyone","ASL-Everyone","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet04/04-36.mp4","0",""}
+},
+new string[][]{//Lesson 5 (Feelings/Reactions)
+new string[]{"Like","ASL-Like","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-01.mp4","0",""},
+new string[]{"Hate","ASL-Hate","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-02.mp4","0",""},
+new string[]{"Fine","ASL-Fine","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-03.mp4","2",""},
+new string[]{"Tired","ASL-Tired","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-04.mp4","2",""},
+new string[]{"Sleepy","ASL-Sleep2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-05.mp4","2",""},
+new string[]{"Confused","ASL-Confused","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-06.mp4","2",""},
+new string[]{"Smart","ASL-Smart","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-07.mp4","0",""},
+new string[]{"Attention/Focus","ASL-Attention/Focus","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-08.mp4","2",""},
+new string[]{"Nevermind","ASL-Nevermind","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-09.mp4","2",""},
+new string[]{"Angry","ASL-Angry","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-10.mp4","2",""},
+new string[]{"Laughing","ASL-Laughing","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-11.mp4","2",""},
+new string[]{"LOL","ASL-LOL","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-12.mp4","2",""},
+new string[]{"Curious","ASL-Curious","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-13.mp4","0",""},
+new string[]{"In Love","ASL-In Love","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-14.mp4","2",""},
+new string[]{"Awesome","ASL-Awesome","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-15.mp4","2",""},
+new string[]{"Great","ASL-Great","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-16.mp4","2",""},
+new string[]{"Nice","ASL-Nice","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-17.mp4","2",""},
+new string[]{"Cute","ASL-Cute","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-18.mp4","2",""},
+new string[]{"Feel","ASL-Feel","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-19.mp4","0",""},
+new string[]{"Pity","ASL-Pity","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-20.mp4","0",""},
+new string[]{"Envy","ASL-Envy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-21.mp4","2",""},
+new string[]{"Hungry","ASL-Hungry","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-22.mp4","2",""},
+new string[]{"Alive","ASL-Alive","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-23.mp4","2",""},
+new string[]{"Bored","ASL-Bored","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-24.mp4","2",""},
+new string[]{"Cry","ASL-Cry","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-25.mp4","2",""},
+new string[]{"Happy","ASL-Happy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-26.mp4","2",""},
+new string[]{"Sad","ASL-Sad","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-27.mp4","2",""},
+new string[]{"Suffering","ASL-Suffering","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-28.mp4","2",""},
+new string[]{"Surprised","ASL-Surprised","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-29.mp4","2",""},
+new string[]{"Careful","ASL-Careful","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-30.mp4","0",""},
+new string[]{"Enjoy","ASL-Enjoy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-31.mp4","2",""},
+new string[]{"Disgusted","ASL-Disgusted","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-32.mp4","2",""},
+new string[]{"Embarassed","ASL-Embarassed","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-33.mp4","2",""},
+new string[]{"Shy","ASL-Shy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-34.mp4","2",""},
+new string[]{"Lonely","ASL-Lonely","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-35.mp4","2",""},
+new string[]{"Stressed","ASL-Stressed","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-36.mp4","2",""},
+new string[]{"Scared","ASL-Scared","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-37.mp4","2",""},
+new string[]{"Excited","ASL-Excited","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-38.mp4","0",""},
+new string[]{"Shame","ASL-Shame","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-39.mp4","2",""},
+new string[]{"Struggle","ASL-Struggle","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-40.mp4","2",""},
+new string[]{"Friendly","ASL-Friendly","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-41.mp4","2",""},
+new string[]{"Mean","ASL-Mean","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet05/05-42.mp4","2",""}
+},
+new string[][]{//Lesson 6 (Value) 
+new string[]{"More","ASL-More","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-01.mp4","2",""},
+new string[]{"Less","ASL-Less","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-02.mp4","2",""},
+new string[]{"Big","ASL-Big","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-03.mp4","2",""},
+new string[]{"Small/A Little","ASL-Small","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-04.mp4","2",""},
+new string[]{"Full","ASL-Full","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-05.mp4","2",""},
+new string[]{"Empty","ASL-Empty","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-06.mp4","0",""},
+new string[]{"Half","ASL-Half","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-07.mp4","2",""},
+new string[]{"Quarter","ASL-Quarter","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-08.mp4","0",""},
+new string[]{"Long","ASL-Long","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-09.mp4","2",""},
+new string[]{"Short (Time)","ASL-Short (Time)","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-10.mp4","0",""},
+new string[]{"A Lot/Many","ASL-A Lot/Many","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-12.mp4","0",""},
+new string[]{"Unlimited","ASL-Unlimited","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-13.mp4","0",""},
+new string[]{"Limited","ASL-Limited","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-14.mp4","0",""},
+new string[]{"All","ASL-All","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-15.mp4","0",""},
+new string[]{"Nothing","ASL-Nothing","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-16.mp4","0",""},
+new string[]{"Ever","ASL-Ever","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-17.mp4","0",""},
+new string[]{"Everything","ASL-Everything","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-18.mp4","0",""},
+new string[]{"Everytime","ASL-Everytime","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-19.mp4","0",""},
+new string[]{"Always","ASL-Always","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-20.mp4","0",""},
+new string[]{"Often","ASL-Often","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-21.mp4","0",""},
+new string[]{"Sometimes","ASL-Sometimes","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-22.mp4","0",""},
+new string[]{"Heavy","ASL-Heavy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-23.mp4","0",""},
+new string[]{"Lightweight","ASL-Lightweight","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-24.mp4","0",""},
+new string[]{"Hard","ASL-Hard","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-25.mp4","0",""},
+new string[]{"Soft","ASL-Soft","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-26.mp4","0",""},
+new string[]{"Strong","ASL-Strong","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-27.mp4","0",""},
+new string[]{"Weak","ASL-Weak","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-28.mp4","0",""},
+new string[]{"First","ASL-First","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-29.mp4","0",""},
+new string[]{"Second","ASL-Second","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-30.mp4","0",""},
+new string[]{"Third","ASL-Third","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-31.mp4","0",""},
+new string[]{"Next","ASL-Next","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-32.mp4","0",""},
+new string[]{"Last","ASL-Last","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-33.mp4","0",""},
+new string[]{"Before","ASL-Before","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-34.mp4","0",""},
+new string[]{"After","ASL-After","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-35.mp4","0",""},
+new string[]{"Busy","ASL-Busy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-36.mp4","0",""},
+new string[]{"Free","ASL-Free","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-37.mp4","0","Signed Exact English variant"},
+new string[]{"High","ASL-High","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-38.mp4","0",""},
+new string[]{"Low","ASL-Low","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-39.mp4","0",""},
+new string[]{"Fat","ASL-Fat","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-40.mp4","0",""},
+new string[]{"Thin","ASL-Thin","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-41.mp4","0",""},
+new string[]{"Value","ASL-Value","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet06/06-42.mp4","0",""}
+},
+new string[][]{//Lesson 7 (Time)
+new string[]{"Time","ASL-Time","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-01.mp4","0",""},
+new string[]{"Year","ASL-Year","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-02.mp4","0",""},
+new string[]{"Season","ASL-Season","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-03.mp4","0",""},
+new string[]{"Month","ASL-Month","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-04.mp4","0",""},
+new string[]{"Week","ASL-Week","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-05.mp4","0",""},
+new string[]{"Day","ASL-Day","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-06.mp4","0",""},
+new string[]{"Weekend","ASL-Weekend","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-07.mp4","0",""},
+new string[]{"Hours","ASL-Hours","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-08.mp4","0",""},
+new string[]{"Minutes","ASL-Minutes","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-09.mp4","0",""},
+new string[]{"Seconds","ASL-Seconds","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-10.mp4","0",""},
+new string[]{"Today","ASL-Today","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-11.mp4","0",""},
+new string[]{"Tomorrow","ASL-Tomorrow","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-12.mp4","0",""},
+new string[]{"Yesterday","ASL-Yesterday","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-13.mp4","0",""},
+new string[]{"Morning","ASL-Morning","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-14.mp4","0",""},
+new string[]{"Afternoon","ASL-Afternoon","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-15.mp4","0",""},
+new string[]{"Evening","ASL-Evening","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-16.mp4","0",""},
+new string[]{"Night","ASL-Night","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-17.mp4","0",""},
+new string[]{"Sunrise","ASL-Sunrise","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-18.mp4","0",""},
+new string[]{"Sunset","ASL-Sunset","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-19.mp4","0",""},
+new string[]{"All Night","ASL-All Night","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-20.mp4","0",""},
+new string[]{"All Day","ASL-All Day","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-21.mp4","0",""},
+new string[]{"Sunday","ASL-Sunday","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-22.mp4","0",""},
+new string[]{"Monday","ASL-Monday","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-23.mp4","0",""},
+new string[]{"Tuesday","ASL-Tuesday","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-24.mp4","0",""},
+new string[]{"Wednesday","ASL-Wednesday","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-25.mp4","0",""},
+new string[]{"Thursday","ASL-Thursday","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-26.mp4","0",""},
+new string[]{"Friday","ASL-Friday","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-27.mp4","0",""},
+new string[]{"Saturday","ASL-Saturday","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-28.mp4","0",""},
+new string[]{"Autumn","ASL-Autumn","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-29.mp4","0",""},
+new string[]{"Winter","ASL-Winter","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-30.mp4","0",""},
+new string[]{"Spring","ASL-Spring","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-31.mp4","0",""},
+new string[]{"Summer","ASL-Summer","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-32.mp4","0",""},
+new string[]{"Now","ASL-Now","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-33.mp4","0",""},
+new string[]{"Never","ASL-Never","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-34.mp4","0",""},
+new string[]{"Soon","ASL-Soon","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-35.mp4","0",""},
+new string[]{"Later","ASL-Later","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-36.mp4","0",""},
+new string[]{"Past","ASL-Past","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-37.mp4","0",""},
+new string[]{"Future","ASL-Future","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-38.mp4","0",""},
+new string[]{"Earlier","ASL-Earlier","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-39.mp4","0",""},
+new string[]{"Midweek","ASL-Midweek","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-40.mp4","0",""},
+new string[]{"Next Week","ASL-Next Week","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet07/07-41.mp4","0",""}
+},
+new string[][]{//Lesson 8 (VRChat)
+new string[]{"Gestures","ASL-Gestures","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-01.mp4","0",""},
+new string[]{"World","ASL-World","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-02.mp4","2",""},
+new string[]{"Record","ASL-Record","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-03.mp4","0",""},
+new string[]{"Discord","ASL-Discord","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-04.mp4","0",""},
+new string[]{"Streaming","ASL-Streaming","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-05.mp4","0",""},
+new string[]{"Headset (VR)","ASL-Headset (VR)","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-06.mp4","2",""},
+new string[]{"Desktop","ASL-Desktop","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-07.mp4","0",""},
+new string[]{"Computer","ASL-Computer","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-08.mp4","0",""},
+new string[]{"Instance","ASL-Instance","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-09.mp4","0",""},
+new string[]{"Public","ASL-Public","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-10.mp4","0",""},
+new string[]{"Invite","ASL-Invite","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-11.mp4","0",""},
+new string[]{"Private","ASL-Private","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-12.mp4","0",""},
+new string[]{"Add Friend","ASL-Add Friend","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-13.mp4","0",""},
+new string[]{"Menu","ASL-Menu","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-14.mp4","0",""},
+new string[]{"Recharge","ASL-Recharge","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-15.mp4","0",""},
+new string[]{"Visit","ASL-Visit","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-16.mp4","0",""},
+new string[]{"Request","ASL-Request","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-17.mp4","0",""},
+new string[]{"Login","ASL-Login","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-18.mp4","0",""},
+new string[]{"Logout","ASL-Logout","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-19.mp4","0",""},
+new string[]{"Schedule","ASL-Schedule","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-20.mp4","0",""},
+new string[]{"Event","ASL-Event","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-21.mp4","0",""},
+new string[]{"Online","ASL-Online","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-22.mp4","0",""},
+new string[]{"Offline","ASL-Offline","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-23.mp4","0",""},
+new string[]{"Cancel","ASL-Cancel","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-24.mp4","0",""},
+new string[]{"Portal","ASL-Portal","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-25.mp4","2",""},
+new string[]{"Camera","ASL-Camera","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-26.mp4","0",""},
+new string[]{"Avatar","ASL-Avatar","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-27.mp4","2",""},
+new string[]{"Photo","ASL-Photo","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-28.mp4","0",""},
+new string[]{"Join","ASL-Join","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-29.mp4","0",""},
+new string[]{"Leave","ASL-Leave","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-30.mp4","0",""},
+new string[]{"Climbing","ASL-Climbing","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-31.mp4","0",""},
+new string[]{"Falling","ASL-Falling","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-32.mp4","0",""},
+new string[]{"Walk","ASL-Walk","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-33.mp4","0",""},
+new string[]{"Hide","ASL-Hide","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-34.mp4","0",""},
+new string[]{"Block","ASL-Block","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-35.mp4","0",""},
+new string[]{"Crash","ASL-Crash","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-36.mp4","0",""},
+new string[]{"Lagging","ASL-Lagging","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-37.mp4","2",""},
+new string[]{"Restart","ASL-Restart","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-38.mp4","0",""},
+new string[]{"Send","ASL-Send","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-39.mp4","0",""},
+new string[]{"Receive","ASL-Receive","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-40.mp4","0",""},
+new string[]{"Security","ASL-Security","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-41.mp4","0",""},
+new string[]{"Donation","ASL-Donation","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet08/08-42.mp4","0",""}
+},
+new string[][]{//Alphabet/Numbers (fingerspelling) (lesson9)
+new string[]{"Fingerspell","ASL-Fingerspell","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-16.mp4","0",""},
+new string[]{"Fingerspell (Variant 2)","ASL-Fingerspell2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet16/16-16.mp4","1",""},
+new string[]{"A","ASL-A","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-01.mp4","2",""},
+new string[]{"B","ASL-B","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-02.mp4","0",""},
+new string[]{"B (Variant 2)","ASL-B2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-02.mp4","1",""},
+new string[]{"C","ASL-C","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-03.mp4","2",""},
+new string[]{"D","ASL-D","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-04.mp4","2",""},
+new string[]{"E","ASL-E","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-05.mp4","2",""},
+new string[]{"F","ASL-F","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-06.mp4","0",""},
+new string[]{"F (Variant 2)","ASL-F2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-06.mp4","1",""},
+new string[]{"G","ASL-G","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-07.mp4","2",""},
+new string[]{"H","ASL-H","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-08.mp4","2",""},
+new string[]{"I","ASL-I","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-09.mp4","0",""},
+new string[]{"I (Variant 2)","ASL-I2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-09.mp4","1",""},
+new string[]{"J","ASL-J","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-10.mp4","0","Trace out a 'J' midair with your pinky using a rotation of your wrist"},
+new string[]{"J (Variant 2)","ASL-J2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-10.mp4","1","Indicate your pinky is out, then trace out a 'J' midair with your pinky using a rotation of your wrist"},
+new string[]{"K","ASL-K","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-11.mp4","0",""},
+new string[]{"K (Variant 2)","ASL-K2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-11.mp4","2",""},
+new string[]{"L","ASL-L","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-12.mp4","2",""},
+new string[]{"M","ASL-M","Anonymous.","","1","2",""},
+new string[]{"M (Variant 2)","ASL-M2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-13.mp4","2",""},
+new string[]{"N","ASL-N","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-14.mp4","2",""},
+new string[]{"N","ASL-N2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-14.mp4","2",""},
+new string[]{"O","ASL-O","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-15.mp4","2",""},
+new string[]{"P","ASL-P","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-16.mp4","2",""},
+new string[]{"Q","ASL-Q","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-17.mp4","2",""},
+new string[]{"R","ASL-R","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-18.mp4","2",""},
+new string[]{"S","ASL-S","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-19.mp4","2",""},
+new string[]{"T","ASL-T","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-20.mp4","2",""},
+new string[]{"U","ASL-U","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-21.mp4","0",""},
+new string[]{"U (Variant 2)","ASL-U2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-21.mp4","1","The 'Peace Sign' on Regular VR looks like a V, so emphasise U shape by moving it in the shape of a U."},
+new string[]{"V","ASL-V","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-22.mp4","0","The 'Peace Sign' on the Index looks like a U, so emphhasise a V shape by moving it in the shape of a V."},
+new string[]{"V (Variant 2)","ASL-V2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-22.mp4","1",""},
+new string[]{"W","ASL-W","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-23.mp4","0",""},
+new string[]{"W (Variant 2)","ASL-W2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-23.mp4","2",""},
+new string[]{"X","ASL-X","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-24.mp4","0",""},
+new string[]{"X (Variant 2)","ASL-X2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-24.mp4","2",""},
+new string[]{"Y","ASL-Y","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-25.mp4","0",""},
+new string[]{"Y (Variant 2)","ASL-Y2","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet09/09-25.mp4","1",""},
+new string[]{"Z","ASL-Z","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-26.mp4","0",""},
+new string[]{"Comma","ASL-Comma","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-41.mp4","0",""},
+new string[]{"Space","ASL-Space","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-42.mp4","0","To indicate a space between fingerspelled words, you simply insert a very small pause between letters."},
+new string[]{"@","ASL-@","Anonymous.","","2","Use for the symbol @, like in an email address."},
+new string[]{"Number","ASL-Number","Anonymous.","","2","Pinch fingers together"},
+new string[]{"0","ASL-0","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-27.mp4","0",""},
+new string[]{"1","ASL-1","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-28.mp4","0",""},
+new string[]{"2","ASL-2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-29.mp4","0",""},
+new string[]{"3","ASL-3","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-30.mp4","0",""},
+new string[]{"4","ASL-4","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-31.mp4","0",""},
+new string[]{"5","ASL-5","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-32.mp4","0",""},
+new string[]{"6","ASL-6","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-33.mp4","0",""},
+new string[]{"7","ASL-7","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-34.mp4","0",""},
+new string[]{"8","ASL-8","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-35.mp4","0",""},
+new string[]{"9","ASL-9","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-36.mp4","0",""},
+new string[]{"10","ASL-10","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-37.mp4","0",""},
+new string[]{"100","ASL-100","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-38.mp4","0",""},
+new string[]{"1000","ASL-1000","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-39.mp4","0",""},
+new string[]{"1000000","ASL-1000000","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet09/09-40.mp4","0",""}
+},
+new string[][]{//Lesson 10 (Verbs & Actions p1)
+new string[]{"Overlook","ASL-Overlook","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-01.mp4","0",""},
+new string[]{"Punish","ASL-Punish","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-02.mp4","0",""},
+new string[]{"Edit","ASL-Edit","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-03.mp4","0",""},
+new string[]{"Erase","ASL-Erase","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-04.mp4","0",""},
+new string[]{"Write","ASL-Write","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-05.mp4","0",""},
+new string[]{"Proposal","ASL-Proposal","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-06.mp4","0",""},
+new string[]{"Add","ASL-Add","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-07.mp4","0",""},
+new string[]{"Remove","ASL-Remove","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-08.mp4","0",""},
+new string[]{"Agree","ASL-Agree","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-09.mp4","0",""},
+new string[]{"Disagree","ASL-Disagree","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-10.mp4","0",""},
+new string[]{"Admit","ASL-Admit","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-11.mp4","0",""},
+new string[]{"Allow","ASL-Allow","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-12.mp4","0",""},
+new string[]{"Attack","ASL-Attack","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-13.mp4","0",""},
+new string[]{"Fight","ASL-Fight","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-14.mp4","0",""},
+new string[]{"Defend","ASL-Defend","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-15.mp4","0",""},
+new string[]{"Defeat (Overcome)","ASL-Defeat (Overcome)","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-16.mp4","0",""},
+new string[]{"Win","ASL-Win","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-17.mp4","0",""},
+new string[]{"Lose","ASL-Lose","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-18.mp4","0",""},
+new string[]{"Draw/Tie (Game)","ASL-Draw/Tie (Game)","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-19.mp4","0","Draw or Tie, as in the same score at the end of a game."},
+new string[]{"Give Up","ASL-Give Up","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-20.mp4","0",""},
+new string[]{"Skip","ASL-Skip","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-21.mp4","0",""},
+new string[]{"Ask","ASL-Ask","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-22.mp4","0",""},
+new string[]{"Attach","ASL-Attach","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-23.mp4","0",""},
+new string[]{"Assist","ASL-Assist","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-24.mp4","0",""},
+new string[]{"Bait","ASL-Bait","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-25.mp4","0",""},
+new string[]{"Battle","ASL-Battle","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-26.mp4","0",""},
+new string[]{"Beat (Overcome)","ASL-Beat (Overcome)","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-27.mp4","0",""},
+new string[]{"Become","ASL-Become","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-28.mp4","0",""},
+new string[]{"Beg","ASL-Beg","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-29.mp4","0",""},
+new string[]{"Begin","ASL-Begin","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-30.mp4","0",""},
+new string[]{"Behave","ASL-Behave","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-31.mp4","0",""},
+new string[]{"Believe","ASL-Believe","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-32.mp4","0",""},
+new string[]{"Blame","ASL-Blame","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-33.mp4","0",""},
+new string[]{"Blow","ASL-Blow","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-34.mp4","0",""},
+new string[]{"Blush","ASL-Blush","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-35.mp4","0",""},
+new string[]{"Bother/Harass","ASL-Bother/Harass","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet10/10-36.mp4","0",""}
+},
+new string[][]{//Lesson 11 (Verbs & Actions p2)
+new string[]{"Bend","ASL-Bend","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-01.mp4","0",""},
+new string[]{"Bow","ASL-Bow","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-02.mp4","0",""},
+new string[]{"Break","ASL-Break","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-03.mp4","0",""},
+new string[]{"Breathe","ASL-Breathe","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-04.mp4","0",""},
+new string[]{"Bring","ASL-Bring","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-05.mp4","0","This is a directional sign."},
+new string[]{"Build/Construct","ASL-Build/Construct","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-06.mp4","0",""},
+new string[]{"Bully","ASL-Bully","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-07.mp4","0",""},
+new string[]{"Burn","ASL-Burn","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-08.mp4","0",""},
+new string[]{"Buy","ASL-Buy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-09.mp4","0",""},
+new string[]{"Call","ASL-Call","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-10.mp4","0",""},
+new string[]{"Cancel","ASL-Cancel2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-11.mp4","0",""},
+new string[]{"Care","ASL-Care","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-12.mp4","0",""},
+new string[]{"Carry","ASL-Carry","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-13.mp4","0",""},
+new string[]{"Catch","ASL-Catch","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-14.mp4","0",""},
+new string[]{"Cause","ASL-Cause","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-15.mp4","0",""},
+new string[]{"Challenge","ASL-Challenge","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-16.mp4","0",""},
+new string[]{"Chance","ASL-Chance","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-17.mp4","0","C Handshape. This sign is the Signed Exact English variant."},
+new string[]{"Cheat","ASL-Cheat","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-18.mp4","0",""},
+new string[]{"Check","ASL-Check","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-19.mp4","0",""},
+new string[]{"Choose","ASL-Choose","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-20.mp4","0",""},
+new string[]{"Claim","ASL-Claim","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-21.mp4","0",""},
+new string[]{"Clean","ASL-Clean","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-22.mp4","0",""},
+new string[]{"Clear","ASL-Clear","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-23.mp4","0",""},
+new string[]{"Close","ASL-Close","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-24.mp4","0","Close as in 'near'"},
+new string[]{"Comfort","ASL-Comfort","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-25.mp4","0",""},
+new string[]{"Command","ASL-Command","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-26.mp4","0",""},
+new string[]{"Communicate","ASL-Communicate","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-27.mp4","0","This sign is the Signed Exact English variant."},
+new string[]{"Compare","ASL-Compare","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-28.mp4","0",""},
+new string[]{"Complain","ASL-Complain","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-29.mp4","0",""},
+new string[]{"Compliment","ASL-Compliment","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-30.mp4","0",""},
+new string[]{"Concentrate","ASL-Concentrate","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-31.mp4","0",""},
+new string[]{"Construct/Build","ASL-Construct/Build","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-32.mp4","0",""},
+new string[]{"Control","ASL-Control","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-33.mp4","0",""},
+new string[]{"Cook","ASL-Cook","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-34.mp4","0",""},
+new string[]{"Copy","ASL-Copy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-35.mp4","0",""},
+new string[]{"Correct","ASL-Correct","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet11/11-36.mp4","0",""}
+},
+new string[][]{//Lesson 12 (Verbs & Actions p3)
+new string[]{"Cough","ASL-Cough","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-01.mp4","0",""},
+new string[]{"Count","ASL-Count","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-02.mp4","0",""},
+new string[]{"Create","ASL-Create","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-03.mp4","0",""},
+new string[]{"Cuddle","ASL-Cuddle","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-04.mp4","0",""},
+new string[]{"Cut","ASL-Cut","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-05.mp4","0",""},
+new string[]{"Dab","ASL-Dab","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-06.mp4","0",""},
+new string[]{"Dance","ASL-Dance","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-07.mp4","0",""},
+new string[]{"Dare","ASL-Dare","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-08.mp4","0",""},
+new string[]{"Date","ASL-Date","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-09.mp4","0",""},
+new string[]{"Deal","ASL-Deal","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-10.mp4","0",""},
+new string[]{"Deliver","ASL-Deliver","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-11.mp4","0",""},
+new string[]{"Depend","ASL-Depend","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-12.mp4","0",""},
+new string[]{"Describe","ASL-Describe","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-13.mp4","0",""},
+new string[]{"Dirty","ASL-Dirty","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-14.mp4","0",""},
+new string[]{"Disappear","ASL-Disappear","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-15.mp4","0",""},
+new string[]{"Disappoint","ASL-Disappoint","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-16.mp4","0",""},
+new string[]{"Disapprove","ASL-Disapprove","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-17.mp4","0",""},
+new string[]{"Discuss","ASL-Discuss","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-18.mp4","0",""},
+new string[]{"Disguise","ASL-Disguise","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-19.mp4","0",""},
+new string[]{"Disgust","ASL-Disgust","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-20.mp4","0",""},
+new string[]{"Dismiss","ASL-Dismiss","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-21.mp4","0",""},
+new string[]{"Disturb","ASL-Disturb","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-22.mp4","0",""},
+new string[]{"Doubt","ASL-Doubt","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-23.mp4","0",""},
+new string[]{"Dream","ASL-Dream","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-24.mp4","0",""},
+new string[]{"Dress","ASL-Dress","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-25.mp4","0",""},
+new string[]{"Drunk","ASL-Drunk","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-26.mp4","0",""},
+new string[]{"Drop","ASL-Drop","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-27.mp4","0",""},
+new string[]{"Drown","ASL-Drown","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-28.mp4","0",""},
+new string[]{"Dry","ASL-Dry","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-29.mp4","0",""},
+new string[]{"Dump","ASL-Dump","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-30.mp4","0",""},
+new string[]{"Dust","ASL-Dust","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-31.mp4","0",""},
+new string[]{"Earn","ASL-Earn","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-32.mp4","0",""},
+new string[]{"Effect","ASL-Effect","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-33.mp4","0",""},
+new string[]{"End","ASL-End","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-34.mp4","0",""},
+new string[]{"Escape","ASL-Escape","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-35.mp4","0",""},
+new string[]{"Escort","ASL-Escort","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet12/12-36.mp4","0",""}
+},
+new string[][]{//Lesson 13 (Verbs & Actions p4)
+new string[]{"Excuse","ASL-Excuse","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-01.mp4","0",""},
+new string[]{"Expose","ASL-Expose","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-02.mp4","0",""},
+new string[]{"Exist","ASL-Exist","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-03.mp4","0",""},
+new string[]{"Fail","ASL-Fail","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-04.mp4","0",""},
+new string[]{"Faint","ASL-Faint","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-05.mp4","0",""},
+new string[]{"Fake","ASL-Fake","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-06.mp4","0",""},
+new string[]{"Fart","ASL-Fart","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-07.mp4","0",""},
+new string[]{"Fear","ASL-Fear","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-08.mp4","0",""},
+new string[]{"Fill","ASL-Fill","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-09.mp4","0",""},
+new string[]{"Find","ASL-Find","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-10.mp4","0",""},
+new string[]{"Finish","ASL-Finish","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-11.mp4","0",""},
+new string[]{"Fix","ASL-Fix","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-12.mp4","0",""},
+new string[]{"Flip","ASL-Flip","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-13.mp4","0",""},
+new string[]{"Flirt","ASL-Flirt","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-14.mp4","0",""},
+new string[]{"Fly","ASL-Fly","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-15.mp4","0",""},
+new string[]{"Forbid","ASL-Forbid","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-16.mp4","0",""},
+new string[]{"Forgive","ASL-Forgive","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-17.mp4","0",""},
+new string[]{"Gain","ASL-Gain","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-18.mp4","0",""},
+new string[]{"Give","ASL-Give","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-19.mp4","0",""},
+new string[]{"Glow","ASL-Glow","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-20.mp4","0",""},
+new string[]{"Grab","ASL-Grab","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-21.mp4","0",""},
+new string[]{"Grow","ASL-Grow","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-22.mp4","0",""},
+new string[]{"Guard","ASL-Guard","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-23.mp4","0",""},
+new string[]{"Guess","ASL-Guess","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-24.mp4","0",""},
+new string[]{"Guide","ASL-Guide","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-25.mp4","0",""},
+new string[]{"Harass/Bother","ASL-Harass/Bother","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-26.mp4","0",""},
+new string[]{"Harm","ASL-Harm","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-27.mp4","0",""},
+new string[]{"Hit","ASL-Hit","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-28.mp4","0",""},
+new string[]{"Hold","ASL-Hold","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-29.mp4","0",""},
+new string[]{"Hop","ASL-Hop","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-30.mp4","0",""},
+new string[]{"Hope","ASL-Hope","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-31.mp4","0",""},
+new string[]{"Hunt","ASL-Hunt","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-32.mp4","0",""},
+new string[]{"Ignore","ASL-Ignore","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-33.mp4","0",""},
+new string[]{"Imagine","ASL-Imagine","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-34.mp4","0",""},
+new string[]{"Imitate","ASL-Imitate","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-35.mp4","0",""},
+new string[]{"Insult","ASL-Insult","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet13/13-36.mp4","0",""}
+},
+new string[][]{//Lesson 14 (Verbs & Actions p5)
+new string[]{"Interact","ASL-Interact","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-01.mp4","0",""},
+new string[]{"Interfere","ASL-Interfere","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-02.mp4","0",""},
+new string[]{"Judge","ASL-Judge","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-03.mp4","0",""},
+new string[]{"Jump","ASL-Jump","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-04.mp4","0",""},
+new string[]{"Justify","ASL-Justify","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-05.mp4","0",""},
+new string[]{"Just Kidding","ASL-Just Kidding","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-06.mp4","0",""},
+new string[]{"Keep","ASL-Keep","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-07.mp4","0",""},
+new string[]{"Kick","ASL-Kick","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-08.mp4","0",""},
+new string[]{"Kill","ASL-Kill","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-09.mp4","0",""},
+new string[]{"Knock","ASL-Knock","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-10.mp4","0",""},
+new string[]{"Lead","ASL-Lead","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-11.mp4","0",""},
+new string[]{"Lick","ASL-Lick","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-12.mp4","0",""},
+new string[]{"Lock","ASL-Lock","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-13.mp4","0",""},
+new string[]{"Manipulate","ASL-Manipulate","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-14.mp4","0",""},
+new string[]{"Melt","ASL-Melt","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-15.mp4","0",""},
+new string[]{"Mess","ASL-Mess","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-16.mp4","0",""},
+new string[]{"Miss","ASL-Miss","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-17.mp4","0",""},
+new string[]{"Mistake","ASL-Mistake","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-18.mp4","0",""},
+new string[]{"Mount","ASL-Mount","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-19.mp4","0",""},
+new string[]{"Move","ASL-Move","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-20.mp4","0",""},
+new string[]{"Murder","ASL-Murder","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-21.mp4","0",""},
+new string[]{"Nod","ASL-Nod","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-22.mp4","0",""},
+new string[]{"Note","ASL-Note","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-23.mp4","0",""},
+new string[]{"Notice","ASL-Notice","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-24.mp4","0",""},
+new string[]{"Obey","ASL-Obey","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-25.mp4","0",""},
+new string[]{"Obsess","ASL-Obsess","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-26.mp4","0",""},
+new string[]{"Obtain","ASL-Obtain","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-27.mp4","0",""},
+new string[]{"Occupy","ASL-Occupy","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-28.mp4","0",""},
+new string[]{"Offend","ASL-Offend","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-29.mp4","0",""},
+new string[]{"Offer","ASL-Offer","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-30.mp4","0",""},
+new string[]{"Okay","ASL-Okay","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-31.mp4","0",""},
+new string[]{"Open","ASL-Open","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-32.mp4","0",""},
+new string[]{"Order","ASL-Order","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-33.mp4","0",""},
+new string[]{"Owe","ASL-Owe","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-34.mp4","0",""},
+new string[]{"Own","ASL-Own","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-35.mp4","0",""},
+new string[]{"Pass","ASL-Pass","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet14/14-36.mp4","0",""}
+},
+new string[][]{//Lesson 15 (Verbs & Actions p6)
+new string[]{"Pat","ASL-Pat","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-01.mp4","2",""},
+new string[]{"Party","ASL-Party","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-02.mp4","0",""},
+new string[]{"Pet","ASL-Pet","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-03.mp4","2",""},
+new string[]{"Pick","ASL-Pick","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-04.mp4","2",""},
+new string[]{"Plug","ASL-Plug","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-05.mp4","2",""},
+new string[]{"Point","ASL-Point","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-06.mp4","2",""},
+new string[]{"Poke","ASL-Poke","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-07.mp4","2",""},
+new string[]{"Pray","ASL-Pray","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-08.mp4","2",""},
+new string[]{"Prepare","ASL-Prepare","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-09.mp4","2",""},
+new string[]{"Present","ASL-Present","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-10.mp4","0",""},
+new string[]{"Pretend","ASL-Pretend","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-11.mp4","2",""},
+new string[]{"Protect","ASL-Protect","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-12.mp4","2",""},
+new string[]{"Prove","ASL-Prove","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-13.mp4","2",""},
+new string[]{"Publish","ASL-Publish","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-14.mp4","2",""},
+new string[]{"Puke","ASL-Puke","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-15.mp4","2",""},
+new string[]{"Puke (Variant 2)","ASL-Puke2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-15.mp4","2",""},
+new string[]{"Pull","ASL-Pull","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-16.mp4","2",""},
+new string[]{"Punch","ASL-Punch","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-17.mp4","2",""},
+new string[]{"Put","ASL-Put","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-18.mp4","2",""},
+new string[]{"Push","ASL-Push","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-19.mp4","2",""},
+new string[]{"Question","ASL-Question","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-20.mp4","2",""},
+new string[]{"Questions","ASL-Questions","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-20.mp4","2",""},
+new string[]{"Quit","ASL-Quit","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-21.mp4","2",""},
+new string[]{"Quote","ASL-Quote","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-22.mp4","0",""},
+new string[]{"Race","ASL-Race","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-23.mp4","2",""},
+new string[]{"React","ASL-React","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-24.mp4","2",""},
+new string[]{"Recommended","ASL-Recommended","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-25.mp4","0",""},
+new string[]{"Refuse","ASL-Refuse","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-26.mp4","2",""},
+new string[]{"Regret","ASL-Regret","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-27.mp4","0",""},
+new string[]{"Remember","ASL-Remember","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-28.mp4","2",""},
+new string[]{"Replace","ASL-Replace","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-29.mp4","0",""},
+new string[]{"Report","ASL-Report","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-30.mp4","2",""},
+new string[]{"Reset","ASL-Reset","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-31.mp4","2",""},
+new string[]{"Ride","ASL-Ride","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-32.mp4","2",""},
+new string[]{"Rub","ASL-Rub","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-33.mp4","2",""},
+new string[]{"Rule","ASL-Rule","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-34.mp4","2",""},
+new string[]{"Run","ASL-Run","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-35.mp4","0",""},
+new string[]{"Save","ASL-Save","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet15/15-36.mp4","2",""}
+},
+new string[][]{//Lesson 16 (Verbs & Actions p7)
+new string[]{"Say","ASL-Say","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-01.mp4","2",""},
+new string[]{"Search","ASL-Search","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-02.mp4","2",""},
+new string[]{"See","ASL-See","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-03.mp4","2",""},
+new string[]{"Share","ASL-Share","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-04.mp4","2",""},
+new string[]{"Shock","ASL-Shock","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-05.mp4","2",""},
+new string[]{"Shop (Store)","ASL-Shop","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-06.mp4","2",""},
+new string[]{"Show","ASL-Show","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-07.mp4","2","This is a directional sign."},
+new string[]{"Shut Up","ASL-Shut Up","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-08.mp4","2","IRL: Starts with a V hand and transitions to an U hand."},
+new string[]{"Shut Down","ASL-Shut Down","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-09.mp4","2",""},
+new string[]{"Sing","ASL-Sing","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-10.mp4","2",""},
+new string[]{"Sit","ASL-Sit","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-11.mp4","2",""},
+new string[]{"Smell","ASL-Smell","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-12.mp4","2",""},
+new string[]{"Smile","ASL-Smile","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-13.mp4","2",""},
+new string[]{"Smoke (Airborn)","ASL-Smoke","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-14.mp4","2",""},
+new string[]{"Speak/Talk","ASL-Speak/Talk","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-15.mp4","0",""},
+new string[]{"Spell (Fingerspelling)","ASL-Spell","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-16.mp4","0",""},
+new string[]{"Spit","ASL-Spit","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-17.mp4","0",""},
+new string[]{"Stand","ASL-Stand","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-18.mp4","2",""},
+new string[]{"Start","ASL-Start","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-19.mp4","2",""},
+new string[]{"Stay","ASL-Stay","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-20.mp4","0",""},
+new string[]{"Steal","ASL-Steal","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-21.mp4","0",""},
+new string[]{"Stop","ASL-Stop2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-22.mp4","2",""},
+new string[]{"Study","ASL-Study","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-23.mp4","2",""},
+new string[]{"Suffer","ASL-Suffer","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-24.mp4","2",""},
+new string[]{"Swim","ASL-Swim","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-25.mp4","2",""},
+new string[]{"Switch","ASL-Switch","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-26.mp4","2",""},
+new string[]{"Take (From)","ASL-Take (From)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet16/16-27.mp4","2","Like taking candy from a baby"},
+new string[]{"Communicate","ASL-Communicate2","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-28.mp4","2",""},
+new string[]{"Tell","ASL-Tell","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-29.mp4","2",""},
+new string[]{"Test","ASL-Test","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-30.mp4","2",""},
+new string[]{"Text","ASL-Text","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-31.mp4","2",""},
+new string[]{"Think","ASL-Think","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-32.mp4","2",""},
+new string[]{"Throw","ASL-Throw","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-33.mp4","2",""},
+new string[]{"Tie","ASL-Tie","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-34.mp4","2",""},
+new string[]{"Truth","ASL-Truth","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-35.mp4","2",""},
+new string[]{"Try","ASL-Try","Anonymous.","https://vrsignlanguage.net/ASL_videos/sheet16/16-36.mp4","2",""},
+},
+new string[][]{
+new string[]{"Type","ASL-Type","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-01.mp4","0",""},
+new string[]{"Turn","ASL-Turn","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-02.mp4","0",""},
+new string[]{"Upset","ASL-Upset","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-03.mp4","0",""},
+new string[]{"Use","ASL-Use","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-04.mp4","0",""},
+new string[]{"View","ASL-View","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-05.mp4","0",""},
+new string[]{"Vomit","ASL-Vomit","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-06.mp4","0",""},
+new string[]{"Wait","ASL-Wait","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-07.mp4","0",""},
+new string[]{"Wake Up","ASL-Wake Up","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-08.mp4","0",""},
+new string[]{"War","ASL-War","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-09.mp4","0",""},
+new string[]{"Warn","ASL-Warn","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-10.mp4","0",""},
+new string[]{"Waste","ASL-Waste","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-11.mp4","0",""},
+new string[]{"Wash","ASL-Wash","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-12.mp4","0",""},
+new string[]{"Watch","ASL-Watch","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-13.mp4","0",""},
+new string[]{"Wear","ASL-Wear","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-14.mp4","0",""},
+new string[]{"Wobble","ASL-Wobble","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-15.mp4","0",""},
+new string[]{"Wonder","ASL-Wonder","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-16.mp4","0",""},
+new string[]{"Worry","ASL-Worry","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-17.mp4","0",""},
+new string[]{"Work","ASL-Work","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-18.mp4","0",""},
+new string[]{"Hug","ASL-Hug","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-19.mp4","0",""},
+new string[]{"Touch","ASL-Touch","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-20.mp4","0",""},
+new string[]{"Kiss","ASL-Kiss","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-21.mp4","0",""},
+new string[]{"Trust","ASL-Trust","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-22.mp4","0",""},
+new string[]{"True","ASL-True","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-23.mp4","0",""},
+new string[]{"Lie","ASL-Lie","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-24.mp4","0",""},
+new string[]{"Serve","ASL-Serve","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-25.mp4","0",""},
+new string[]{"Calculate","ASL-Calculate","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-26.mp4","0",""},
+new string[]{"Shower","ASL-Shower","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-27.mp4","0",""},
+new string[]{"Bathe","ASL-Bathe","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-28.mp4","0",""},
+new string[]{"Socialize","ASL-Socialize","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-29.mp4","0",""},
+new string[]{"Help","ASL-Help","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-30.mp4","0",""},
+new string[]{"Support","ASL-Support","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-31.mp4","0",""},
+new string[]{"Take Care","ASL-Take Care","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-32.mp4","0",""},
+new string[]{"Drive","ASL-Drive","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-33.mp4","0",""},
+new string[]{"Travel","ASL-Travel","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-34.mp4","0",""},
+new string[]{"Trip","ASL-Trip","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-35.mp4","0",""},
+new string[]{"Fiction","ASL-Fiction","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet17/17-36.mp4","0",""},
+
+}}};
 
 public string [] lessonnames = new string[]{//array of ASL (and possibilly other language) lesson names - can be unique per language. 
 	"Daily Use","Pointing use Question/Answer","Common","People","Feelings / Reactions","Value","Time","VRChat","Alphabet/Numbers (Fingerspelling)","Verbs & Actions p1","Verbs & Actions p2: Ben-Cor",
@@ -63,10 +746,8 @@ public string [] lessonnames = new string[]{//array of ASL (and possibilly other
     public Text descriptiontext = GameObject.Find ("/Nana Avatar/Canvas/Description Panel/Description Text").GetComponent<Text>();
 
     GameObject[] buttons = new GameObject[56];
-    public GameObject[] backbuttons = new GameObject[]{
-        GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Left Back Button"),GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Right Back Button")
-    };
-
+    GameObject[] backbuttons = new GameObject[2];
+    
     GameObject[] indexicons = new GameObject[56];
     GameObject[] regvricons = new GameObject[56];
     GameObject[] bothvricons = new GameObject[56];
@@ -100,6 +781,11 @@ public GameObject menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Me
                 buttons[x].SetActive(false);
             }
         }
+
+backbuttons[0]=GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Left Back Button");
+backbuttons[1]=GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Left Back Button");
+
+
 backbuttons[0].SetActive(false);
 backbuttons[1].SetActive(false);
         
@@ -185,11 +871,8 @@ void TurnOffVideo(){
                 if (int.TryParse(prevsign.Substring(3,2), out wordnum)){
       //  string[][][] AllLessons = new string[1][][];
      //   AllLessons[0]=ASLlessons;
-                    char seperator = ',';
-                    string[] wordparameters = Alllessons[langnum-1][lessonnum-1][wordnum-1].Split(seperator);
-                    //string[] wordparameters = new string[split.Length];
-                    //AllLessons[langnum][lessonnum][wordnum]
-                    if(wordparameters[4]==""){
+                    
+                    if(Alllessons[langnum-1][lessonnum-1][wordnum-1][4]==""){
 //do nothing because there was no video
                     }else
                     {
@@ -226,14 +909,14 @@ Debug.Log("Entering changeword with buttonbumber of: "+buttonnumber);
                     //string[][][] AllLessons = new string[1][][];
                     //AllLessons[0]=ASLlessons;
                     //string [][][] AllLessons = { ASLlessons}; 
-                    char seperator = ',';
-                    string[] wordparameters = Alllessons[langnum-1][lessonnum-1][wordnum-1].Split(seperator);
+                    //char seperator = ',';
+                    //string[] wordparameters = Alllessons[langnum-1][lessonnum-1][wordnum-1].Split(seperator);
                     //string[] wordparameters = new string[split1.Length];
-                     Debug.Log("wordparameters[0]="+wordparameters[0]+" wordparameters[1]=" +wordparameters[1] + " wordparameters[2]="+wordparameters[2] +" wordparameters[3]="+wordparameters[3]+" wordparameters[4]="+wordparameters[4]+
-                     " wordparameters[5]"+wordparameters[5]+" wordparameters[6]=" +wordparameters[6]);
+                     Debug.Log("wordparameters[0]="+Alllessons[langnum-1][lessonnum-1][wordnum-1][0]+" wordparameters[1]=" +Alllessons[langnum-1][lessonnum-1][wordnum-1][1] + " wordparameters[2]="+Alllessons[langnum-1][lessonnum-1][wordnum-1][2] +" wordparameters[3]="+Alllessons[langnum-1][lessonnum-1][wordnum-1][3]+" wordparameters[4]="+Alllessons[langnum-1][lessonnum-1][wordnum-1][4]+
+                     " wordparameters[5]"+Alllessons[langnum-1][lessonnum-1][wordnum-1][5]+" wordparameters[6]=" +Alllessons[langnum-1][lessonnum-1][wordnum-1][6]);
 
                     //AllLessons[langnum][lessonnum][wordnum]
-                    if(wordparameters[4]==""){
+                    if(Alllessons[langnum-1][lessonnum-1][wordnum-1][4]==""){
                         Debug.Log("Video is empty");
                     }else
                     {
@@ -243,10 +926,10 @@ Debug.Log("Entering changeword with buttonbumber of: "+buttonnumber);
                     }
                     Debug.Log("Setting animationint to: "+int.Parse(langnum+string.Format("{0:D2}",lessonnum)+string.Format("{0:D2}",wordnum)));
                         nana.SetInteger("sign",int.Parse(langnum+string.Format("{0:D2}",lessonnum)+string.Format("{0:D2}",wordnum))); 
-                        speechbubbletext.text=wordparameters[0];
-                        currentsigntext.text=wordparameters[0];
-                        signcredittext.text=wordparameters[2];
-                        descriptiontext.text=wordparameters[6];
+                        speechbubbletext.text=Alllessons[langnum-1][lessonnum-1][wordnum-1][0];
+                        currentsigntext.text=Alllessons[langnum-1][lessonnum-1][wordnum-1][0];
+                        signcredittext.text=Alllessons[langnum-1][lessonnum-1][wordnum-1][2];
+                        descriptiontext.text=Alllessons[langnum-1][lessonnum-1][wordnum-1][6];
 
         //0th value is the word 
         //1st value is the name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
@@ -311,7 +994,10 @@ Debug.Log("Entering changeword with buttonbumber of: "+buttonnumber);
         Debug.Log("Now entering DisplayLessonSelectMenu with a language number of "+languagenumber);
         menuheadertext.text=langshort[languagenumber-1]+" Lesson Menu";
         Debug.Log("header set?");
+        
         for(int x=0;x<56;x++){
+            if(x<Alllessons[languagenumber-1].Length){
+
             buttons[x]=GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button "+(x+1));
             buttontext[x]=GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button "+(x+1)+"/Text").GetComponent<Text>();
             indexicons[x]=GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button "+(x+1)+"/Index VR Icon");
@@ -327,9 +1013,10 @@ Debug.Log("Entering changeword with buttonbumber of: "+buttonnumber);
             }else{
                 buttons[x].SetActive(false);
             }
+            }
         }
         backbuttons[0].SetActive(true);
-backbuttons[1].SetActive(true);
+        backbuttons[1].SetActive(true);
         //also need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function...
     }
 
@@ -372,12 +1059,12 @@ descriptiontext.text="";
     
 
     
-    void DisplaySignSelectMenu(int languagenumber, int lessonnum){
-        Debug.Log("Now entering DisplaySignSelectMenu with a language number of "+languagenumber+" and a lessonnum of "+lessonnum);
+    void DisplaySignSelectMenu(int langnum, int lessonnum){
+        Debug.Log("Now entering DisplaySignSelectMenu with a language number of "+langnum+" and a lessonnum of "+lessonnum);
       //  string[][][] AllLessons = new string[1][][];
      //   AllLessons[0]=ASLlessons;
-        menuheadertext.text=langshort[languagenumber-1]+" Lesson Menu";
-        char seperator = ',';
+        menuheadertext.text=langshort[langnum-1]+" Lesson Menu";
+        
         for(int x=0;x<56;x++){
             buttons[x]=GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button "+(x+1));
             buttontext[x]=GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button "+(x+1)+"/Text").GetComponent<Text>();
@@ -385,14 +1072,9 @@ descriptiontext.text="";
             regvricons[x]=GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button "+(x+1)+"/Regular VR Icon");
             bothvricons[x]=GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button "+(x+1)+"/Both VR Icon");
             
-            if(Alllessons[languagenumber-1][lessonnum-1].Length>x){
-                
-                string[] wordparameters = Alllessons[languagenumber-1][lessonnum-1][x].Split(seperator);
-                //string[] wordparameters = new string[split.Length]; 
-                buttontext[x].text="          "+(x+1)+") "+wordparameters[0];
-
-
-                switch (wordparameters[5]){//vr type
+            if(Alllessons[langnum-1][lessonnum-1].Length>x){
+                buttontext[x].text="          "+(x+1)+") "+Alllessons[langnum-1][lessonnum-1][x][0];
+                switch (Alllessons[langnum-1][lessonnum-1][x][5]){//vr type
                     case "0":
                     indexicons[x].SetActive(true);
                     break;
