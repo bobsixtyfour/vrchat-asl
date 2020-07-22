@@ -39,7 +39,25 @@ public class CreateASLButtons5 : MonoBehaviour
 	Start of Arrays variable declarations
 	*****************************************/
 
-	        //creates an array of arrays. Grouped by lessons. 
+	public class SignWord
+{
+	public string Name 
+	{ get; set; }
+	public string AnimationStateName 
+	{ get; set; }
+	public string Credit
+	{ get; set; }
+	public string VideoUrl
+	{ get; set; }
+	public int homesign
+	{ get; set; }
+	public int vrtype
+	{ get; set; }
+	public string signdescription
+	{ get; set; }
+}
+
+	    //creates an array of arrays. Grouped by lessons. 
         //0th value is the word 
         //1st value is the name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
         //2nd value is mocap credits. 
@@ -483,8 +501,8 @@ new string[]{"Win","ASL-Win","Anonymous","https://vrsignlanguage.net/ASL_videos/
 new string[]{"Lose","ASL-Lose","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-18.mp4","2",""},
 new string[]{"Draw / Tie (Game)","ASL-Draw / Tie (Game)","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-19.mp4","2","Draw or Tie, as in the same score at the end of a game."},
 new string[]{"Give Up","ASL-Give Up","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-20.mp4","2",""},
-new string[]{"Skip","ASL-Skip","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-21.mp4","2",""},
-new string[]{"Ask","ASL-Ask","Anonymous","","0","Less formal version of request."},//Vid is for request
+new string[]{"Skip","ASL-Skip","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-21.mp4","0",""},
+new string[]{"Ask","ASL-Ask","Anonymous","","0","Less formal version of request."},//video shows request
 new string[]{"Attach","ASL-Attach","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-23.mp4","0",""},
 new string[]{"Assistant","ASL-Assistant","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet10/10-24.mp4","2",""},
 new string[]{"Assist / Help","ASL-Assist / Help","Anonymous","","2",""},//video shows assistant
@@ -499,7 +517,7 @@ new string[]{"Believe","ASL-Believe","Anonymous","https://vrsignlanguage.net/ASL
 new string[]{"Blame","ASL-Blame","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-33.mp4","2",""},
 new string[]{"Blow","ASL-Blow","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-34.mp4","2",""},
 new string[]{"Blush","ASL-Blush","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-35.mp4","2",""},
-new string[]{"Bother / Harass","ASL-Bother / Harass","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-36.mp4","2",""}
+new string[]{"Bother / Harass","ASL-Bother / Harass","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet10/10-36.mp4","2","This is a directional sign. When the sign is repeated, it means someone is actively and continuously interrupting or disturbing someone."}
 },
 new string[][]{//Lesson 11 (Verbs & Actions p2)
 new string[]{"Bend","ASL-Bend","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet11/11-01.mp4","2",""},
@@ -541,8 +559,8 @@ new string[]{"Correct","ASL-Correct","Anonymous","https://vrsignlanguage.net/ASL
 },
 new string[][]{//Lesson 12 (Verbs & Actions p3)
 new string[]{"Cough","ASL-Cough","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-01.mp4","2",""},
-new string[]{"Count","ASL-Count","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-02.mp4","2",""},
-new string[]{"Create","ASL-Create","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-03.mp4","2",""},
+new string[]{"Count","ASL-Count","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-02.mp4","0",""},
+new string[]{"Create/Make","ASL-Create","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-03.mp4","2",""},
 new string[]{"Cuddle","ASL-Cuddle","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-04.mp4","2",""},
 new string[]{"Cut","ASL-Cut","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-05.mp4","2",""},
 new string[]{"Dab","ASL-Dab","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-06.mp4","2",""},
@@ -552,8 +570,8 @@ new string[]{"Date","ASL-Date","Anonymous","https://vrsignlanguage.net/ASL_video
 new string[]{"Deal","ASL-Deal","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-10.mp4","2",""},
 new string[]{"Deliver","ASL-Deliver","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-11.mp4","2",""},
 new string[]{"Depend","ASL-Depend","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-12.mp4","2",""},
-new string[]{"Describe","ASL-Describe","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-13.mp4","2",""},
-new string[]{"Dirty","ASL-Dirty","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-14.mp4","2",""},
+new string[]{"Describe","ASL-Describe","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-13.mp4","0",""},
+new string[]{"Dirty","ASL-Dirty","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-14.mp4","0",""},
 new string[]{"Disappear","ASL-Disappear","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-15.mp4","2",""},
 new string[]{"Disappoint","ASL-Disappoint","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-16.mp4","2",""},
 new string[]{"Disapprove","ASL-Disapprove","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-17.mp4","2",""},
@@ -561,7 +579,7 @@ new string[]{"Discuss","ASL-Discuss","Anonymous","https://vrsignlanguage.net/ASL
 new string[]{"Disguise","ASL-Disguise","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-19.mp4","2",""},
 new string[]{"Disgust","ASL-Disgust","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-20.mp4","2",""},
 new string[]{"Dismiss","ASL-Dismiss","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-21.mp4","2",""},
-new string[]{"Disturb","ASL-Disturb","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-22.mp4","2",""},
+new string[]{"Don't Disturb","ASL-Don't Disturb","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-22.mp4","2","Wardragon signs an example of usage here."},
 new string[]{"Doubt","ASL-Doubt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-23.mp4","2",""},
 new string[]{"Dream","ASL-Dream","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-24.mp4","2",""},
 new string[]{"Dress","ASL-Dress","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet12/12-25.mp4","2",""},
@@ -580,8 +598,8 @@ new string[]{"Escort","ASL-Escort","Anonymous","https://vrsignlanguage.net/ASL_v
 new string[][]{//Lesson 13 (Verbs & Actions p4)
 new string[]{"Excuse","ASL-Excuse","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-01.mp4","2",""},
 new string[]{"Expose","ASL-Expose","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-02.mp4","2",""},
-new string[]{"Exist","ASL-Exist","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-03.mp4","2",""},
-new string[]{"Fail","ASL-Fail","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-04.mp4","2",""},
+new string[]{"Exist","ASL-Alive","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-03.mp4","2",""},//same sign as alive
+new string[]{"Fail","ASL-Fail","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-04.mp4","0",""},
 new string[]{"Faint","ASL-Faint","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-05.mp4","2",""},
 new string[]{"Fake","ASL-Fake","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-06.mp4","2",""},
 new string[]{"Fart","ASL-Fart","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-07.mp4","2",""},
@@ -591,8 +609,8 @@ new string[]{"Find","ASL-Find","Anonymous","https://vrsignlanguage.net/ASL_video
 new string[]{"Finish","ASL-Finish","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-11.mp4","2",""},
 new string[]{"Fix","ASL-Fix","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-12.mp4","2",""},
 new string[]{"Flip","ASL-Flip","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-13.mp4","2",""},
-new string[]{"Flirt","ASL-Flirt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-14.mp4","2",""},
-new string[]{"Fly","ASL-Fly","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-15.mp4","2",""},
+new string[]{"Flirt","ASL-Flirt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-14.mp4","0",""},
+new string[]{"Fly","ASL-Fly","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-15.mp4","2","This is for winged creatures. Not for the act of flying on an airplane"},
 new string[]{"Forbid","ASL-Forbid","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-16.mp4","2",""},
 new string[]{"Forgive","ASL-Forgive","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-17.mp4","2",""},
 new string[]{"Gain","ASL-Gain","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-18.mp4","2",""},
@@ -611,7 +629,7 @@ new string[]{"Hop","ASL-Hop","Anonymous","https://vrsignlanguage.net/ASL_videos/
 new string[]{"Hope","ASL-Hope","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-31.mp4","2",""},
 new string[]{"Hunt","ASL-Hunt","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-32.mp4","2",""},
 new string[]{"Ignore","ASL-Ignore","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-33.mp4","2",""},
-new string[]{"Imagine","ASL-Imagine","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-34.mp4","2",""},
+new string[]{"Imagine","ASL-Imagine","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-34.mp4","0",""},
 new string[]{"Imitate","ASL-Imitate","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-35.mp4","2",""},
 new string[]{"Insult","ASL-Insult","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet13/13-36.mp4","2",""}
 },
@@ -1120,48 +1138,48 @@ new string[]{"Air Conditioner","ASL-Air Conditioner","GT4tube","","2",""},
 //new string[]{"Parasol","Idle","No Data Yet.","","2",""},
 },
 new string[][]{//Lesson 26 (Nature / Environment)
-new string[]{"Nature","Idle","No Data Yet.","","2",""},
-new string[]{"Environment","Idle","No Data Yet.","","2",""},
-new string[]{"Flower","Idle","No Data Yet.","","2",""},
-new string[]{"Grass","Idle","No Data Yet.","","2",""},
-new string[]{"Tree","Idle","No Data Yet.","","2",""},
-new string[]{"Sand","Idle","No Data Yet.","","2",""},
-new string[]{"Soil","Idle","No Data Yet.","","2",""},
-new string[]{"Waterfall","Idle","No Data Yet.","","2",""},
-new string[]{"Hills","Idle","No Data Yet.","","2",""},
-new string[]{"Cave","Idle","No Data Yet.","","2",""},
-new string[]{"Pine","Idle","No Data Yet.","","2",""},
-new string[]{"Oak","Idle","No Data Yet.","","2",""},
-new string[]{"Sunflower","Idle","No Data Yet.","","2",""},
-new string[]{"Bush","Idle","No Data Yet.","","2",""},
-new string[]{"Dam","Idle","No Data Yet.","","2",""},
-new string[]{"Bridge","Idle","No Data Yet.","","2",""},
-new string[]{"Ocean","Idle","No Data Yet.","","2",""},
-new string[]{"Lake","Idle","No Data Yet.","","2",""},
-new string[]{"Pond","Idle","No Data Yet.","","2",""},
-new string[]{"River","Idle","No Data Yet.","","2",""},
-new string[]{"Rainbow","Idle","No Data Yet.","","2",""},
-new string[]{"Forest","Idle","No Data Yet.","","2",""},
-new string[]{"Wilderness","Idle","No Data Yet.","","2",""},
-new string[]{"Geology","Idle","No Data Yet.","","2",""},
-new string[]{"Ecology","Idle","No Data Yet.","","2",""},
-new string[]{"Evolution","Idle","No Data Yet.","","2",""},
-new string[]{"Matter","Idle","No Data Yet.","","2",""},
-new string[]{"Lava","Idle","No Data Yet.","","2",""},
-new string[]{"Structure","Idle","No Data Yet.","","2",""},
-new string[]{"Rocks","Idle","No Data Yet.","","2",""},
-new string[]{"Atmosphere","Idle","No Data Yet.","","2",""},
-new string[]{"Climate","Idle","No Data Yet.","","2",""},
-new string[]{"Oxygen","Idle","No Data Yet.","","2",""},
-new string[]{"Hydrogen","Idle","No Data Yet.","","2",""},
-new string[]{"Water Vapor","Idle","No Data Yet.","","2",""},
-new string[]{"Ecosystem","Idle","No Data Yet.","","2",""},
-new string[]{"Life","Idle","No Data Yet.","","2",""},
-new string[]{"Biology","Idle","No Data Yet.","","2",""},
-new string[]{"Organisms","Idle","No Data Yet.","","2",""},
-new string[]{"Reproduction","Idle","No Data Yet.","","2",""},
-new string[]{"Growth","Idle","No Data Yet.","","2",""},
-new string[]{"Microbes","Idle","No Data Yet.","","2",""},
+new string[]{"Nature","ASL-Nature","Anonymous","","2",""},
+new string[]{"Environment","ASL-Environment","Anonymous","","2",""},
+new string[]{"Flower","ASL-Flower","Anonymous","","2",""},
+new string[]{"Grass","ASL-Grass","Anonymous","","2",""},
+new string[]{"Tree","ASL-Tree","Anonymous","","2",""},
+new string[]{"Sand","ASL-Sand","Anonymous","","2",""},
+new string[]{"Soil","ASL-Soil","Anonymous","","2",""},
+new string[]{"Waterfall","ASL-Waterfall","Anonymous","","2",""},
+new string[]{"Hills","ASL-Hills","Anonymous","","2",""},
+new string[]{"Cave","ASL-Cave","Anonymous","","2",""},
+new string[]{"Pine","ASL-Pine","Anonymous","","2",""},
+new string[]{"Oak","ASL-Oak","Anonymous","","2",""},
+new string[]{"Sunflower","ASL-Sunflower","Anonymous","","2",""},
+new string[]{"Bush","ASL-Bush","Anonymous","","2",""},
+new string[]{"Dam","ASL-Dam","Anonymous","","2",""},
+new string[]{"Bridge","ASL-Bridge","Anonymous","","2",""},
+new string[]{"Ocean","ASL-Ocean","Anonymous","","2",""},
+new string[]{"Lake","ASL-Lake","Anonymous","","2",""},
+new string[]{"Pond","ASL-Pond","Anonymous","","2",""},
+new string[]{"River","ASL-River","Anonymous","","2",""},
+new string[]{"Rainbow","ASL-Rainbow","Anonymous","","2",""},
+new string[]{"Forest","ASL-Forest","Anonymous","","2",""},
+new string[]{"Wilderness","ASL-Wilderness","Anonymous","","2",""},
+new string[]{"Geology","ASL-Geology","Anonymous","","2",""},
+new string[]{"Ecology","ASL-Ecology","Anonymous","","2",""},
+new string[]{"Evolution","ASL-Evolution","Anonymous","","2",""},
+new string[]{"Matter","ASL-Matter","Anonymous","","2",""},
+new string[]{"Lava","ASL-Lava","Anonymous","","2",""},
+new string[]{"Structure","ASL-Structure","Anonymous","","2",""},
+new string[]{"Rocks","ASL-Rocks","Anonymous","","2",""},
+new string[]{"Atmosphere","ASL-Atmosphere","Anonymous","","2",""},
+new string[]{"Climate","ASL-Climate","Anonymous","","2",""},
+new string[]{"Oxygen","ASL-Oxygen","Anonymous","","2",""},
+new string[]{"Hydrogen","ASL-Hydrogen","Anonymous","","2",""},
+new string[]{"Water Vapor","ASL-Water Vapor","Anonymous","","2",""},
+new string[]{"Ecosystem","ASL-Ecosystem","Anonymous","","2",""},
+new string[]{"Life","ASL-Life","Anonymous","","2",""},
+new string[]{"Biology","ASL-Biology","Anonymous","","2",""},
+new string[]{"Organisms","ASL-Organisms","Anonymous","","2",""},
+new string[]{"Reproduction","ASL-Reproduction","Anonymous","","2",""},
+new string[]{"Growth","ASL-Growth","Anonymous","","2",""},
+new string[]{"Microbes","ASL-Microbes","Anonymous","","2",""},
 },
 new string[][]{//Lesson 27 (Talk / Asking exercises)
 new string[]{"Can you teach me?","ASL-Can you teach me?","Anonymous","","2",""},
@@ -1376,8 +1394,88 @@ new string[]{"Skeleton","ASL-Skeleton","Anonymous","","2",""},
 new string[]{"Skin","ASL-Skin","Anonymous","","2",""},
 }};
 
+static 
+string [][][] BSLlessons = {
+new string[][]{//Daily Use (Signed by CathDeathGamer)
+new string[]{"Hello","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/1_cath.mp4","2",""},
+new string[]{"How are you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/2_cath.mp4","2",""},
+new string[]{"What's up?","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/3_cath.mp4","2",""},
+new string[]{"Nice to meet you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/4_cath.mp4","2",""},
+new string[]{"Good","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/5_cath.mp4","2",""},
+new string[]{"Bad","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/6_cath.mp4","2",""},
+new string[]{"Yes","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/7_cath.mp4","2",""},
+new string[]{"No","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/8_cath.mp4","2",""},
+new string[]{"So-So","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/9_cath.mp4","2",""},
+new string[]{"Sick","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/10_cath.mp4","2",""},
+new string[]{"Hurt","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/11_cath.mp4","2",""},
+new string[]{"You're welcome","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/12_cath.mp4","2",""},
+new string[]{"Good bye","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/13_cath.mp4","2",""},
+new string[]{"Good morning","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/14_cath.mp4","2",""},
+new string[]{"Good afternoon","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/15_cath.mp4","2",""},
+new string[]{"Good evening","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/16_cath.mp4","2",""},
+new string[]{"Good night","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/17_cath.mp4","2",""},
+new string[]{"See you later","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/18_cath.mp4","2",""},
+new string[]{"Please","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/19_cath.mp4","2",""},
+new string[]{"Sorry","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/20_cath.mp4","2",""},
+new string[]{"Forgotten","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/21_cath.mp4","2",""},
+new string[]{"Sleep","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/22_cath.mp4","2",""},
+new string[]{"Bed","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/23_cath.mp4","2",""},
+new string[]{"Jump/Change world","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/24_cath.mp4","2",""},
+new string[]{"Thank you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/25_cath.mp4","2",""},
+new string[]{"I love you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/26_cath.mp4","2",""},
+new string[]{"Go away","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/27_cath.mp4","2",""},
+new string[]{"Going to","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/28_cath.mp4","2",""},
+new string[]{"Follow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/29_cath.mp4","2",""},
+new string[]{"Come","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/30_cath.mp4","2",""},
+new string[]{"Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/31_cath.mp4","2",""},
+new string[]{"Deaf","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/32_cath.mp4","2",""},
+new string[]{"Hard of Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/33_cath.mp4","2",""},
+new string[]{"Mute","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/34_cath.mp4","2",""},
+new string[]{"Write slow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/35_cath.mp4","2",""},
+new string[]{"Cannot read","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/36_cath.mp4","2",""},
+},
+new string[][]{//Daily Use (Signed by Sheezy)
+new string[]{"Hello","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/1_sheezy.mp4","2",""},
+new string[]{"How are you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/2_sheezy.mp4","2",""},
+new string[]{"What's up?","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/3_sheezy.mp4","2",""},
+new string[]{"Nice to meet you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/4_sheezy.mp4","2",""},
+new string[]{"Good","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/5_sheezy.mp4","2",""},
+new string[]{"Bad","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/6_sheezy.mp4","2",""},
+new string[]{"Yes","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/7_sheezy.mp4","2",""},
+new string[]{"No","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/8_sheezy.mp4","2",""},
+new string[]{"So-So","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/9_sheezy.mp4","2",""},
+new string[]{"Sick","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/10_sheezy.mp4","2",""},
+new string[]{"Hurt","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/11_sheezy.mp4","2",""},
+new string[]{"You're welcome","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/12_sheezy.mp4","2",""},
+new string[]{"Good bye","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/13_sheezy.mp4","2",""},
+new string[]{"Good morning","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/14_sheezy.mp4","2",""},
+new string[]{"Good afternoon","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/15_sheezy.mp4","2",""},
+new string[]{"Good evening","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/16_sheezy.mp4","2",""},
+new string[]{"Good night","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/17_sheezy.mp4","2",""},
+new string[]{"See you later","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/18_sheezy.mp4","2",""},
+new string[]{"Please","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/19_sheezy.mp4","2",""},
+new string[]{"Sorry","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/20_sheezy.mp4","2",""},
+new string[]{"Forgotten","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/21_sheezy.mp4","2",""},
+new string[]{"Sleep","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/22_sheezy.mp4","2",""},
+new string[]{"Bed","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/23_sheezy.mp4","2",""},
+new string[]{"Jump/Change world","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/24_sheezy.mp4","2",""},
+new string[]{"Thank you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/25_sheezy.mp4","2",""},
+new string[]{"I love you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/26_sheezy.mp4","2",""},
+new string[]{"Go away","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/27_sheezy.mp4","2",""},
+new string[]{"Going to","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/28_sheezy.mp4","2",""},
+new string[]{"Follow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/29_sheezy.mp4","2",""},
+new string[]{"Come","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/30_sheezy.mp4","2",""},
+new string[]{"Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/31_sheezy.mp4","2",""},
+new string[]{"Deaf","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/32_sheezy.mp4","2",""},
+new string[]{"Hard of Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/33_sheezy.mp4","2",""},
+new string[]{"Mute","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/34_sheezy.mp4","2",""},
+new string[]{"Write slow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/35_sheezy.mp4","2",""},
+new string[]{"Cannot read","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/36_sheezy.mp4","2",""},
+
+}};
+
     //string [][][,] AllLessons = { ASLlessons, BSLlessons }; //if multi-languages are ever implimented
-    static string [][][][] AllLessons = { ASLlessons}; //adds array of arrays into another array for easy looping. 
+    static string [][][][] AllLessons = { ASLlessons, BSLlessons}; //adds array of arrays into another array for easy looping. 
 
 	static string [][] lessonnames ={
 	new string[]{//array of ASL (and possibilly other language) lesson names - can be unique per language.
@@ -1385,13 +1483,17 @@ new string[]{"Skin","ASL-Skin","Anonymous","","2",""},
 	"People","Feelings / Reactions","Value","Time","VRChat","Alphabet / Numbers (Fingerspelling)","Verbs & Actions p1","Verbs & Actions p2: Ben-Cor",
 	"Verbs & Actions p3: Cou-Esc","Verbs & Actions p4: Exc-Ins","Verbs & Actions p5: Int-Pas","Verbs & Actions p6: Pat-Sav","Verbs & Actions p7: Say-Try",
 	"Verbs & Actions p8","Food",
-	"Animals / Machines","Places","Stuff / Weather","Clothes / Equipment","Fantasy / Characters","Holidays / Special Days","Home stuff","Nature / Environment","Talk / Asking exercises",
-	"Name sign users","Countries","Colors","Medical"}
+	"Animals / Machines","Places","Stuff / Weather","Clothes / Equipment","Fantasy / Characters","Holidays / Special Days","Home stuff","Nature / Environment","Talk / Asking exercises (PSE)",
+	"Name sign users","Countries","Colors","Medical"},
+
+	new string[]{//array of BSL
+	"Daily Use (Signed by CathDeathGamer)",
+	"Daily Use (Signed by Sheezy93)"}
 	};
 	static string [][] signlanguagenames = {
 		new string[]{"ASL","American Sign Language"},
 		new string[]{"BSL","British Sign Language"},
-		new string[]{"GSL","German Sign Language"}
+		new string[]{"DGS","Deutsche Gebärdensprache (German Sign Language)"}
 		};
 
 	[MenuItem("ASLWorld/ButtonV5")]
@@ -1774,13 +1876,15 @@ MAIN LANGUAGE LOOP HERE
                     foreach(var lesson in AllLessons[languagenum]){
                         foreach(var word in lesson){
                             int value;
-                            if (!wordlookup.TryGetValue("ASL-"+word[0], out value)) {
-                                wordlookup.Add("ASL-"+word[0],dictwordnumber);
+                            if (!wordlookup.TryGetValue(word[1], out value)) {
+                                wordlookup.Add(word[1],dictwordnumber);
 								//Debug.Log("Added: "+"ASL-"+word[0]);
                                 dictwordnumber++;
-                            }else{
-                                Debug.Log("Warning when building dictionary: Word already exists: "+"ASL-"+word[0]);
-                            }
+							} else {
+								if(word[1]!="Idle"){//suppress warning if word is mapped to idle animation
+								Debug.Log("Warning: Word already exists in dictionary: " + word[1]);
+								}
+							}
 
                             //dictwordnum++;
                         }
@@ -1811,6 +1915,7 @@ MAIN LANGUAGE LOOP HERE
             localPosition: new Vector3(columnoffset+(langmenucolumn*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(langmenurow*rowseperation),0),
             text: signlanguagenames[languagenum][1], fontSize:50, txtsizedelta:buttonsize, txtanchoredPosition:new Vector2(20,0),
             alignment:TextAnchor.MiddleLeft, nav:no_nav, layer:layer);
+			
 
 				//Create lesson sub-menu for nested loop to parent buttons to.
 				GameObject lessonmenu = new GameObject(signlanguagenames[languagenum][0]+" Lesson Menu");
@@ -1821,7 +1926,12 @@ MAIN LANGUAGE LOOP HERE
 					lessonselectmenuheader.transform.SetParent (lessonmenu.transform, false);
 					lessonselectmenuheader.name=signlanguagenames[languagenum][0]+" Lesson Menu Header";
 					lessonselectmenuheader.layer = layer;
-					lessonselectmenuheader.GetComponent<Text> ().text = "VR-"+signlanguagenames[languagenum][0]+" Sign Language - Lesson Menu (Green = contains \"verified\" motion data.) (Yellow = contains \"Unverified\" motion data) (Red = no motion data) - "+mode;
+					if(languagenum==0){
+						lessonselectmenuheader.GetComponent<Text> ().text = "VR-"+signlanguagenames[languagenum][0]+" Sign Language - Lesson Menu (Green = contains \"verified\" motion data.) (Yellow = contains \"Unverified\" motion data) (Red = no motion data) - "+mode;
+					}else{
+						lessonselectmenuheader.GetComponent<Text> ().text = "VR-"+signlanguagenames[languagenum][0]+" Sign Language - Lesson Menu - "+mode;
+					}
+					
 					lessonselectmenuheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 					lessonselectmenuheader.GetComponent<Text> ().fontStyle = FontStyle.Bold;
 					lessonselectmenuheader.GetComponent<Text> ().fontSize = 50;		
@@ -1866,6 +1976,9 @@ MAIN LESSON LOOP HERE
 					localPosition: new Vector3(columnoffset+(menucolumn*columnseperation), menusizey-headersizey-textpadding-buttonsizey-headerbuttonspacing-(menurow*rowseperation),0),
 					text: (lessonnum+1)+ ") " + lessonnames[languagenum][lessonnum], fontSize:50, txtsizedelta:buttonsize, txtanchoredPosition:new Vector2(20,0),
 					alignment:TextAnchor.MiddleLeft, nav:no_nav, layer:layer);
+
+					lessonbgo.transform.Find("Text").GetComponent<Text>().resizeTextForBestFit=true;
+
 					Button b = lessonbgo.GetOrAddComponent<Button>();
 					b.onClick = new Button.ButtonClickedEvent();
 					//colors the buttons to indicate what's working and what's not.
@@ -1886,33 +1999,34 @@ MAIN LESSON LOOP HERE
 						b.colors = colors;
 					}
 					*/
+					if(languagenum==0){
 					var defaultcolors = b.colors;
 					defaultcolors.normalColor = new Color32( 0xFF, 0x98, 0x98, 0xFF ); //FF9898FF light red
 					b.colors = defaultcolors;
-					if(lessonnum+1<3){
-						var colors = b.colors;
-						colors.normalColor = new Color32( 0x98, 0xFF, 0x98, 0xFF ); //FF9898FF light green
-						b.colors = colors;
-					}
-					if(lessonnum+1>=3&&lessonnum+1<=17){
-						var colors = b.colors;
-						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
-						b.colors = colors;
-					}
-					if(lessonnum+1>=24&&lessonnum+1<=25){
-						var colors = b.colors;
-						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
-						b.colors = colors;
-					}
-					if(lessonnum+1==27){
-						var colors = b.colors;
-						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
-						b.colors = colors;
-					}
-					if(lessonnum+1>=29&&lessonnum+1<=31){
-						var colors = b.colors;
-						colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
-						b.colors = colors;
+						if(lessonnum+1<3){
+							var colors = b.colors;
+							colors.normalColor = new Color32( 0x98, 0xFF, 0x98, 0xFF ); //FF9898FF light green
+							b.colors = colors;
+						}
+						if(lessonnum+1>=3&&lessonnum+1<=17){
+							var colors = b.colors;
+							colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
+							b.colors = colors;
+						}
+						if(lessonnum+1>=24&&lessonnum+1<=27){
+							var colors = b.colors;
+							colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
+							b.colors = colors;
+						}
+						if(lessonnum+1>=29&&lessonnum+1<=31){
+							var colors = b.colors;
+							colors.normalColor = new Color32( 0xFF, 0xFF, 0x98, 0xFF ); //FF9898FF light yellow
+							b.colors = colors;
+						}
+					}else{
+						var defaultcolors = b.colors;
+						defaultcolors.normalColor = new Color32( 0x98, 0xFF, 0x98, 0xFF ); //FF9898FF light green
+						b.colors = defaultcolors;
 					}
 
 					menurow++;
@@ -2035,11 +2149,11 @@ MAIN WORD LOOP HERE
 					if(mode=="Global"){
 							int value=0;
 							int animationint=0;
-                            if (wordlookup.TryGetValue("ASL-"+AllLessons[languagenum][lessonnum][wordnum][0], out value)) {
+                            if (wordlookup.TryGetValue(AllLessons[languagenum][lessonnum][wordnum][1], out value)) {
                                 animationint=value;
 								//Debug.Log("Word lookup for: "+"ASL-"+AllLessons[languagenum][lessonnum][wordnum][0] + " returned: "+animationint);
                             }else{
-                                Debug.Log("Warning: Word lookup failed for: "+"ASL-"+AllLessons[languagenum][lessonnum][wordnum][0]);
+                                Debug.Log("Warning: Word lookup failed for: "+AllLessons[languagenum][lessonnum][wordnum][1]);
                             }
 
 					GameObject buttonoffgo=createbutton2(parent=lessongo, name:signlanguagenames[languagenum][0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Button Off",
