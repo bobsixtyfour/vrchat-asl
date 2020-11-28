@@ -1,71 +1,31 @@
 ﻿using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
+using VRC.SDK3.Components;
 using VRC.SDKBase;
 using VRC.Udon;
+using System;
+using VRC.SDK3.Components.Video;
+using VRC.SDK3.Video.Components;
+using VRC.SDK3.Video.Components.AVPro;
+using VRC.SDK3.Video.Components.Base;
+
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+using UnityEditor;
+using UdonSharpEditor;
+#endif
+
 
 public class MenuControl : UdonSharpBehaviour
 {
+public VRCUrl[][][] langurls;
+public VRCUrl urltest;
+public VRCUrl[] urltest2;
 
-public string [][][][] AllLessons;
-GameObject [][][][] videos;
-
-	public string[][] lessonnames;
-	public string[][] signlanguagenames = {
-		new string[] {
-			"ASL",
-			"American Sign Language"
-		},
-		new string[] {
-			"BSL",
-			"British Sign Language"
-		},
-		//new string[]{"DGS","Deutsche Gebärdensprache (German Sign Language)"}
-	};
-	public string[] languages = {
-		"American Sign Language"
-	};
-	public string[] langshort = {
-		"ASL"
-	};
-	public string signid = "00000";
-	//public string langnum = "0";
-	public string prevsignid = "00000";
-	//public int langnumber = 0;
-	//public int lessonnumber=0;
-	public Animator nanapc;
-	public Animator nanaquest;
-	GameObject signingavatars;
-	public Text currentsigntextpc;
-	public Text speechbubbletextpc;
-	public Text signcredittextpc;
-	public Text descriptiontextpc;
-	public Text currentsigntextquest;
-	public Text speechbubbletextquest;
-	public Text signcredittextquest;
-	public Text descriptiontextquest;
-	GameObject[] buttons = new GameObject[56];
-	GameObject[] backbuttons = new GameObject[2];
-	GameObject[] indexicons = new GameObject[56];
-	GameObject[] regvricons = new GameObject[56];
-	GameObject[] bothvricons = new GameObject[56];
-	Text[] buttontext = new Text[56];
-    int previousboard=0;//tracks which board it's on. 0=lang select, 1=lesson select, 2=word select
-    int currentboard=0;//tracks which board it's on. 0=lang select, 1=lesson select, 2=word select
-    int currentlang=0;//tracks which language is currently selected.
-    int currentlesson=0;//tracks which lesson is currently selected.
-    int currentword=0;
-	public Text menuheadertext;
-	public GameObject menuheader;
-    public GameObject nextButton;
-    public GameObject prevButton;
-
-	/***************************************************************************************************************************
-	Assigns variables for use. Initializes menu by calling DisplayLanguageSelectMenu();
-	***************************************************************************************************************************/
-	void Start() {
-AllLessons = 
-new string[][][][]{ //all lessons
+public VRCUrl[][] urltest3;
+public string [][][][] AllLessons = 
+new string[][][][]{ //all languages
 new string[][][]{//asl lessons
 new string[][]{//Lesson 1 (Daily Use)
 new string[]{"Hello","ASL-Hello","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet01/01-01.mp4","2",""},
@@ -113,9 +73,9 @@ new string[]{"Away","ASL-Away","GT4tube","","2",""}
 new string[][]{//Lesson 2 (Pointing use Question/Answer)
 new string[]{"I (Me)","ASL-I (Me)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-01.mp4","2",""},
 new string[]{"My","ASL-My","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-02.mp4","2","Open palm implies possessive. eg: That wallet is mine."},
-new string[]{"Your","ASL-Your","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-03.mp4","2","A possessive form of 'you'. eg: That's your wallet."},
-new string[]{"His","ASL-His","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-04.mp4","2",""},
-new string[]{"Her","ASL-Her","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-05.mp4","2",""},
+new string[]{"His/Hers/Its/Your","ASL-Your","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-03.mp4","2","A possessive form of 'He/She/It/You' is done with an open hand. eg: That's your wallet."},
+new string[]{"He/She/It/You","ASL-His","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-04.mp4","2",""},
+new string[]{"Her (Gender Emphasis)","ASL-Her","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-05.mp4","2",""},
 new string[]{"We","ASL-We","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-06.mp4","2",""},
 new string[]{"They","ASL-They","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-07.mp4","2","You sweep your pointer over the people you're referring to."},
 new string[]{"Their","ASL-Their","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-08.mp4","2","Possessive form of they. eg: This is their house."},
@@ -451,8 +411,8 @@ new string[]{"R","ASL-R","Anonymous","https://vrsignlanguage.net/ASL_videos/shee
 new string[]{"S","ASL-S","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet09/09-19.mp4","2",""},
 new string[]{"T","ASL-T","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet09/09-20.mp4","2",""},
 new string[]{"U","ASL-U","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet09/09-21.mp4","0",""},
-new string[]{"U (Variant 2)","ASL-U (Variant 2)","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet09/09-21.mp4","1","The 'Peace Sign' on Regular VR looks like a V, so emphasise U shape by moving it in the shape of a U."},
-new string[]{"V","ASL-V","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet09/09-22.mp4","0","The 'Peace Sign' on the Index looks like a U, so emphhasise a V shape by moving it in the shape of a V."},
+new string[]{"U (Variant 2)","ASL-U (Variant 2)","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet09/09-21.mp4","1","The 'Peace Sign' on Regular VR looks like a V, so emphasize a U shape by moving it in the shape of a U."},
+new string[]{"V","ASL-V","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet09/09-22.mp4","0","The 'Peace Sign' on the Index looks like a U, so emphasize a V shape by moving it in the shape of a V."},
 new string[]{"V (Variant 2)","ASL-V (Variant 2)","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet09/09-22.mp4","1",""},
 new string[]{"W","ASL-W","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet09/09-23.mp4","0",""},
 new string[]{"W (Variant 2)","ASL-W (Variant 2)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet09/09-23.mp4","2",""},
@@ -1477,12 +1437,11 @@ new string[]{"Cannot read","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cd
 }//end bsl lessons
 }
 };
-int x=AllLessons.Length;
-videos= new GameObject[x][][][]{
 
-};
 
-lessonnames = new string [][]{
+//GameObject [][][][] videos;
+
+	string[][] lessonnames = {
 		new string[] { //ASL lesson names - can be unique per language.
 			"Daily Use",
 			"Pointing use Question / Answer",
@@ -1521,632 +1480,119 @@ lessonnames = new string [][]{
 			"Daily Use (Signed by Sheezy93)"
 		}
 	};
-		signingavatars = GameObject.Find("/Signing Avatars");
-		nanapc=signingavatars.transform.Find("Nana Avatar").GetComponent<Animator>();
-		nanaquest=signingavatars.transform.Find("Nana Quest").GetComponent<Animator>();
-		currentsigntextpc = signingavatars.transform.Find("Nana Avatar/Canvas/Current Sign Panel/Current Sign Text").GetComponent < Text > ();
-		speechbubbletextpc = signingavatars.transform.Find("Nana Avatar/Armature/Canvas/Bubble/text").GetComponent < Text > ();
-		signcredittextpc = signingavatars.transform.Find("Nana Avatar/Canvas/Credit Panel/Credit Text").GetComponent < Text > ();
-		descriptiontextpc = signingavatars.transform.Find("Nana Avatar/Canvas/Description Panel/Description Text").GetComponent < Text > ();
-		
-		currentsigntextquest = signingavatars.transform.Find("Nana Quest/Canvas/Current Sign Panel/Current Sign Text").GetComponent < Text > ();
-		speechbubbletextquest = signingavatars.transform.Find("Nana Quest/Armature/Canvas/Bubble/text").GetComponent < Text > ();
-		signcredittextpc = signingavatars.transform.Find("Nana Quest/Canvas/Credit Panel/Credit Text").GetComponent < Text > ();
-		descriptiontextpc = signingavatars.transform.Find("Nana Quest/Canvas/Description Panel/Description Text").GetComponent < Text > ();
-		menuheadertext = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header").GetComponent < Text > ();
-		menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header");
+	string[][] signlanguagenames = {
+		new string[] {
+			"ASL",
+			"American Sign Language"
+		},
+		new string[] {
+			"BSL",
+			"British Sign Language"
+		},
+		//new string[]{"DGS","Deutsche Gebärdensprache (German Sign Language)"}
+	};
+	public Animator nana;
+	//public Animator nanapc;
+	//public Animator nanaquest;
+	GameObject signingavatars;
+	Text currentsigntext;
+	Text speechbubbletext;
+	Text signcredittext;
+	Text descriptiontext;
+	/*
+	public Text currentsigntextpc;
+	public Text speechbubbletextpc;
+	public Text signcredittextpc;
+	public Text descriptiontextpc;
+	public Text currentsigntextquest;
+	public Text speechbubbletextquest;
+	public Text signcredittextquest;
+	public Text descriptiontextquest;
+	*/
+	public GameObject[] buttons = new GameObject[70];
+	GameObject[] backbuttons = new GameObject[2];
+	GameObject[] indexicons = new GameObject[70];
+	GameObject[] regvricons = new GameObject[70];
+	GameObject[] bothvricons = new GameObject[70];
+	Text[] buttontext = new Text[70];
+	int numofbuttons=70;
+    //int previousboard=0;//tracks which board it's on. 0=lang select, 1=lesson select, 2=word select
+    int currentboard=0;//tracks which board it's on. 0=lang select, 1=lesson select, 2=word select
+    int currentlang=0;//tracks which language is currently selected.
+    int currentlesson=0;//tracks which lesson is currently selected.
+    int currentword=0;
+	Text menuheadertext;
+	GameObject menuheader;
+    GameObject nextButton;
+    GameObject prevButton;
 
-		for (int x = 0; x < 56; x++) {
-			buttons[x] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button " + (x));
-			buttontext[x] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button " + (x) + "/Text").GetComponent < Text > ();
-			indexicons[x] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button " + (x) + "/Index VR Icon");
-			regvricons[x] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button " + (x) + "/Regular VR Icon");
-			bothvricons[x] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button " + (x) + "/Both VR Icon");
-		}
-		backbuttons[0] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Left Back Button");
-		backbuttons[1] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Left Back Button");
-		nextButton = GameObject.Find("Udon Menu System/Root Canvas/Menu Buttons/NextButton");
-    	prevButton = GameObject.Find("Udon Menu System/Root Canvas/Menu Buttons/PrevButton");
-		DisplayLanguageSelectMenu();
-	}
-
-
+	GameObject videocontainer;
+	GameObject videoplayer;
+	VRCUnityVideoPlayer vrcplayercomponent;
 
 	/***************************************************************************************************************************
-	Changes the menu so it displays the language select menu.
+	Assigns variables for use. Initializes menu by calling DisplayLanguageSelectMenu();
 	***************************************************************************************************************************/
-	void DisplayLanguageSelectMenu() {
-		menuheadertext.text = "VR Sign Language Select Menu";
-		for (int x = 0; x < 56; x++) {
-			if (signlanguagenames.Length > x) {
-				buttontext[x].text = (x+1) + signlanguagenames[x][1];
-				indexicons[x].SetActive(false);
-				regvricons[x].SetActive(false);
-				bothvricons[x].SetActive(false);
-			} else {
-				buttons[x].SetActive(false);
-			}
-		}
+	
 
-		backbuttons[0].SetActive(false);
-		backbuttons[1].SetActive(false);
-        //previousboard=currentboard;
-        //previousboard=0;//can't think of a reason why we'd want a back button to another language's lesson menu?
-        currentboard=0;
-        currentlesson=0;
-        currentword=0;
-	}
+        public override void OnVideoError(VideoError videoError)
+        {
 
+            Debug.LogError("[USharpVideo] Video failed: ");
 
-	/*
-	void buttonpushed(int x) {
-        if(currentboard==0){//if we're on lang select
+            switch (videoError)
+            {
+                case VideoError.RateLimited:
+                    Debug.LogError("Rate limited, try again in a few seconds");
+                    break;
+                case VideoError.PlayerError:
+                    Debug.LogError("Video player error");
+                    break;
+                case VideoError.InvalidURL:
+                    Debug.LogError("Invalid URL");
+                    break;
+                case VideoError.AccessDenied:
+                    Debug.LogError("Video blocked, enable untrusted URLs");
+                    break;
+                default:
+                    Debug.LogError("Failed to load video");
+                    break;
+            }
+
+        }
+//   
+#if !COMPILER_UDONSHARP && UNITY_EDITOR 
+    [CustomEditor(typeof(MenuControl))]
+    public class CustomInspectorEditor : Editor
+    {
+        public override void OnInspectorGUI()
+        {
+			DrawDefaultInspector();/*
+            if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target)) return;
+            MenuControl inspectorBehaviour = (MenuControl)target;
             
-        }
-        
-        
-        signid = figureoutcurrentsignnumber(figureoutpreviousboard(), x);
+            
+			
+            if(GUILayout.Button("Populate VRCUrls"))
+            {
+				inspectorBehaviour.langurls = new VRCUrl[inspectorBehaviour.AllLessons.Length][][];
+				for (int x = 0; x < inspectorBehaviour.AllLessons.Length; x++) {
+					VRCUrl[][] lessonurls = new VRCUrl[inspectorBehaviour.AllLessons[x].Length][];
 
-		if (signid == prevsignid) {
-			Debug.Log("The sign didn't change" + prevsignid);
-			return;
-		}
-		else {
-			if (signid.Substring(0, 1) != prevsignid.Substring(0, 1)) {
-				Debug.Log("The language changed. Signnumber:" + signid + "  prevsign:" + prevsignid);
-				if (signid.Substring(0, 1) == "0") {
-					Debug.Log("Language changed to 0 = back to lang select menu");
-					DisplayLanguageSelectMenu();
-				} else {
-					Debug.Log("language is now" + signid.Substring(0, 1));
-					DisplayLessonSelectMenu((int.Parse(signid.Substring(0, 1))));
-				}
-				prevsignid = signid;
-				Debug.Log("Signnumber:" + signid + "  prevsign:" + prevsignid);
-			} else if (signid.Substring(1, 2) != prevsignid.Substring(1, 2)) { //if the language didn't change, did the lesson change?
-				Debug.Log("The lesson changed. Signnumber:" + signid + "  prevsign:" + prevsignid);
-				//the lesson changed, disable video and parse + load the buttons for the next thing based on what the button was set to.
-				if (signid.Substring(1, 2) == "00") { //if the lesson is 00 change to lesson select. the word should always be reset to 00 if changing lessons.
-					if (signid.Substring(3, 2) != "00") {
-						Debug.Log("why the fuck is the word not 00 when the lesson is 00");
-					} else { //wordnumb is zero
-						DisplayLessonSelectMenu((int.Parse(signid.Substring(0, 1))));
-						prevsignid = signid;
-						Debug.Log("Signnumber:" + signid + "  prevsign:" + prevsignid);
+					for (int y = 0; y < inspectorBehaviour.AllLessons[x].Length; y++) 
+					{
+						VRCUrl[] wordurls = new VRCUrl[inspectorBehaviour.AllLessons[x][y].Length];
+						for (int z = 0; z < inspectorBehaviour.AllLessons[x][y].Length; z++) {
+							wordurls[z] = new VRCUrl(inspectorBehaviour.AllLessons[x][y][z][3]);
+						}
+						lessonurls[y] = wordurls;
 					}
-				} else { //lesson is not 00
-					if (signid.Substring(3, 2) == "00") {
-						DisplaySignSelectMenu((int.Parse(signid.Substring(0, 1))), (int.Parse(signid.Substring(1, 2))));
-						prevsignid = signid;
-						Debug.Log("Signnumber:" + signid + "  prevsign:" + prevsignid);
-					} else {
-						Debug.Log("How did the lesson change, but word is not 00?");
-					}
+					inspectorBehaviour.langurls[x] = lessonurls;
 				}
-				//the lesson is not 00, so a word should be something
-			} else if (signid.Substring(3, 2) != prevsignid.Substring(3, 2)) //did the word change?
-			{
-				if (prevsignid.Substring(3, 2) != "00") { //if word changed and PREVIOUS word might have had a video turn it off.
-					TurnOffVideo(); //this should also handle it if the url was blank.
-					changeword(x);
-					prevsignid = signid;
-					Debug.Log("Signnumber:" + signid + "  prevsign:" + prevsignid);
-				}
-
-				if (signid.Substring(3, 2) != "00") { //if the new sign is a word selection 
-					changeword(x);
-					prevsignid = signid;
-					Debug.Log("Signnumber:" + signid + "  prevsign:" + prevsignid);
-				} else { //the sign number is also 00's
-					DisplaySignSelectMenu((int.Parse(signid.Substring(0, 1))), (int.Parse(signid.Substring(1, 2))));
-					//DisplayLessonSelectMenu((int.Parse(signnumber.Substring(1, 2))));
-					prevsignid = signid;
-					Debug.Log("Signnumber:" + signid + "  prevsign:" + prevsignid);
-					//display lesson select.
-
-				}
-
-			}
-		}
-	*/
-
-	/***************************************************************************************************************************
-	Figures out what the button does, and sends to the approperate functions to update the menu.
-	***************************************************************************************************************************/
-	public void buttonpushed(int x) {
-		//figure out what the current signnumber is based on x and prevsign (figure out previous screen first)
-		Debug.Log("Entered Buttonpushed with button #"+x+" pushed and currentboard"+currentboard);
-		switch (currentboard) {
-		case 0: //button pushed on lang select, change to lesson select board.
-        	DisplayLessonSelectMenu(x);//x=language number
-        break;
-        case 1://button pushed on lesson select, change to word select board.
-        	DisplaySignSelectMenu(currentlang,currentlesson);//need language and lesson number.
-        break;
-        case 2://button pushed on word select, display word selected.
-			//turn off current playing video (if any)
-			TurnOffVideo();
-			//do all the sign word change stuff
-			changeword(x);
-        break;
-        default:
-        Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
-        break;
-        }
-	}
-
-	/***************************************************************************************************************************
-	Figures out where the back button goes based on the current board, and sends to the approperate functions to update the menu.
-	***************************************************************************************************************************/
-	void BackButtonClicked() {
-		//figure out what the current signnumber is based on x and prevsign (figure out previous screen first)
-		switch (currentboard) {
-		case 0: //button pushed on lang select, change to lesson select board.
-        	Debug.Log("Back button pushed, but the back button should have been enabled on lang select ");
-        break;
-        case 1://button pushed on lesson select, change to lang select board.
-        	DisplayLanguageSelectMenu();//need language and lesson number.
-        break;
-        case 2://button pushed on word select, display lesson select board.
-			DisplayLessonSelectMenu(currentlang);
-		break;
-        default:
-        Debug.Log("Back button pushed, but I have no idea what board i'm on. currentboard: "+currentboard);
-        break;
-        }
-	}
-
-	/*
-	public void BackButtonClicked() { //figure out previous sign and set word/lesson to 00's and then update the menu/reset animationint/text
-		Debug.Log("back button pushed");
-		int board = figureoutpreviousboard();
-
-		switch (board) {
-		case 0:
-			Debug.Log("There shouldn't be any back button enabled on the main language menu. Wtf");
-			prevsignid = "00000";
-			break;
-		case 1:
-			//we're currently on the lang select menu. switch to lang select menu.
-			prevsignid = "00000";
-			DisplayLanguageSelectMenu();
-			//resetword();
-			break; //set new sign =
-		case 2:
-			//we're on the word select, go back to lesson select
-			if (prevsignid.Substring(3, 2) != "00") {
-				TurnOffVideo();
-			}
-			resetword();
-			prevsignid = prevsignid.Substring(0, 2) + "0000";
-			DisplayLessonSelectMenu(int.Parse(prevsignid.Substring(0, 1)));
-			break;
-		default:
-			Debug.Log("How is boardnum this value" + board);
-			break;
-		}
-	}
-
-*/
-
-    /***************************************************************************************************************************
-	Called before current variables are changed, to disable videos if any are active (based on presence of url being populated)
-	---is this even needed with udon? This needs to be upgraded to the udon version...
-	***************************************************************************************************************************/
-    void TurnOffVideo() {
-        if(currentword==0){//the previously activa
-            return;
-        }
-        if (AllLessons[currentlang][currentlesson][currentword][3] == "") {
-            return;
-        }
-        GameObject.Find("/Udon Menu System/Video Container/" + signlanguagenames[currentlang][0] + " Videos/L" + currentlesson + " Videos/L" + currentlesson + " S" + currentword + " Video").SetActive(false);
+            }*/
+	    }
     }
-	/***************************************************************************************************************************
-	Called to change everything needed to display a sign's motion data. Doesn't care if it's the same sign.
-	***************************************************************************************************************************/
-	void changeword(int buttonnumber) { //wordnum must not be 00.
-		Debug.Log("Entering changeword with buttonbumber of: " + buttonnumber);
-		//0th value is the word 
-        //1st value is the name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
-        //2nd value is mocap credits. 
-        //3rd value is video URL.
-        //4th value is VR index or regular 0=indexonly , 1=generalvr,2=both
-        //5th value is Sign description string
-		currentsigntextpc.text=AllLessons[currentlang][currentlesson][buttonnumber][0];
-		speechbubbletextpc.text=AllLessons[currentlang][currentlesson][buttonnumber][0];
-		currentsigntextquest.text=AllLessons[currentlang][currentlesson][buttonnumber][0];
-		speechbubbletextquest.text=AllLessons[currentlang][currentlesson][buttonnumber][0];
-		nanapc.Play(AllLessons[currentlang][currentlesson][buttonnumber][1]);//or do setinterger? But setinterger is hard to figure out unless i re-encode all the states to something easily derived from AllLessons
-		nanaquest.Play(AllLessons[currentlang][currentlesson][buttonnumber][1]);//or do setinterger? But setinterger is hard to figure out unless i re-encode all the states to something easily derived from AllLessons
-		signcredittextpc.text = AllLessons[currentlang][currentlesson][buttonnumber][2];
-		signcredittextquest.text = AllLessons[currentlang][currentlesson][buttonnumber][2];
-		//videoURL.text = AllLessons[currentlang][currentlesson][buttonnumber][3];
-		//videoPlayEvent.SetTrigger("trigger"); //plays the video? 
-		switch (AllLessons[currentlang][currentlesson][buttonnumber][4]) {
-			case "0":
-				indexicons[buttonnumber].SetActive(true);
-				regvricons[buttonnumber].SetActive(false);
-				bothvricons[buttonnumber].SetActive(false);
-			break;
-			case "1":
-				indexicons[buttonnumber].SetActive(false);
-				regvricons[buttonnumber].SetActive(true);
-				bothvricons[buttonnumber].SetActive(false);
-			break;
-			case "2":
-				indexicons[buttonnumber].SetActive(false);
-				regvricons[buttonnumber].SetActive(false);
-				bothvricons[buttonnumber].SetActive(true);
-			break;
-			default:
-			Debug.Log("Changeword: switch on alllesson 4 went to default.");
-			break;
-		}
-		descriptiontextpc.text = AllLessons[currentlang][currentlesson][buttonnumber][5];
-		descriptiontextquest.text = AllLessons[currentlang][currentlesson][buttonnumber][5];
+#endif
 
-		if(buttonnumber>0){
-			prevButton.SetActive(true);
-		}else{
-			prevButton.SetActive(false);
-		}
-		if(buttonnumber<AllLessons[currentlang][currentlesson].Length){
-			nextButton.SetActive(true);
-		}else{
-			nextButton.SetActive(false);
-		}
-	currentword=buttonnumber;
-	    
-	}
-	/*
-	void changeword(int buttonnumber) { //wordnum must not be 00.
-		Debug.Log("Entering changeword with buttonbumber of: " + buttonnumber);
-		//        string[][][] AllLessons = new string[1][][];
-		//  AllLessons[0]=ASLlessons;
-		int langnum;
-		int lessonnum;
-		int wordnum;
-		if (int.TryParse(signid.Substring(0, 1), out langnum)) {
-			if (int.TryParse(signid.Substring(1, 2), out lessonnum)) {
-				if (int.TryParse(signid.Substring(3, 2), out wordnum)) {
-					Debug.Log("langnum: " + langnum + " lessonnum: " + lessonnum + " wordnum: " + wordnum);
-					//string[][][] AllLessons = new string[1][][];
-					//AllLessons[0]=ASLlessons;
-					//string [][][] AllLessons = { ASLlessons}; 
-					//char seperator = ',';
-					//string[] wordparameters = AllLessons[langnum][lessonnum][wordnum].Split(seperator);
-					//string[] wordparameters = new string[split1.Length];
-					Debug.Log("wordparameters[0]=" + AllLessons[langnum][lessonnum][wordnum][0] + " wordparameters[1]=" + AllLessons[langnum][lessonnum][wordnum][1] + " wordparameters[2]=" + AllLessons[langnum][lessonnum][wordnum][2] + " wordparameters[3]=" + AllLessons[langnum][lessonnum][wordnum][3] + " wordparameters[4]=" + AllLessons[langnum][lessonnum][wordnum][4] + " wordparameters[5]" + AllLessons[langnum][lessonnum][wordnum][5] + " wordparameters[6]=" + AllLessons[langnum][lessonnum][wordnum][6]);
-
-					//AllLessons[langnum][lessonnum][wordnum]
-					if (AllLessons[langnum][lessonnum][wordnum][4] == "") {
-						Debug.Log("Video is empty");
-					} else {
-						Debug.Log("Looking for /Udon Menu System/Video Container/" + languages[langnum][0] + " Videos/L" + lessonnum + " Videos/L" + lessonnum + " S" + wordnum + " Video");
-						GameObject.Find("/Udon Menu System/Video Container/" + languages[langnum][0] + " Videos/L" + lessonnum + " Videos/L" + lessonnum + " S" + wordnum + " Video").SetActive(true);
-
-					}
-					Debug.Log("Setting animationint to: " + int.Parse(langnum + string.Format("{0:D2}", lessonnum) + string.Format("{0:D2}", wordnum)));
-					nana.SetInteger("sign", int.Parse(langnum + string.Format("{0:D2}", lessonnum) + string.Format("{0:D2}", wordnum)));
-					speechbubbletext.text = AllLessons[langnum][lessonnum][wordnum][0];
-					currentsigntext.text = AllLessons[langnum][lessonnum][wordnum][0];
-					signcredittext.text = AllLessons[langnum][lessonnum][wordnum][2];
-					descriptiontext.text = AllLessons[langnum][lessonnum][wordnum][6];
-
-					//0th value is the word 
-					//1st value is the name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
-					//2nd value is mocap credits. 
-					//3rd value is video URL.
-					//4th value is home sign indicator 0 = used in real world ASL, 1= vr only homesign
-					//5th value is VR index or regular 0=indexonly , 1=generalvr,2=both
-					//6th value is Sign description string
-				}
-				else {
-					Debug.Log("Not a valid wordnumber int inputted into turnoffvideo" + prevsignid.Substring(3, 2));
-				}
-			}
-			else {
-				Debug.Log("Not a valid lessonnumber int inputted into turnoffvideo" + prevsignid.Substring(1, 2));
-			}
-		}
-		else {
-			Debug.Log("Not a valid langnumber int inputted into turnoffvideo" + prevsignid.Substring(0, 1));
-		}
-
-	}
-	*/
-	string figureoutcurrentsignnumber(int board, int buttonnumber) { //returns 00000 
-		switch (board) {
-		case 0:
-			return (buttonnumber + 1) + "0000";
-		case 1:
-			Debug.Log("Board: " + board + "Returning: " + prevsignid.Substring(0, 1) + string.Format("{0:D2}", buttonnumber + 1) + "00");
-			return prevsignid.Substring(0, 1) + string.Format("{0:D2}", buttonnumber + 1) + "00";
-		case 2:
-			Debug.Log("Board: " + board + "Returning: " + prevsignid.Substring(0, 3) + string.Format("{0:D2}", buttonnumber + 1));
-			return prevsignid.Substring(0, 3) + string.Format("{0:D2}", buttonnumber + 1);
-		default:
-			Debug.Log("Exception with figureoutcurrentsignnumber function when switching to " + board);
-			return "0";
-		}
-
-	}
-	int figureoutpreviousboard() { //assuming prevsign is accessible, return which board we were on
-
-		if (prevsignid.Substring(0, 1) == "0") {
-			//we're on a lesson select board if we don't have a current lang selected
-			//DisplayLanguageSelectMenu();?
-			return 0;
-		} else if (prevsignid.Substring(1, 2) == "00") {
-			//we're on a lesson select board if we have a lang selected (not 0) and lesson select is unknown (00's)
-			return 1;
-		} else //if(prevsign.Substring(3,2)=="00"){//is wordnum00?
-		{
-			//we're on a word select board since it can't be the other two.
-			return 2;
-		}
-		//Debug.Log("Function 'figureoutpreviousboard' isn't sure what board we're on for some reason"+prevsign);
-		//return 0;
-	}
-	void DisplayLessonSelectMenu(int languagenumber) { //I don't need the lesson number here because I'm displaying all lessons.
-		Debug.Log("Now entering DisplayLessonSelectMenu with a language number of " + languagenumber);
-		menuheadertext.text = signlanguagenames[languagenumber][0] + " Lesson Menu";
-		//Debug.Log("header set?");
-
-		for (int x = 0; x < 56; x++) {
-			if (x < AllLessons[languagenumber].Length) {
-				if (lessonnames[languagenumber].Length > x) {
-					buttontext[x].text = (x + 1) + ") " + lessonnames[languagenumber][x];
-					buttons[x].SetActive(true);
-					indexicons[x].SetActive(false);
-					regvricons[x].SetActive(false);
-					bothvricons[x].SetActive(false);
-				} else {
-					buttons[x].SetActive(false);
-				}
-			}
-		}
-		backbuttons[0].SetActive(true);
-		backbuttons[1].SetActive(true);
-		//maybe need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function...
-		currentboard=1;
-	}
-
-	void resetword() {
-		nanapc.SetInteger("sign", 0); //reset animator to animationint 0, which should be idle 
-		nanaquest.SetInteger("sign", 0); //reset animator to animationint 0, which should be idle 
-		speechbubbletextquest.text = "";
-		currentsigntextquest.text = "";
-		signcredittextquest.text = "";
-		descriptiontextquest.text = "";
-		speechbubbletextpc.text = "";
-		currentsigntextpc.text = "";
-		signcredittextpc.text = "";
-		descriptiontextpc.text = "";
-	}
-
-
-	void DisplaySignSelectMenu(int langnum, int lessonnum) {
-		Debug.Log("Now entering DisplaySignSelectMenu with a language number of " + langnum + " and a lessonnum of " + lessonnum);
-		//  string[][][] AllLessons = new string[1][][];
-		//   AllLessons[0]=ASLlessons;
-		menuheadertext.text = signlanguagenames[langnum][0] + " Lesson Menu";
-
-		for (int x = 0; x < 56; x++) {
-			if (AllLessons[langnum][lessonnum].Length > x) {
-				buttontext[x].text = "          " + (x + 1) + ") " + AllLessons[langnum][lessonnum][x][0];
-				switch (AllLessons[langnum][lessonnum][x][5]) { //vr type
-				case "0":
-					indexicons[x].SetActive(true);
-					break;
-				case "1":
-					regvricons[x].SetActive(true);
-					break;
-				case "2":
-					bothvricons[x].SetActive(true);
-					break;
-				default:
-					indexicons[x].SetActive(false);
-					regvricons[x].SetActive(false);
-					bothvricons[x].SetActive(false);
-					break;
-				}
-
-			} else {
-				buttons[x].SetActive(false);
-			}
-		}
-		backbuttons[0].SetActive(true);
-		backbuttons[1].SetActive(true);
-		//also need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function... 
-		currentboard=2;
-	}
-	public void NextB()
-	{
-	Debug.Log("Next pushed");
-	//Changeword should have checked if +1 would exceed the current words in the lesson and disabled the next/previous button.
-	changeword(currentword+1);
-	}
-	public void PrevB()
-	{
-	changeword(currentword-1);
-	}
-	public void BackB()
-	{
-	Debug.Log("Back pushed");
-	BackButtonClicked();
-	}
-	public void B0() {
-		//Debug.Log("button0 pushed");
-		buttonpushed(0);
-
-	}
-	public void B1() {
-		//Debug.Log("button1 pushed");
-		buttonpushed(1);
-	}
-	public void B2() {
-		buttonpushed(2);
-	}
-	public void B3() {
-		buttonpushed(3);
-	}
-	public void B4() {
-		buttonpushed(4);
-	}
-	public void B5() {
-		buttonpushed(5);
-	}
-	public void B6() {
-		buttonpushed(6);
-	}
-	public void B7() {
-		buttonpushed(7);
-	}
-	public void B8() {
-		buttonpushed(8);
-	}
-	public void B9() {
-		buttonpushed(9);
-	}
-	public void B10() {
-		buttonpushed(10);
-	}
-	public void B11() {
-		buttonpushed(11);
-	}
-	public void B12() {
-		buttonpushed(12);
-	}
-	public void B13() {
-		buttonpushed(13);
-	}
-	public void B14() {
-		buttonpushed(14);
-	}
-	public void B15() {
-		buttonpushed(15);
-	}
-	public void B16() {
-		buttonpushed(16);
-	}
-	public void B17() {
-		buttonpushed(17);
-	}
-	public void B18() {
-		buttonpushed(18);
-	}
-	public void B19() {
-		buttonpushed(19);
-	}
-	public void B20() {
-		buttonpushed(20);
-	}
-	public void B21() {
-		buttonpushed(21);
-	}
-	public void B22() {
-		buttonpushed(22);
-	}
-	public void B23() {
-		buttonpushed(23);
-	}
-	public void B24() {
-		buttonpushed(24);
-	}
-	public void B25() {
-		buttonpushed(25);
-	}
-	public void B26() {
-		buttonpushed(26);
-	}
-	public void B27() {
-		buttonpushed(27);
-	}
-	public void B28() {
-		buttonpushed(28);
-	}
-	public void B29() {
-		buttonpushed(29);
-	}
-	public void B30() {
-		buttonpushed(30);
-	}
-	public void B31() {
-		buttonpushed(31);
-	}
-	public void B32() {
-		buttonpushed(32);
-	}
-	public void B33() {
-		buttonpushed(33);
-	}
-	public void B34() {
-		buttonpushed(34);
-	}
-	public void B35() {
-		buttonpushed(35);
-	}
-	public void B36() {
-		buttonpushed(36);
-	}
-	public void B37() {
-		buttonpushed(37);
-	}
-	public void B38() {
-		buttonpushed(38);
-	}
-	public void B39() {
-		buttonpushed(39);
-	}
-	public void B40() {
-		buttonpushed(40);
-	}
-	public void B41() {
-		buttonpushed(41);
-	}
-	public void B42() {
-		buttonpushed(42);
-	}
-	public void B43() {
-		buttonpushed(43);
-	}
-	public void B44() {
-		buttonpushed(44);
-	}
-	public void B45() {
-		buttonpushed(45);
-	}
-	public void B46() {
-		buttonpushed(46);
-	}
-	public void B47() {
-		buttonpushed(47);
-	}
-	public void B48() {
-		buttonpushed(48);
-	}
-	public void B49() {
-		buttonpushed(49);
-	}
-	public void B50() {
-		buttonpushed(50);
-	}
-	public void B51() {
-		buttonpushed(51);
-	}
-	public void B52() {
-		buttonpushed(52);
-	}
-	public void B53() {
-		buttonpushed(53);
-	}
-	public void B54() {
-		buttonpushed(54);
-	}
-	public void B55() {
-		buttonpushed(55);
-	}
 
 }
