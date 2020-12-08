@@ -5,6 +5,7 @@ using System.Collections.Generic; //for lists if I ever use em.
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using UdonSharpEditor;
 using VRC.SDKBase;
 using VRC.Udon;
 using VRC.SDK3.Components;
@@ -133,9 +134,46 @@ GameObject videocontainer = GameObject.Find("/VideoCanvas");
 
 
 /*****************************************
-Next/Prev Button
+Regenerates Next/Prev Button Events
 *****************************************/
 
+GameObject prevbutton=GameObject.Find("/Signing Avatars/Canvas/PrevButton");
+GameObject nextbutton=GameObject.Find("/Signing Avatars/Canvas/NextButton");
+					prevbutton.GetComponent<Button>().onClick = new Button.ButtonClickedEvent();
+					nextbutton.GetComponent<Button>().onClick = new Button.ButtonClickedEvent();
+					UnityEventTools.AddStringPersistentListener(prevbutton.GetOrAddComponent<Button>().onClick, //the button/toggle that triggers the action
+						System.Delegate.CreateDelegate(typeof(UnityAction<string>), menuroot.GetOrAddComponent<UdonBehaviour>()//the target of the action
+						, "SendCustomEvent") as UnityAction<string>,"PrevB");
+
+					UnityEventTools.AddStringPersistentListener(nextbutton.GetOrAddComponent<Button>().onClick, //the button/toggle that triggers the action
+						System.Delegate.CreateDelegate(typeof(UnityAction<string>), menuroot.GetOrAddComponent<UdonBehaviour>()//the target of the action
+						, "SendCustomEvent") as UnityAction<string>,"NextB");
+
+/*****************************************
+Regenerates Preferences Items
+*****************************************/
+
+Toggle HandToggle=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
+HandToggle.onValueChanged=new Toggle.ToggleEvent();
+UnityEventTools.AddStringPersistentListener(HandToggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<string>), menuroot.GetOrAddComponent<UdonBehaviour>()
+, "SendCustomEvent") as UnityAction<string>,"ToggleHand");
+
+Toggle GlobalToggle=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode").GetComponent<Toggle>();
+GlobalToggle.onValueChanged=new Toggle.ToggleEvent();
+UnityEventTools.AddStringPersistentListener(GlobalToggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<string>), menuroot.GetOrAddComponent<UdonBehaviour>()
+, "SendCustomEvent") as UnityAction<string>,"ToggleGlobal");
+
+
+Slider avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Avatar Scale Slider").GetComponent<Slider>();
+avatarscaleslider.onValueChanged=new Slider.SliderEvent();
+UnityEventTools.AddStringPersistentListener(avatarscaleslider.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<string>), menuroot.GetOrAddComponent<UdonBehaviour>()
+, "SendCustomEvent") as UnityAction<string>,"AvatarScaleSliderValueChanged");
+
+
+
+
+
+/*
 
 					GameObject prevbutton=createbutton2(parent:menubuttons, name:"PrevButton",
 					sizedelta:new Vector2(625,100),localPosition:new Vector3 (-2125,600,-2000),
@@ -155,13 +193,15 @@ Next/Prev Button
 						System.Delegate.CreateDelegate(typeof(UnityAction<string>), menuroot.GetOrAddComponent<UdonBehaviour>()//the target of the action
 						, "SendCustomEvent") as UnityAction<string>,"NextB");
 
+						*/
+
 /*****************************************
 Create the main array of buttons here
 *****************************************/
 
 					int menucolumn=0;
 					int menurow=0;
-for (int x = 0; x < 56; x++){
+			for (int x = 0; x < 70; x++){
 				if (x != 0){
 					if (x % numberpercolumn == 0){ //display 9 items per column
 					menucolumn++;
@@ -282,7 +322,7 @@ for (int x = 0; x < 56; x++){
 Update menu system to point to newly created objects.
 *****************************************/
 //recreate toggle to fix reference? 
-
+/*
 	Toggle oldvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
 	DestroyImmediate(oldvideotoggle);
 	Toggle newvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
@@ -294,6 +334,7 @@ Update menu system to point to newly created objects.
 	newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
 	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
 	videocontainer, "SetActive") as UnityAction<bool>);
+	*/
 }//End of main program
 
 /*****************************************
@@ -338,14 +379,15 @@ go.GetComponent<RectTransform> ().localPosition = localPosition;
 go.GetComponent<RectTransform> ().anchorMax = new Vector2 (0, 0);
 go.GetComponent<RectTransform> ().anchorMin = new Vector2 (0, 0);
 go.GetComponent<RectTransform> ().pivot = new Vector2 (0, 0);
-go.transform.Find("Text").gameObject.GetComponent<Text>().text = text;
-go.transform.Find("Text").gameObject.GetComponent<Text>().fontSize = fontSize;
-go.transform.Find("Text").gameObject.GetComponent<Text>().alignment = alignment;
-go.transform.Find("Text").gameObject.GetComponent<RectTransform>().sizeDelta = txtsizedelta;
-go.transform.Find("Text").gameObject.GetComponent<RectTransform>().anchoredPosition = txtanchoredPosition;
-go.transform.Find("Text").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
-go.transform.Find("Text").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-go.transform.Find("Text").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+go.transform.Find("Text").GetComponent<Text>().resizeTextForBestFit = true;
+go.transform.Find("Text").GetComponent<Text>().text = text;
+go.transform.Find("Text").GetComponent<Text>().fontSize = fontSize;
+go.transform.Find("Text").GetComponent<Text>().alignment = alignment;
+go.transform.Find("Text").GetComponent<RectTransform>().sizeDelta = txtsizedelta;
+go.transform.Find("Text").GetComponent<RectTransform>().anchoredPosition = txtanchoredPosition;
+go.transform.Find("Text").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
+go.transform.Find("Text").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
+go.transform.Find("Text").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 return go;
 }
 }
