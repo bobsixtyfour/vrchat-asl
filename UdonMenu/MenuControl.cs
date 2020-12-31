@@ -1715,6 +1715,18 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	Toggle DarkToggle;
 
 	bool globalmode;
+
+	// Color Constants
+	Color COLOR_WHITE = new Color(1,1,1,1);
+	Color COLOR_BLACK = new Color(0,0,0,1);
+	Color COLOR_GREY_DARK = new Color(.25f,.25f,.25f,1);
+	Color COLOR_GREY_MEDIUM = new Color(.5f,.5f,.5f,1);
+	Color COLOR_GREY_LIGHT = new Color(.75f,.75f,.75f,1);
+	Color COLOR_GREEN_DARK = new Color(.2f,.3f,.2f,1);
+	Color COLOR_GREEN_MEDIUM = new Color(.2f,.5f,.2f,1);
+	Color COLOR_GREEN_LIGHT = new Color(.75f,.75f,.75f,1);
+
+	// Color Variables
 	bool darkmode;
 	ColorBlock verifieddark = new ColorBlock();
 /*
