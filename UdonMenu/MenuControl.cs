@@ -1928,6 +1928,13 @@ Image[] checkbox_preference;
 			}
 		}
 
+		// Update Data - Menu Defaults
+		currentlang = -1;
+		currentlesson = -1;
+		currentword = -1;
+		// currentboard -- not sure
+
+
 		// Update Displays
 		InitializeDarkMode();
 		InitializePreferenceMenu();
@@ -1939,7 +1946,7 @@ Image[] checkbox_preference;
 		InitializeQuizMenu();
 		UpdateSigningAvatarState(); // ...
 
-		DisplayLanguageSelectMenu();
+		UpdateMenuDisplay();
 	}
 
 
@@ -2045,58 +2052,235 @@ Image[] checkbox_preference;
 		description.SetActive(isActive);
 	}
 
+	/***************************************************************************************************************************
+	Update GlobalVariables
+	***************************************************************************************************************************/
+    void UpdateMenuVariables(int buttonIndex) {
+		int currentmenu = GetCurrentMenu();
+		switch (currentmenu) {
+			case MENU_LANGUAGE:
+				currentlang = buttonIndex;
+				currentlesson = NOT_SELECTED;
+				currentword = NOT_SELECTED;
+				break;
+			case MENU_LESSON:
+				if (currentmode = MODE_QUIZ) {
+					// UPDATE QUIZ LESSON SELECTION HERE
+				} else {
+					currentlesson = buttonIndex;
+				}
+				currentword = NOT_SELECTED;
+				break;
+			case MENU_WORD:
+				currentword = buttonIndex;
+				break;
+			default:
+				Debug.Log("UpdateMenuVariables() failed; currentmenu is: "+currentmenu+")");
+				DebugMenuVariables();
+				break;
+		}
+		
+		// If Master/Owner, update global variables too
+		bool isOwner = Networking.IsOwner(gameObject);
+		if (isOwner) {
+			globalcurrentlang = currentlang;
+			globalcurrentlesson = currentlesson;
+			globalcurrentword = currentword;
+		}
+    }
 
 
 	/***************************************************************************************************************************
-	Changes the menu so it displays the language select menu. 
+	Update Menu
+	***************************************************************************************************************************/
+	void UpdateMenuDisplay() {
+		int currentmenu = GetCurrentMenu();
+		switch (currentmenu) {
+			case MENU_LANGUAGE:
+				DisplayLanguageSelectMenu();
+				break;
+			case MENU_LESSON:
+				DisplayLessonSelectMenu();
+				break;
+			case MENU_WORD:
+				DisplayWordSelectMenu();
+				break;
+			default:
+				Debug.Log("UpdateMenuDisplay() failed; currentmenu is: "+currentmenu+")");
+				DebugMenuVariables();
+				break; 
+		}
+
+		// Update Breadcrumb
+
+		
+		// Update Subheader
+		String text = globalmode ? "Global Mode" : "Local Mode";
+		text = currentmode == MODE_QUIZ ? text + " - Quiz Mode" : text + " - Lookup Mode"
+		menusubheadertext.text = text;
+	}
+
+	/***************************************************************************************************************************
+	Calculate and return the current Menu state.
+	***************************************************************************************************************************/
+	private int GetCurrentMenu() {
+		int currentmenu = 0;
+		if (currentlang == NOT_SELECTED) {
+			currentmenu = MENU_LANGUAGE;
+		} else {
+			if (currentlesson == NOT_SELECTED {
+				currentmenu = MENU_LESSON;
+			} else {
+				currentmenu = MENU_WORD;
+			}
+		}
+		return currentmenu;
+	}
+
+
+	/***************************************************************************************************************************
+	Change Menu to display Language Selection.
 	***************************************************************************************************************************/
 	void DisplayLanguageSelectMenu() {
-		Debug.Log("Entered DisplayLanguageSelectMenu");
-		menuheadertext.text = "VR Sign Language Select Menu";
-		if(globalmode){
-			menusubheadertext.text = "Global Mode";
-		}else if (quizmode)
-		{
-			menusubheadertext.text = "Quiz Mode";
-		}
-		else
-		{
-			menusubheadertext.text = "Local Mode";
-		}
-		for (int x = 0; x < numofbuttons; x++) {
-			if (signlanguagenames.Length > x) {
-				buttons[x].SetActive(true);
-				buttons[x].GetComponent<Button>().colors=darkmodebutton;
-				buttontext[x].text = (x + 1) + ") " +  signlanguagenames[x][1];
-				buttontext[x].color=new Color(1,1,1,1); //white
-				indexicons[x].SetActive(false);
-				regvricons[x].SetActive(false);
-				bothvricons[x].SetActive(false);
+		// Handle Selection Buttons
+		for (int i = 0; i < numofbuttons; i++) {
+			if (i < signlanguagenames.Length) {
+				DisplayButton(i, (i + 1) + ") " +  signlanguagenames[i][1], false);
+				HideVRIcon(i);
 			} else {
-				buttons[x].SetActive(false);
+				HideButton(i);
 			}
 		}
 
+		// Handle Navigation Buttons
 		backbuttons[0].SetActive(false);
 		backbuttons[1].SetActive(false);
 		nextButton.SetActive(false);
 		prevButton.SetActive(false);
-        currentlesson=-1;
-        currentword=-1;
-		currentboard=0;
-			    if(globalmode){
-			//bool isOwner = Networking.IsOwner(gameObject);
-			if(!Networking.IsOwner(gameObject)){
-				TakeOwnership();
+	}
+
+	/***************************************************************************************************************************
+	Change Menu to display Lesson Selection.
+	***************************************************************************************************************************/
+	void DisplayLessonSelectMenu() {
+		// Handle Selection Buttons
+		bool isButtonSelected = false;
+		for (int i = 0; i < numofbuttons; i++) {
+			if (i < AllLessons[currentlang].Length) {
+				if (lessonnames[currentlang].Length > i) {
+					isButtonSelected = currentmode == MODE_QUIZ && quizlessonselection[currentlang][i] ? true : false;
+					DisplayButton(i, (i + 1) + ") " + lessonnames[currentlang][i], isButtonSelected);
+					HideVRIcon(i);
+				}
+			} else {
+				HideButton(i);
 			}
-			globalcurrentboard=currentboard;
-			globalcurrentlang=currentlang;
-			globalcurrentlesson=currentlesson;
-			globalcurrentword=currentword;
+		}
+
+		// Handle Navigation Buttons
+		nextButton.SetActive(false);
+		prevButton.SetActive(false);
+		backbuttons[0].SetActive(true);
+		backbuttons[1].SetActive(true);
+	}
+
+	/***************************************************************************************************************************
+	Change Menu to display Word Selection.
+	***************************************************************************************************************************/
+	DisplayWordSelectMenu() {
+		string buttonText;
+		bool isButtonSelected;
+		bool isWordValid;
+		for (int i = 0; i < numofbuttons; i++) {
+			if (i < AllLessons[currentlang][currentlesson].Length) {
+				buttonText = "    " + (i + 1) + ") " + AllLessons[currentlang][currentlesson][i][0];
+				isButtonSelected = currentword == i;
+				isWordValid = AllLessons[currentlang][currentlesson][i][6] == "TRUE" ? true : false;
+				DisplayButton(i, buttonText, isButtonSelected, isWordValid);
+				DisplayVRIcon(i);
+			} else {
+				HideButton(i);
+			}
+		}
+
+		// Handle Navigation Buttons
+		backbuttons[0].SetActive(true);
+		backbuttons[1].SetActive(true);
+	}
+
+	/***************************************************************************************************************************
+	Display the VR Icon for the given Button/Word Index.
+	***************************************************************************************************************************/
+	DisplayVRIcon(int index) {
+		//Debug.Log("switching on AllLessons[currentlang][currentlesson][index][4]:" + AllLessons[currentlang][currentlesson][index][4]);
+		switch (AllLessons[currentlang][currentlesson][index][4]) { //populate vr icons
+		case "0": // Knuckles Controller icon
+			indexicons[index].SetActive(true);
+			regvricons[index].SetActive(false);
+			bothvricons[index].SetActive(false);
+			break;
+		case "1": // Standard VR Controller icon
+			indexicons[index].SetActive(false);
+			regvricons[index].SetActive(true);
+			bothvricons[index].SetActive(false);
+			break;
+		case "2": // Both Controller Types icon
+			indexicons[index].SetActive(false);
+			regvricons[index].SetActive(false);
+			bothvricons[index].SetActive(true);
+			break;
+		default: //uhh how am I here? Is it null somehow? Maybe should set to both by default...
+			Debug.Log("DisplayVRIcon("+index+") had an invalid VR Icon setting; update AllLessons[currentlang][currentlesson][index][4]");
+			indexicons[index].SetActive(false);
+			regvricons[index].SetActive(false);
+			bothvricons[index].SetActive(false);
+			break;
 		}
 	}
 
+	/***************************************************************************************************************************
+	Hide the display for a VR icon at a specific index.
+	***************************************************************************************************************************/
+	HideVRIcon(int index) {
+		indexicons[index].SetActive(false);
+		regvricons[index].SetActive(false);
+		bothvricons[index].SetActive(false);
+	}
 
+
+	/***************************************************************************************************************************
+	Update the display for a Menu button.
+	***************************************************************************************************************************/
+	void DisplayButton(int index, string text, bool isSelected, isValid = true) {
+
+		// Handle Validation Highlighting
+		if (isValid) {
+
+		} else {
+
+		}
+	
+		// Handle Selection Highlighting
+		if(isSelected){
+			buttons[index].GetComponent<Button>().colors = darkmodeselectedbutton;
+		} else {
+			buttons[index].GetComponent<Button>().colors = darkmodebutton;
+		}
+		
+		// Handle Text
+		buttontext[index].text = text;
+		buttontext[index].color = COLOR_WHITE;
+		
+		// Toggle Display
+		buttons[index].SetActive(true);
+	}
+
+	/***************************************************************************************************************************
+	Hide the display for a Menu button at a specific index.
+	***************************************************************************************************************************/
+	void HideButton(int index) {
+		buttons[index].SetActive(false);
+	}
 
 	/***************************************************************************************************************************
 	Figures out if the button pushed is the correct one. Displays corrisponding status screen if correct, or try again.
@@ -2330,57 +2514,71 @@ Image[] checkbox_preference;
 	/***************************************************************************************************************************
 	Figures out what the button does, and sends to the approperate functions to update the menu.
 	***************************************************************************************************************************/
-	public void buttonpushed(int x) {
-		//figure out what the current signnumber is based on x and prevsign (figure out previous screen first)
-		Debug.Log("Entered Buttonpushed with button #"+x+" pushed. Currentboard:"+currentboard+" Quizmode: "+quizmode + " Globalmode: "+globalmode);
-		if(globalmode){
-			Debug.Log("Global Mode");
-			bool isOwner = Networking.IsOwner(gameObject);
-			if(!isOwner){
-				TakeOwnership();
-			}
-		}
-		if(quizmode)
-		{
-			Debug.Log("Quiz Mode");
-		switch (currentboard) {
-			case 0: //button pushed on lang select, change to lesson select board.
-				currentlang=x;
-				DisplayLessonSelectMenu();//x=language number
-			break;
-			case 1://button pushed on lesson select, mark as selected
-				SelectQuizLesson(x);
-			break;
-			case 2:
-				
-			break;
-			default:
-			Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
-			break;
-			}
-		}
-		else{
-			switch (currentboard) {
-			case 0: //button pushed on lang select, change to lesson select board.
-				currentlang=x;
-				DisplayLessonSelectMenu();//x=language number
-			break;
-			case 1://button pushed on lesson select, change to word select board.
-				currentlesson=x;
-				DisplaySignSelectMenu();
-			break;
-			case 2://button pushed on word select, display word selected.
-				//turn off current playing video (if any)
-				//TurnOffVideo();
-				//do all the sign word change stuff
-				changeword(x);
-			break;
-			default:
-			Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
-			break;
-			}
-		}
+	void buttonpushed(int buttonIndex) {
+		Debug.Log("Entered buttonpushed("+i+")");
+		DebugMenuVariables();
+		
+		// Update Data
+		UpdateMenuVariables();
+		DebugMenuVariables();
+		
+		// Update Display
+		UpdateDisplay();
 	}
+	
+	
+	
+	// public void buttonpushed(int x) {
+	// 	//figure out what the current signnumber is based on x and prevsign (figure out previous screen first)
+	// 	Debug.Log("Entered Buttonpushed with button #"+x+" pushed. Currentboard:"+currentboard+" Quizmode: "+quizmode + " Globalmode: "+globalmode);
+	// 	if(globalmode){
+	// 		Debug.Log("Global Mode");
+	// 		bool isOwner = Networking.IsOwner(gameObject);
+	// 		if(!isOwner){
+	// 			TakeOwnership();
+	// 		}
+	// 	}
+	// 	if(quizmode)
+	// 	{
+	// 		Debug.Log("Quiz Mode");
+	// 	switch (currentboard) {
+	// 		case 0: //button pushed on lang select, change to lesson select board.
+	// 			currentlang=x;
+	// 			DisplayLessonSelectMenu();//x=language number
+	// 		break;
+	// 		case 1://button pushed on lesson select, mark as selected
+	// 			SelectQuizLesson(x);
+	// 		break;
+	// 		case 2:
+				
+	// 		break;
+	// 		default:
+	// 		Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
+	// 		break;
+	// 		}
+	// 	}
+	// 	else{
+	// 		switch (currentboard) {
+	// 		case 0: //button pushed on lang select, change to lesson select board.
+	// 			currentlang=x;
+	// 			DisplayLessonSelectMenu();//x=language number
+	// 		break;
+	// 		case 1://button pushed on lesson select, change to word select board.
+	// 			currentlesson=x;
+	// 			DisplaySignSelectMenu();
+	// 		break;
+	// 		case 2://button pushed on word select, display word selected.
+	// 			//turn off current playing video (if any)
+	// 			//TurnOffVideo();
+	// 			//do all the sign word change stuff
+	// 			changeword(x);
+	// 		break;
+	// 		default:
+	// 		Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
+	// 		break;
+	// 		}
+	// 	}
+	// }
 
 	/***************************************************************************************************************************
 	Takes ownership of the board udonbehavior to update variables?
@@ -2525,65 +2723,6 @@ Image[] checkbox_preference;
 			quizlessonselection[currentlang][x]=false;
 		}
 
-	}
-
-
-	/***************************************************************************************************************************
-	Changes the menu so it displays the Lesson select menu.
-	***************************************************************************************************************************/
-	void DisplayLessonSelectMenu() {
-		Debug.Log("Now entering DisplayLessonSelectMenu with a language #:" + currentlang);
-		menuheadertext.text = signlanguagenames[currentlang][0] + " Lesson Menu";
-		if(globalmode){
-			menusubheadertext.text = "Global Mode";
-		}
-		else if(quizmode)
-		{
-			menusubheadertext.text = "Quiz Mode";
-		}else
-		{
-			menusubheadertext.text = "Local Mode";
-		}
-		for (int x = 0; x < numofbuttons; x++) {
-			if (x < AllLessons[currentlang].Length) {
-				if (lessonnames[currentlang].Length > x) {
-					buttontext[x].text = (x + 1) + ") " + lessonnames[currentlang][x];
-					if(quizmode){
-						if(quizlessonselection[currentlang][x]){
-							buttons[x].GetComponent<Button>().colors=darkmodeselectedbutton;
-						}else{
-							buttons[x].GetComponent<Button>().colors=darkmodebutton;	
-						}
-					}else{
-					buttons[x].GetComponent<Button>().colors=darkmodebutton;	
-					}
-					buttontext[x].color=new Color(1,1,1,1); //white
-					buttons[x].SetActive(true);
-					indexicons[x].SetActive(false);
-					regvricons[x].SetActive(false);
-					bothvricons[x].SetActive(false);
-				}
-			}else {
-				buttons[x].SetActive(false);
-			}
-		}
-		nextButton.SetActive(false);
-		prevButton.SetActive(false);
-		backbuttons[0].SetActive(true);
-		backbuttons[1].SetActive(true);
-		//maybe need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function...
-		currentword=-1;
-		currentboard=1;
-		if(globalmode){
-			bool isOwner = Networking.IsOwner(gameObject);
-			if(!isOwner){
-				TakeOwnership();
-			}
-			globalcurrentboard=currentboard;
-			globalcurrentlang=currentlang;
-			globalcurrentlesson=currentlesson;
-			globalcurrentword=currentword;
-		}
 	}
 
 
@@ -2764,6 +2903,23 @@ Image[] checkbox_preference;
 			}
 		}
 	}
+
+	/***************************************************************************************************************************
+	Figures out what the button does, and sends to the approperate functions to update the menu.
+	***************************************************************************************************************************/
+	DebugMenuVariables() {
+		private String _message = "";
+		Debug.Log("Current Variable contents: " +
+				"\ncurrentmode: " + currentmode + 
+				"\ncurrentlang: " + currentlang + 
+				"\ncurrentlesson: " + currentlesson + 
+				"\ncurrentword: " + currentword +
+				"\nglobalcurrentmode: " + globalcurrentmode +
+				"\nglobalcurrentlang: " + globalcurrentlang + 
+				"\nglobalcurrentlesson: " + globalcurrentlesson + 
+				"\nglobalcurrentword: " + globalcurrentword);
+	}
+
 
 string[] reshuffle(string[] texts)
     {
