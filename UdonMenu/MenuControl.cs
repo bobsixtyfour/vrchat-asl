@@ -5,6 +5,7 @@ using VRC.SDK3.Components;
 using VRC.SDKBase;
 using VRC.Udon;
 using System;
+using TMPro;
 using VRC.SDK3.Components.Video;
 using VRC.SDK3.Video.Components;
 using VRC.SDK3.Video.Components.AVPro;
@@ -12,6 +13,8 @@ using VRC.SDK3.Video.Components.Base;
 
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
+using System.Linq; //for sorting
+using System.Collections.Generic; //for lists if I ever use em.
 using UnityEditor;
 using UdonSharpEditor;
 #endif
@@ -27,8 +30,9 @@ public class MenuControl : UdonSharpBehaviour
 4th value is VR index or regular 0=indexonly , 1=generalvr,2=both
 5th value is Sign description string
 6th value is sign validation true/false
-7th value is sign validated by
+7th value is sign validation credits
 */
+
 public string [][][][] AllLessons = 
 new string[][][][]{ //all languages
 new string[][][]{//asl lessons
@@ -77,10 +81,10 @@ new string[]{"Away","ASL-Away","GT4tube","","2","","TRUE","ShadeAxas"},
 },
 new string[][]{//Lesson 2 (Pointing use Question/Answer)
 new string[]{"I (Me)","ASL-I (Me)","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-01.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Him/Her/He/She/It/You","ASL-Him","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-04.mp4","2","","FALSE",""},
+new string[]{"Her (Gender Emphasis)","ASL-Her","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-05.mp4","2","","FALSE",""},
 new string[]{"My","ASL-My","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-02.mp4","2","Open palm implies possessive. eg: That wallet is mine.","TRUE","ShadeAxas"},
-new string[]{"Your","ASL-Your","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-03.mp4","2","A possessive form of 'you'. eg: That's your wallet.","TRUE","ShadeAxas"},
-new string[]{"His","ASL-His","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-04.mp4","2","","FALSE",""},
-new string[]{"Her","ASL-Her","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-05.mp4","2","","FALSE",""},
+new string[]{"His/Hers/Its/Your","ASL-Your","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-03.mp4","2","A possessive form of 'you'. eg: That's your wallet.","TRUE","ShadeAxas"},
 new string[]{"We","ASL-We","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-06.mp4","2","","TRUE","ShadeAxas"},
 new string[]{"They","ASL-They","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-07.mp4","2","You sweep your pointer over the people you're referring to.","TRUE","ShadeAxas"},
 new string[]{"Their","ASL-Their","GT4tube","https://vrsignlanguage.net/ASL_videos/sheet02/02-08.mp4","2","Possessive form of they. eg: This is their house.","TRUE","ShadeAxas"},
@@ -139,7 +143,7 @@ new string[]{"Know","ASL-Know","Anonymous","https://vrsignlanguage.net/ASL_video
 new string[]{"Don't Know","ASL-Don't Know","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-11.mp4","2","","TRUE","ShadeAxas"},
 new string[]{"Be Right Back (BRB)","ASL-Be Right Back (BRB)","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-12.mp4","2","","TRUE","ShadeAxas"},
 new string[]{"Accept","ASL-Accept","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-13.mp4","2","","TRUE","ShadeAxas"},
-new string[]{"Denied","ASL-Denied","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-14.mp4","2","","FALSE",""},
+new string[]{"Denial","ASL-Denial","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-14.mp4","2","","TRUE","ShadeAxas"},
 new string[]{"Name","ASL-Name","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-15.mp4","2","","TRUE","ShadeAxas"},
 new string[]{"New","ASL-New","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-16.mp4","2","","TRUE","ShadeAxas"},
 new string[]{"Old","ASL-Old","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet03/03-17.mp4","2","","TRUE","ShadeAxas"},
@@ -1232,11 +1236,16 @@ new string[]{"MrRikuG935","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_
 new string[]{"Deany","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-43.mp4","2","","FALSE",""},
 new string[]{"hppedeaf","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-44.mp4","2","","FALSE",""},
 new string[]{"0kami SweetFang","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-45.mp4","2","","FALSE",""},
+new string[]{"Roineru_FR","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-46.mp4","2","","FALSE",""},
+new string[]{"COBALTMOON ☪","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-47.mp4","2","","FALSE",""},
+new string[]{"Silly Oak","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-48.mp4","2","","FALSE",""},
+new string[]{"NeoDartDeaf","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-49.mp4","2","","FALSE",""},
+new string[]{"HOH mikka","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-50.mp4","2","","FALSE",""},
+new string[]{"SlyNikki14","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-51.mp4","2","","FALSE",""},
+new string[]{"Snaekysnacks","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-52.mp4","2","","FALSE",""},
+new string[]{"Wunder Wulfe","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/sheet28/28-53.mp4","2","","FALSE",""},
 new string[]{"CrossVadar","Idle","No Data Yet.","https://vrchat.germany-sl.com/name-sign/crossvadar.mp4","2","","FALSE",""},
-new string[]{"Roineru_FR","Idle","No Data Yet.","https://vrchat.germany-sl.com/name-sign/Roineru_FR.mp4","2","","FALSE",""},
-new string[]{"HOH mikka","Idle","No Data Yet.","https://vrchat.germany-sl.com/name-sign/HOH_mikka_.mp4","2","","FALSE",""},
 new string[]{"GMARISSTUFF","Idle","No Data Yet.","https://vrchat.germany-sl.com/name-sign/GMARISSTUFF.mp4","2","","FALSE",""},
-new string[]{"COBALTMOON ☪","Idle","No Data Yet.","https://vrchat.germany-sl.com/name-sign/COBALTMOON.mp4","2","","FALSE",""},
 new string[]{"THESONOFSAM","Idle","No Data Yet.","https://vrchat.germany-sl.com/name-sign/THESONOFSAM.mp4","2","","FALSE",""},
 new string[]{"ReinaRei","Idle","No Data Yet.","https://vrchat.germany-sl.com/name-sign/reinarei2.mp4","2","","FALSE",""},
 },
@@ -1283,49 +1292,51 @@ new string[]{"Ireland","ASL-Ireland","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Scotland","ASL-Scotland","Anonymous","","2","","TRUE","ShadeAxas"},
 },
 new string[][]{//Lesson 30 (Colors)
-new string[]{"Color","ASL-Color","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"White","ASL-White","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Black","ASL-Black","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Red","ASL-Red","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Blue","ASL-Blue","Anonymous","","2","","FALSE",""},
-new string[]{"Green","ASL-Green","Anonymous","","2","","FALSE",""},
-new string[]{"Brown","ASL-Brown","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Pink","ASL-Pink","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Purple","ASL-Purple","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Yellow","ASL-Yellow","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Orange","ASL-Orange","Anonymous","","2","","FALSE",""},
-new string[]{"Gold","ASL-Gold","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Silver","ASL-Silver","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Transparent","ASL-Transparent","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Gray","ASL-Gray","Anonymous","","2","","FALSE",""},
-new string[]{"Light","ASL-Light","Anonymous","","2","","FALSE",""},
-new string[]{"Dark","ASL-Dark","Anonymous","","2","","FALSE",""},
-new string[]{"Light Blue","ASL-Light Blue","Anonymous","","2","","FALSE",""},
-new string[]{"Dark Blue","ASL-Dark Blue","Anonymous","","2","","FALSE",""},
-new string[]{"Tan","ASL-Tan","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Blond","ASL-Blond","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Gas","ASL-Gas","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Oil","ASL-Oil","Anonymous","","2","","TRUE","ShadeAxas"},
+new string[]{"Color","ASL-Color","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-01-Colors.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"White","ASL-White","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-02-White.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Black","ASL-Black","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-03-Black.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Red","ASL-Red","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-04-Redx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Blue","ASL-Blue","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-05-Bluex.mp4","2","","FALSE",""},
+new string[]{"Green","ASL-Green","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-06-Greenx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Brown","ASL-Brown","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-07-Brownx.mp4","2","","FALSE",""},
+new string[]{"Pink","ASL-Pink","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-08-Pinkx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Purple","ASL-Purple","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-09-Purplex.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Yellow","ASL-Yellow","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-10-Yellowx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Orange","ASL-Orange","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-11-Orange.mp4","2","","FALSE",""},
+new string[]{"Gold","ASL-Gold","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-12-Goldx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Silver","ASL-Silver","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-13-Silverx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Transparent","ASL-Transparent","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-14-Transparentx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Gray","ASL-Gray","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-15-Grayx.mp4","2","","FALSE",""},
+new string[]{"Light","ASL-Light","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-16-Lightx.mp4","2","","FALSE",""},
+new string[]{"Dark","ASL-Dark","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-17-Darkx.mp4","2","","FALSE",""},
+new string[]{"Light Blue","ASL-Light Blue","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-18-LightBluex.mp4","2","","FALSE",""},
+new string[]{"Dark Blue","ASL-Dark Blue","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-19-DarkBluex.mp4","2","","FALSE",""},
+new string[]{"Tan","ASL-Tan","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-20-Tan.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Blond","ASL-Blond","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-21-Blondx.mp4","2","","TRUE","ShadeAxas"},
+},
+new string[][]{//Lesson 31 (Materials)
+new string[]{"Gas","ASL-Gas","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-22-Gasx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Oil","ASL-Oil","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-23-Oilx.mp4","2","","TRUE","ShadeAxas"},
 new string[]{"Glow","ASL-Glow","Anonymous","","2","","FALSE",""},
-new string[]{"Wood","ASL-Wood","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Metal","ASL-Metal","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Aluminium","ASL-Aluminium","Anonymous","","2","","FALSE",""},
-new string[]{"Fabric","ASL-Fabric","Anonymous","","2","","FALSE",""},
-new string[]{"Glass","ASL-Glass","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Paper","ASL-Paper","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Plastic","ASL-Plastic","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Rubber","ASL-Rubber","Anonymous","","2","","TRUE","ShadeAxas"},
+new string[]{"Wood","ASL-Wood","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-26-Woodx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Metal","ASL-Metal","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-27-Metalx.mp4","2","","TRUE","ShadeAxas"},
+//new string[]{"Aluminium","ASL-Aluminium","Anonymous","","2","","FALSE",""},
+//new string[]{"Fabric","ASL-Fabric","Anonymous","","2","","FALSE",""},
+new string[]{"Glass","ASL-Glass","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-30-Glassx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Paper","ASL-Paper","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-31-Paperx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Plastic","ASL-Plastic","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-32-Plasticx.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Rubber","ASL-Rubber","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-33-Rubberx.mp4","2","","TRUE","ShadeAxas"},
 new string[]{"Foil","ASL-Foil","Anonymous","","2","","FALSE",""},
-new string[]{"Clay","ASL-Clay","Anonymous","","2","","FALSE",""},
-new string[]{"Water","ASL-Water","Anonymous","","2","","TRUE","ShadeAxas"},
+new string[]{"Clay","ASL-Clay","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-35-Clayx.mp4","2","","FALSE",""},
+new string[]{"Water","ASL-Water","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-36-Waterx.mp4","2","","TRUE","ShadeAxas"},
 new string[]{"Gel","ASL-Gel","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Sticker","ASL-Sticker","Anonymous","","2","","FALSE",""},
-new string[]{"Rope","ASL-Rope","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Wire","ASL-Wire","Anonymous","","2","","FALSE",""},
-new string[]{"Cotton","ASL-Cotton","Anonymous","","2","","FALSE",""},
+new string[]{"Sticker","ASL-Sticker","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-38-Stickerx.mp4","2","","FALSE",""},
+new string[]{"Rope","ASL-Rope","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-39-Rope.mp4","2","","TRUE","ShadeAxas"},
+new string[]{"Wire","ASL-Wire","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet30/30-40-Wirex.mp4","2","","FALSE",""},
+//new string[]{"Cotton","ASL-Cotton","Anonymous","","2","","FALSE",""},
 new string[]{"Air","ASL-Air","Anonymous","","2","","TRUE","ShadeAxas"},
 },
-new string[][]{//Lesson 31 (Medical)
+new string[][]{//Lesson 32 (Medical)
 new string[]{"Doctor","ASL-Doctor","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Nurse","ASL-Nurse","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Hospital","ASL-Hospital","Anonymous","","2","","TRUE","ShadeAxas"},
@@ -1368,7 +1379,71 @@ new string[]{"Ankle","ASL-Ankle","Anonymous","","2","","FALSE",""},
 new string[]{"Spine","ASL-Spine","Anonymous","","2","","FALSE",""},
 new string[]{"Skeleton","ASL-Skeleton","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Skin","ASL-Skin","Anonymous","","2","","FALSE",""},
+},
+new string[][]{//Lesson 33 (Melwil)
+new string[]{"Add","ASL-Melwil-Add","Melwil","","2","","FALSE",""},
+new string[]{"After","ASL-Melwil-After","Melwil","","2","","FALSE",""},
+new string[]{"Agree","ASL-Melwil-Agree","Melwil","","2","","FALSE",""},
+new string[]{"Assistant","ASL-Melwil-Assistant","Melwil","","2","","FALSE",""},
+new string[]{"Beer","ASL-Melwil-Beer","Melwil","","2","","FALSE",""},
+new string[]{"Beer 1","ASL-Melwil-Beer 1","Melwil","","2","","FALSE",""},
+new string[]{"Born","ASL-Melwil-Born","Melwil","","2","","FALSE",""},
+new string[]{"Bring","ASL-Melwil-Bring","Melwil","","2","","FALSE",""},
+new string[]{"Bully","ASL-Melwil-Bully","Melwil","","2","","FALSE",""},
+new string[]{"Change World","ASL-Melwil-Change World","Melwil","","2","","FALSE",""},
+new string[]{"Child","ASL-Melwil-Child","Melwil","","2","","FALSE",""},
+new string[]{"Children","ASL-Melwil-Children","Melwil","","2","","FALSE",""},
+new string[]{"Communicate","ASL-Melwil-Communicate","Melwil","","2","","FALSE",""},
+new string[]{"Computer","ASL-Melwil-Computer","Melwil","","2","","FALSE",""},
+new string[]{"Dare (Variant)","ASL-Melwil-Dare (Variant)","Melwil","","2","","FALSE",""},
+new string[]{"Dark","ASL-Melwil-Dark","Melwil","","2","","FALSE",""},
+new string[]{"Dead","ASL-Melwil-Dead","Melwil","","2","","FALSE",""},
+new string[]{"Deffend","ASL-Melwil-Deffend","Melwil","","2","","FALSE",""},
+new string[]{"Depend","ASL-Melwil-Depend","Melwil","","2","","FALSE",""},
+new string[]{"Disaponte","ASL-Melwil-Disaponte","Melwil","","2","","FALSE",""},
+new string[]{"Draw","ASL-Melwil-Draw","Melwil","","2","","FALSE",""},
+new string[]{"Drunk","ASL-Melwil-Drunk","Melwil","","2","","FALSE",""},
+new string[]{"Eat","ASL-Melwil-Eat","Melwil","","2","","FALSE",""},
+new string[]{"Empty (Empty Container)","ASL-Melwil-Empty (Empty Container)","Melwil","","2","","FALSE",""},
+new string[]{"Envy (Variant 1)","ASL-Melwil-Envy (Variant 1)","Melwil","","2","","FALSE",""},
+new string[]{"Envy (Variant 1) 1","ASL-Melwil-Envy (Variant 1) 1","Melwil","","2","","FALSE",""},
+new string[]{"Envy (Variant 1) 2","ASL-Melwil-Envy (Variant 1) 2","Melwil","","2","","FALSE",""},
+new string[]{"Envy (Variant 2)","ASL-Melwil-Envy (Variant 2)","Melwil","","2","","FALSE",""},
+new string[]{"Everyone (Variant 2)","ASL-Melwil-Everyone (Variant 2)","Melwil","","2","","FALSE",""},
+new string[]{"Father","ASL-Melwil-Father","Melwil","","2","","FALSE",""},
+new string[]{"Future","ASL-Melwil-Future","Melwil","","2","","FALSE",""},
+new string[]{"Going To","ASL-Melwil-Going To","Melwil","","2","","FALSE",""},
+new string[]{"Going To 1","ASL-Melwil-Going To 1","Melwil","","2","","FALSE",""},
+new string[]{"Good Afternoon","ASL-Melwil-Good Afternoon","Melwil","","2","","FALSE",""},
+new string[]{"How Many","ASL-Melwil-How Many","Melwil","","2","","FALSE",""},
+new string[]{"Insult","ASL-Melwil-Insult","Melwil","","2","","FALSE",""},
+new string[]{"Kid","ASL-Melwil-Kid","Melwil","","2","","FALSE",""},
+new string[]{"Lonely","ASL-Melwil-Lonely","Melwil","","2","","FALSE",""},
+new string[]{"Monday V1","ASL-Melwil-Monday V1","Melwil","","2","","FALSE",""},
+new string[]{"Monday V2","ASL-Melwil-Monday V2","Melwil","","2","","FALSE",""},
+new string[]{"More","ASL-Melwil-More","Melwil","","2","","FALSE",""},
+new string[]{"Mother","ASL-Melwil-Mother","Melwil","","2","","FALSE",""},
+new string[]{"Nevermind (Variant)","ASL-Melwil-Nevermind (Variant)","Melwil","","2","","FALSE",""},
+new string[]{"Next Week","ASL-Melwil-Next Week","Melwil","","2","","FALSE",""},
+new string[]{"No One (Variant 1)","ASL-Melwil-No One (Variant 1)","Melwil","","2","","FALSE",""},
+new string[]{"No One (Variant 2)","ASL-Melwil-No One (Variant 2)","Melwil","","2","","FALSE",""},
+new string[]{"Over There (Variant 1)","ASL-Melwil-Over There (Variant 1)","Melwil","","2","","FALSE",""},
+new string[]{"Over There (Variant 2)","ASL-Melwil-Over There (Variant 2)","Melwil","","2","","FALSE",""},
+new string[]{"Read","ASL-Melwil-Read","Melwil","","2","","FALSE",""},
+new string[]{"Season V1","ASL-Melwil-Season V1","Melwil","","2","","FALSE",""},
+new string[]{"Season V2","ASL-Melwil-Season V2","Melwil","","2","","FALSE",""},
+new string[]{"Sec","ASL-Melwil-Sec","Melwil","","2","","FALSE",""},
+new string[]{"Someone","ASL-Melwil-Someone","Melwil","","2","","FALSE",""},
+new string[]{"Start","ASL-Melwil-Start","Melwil","","2","","FALSE",""},
+new string[]{"Steal","ASL-Melwil-Steal","Melwil","","2","","FALSE",""},
+new string[]{"Take Care","ASL-Melwil-Take Care","Melwil","","2","","FALSE",""},
+new string[]{"Teen","ASL-Melwil-Teen","Melwil","","2","","FALSE",""},
+new string[]{"Trust","ASL-Melwil-Trust","Melwil","","2","","FALSE",""},
+new string[]{"Tuesday","ASL-Melwil-Tuesday","Melwil","","2","","FALSE",""},
+new string[]{"Weekend (Variant 1)","ASL-Melwil-Weekend (Variant 1)","Melwil","","2","","FALSE",""},
+new string[]{"Weekend (Variant 2)","ASL-Melwil-Weekend (Variant 2)","Melwil","","2","","FALSE",""},
 }
+
 },//end of asl lessons
 new string[][][]{//bsl lessons
 new string[][]{//Daily Use (Signed by CathDeathGamer)
@@ -1572,7 +1647,9 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 			"Name sign users",
 			"Countries",
 			"Colors",
-			"Medical"
+			"Materials",
+			"Medical",
+			"Melwil"
 		},
 		new string[] { //BSL lesson names
 			"Daily Use (Signed by CathDeathGamer)",
@@ -1595,28 +1672,21 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		},
 		new string[] {
 			"DGS",
-			"German Sign Language (Deutsche Gebärdensprache)"
+			"German Sign Language\n(Deutsche Gebärdensprache)"
 		},
 		//new string[]{"DGS","Deutsche Gebärdensprache (German Sign Language)"}
 	};
-	public Animator nana;
+	Animator nana;
 	//public Animator nanapc;
 	//public Animator nanaquest;
 	GameObject signingavatars;
+	GameObject currentsign;
+	GameObject signcredit;
+	GameObject description;
 	Text currentsigntext;
 	Text speechbubbletext;
 	Text signcredittext;
 	Text descriptiontext;
-	/*
-	public Text currentsigntextpc;
-	public Text speechbubbletextpc;
-	public Text signcredittextpc;
-	public Text descriptiontextpc;
-	public Text currentsigntextquest;
-	public Text speechbubbletextquest;
-	public Text signcredittextquest;
-	public Text descriptiontextquest;
-	*/
 	GameObject[] buttons = new GameObject[70];
 	GameObject[] backbuttons = new GameObject[2];
 	GameObject[] indexicons = new GameObject[70];
@@ -1627,34 +1697,228 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
     //int previousboard=0;//tracks which board it's on. 0=lang select, 1=lesson select, 2=word select
     int currentboard=0;//tracks which board it's on. 0=lang select, 1=lesson select, 2=word select
     int currentlang=0;//tracks which language is currently selected.
-    int currentlesson=0;//tracks which lesson is currently selected.
-    int currentword=0;
+    int currentlesson=-1;//tracks which lesson is currently selected.
+    int currentword=-1;
 	Text menuheadertext;
-	GameObject menuheader;
+	Text menusubheadertext;
+	//GameObject menuheader;
     GameObject nextButton;
     GameObject prevButton;
-
 	GameObject videocontainer;
 	GameObject videoplayer;
 	VRCUnityVideoPlayer vrcplayercomponent;
 	public VRCUrl[][][] langurls;
-	bool quizmode=false;
-	bool globalmode=false;
 	Slider avatarscaleslider;
 	Toggle HandToggle;
 	Toggle GlobalToggle;
+	Toggle QuizToggle;
+	Toggle DarkToggle;
+
+	bool globalmode;
+	bool darkmode;
+	ColorBlock verifieddark = new ColorBlock();
+/*
+Color darkmodetext = new Color(1,1,1,1);
+Color lightmodetext = new Color(0,0,0,1);
+Color darkmodepanel = new Color(0,0,0,1);
+Color lightmodepanel = new Color(1,1,1,1);
+Color darkmodebutton = new Color(.25f,.25f,.25f,1);
+Color lightmodebutton = new Color(1,1,1,1);
+Color lightmodebuttontext = new Color(0,0,0,1);
+*/
+
+//quiz mode variables
+
+	bool quizmode;
+
+	GameObject quizp;
+	GameObject quiza;
+	GameObject quizb;
+	GameObject quizc;
+	GameObject quizd;
+	GameObject quizbig;
+	bool[][] quizlessonselection; //stores which lessons are selected.
+	int[][] quizwordmapping;//points to the mainarray [lang]
+	bool[][][] quizwordselection;
+	bool quizinprogress=false;
+	int numofwordsselected=0;
+	int quizcounter=0;
+	int quizscore=0;
+	int quizanswer=0;
+	Text quiztext;
+	Text quiztext2;
+
+//global mode variables
+	[UdonSynced]
+	int globalcurrentlang;
+
+	[UdonSynced]
+	int globalcurrentlesson;
+
+	[UdonSynced]
+	int globalcurrentword;
+
+	[UdonSynced]
+	int globalcurrentboard;
+
+//dark mode variables
+Color black = Color.black;
+Color white = Color.white;
+Color gray = Color.gray;
+Color lightgray = new Color(.25f,.25f,.25f,1);
+TextMeshPro[] worldtext;
+Image[] worldpanels;
+Button[] worldbuttons; //every button except the 70 menu button array
+Image[] worldcheckboxes;
+
+ColorBlock darkmodebutton;
+ColorBlock darkmodeselectedbutton;
+/*
+Image[] panels_signingavatar;
+TextMeshPro[] texts_signingavatar;
+Button[] buttons_signingavatar;
+Image[] panels_preference;
+TextMeshPro[] texts_preference;
+Image[] checkbox_preference;
+*/
 
 	/***************************************************************************************************************************
-	Assigns variables for use. Initializes menu by calling DisplayLanguageSelectMenu();
+	Assigns variables for use. Initializes menu by calling DisplayLocalLanguageSelectMenu();
 	***************************************************************************************************************************/
 	void Start() {
 
+		/*
+		//need changelog
+		//GameObject.Find("/Changelog/Panel").GetComponent<Image>()
+		//GameObject.Find("/Changelog/Panel/Text").GetComponent<TextMeshPro>()
+		//GameObject.Find("/Greeting Text/Panel").GetComponent<Image>()
+		//GameObject.Find("/Greeting Text/Panel/Text").GetComponent<TextMeshPro>()
+		//GameObject.Find("/Video Disclamer Canvas/Panel").GetComponent<Image>(),
+		//GameObject.Find("/Video Disclamer Canvas/Panel/Text").GetComponent<TextMeshPro>(),
+		GameObject go=GameObject.Find("/Signing Avatars/Canvas");
+		Image[] panels_signingavatar=go.GetComponentsInChildren<Image>(true);
+		TextMeshPro[] texts_signingavatar=go.GetComponentsInChildren<TextMeshPro>(true);
+		Button[] buttons_signingavatar=go.GetComponentsInChildren<Button>(true);
+		//avatar speech bubble? note need to checkpc/vs quest avatar.
 
-HandToggle=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
-GlobalToggle=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode").GetComponent<Toggle>();
-avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Avatar Scale Slider").GetComponent<Slider>();
+		go=GameObject.Find("/Preferencesv2/Canvas");
+		Image[] panels_preference=go.GetComponentsInChildren<Image>(true);
+		TextMeshPro[] texts_preference=go.GetComponentsInChildren<TextMeshPro>(true);
+		Image[] checkbox_preference=go.GetComponentsInChildren<Image>(true); //urgh there's no way to seperate out i
 
 
+
+		Image[] worldpanels = {
+			GameObject.Find("/Changelog/Panel").GetComponent<Image>(),
+			GameObject.Find("/Signing Avatars/Canvas/Current Sign Panel").GetComponent<Image>(),
+			GameObject.Find("/Signing Avatars/Canvas/Description Panel").GetComponent<Image>(),
+			GameObject.Find("/Signing Avatars/Canvas/Credit Panel").GetComponent<Image>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel").GetComponent<Image>(),
+			GameObject.Find("/Greeting Text/Panel").GetComponent<Image>(),
+			GameObject.Find("/Video Disclamer Canvas/Panel").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Top Panel").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel").GetComponent<Image>(),
+		};
+		Image[] worldcheckboxes = {
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Toggle/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Movable Toggle/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Palm Indicator Toggle/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Video Toggle/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Index of Words/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Mirror/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Pens/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Keyboards/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Walls/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Greeter/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Portals/Background").GetComponent<Image>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode/Background").GetComponent<Image>(),
+		};
+		TextMeshPro[] worldtext = {
+			GameObject.Find("/Changelog/Panel/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/Canvas/Current Sign Panel/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/Canvas/Description Panel/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/Canvas/Credit Panel/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/Canvas/PrevButton/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/Canvas/NextButton/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Greeting Text/Panel/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Video Disclamer Canvas/Panel/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Top Panel/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Toggle/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Movable Toggle/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Palm Indicator Toggle/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Video Toggle/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Index of Words/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Playback Speed Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Playback Speed Text Key").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Text Key").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Text").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Mirror/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Pens/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Keyboards/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Walls/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Greeter/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Portals/Label").GetComponent<TextMeshPro>(),
+			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode/Label").GetComponent<TextMeshPro>(),
+		};
+		Button[] worldbuttons ={
+			GameObject.Find("/Signing Avatars/Canvas/PrevButton").GetComponent<Button>(),
+			GameObject.Find("/Signing Avatars/Canvas/NextButton").GetComponent<Button>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A").GetComponent<Button>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B").GetComponent<Button>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C").GetComponent<Button>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D").GetComponent<Button>(),
+			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton").GetComponent<Button>(),
+
+		};
+	*/
+
+//Debug.Log("quizlessonselection.length"+quizlessonselection.Length);
+//Debug.Log("quizlessonselection[0].length"+quizlessonselection[0].Length);
+
+		darkmodebutton = new ColorBlock();
+		darkmodebutton.normalColor = new Color( .25f, .25f, .25f);
+		darkmodebutton.highlightedColor = new Color (.5f, .5f, .5f);
+		darkmodebutton.pressedColor = new Color (.75f, .75f, .75f);
+		darkmodebutton.colorMultiplier=1;
+		darkmodebutton.fadeDuration=.1f;
+
+		darkmodeselectedbutton = new ColorBlock();
+		darkmodeselectedbutton.normalColor = new Color( .2f, .3f, .2f);
+		darkmodeselectedbutton.highlightedColor = new Color (.2f, .5f, .2f);
+		darkmodeselectedbutton.pressedColor = new Color (.75f, .75f, .75f);
+		darkmodeselectedbutton.colorMultiplier=1;
+		darkmodeselectedbutton.fadeDuration=.1f;
+
+		//ColorBlock ver = new ColorBlock();
+		//verifieddark.normalColor = new Color(.18f,.3f,.18f,1); //light green
+		//verifieddark.highlightedColor = new Color(.4f,1,.4f,1); //darker light green
+		//verifieddark.pressedColor = new Color(.4f,.7f,.4f,1); //darker green
+
+
+HandToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
+GlobalToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode").GetComponent<Toggle>();
+QuizToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Quiz Mode").GetComponent<Toggle>();
+avatarscaleslider=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Slider").GetComponent<Slider>();
+
+DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetComponent<Toggle>();
+
+	quizmode=QuizToggle.GetComponent<Toggle>().isOn;
+	globalmode=GlobalToggle.GetComponent<Toggle>().isOn;
+	darkmode=DarkToggle.GetComponent<Toggle>().isOn;
+	
 		signingavatars = GameObject.Find("/Signing Avatars");
 		if(signingavatars.transform.Find("Nana Avatar").gameObject.activeInHierarchy){
 			Debug.Log("PC active");
@@ -1666,13 +1930,18 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
 			nana=signingavatars.transform.Find("Nana Quest").GetComponent<Animator>();
 			speechbubbletext = signingavatars.transform.Find("Nana Quest/Armature/Canvas/Bubble/text").GetComponent < Text > ();
 		}
-		currentsigntext = signingavatars.transform.Find("Canvas/Current Sign Panel/Current Sign Text").GetComponent < Text > ();
-		signcredittext = signingavatars.transform.Find("Canvas/Credit Panel/Credit Text").GetComponent < Text > ();
-		descriptiontext = signingavatars.transform.Find("Canvas/Description Panel/Description Text").GetComponent < Text > ();
+		currentsign = signingavatars.transform.Find("Canvas/Current Sign Panel").gameObject;
+		signcredit = signingavatars.transform.Find("Canvas/Credit Panel").gameObject;
+		description = signingavatars.transform.Find("Canvas/Description Panel").gameObject;
+		currentsigntext = currentsign.transform.Find("Text").GetComponent < Text > ();
+		signcredittext = signcredit.transform.Find("Text").GetComponent < Text > ();
+		descriptiontext = description.transform.Find("Text").GetComponent < Text > ();
+		
 		nextButton = signingavatars.transform.Find("Canvas/NextButton").gameObject;
     	prevButton = signingavatars.transform.Find("Canvas/PrevButton").gameObject;
 		menuheadertext = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header").GetComponent < Text > ();
-		menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header");
+		//menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header");
+		menusubheadertext = GameObject.Find("/Udon Menu System/Root Canvas/SubHeader").GetComponent < Text > ();
 
 		for (int x = 0; x < numofbuttons; x++) {
 			buttons[x] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Button " + (x));
@@ -1687,19 +1956,63 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
 		videocontainer = GameObject.Find("/Video Container");
 		videoplayer = GameObject.Find("/Video Container/Video");
 		vrcplayercomponent=((VRCUnityVideoPlayer)videoplayer.GetComponent(typeof(VRCUnityVideoPlayer)));
-		//VRCUrl urls = videocontainer.AddUdonSharpComponent<VRCUrl>();
+		
+	quizlessonselection = new bool[AllLessons.Length][];
+	for (int langnum = 0; langnum < AllLessons.Length; langnum++) {
+		quizlessonselection[langnum] = new bool[AllLessons[langnum].Length];
+		for (int y = 0; y < AllLessons[langnum].Length; y++) {
+			quizlessonselection[langnum][y]=false;
+		}
+	}
+
+	quizp=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel");
+	quiza=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A");
+	quizb=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B");
+	quizc=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C");
+	quizd=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D");
+	quizbig=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton");
+	quiztext=quizp.transform.Find("Text").GetComponent<Text>();
+	quiztext2=quizp.transform.Find("Text2").GetComponent<Text>();
+		quizp.SetActive(quizmode);
+		/*
+		quiza.SetActive(quizmode);
+		quizb.SetActive(quizmode);
+		quizc.SetActive(quizmode);
+		quizd.SetActive(quizmode);
+		quizbig.SetActive(!quizmode);
+		*/
+		nextButton.SetActive(!quizmode);
+		prevButton.SetActive(!quizmode);
+		currentsign.SetActive(!quizmode);
+		signcredit.SetActive(!quizmode);
+		description.SetActive(!quizmode);
+
 		DisplayLanguageSelectMenu();
 	}
 
 
 	/***************************************************************************************************************************
-	Changes the menu so it displays the language select menu.
+	Changes the menu so it displays the language select menu. 
 	***************************************************************************************************************************/
 	void DisplayLanguageSelectMenu() {
+		Debug.Log("Entered DisplayLanguageSelectMenu");
 		menuheadertext.text = "VR Sign Language Select Menu";
+		if(globalmode){
+			menusubheadertext.text = "Global Mode";
+		}else if (quizmode)
+		{
+			menusubheadertext.text = "Quiz Mode";
+		}
+		else
+		{
+			menusubheadertext.text = "Local Mode";
+		}
 		for (int x = 0; x < numofbuttons; x++) {
 			if (signlanguagenames.Length > x) {
+				buttons[x].SetActive(true);
+				buttons[x].GetComponent<Button>().colors=darkmodebutton;
 				buttontext[x].text = (x + 1) + ") " +  signlanguagenames[x][1];
+				buttontext[x].color=new Color(1,1,1,1); //white
 				indexicons[x].SetActive(false);
 				regvricons[x].SetActive(false);
 				bothvricons[x].SetActive(false);
@@ -1712,11 +2025,250 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
 		backbuttons[1].SetActive(false);
 		nextButton.SetActive(false);
 		prevButton.SetActive(false);
-        //previousboard=currentboard;
-        //previousboard=0;//can't think of a reason why we'd want a back button to another language's lesson menu?
-        currentboard=0;
-        currentlesson=0;
+        currentlesson=-1;
         currentword=-1;
+		currentboard=0;
+			    if(globalmode){
+			//bool isOwner = Networking.IsOwner(gameObject);
+			if(!Networking.IsOwner(gameObject)){
+				TakeOwnership();
+			}
+			globalcurrentboard=currentboard;
+			globalcurrentlang=currentlang;
+			globalcurrentlesson=currentlesson;
+			globalcurrentword=currentword;
+		}
+	}
+
+
+
+	/***************************************************************************************************************************
+	Figures out if the button pushed is the correct one. Displays corrisponding status screen if correct, or try again.
+	***************************************************************************************************************************/
+	public void quizbuttonpushed(int x){
+		Debug.Log("Entered quizbuttonpushed");
+		//Debug.Log("Quizcounter:"+quizcounter+" numofwordsselected:"+numofwordsselected);
+		quiza.SetActive(false);
+		quizb.SetActive(false);
+		quizc.SetActive(false);
+		quizd.SetActive(false);
+		quizbig.SetActive(true);
+		if(x==quizanswer){
+			//hide buttons, display correct + tally score/consequetive answer streak??
+			//display continue button?
+			quizscore++;
+			quiztext2.text="Progress: "+(quizcounter+1) + " of "+numofwordsselected+" Score: "+quizscore;
+			if(quizcounter!=(numofwordsselected-1)){
+				quizbig.transform.Find("Text").GetComponent<Text>().text="Correct\n✓\nClick to continue";
+			}
+			else
+			{
+				quizbig.transform.Find("Text").GetComponent<Text>().text="Correct\n✓\nYou've reached the end of the quiz.\nYou can now change selected lessons and push to regenerate the quiz.";
+				quiztext.text="Quiz Finished";
+				quiztext2.text="Progress: "+(quizcounter+1) + " of "+numofwordsselected+" Final Score: "+(int)(((decimal)quizscore/(decimal)numofwordsselected)*100)+"%";
+				//Debug.Log("quizscore:"+quizscore+" numofwordsselected:"+numofwordsselected+" quizscore/numofwordsselected:"+(int)(((decimal)quizscore/(decimal)numofwordsselected)*100));
+				quizinprogress=false;
+			}
+			
+		}else{
+			if(quizcounter!=(numofwordsselected-1)){
+				quizbig.transform.Find("Text").GetComponent<Text>().text="Incorrect - the correct answer was: "+AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][0]+"\n✗\nClick to continue";
+			}else{
+				quizbig.transform.Find("Text").GetComponent<Text>().text="Incorrect - the correct answer was: "+AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][0]+"\n✗\nYou've reached the end of the quiz.\nYou can now change selected lessons and push to regenerate the quiz.";
+				quiztext.text="Quiz Finished";
+				quiztext2.text="Progress: "+(quizcounter+1) + " of "+numofwordsselected+" Final Score: "+(int)(((decimal)quizscore/(decimal)numofwordsselected)*100)+"%";
+				//Debug.Log("quizscore:"+quizscore+" numofwordsselected:"+numofwordsselected+" quizscore/numofwordsselected:"+(int)(((decimal)quizscore/(decimal)numofwordsselected)*100));
+				quizinprogress=false;
+			}
+			//display incorrect. try again or move to next question? Perhaps marking which lessons/words they got wrong would be nice.
+		}
+		quizcounter++;
+	}
+
+	/***************************************************************************************************************************
+	Generates list of words from selected lessons, starts the quiz
+	***************************************************************************************************************************/
+	public void QuizBigButton(){
+		Debug.Log("Entered QuizBigButton");
+		//UnityEngine.Random.Range(0,quizarray.Length+1)
+
+
+		if(!quizinprogress)
+		{
+			quizcounter=0;
+			quizscore=0;
+			numofwordsselected=0;
+			for (int lang = 0; lang < quizlessonselection.Length; lang++) {
+				//Debug.Log("AllLessons[x].Length: "+ inspectorBehaviour.AllLessons[x].Length);
+				for (int lesson = 0; lesson < quizlessonselection[lang].Length; lesson++) 
+				{
+					for(int word=0;word<AllLessons[lang][lesson].Length; word++)
+					{
+						if(quizlessonselection[lang][lesson] && 
+							AllLessons[lang][lesson][word][6]=="TRUE" && 
+							AllLessons[lang][lesson][word][2]!="No Data Yet.")
+						{//if the lesson is selected
+						//add all words to the array if verified
+							numofwordsselected++;
+						}
+					}
+					//Debug.Log("lang num:"+lang + " lessonnum"+lesson + quizlessonselection[lang][lesson]);
+				}
+			}
+			//Debug.Log("numofwordsselected:"+numofwordsselected);
+			if(numofwordsselected!=0){
+				quizwordmapping=new int[numofwordsselected][];
+				int x=0;
+				for (int lang = 0; lang < quizlessonselection.Length; lang++) 
+				{
+					//Debug.Log("AllLessons[x].Length: "+ inspectorBehaviour.AllLessons[x].Length);
+					for (int lesson = 0; lesson < quizlessonselection[lang].Length; lesson++) 
+					{
+						for(int word=0;word<AllLessons[lang][lesson].Length; word++)
+						{
+							if(quizlessonselection[lang][lesson] && 
+							AllLessons[lang][lesson][word][6]=="TRUE" && 
+							AllLessons[lang][lesson][word][2]!="No Data Yet.")
+							{//if the lesson is selected
+								//add all words to the array if verified
+								quizwordmapping[x]=new int[3];
+								quizwordmapping[x][0]=lang;
+								quizwordmapping[x][1]=lesson;
+								quizwordmapping[x][2]=word;
+								x++;
+							}
+						}
+						//Debug.Log("lang num:"+lang + " lessonnum"+lesson + quizlessonselection[lang][lesson]);
+					}
+				}
+				for (int t = 0; t < quizwordmapping.Length; t++ )// Knuth shuffle algorithm
+				{
+					int[] tmp = quizwordmapping[t];
+					int r = UnityEngine.Random.Range(t, quizwordmapping.Length);
+					quizwordmapping[t] = quizwordmapping[r];
+					quizwordmapping[r] = tmp;
+				}
+				quizbig.SetActive(false);
+				quizinprogress=true;
+/*
+				Debug.Log("shuffled results:");
+				for (int t = 0; t < quizwordmapping.Length; t++ )
+				{
+					Debug.Log("number "+t+" values"+quizwordmapping[t][0]+"-"+quizwordmapping[t][01]+"-"+quizwordmapping[t][2]);
+				}
+				*/
+			}
+			else
+			{
+				Debug.Log("Exiting big button because no lessons are selected");
+				quiztext2.text="Error: No lessons/words selected.";
+			}
+
+		}
+		if(quizinprogress)
+		{
+			quiztext.text="Quiz Started";
+			quiztext2.text="Progress: "+(quizcounter+1) + " of "+numofwordsselected+" Score: "+quizscore;
+			quiza.SetActive(true);
+			quizb.SetActive(true);
+			quizc.SetActive(true);
+			quizd.SetActive(true);
+			quizbig.SetActive(false);
+			quizanswer=UnityEngine.Random.Range(0,4);//pick one of the 4 boxes to have the answer 0-3
+			int quizwrong1=UnityEngine.Random.Range(0,quizwordmapping.Length);
+			int quizwrong2=UnityEngine.Random.Range(0,quizwordmapping.Length);
+			int quizwrong3=UnityEngine.Random.Range(0,quizwordmapping.Length);
+			//prevent the same answer on multiple boxes.
+			while(quizwrong1 == quizcounter | AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][0] == AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][0] ){
+				quizwrong1=UnityEngine.Random.Range(0,quizwordmapping.Length);
+			}
+			while(quizwrong2 == quizcounter | quizwrong2 == quizwrong1 | AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][0] == AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][0]){
+				quizwrong2=UnityEngine.Random.Range(0,quizwordmapping.Length);
+			}
+			while(quizwrong3 == quizcounter | quizwrong3 == quizwrong1| quizwrong3 == quizwrong2 | AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][0] == AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][0]){
+				quizwrong3=UnityEngine.Random.Range(0,quizwordmapping.Length);
+			}
+			switch (quizanswer)
+			{
+				case 0:
+					quiza.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][0];
+					quizb.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][0];
+					quizc.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][0];
+					quizd.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][0];
+				break;
+				case 1:
+					quizb.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][0];
+					quiza.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][0];
+					quizc.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][0];
+					quizd.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][0];
+				break;
+				case 2:
+					quizc.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][0];
+					quiza.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][0];
+					quizb.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][0];
+					quizd.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][0];
+				break;
+				case 3:
+					quizd.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][0];
+					quiza.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][0];
+					quizb.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][0];
+					quizc.transform.Find("Text").GetComponent<Text>().text=AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][0];
+				break;
+				default:
+				Debug.Log("How is quizanswer outside of the expected random range?");
+				break;
+			}
+			nana.Play(AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][1]);
+		}
+
+	}
+
+
+	/***************************************************************************************************************************
+	Inverts colors
+	***************************************************************************************************************************/
+	public void ToggleDark(){
+		
+	}
+
+
+	/***************************************************************************************************************************
+	Update loop - if not the owner and global mode is enabled checks for updates to the global variables, and updates the board to follow. ignore quiz mode?
+	***************************************************************************************************************************/
+    private void Update()
+    {
+        bool isOwner = Networking.IsOwner(gameObject);
+		if(!isOwner & globalmode){//only activate if global mode is on and if they're not the owner of the board.
+			if(globalcurrentboard != currentboard | globalcurrentlang != currentlang | globalcurrentlesson != currentlesson | globalcurrentword != currentword){
+				switch(globalcurrentboard){
+				case 0: //global is on lang select
+					currentboard=globalcurrentboard;
+					DisplayLanguageSelectMenu();
+				break;
+				case 1://global is on lesson select
+					currentlang=globalcurrentlang;
+					DisplayLessonSelectMenu();//need language and lesson number.
+				break;
+				case 2://global is on word select
+					currentlesson=globalcurrentlesson;
+					DisplaySignSelectMenu();
+				break;
+				default:
+				break;
+				}
+				if(globalcurrentword!=currentword){
+					changeword(globalcurrentword);
+				}
+			}
+
+		}
+
+
+		GameObject.Find("/Debug/Panel/Text1").GetComponent<Text>().text="Master:"+isOwner;
+		GameObject.Find("/Debug/Panel/Text2").GetComponent<Text>().text="globalcurrentboard:"+globalcurrentboard+" currentboard:"+currentboard;
+		GameObject.Find("/Debug/Panel/Text3").GetComponent<Text>().text="globalcurrentlang:"+globalcurrentlang+" currentlang:"+currentlang;
+		GameObject.Find("/Debug/Panel/Text4").GetComponent<Text>().text="globalcurrentlesson:"+globalcurrentlesson+" currentlesson:"+currentlesson;
+		GameObject.Find("/Debug/Panel/Text5").GetComponent<Text>().text="globalcurrentword:"+globalcurrentword+" currentword:"+currentword;
 	}
 
 	/***************************************************************************************************************************
@@ -1724,45 +2276,107 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
 	***************************************************************************************************************************/
 	public void buttonpushed(int x) {
 		//figure out what the current signnumber is based on x and prevsign (figure out previous screen first)
-		Debug.Log("Entered Buttonpushed with button #"+x+" pushed and currentboard"+currentboard);
+		Debug.Log("Entered Buttonpushed with button #"+x+" pushed. Currentboard:"+currentboard+" Quizmode: "+quizmode + " Globalmode: "+globalmode);
+		if(globalmode){
+			Debug.Log("Global Mode");
+			bool isOwner = Networking.IsOwner(gameObject);
+			if(!isOwner){
+				TakeOwnership();
+			}
+		}
+		if(quizmode)
+		{
+			Debug.Log("Quiz Mode");
 		switch (currentboard) {
-		case 0: //button pushed on lang select, change to lesson select board.
-        	DisplayLessonSelectMenu(x);//x=language number
-        break;
-        case 1://button pushed on lesson select, change to word select board.
-        	DisplaySignSelectMenu(x);//need language and lesson number.
-        break;
-        case 2://button pushed on word select, display word selected.
-			//turn off current playing video (if any)
-			//TurnOffVideo();
-			//do all the sign word change stuff
-			changeword(x);
-        break;
-        default:
-        Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
-        break;
-        }
+			case 0: //button pushed on lang select, change to lesson select board.
+				currentlang=x;
+				DisplayLessonSelectMenu();//x=language number
+			break;
+			case 1://button pushed on lesson select, mark as selected
+				SelectQuizLesson(x);
+			break;
+			case 2:
+				
+			break;
+			default:
+			Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
+			break;
+			}
+		}
+		else{
+			switch (currentboard) {
+			case 0: //button pushed on lang select, change to lesson select board.
+				currentlang=x;
+				DisplayLessonSelectMenu();//x=language number
+			break;
+			case 1://button pushed on lesson select, change to word select board.
+				currentlesson=x;
+				DisplaySignSelectMenu();
+			break;
+			case 2://button pushed on word select, display word selected.
+				//turn off current playing video (if any)
+				//TurnOffVideo();
+				//do all the sign word change stuff
+				changeword(x);
+			break;
+			default:
+			Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
+			break;
+			}
+		}
 	}
+
+	/***************************************************************************************************************************
+	Takes ownership of the board udonbehavior to update variables?
+	***************************************************************************************************************************/
+        void TakeOwnership()
+        {
+            if (Networking.IsMaster)
+            {
+                if (!Networking.IsOwner(gameObject))
+                {
+                    Networking.SetOwner(Networking.LocalPlayer, gameObject);
+                }
+            }
+        }
 
 	/***************************************************************************************************************************
 	Figures out where the back button goes based on the current board, and sends to the approperate functions to update the menu.
 	***************************************************************************************************************************/
 	void BackButtonClicked() {
 		//figure out what the current signnumber is based on x and prevsign (figure out previous screen first)
-		switch (currentboard) {
-		case 0: //button pushed on lang select, change to lesson select board.
-        	Debug.Log("Back button pushed, but the back button should have been enabled on lang select ");
-        break;
-        case 1://button pushed on lesson select, change to lang select board.
-        	DisplayLanguageSelectMenu();//need language and lesson number.
-        break;
-        case 2://button pushed on word select, display lesson select board.
-			DisplayLessonSelectMenu(currentlang);
-		break;
-        default:
-        Debug.Log("Back button pushed, but I have no idea what board i'm on. currentboard: "+currentboard);
-        break;
-        }
+		if(quizmode){
+			switch (currentboard) {
+			case 0: //button pushed on lang select, change to lesson select board.
+				Debug.Log("Back button pushed, but the back button should not have been enabled on lang select ");
+			break;
+			case 1://button pushed on lesson select, change to lang select board.
+				DisplayLanguageSelectMenu();//need language and lesson number.
+			break;
+			case 2://button pushed on word select, display lesson select board.
+				DisplayLessonSelectMenu();
+			break;
+			default:
+			Debug.Log("Back button pushed, but I have no idea what board i'm on. currentboard: "+currentboard);
+			break;
+			}
+		}
+		else{
+			switch (currentboard) {
+			case 0: //button pushed on lang select, change to lesson select board.
+				Debug.Log("Back button pushed, but the back button should not have been enabled on lang select ");
+			break;
+			case 1://button pushed on lesson select, change to lang select board.
+				DisplayLanguageSelectMenu();//need language and lesson number.
+			break;
+			case 2://button pushed on word select, display lesson select board.
+				DisplayLessonSelectMenu();
+			break;
+			default:
+			Debug.Log("Back button pushed, but I have no idea what board i'm on. currentboard: "+currentboard);
+			break;
+			}
+		}
 	}
 
     /***************************************************************************************************************************
@@ -1781,56 +2395,113 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
 	Called to change everything needed to display a sign's motion data. Doesn't care if it's the same sign.
 	***************************************************************************************************************************/
 	void changeword(int buttonnumber) { //wordnum must not be 00.
-
+		Debug.Log("Entering changeword with buttonbumber of: " + buttonnumber);
 			//turn off old video.
 			if (currentword!=-1)
 			{
-				if (AllLessons[currentlang][currentlesson][currentword][3] == "") { //if url is empty, turn off the video
+				buttons[currentword].GetComponent<Button>().colors=darkmodebutton;
+				if (AllLessons[currentlang][currentlesson][buttonnumber][3] == "") { //if url is empty, turn off the video
+				Debug.Log("Url empty");
                 vrcplayercomponent.Stop();
 				//	Debug.Log("/Udon Menu System/Video Container/"+signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1));
 					//videocontainer.transform.Find(signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1)).gameObject.SetActive(false);
 				}
 			}
-		Debug.Log("Entering changeword with buttonbumber of: " + buttonnumber);
+		
+		if(buttonnumber!=-1){
+
+		buttons[buttonnumber].GetComponent<Button>().colors=darkmodeselectedbutton;
 		//0th value is the word 
         //1st value is the name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
         //2nd value is mocap credits. 
         //3rd value is video URL.
         //4th value is VR index or regular 0=indexonly , 1=generalvr,2=both
         //5th value is Sign description string
-		currentsigntext.text=AllLessons[currentlang][currentlesson][buttonnumber][0];
+		currentsigntext.text=(currentlesson+1)+"-"+(buttonnumber+1)+" "+AllLessons[currentlang][currentlesson][buttonnumber][0];
 		speechbubbletext.text=AllLessons[currentlang][currentlesson][buttonnumber][0];
 		nana.Play(AllLessons[currentlang][currentlesson][buttonnumber][1]);//or do setinterger? But setinterger is hard to figure out unless i re-encode all the states to something easily derived from AllLessons
-		signcredittext.text = AllLessons[currentlang][currentlesson][buttonnumber][2];
+		signcredittext.text = "The motion data for this sign was signed by: " +  AllLessons[currentlang][currentlesson][buttonnumber][2];
 		
 		if(AllLessons[currentlang][currentlesson][buttonnumber][3]!=""){//if url is blank, then don't look for the video
-			vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][buttonnumber]);
+			if(langurls.Length!=0){//don't crash the script if i forget to build langurls lol...
+				vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][buttonnumber]);
+			}
 		}
 		descriptiontext.text = AllLessons[currentlang][currentlesson][buttonnumber][5];
 
+		Debug.Log("Buttonnumber:"+ buttonnumber+" array length:" + AllLessons[currentlang][currentlesson].Length);
 		if(buttonnumber>0){
 			prevButton.SetActive(true);
 		}else{
 			prevButton.SetActive(false);
 		}
-		if(buttonnumber<AllLessons[currentlang][currentlesson].Length){
+		if((buttonnumber+1)<AllLessons[currentlang][currentlesson].Length){ //buttonnumber is zero indexed, length is not
 			nextButton.SetActive(true);
 		}else{
 			nextButton.SetActive(false);
 		}
+		}
 	currentword=buttonnumber;
-	    
+	    if(globalmode){
+			//bool isOwner = Networking.IsOwner(gameObject);
+			if(!Networking.IsOwner(gameObject)){
+				TakeOwnership();
+			}
+			globalcurrentboard=currentboard;
+			globalcurrentlang=currentlang;
+			globalcurrentlesson=currentlesson;
+			globalcurrentword=currentword;
+		}
 	}
 
-	void DisplayLessonSelectMenu(int languagenumber) { //I don't need the lesson number here because I'm displaying all lessons.
-		Debug.Log("Now entering DisplayLessonSelectMenu with a language number of " + languagenumber);
-		menuheadertext.text = signlanguagenames[languagenumber][0] + " Lesson Menu";
-		//Debug.Log("header set?");
 
+
+	/***************************************************************************************************************************
+	Changes selected array to true for given lesson. Change button color to indicate selected.
+	***************************************************************************************************************************/
+	void SelectQuizLesson(int x) { //I don't need the lesson number here because I'm displaying all lessons.
+		Debug.Log("Now entering SelectQuizLesson with a language number of " + currentlang + " and a button number of x:"+x);
+		if(quizlessonselection[currentlang][x]==false){
+			buttons[x].GetComponent<Button>().colors=darkmodeselectedbutton;
+			quizlessonselection[currentlang][x]=true;
+		}else{
+			buttons[x].GetComponent<Button>().colors=darkmodebutton;
+			quizlessonselection[currentlang][x]=false;
+		}
+
+	}
+
+
+	/***************************************************************************************************************************
+	Changes the menu so it displays the Lesson select menu.
+	***************************************************************************************************************************/
+	void DisplayLessonSelectMenu() {
+		Debug.Log("Now entering DisplayLessonSelectMenu with a language #:" + currentlang);
+		menuheadertext.text = signlanguagenames[currentlang][0] + " Lesson Menu";
+		if(globalmode){
+			menusubheadertext.text = "Global Mode";
+		}
+		else if(quizmode)
+		{
+			menusubheadertext.text = "Quiz Mode";
+		}else
+		{
+			menusubheadertext.text = "Local Mode";
+		}
 		for (int x = 0; x < numofbuttons; x++) {
-			if (x < AllLessons[languagenumber].Length) {
-				if (lessonnames[languagenumber].Length > x) {
-					buttontext[x].text = (x + 1) + ") " + lessonnames[languagenumber][x];
+			if (x < AllLessons[currentlang].Length) {
+				if (lessonnames[currentlang].Length > x) {
+					buttontext[x].text = (x + 1) + ") " + lessonnames[currentlang][x];
+					if(quizmode){
+						if(quizlessonselection[currentlang][x]){
+							buttons[x].GetComponent<Button>().colors=darkmodeselectedbutton;
+						}else{
+							buttons[x].GetComponent<Button>().colors=darkmodebutton;	
+						}
+					}else{
+					buttons[x].GetComponent<Button>().colors=darkmodebutton;	
+					}
+					buttontext[x].color=new Color(1,1,1,1); //white
 					buttons[x].SetActive(true);
 					indexicons[x].SetActive(false);
 					regvricons[x].SetActive(false);
@@ -1845,28 +2516,48 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
 		backbuttons[0].SetActive(true);
 		backbuttons[1].SetActive(true);
 		//maybe need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function...
-		currentlang=languagenumber;
-		currentboard=1;
 		currentword=-1;
+		currentboard=1;
+		if(globalmode){
+			bool isOwner = Networking.IsOwner(gameObject);
+			if(!isOwner){
+				TakeOwnership();
+			}
+			globalcurrentboard=currentboard;
+			globalcurrentlang=currentlang;
+			globalcurrentlesson=currentlesson;
+			globalcurrentword=currentword;
+		}
 	}
 
-	void DisplaySignSelectMenu(int lessonnum) {
-		Debug.Log("Now entering DisplaySignSelectMenu with a language number of " + currentlang + " and a lessonnum of " + lessonnum);
-		//  string[][][] AllLessons = new string[1][][];
-		//   AllLessons[0]=ASLlessons;
-		menuheadertext.text = signlanguagenames[currentlang][0] + " - " + lessonnames[currentlang][lessonnum];
 
+	/***************************************************************************************************************************
+	Changes the menu so it displays the available signs in a specific lesson. (Local Mode)
+	***************************************************************************************************************************/
+	void DisplaySignSelectMenu() {
+		Debug.Log("Now entering DisplaySignSelectMenu with a language number of " + currentlang + " and a currentlesson of " + currentlesson);
+		menuheadertext.text = signlanguagenames[currentlang][0] + " - " + lessonnames[currentlang][currentlesson];
+		if(globalmode){
+			menusubheadertext.text = "Global Mode";
+		}else
+		{
+			menusubheadertext.text = "Local Mode";
+		}
 		for (int x = 0; x < numofbuttons; x++) { //update all the buttons in the menu
-			//Debug.Log("x="+x+" AllLessons[currentlang][lessonnum].Length="+AllLessons[currentlang][lessonnum].Length);
-			if (AllLessons[currentlang][lessonnum].Length > x) { //for all signs in the lesson
+			//Debug.Log("x="+x+" AllLessons[currentlang][currentlesson].Length="+AllLessons[currentlang][currentlesson].Length);
+			if (AllLessons[currentlang][currentlesson].Length > x) { //for all signs in the lesson
 				buttons[x].SetActive(true);
-				buttontext[x].text = "          " + (x + 1) + ") " + AllLessons[currentlang][lessonnum][x][0];
-				speechbubbletext.text=AllLessons[currentlang][lessonnum][x][0];
-				currentsigntext.text=speechbubbletext.text=AllLessons[currentlang][lessonnum][x][0];
-				signcredittext.text="The motion data for this sign was signed by: " + AllLessons[currentlang][lessonnum][x][2];
-				descriptiontext.text=AllLessons[currentlang][lessonnum][x][5];
-				//Debug.Log("switching on AllLessons[currentlang][lessonnum][x][4]:" + AllLessons[currentlang][lessonnum][x][4]);
-				switch (AllLessons[currentlang][lessonnum][x][4]) { //populate vr icons
+				buttons[x].GetComponent<Button>().colors=darkmodebutton;
+				buttontext[x].text = "    " + (x + 1) + ") " + AllLessons[currentlang][currentlesson][x][0];
+
+					if(AllLessons[currentlang][currentlesson][x][6]=="TRUE"){
+						buttontext[x].color=new Color(.5f,1,.5f,1);//green
+					}else{
+						buttontext[x].color=new Color(1,.5f,.5f,1);//red
+					}
+
+				//Debug.Log("switching on AllLessons[currentlang][currentlesson][x][4]:" + AllLessons[currentlang][currentlesson][x][4]);
+				switch (AllLessons[currentlang][currentlesson][x][4]) { //populate vr icons
 				case "0": //index icon
 					indexicons[x].SetActive(true);
 					regvricons[x].SetActive(false);
@@ -1895,10 +2586,20 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
 		}
 		backbuttons[0].SetActive(true);
 		backbuttons[1].SetActive(true);
-		//also need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function... 
 		currentboard=2;
-		currentlesson=lessonnum;
+	    if(globalmode){
+			//bool isOwner = Networking.IsOwner(gameObject);
+			if(!Networking.IsOwner(gameObject)){
+				TakeOwnership();
+			}
+			globalcurrentboard=currentboard;
+			globalcurrentlang=currentlang;
+			globalcurrentlesson=currentlesson;
+			globalcurrentword=currentword;
+		}
+		//also need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function... 
 	}
+
 	/***************************************************************************************************************************
 	Called to scale signing avatar gameobject
 	***************************************************************************************************************************/
@@ -1906,18 +2607,17 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
     {
 		signingavatars.transform.localScale= new Vector3(avatarscaleslider.value,avatarscaleslider.value,avatarscaleslider.value);
     }
+
+
 	/***************************************************************************************************************************
-	Called to switch the signing avatar's mirror animation parameter and set the toggle box state.
+	Called to switch the signing avatar's mirror animation parameter and set the toggle box state. 
 	***************************************************************************************************************************/
 	public void ToggleHand()
     {
 		if(!nana.GetBool("Mirror")){ //if mirror checkbox is off
 			nana.SetBool("Mirror",true);
-			HandToggle.GetComponent<Toggle>().isOn=true;
 		}else{
 			nana.SetBool("Mirror",false);
-			HandToggle.GetComponent<Toggle>().isOn=false;
-
 		}
 		
     }
@@ -1929,19 +2629,97 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
     {
 		if(!globalmode){
 			globalmode=true;
-			GlobalToggle.GetComponent<Toggle>().isOn=true;
+
 		}else{
 			globalmode=false;
-			GlobalToggle.GetComponent<Toggle>().isOn=true;
 		}
+		redrawmenu();
     }
 
 
 	/***************************************************************************************************************************
-	Called to switch the board to quiz mode and set the toggle box state
+	Called to switch the board to quiz mode
+	Handles enabling/disabling ui elements
 	***************************************************************************************************************************/
-	public void ToggleQuizMode()
+	public void ToggleQuiz()
     {
+
+		Debug.Log("Entered ToggleQuiz with quizmode: "+quizmode);
+		if(!quizmode){
+			quizmode=true;
+		}else{
+			quizmode=false;
+		}
+		quizp.SetActive(quizmode);
+
+		quiza.SetActive(!quizmode);
+		quizb.SetActive(!quizmode);
+		quizc.SetActive(!quizmode);
+		quizd.SetActive(!quizmode);
+		quizbig.SetActive(quizmode);
+		signingavatars.transform.Find("Nana Avatar/Armature/Canvas").gameObject.SetActive(!quizmode);
+
+		nextButton.SetActive(!quizmode);
+		prevButton.SetActive(!quizmode);
+		currentsign.SetActive(!quizmode);
+		signcredit.SetActive(!quizmode);
+		description.SetActive(!quizmode);
+
+		quiztext.text="Quiz";
+		quiztext2.text="Select lessons and then push the big button below to generate a quiz";
+		quizbig.transform.Find("Text").GetComponent<Text>().text="Start Quiz";
+		quizinprogress=false;
+		redrawmenu();
+    }
+	/***************************************************************************************************************************
+	Redraws the menu based on currentboard and other current values.
+	***************************************************************************************************************************/
+	void redrawmenu(){
+		if(quizmode)
+		{
+			switch (currentboard) {
+			case 0: 
+				DisplayLanguageSelectMenu();
+			break;
+			case 1:
+				DisplayLessonSelectMenu();
+			break;
+			case 2://per-word quizzing not supported yet, so go back to lesson select
+				DisplayLessonSelectMenu();
+			break;
+			default:
+			break;
+			}
+		}
+		else
+		{
+			switch (currentboard) {
+			case 0:
+				DisplayLanguageSelectMenu();
+			break;
+			case 1:
+				DisplayLessonSelectMenu();
+			break;
+			case 2:
+				DisplaySignSelectMenu();
+			break;
+			default:
+			break;
+			}
+		}
+	}
+
+string[] reshuffle(string[] texts)
+    {
+        // Knuth shuffle algorithm :: courtesy of Wikipedia :)
+        for (int t = 0; t < texts.Length; t++ )
+        {
+            string tmp = texts[t];
+            int r = UnityEngine.Random.Range(t, texts.Length);
+            texts[t] = texts[r];
+            texts[r] = tmp;
+        }
+		return texts;
     }
 	public void NextB()
 	{
@@ -1959,6 +2737,18 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
 	{
 	Debug.Log("Back pushed");
 	BackButtonClicked();
+	}
+	public void QuizA() {
+		quizbuttonpushed(0);
+	}	
+	public void QuizB() {
+		quizbuttonpushed(1);
+	}	
+	public void QuizC() {
+		quizbuttonpushed(2);
+	}	
+	public void QuizD() {
+		quizbuttonpushed(3);
 	}
 	public void B0() {
 		buttonpushed(0);
@@ -2128,7 +2918,48 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
 	public void B55() {
 		buttonpushed(55);
 	}
-
+	public void B56() {
+		buttonpushed(56);
+	}
+	public void B57() {
+		buttonpushed(57);
+	}
+	public void B58() {
+		buttonpushed(58);
+	}
+	public void B59() {
+		buttonpushed(59);
+	}
+	public void B60() {
+		buttonpushed(60);
+	}
+	public void B61() {
+		buttonpushed(61);
+	}
+	public void B62() {
+		buttonpushed(62);
+	}
+	public void B63() {
+		buttonpushed(63);
+	}
+	public void B64() {
+		buttonpushed(64);
+	}
+	public void B65() {
+		buttonpushed(65);
+	}
+	public void B66() {
+		buttonpushed(66);
+	}
+	public void B67() {
+		buttonpushed(67);
+	}
+	public void B68() {
+		buttonpushed(68);
+	}
+	public void B69() {
+		buttonpushed(69);
+	}
         public override void OnVideoError(VideoError videoError)
         {
 
@@ -2194,10 +3025,73 @@ avatarscaleslider=GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Pane
 					}
 					inspectorBehaviour.langurls[x] = lessonurls;
 				}
+				Debug.Log("URLS populated");
+
+				//generate index of all words, sorted.
+
+int lessonnum=1;
+int wordnumber=1;
+int totalwords=0;
+List<List<String>> listofallwords = new List<List<string>>();
+//List<List<List<String>>> listoflessons = new List<List<List<string>>>();
+foreach (var lesson in inspectorBehaviour.AllLessons[0])
+{
+    wordnumber=1;
+	if(lessonnum+1==28){
+		continue;
+	}
+    //List<List<String>> listofwords = new List<List<String>>();
+    foreach (var word in lesson)
+    {
+        List<String> worddata = new List<String>();
+        //uh why do i need the word values?
+		/*
+		foreach (var wordvalues in word)
+        {
+            //Console.Write("Added "+wordvalues+"\n");
+            worddata.Add(wordvalues);
+        }
+		*/
+		worddata.Add(word[0]);
+
+        worddata.Add("L"+lessonnum+"-"+wordnumber);
+        //listofwords.Add(worddata); 
+        listofallwords.Add(worddata);
+        totalwords++;
+        wordnumber++;
+    }
+    //listofwords=listofwords.OrderBy(l=>l[0]).ToList();
+    //var listofwordssorted = from word in listofwords
+    //listoflessons.Add(listofwords);
+    lessonnum++;
+}
+listofallwords=listofallwords.OrderBy(l=>l[0]).ToList();
+string dictionarytext="";
+
+foreach (var word in listofallwords){
+    dictionarytext=dictionarytext+word[0]+" "+word[1]+"\n";
+	//Console.Write(word[0]+" "+word[6]+"\n");
+}
+
+FindInActiveObjectByName("DictionaryText").GetOrAddComponent<TMP_Text>().text=dictionarytext;
             }
 	    }
     }
+
+	static GameObject FindInActiveObjectByName(string name){
+    Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+    for (int i = 0; i < objs.Length; i++){
+        if (objs[i].hideFlags == HideFlags.None)
+        {
+            if (objs[i].name == name){
+                return objs[i].gameObject;
+            }
+        }
+    }
+return null;
+}
 #endif
+
 
 
 }
