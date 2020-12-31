@@ -1739,6 +1739,8 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	Color COLOR_GREEN_DARK = new Color(.2f,.3f,.2f,1);
 	Color COLOR_GREEN_MEDIUM = new Color(.2f,.5f,.2f,1);
 	Color COLOR_GREEN_LIGHT = new Color(.75f,.75f,.75f,1);
+	Color COLOR_GREEN = new Color(.5f,1,.5f,1);
+	Color COLOR_RED = new Color(1,.5f,.5f,1);
 
 	// Color Variables
 	bool darkmode;
@@ -1946,7 +1948,7 @@ Image[] checkbox_preference;
 		InitializeQuizMenu();
 		UpdateSigningAvatarState(); // ...
 
-		UpdateMenuDisplay();
+		UpdateAllDisplays();
 	}
 
 
@@ -2053,7 +2055,7 @@ Image[] checkbox_preference;
 	}
 
 	/***************************************************************************************************************************
-	Update GlobalVariables
+	Update Menu Variables used to control displays.
 	***************************************************************************************************************************/
     void UpdateMenuVariables(int buttonIndex) {
 		int currentmenu = GetCurrentMenu();
@@ -2091,9 +2093,9 @@ Image[] checkbox_preference;
 
 
 	/***************************************************************************************************************************
-	Update Menu
+	Update all displays, including Menu, VRC Player, Nana, etc.
 	***************************************************************************************************************************/
-	void UpdateMenuDisplay() {
+	void UpdateAllDisplays() {
 		int currentmenu = GetCurrentMenu();
 		switch (currentmenu) {
 			case MENU_LANGUAGE:
@@ -2104,15 +2106,15 @@ Image[] checkbox_preference;
 				break;
 			case MENU_WORD:
 				DisplayWordSelectMenu();
+				if (currentword != NOT_SELECTED) {
+					
+				}
 				break;
 			default:
 				Debug.Log("UpdateMenuDisplay() failed; currentmenu is: "+currentmenu+")");
 				DebugMenuVariables();
 				break; 
 		}
-
-		// Update Breadcrumb
-
 		
 		// Update Subheader
 		String text = globalmode ? "Global Mode" : "Local Mode";
@@ -2142,10 +2144,13 @@ Image[] checkbox_preference;
 	Change Menu to display Language Selection.
 	***************************************************************************************************************************/
 	void DisplayLanguageSelectMenu() {
+		// Handle Menu Header (Breadcrumb)
+		menuheadertext.text = "VR Sign Language Select Menu";
+
 		// Handle Selection Buttons
 		for (int i = 0; i < numofbuttons; i++) {
 			if (i < signlanguagenames.Length) {
-				DisplayButton(i, (i + 1) + ") " +  signlanguagenames[i][1], false);
+				DisplayButton(i, (i + 1) + ") " +  signlanguagenames[i][1]);
 				HideVRIcon(i);
 			} else {
 				HideButton(i);
@@ -2163,6 +2168,9 @@ Image[] checkbox_preference;
 	Change Menu to display Lesson Selection.
 	***************************************************************************************************************************/
 	void DisplayLessonSelectMenu() {
+		// Handle Menu Header (Breadcrumb)
+		menuheadertext.text = signlanguagenames[currentlang][0] + " Lesson Menu";
+
 		// Handle Selection Buttons
 		bool isButtonSelected = false;
 		for (int i = 0; i < numofbuttons; i++) {
@@ -2188,6 +2196,10 @@ Image[] checkbox_preference;
 	Change Menu to display Word Selection.
 	***************************************************************************************************************************/
 	DisplayWordSelectMenu() {
+		// Handle Menu Header (Breadcrumb)
+		menuheadertext.text = signlanguagenames[currentlang][0] + " - " + lessonnames[currentlang][currentlesson];
+
+		// Handle Selection Buttons
 		string buttonText;
 		bool isButtonSelected;
 		bool isWordValid;
@@ -2249,27 +2261,22 @@ Image[] checkbox_preference;
 
 
 	/***************************************************************************************************************************
-	Update the display for a Menu button.
+	Display a Menu button at a specific index, with the given parameters.
 	***************************************************************************************************************************/
-	void DisplayButton(int index, string text, bool isSelected, isValid = true) {
+	void DisplayButton(int index, string text, bool isSelected = false, bool isValid = null) {
 
 		// Handle Validation Highlighting
-		if (isValid) {
-
+		if (isValid == null) {
+			buttontext[index].color = COLOR_WHITE; // Standard
 		} else {
-
+			buttontext[index].color = isValid ? COLOR_GREEN : COLOR_RED; // Validated
 		}
 	
 		// Handle Selection Highlighting
-		if(isSelected){
-			buttons[index].GetComponent<Button>().colors = darkmodeselectedbutton;
-		} else {
-			buttons[index].GetComponent<Button>().colors = darkmodebutton;
-		}
+		buttons[index].GetComponent<Button>().colors = isSelected ? darkmodeselectedbutton : darkmodebutton;
 		
 		// Handle Text
 		buttontext[index].text = text;
-		buttontext[index].color = COLOR_WHITE;
 		
 		// Toggle Display
 		buttons[index].SetActive(true);
