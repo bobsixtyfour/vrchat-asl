@@ -1901,16 +1901,16 @@ Image[] checkbox_preference;
 //Debug.Log("quizlessonselection[0].length"+quizlessonselection[0].Length);
 
 		darkmodebutton = new ColorBlock();
-		darkmodebutton.normalColor = new Color( .25f, .25f, .25f);
-		darkmodebutton.highlightedColor = new Color (.5f, .5f, .5f);
-		darkmodebutton.pressedColor = new Color (.75f, .75f, .75f);
+		darkmodebutton.normalColor = COLOR_GREY_DARK;
+		darkmodebutton.highlightedColor = COLOR_GREY_MEDIUM;
+		darkmodebutton.pressedColor = COLOR_GREY_LIGHT;
 		darkmodebutton.colorMultiplier=1;
 		darkmodebutton.fadeDuration=.1f;
 
 		darkmodeselectedbutton = new ColorBlock();
-		darkmodeselectedbutton.normalColor = new Color( .2f, .3f, .2f);
-		darkmodeselectedbutton.highlightedColor = new Color (.2f, .5f, .2f);
-		darkmodeselectedbutton.pressedColor = new Color (.75f, .75f, .75f);
+		darkmodeselectedbutton.normalColor = COLOR_GREEN_DARK;
+		darkmodeselectedbutton.highlightedColor = COLOR_GREEN_MEDIUM;
+		darkmodeselectedbutton.pressedColor = COLOR_GREEN_LIGHT;
 		darkmodeselectedbutton.colorMultiplier=1;
 		darkmodeselectedbutton.fadeDuration=.1f;
 
