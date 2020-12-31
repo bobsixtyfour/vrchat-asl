@@ -1716,6 +1716,20 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 
 	bool globalmode;
 
+	// Menu Constants
+	int NOT_SELECTED = -1;
+
+	int MODE_LOOKUP = 0;
+	int MODE_QUIZ = 1;
+
+	int MENU_LANGUAGE = 0;
+	int MENU_LESSON = 1;
+	int MENU_WORD = 2;
+
+	// Menu Variables
+	bool globalmode;
+	int currentmode = MODE_LOOKUP;
+
 	// Color Constants
 	Color COLOR_WHITE = new Color(1,1,1,1);
 	Color COLOR_BLACK = new Color(0,0,0,1);
@@ -1900,6 +1914,36 @@ Image[] checkbox_preference;
 //Debug.Log("quizlessonselection.length"+quizlessonselection.Length);
 //Debug.Log("quizlessonselection[0].length"+quizlessonselection[0].Length);
 
+		// Update Data - Modes
+		currentmode = QuizToggle.GetComponent<Toggle>().isOn ? MODE_QUIZ : MODE_LOOKUP;
+		globalmode = GlobalToggle.GetComponent<Toggle>().isOn;
+		darkmode = DarkToggle.GetComponent<Toggle>().isOn;
+
+		// Update Data - Quiz
+		quizlessonselection = new bool[AllLessons.Length][];
+		for (int langnum = 0; langnum < AllLessons.Length; langnum++) {
+			quizlessonselection[langnum] = new bool[AllLessons[langnum].Length];
+			for (int y = 0; y < AllLessons[langnum].Length; y++) {
+				quizlessonselection[langnum][y]=false;
+			}
+		}
+
+		// Update Displays
+		InitializeDarkMode();
+		InitializePreferenceMenu();
+	
+		InitializeSigningAvatar();
+		InitializeMenu();
+		InitializeVideoPlayer();
+
+		InitializeQuizMenu();
+		UpdateSigningAvatarState(); // ...
+
+		DisplayLanguageSelectMenu();
+	}
+
+
+	void InitializeDarkMode() {
 		darkmodebutton = new ColorBlock();
 		darkmodebutton.normalColor = COLOR_GREY_DARK;
 		darkmodebutton.highlightedColor = COLOR_GREY_MEDIUM;
@@ -1918,19 +1962,17 @@ Image[] checkbox_preference;
 		//verifieddark.normalColor = new Color(.18f,.3f,.18f,1); //light green
 		//verifieddark.highlightedColor = new Color(.4f,1,.4f,1); //darker light green
 		//verifieddark.pressedColor = new Color(.4f,.7f,.4f,1); //darker green
+	}
 
+	void InitializePreferenceMenu() {
+		HandToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
+		GlobalToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode").GetComponent<Toggle>();
+		QuizToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Quiz Mode").GetComponent<Toggle>();
+		avatarscaleslider=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Slider").GetComponent<Slider>();
+		DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetComponent<Toggle>();
+	}
 
-HandToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
-GlobalToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode").GetComponent<Toggle>();
-QuizToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Quiz Mode").GetComponent<Toggle>();
-avatarscaleslider=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Slider").GetComponent<Slider>();
-
-DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetComponent<Toggle>();
-
-	quizmode=QuizToggle.GetComponent<Toggle>().isOn;
-	globalmode=GlobalToggle.GetComponent<Toggle>().isOn;
-	darkmode=DarkToggle.GetComponent<Toggle>().isOn;
-	
+	void InitializeSigningAvatar() {
 		signingavatars = GameObject.Find("/Signing Avatars");
 		if(signingavatars.transform.Find("Nana Avatar").gameObject.activeInHierarchy){
 			Debug.Log("PC active");
@@ -1948,9 +1990,11 @@ DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetCom
 		currentsigntext = currentsign.transform.Find("Text").GetComponent < Text > ();
 		signcredittext = signcredit.transform.Find("Text").GetComponent < Text > ();
 		descriptiontext = description.transform.Find("Text").GetComponent < Text > ();
-		
 		nextButton = signingavatars.transform.Find("Canvas/NextButton").gameObject;
     	prevButton = signingavatars.transform.Find("Canvas/PrevButton").gameObject;
+	}
+
+	void InitializeMenu() {
 		menuheadertext = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header").GetComponent < Text > ();
 		//menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header");
 		menusubheadertext = GameObject.Find("/Udon Menu System/Root Canvas/SubHeader").GetComponent < Text > ();
@@ -1965,26 +2009,23 @@ DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetCom
 		backbuttons[0] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Left Back Button");
 		backbuttons[1] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Right Back Button");
 
+	}
+
+	void InitializeVideoPlayer() {
 		videocontainer = GameObject.Find("/Video Container");
 		videoplayer = GameObject.Find("/Video Container/Video");
 		vrcplayercomponent=((VRCUnityVideoPlayer)videoplayer.GetComponent(typeof(VRCUnityVideoPlayer)));
-		
-	quizlessonselection = new bool[AllLessons.Length][];
-	for (int langnum = 0; langnum < AllLessons.Length; langnum++) {
-		quizlessonselection[langnum] = new bool[AllLessons[langnum].Length];
-		for (int y = 0; y < AllLessons[langnum].Length; y++) {
-			quizlessonselection[langnum][y]=false;
-		}
 	}
 
-	quizp=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel");
-	quiza=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A");
-	quizb=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B");
-	quizc=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C");
-	quizd=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D");
-	quizbig=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton");
-	quiztext=quizp.transform.Find("Text").GetComponent<Text>();
-	quiztext2=quizp.transform.Find("Text2").GetComponent<Text>();
+	void InitializeQuizMenu() {
+		quizp=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel");
+		quiza=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A");
+		quizb=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B");
+		quizc=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C");
+		quizd=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D");
+		quizbig=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton");
+		quiztext=quizp.transform.Find("Text").GetComponent<Text>();
+		quiztext2=quizp.transform.Find("Text2").GetComponent<Text>();
 		quizp.SetActive(quizmode);
 		/*
 		quiza.SetActive(quizmode);
@@ -1993,14 +2034,17 @@ DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetCom
 		quizd.SetActive(quizmode);
 		quizbig.SetActive(!quizmode);
 		*/
-		nextButton.SetActive(!quizmode);
-		prevButton.SetActive(!quizmode);
-		currentsign.SetActive(!quizmode);
-		signcredit.SetActive(!quizmode);
-		description.SetActive(!quizmode);
-
-		DisplayLanguageSelectMenu();
 	}
+
+	void UpdateSigningAvatarState() {
+		bool isActive = !(currentmode == MODE_QUIZ)
+		nextButton.SetActive(isActive);
+		prevButton.SetActive(isActive);
+		currentsign.SetActive(isActive);
+		signcredit.SetActive(isActive);
+		description.SetActive(isActive);
+	}
+
 
 
 	/***************************************************************************************************************************
