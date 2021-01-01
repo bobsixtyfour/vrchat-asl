@@ -2895,18 +2895,34 @@ Image[] checkbox_preference;
 	}
 
 
-string[] reshuffle(string[] texts)
-    {
-        // Knuth shuffle algorithm :: courtesy of Wikipedia :)
-        for (int t = 0; t < texts.Length; t++ )
-        {
-            string tmp = texts[t];
-            int r = UnityEngine.Random.Range(t, texts.Length);
-            texts[t] = texts[r];
-            texts[r] = tmp;
-        }
-		return texts;
-    }
+	/***************************************************************************************************************************
+	Handle VRCPlayer Error
+	***************************************************************************************************************************/
+	public override void OnVideoError(VideoError videoError) {
+		Debug.LogError("[USharpVideo] Video failed: ");
+		switch (videoError)
+		{
+			case VideoError.RateLimited:
+				Debug.LogError("Rate limited, try again in a few seconds");
+				break;
+			case VideoError.PlayerError:
+				Debug.LogError("Video player error");
+				break;
+			case VideoError.InvalidURL:
+				Debug.LogError("Invalid URL");
+				break;
+			case VideoError.AccessDenied:
+				Debug.LogError("Video blocked, enable untrusted URLs");
+				break;
+			default:
+				Debug.LogError("Failed to load video");
+				break;
+		}
+	}
+
+	/***************************************************************************************************************************
+	Register Button Handlers
+	***************************************************************************************************************************/
 	public void NextB() {
 		PreviousNextWordButtonPushed(true);
 	}
@@ -2914,20 +2930,19 @@ string[] reshuffle(string[] texts)
 		PreviousNextWordButtonPushed(false);
 	}
 	public void BackB() {
-		Debug.Log("Back pushed");
-		BackButtonClicked();
+		BackButtonPushed();
 	}
 	public void QuizA() {
-		quizbuttonpushed(0);
+		// quizbuttonpushed(0);
 	}	
 	public void QuizB() {
-		quizbuttonpushed(1);
+		// quizbuttonpushed(1);
 	}	
 	public void QuizC() {
-		quizbuttonpushed(2);
+		// quizbuttonpushed(2);
 	}	
 	public void QuizD() {
-		quizbuttonpushed(3);
+		// quizbuttonpushed(3);
 	}
 	public void B0() {
 		buttonpushed(0);
@@ -3139,32 +3154,6 @@ string[] reshuffle(string[] texts)
 	public void B69() {
 		buttonpushed(69);
 	}
-        public override void OnVideoError(VideoError videoError)
-        {
-
-            Debug.LogError("[USharpVideo] Video failed: ");
-
-            switch (videoError)
-            {
-                case VideoError.RateLimited:
-                    Debug.LogError("Rate limited, try again in a few seconds");
-                    break;
-                case VideoError.PlayerError:
-                    Debug.LogError("Video player error");
-                    break;
-                case VideoError.InvalidURL:
-                    Debug.LogError("Invalid URL");
-                    break;
-                case VideoError.AccessDenied:
-                    Debug.LogError("Video blocked, enable untrusted URLs");
-                    break;
-                default:
-                    Debug.LogError("Failed to load video");
-                    break;
-            }
-
-        }
-//    
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR 
     [CustomEditor(typeof(MenuControl))]
