@@ -1714,8 +1714,6 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	Toggle QuizToggle;
 	Toggle DarkToggle;
 
-	bool globalmode;
-
 	// Menu Constants
 	int NOT_SELECTED = -1;
 
@@ -1728,7 +1726,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 
 	// Menu Variables
 	bool globalmode;
-	int currentmode = MODE_LOOKUP;
+	int currentmode = MODE_LOOKUP; //A field initializer cannot reference the non-static field, method, or property 'MenuControl.MODE_LOOKUP' [Assembly-CSharp]
 
 	// Color Constants
 	Color COLOR_WHITE = new Color(1,1,1,1);
@@ -2078,7 +2076,7 @@ Image[] checkbox_preference;
 	/***************************************************************************************************************************
 	Update Menu Variables used to control displays.
 	***************************************************************************************************************************/
-    void UpdateMenuVariables(int buttonIndex = null) {
+    void UpdateMenuVariables(int buttonIndex = null) { //A value of type '<null>' cannot be used as a default parameter because there are no standard conversions to type 'int'
 		Debug.Log("UpdateMenuVariables()");
 		DebugMenuVariables();
 
@@ -2209,7 +2207,7 @@ Image[] checkbox_preference;
 					HideVRIcon(i);
 				}
 			} else {
-				HideButton(i);
+				HideButton(i);//TODO: Does not exist yet
 			}
 		}
 
@@ -2223,7 +2221,7 @@ Image[] checkbox_preference;
 	/***************************************************************************************************************************
 	Change Menu to display Word Selection.
 	***************************************************************************************************************************/
-	DisplayWordSelectMenu() {
+	void DisplayWordSelectMenu() {
 		// Handle Menu Header (Breadcrumb)
 		menuheadertext.text = signlanguagenames[currentlang][0] + " - " + lessonnames[currentlang][currentlesson];
 
@@ -2264,7 +2262,7 @@ Image[] checkbox_preference;
 	/***************************************************************************************************************************
 	Display the VR Icon for the given Button/Word Index.
 	***************************************************************************************************************************/
-	DisplayVRIcon(int index) {
+	void DisplayVRIcon(int index) {
 		//Debug.Log("switching on AllLessons[currentlang][currentlesson][index][4]:" + AllLessons[currentlang][currentlesson][index][4]);
 		switch (AllLessons[currentlang][currentlesson][index][4]) { //populate vr icons
 		case "0": // Knuckles Controller icon
@@ -2294,7 +2292,7 @@ Image[] checkbox_preference;
 	/***************************************************************************************************************************
 	Hide the display for a VR icon at a specific index.
 	***************************************************************************************************************************/
-	HideVRIcon(int index) {
+	void HideVRIcon(int index) {
 		indexicons[index].SetActive(false);
 		regvricons[index].SetActive(false);
 		bothvricons[index].SetActive(false);
@@ -2307,7 +2305,7 @@ Image[] checkbox_preference;
 	void DisplayButton(int index, string text, bool isSelected = false, bool isValid = null) {
 
 		// Handle Validation Highlighting
-		if (isValid == null) {
+		if (isValid == null) {//The result of the expression is always 'false' since a value of type 'bool' is never equal to 'null' of type 'bool?'
 			buttontext[index].color = COLOR_WHITE; // Standard
 		} else {
 			buttontext[index].color = isValid ? COLOR_GREEN : COLOR_RED; // Validated
@@ -2593,7 +2591,7 @@ Image[] checkbox_preference;
 	Figures out what the button does, and sends to the approperate functions to update the menu.
 	***************************************************************************************************************************/
 	void buttonpushed(int buttonIndex) {
-		Debug.Log("Entered buttonpushed("+i+")");
+		Debug.Log("Entered buttonpushed("+buttonIndex+")");
 		DebugMenuVariables();
 		
 		// Update Data
@@ -2881,8 +2879,8 @@ Image[] checkbox_preference;
 	/***************************************************************************************************************************
 	Figures out what the button does, and sends to the approperate functions to update the menu.
 	***************************************************************************************************************************/
-	DebugMenuVariables() {
-		private String _message = "";
+	void DebugMenuVariables() {
+		String _message = "";
 		Debug.Log("Current Variable contents: " +
 				"\ncurrentmode: " + currentmode + 
 				"\ncurrentlang: " + currentlang + 
