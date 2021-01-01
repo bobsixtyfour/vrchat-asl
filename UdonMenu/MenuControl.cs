@@ -2559,7 +2559,7 @@ Image[] checkbox_preference;
 		DebugMenuVariables();
 		
 		// Update Display
-		UpdateDisplay();
+		UpdateAllDisplays();
 	}
 	
 	
