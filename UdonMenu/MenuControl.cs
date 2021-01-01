@@ -2025,18 +2025,17 @@ DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetCom
 		backbuttons[1].SetActive(false);
 		nextButton.SetActive(false);
 		prevButton.SetActive(false);
-        currentlesson=-1;
-        currentword=-1;
 		currentboard=0;
-			    if(globalmode){
+if(globalmode){
 			//bool isOwner = Networking.IsOwner(gameObject);
 			if(!Networking.IsOwner(gameObject)){
 				TakeOwnership();
-			}
+			}else{
 			globalcurrentboard=currentboard;
 			globalcurrentlang=currentlang;
 			globalcurrentlesson=currentlesson;
 			globalcurrentword=currentword;
+			}
 		}
 	}
 
@@ -2516,17 +2515,17 @@ DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetCom
 		backbuttons[0].SetActive(true);
 		backbuttons[1].SetActive(true);
 		//maybe need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function...
-		currentword=-1;
 		currentboard=1;
 		if(globalmode){
 			bool isOwner = Networking.IsOwner(gameObject);
 			if(!isOwner){
 				TakeOwnership();
-			}
+			}else{
 			globalcurrentboard=currentboard;
 			globalcurrentlang=currentlang;
 			globalcurrentlesson=currentlesson;
 			globalcurrentword=currentword;
+		}
 		}
 	}
 
@@ -2591,11 +2590,12 @@ DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetCom
 			//bool isOwner = Networking.IsOwner(gameObject);
 			if(!Networking.IsOwner(gameObject)){
 				TakeOwnership();
-			}
+			}else{
 			globalcurrentboard=currentboard;
 			globalcurrentlang=currentlang;
 			globalcurrentlesson=currentlesson;
 			globalcurrentword=currentword;
+			}
 		}
 		//also need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function... 
 	}
