@@ -2079,33 +2079,42 @@ Image[] checkbox_preference;
 	Update Menu Variables used to control displays.
 	***************************************************************************************************************************/
     void UpdateMenuVariables(int buttonIndex = null) {
-		int currentmenu = GetCurrentMenu();
-		switch (currentmenu) {
-			case MENU_LANGUAGE:
-				currentlang = buttonIndex != null ? buttonIndex : NOT_SELECTED;
-				currentlesson = NOT_SELECTED;
-				currentword = NOT_SELECTED;
-				break;
-			case MENU_LESSON:
-				if (currentmode = MODE_QUIZ) {
-					// UPDATE QUIZ LESSON SELECTION HERE
-				} else {
-					currentlesson = buttonIndex != null ? buttonIndex : NOT_SELECTED;
-				}
-				currentword = NOT_SELECTED;
-				break;
-			case MENU_WORD:
-				currentword = buttonIndex != null ? buttonIndex : NOT_SELECTED;
-				break;
-			default:
-				Debug.Log("UpdateMenuVariables() failed; currentmenu is: "+currentmenu+")");
-				DebugMenuVariables();
-				break;
-		}
-		
-		// If Master/Owner, update global variables too
+		Debug.Log("UpdateMenuVariables()");
+		DebugMenuVariables();
+
 		bool isOwner = Networking.IsOwner(gameObject);
-		if (isOwner) {
+		if (!globalmode || isOwner) { // In Local Mode, or Owner in Global Mode
+			int currentmenu = GetCurrentMenu();
+			switch (currentmenu) {
+				case MENU_LANGUAGE:
+					currentlang = buttonIndex != null ? buttonIndex : NOT_SELECTED;
+					currentlesson = NOT_SELECTED;
+					currentword = NOT_SELECTED;
+					break;
+				case MENU_LESSON:
+					if (currentmode = MODE_QUIZ) {
+						// UPDATE QUIZ LESSON SELECTION HERE
+					} else {
+						currentlesson = buttonIndex != null ? buttonIndex : NOT_SELECTED;
+					}
+					currentword = NOT_SELECTED;
+					break;
+				case MENU_WORD:
+					currentword = buttonIndex != null ? buttonIndex : NOT_SELECTED;
+					break;
+				default:
+					Debug.Log("UpdateMenuVariables() failed; currentmenu is: "+currentmenu+")");
+					DebugMenuVariables();
+					break;
+			}
+		} else { // Observer in Global Mode
+			currentlang = globalcurrentlang;
+			currentlesson = globalcurrentlesson;
+			currentword = globalcurrentword;
+		}
+
+		// If Owner, update Global Variables too
+		if (globalmode && isOwner) {
 			globalcurrentlang = currentlang;
 			globalcurrentlesson = currentlesson;
 			globalcurrentword = currentword;
@@ -2542,14 +2551,6 @@ Image[] checkbox_preference;
 
 
 	/***************************************************************************************************************************
-	Inverts colors
-	***************************************************************************************************************************/
-	public void ToggleDark(){
-		
-	}
-
-
-	/***************************************************************************************************************************
 	Update loop - if not the owner and global mode is enabled checks for updates to the global variables, and updates the board to follow. ignore quiz mode?
 	***************************************************************************************************************************/
     private void Update()
@@ -2837,7 +2838,8 @@ Image[] checkbox_preference;
 	public void ToggleGlobal()
     {
 		globalmode = !globalmode;
-		redrawmenu();
+		UpdateMenuVariables();
+		UpdateAllDisplays();
     }
 
 
@@ -2875,43 +2877,6 @@ Image[] checkbox_preference;
 		quizinprogress=false;
 		redrawmenu();
     }
-	/***************************************************************************************************************************
-	Redraws the menu based on currentboard and other current values.
-	***************************************************************************************************************************/
-	void redrawmenu(){
-		if(quizmode)
-		{
-			switch (currentboard) {
-			case 0: 
-				DisplayLanguageSelectMenu();
-			break;
-			case 1:
-				DisplayLessonSelectMenu();
-			break;
-			case 2://per-word quizzing not supported yet, so go back to lesson select
-				DisplayLessonSelectMenu();
-			break;
-			default:
-			break;
-			}
-		}
-		else
-		{
-			switch (currentboard) {
-			case 0:
-				DisplayLanguageSelectMenu();
-			break;
-			case 1:
-				DisplayLessonSelectMenu();
-			break;
-			case 2:
-				DisplaySignSelectMenu();
-			break;
-			default:
-			break;
-			}
-		}
-	}
 
 	/***************************************************************************************************************************
 	Figures out what the button does, and sends to the approperate functions to update the menu.
