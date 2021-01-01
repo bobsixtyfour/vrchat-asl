@@ -1934,10 +1934,9 @@ Image[] checkbox_preference;
 		currentlang = -1;
 		currentlesson = -1;
 		currentword = -1;
-		// currentboard -- not sure
 
 
-		// Update Displays
+		// Initialize Displays
 		InitializeDarkMode();
 		InitializePreferenceMenu();
 	
@@ -1946,12 +1945,16 @@ Image[] checkbox_preference;
 		InitializeVideoPlayer();
 
 		InitializeQuizMenu();
-		UpdateSigningAvatarState(); // ...
 
+		// Update Display States
+		UpdateSigningAvatarState();
 		UpdateAllDisplays();
 	}
 
 
+	/***************************************************************************************************************************
+	Initialize Variables related to Dark Mode
+	***************************************************************************************************************************/
 	void InitializeDarkMode() {
 		darkmodebutton = new ColorBlock();
 		darkmodebutton.normalColor = COLOR_GREY_DARK;
@@ -1973,6 +1976,9 @@ Image[] checkbox_preference;
 		//verifieddark.pressedColor = new Color(.4f,.7f,.4f,1); //darker green
 	}
 
+	/***************************************************************************************************************************
+	Initialize Variables related to the Preferences Menu
+	***************************************************************************************************************************/
 	void InitializePreferenceMenu() {
 		HandToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
 		GlobalToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode").GetComponent<Toggle>();
@@ -1981,6 +1987,9 @@ Image[] checkbox_preference;
 		DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetComponent<Toggle>();
 	}
 
+	/***************************************************************************************************************************
+	Initialize Variables related to the MoCap Avatar (Nana)
+	***************************************************************************************************************************/
 	void InitializeSigningAvatar() {
 		signingavatars = GameObject.Find("/Signing Avatars");
 		if(signingavatars.transform.Find("Nana Avatar").gameObject.activeInHierarchy){
@@ -2003,6 +2012,9 @@ Image[] checkbox_preference;
     	prevButton = signingavatars.transform.Find("Canvas/PrevButton").gameObject;
 	}
 
+	/***************************************************************************************************************************
+	Initialize Variables related to the main Menu
+	***************************************************************************************************************************/
 	void InitializeMenu() {
 		menuheadertext = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header").GetComponent < Text > ();
 		//menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header");
@@ -2020,12 +2032,18 @@ Image[] checkbox_preference;
 
 	}
 
+	/***************************************************************************************************************************
+	Initialize Variables related to the VRCPlayer
+	***************************************************************************************************************************/
 	void InitializeVideoPlayer() {
 		videocontainer = GameObject.Find("/Video Container");
 		videoplayer = GameObject.Find("/Video Container/Video");
 		vrcplayercomponent=((VRCUnityVideoPlayer)videoplayer.GetComponent(typeof(VRCUnityVideoPlayer)));
 	}
 
+	/***************************************************************************************************************************
+	Initialize Variables related to the the Quiz Menu
+	***************************************************************************************************************************/
 	void InitializeQuizMenu() {
 		quizp=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel");
 		quiza=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A");
@@ -2045,6 +2063,9 @@ Image[] checkbox_preference;
 		*/
 	}
 
+	/***************************************************************************************************************************
+	Toggle Variables related to the MoCap Avatar (Nana) based on current menu Mode
+	***************************************************************************************************************************/
 	void UpdateSigningAvatarState() {
 		bool isActive = !(currentmode == MODE_QUIZ)
 		nextButton.SetActive(isActive);
@@ -2057,11 +2078,11 @@ Image[] checkbox_preference;
 	/***************************************************************************************************************************
 	Update Menu Variables used to control displays.
 	***************************************************************************************************************************/
-    void UpdateMenuVariables(int buttonIndex) {
+    void UpdateMenuVariables(int buttonIndex = null) {
 		int currentmenu = GetCurrentMenu();
 		switch (currentmenu) {
 			case MENU_LANGUAGE:
-				currentlang = buttonIndex;
+				currentlang = buttonIndex != null ? buttonIndex : NOT_SELECTED;
 				currentlesson = NOT_SELECTED;
 				currentword = NOT_SELECTED;
 				break;
@@ -2069,12 +2090,12 @@ Image[] checkbox_preference;
 				if (currentmode = MODE_QUIZ) {
 					// UPDATE QUIZ LESSON SELECTION HERE
 				} else {
-					currentlesson = buttonIndex;
+					currentlesson = buttonIndex != null ? buttonIndex : NOT_SELECTED;
 				}
 				currentword = NOT_SELECTED;
 				break;
 			case MENU_WORD:
-				currentword = buttonIndex;
+				currentword = buttonIndex != null ? buttonIndex : NOT_SELECTED;
 				break;
 			default:
 				Debug.Log("UpdateMenuVariables() failed; currentmenu is: "+currentmenu+")");
@@ -2316,6 +2337,26 @@ Image[] checkbox_preference;
 				vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][currentword]);
 			}
 		}
+	}
+
+	/***************************************************************************************************************************
+	Button Handler for Previous/Next navigation button clicks on Word Selection for main Menu.
+	***************************************************************************************************************************/
+	void PreviousNextWordButtonPushed(bool isIncrementingWord) {
+		int nextword = isIncrementingWord ? currentword + 1 : currentword - 1;
+		int lessonLength = AllLessons[currentlang][currentlesson][currentword].Length;
+		if (nextword >= 0 && nextword < lessonLength) {
+			currentword = nextword;
+			DisplayWordSelectMenu();
+		}
+	}
+
+	/***************************************************************************************************************************
+	Button Handler for Back button click on Menu.
+	***************************************************************************************************************************/
+	void BackButtonPushed() {
+		UpdateMenuVariables();
+		UpdateAllDisplays();
 	}
 
 	/***************************************************************************************************************************
@@ -2795,12 +2836,7 @@ Image[] checkbox_preference;
 	***************************************************************************************************************************/
 	public void ToggleGlobal()
     {
-		if(!globalmode){
-			globalmode=true;
-
-		}else{
-			globalmode=false;
-		}
+		globalmode = !globalmode;
 		redrawmenu();
     }
 
@@ -2906,22 +2942,15 @@ string[] reshuffle(string[] texts)
         }
 		return texts;
     }
-	public void NextB()
-	{
-	Debug.Log("Next pushed");
-	//Changeword should have checked if +1 would exceed the current words in the lesson and disabled the next/previous button.
-		//TurnOffVideo();
-		changeword(currentword+1);
+	public void NextB() {
+		PreviousNextWordButtonPushed(true);
 	}
-	public void PrevB()
-	{
-		//TurnOffVideo();
-		changeword(currentword-1);
+	public void PrevB() {
+		PreviousNextWordButtonPushed(false);
 	}
-	public void BackB()
-	{
-	Debug.Log("Back pushed");
-	BackButtonClicked();
+	public void BackB() {
+		Debug.Log("Back pushed");
+		BackButtonClicked();
 	}
 	public void QuizA() {
 		quizbuttonpushed(0);
