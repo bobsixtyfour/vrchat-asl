@@ -2100,12 +2100,15 @@ Image[] checkbox_preference;
 		switch (currentmenu) {
 			case MENU_LANGUAGE:
 				DisplayLanguageSelectMenu();
+				HideSignVisuals();
 				break;
 			case MENU_LESSON:
 				DisplayLessonSelectMenu();
+				HideSignVisuals();
 				break;
 			case MENU_WORD:
 				DisplayWordSelectMenu();
+				DisplaySignVisuals();
 				if (currentword != NOT_SELECTED) {
 					
 				}
@@ -2218,6 +2221,19 @@ Image[] checkbox_preference;
 		// Handle Navigation Buttons
 		backbuttons[0].SetActive(true);
 		backbuttons[1].SetActive(true);
+		if (currentword > 0){
+			prevButton.SetActive(true);
+		} else {
+			prevButton.SetActive(false);
+		} if ((currentword+1)<AllLessons[currentlang][currentlesson].Length) {
+			nextButton.SetActive(true);
+		} else {
+			nextButton.SetActive(false);
+		}
+		// Bet no one will notice this comment is a RICK ROLL...
+		// Never gonna give you up
+		// Never gonna let you down
+		// Never gonna turn around and desert you
 	}
 
 	/***************************************************************************************************************************
@@ -2283,11 +2299,40 @@ Image[] checkbox_preference;
 	}
 
 	/***************************************************************************************************************************
-	Hide the display for a Menu button at a specific index.
+	Display the sign on the MoCap Avatar and VRCPlayer.
 	***************************************************************************************************************************/
-	void HideButton(int index) {
-		buttons[index].SetActive(false);
+	void DisplaySignVisuals() {
+		// Update MoCap Avatar Visuals (Nana)
+		// AllLessons[][][][0] = word 
+		// AllLessons[][][][1] = name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
+		// AllLessons[][][][2] = mocap credits. 
+		// AllLessons[][][][3] = video URL.
+		// AllLessons[][][][4] = VR index or regular 0=indexonly , 1=generalvr,2=both
+		// AllLessons[][][][5] = Sign description string
+		currentsigntext.text = (currentlesson+1)+"-"+(currentword+1)+" "+AllLessons[currentlang][currentlesson][currentword][0];
+		speechbubbletext.text = AllLessons[currentlang][currentlesson][currentword][0];
+		nana.Play(AllLessons[currentlang][currentlesson][currentword][1]); // TODO Look into Animation Transitions
+		signcredittext.text = "The motion data for this sign was signed by: " +  AllLessons[currentlang][currentlesson][currentword][2];
+		descriptiontext.text = AllLessons[currentlang][currentlesson][currentword][5];
+
+		// Update VRCPlayer Visual
+		if (AllLessons[currentlang][currentlesson][currentword][3] != ""){//if url is blank, then don't look for the video
+			if (langurls.Length > 0) { //don't crash the script if i forget to build langurls lol...
+				vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][currentword]);
+			}
+		}
 	}
+
+	/***************************************************************************************************************************
+	Hide the sign on the MoCap Avatar and VRCPlayer.
+	***************************************************************************************************************************/
+	void HideSignVisuals() {
+		vrcplayercomponent.Stop();
+	}
+
+
+
+
 
 	/***************************************************************************************************************************
 	Figures out if the button pushed is the correct one. Displays corrisponding status screen if correct, or try again.
@@ -2643,78 +2688,15 @@ Image[] checkbox_preference;
     /***************************************************************************************************************************
 	Called before current variables are changed, to disable videos if any are active (based on presence of url being populated)
 	***************************************************************************************************************************/
-    void TurnOffVideo() {
-		Debug.Log("Entering TurnOffVideo with currentword of: " + currentword);
-		if (currentword!=-1){
-			if (AllLessons[currentlang][currentlesson][currentword][3] != "") { //if url is not empty, turn off the video
-				Debug.Log("/Udon Menu System/Video Container/"+signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1));
-				videocontainer.transform.Find(signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1)).gameObject.SetActive(false);
-			}
-		}
-    }
-	/***************************************************************************************************************************
-	Called to change everything needed to display a sign's motion data. Doesn't care if it's the same sign.
-	***************************************************************************************************************************/
-	void changeword(int buttonnumber) { //wordnum must not be 00.
-		Debug.Log("Entering changeword with buttonbumber of: " + buttonnumber);
-			//turn off old video.
-			if (currentword!=-1)
-			{
-				buttons[currentword].GetComponent<Button>().colors=darkmodebutton;
-				if (AllLessons[currentlang][currentlesson][buttonnumber][3] == "") { //if url is empty, turn off the video
-				Debug.Log("Url empty");
-                vrcplayercomponent.Stop();
-				//	Debug.Log("/Udon Menu System/Video Container/"+signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1));
-					//videocontainer.transform.Find(signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1)).gameObject.SetActive(false);
-				}
-			}
-		
-		if(buttonnumber!=-1){
-
-		buttons[buttonnumber].GetComponent<Button>().colors=darkmodeselectedbutton;
-		//0th value is the word 
-        //1st value is the name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
-        //2nd value is mocap credits. 
-        //3rd value is video URL.
-        //4th value is VR index or regular 0=indexonly , 1=generalvr,2=both
-        //5th value is Sign description string
-		currentsigntext.text=(currentlesson+1)+"-"+(buttonnumber+1)+" "+AllLessons[currentlang][currentlesson][buttonnumber][0];
-		speechbubbletext.text=AllLessons[currentlang][currentlesson][buttonnumber][0];
-		nana.Play(AllLessons[currentlang][currentlesson][buttonnumber][1]);//or do setinterger? But setinterger is hard to figure out unless i re-encode all the states to something easily derived from AllLessons
-		signcredittext.text = "The motion data for this sign was signed by: " +  AllLessons[currentlang][currentlesson][buttonnumber][2];
-		
-		if(AllLessons[currentlang][currentlesson][buttonnumber][3]!=""){//if url is blank, then don't look for the video
-			if(langurls.Length!=0){//don't crash the script if i forget to build langurls lol...
-				vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][buttonnumber]);
-			}
-		}
-		descriptiontext.text = AllLessons[currentlang][currentlesson][buttonnumber][5];
-
-		Debug.Log("Buttonnumber:"+ buttonnumber+" array length:" + AllLessons[currentlang][currentlesson].Length);
-		if(buttonnumber>0){
-			prevButton.SetActive(true);
-		}else{
-			prevButton.SetActive(false);
-		}
-		if((buttonnumber+1)<AllLessons[currentlang][currentlesson].Length){ //buttonnumber is zero indexed, length is not
-			nextButton.SetActive(true);
-		}else{
-			nextButton.SetActive(false);
-		}
-		}
-	currentword=buttonnumber;
-	    if(globalmode){
-			//bool isOwner = Networking.IsOwner(gameObject);
-			if(!Networking.IsOwner(gameObject)){
-				TakeOwnership();
-			}
-			globalcurrentboard=currentboard;
-			globalcurrentlang=currentlang;
-			globalcurrentlesson=currentlesson;
-			globalcurrentword=currentword;
-		}
-	}
-
+    // void TurnOffVideo() {
+	// 	Debug.Log("Entering TurnOffVideo with currentword of: " + currentword);
+	// 	if (currentword!=-1){
+	// 		if (AllLessons[currentlang][currentlesson][currentword][3] != "") { //if url is not empty, turn off the video
+	// 			Debug.Log("/Udon Menu System/Video Container/"+signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1));
+	// 			videocontainer.transform.Find(signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1)).gameObject.SetActive(false);
+	// 		}
+	// 	}
+    // }
 
 
 	/***************************************************************************************************************************
