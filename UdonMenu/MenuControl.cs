@@ -2100,18 +2100,13 @@ Image[] checkbox_preference;
 		switch (currentmenu) {
 			case MENU_LANGUAGE:
 				DisplayLanguageSelectMenu();
-				HideSignVisuals();
 				break;
 			case MENU_LESSON:
 				DisplayLessonSelectMenu();
-				HideSignVisuals();
 				break;
 			case MENU_WORD:
 				DisplayWordSelectMenu();
 				DisplaySignVisuals();
-				if (currentword != NOT_SELECTED) {
-					
-				}
 				break;
 			default:
 				Debug.Log("UpdateMenuDisplay() failed; currentmenu is: "+currentmenu+")");
@@ -2322,17 +2317,6 @@ Image[] checkbox_preference;
 			}
 		}
 	}
-
-	/***************************************************************************************************************************
-	Hide the sign on the MoCap Avatar and VRCPlayer.
-	***************************************************************************************************************************/
-	void HideSignVisuals() {
-		vrcplayercomponent.Stop();
-	}
-
-
-
-
 
 	/***************************************************************************************************************************
 	Figures out if the button pushed is the correct one. Displays corrisponding status screen if correct, or try again.
