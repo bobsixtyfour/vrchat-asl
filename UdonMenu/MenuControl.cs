@@ -1676,9 +1676,9 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		},
 		//new string[]{"DGS","Deutsche Gebärdensprache (German Sign Language)"}
 	};
+
+	// MoCap Avatar Objects/Variables
 	Animator nana;
-	//public Animator nanapc;
-	//public Animator nanaquest;
 	GameObject signingavatars;
 	GameObject currentsign;
 	GameObject signcredit;
@@ -1687,46 +1687,90 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	Text speechbubbletext;
 	Text signcredittext;
 	Text descriptiontext;
+
+	// Main Menu Objects/Variables
+	Text menuheadertext;
+	Text menusubheadertext;
 	GameObject[] buttons = new GameObject[70];
-	GameObject[] backbuttons = new GameObject[2];
 	GameObject[] indexicons = new GameObject[70];
 	GameObject[] regvricons = new GameObject[70];
 	GameObject[] bothvricons = new GameObject[70];
 	Text[] buttontext = new Text[70];
 	int numofbuttons=70;
-    //int previousboard=0;//tracks which board it's on. 0=lang select, 1=lesson select, 2=word select
-    int currentboard=0;//tracks which board it's on. 0=lang select, 1=lesson select, 2=word select
-    int currentlang=0;//tracks which language is currently selected.
-    int currentlesson=-1;//tracks which lesson is currently selected.
-    int currentword=-1;
-	Text menuheadertext;
-	Text menusubheadertext;
-	//GameObject menuheader;
-    GameObject nextButton;
+	GameObject[] backbuttons = new GameObject[2];
+	GameObject nextButton;
     GameObject prevButton;
+    int currentlang = 0; // currently selected Language
+    int currentlesson = -1; // currently selected Lesson
+    int currentword = -1; // currently selected Word/Sign
+	[UdonSynced]
+	int globalcurrentlang;
+	[UdonSynced]
+	int globalcurrentlesson;
+	[UdonSynced]
+	int globalcurrentword;
+	
+	// VRCPlayer Objects/Variables
 	GameObject videocontainer;
 	GameObject videoplayer;
 	VRCUnityVideoPlayer vrcplayercomponent;
 	public VRCUrl[][][] langurls;
+
+	// Quiz Menu Objects/Variables
+	GameObject quizp;
+	GameObject quiza;
+	GameObject quizb;
+	GameObject quizc;
+	GameObject quizd;
+	GameObject quizbig;
+	Text quiztext;
+	Text quiztext2;
+	bool[][] quizlessonselection; //stores which lessons are selected.
+	int[][] quizwordmapping;//points to the mainarray [lang]
+	bool[][][] quizwordselection;
+	bool quizinprogress = false;
+	int numofwordsselected = 0;
+	int quizcounter = 0;
+	int quizscore = 0;
+	int quizanswer = 0;
+
+	// Preference Menu Objects/Variables - Avatar/Visual Controls
 	Slider avatarscaleslider;
 	Toggle HandToggle;
+
+	// Preference Menu Objects/Variables - Global/Local Mode
 	Toggle GlobalToggle;
+	bool globalmode;
+
+	// Preference Menu Objects/Variables - Lookup/Quiz Mode
 	Toggle QuizToggle;
-	Toggle DarkToggle;
-
-	// Menu Constants
-	const int NOT_SELECTED = -1;
-
 	const int MODE_LOOKUP = 0;
 	const int MODE_QUIZ = 1;
+	int currentmode; // Tracks current mode (Lookup, Quiz, etc.)
+	[UdonSynced]
+	int globalcurrentmode;
 
+	// Preference Menu Objects/Variables - Dark Mode
+	Toggle DarkToggle;
+	bool darkmode;
+	ColorBlock verifieddark = new ColorBlock();
+	Color black = Color.black;
+	Color white = Color.white;
+	Color gray = Color.gray;
+	Color lightgray = new Color(.25f,.25f,.25f,1);
+	TextMeshPro[] worldtext;
+	Image[] worldpanels;
+	Button[] worldbuttons; //every button except the 70 menu button array
+	Image[] worldcheckboxes;
+	ColorBlock darkmodebutton;
+	ColorBlock darkmodeselectedbutton;
+
+	// General Constants
+	const int NOT_SELECTED = -1;
 	const int MENU_LANGUAGE = 0;
 	const int MENU_LESSON = 1;
 	const int MENU_WORD = 2;
 
-	// Menu Variables
-	bool globalmode;
-	int currentmode;
 
 	// Color Constants
 	Color COLOR_WHITE = new Color(1,1,1,1);
@@ -1740,179 +1784,11 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	Color COLOR_GREEN = new Color(.5f,1,.5f,1);
 	Color COLOR_RED = new Color(1,.5f,.5f,1);
 
-	// Color Variables
-	bool darkmode;
-	ColorBlock verifieddark = new ColorBlock();
-/*
-Color darkmodetext = new Color(1,1,1,1);
-Color lightmodetext = new Color(0,0,0,1);
-Color darkmodepanel = new Color(0,0,0,1);
-Color lightmodepanel = new Color(1,1,1,1);
-Color darkmodebutton = new Color(.25f,.25f,.25f,1);
-Color lightmodebutton = new Color(1,1,1,1);
-Color lightmodebuttontext = new Color(0,0,0,1);
-*/
-
-//quiz mode variables
-
-	bool quizmode;
-
-	GameObject quizp;
-	GameObject quiza;
-	GameObject quizb;
-	GameObject quizc;
-	GameObject quizd;
-	GameObject quizbig;
-	bool[][] quizlessonselection; //stores which lessons are selected.
-	int[][] quizwordmapping;//points to the mainarray [lang]
-	bool[][][] quizwordselection;
-	bool quizinprogress=false;
-	int numofwordsselected=0;
-	int quizcounter=0;
-	int quizscore=0;
-	int quizanswer=0;
-	Text quiztext;
-	Text quiztext2;
-
-//global mode variables
-	[UdonSynced]
-	int globalcurrentlang;
-
-	[UdonSynced]
-	int globalcurrentlesson;
-
-	[UdonSynced]
-	int globalcurrentword;
-
-	[UdonSynced]
-	int globalcurrentboard;
-
-//dark mode variables
-Color black = Color.black;
-Color white = Color.white;
-Color gray = Color.gray;
-Color lightgray = new Color(.25f,.25f,.25f,1);
-TextMeshPro[] worldtext;
-Image[] worldpanels;
-Button[] worldbuttons; //every button except the 70 menu button array
-Image[] worldcheckboxes;
-
-ColorBlock darkmodebutton;
-ColorBlock darkmodeselectedbutton;
-/*
-Image[] panels_signingavatar;
-TextMeshPro[] texts_signingavatar;
-Button[] buttons_signingavatar;
-Image[] panels_preference;
-TextMeshPro[] texts_preference;
-Image[] checkbox_preference;
-*/
 
 	/***************************************************************************************************************************
 	Assigns variables for use. Initializes menu by calling DisplayLocalLanguageSelectMenu();
 	***************************************************************************************************************************/
 	void Start() {
-	currentmode = MODE_LOOKUP;
-		/*
-		//need changelog
-		//GameObject.Find("/Changelog/Panel").GetComponent<Image>()
-		//GameObject.Find("/Changelog/Panel/Text").GetComponent<TextMeshPro>()
-		//GameObject.Find("/Greeting Text/Panel").GetComponent<Image>()
-		//GameObject.Find("/Greeting Text/Panel/Text").GetComponent<TextMeshPro>()
-		//GameObject.Find("/Video Disclamer Canvas/Panel").GetComponent<Image>(),
-		//GameObject.Find("/Video Disclamer Canvas/Panel/Text").GetComponent<TextMeshPro>(),
-		GameObject go=GameObject.Find("/Signing Avatars/Canvas");
-		Image[] panels_signingavatar=go.GetComponentsInChildren<Image>(true);
-		TextMeshPro[] texts_signingavatar=go.GetComponentsInChildren<TextMeshPro>(true);
-		Button[] buttons_signingavatar=go.GetComponentsInChildren<Button>(true);
-		//avatar speech bubble? note need to checkpc/vs quest avatar.
-
-		go=GameObject.Find("/Preferencesv2/Canvas");
-		Image[] panels_preference=go.GetComponentsInChildren<Image>(true);
-		TextMeshPro[] texts_preference=go.GetComponentsInChildren<TextMeshPro>(true);
-		Image[] checkbox_preference=go.GetComponentsInChildren<Image>(true); //urgh there's no way to seperate out i
-
-
-
-		Image[] worldpanels = {
-			GameObject.Find("/Changelog/Panel").GetComponent<Image>(),
-			GameObject.Find("/Signing Avatars/Canvas/Current Sign Panel").GetComponent<Image>(),
-			GameObject.Find("/Signing Avatars/Canvas/Description Panel").GetComponent<Image>(),
-			GameObject.Find("/Signing Avatars/Canvas/Credit Panel").GetComponent<Image>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel").GetComponent<Image>(),
-			GameObject.Find("/Greeting Text/Panel").GetComponent<Image>(),
-			GameObject.Find("/Video Disclamer Canvas/Panel").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Top Panel").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel").GetComponent<Image>(),
-		};
-		Image[] worldcheckboxes = {
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Toggle/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Movable Toggle/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Palm Indicator Toggle/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Video Toggle/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Index of Words/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Mirror/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Pens/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Keyboards/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Walls/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Greeter/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Portals/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode/Background").GetComponent<Image>(),
-		};
-		TextMeshPro[] worldtext = {
-			GameObject.Find("/Changelog/Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/Canvas/Current Sign Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/Canvas/Description Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/Canvas/Credit Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/Canvas/PrevButton/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/Canvas/NextButton/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Greeting Text/Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Video Disclamer Canvas/Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Top Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Toggle/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Movable Toggle/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Palm Indicator Toggle/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Video Toggle/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Index of Words/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Playback Speed Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Playback Speed Text Key").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Text Key").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Mirror/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Pens/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Keyboards/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Walls/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Greeter/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Portals/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode/Label").GetComponent<TextMeshPro>(),
-		};
-		Button[] worldbuttons ={
-			GameObject.Find("/Signing Avatars/Canvas/PrevButton").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/Canvas/NextButton").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton").GetComponent<Button>(),
-
-		};
-	*/
-
-//Debug.Log("quizlessonselection.length"+quizlessonselection.Length);
-//Debug.Log("quizlessonselection[0].length"+quizlessonselection[0].Length);
 
 		// Update Data - Modes
 		currentmode = QuizToggle.GetComponent<Toggle>().isOn ? MODE_QUIZ : MODE_LOOKUP;
@@ -1929,9 +1805,9 @@ Image[] checkbox_preference;
 		}
 
 		// Update Data - Menu Defaults
-		currentlang = -1;
-		currentlesson = -1;
-		currentword = -1;
+		currentlang = NOT_SELECTED;
+		currentlesson = NOT_SELECTED;
+		currentword = NOT_SELECTED;
 
 
 		// Initialize Displays
@@ -1958,15 +1834,15 @@ Image[] checkbox_preference;
 		darkmodebutton.normalColor = COLOR_GREY_DARK;
 		darkmodebutton.highlightedColor = COLOR_GREY_MEDIUM;
 		darkmodebutton.pressedColor = COLOR_GREY_LIGHT;
-		darkmodebutton.colorMultiplier=1;
-		darkmodebutton.fadeDuration=.1f;
+		darkmodebutton.colorMultiplier = 1;
+		darkmodebutton.fadeDuration = .1f;
 
 		darkmodeselectedbutton = new ColorBlock();
 		darkmodeselectedbutton.normalColor = COLOR_GREEN_DARK;
 		darkmodeselectedbutton.highlightedColor = COLOR_GREEN_MEDIUM;
 		darkmodeselectedbutton.pressedColor = COLOR_GREEN_LIGHT;
-		darkmodeselectedbutton.colorMultiplier=1;
-		darkmodeselectedbutton.fadeDuration=.1f;
+		darkmodeselectedbutton.colorMultiplier = 1;
+		darkmodeselectedbutton.fadeDuration = .1f;
 
 		//ColorBlock ver = new ColorBlock();
 		//verifieddark.normalColor = new Color(.18f,.3f,.18f,1); //light green
@@ -2062,7 +1938,7 @@ Image[] checkbox_preference;
 	}
 
 	/***************************************************************************************************************************
-	Toggle Variables related to the MoCap Avatar (Nana) based on current menu Mode
+	Toggle Variables related to the MoCap Avatar Menu based on current Mode
 	***************************************************************************************************************************/
 	void UpdateSigningAvatarState() {
 		bool isActive = !(currentmode == MODE_QUIZ);
@@ -2322,6 +2198,13 @@ Image[] checkbox_preference;
 	}
 
 	/***************************************************************************************************************************
+	Hide the specified button.
+	***************************************************************************************************************************/
+	void HideButton(int index) {
+		buttons[index].SetActive(false);
+	}
+
+	/***************************************************************************************************************************
 	Display the sign on the MoCap Avatar and VRCPlayer.
 	***************************************************************************************************************************/
 	void DisplaySignVisuals() {
@@ -2330,7 +2213,7 @@ Image[] checkbox_preference;
 		// AllLessons[][][][1] = name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
 		// AllLessons[][][][2] = mocap credits. 
 		// AllLessons[][][][3] = video URL.
-		// AllLessons[][][][4] = VR index or regular 0=indexonly , 1=generalvr,2=both
+		// AllLessons[][][][4] = VR index or regular 0=indexonly , 1=generalvr, 2=both
 		// AllLessons[][][][5] = Sign description string
 		currentsigntext.text = (currentlesson+1)+"-"+(currentword+1)+" "+AllLessons[currentlang][currentlesson][currentword][0];
 		speechbubbletext.text = AllLessons[currentlang][currentlesson][currentword][0];
@@ -2339,7 +2222,7 @@ Image[] checkbox_preference;
 		descriptiontext.text = AllLessons[currentlang][currentlesson][currentword][5];
 
 		// Update VRCPlayer Visual
-		if (AllLessons[currentlang][currentlesson][currentword][3] != ""){//if url is blank, then don't look for the video
+		if (AllLessons[currentlang][currentlesson][currentword][3] != "") { // if url is blank, then don't look for the video
 			if (langurls.Length > 0) { //don't crash the script if i forget to build langurls lol...
 				vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][currentword]);
 			}
@@ -2549,39 +2432,20 @@ Image[] checkbox_preference;
 
 
 	/***************************************************************************************************************************
-	Update loop - if not the owner and global mode is enabled checks for updates to the global variables, and updates the board to follow. ignore quiz mode?
+	Update loop - if not the owner and global mode is enabled checks for updates to the global variables, and updates the board to follow.
 	***************************************************************************************************************************/
-    private void Update()
-    {
+    private void Update() {
         bool isOwner = Networking.IsOwner(gameObject);
-		if(!isOwner & globalmode){//only activate if global mode is on and if they're not the owner of the board.
-			if(globalcurrentboard != currentboard | globalcurrentlang != currentlang | globalcurrentlesson != currentlesson | globalcurrentword != currentword){
-				switch(globalcurrentboard){
-				case 0: //global is on lang select
-					currentboard=globalcurrentboard;
-					DisplayLanguageSelectMenu();
-				break;
-				case 1://global is on lesson select
-					currentlang=globalcurrentlang;
-					DisplayLessonSelectMenu();//need language and lesson number.
-				break;
-				case 2://global is on word select
-					currentlesson=globalcurrentlesson;
-					DisplaySignSelectMenu();
-				break;
-				default:
-				break;
-				}
-				if(globalcurrentword!=currentword){
-					DisplaySignVisuals();
-				}
+		if (!isOwner & globalmode) { //only activate if global mode is on and if they're not the owner of the board.
+			if (globalcurrentmode != currentmode || globalcurrentlang != currentlang || globalcurrentlesson != currentlesson || globalcurrentword != currentword){
+				UpdateMenuVariables();
+				UpdateAllDisplays();
 			}
-
 		}
 
-
+		// TODO Remove this - for debugging only.
 		GameObject.Find("/Debug/Panel/Text1").GetComponent<Text>().text="Master:"+isOwner;
-		GameObject.Find("/Debug/Panel/Text2").GetComponent<Text>().text="globalcurrentboard:"+globalcurrentboard+" currentboard:"+currentboard;
+		GameObject.Find("/Debug/Panel/Text2").GetComponent<Text>().text="globalcurrentmode:"+globalcurrentmode+" currentmode:"+currentmode;
 		GameObject.Find("/Debug/Panel/Text3").GetComponent<Text>().text="globalcurrentlang:"+globalcurrentlang+" currentlang:"+currentlang;
 		GameObject.Find("/Debug/Panel/Text4").GetComponent<Text>().text="globalcurrentlesson:"+globalcurrentlesson+" currentlesson:"+currentlesson;
 		GameObject.Find("/Debug/Panel/Text5").GetComponent<Text>().text="globalcurrentword:"+globalcurrentword+" currentword:"+currentword;
@@ -2601,127 +2465,17 @@ Image[] checkbox_preference;
 		// Update Display
 		UpdateAllDisplays();
 	}
-	
-	
-	
-	// public void buttonpushed(int x) {
-	// 	//figure out what the current signnumber is based on x and prevsign (figure out previous screen first)
-	// 	Debug.Log("Entered Buttonpushed with button #"+x+" pushed. Currentboard:"+currentboard+" Quizmode: "+quizmode + " Globalmode: "+globalmode);
-	// 	if(globalmode){
-	// 		Debug.Log("Global Mode");
-	// 		bool isOwner = Networking.IsOwner(gameObject);
-	// 		if(!isOwner){
-	// 			TakeOwnership();
-	// 		}
-	// 	}
-	// 	if(quizmode)
-	// 	{
-	// 		Debug.Log("Quiz Mode");
-	// 	switch (currentboard) {
-	// 		case 0: //button pushed on lang select, change to lesson select board.
-	// 			currentlang=x;
-	// 			DisplayLessonSelectMenu();//x=language number
-	// 		break;
-	// 		case 1://button pushed on lesson select, mark as selected
-	// 			SelectQuizLesson(x);
-	// 		break;
-	// 		case 2:
-				
-	// 		break;
-	// 		default:
-	// 		Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
-	// 		break;
-	// 		}
-	// 	}
-	// 	else{
-	// 		switch (currentboard) {
-	// 		case 0: //button pushed on lang select, change to lesson select board.
-	// 			currentlang=x;
-	// 			DisplayLessonSelectMenu();//x=language number
-	// 		break;
-	// 		case 1://button pushed on lesson select, change to word select board.
-	// 			currentlesson=x;
-	// 			DisplaySignSelectMenu();
-	// 		break;
-	// 		case 2://button pushed on word select, display word selected.
-	// 			//turn off current playing video (if any)
-	// 			//TurnOffVideo();
-	// 			//do all the sign word change stuff
-	// 			changeword(x);
-	// 		break;
-	// 		default:
-	// 		Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
-	// 		break;
-	// 		}
-	// 	}
-	// }
 
 	/***************************************************************************************************************************
 	Takes ownership of the board udonbehavior to update variables?
 	***************************************************************************************************************************/
-        void TakeOwnership()
-        {
-            if (Networking.IsMaster)
-            {
-                if (!Networking.IsOwner(gameObject))
-                {
+        void TakeOwnership() {
+            if (Networking.IsMaster) {
+                if (!Networking.IsOwner(gameObject)) {
                     Networking.SetOwner(Networking.LocalPlayer, gameObject);
                 }
             }
         }
-
-	/***************************************************************************************************************************
-	Figures out where the back button goes based on the current board, and sends to the approperate functions to update the menu.
-	***************************************************************************************************************************/
-	void BackButtonClicked() {
-		//figure out what the current signnumber is based on x and prevsign (figure out previous screen first)
-		if(quizmode){
-			switch (currentboard) {
-			case 0: //button pushed on lang select, change to lesson select board.
-				Debug.Log("Back button pushed, but the back button should not have been enabled on lang select ");
-			break;
-			case 1://button pushed on lesson select, change to lang select board.
-				DisplayLanguageSelectMenu();//need language and lesson number.
-			break;
-			case 2://button pushed on word select, display lesson select board.
-				DisplayLessonSelectMenu();
-			break;
-			default:
-			Debug.Log("Back button pushed, but I have no idea what board i'm on. currentboard: "+currentboard);
-			break;
-			}
-		}
-		else{
-			switch (currentboard) {
-			case 0: //button pushed on lang select, change to lesson select board.
-				Debug.Log("Back button pushed, but the back button should not have been enabled on lang select ");
-			break;
-			case 1://button pushed on lesson select, change to lang select board.
-				DisplayLanguageSelectMenu();//need language and lesson number.
-			break;
-			case 2://button pushed on word select, display lesson select board.
-				DisplayLessonSelectMenu();
-			break;
-			default:
-			Debug.Log("Back button pushed, but I have no idea what board i'm on. currentboard: "+currentboard);
-			break;
-			}
-		}
-	}
-
-    /***************************************************************************************************************************
-	Called before current variables are changed, to disable videos if any are active (based on presence of url being populated)
-	***************************************************************************************************************************/
-    // void TurnOffVideo() {
-	// 	Debug.Log("Entering TurnOffVideo with currentword of: " + currentword);
-	// 	if (currentword!=-1){
-	// 		if (AllLessons[currentlang][currentlesson][currentword][3] != "") { //if url is not empty, turn off the video
-	// 			Debug.Log("/Udon Menu System/Video Container/"+signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1));
-	// 			videocontainer.transform.Find(signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1)).gameObject.SetActive(false);
-	// 		}
-	// 	}
-    // }
-
 
 	/***************************************************************************************************************************
 	Changes selected array to true for given lesson. Change button color to indicate selected.
@@ -2738,76 +2492,6 @@ Image[] checkbox_preference;
 
 	}
 
-
-	/***************************************************************************************************************************
-	Changes the menu so it displays the available signs in a specific lesson. (Local Mode)
-	***************************************************************************************************************************/
-	void DisplaySignSelectMenu() {
-		Debug.Log("Now entering DisplaySignSelectMenu with a language number of " + currentlang + " and a currentlesson of " + currentlesson);
-		menuheadertext.text = signlanguagenames[currentlang][0] + " - " + lessonnames[currentlang][currentlesson];
-		if(globalmode){
-			menusubheadertext.text = "Global Mode";
-		}else
-		{
-			menusubheadertext.text = "Local Mode";
-		}
-		for (int x = 0; x < numofbuttons; x++) { //update all the buttons in the menu
-			//Debug.Log("x="+x+" AllLessons[currentlang][currentlesson].Length="+AllLessons[currentlang][currentlesson].Length);
-			if (AllLessons[currentlang][currentlesson].Length > x) { //for all signs in the lesson
-				buttons[x].SetActive(true);
-				buttons[x].GetComponent<Button>().colors=darkmodebutton;
-				buttontext[x].text = "    " + (x + 1) + ") " + AllLessons[currentlang][currentlesson][x][0];
-
-					if(AllLessons[currentlang][currentlesson][x][6]=="TRUE"){
-						buttontext[x].color=new Color(.5f,1,.5f,1);//green
-					}else{
-						buttontext[x].color=new Color(1,.5f,.5f,1);//red
-					}
-
-				//Debug.Log("switching on AllLessons[currentlang][currentlesson][x][4]:" + AllLessons[currentlang][currentlesson][x][4]);
-				switch (AllLessons[currentlang][currentlesson][x][4]) { //populate vr icons
-				case "0": //index icon
-					indexicons[x].SetActive(true);
-					regvricons[x].SetActive(false);
-					bothvricons[x].SetActive(false);
-					break;
-				case "1": //regular vr icon
-					indexicons[x].SetActive(false);
-					regvricons[x].SetActive(true);
-					bothvricons[x].SetActive(false);
-					break;
-				case "2": //both vr icon
-					indexicons[x].SetActive(false);
-					regvricons[x].SetActive(false);
-					bothvricons[x].SetActive(true);
-					break;
-				default: //uhh how am I here? Is it null somehow? Maybe should set to both by default...
-					indexicons[x].SetActive(false);
-					regvricons[x].SetActive(false);
-					bothvricons[x].SetActive(false);
-					break;
-				}
-
-			}else { //disable buttons that are outside of the lesson
-				buttons[x].SetActive(false);
-			}
-		}
-		backbuttons[0].SetActive(true);
-		backbuttons[1].SetActive(true);
-		currentboard=2;
-	    if(globalmode){
-			//bool isOwner = Networking.IsOwner(gameObject);
-			if(!Networking.IsOwner(gameObject)){
-				TakeOwnership();
-			}
-			globalcurrentboard=currentboard;
-			globalcurrentlang=currentlang;
-			globalcurrentlesson=currentlesson;
-			globalcurrentword=currentword;
-		}
-		//also need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function... 
-	}
-
 	/***************************************************************************************************************************
 	Called to scale signing avatar gameobject
 	***************************************************************************************************************************/
@@ -2820,11 +2504,10 @@ Image[] checkbox_preference;
 	/***************************************************************************************************************************
 	Called to switch the signing avatar's mirror animation parameter and set the toggle box state. 
 	***************************************************************************************************************************/
-	public void ToggleHand()
-    {
-		if(!nana.GetBool("Mirror")){ //if mirror checkbox is off
+	public void ToggleHand() {
+		if (!nana.GetBool("Mirror")) { //if mirror checkbox is off
 			nana.SetBool("Mirror",true);
-		}else{
+		} else {
 			nana.SetBool("Mirror",false);
 		}
 		
@@ -2833,8 +2516,7 @@ Image[] checkbox_preference;
 	/***************************************************************************************************************************
 	Called to switch the board to global mode and set the toggle box state
 	***************************************************************************************************************************/
-	public void ToggleGlobal()
-    {
+	public void ToggleGlobal() {
 		globalmode = !globalmode;
 		UpdateMenuVariables();
 		UpdateAllDisplays();
@@ -2845,22 +2527,20 @@ Image[] checkbox_preference;
 	Called to switch the board to quiz mode
 	Handles enabling/disabling ui elements
 	***************************************************************************************************************************/
-	public void ToggleQuiz()
-    {
-
+	public void ToggleQuiz() {
 		Debug.Log("Entered ToggleQuiz with quizmode: "+quizmode);
-		if(!quizmode){
+		if (!quizmode) {
 			quizmode=true;
-		}else{
+		} else {
 			quizmode=false;
 		}
-		quizp.SetActive(quizmode);
 
+		quizp.SetActive(quizmode);
 		quiza.SetActive(!quizmode);
 		quizb.SetActive(!quizmode);
 		quizc.SetActive(!quizmode);
 		quizd.SetActive(!quizmode);
-		quizbig.SetActive(quizmode);
+		quizbig.SetActive(quizmode); 
 		signingavatars.transform.Find("Nana Avatar/Armature/Canvas").gameObject.SetActive(!quizmode);
 
 		nextButton.SetActive(!quizmode);
@@ -2873,7 +2553,6 @@ Image[] checkbox_preference;
 		quiztext2.text="Select lessons and then push the big button below to generate a quiz";
 		quizbig.transform.Find("Text").GetComponent<Text>().text="Start Quiz";
 		quizinprogress=false;
-		//redrawmenu();
     }
 
 	/***************************************************************************************************************************
@@ -3153,111 +2832,102 @@ Image[] checkbox_preference;
 		buttonpushed(69);
 	}
 
-#if !COMPILER_UDONSHARP && UNITY_EDITOR 
-    [CustomEditor(typeof(MenuControl))]
-    public class CustomInspectorEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-			DrawDefaultInspector();
-            if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target)) return;
-            MenuControl inspectorBehaviour = (MenuControl)target;
-            
-            
-			
-            if(GUILayout.Button("Populate VRCUrls"))
-            {
-				//Debug.Log("AllLessons.Length: "+ inspectorBehaviour.AllLessons.Length);
-				inspectorBehaviour.langurls = new VRCUrl[inspectorBehaviour.AllLessons.Length][][];
-				for (int x = 0; x < inspectorBehaviour.AllLessons.Length; x++) {
-					//Debug.Log("AllLessons[x].Length: "+ inspectorBehaviour.AllLessons[x].Length);
-					VRCUrl[][] lessonurls = new VRCUrl[inspectorBehaviour.AllLessons[x].Length][];
 
-					for (int y = 0; y < inspectorBehaviour.AllLessons[x].Length; y++) 
-					{
-						//Debug.Log("AllLessons[x][y].Length: "+ inspectorBehaviour.AllLessons[x][y].Length);
-						VRCUrl[] wordurls = new VRCUrl[inspectorBehaviour.AllLessons[x][y].Length];
-						for (int z = 0; z < inspectorBehaviour.AllLessons[x][y].Length; z++) {
-							
-							//Debug.Log("loop status x:"+x+" y:"+y+" z:"+ z);
-							//Debug.Log("Alllessons 0: "+inspectorBehaviour.AllLessons[x][y][z][0]);
-							//Debug.Log("Alllessons 1: "+inspectorBehaviour.AllLessons[x][y][z][1]);
-							//Debug.Log("Alllessons 2: "+inspectorBehaviour.AllLessons[x][y][z][2]);
-							//Debug.Log("Alllessons 3: "+inspectorBehaviour.AllLessons[x][y][z][3]);
-							
-							wordurls[z] = new VRCUrl(inspectorBehaviour.AllLessons[x][y][z][3]);
+	/***************************************************************************************************************************
+	Override the Inspector to populate VRC Urls and Generate a dictionary of signs/words
+	***************************************************************************************************************************/
+
+	#if !COMPILER_UDONSHARP && UNITY_EDITOR 
+		[CustomEditor(typeof(MenuControl))]
+		public class CustomInspectorEditor : Editor {
+			public override void OnInspectorGUI() {
+				DrawDefaultInspector();
+				if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target)) return;
+				MenuControl inspectorBehaviour = (MenuControl)target;
+				
+				if(GUILayout.Button("Populate VRCUrls")) {
+					//Debug.Log("AllLessons.Length: "+ inspectorBehaviour.AllLessons.Length);
+					inspectorBehaviour.langurls = new VRCUrl[inspectorBehaviour.AllLessons.Length][][];
+					for (int x = 0; x < inspectorBehaviour.AllLessons.Length; x++) {
+						//Debug.Log("AllLessons[x].Length: "+ inspectorBehaviour.AllLessons[x].Length);
+						VRCUrl[][] lessonurls = new VRCUrl[inspectorBehaviour.AllLessons[x].Length][];
+
+						for (int y = 0; y < inspectorBehaviour.AllLessons[x].Length; y++) {
+							//Debug.Log("AllLessons[x][y].Length: "+ inspectorBehaviour.AllLessons[x][y].Length);
+							VRCUrl[] wordurls = new VRCUrl[inspectorBehaviour.AllLessons[x][y].Length];
+							for (int z = 0; z < inspectorBehaviour.AllLessons[x][y].Length; z++) {
+								
+								//Debug.Log("loop status x:"+x+" y:"+y+" z:"+ z);
+								//Debug.Log("Alllessons 0: "+inspectorBehaviour.AllLessons[x][y][z][0]);
+								//Debug.Log("Alllessons 1: "+inspectorBehaviour.AllLessons[x][y][z][1]);
+								//Debug.Log("Alllessons 2: "+inspectorBehaviour.AllLessons[x][y][z][2]);
+								//Debug.Log("Alllessons 3: "+inspectorBehaviour.AllLessons[x][y][z][3]);
+								
+								wordurls[z] = new VRCUrl(inspectorBehaviour.AllLessons[x][y][z][3]);
+							}
+							lessonurls[y] = wordurls;
 						}
-						lessonurls[y] = wordurls;
+						inspectorBehaviour.langurls[x] = lessonurls;
 					}
-					inspectorBehaviour.langurls[x] = lessonurls;
+					Debug.Log("URLS populated");
+
+					// Generate index of all words, sorted.
+					int lessonnum=1;
+					int wordnumber=1;
+					int totalwords=0;
+					List<List<String>> listofallwords = new List<List<string>>();
+					//List<List<List<String>>> listoflessons = new List<List<List<string>>>();
+					foreach (var lesson in inspectorBehaviour.AllLessons[0]) {
+						wordnumber=1;
+						if (lessonnum+1==28) {
+							continue;
+						}
+						//List<List<String>> listofwords = new List<List<String>>();
+						foreach (var word in lesson) {
+							List<String> worddata = new List<String>();
+							//uh why do i need the word values?
+							/*
+							foreach (var wordvalues in word)
+							{
+								//Console.Write("Added "+wordvalues+"\n");
+								worddata.Add(wordvalues);
+							}
+							*/
+							worddata.Add(word[0]);
+
+							worddata.Add("L"+lessonnum+"-"+wordnumber);
+							//listofwords.Add(worddata); 
+							listofallwords.Add(worddata);
+							totalwords++;
+							wordnumber++;
+						}
+						//listofwords=listofwords.OrderBy(l=>l[0]).ToList();
+						//var listofwordssorted = from word in listofwords
+						//listoflessons.Add(listofwords);
+						lessonnum++;
+					}
+					listofallwords=listofallwords.OrderBy(l=>l[0]).ToList();
+					string dictionarytext="";
+					foreach (var word in listofallwords) {
+						dictionarytext=dictionarytext+word[0]+" "+word[1]+"\n";
+						//Console.Write(word[0]+" "+word[6]+"\n");
+					}
+					FindInActiveObjectByName("DictionaryText").GetOrAddComponent<TMP_Text>().text=dictionarytext;
 				}
-				Debug.Log("URLS populated");
+			}
+		}
 
-				//generate index of all words, sorted.
-
-int lessonnum=1;
-int wordnumber=1;
-int totalwords=0;
-List<List<String>> listofallwords = new List<List<string>>();
-//List<List<List<String>>> listoflessons = new List<List<List<string>>>();
-foreach (var lesson in inspectorBehaviour.AllLessons[0])
-{
-    wordnumber=1;
-	if(lessonnum+1==28){
-		continue;
+		static GameObject FindInActiveObjectByName(string name) {
+		Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+		for (int i = 0; i < objs.Length; i++){
+			if (objs[i].hideFlags == HideFlags.None) {
+				if (objs[i].name == name){
+					return objs[i].gameObject;
+				}
+			}
+		}
+		return null;
 	}
-    //List<List<String>> listofwords = new List<List<String>>();
-    foreach (var word in lesson)
-    {
-        List<String> worddata = new List<String>();
-        //uh why do i need the word values?
-		/*
-		foreach (var wordvalues in word)
-        {
-            //Console.Write("Added "+wordvalues+"\n");
-            worddata.Add(wordvalues);
-        }
-		*/
-		worddata.Add(word[0]);
-
-        worddata.Add("L"+lessonnum+"-"+wordnumber);
-        //listofwords.Add(worddata); 
-        listofallwords.Add(worddata);
-        totalwords++;
-        wordnumber++;
-    }
-    //listofwords=listofwords.OrderBy(l=>l[0]).ToList();
-    //var listofwordssorted = from word in listofwords
-    //listoflessons.Add(listofwords);
-    lessonnum++;
-}
-listofallwords=listofallwords.OrderBy(l=>l[0]).ToList();
-string dictionarytext="";
-
-foreach (var word in listofallwords){
-    dictionarytext=dictionarytext+word[0]+" "+word[1]+"\n";
-	//Console.Write(word[0]+" "+word[6]+"\n");
-}
-
-FindInActiveObjectByName("DictionaryText").GetOrAddComponent<TMP_Text>().text=dictionarytext;
-            }
-	    }
-    }
-
-	static GameObject FindInActiveObjectByName(string name){
-    Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
-    for (int i = 0; i < objs.Length; i++){
-        if (objs[i].hideFlags == HideFlags.None)
-        {
-            if (objs[i].name == name){
-                return objs[i].gameObject;
-            }
-        }
-    }
-return null;
-}
-#endif
-
-
+	#endif
 
 }
