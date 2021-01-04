@@ -1,4 +1,4 @@
-﻿using UdonSharp;
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDK3.Components;
@@ -10,6 +10,7 @@ using VRC.SDK3.Components.Video;
 using VRC.SDK3.Video.Components;
 using VRC.SDK3.Video.Components.AVPro;
 using VRC.SDK3.Video.Components.Base;
+using UnityEngine.Rendering.PostProcessing;
 
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
@@ -1811,25 +1812,25 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 
 
 		// Initialize Displays
-		InitializeDarkMode();
-		InitializePreferenceMenu();
+		_InitializeDarkMode();
+		_InitializePreferenceMenu();
 	
-		InitializeSigningAvatar();
-		InitializeMenu();
-		InitializeVideoPlayer();
+		_InitializeSigningAvatar();
+		_InitializeMenu();
+		_InitializeVideoPlayer();
 
-		InitializeQuizMenu();
+		_InitializeQuizMenu();
 
 		// Update Display States
-		UpdateSigningAvatarState();
-		UpdateAllDisplays();
+		_UpdateSigningAvatarState();
+		_UpdateAllDisplays();
 	}
 
 
 	/***************************************************************************************************************************
 	Initialize Variables related to Dark Mode
 	***************************************************************************************************************************/
-	void InitializeDarkMode() {
+	void _InitializeDarkMode() {
 		darkmodebutton = new ColorBlock();
 		darkmodebutton.normalColor = COLOR_GREY_DARK;
 		darkmodebutton.highlightedColor = COLOR_GREY_MEDIUM;
@@ -1853,7 +1854,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Initialize Variables related to the Preferences Menu
 	***************************************************************************************************************************/
-	void InitializePreferenceMenu() {
+	void _InitializePreferenceMenu() {
 		HandToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
 		GlobalToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode").GetComponent<Toggle>();
 		QuizToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Quiz Mode").GetComponent<Toggle>();
@@ -1864,7 +1865,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Initialize Variables related to the MoCap Avatar (Nana)
 	***************************************************************************************************************************/
-	void InitializeSigningAvatar() {
+	void _InitializeSigningAvatar() {
 		signingavatars = GameObject.Find("/Signing Avatars");
 		if(signingavatars.transform.Find("Nana Avatar").gameObject.activeInHierarchy){
 			Debug.Log("PC active");
@@ -1889,7 +1890,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Initialize Variables related to the main Menu
 	***************************************************************************************************************************/
-	void InitializeMenu() {
+	void _InitializeMenu() {
 		menuheadertext = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header").GetComponent < Text > ();
 		//menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header");
 		menusubheadertext = GameObject.Find("/Udon Menu System/Root Canvas/SubHeader").GetComponent < Text > ();
@@ -1909,7 +1910,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Initialize Variables related to the VRCPlayer
 	***************************************************************************************************************************/
-	void InitializeVideoPlayer() {
+	void _InitializeVideoPlayer() {
 		videocontainer = GameObject.Find("/Video Container");
 		videoplayer = GameObject.Find("/Video Container/Video");
 		vrcplayercomponent=((VRCUnityVideoPlayer)videoplayer.GetComponent(typeof(VRCUnityVideoPlayer)));
@@ -1918,7 +1919,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Initialize Variables related to the the Quiz Menu
 	***************************************************************************************************************************/
-	void InitializeQuizMenu() {
+	void _InitializeQuizMenu() {
 		quizp=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel");
 		quiza=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A");
 		quizb=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B");
@@ -1927,7 +1928,8 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		quizbig=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton");
 		quiztext=quizp.transform.Find("Text").GetComponent<Text>();
 		quiztext2=quizp.transform.Find("Text2").GetComponent<Text>();
-		quizp.SetActive(quizmode);
+		quizp.SetActive(currentmode==MODE_QUIZ);
+
 		/*
 		quiza.SetActive(quizmode);
 		quizb.SetActive(quizmode);
@@ -1940,7 +1942,8 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Toggle Variables related to the MoCap Avatar Menu based on current Mode
 	***************************************************************************************************************************/
-	void UpdateSigningAvatarState() {
+	void _UpdateSigningAvatarState() {
+		Debug.Log("Entered _UpdateSigningAvatarState");
 		bool isActive = !(currentmode == MODE_QUIZ);
 		nextButton.SetActive(isActive);
 		prevButton.SetActive(isActive);
@@ -1952,69 +1955,82 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Update Menu Variables used to control displays.
 	***************************************************************************************************************************/
-    void UpdateMenuVariables(int buttonIndex = NOT_SELECTED) {
-		Debug.Log("UpdateMenuVariables()");
-		DebugMenuVariables();
-
-		bool isOwner = Networking.IsOwner(gameObject);
-		if (!globalmode || isOwner) { // In Local Mode, or Owner in Global Mode
-			int currentmenu = GetCurrentMenu();
-			switch (currentmenu) {
-				case MENU_LANGUAGE:
-					currentlang = buttonIndex;
-					currentlesson = NOT_SELECTED;
-					currentword = NOT_SELECTED;
-					break;
-				case MENU_LESSON:
-					if (currentmode == MODE_QUIZ) {
-						// UPDATE QUIZ LESSON SELECTION HERE
-					} else {
-						currentlesson = buttonIndex;
+    void _UpdateMenuVariables(string direction, int buttonIndex) {
+		Debug.Log("Entered _UpdateMenuVariables with direction:" + direction);
+		_DebugMenuVariables();
+		int currentmenu = _GetCurrentMenu();
+		switch(direction){
+			case "back":
+				if (currentlang == NOT_SELECTED) { //on lang menu
+					//Do nothing, as it shouldn't be possible to hit a back button on the lang select
+				} else {
+					if (currentlesson == NOT_SELECTED) { //on lesson menu
+						currentmenu = MENU_LANGUAGE; //go to lang menu
+					} else { //on word menu
+						currentlesson = NOT_SELECTED; //go to lesson menu
 					}
-					currentword = NOT_SELECTED;
-					break;
-				case MENU_WORD:
-					currentword = buttonIndex;
-					break;
-				default:
-					Debug.Log("UpdateMenuVariables() failed; currentmenu is: "+currentmenu+")");
-					DebugMenuVariables();
-					break;
-			}
-		} else { // Observer in Global Mode
-			currentlang = globalcurrentlang;
-			currentlesson = globalcurrentlesson;
-			currentword = globalcurrentword;
+				}
+				break;
+			default: //forward
+				switch (currentmenu) {
+					case MENU_LANGUAGE:
+						currentlang = buttonIndex;
+						currentlesson = NOT_SELECTED;
+						//currentword = NOT_SELECTED;
+						break;
+					case MENU_LESSON:
+						if (currentmode == MODE_QUIZ) {
+							quizlessonselection[currentlang][buttonIndex] = !quizlessonselection[currentlang][buttonIndex];
+							} else {
+							currentlesson = buttonIndex;
+						}
+						currentword = NOT_SELECTED;
+						break;
+					case MENU_WORD:
+						currentword = buttonIndex;
+						break;
+					default:
+						Debug.Log("_UpdateMenuVariables() failed; currentmenu is: "+currentmenu+" buttonIndex:"+ buttonIndex);
+						_DebugMenuVariables();
+						break;
+				}
+				break;
 		}
-
-		// If Owner, update Global Variables too
-		if (globalmode && isOwner) {
+		bool isOwner = Networking.IsOwner(gameObject);
+		if(globalmode){
+			if (isOwner) {
 			globalcurrentlang = currentlang;
 			globalcurrentlesson = currentlesson;
 			globalcurrentword = currentword;
+			} else {//not the owner, so update board vars from global vars
+			currentlang = globalcurrentlang;
+			currentlesson = globalcurrentlesson;
+			currentword = globalcurrentword;
+			}
 		}
+
     }
 
 
 	/***************************************************************************************************************************
 	Update all displays, including Menu, VRC Player, Nana, etc.
 	***************************************************************************************************************************/
-	void UpdateAllDisplays() {
-		int currentmenu = GetCurrentMenu();
+	void _UpdateAllDisplays() {
+		int currentmenu = _GetCurrentMenu();
 		switch (currentmenu) {
 			case MENU_LANGUAGE:
-				DisplayLanguageSelectMenu();
+				_DisplayLanguageSelectMenu();
 				break;
 			case MENU_LESSON:
-				DisplayLessonSelectMenu();
+				_DisplayLessonSelectMenu();
 				break;
 			case MENU_WORD:
-				DisplayWordSelectMenu();
-				DisplaySignVisuals();
+				_DisplayWordSelectMenu();
+				_DisplaySignVisuals();
 				break;
 			default:
 				Debug.Log("UpdateMenuDisplay() failed; currentmenu is: "+currentmenu+")");
-				DebugMenuVariables();
+				_DebugMenuVariables();
 				break; 
 		}
 		
@@ -2027,7 +2043,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Calculate and return the current Menu state.
 	***************************************************************************************************************************/
-	private int GetCurrentMenu() {
+	private int _GetCurrentMenu() {
 		int currentmenu = 0;
 		if (currentlang == NOT_SELECTED) {
 			currentmenu = MENU_LANGUAGE;
@@ -2045,17 +2061,17 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Change Menu to display Language Selection.
 	***************************************************************************************************************************/
-	void DisplayLanguageSelectMenu() {
+	void _DisplayLanguageSelectMenu() {
 		// Handle Menu Header (Breadcrumb)
 		menuheadertext.text = "VR Sign Language Select Menu";
 
 		// Handle Selection Buttons
 		for (int i = 0; i < numofbuttons; i++) {
 			if (i < signlanguagenames.Length) {
-				DisplayButton(i, (i + 1) + ") " +  signlanguagenames[i][1]);
-				HideVRIcon(i);
+				_DisplayButton(i, (i + 1) + ") " +  signlanguagenames[i][1],false,false,false);
+				_HideVRIcon(i);
 			} else {
-				HideButton(i);
+				_HideButton(i);
 			}
 		}
 
@@ -2069,7 +2085,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Change Menu to display Lesson Selection.
 	***************************************************************************************************************************/
-	void DisplayLessonSelectMenu() {
+	void _DisplayLessonSelectMenu() {
 		// Handle Menu Header (Breadcrumb)
 		menuheadertext.text = signlanguagenames[currentlang][0] + " Lesson Menu";
 
@@ -2079,11 +2095,11 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 			if (i < AllLessons[currentlang].Length) {
 				if (lessonnames[currentlang].Length > i) {
 					isButtonSelected = currentmode == MODE_QUIZ && quizlessonselection[currentlang][i] ? true : false;
-					DisplayButton(i, (i + 1) + ") " + lessonnames[currentlang][i], isButtonSelected);
-					HideVRIcon(i);
+					_DisplayButton(i, (i + 1) + ") " + lessonnames[currentlang][i], isButtonSelected,false,false);
+					_HideVRIcon(i);
 				}
 			} else {
-				HideButton(i);
+				_HideButton(i);
 			}
 		}
 
@@ -2097,7 +2113,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Change Menu to display Word Selection.
 	***************************************************************************************************************************/
-	void DisplayWordSelectMenu() {
+	void _DisplayWordSelectMenu() {
 		// Handle Menu Header (Breadcrumb)
 		menuheadertext.text = signlanguagenames[currentlang][0] + " - " + lessonnames[currentlang][currentlesson];
 
@@ -2109,11 +2125,11 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 			if (i < AllLessons[currentlang][currentlesson].Length) {
 				buttonText = "    " + (i + 1) + ") " + AllLessons[currentlang][currentlesson][i][0];
 				isButtonSelected = currentword == i;
-				isWordValid = AllLessons[currentlang][currentlesson][i][6] == "TRUE" ? true : false;
-				DisplayButton(i, buttonText, isButtonSelected, true, isWordValid);
-				DisplayVRIcon(i);
+				isWordValid = AllLessons[currentlang][currentlesson][i][6] == "TRUE";
+				_DisplayButton(i, buttonText, isButtonSelected, true, isWordValid);
+				_DisplayVRIcon(i);
 			} else {
-				HideButton(i);
+				_HideButton(i);
 			}
 		}
 
@@ -2138,7 +2154,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Display the VR Icon for the given Button/Word Index.
 	***************************************************************************************************************************/
-	void DisplayVRIcon(int index) {
+	void _DisplayVRIcon(int index) {
 		//Debug.Log("switching on AllLessons[currentlang][currentlesson][index][4]:" + AllLessons[currentlang][currentlesson][index][4]);
 		switch (AllLessons[currentlang][currentlesson][index][4]) { //populate vr icons
 		case "0": // Knuckles Controller icon
@@ -2157,7 +2173,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 			bothvricons[index].SetActive(true);
 			break;
 		default: //uhh how am I here? Is it null somehow? Maybe should set to both by default...
-			Debug.Log("DisplayVRIcon("+index+") had an invalid VR Icon setting; update AllLessons[currentlang][currentlesson][index][4]");
+			Debug.Log("_DisplayVRIcon("+index+") had an invalid VR Icon setting; update AllLessons[currentlang][currentlesson][index][4]");
 			indexicons[index].SetActive(false);
 			regvricons[index].SetActive(false);
 			bothvricons[index].SetActive(false);
@@ -2168,7 +2184,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Hide the display for a VR icon at a specific index.
 	***************************************************************************************************************************/
-	void HideVRIcon(int index) {
+	void _HideVRIcon(int index) {
 		indexicons[index].SetActive(false);
 		regvricons[index].SetActive(false);
 		bothvricons[index].SetActive(false);
@@ -2178,7 +2194,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Display a Menu button at a specific index, with the given parameters.
 	***************************************************************************************************************************/
-	void DisplayButton(int index, string text, bool isSelected = false, bool isColored = false, bool isValid = false) {
+	void _DisplayButton(int index, string text, bool isSelected, bool isColored, bool isValid) {
 
 		// Handle Validation Highlighting
 		if (isColored) {
@@ -2200,14 +2216,14 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Hide the specified button.
 	***************************************************************************************************************************/
-	void HideButton(int index) {
+	void _HideButton(int index) {
 		buttons[index].SetActive(false);
 	}
 
 	/***************************************************************************************************************************
 	Display the sign on the MoCap Avatar and VRCPlayer.
 	***************************************************************************************************************************/
-	void DisplaySignVisuals() {
+	void _DisplaySignVisuals() {
 		// Update MoCap Avatar Visuals (Nana)
 		// AllLessons[][][][0] = word 
 		// AllLessons[][][][1] = name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
@@ -2232,28 +2248,31 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Button Handler for Previous/Next navigation button clicks on Word Selection for main Menu.
 	***************************************************************************************************************************/
-	void PreviousNextWordButtonPushed(bool isIncrementingWord) {
+	void _PreviousNextWordButtonPushed(bool isIncrementingWord) {
 		int nextword = isIncrementingWord ? currentword + 1 : currentword - 1;
 		int lessonLength = AllLessons[currentlang][currentlesson][currentword].Length;
 		if (nextword >= 0 && nextword < lessonLength) {
 			currentword = nextword;
-			DisplayWordSelectMenu();
+			_DisplayWordSelectMenu();
 		}
 	}
 
 	/***************************************************************************************************************************
 	Button Handler for Back button click on Menu.
 	***************************************************************************************************************************/
-	void BackButtonPushed() {
-		UpdateMenuVariables();
-		UpdateAllDisplays();
+	void _BackButtonPushed() {
+		if(globalmode){
+			//SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.Owner, "ChangeState");
+		}
+		_UpdateMenuVariables("back",0);
+		_UpdateAllDisplays();
 	}
 
 	/***************************************************************************************************************************
 	Figures out if the button pushed is the correct one. Displays corrisponding status screen if correct, or try again.
 	***************************************************************************************************************************/
-	public void quizbuttonpushed(int x){
-		Debug.Log("Entered quizbuttonpushed");
+	void _QuizButtonPushed(int x){
+		Debug.Log("Entered _QuizButtonPushed");
 		//Debug.Log("Quizcounter:"+quizcounter+" numofwordsselected:"+numofwordsselected);
 		quiza.SetActive(false);
 		quizb.SetActive(false);
@@ -2295,8 +2314,8 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Generates list of words from selected lessons, starts the quiz
 	***************************************************************************************************************************/
-	public void QuizBigButton(){
-		Debug.Log("Entered QuizBigButton");
+	void _QuizBigButtonPushed(){
+		Debug.Log("Entered _QuizBigButtonPushed");
 		//UnityEngine.Random.Range(0,quizarray.Length+1)
 
 
@@ -2437,39 +2456,35 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
     private void Update() {
         bool isOwner = Networking.IsOwner(gameObject);
 		if (!isOwner & globalmode) { //only activate if global mode is on and if they're not the owner of the board.
-			if (globalcurrentmode != currentmode || globalcurrentlang != currentlang || globalcurrentlesson != currentlesson || globalcurrentword != currentword){
-				UpdateMenuVariables();
-				UpdateAllDisplays();
+			if (globalcurrentmode != currentmode | 
+			globalcurrentlang != currentlang | 
+			globalcurrentlesson != currentlesson | 
+			globalcurrentword != currentword){
+				_UpdateMenuVariables("default",-1);
+				_UpdateAllDisplays();
 			}
 		}
 
-		// TODO Remove this - for debugging only.
-		GameObject.Find("/Debug/Panel/Text1").GetComponent<Text>().text="Master:"+isOwner;
-		GameObject.Find("/Debug/Panel/Text2").GetComponent<Text>().text="globalcurrentmode:"+globalcurrentmode+" currentmode:"+currentmode;
-		GameObject.Find("/Debug/Panel/Text3").GetComponent<Text>().text="globalcurrentlang:"+globalcurrentlang+" currentlang:"+currentlang;
-		GameObject.Find("/Debug/Panel/Text4").GetComponent<Text>().text="globalcurrentlesson:"+globalcurrentlesson+" currentlesson:"+currentlesson;
-		GameObject.Find("/Debug/Panel/Text5").GetComponent<Text>().text="globalcurrentword:"+globalcurrentword+" currentword:"+currentword;
+		_DebugMenuVariables();
 	}
 
 	/***************************************************************************************************************************
 	Figures out what the button does, and sends to the approperate functions to update the menu.
 	***************************************************************************************************************************/
-	void buttonpushed(int buttonIndex) {
-		Debug.Log("Entered buttonpushed("+buttonIndex+")");
-		DebugMenuVariables();
+	void _buttonpushed(int buttonIndex) {
+		Debug.Log("Entered _buttonpushed("+buttonIndex+")");
 		
 		// Update Data
-		UpdateMenuVariables();
-		DebugMenuVariables();
+		_UpdateMenuVariables("normal",buttonIndex);
 		
 		// Update Display
-		UpdateAllDisplays();
+		_UpdateAllDisplays();
 	}
 
 	/***************************************************************************************************************************
 	Takes ownership of the board udonbehavior to update variables?
 	***************************************************************************************************************************/
-        void TakeOwnership() {
+        void _TakeOwnership() {
             if (Networking.IsMaster) {
                 if (!Networking.IsOwner(gameObject)) {
                     Networking.SetOwner(Networking.LocalPlayer, gameObject);
@@ -2480,8 +2495,8 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Changes selected array to true for given lesson. Change button color to indicate selected.
 	***************************************************************************************************************************/
-	void SelectQuizLesson(int x) { //I don't need the lesson number here because I'm displaying all lessons.
-		Debug.Log("Now entering SelectQuizLesson with a language number of " + currentlang + " and a button number of x:"+x);
+	void _SelectQuizLesson(int x) { //I don't need the lesson number here because I'm displaying all lessons.
+		Debug.Log("Now entering _SelectQuizLesson with a language number of " + currentlang + " and a button number of x:"+x);
 		if(quizlessonselection[currentlang][x]==false){
 			buttons[x].GetComponent<Button>().colors=darkmodeselectedbutton;
 			quizlessonselection[currentlang][x]=true;
@@ -2492,75 +2507,22 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 
 	}
 
-	/***************************************************************************************************************************
-	Called to scale signing avatar gameobject
-	***************************************************************************************************************************/
-	public void AvatarScaleSliderValueChanged()
-    {
-		signingavatars.transform.localScale= new Vector3(avatarscaleslider.value,avatarscaleslider.value,avatarscaleslider.value);
-    }
 
 
 	/***************************************************************************************************************************
-	Called to switch the signing avatar's mirror animation parameter and set the toggle box state. 
+	Outputs debug vars to log or panel
 	***************************************************************************************************************************/
-	public void ToggleHand() {
-		if (!nana.GetBool("Mirror")) { //if mirror checkbox is off
-			nana.SetBool("Mirror",true);
-		} else {
-			nana.SetBool("Mirror",false);
-		}
-		
-    }
-
-	/***************************************************************************************************************************
-	Called to switch the board to global mode and set the toggle box state
-	***************************************************************************************************************************/
-	public void ToggleGlobal() {
-		globalmode = !globalmode;
-		UpdateMenuVariables();
-		UpdateAllDisplays();
-    }
-
-
-	/***************************************************************************************************************************
-	Called to switch the board to quiz mode
-	Handles enabling/disabling ui elements
-	***************************************************************************************************************************/
-	public void ToggleQuiz() {
-		Debug.Log("Entered ToggleQuiz with quizmode: "+quizmode);
-		if (!quizmode) {
-			quizmode=true;
-		} else {
-			quizmode=false;
-		}
-
-		quizp.SetActive(quizmode);
-		quiza.SetActive(!quizmode);
-		quizb.SetActive(!quizmode);
-		quizc.SetActive(!quizmode);
-		quizd.SetActive(!quizmode);
-		quizbig.SetActive(quizmode); 
-		signingavatars.transform.Find("Nana Avatar/Armature/Canvas").gameObject.SetActive(!quizmode);
-
-		nextButton.SetActive(!quizmode);
-		prevButton.SetActive(!quizmode);
-		currentsign.SetActive(!quizmode);
-		signcredit.SetActive(!quizmode);
-		description.SetActive(!quizmode);
-
-		quiztext.text="Quiz";
-		quiztext2.text="Select lessons and then push the big button below to generate a quiz";
-		quizbig.transform.Find("Text").GetComponent<Text>().text="Start Quiz";
-		quizinprogress=false;
-    }
-
-	/***************************************************************************************************************************
-	Figures out what the button does, and sends to the approperate functions to update the menu.
-	***************************************************************************************************************************/
-	void DebugMenuVariables() 
+	void _DebugMenuVariables() 
 	{
-		String _message = "";
+		Text debugtextbox = GameObject.Find("/Debug/Panel/Text1").GetComponent<Text>();
+		//String _message = "";
+		debugtextbox.text="Current Variable contents: " +"\ncurrentmode: " + currentmode + "\ncurrentlang: " + currentlang + 
+				"\ncurrentlesson: " + currentlesson + 
+				"\ncurrentword: " + currentword +
+				"\nglobalcurrentmode: " + globalcurrentmode +
+				"\nglobalcurrentlang: " + globalcurrentlang + 
+				"\nglobalcurrentlesson: " + globalcurrentlesson + 
+				"\nglobalcurrentword: " + globalcurrentword;
 		/*
 		Debug.Log("Current Variable contents: " +"\ncurrentmode: " + currentmode + "\ncurrentlang: " + currentlang + 
 				"\ncurrentlesson: " + currentlesson + 
@@ -2597,239 +2559,302 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		}
 	}
 
+		/***************************************************************************************************************************
+	Called to scale signing avatar gameobject
+	***************************************************************************************************************************/
+	public void AvatarScaleSliderValueChanged()
+    {
+		signingavatars.transform.localScale= new Vector3(avatarscaleslider.value,avatarscaleslider.value,avatarscaleslider.value);
+    }
+
+
+	/***************************************************************************************************************************
+	Called to switch the signing avatar's mirror animation parameter and set the toggle box state. 
+	***************************************************************************************************************************/
+	public void ToggleHand() {
+		if (!nana.GetBool("Mirror")) { //if mirror checkbox is off
+			nana.SetBool("Mirror",true);
+		} else {
+			nana.SetBool("Mirror",false);
+		}
+		
+    }
+
+	/***************************************************************************************************************************
+	Called to switch the board to global mode and set the toggle box state
+	***************************************************************************************************************************/
+	public void ToggleGlobal() {
+		globalmode = !globalmode;
+		_UpdateMenuVariables();
+		_UpdateAllDisplays();
+    }
+
+
+	/***************************************************************************************************************************
+	Called to switch the board to quiz mode
+	Handles enabling/disabling ui elements
+	***************************************************************************************************************************/
+	public void ToggleQuiz() {
+		Debug.Log("Entered ToggleQuiz with quizmode: "+(currentmode == MODE_QUIZ));
+		if (!(currentmode == MODE_QUIZ)) {
+			currentmode=MODE_QUIZ;
+		} else {
+			currentmode=MODE_LOOKUP;
+		}
+
+		quizp.SetActive(currentmode == MODE_QUIZ);
+		quiza.SetActive(!(currentmode == MODE_QUIZ));
+		quizb.SetActive(!(currentmode == MODE_QUIZ));
+		quizc.SetActive(!(currentmode == MODE_QUIZ));
+		quizd.SetActive(!(currentmode == MODE_QUIZ));
+		quizbig.SetActive(currentmode == MODE_QUIZ); 
+		signingavatars.transform.Find("Nana Avatar/Armature/Canvas").gameObject.SetActive(!(currentmode == MODE_QUIZ));
+
+		nextButton.SetActive(!(currentmode == MODE_QUIZ));
+		prevButton.SetActive(!(currentmode == MODE_QUIZ));
+		currentsign.SetActive(!(currentmode == MODE_QUIZ));
+		signcredit.SetActive(!(currentmode == MODE_QUIZ));
+		description.SetActive(!(currentmode == MODE_QUIZ));
+
+		quiztext.text="Quiz";
+		quiztext2.text="Select lessons and then push the big button below to generate a quiz";
+		quizbig.transform.Find("Text").GetComponent<Text>().text="Start Quiz";
+		quizinprogress=false;
+    }
+
 	/***************************************************************************************************************************
 	Register Button Handlers
 	***************************************************************************************************************************/
 	public void NextB() {
-		PreviousNextWordButtonPushed(true);
+		_PreviousNextWordButtonPushed(true);
 	}
 	public void PrevB() {
-		PreviousNextWordButtonPushed(false);
+		_PreviousNextWordButtonPushed(false);
 	}
 	public void BackB() {
-		BackButtonPushed();
+		_BackButtonPushed();
 	}
 	public void QuizA() {
-		// quizbuttonpushed(0);
+		// _QuizButtonPushed(0);
 	}	
 	public void QuizB() {
-		// quizbuttonpushed(1);
+		// _QuizButtonPushed(1);
 	}	
 	public void QuizC() {
-		// quizbuttonpushed(2);
+		// _QuizButtonPushed(2);
 	}	
 	public void QuizD() {
-		// quizbuttonpushed(3);
+		// _QuizButtonPushed(3);
 	}
 	public void B0() {
-		buttonpushed(0);
+		_buttonpushed(0);
 	}
 	public void B1() {
-		buttonpushed(1);
+		_buttonpushed(1);
 	}
 	public void B2() {
-		buttonpushed(2);
+		_buttonpushed(2);
 	}
 	public void B3() {
-		buttonpushed(3);
+		_buttonpushed(3);
 	}
 	public void B4() {
-		buttonpushed(4);
+		_buttonpushed(4);
 	}
 	public void B5() {
-		buttonpushed(5);
+		_buttonpushed(5);
 	}
 	public void B6() {
-		buttonpushed(6);
+		_buttonpushed(6);
 	}
 	public void B7() {
-		buttonpushed(7);
+		_buttonpushed(7);
 	}
 	public void B8() {
-		buttonpushed(8);
+		_buttonpushed(8);
 	}
 	public void B9() {
-		buttonpushed(9);
+		_buttonpushed(9);
 	}
 	public void B10() {
-		buttonpushed(10);
+		_buttonpushed(10);
 	}
 	public void B11() {
-		buttonpushed(11);
+		_buttonpushed(11);
 	}
 	public void B12() {
-		buttonpushed(12);
+		_buttonpushed(12);
 	}
 	public void B13() {
-		buttonpushed(13);
+		_buttonpushed(13);
 	}
 	public void B14() {
-		buttonpushed(14);
+		_buttonpushed(14);
 	}
 	public void B15() {
-		buttonpushed(15);
+		_buttonpushed(15);
 	}
 	public void B16() {
-		buttonpushed(16);
+		_buttonpushed(16);
 	}
 	public void B17() {
-		buttonpushed(17);
+		_buttonpushed(17);
 	}
 	public void B18() {
-		buttonpushed(18);
+		_buttonpushed(18);
 	}
 	public void B19() {
-		buttonpushed(19);
+		_buttonpushed(19);
 	}
 	public void B20() {
-		buttonpushed(20);
+		_buttonpushed(20);
 	}
 	public void B21() {
-		buttonpushed(21);
+		_buttonpushed(21);
 	}
 	public void B22() {
-		buttonpushed(22);
+		_buttonpushed(22);
 	}
 	public void B23() {
-		buttonpushed(23);
+		_buttonpushed(23);
 	}
 	public void B24() {
-		buttonpushed(24);
+		_buttonpushed(24);
 	}
 	public void B25() {
-		buttonpushed(25);
+		_buttonpushed(25);
 	}
 	public void B26() {
-		buttonpushed(26);
+		_buttonpushed(26);
 	}
 	public void B27() {
-		buttonpushed(27);
+		_buttonpushed(27);
 	}
 	public void B28() {
-		buttonpushed(28);
+		_buttonpushed(28);
 	}
 	public void B29() {
-		buttonpushed(29);
+		_buttonpushed(29);
 	}
 	public void B30() {
-		buttonpushed(30);
+		_buttonpushed(30);
 	}
 	public void B31() {
-		buttonpushed(31);
+		_buttonpushed(31);
 	}
 	public void B32() {
-		buttonpushed(32);
+		_buttonpushed(32);
 	}
 	public void B33() {
-		buttonpushed(33);
+		_buttonpushed(33);
 	}
 	public void B34() {
-		buttonpushed(34);
+		_buttonpushed(34);
 	}
 	public void B35() {
-		buttonpushed(35);
+		_buttonpushed(35);
 	}
 	public void B36() {
-		buttonpushed(36);
+		_buttonpushed(36);
 	}
 	public void B37() {
-		buttonpushed(37);
+		_buttonpushed(37);
 	}
 	public void B38() {
-		buttonpushed(38);
+		_buttonpushed(38);
 	}
 	public void B39() {
-		buttonpushed(39);
+		_buttonpushed(39);
 	}
 	public void B40() {
-		buttonpushed(40);
+		_buttonpushed(40);
 	}
 	public void B41() {
-		buttonpushed(41);
+		_buttonpushed(41);
 	}
 	public void B42() {
-		buttonpushed(42);
+		_buttonpushed(42);
 	}
 	public void B43() {
-		buttonpushed(43);
+		_buttonpushed(43);
 	}
 	public void B44() {
-		buttonpushed(44);
+		_buttonpushed(44);
 	}
 	public void B45() {
-		buttonpushed(45);
+		_buttonpushed(45);
 	}
 	public void B46() {
-		buttonpushed(46);
+		_buttonpushed(46);
 	}
 	public void B47() {
-		buttonpushed(47);
+		_buttonpushed(47);
 	}
 	public void B48() {
-		buttonpushed(48);
+		_buttonpushed(48);
 	}
 	public void B49() {
-		buttonpushed(49);
+		_buttonpushed(49);
 	}
 	public void B50() {
-		buttonpushed(50);
+		_buttonpushed(50);
 	}
 	public void B51() {
-		buttonpushed(51);
+		_buttonpushed(51);
 	}
 	public void B52() {
-		buttonpushed(52);
+		_buttonpushed(52);
 	}
 	public void B53() {
-		buttonpushed(53);
+		_buttonpushed(53);
 	}
 	public void B54() {
-		buttonpushed(54);
+		_buttonpushed(54);
 	}
 	public void B55() {
-		buttonpushed(55);
+		_buttonpushed(55);
 	}
 	public void B56() {
-		buttonpushed(56);
+		_buttonpushed(56);
 	}
 	public void B57() {
-		buttonpushed(57);
+		_buttonpushed(57);
 	}
 	public void B58() {
-		buttonpushed(58);
+		_buttonpushed(58);
 	}
 	public void B59() {
-		buttonpushed(59);
+		_buttonpushed(59);
 	}
 	public void B60() {
-		buttonpushed(60);
+		_buttonpushed(60);
 	}
 	public void B61() {
-		buttonpushed(61);
+		_buttonpushed(61);
 	}
 	public void B62() {
-		buttonpushed(62);
+		_buttonpushed(62);
 	}
 	public void B63() {
-		buttonpushed(63);
+		_buttonpushed(63);
 	}
 	public void B64() {
-		buttonpushed(64);
+		_buttonpushed(64);
 	}
 	public void B65() {
-		buttonpushed(65);
+		_buttonpushed(65);
 	}
 	public void B66() {
-		buttonpushed(66);
+		_buttonpushed(66);
 	}
 	public void B67() {
-		buttonpushed(67);
+		_buttonpushed(67);
 	}
 	public void B68() {
-		buttonpushed(68);
+		_buttonpushed(68);
 	}
 	public void B69() {
-		buttonpushed(69);
+		_buttonpushed(69);
 	}
 
 
