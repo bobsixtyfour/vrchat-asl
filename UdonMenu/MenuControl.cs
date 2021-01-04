@@ -1,4 +1,4 @@
-﻿using UdonSharp;
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDK3.Components;
@@ -1349,7 +1349,7 @@ new string[]{"Healthy","ASL-Healthy","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Better","ASL-Better","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Recover","ASL-Recover","Anonymous","","2","","FALSE",""},
 new string[]{"Pill","ASL-Pill","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"Dead (Variant 2)","ASL-Dead (Variant 2)","Anonymous","","2","","TRUE","ShadeAxas"},
+new string[]{"Dead (Variant 2)","ASL-Dead (Variant 2)","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Brain","ASL-Brain","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Receipt","ASL-Receipt","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Headache","ASL-Headache","Anonymous","","2","","TRUE","ShadeAxas"},
@@ -1447,80 +1447,80 @@ new string[]{"Weekend (Variant 2)","ASL-Melwil-Weekend (Variant 2)","Melwil","",
 },//end of asl lessons
 new string[][][]{//bsl lessons
 new string[][]{//Daily Use (Signed by CathDeathGamer)
-new string[]{"Hello","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/1_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"How are you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/2_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"What's up?","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/3_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Nice to meet you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/4_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Good","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/5_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Bad","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/6_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Yes","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/7_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"No","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/8_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"So-So","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/9_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Sick","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/10_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Hurt","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/11_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"You're welcome","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/12_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Good bye","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/13_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Good morning","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/14_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Good afternoon","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/15_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Good evening","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/16_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Good night","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/17_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"See you later","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/18_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Please","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/19_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Sorry","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/20_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Forgotten","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/21_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Sleep","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/22_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Bed","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/23_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Jump/Change world","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/24_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Thank you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/25_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"I love you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/26_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Go away","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/27_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Going to","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/28_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Follow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/29_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Come","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/30_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/31_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Deaf","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/32_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Hard of Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/33_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Mute","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/34_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Write slow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/35_cath.mp4","2","","TRUE","CathDeathGamer"},
-new string[]{"Cannot read","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/36_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Hello","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/1_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"How are you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/2_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"What's up?","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/3_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Nice to meet you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/4_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Good","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/5_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Bad","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/6_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Yes","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/7_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"No","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/8_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"So-So","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/9_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Sick","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/10_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Hurt","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/11_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"You're welcome","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/12_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Good bye","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/13_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Good morning","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/14_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Good afternoon","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/15_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Good evening","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/16_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Good night","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/17_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"See you later","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/18_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Please","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/19_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Sorry","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/20_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Forgotten","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/21_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Sleep","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/22_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Bed","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/23_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Jump/Change world","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/24_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Thank you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/25_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"I love you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/26_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Go away","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/27_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Going to","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/28_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Follow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/29_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Come","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/30_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/31_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Deaf","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/32_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Hard of Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/33_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Mute","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/34_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Write slow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/35_cath.mp4","2","","TRUE","CathDeathGamer"},
+new string[]{"Cannot read","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/36_cath.mp4","2","","TRUE","CathDeathGamer"},
 },
 new string[][]{//Daily Use (Signed by Sheezy)
-new string[]{"Hello","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/1_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"How are you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/2_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"What's up?","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/3_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Nice to meet you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/4_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Good","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/5_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Bad","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/6_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Yes","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/7_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"No","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/8_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"So-So","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/9_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Sick","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/10_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Hurt","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/11_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"You're welcome","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/12_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Good bye","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/13_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Good morning","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/14_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Good afternoon","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/15_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Good evening","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/16_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Good night","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/17_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"See you later","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/18_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Please","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/19_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Sorry","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/20_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Forgotten","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/21_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Sleep","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/22_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Bed","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/23_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Jump/Change world","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/24_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Thank you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/25_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"I love you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/26_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Go away","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/27_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Going to","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/28_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Follow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/29_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Come","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/30_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/31_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Deaf","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/32_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Hard of Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/33_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Mute","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/34_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Write slow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/35_sheezy.mp4","2","","TRUE","Sheezy"},
-new string[]{"Cannot read","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/36_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Hello","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/1_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"How are you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/2_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"What's up?","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/3_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Nice to meet you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/4_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Good","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/5_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Bad","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/6_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Yes","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/7_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"No","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/8_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"So-So","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/9_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Sick","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/10_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Hurt","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/11_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"You're welcome","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/12_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Good bye","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/13_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Good morning","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/14_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Good afternoon","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/15_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Good evening","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/16_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Good night","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/17_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"See you later","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/18_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Please","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/19_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Sorry","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/20_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Forgotten","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/21_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Sleep","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/22_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Bed","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/23_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Jump/Change world","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/24_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Thank you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/25_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"I love you","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/26_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Go away","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/27_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Going to","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/28_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Follow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/29_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Come","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/30_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/31_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Deaf","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/32_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Hard of Hearing","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/33_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Mute","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/34_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Write slow","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/35_sheezy.mp4","2","","TRUE","Sheezy"},
+new string[]{"Cannot read","Idle","No Data Yet.","https://vrsl.withdevon.xyz/cdn/videos/BSL/1/36_sheezy.mp4","2","","TRUE","Sheezy"},
 }//end of bsl
 },//end bsl lang
 new string[][][]{//dsg lessons
@@ -1676,9 +1676,9 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		},
 		//new string[]{"DGS","Deutsche Gebärdensprache (German Sign Language)"}
 	};
+
+	// MoCap Avatar Objects/Variables
 	Animator nana;
-	//public Animator nanapc;
-	//public Animator nanaquest;
 	GameObject signingavatars;
 	GameObject currentsign;
 	GameObject signcredit;
@@ -1687,238 +1687,187 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	Text speechbubbletext;
 	Text signcredittext;
 	Text descriptiontext;
+
+	// Main Menu Objects/Variables
+	Text menuheadertext;
+	Text menusubheadertext;
 	GameObject[] buttons = new GameObject[70];
-	GameObject[] backbuttons = new GameObject[2];
 	GameObject[] indexicons = new GameObject[70];
 	GameObject[] regvricons = new GameObject[70];
 	GameObject[] bothvricons = new GameObject[70];
 	Text[] buttontext = new Text[70];
 	int numofbuttons=70;
-    //int previousboard=0;//tracks which board it's on. 0=lang select, 1=lesson select, 2=word select
-    int currentboard=0;//tracks which board it's on. 0=lang select, 1=lesson select, 2=word select
-    int currentlang=0;//tracks which language is currently selected.
-    int currentlesson=-1;//tracks which lesson is currently selected.
-    int currentword=-1;
-	Text menuheadertext;
-	Text menusubheadertext;
-	//GameObject menuheader;
-    GameObject nextButton;
+	GameObject[] backbuttons = new GameObject[2];
+	GameObject nextButton;
     GameObject prevButton;
+
+	int currentboard=0; // current page
+    int currentlang = 0; // currently selected Language
+    int currentlesson = -1; // currently selected Lesson
+    int currentword = -1; // currently selected Word/Sign
+	[UdonSynced] int globalboard;
+	[UdonSynced] int globalcurrentlang;
+	[UdonSynced] int globalcurrentlesson;
+	[UdonSynced] int globalcurrentword;
+	
+	// VRCPlayer Objects/Variables
 	GameObject videocontainer;
 	GameObject videoplayer;
 	VRCUnityVideoPlayer vrcplayercomponent;
 	public VRCUrl[][][] langurls;
-	Slider avatarscaleslider;
-	Toggle HandToggle;
-	Toggle GlobalToggle;
-	Toggle QuizToggle;
-	Toggle DarkToggle;
 
-	bool globalmode;
-	bool darkmode;
-	ColorBlock verifieddark = new ColorBlock();
-/*
-Color darkmodetext = new Color(1,1,1,1);
-Color lightmodetext = new Color(0,0,0,1);
-Color darkmodepanel = new Color(0,0,0,1);
-Color lightmodepanel = new Color(1,1,1,1);
-Color darkmodebutton = new Color(.25f,.25f,.25f,1);
-Color lightmodebutton = new Color(1,1,1,1);
-Color lightmodebuttontext = new Color(0,0,0,1);
-*/
-
-//quiz mode variables
-
-	bool quizmode;
-
+	// Quiz Menu Objects/Variables
 	GameObject quizp;
 	GameObject quiza;
 	GameObject quizb;
 	GameObject quizc;
 	GameObject quizd;
 	GameObject quizbig;
+	Text quiztext;
+	Text quiztext2;
 	bool[][] quizlessonselection; //stores which lessons are selected.
 	int[][] quizwordmapping;//points to the mainarray [lang]
 	bool[][][] quizwordselection;
-	bool quizinprogress=false;
-	int numofwordsselected=0;
-	int quizcounter=0;
-	int quizscore=0;
-	int quizanswer=0;
-	Text quiztext;
-	Text quiztext2;
+	bool quizinprogress = false;
+	int numofwordsselected = 0;
+	int quizcounter = 0;
+	int quizscore = 0;
+	int quizanswer = 0;
 
-//global mode variables
+	// Preference Menu Objects/Variables - Avatar/Visual Controls
+	Slider avatarscaleslider;
+	Toggle HandToggle;
+
+	// Preference Menu Objects/Variables - Global/Local Mode
+	Toggle GlobalToggle;
+	bool globalmode;
+
+	// Preference Menu Objects/Variables - Lookup/Quiz Mode
+	Toggle QuizToggle;
+	const int MODE_LOOKUP = 0;
+	const int MODE_QUIZ = 1;
+	int currentmode; // Tracks current mode (Lookup, Quiz, etc.)
 	[UdonSynced]
-	int globalcurrentlang;
+	int globalcurrentmode;
 
-	[UdonSynced]
-	int globalcurrentlesson;
+	// Preference Menu Objects/Variables - Dark Mode
+	Toggle DarkToggle;
+	bool darkmode;
+	ColorBlock verifieddark = new ColorBlock();
+	Color black = Color.black;
+	Color white = Color.white;
+	Color gray = Color.gray;
+	Color lightgray = new Color(.25f,.25f,.25f,1);
+	TextMeshPro[] worldtext;
+	Image[] worldpanels;
+	Button[] worldbuttons; //every button except the 70 menu button array
+	Image[] worldcheckboxes;
+	ColorBlock darkmodebutton;
+	ColorBlock darkmodeselectedbutton;
 
-	[UdonSynced]
-	int globalcurrentword;
+	// General Constants
+	const int NOT_SELECTED = -1;
+	const int MENU_LANGUAGE = 0;
+	const int MENU_LESSON = 1;
+	const int MENU_WORD = 2;
 
-	[UdonSynced]
-	int globalcurrentboard;
+	const int FORWARDS=1;
+	const int BACKWARDS=-1;
+	int direction=FORWARDS;
 
-//dark mode variables
-Color black = Color.black;
-Color white = Color.white;
-Color gray = Color.gray;
-Color lightgray = new Color(.25f,.25f,.25f,1);
-TextMeshPro[] worldtext;
-Image[] worldpanels;
-Button[] worldbuttons; //every button except the 70 menu button array
-Image[] worldcheckboxes;
+	// Color Constants
+	Color COLOR_WHITE = new Color(1,1,1,1);
+	Color COLOR_BLACK = new Color(0,0,0,1);
+	Color COLOR_GREY_DARK = new Color(.25f,.25f,.25f,1);
+	Color COLOR_GREY_MEDIUM = new Color(.5f,.5f,.5f,1);
+	Color COLOR_GREY_LIGHT = new Color(.75f,.75f,.75f,1);
+	Color COLOR_GREEN_DARK = new Color(.2f,.3f,.2f,1);
+	Color COLOR_GREEN_MEDIUM = new Color(.2f,.5f,.2f,1);
+	Color COLOR_GREEN_LIGHT = new Color(.75f,.75f,.75f,1);
+	Color COLOR_GREEN = new Color(.5f,1,.5f,1);
+	Color COLOR_RED = new Color(1,.5f,.5f,1);
 
-ColorBlock darkmodebutton;
-ColorBlock darkmodeselectedbutton;
-/*
-Image[] panels_signingavatar;
-TextMeshPro[] texts_signingavatar;
-Button[] buttons_signingavatar;
-Image[] panels_preference;
-TextMeshPro[] texts_preference;
-Image[] checkbox_preference;
-*/
 
 	/***************************************************************************************************************************
 	Assigns variables for use. Initializes menu by calling DisplayLocalLanguageSelectMenu();
 	***************************************************************************************************************************/
 	void Start() {
 
-		/*
-		//need changelog
-		//GameObject.Find("/Changelog/Panel").GetComponent<Image>()
-		//GameObject.Find("/Changelog/Panel/Text").GetComponent<TextMeshPro>()
-		//GameObject.Find("/Greeting Text/Panel").GetComponent<Image>()
-		//GameObject.Find("/Greeting Text/Panel/Text").GetComponent<TextMeshPro>()
-		//GameObject.Find("/Video Disclamer Canvas/Panel").GetComponent<Image>(),
-		//GameObject.Find("/Video Disclamer Canvas/Panel/Text").GetComponent<TextMeshPro>(),
-		GameObject go=GameObject.Find("/Signing Avatars/Canvas");
-		Image[] panels_signingavatar=go.GetComponentsInChildren<Image>(true);
-		TextMeshPro[] texts_signingavatar=go.GetComponentsInChildren<TextMeshPro>(true);
-		Button[] buttons_signingavatar=go.GetComponentsInChildren<Button>(true);
-		//avatar speech bubble? note need to checkpc/vs quest avatar.
+		// Update Data - Modes
+		currentmode = QuizToggle.GetComponent<Toggle>().isOn ? MODE_QUIZ : MODE_LOOKUP;
+		globalmode = GlobalToggle.GetComponent<Toggle>().isOn;
+		darkmode = DarkToggle.GetComponent<Toggle>().isOn;
 
-		go=GameObject.Find("/Preferencesv2/Canvas");
-		Image[] panels_preference=go.GetComponentsInChildren<Image>(true);
-		TextMeshPro[] texts_preference=go.GetComponentsInChildren<TextMeshPro>(true);
-		Image[] checkbox_preference=go.GetComponentsInChildren<Image>(true); //urgh there's no way to seperate out i
+		// Update Data - Quiz
+		quizlessonselection = new bool[AllLessons.Length][];
+		for (int langnum = 0; langnum < AllLessons.Length; langnum++) {
+			quizlessonselection[langnum] = new bool[AllLessons[langnum].Length];
+			for (int y = 0; y < AllLessons[langnum].Length; y++) {
+				quizlessonselection[langnum][y]=false;
+			}
+		}
+
+		// Update Data - Menu Defaults
+		currentlang = NOT_SELECTED;
+		currentlesson = NOT_SELECTED;
+		currentword = NOT_SELECTED;
 
 
+		// Initialize Displays
+		_InitializeDarkMode();
+		_InitializePreferenceMenu();
+	
+		_InitializeSigningAvatar();
+		_InitializeMenu();
+		_InitializeVideoPlayer();
 
-		Image[] worldpanels = {
-			GameObject.Find("/Changelog/Panel").GetComponent<Image>(),
-			GameObject.Find("/Signing Avatars/Canvas/Current Sign Panel").GetComponent<Image>(),
-			GameObject.Find("/Signing Avatars/Canvas/Description Panel").GetComponent<Image>(),
-			GameObject.Find("/Signing Avatars/Canvas/Credit Panel").GetComponent<Image>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel").GetComponent<Image>(),
-			GameObject.Find("/Greeting Text/Panel").GetComponent<Image>(),
-			GameObject.Find("/Video Disclamer Canvas/Panel").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Top Panel").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel").GetComponent<Image>(),
-		};
-		Image[] worldcheckboxes = {
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Toggle/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Movable Toggle/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Palm Indicator Toggle/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Video Toggle/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Index of Words/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Mirror/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Pens/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Keyboards/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Walls/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Greeter/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Portals/Background").GetComponent<Image>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode/Background").GetComponent<Image>(),
-		};
-		TextMeshPro[] worldtext = {
-			GameObject.Find("/Changelog/Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/Canvas/Current Sign Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/Canvas/Description Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/Canvas/Credit Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/Canvas/PrevButton/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/Canvas/NextButton/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Greeting Text/Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Video Disclamer Canvas/Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Top Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Toggle/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Signing Avatar Movable Toggle/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Palm Indicator Toggle/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Video Toggle/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Index of Words/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Playback Speed Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Playback Speed Text Key").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Text Key").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Text").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Mirror/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Pens/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Keyboards/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Walls/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Greeter/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Portals/Label").GetComponent<TextMeshPro>(),
-			GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode/Label").GetComponent<TextMeshPro>(),
-		};
-		Button[] worldbuttons ={
-			GameObject.Find("/Signing Avatars/Canvas/PrevButton").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/Canvas/NextButton").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D").GetComponent<Button>(),
-			GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton").GetComponent<Button>(),
+		_InitializeQuizMenu();
 
-		};
-	*/
+		// Update Display States
+		_UpdateSigningAvatarState();
+		_UpdateAllDisplays();
+	}
 
-//Debug.Log("quizlessonselection.length"+quizlessonselection.Length);
-//Debug.Log("quizlessonselection[0].length"+quizlessonselection[0].Length);
 
+	/***************************************************************************************************************************
+	Initialize Variables related to Dark Mode
+	***************************************************************************************************************************/
+	void _InitializeDarkMode() {
 		darkmodebutton = new ColorBlock();
-		darkmodebutton.normalColor = new Color( .25f, .25f, .25f);
-		darkmodebutton.highlightedColor = new Color (.5f, .5f, .5f);
-		darkmodebutton.pressedColor = new Color (.75f, .75f, .75f);
-		darkmodebutton.colorMultiplier=1;
-		darkmodebutton.fadeDuration=.1f;
+		darkmodebutton.normalColor = COLOR_GREY_DARK;
+		darkmodebutton.highlightedColor = COLOR_GREY_MEDIUM;
+		darkmodebutton.pressedColor = COLOR_GREY_LIGHT;
+		darkmodebutton.colorMultiplier = 1;
+		darkmodebutton.fadeDuration = .1f;
 
 		darkmodeselectedbutton = new ColorBlock();
-		darkmodeselectedbutton.normalColor = new Color( .2f, .3f, .2f);
-		darkmodeselectedbutton.highlightedColor = new Color (.2f, .5f, .2f);
-		darkmodeselectedbutton.pressedColor = new Color (.75f, .75f, .75f);
-		darkmodeselectedbutton.colorMultiplier=1;
-		darkmodeselectedbutton.fadeDuration=.1f;
+		darkmodeselectedbutton.normalColor = COLOR_GREEN_DARK;
+		darkmodeselectedbutton.highlightedColor = COLOR_GREEN_MEDIUM;
+		darkmodeselectedbutton.pressedColor = COLOR_GREEN_LIGHT;
+		darkmodeselectedbutton.colorMultiplier = 1;
+		darkmodeselectedbutton.fadeDuration = .1f;
 
 		//ColorBlock ver = new ColorBlock();
 		//verifieddark.normalColor = new Color(.18f,.3f,.18f,1); //light green
 		//verifieddark.highlightedColor = new Color(.4f,1,.4f,1); //darker light green
 		//verifieddark.pressedColor = new Color(.4f,.7f,.4f,1); //darker green
+	}
 
+	/***************************************************************************************************************************
+	Initialize Variables related to the Preferences Menu
+	***************************************************************************************************************************/
+	void _InitializePreferenceMenu() {
+		HandToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
+		GlobalToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode").GetComponent<Toggle>();
+		QuizToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Quiz Mode").GetComponent<Toggle>();
+		avatarscaleslider=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Slider").GetComponent<Slider>();
+		DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetComponent<Toggle>();
+	}
 
-HandToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
-GlobalToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode").GetComponent<Toggle>();
-QuizToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Quiz Mode").GetComponent<Toggle>();
-avatarscaleslider=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Slider").GetComponent<Slider>();
-
-DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetComponent<Toggle>();
-
-	quizmode=QuizToggle.GetComponent<Toggle>().isOn;
-	globalmode=GlobalToggle.GetComponent<Toggle>().isOn;
-	darkmode=DarkToggle.GetComponent<Toggle>().isOn;
-	
+	/***************************************************************************************************************************
+	Initialize Variables related to the MoCap Avatar (Nana)
+	***************************************************************************************************************************/
+	void _InitializeSigningAvatar() {
 		signingavatars = GameObject.Find("/Signing Avatars");
 		if(signingavatars.transform.Find("Nana Avatar").gameObject.activeInHierarchy){
 			Debug.Log("PC active");
@@ -1936,9 +1885,14 @@ DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetCom
 		currentsigntext = currentsign.transform.Find("Text").GetComponent < Text > ();
 		signcredittext = signcredit.transform.Find("Text").GetComponent < Text > ();
 		descriptiontext = description.transform.Find("Text").GetComponent < Text > ();
-		
 		nextButton = signingavatars.transform.Find("Canvas/NextButton").gameObject;
     	prevButton = signingavatars.transform.Find("Canvas/PrevButton").gameObject;
+	}
+
+	/***************************************************************************************************************************
+	Initialize Variables related to the main Menu
+	***************************************************************************************************************************/
+	void _InitializeMenu() {
 		menuheadertext = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header").GetComponent < Text > ();
 		//menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header");
 		menusubheadertext = GameObject.Find("/Udon Menu System/Root Canvas/SubHeader").GetComponent < Text > ();
@@ -1953,27 +1907,31 @@ DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetCom
 		backbuttons[0] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Left Back Button");
 		backbuttons[1] = GameObject.Find("/Udon Menu System/Root Canvas/Menu Buttons/Right Back Button");
 
+	}
+
+	/***************************************************************************************************************************
+	Initialize Variables related to the VRCPlayer
+	***************************************************************************************************************************/
+	void _InitializeVideoPlayer() {
 		videocontainer = GameObject.Find("/Video Container");
 		videoplayer = GameObject.Find("/Video Container/Video");
 		vrcplayercomponent=((VRCUnityVideoPlayer)videoplayer.GetComponent(typeof(VRCUnityVideoPlayer)));
-		
-	quizlessonselection = new bool[AllLessons.Length][];
-	for (int langnum = 0; langnum < AllLessons.Length; langnum++) {
-		quizlessonselection[langnum] = new bool[AllLessons[langnum].Length];
-		for (int y = 0; y < AllLessons[langnum].Length; y++) {
-			quizlessonselection[langnum][y]=false;
-		}
 	}
 
-	quizp=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel");
-	quiza=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A");
-	quizb=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B");
-	quizc=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C");
-	quizd=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D");
-	quizbig=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton");
-	quiztext=quizp.transform.Find("Text").GetComponent<Text>();
-	quiztext2=quizp.transform.Find("Text2").GetComponent<Text>();
-		quizp.SetActive(quizmode);
+	/***************************************************************************************************************************
+	Initialize Variables related to the the Quiz Menu
+	***************************************************************************************************************************/
+	void _InitializeQuizMenu() {
+		quizp=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel");
+		quiza=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A");
+		quizb=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B");
+		quizc=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C");
+		quizd=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/D");
+		quizbig=GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/BigButton");
+		quiztext=quizp.transform.Find("Text").GetComponent<Text>();
+		quiztext2=quizp.transform.Find("Text2").GetComponent<Text>();
+		quizp.SetActive(currentmode==MODE_QUIZ);
+
 		/*
 		quiza.SetActive(quizmode);
 		quizb.SetActive(quizmode);
@@ -1981,71 +1939,351 @@ DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetCom
 		quizd.SetActive(quizmode);
 		quizbig.SetActive(!quizmode);
 		*/
-		nextButton.SetActive(!quizmode);
-		prevButton.SetActive(!quizmode);
-		currentsign.SetActive(!quizmode);
-		signcredit.SetActive(!quizmode);
-		description.SetActive(!quizmode);
+	}
 
-		DisplayLanguageSelectMenu();
+	/***************************************************************************************************************************
+	Toggle Variables related to the MoCap Avatar Menu based on current Mode
+	***************************************************************************************************************************/
+	void _UpdateSigningAvatarState() {
+		Debug.Log("Entered _UpdateSigningAvatarState");
+		bool isActive = !(currentmode == MODE_QUIZ);
+		nextButton.SetActive(isActive);
+		prevButton.SetActive(isActive);
+		currentsign.SetActive(isActive);
+		signcredit.SetActive(isActive);
+		description.SetActive(isActive);
+	}
+
+	/***************************************************************************************************************************
+	Update Menu Variables used to control displays.
+	***************************************************************************************************************************/
+    void _UpdateMenuVariables(int buttonIndex) {
+		Debug.Log("Entered _UpdateMenuVariables with direction:" + direction);
+		_DebugMenuVariables();
+		int currentmenu = _GetCurrentMenu();
+		switch(direction){
+			case BACKWARDS:
+				if (currentlang == NOT_SELECTED) { //on lang menu
+					//Do nothing, as it shouldn't be possible to hit a back button on the lang select
+				} else {
+					if (currentlesson == NOT_SELECTED) { //on lesson menu
+						currentmenu = MENU_LANGUAGE; //go to lang menu
+					} else { //on word menu
+						currentlesson = NOT_SELECTED; //go to lesson menu
+					}
+				}
+				direction=FORWARDS;
+				break;
+			default: //forward
+				switch (currentmenu) {
+					case MENU_LANGUAGE:
+						currentlang = buttonIndex;
+						currentlesson = NOT_SELECTED;
+						//currentword = NOT_SELECTED;
+						break;
+					case MENU_LESSON:
+						if (currentmode == MODE_QUIZ) {
+							quizlessonselection[currentlang][buttonIndex] = !quizlessonselection[currentlang][buttonIndex];
+							} else {
+							currentlesson = buttonIndex;
+						}
+						//currentword = NOT_SELECTED;
+						break;
+					case MENU_WORD:
+						currentword = buttonIndex;
+						break;
+					default:
+						Debug.Log("_UpdateMenuVariables() failed; currentmenu is: "+currentmenu+" buttonIndex:"+ buttonIndex);
+						_DebugMenuVariables();
+						break;
+				}
+				break;
+		}
+		if(globalmode){
+			_GlobalModeVarSync();
+		}
+
+    }
+	/***************************************************************************************************************************
+	Sync Global Vars
+	***************************************************************************************************************************/
+	void _GlobalModeVarSync(){
+		bool isOwner = Networking.IsOwner(gameObject);
+		if (isOwner) {
+			globalcurrentlang = currentlang;
+			globalcurrentlesson = currentlesson;
+			globalcurrentword = currentword;
+		} else {//not the owner, so update board vars from global vars
+			currentlang = globalcurrentlang;
+			currentlesson = globalcurrentlesson;
+			currentword = globalcurrentword;
+		}
+	}
+
+	/***************************************************************************************************************************
+	Update all displays, including Menu, VRC Player, Nana, etc.
+	***************************************************************************************************************************/
+	void _UpdateAllDisplays() {
+		int currentmenu = _GetCurrentMenu();
+		switch (currentmenu) {
+			case MENU_LANGUAGE:
+				_DisplayLanguageSelectMenu();
+				break;
+			case MENU_LESSON:
+				_DisplayLessonSelectMenu();
+				break;
+			case MENU_WORD:
+				_DisplayWordSelectMenu();
+				_DisplaySignVisuals();
+				break;
+			default:
+				Debug.Log("UpdateMenuDisplay() failed; currentmenu is: "+currentmenu+")");
+				_DebugMenuVariables();
+				break; 
+		}
+		
+		// Update Subheader
+		String text = globalmode ? "Global Mode" : "Local Mode";
+		text = currentmode == MODE_QUIZ ? text + " - Quiz Mode" : text + " - Lookup Mode";
+		menusubheadertext.text = text;
+	}
+
+	/***************************************************************************************************************************
+	Calculate and return the current Menu state.
+	***************************************************************************************************************************/
+	private int _GetCurrentMenu() {
+		int currentmenu = 0;
+		if (currentlang == NOT_SELECTED) {
+			currentmenu = MENU_LANGUAGE;
+		} else {
+			if (currentlesson == NOT_SELECTED) {
+				currentmenu = MENU_LESSON;
+			} else {
+				currentmenu = MENU_WORD;
+			}
+		}
+		return currentmenu;
 	}
 
 
 	/***************************************************************************************************************************
-	Changes the menu so it displays the language select menu. 
+	Change Menu to display Language Selection.
 	***************************************************************************************************************************/
-	void DisplayLanguageSelectMenu() {
-		Debug.Log("Entered DisplayLanguageSelectMenu");
+	void _DisplayLanguageSelectMenu() {
+		// Handle Menu Header (Breadcrumb)
 		menuheadertext.text = "VR Sign Language Select Menu";
-		if(globalmode){
-			menusubheadertext.text = "Global Mode";
-		}else if (quizmode)
-		{
-			menusubheadertext.text = "Quiz Mode";
-		}
-		else
-		{
-			menusubheadertext.text = "Local Mode";
-		}
-		for (int x = 0; x < numofbuttons; x++) {
-			if (signlanguagenames.Length > x) {
-				buttons[x].SetActive(true);
-				buttons[x].GetComponent<Button>().colors=darkmodebutton;
-				buttontext[x].text = (x + 1) + ") " +  signlanguagenames[x][1];
-				buttontext[x].color=new Color(1,1,1,1); //white
-				indexicons[x].SetActive(false);
-				regvricons[x].SetActive(false);
-				bothvricons[x].SetActive(false);
+
+		// Handle Selection Buttons
+		for (int i = 0; i < numofbuttons; i++) {
+			if (i < signlanguagenames.Length) {
+				_DisplayButton(i, (i + 1) + ") " +  signlanguagenames[i][1],false,false,false);
+				_HideVRIcon(i);
 			} else {
-				buttons[x].SetActive(false);
+				_HideButton(i);
 			}
 		}
 
+		// Handle Navigation Buttons
 		backbuttons[0].SetActive(false);
 		backbuttons[1].SetActive(false);
 		nextButton.SetActive(false);
 		prevButton.SetActive(false);
-		currentboard=0;
-if(globalmode){
-			//bool isOwner = Networking.IsOwner(gameObject);
-			if(!Networking.IsOwner(gameObject)){
-				TakeOwnership();
-			}else{
-			globalcurrentboard=currentboard;
-			globalcurrentlang=currentlang;
-			globalcurrentlesson=currentlesson;
-			globalcurrentword=currentword;
+	}
+
+	/***************************************************************************************************************************
+	Change Menu to display Lesson Selection.
+	***************************************************************************************************************************/
+	void _DisplayLessonSelectMenu() {
+		// Handle Menu Header (Breadcrumb)
+		menuheadertext.text = signlanguagenames[currentlang][0] + " Lesson Menu";
+
+		// Handle Selection Buttons
+		bool isButtonSelected = false;
+		for (int i = 0; i < numofbuttons; i++) {
+			if (i < AllLessons[currentlang].Length) {
+				if (lessonnames[currentlang].Length > i) {
+					isButtonSelected = currentmode == MODE_QUIZ && quizlessonselection[currentlang][i] ? true : false;
+					_DisplayButton(i, (i + 1) + ") " + lessonnames[currentlang][i], isButtonSelected,false,false);
+					_HideVRIcon(i);
+				}
+			} else {
+				_HideButton(i);
+			}
+		}
+
+		// Handle Navigation Buttons
+		nextButton.SetActive(false);
+		prevButton.SetActive(false);
+		backbuttons[0].SetActive(true);
+		backbuttons[1].SetActive(true);
+	}
+
+	/***************************************************************************************************************************
+	Change Menu to display Word Selection.
+	***************************************************************************************************************************/
+	void _DisplayWordSelectMenu() {
+		// Handle Menu Header (Breadcrumb)
+		menuheadertext.text = signlanguagenames[currentlang][0] + " - " + lessonnames[currentlang][currentlesson];
+
+		// Handle Selection Buttons
+		string buttonText;
+		bool isButtonSelected;
+		bool isWordValid;
+		for (int i = 0; i < numofbuttons; i++) {
+			if (i < AllLessons[currentlang][currentlesson].Length) {
+				buttonText = "    " + (i + 1) + ") " + AllLessons[currentlang][currentlesson][i][0];
+				isButtonSelected = currentword == i;
+				isWordValid = AllLessons[currentlang][currentlesson][i][6] == "TRUE";
+				_DisplayButton(i, buttonText, isButtonSelected, true, isWordValid);
+				_DisplayVRIcon(i);
+			} else {
+				_HideButton(i);
+			}
+		}
+
+		// Handle Navigation Buttons
+		backbuttons[0].SetActive(true);
+		backbuttons[1].SetActive(true);
+		if (currentword > 0){
+			prevButton.SetActive(true);
+		} else {
+			prevButton.SetActive(false);
+		} if ((currentword+1)<AllLessons[currentlang][currentlesson].Length) {
+			nextButton.SetActive(true);
+		} else {
+			nextButton.SetActive(false);
+		}
+		// Bet no one will notice this comment is a RICK ROLL...
+		// Never gonna give you up
+		// Never gonna let you down
+		// Never gonna turn around and desert you
+	}
+
+	/***************************************************************************************************************************
+	Display the VR Icon for the given Button/Word Index.
+	***************************************************************************************************************************/
+	void _DisplayVRIcon(int index) {
+		//Debug.Log("switching on AllLessons[currentlang][currentlesson][index][4]:" + AllLessons[currentlang][currentlesson][index][4]);
+		switch (AllLessons[currentlang][currentlesson][index][4]) { //populate vr icons
+		case "0": // Knuckles Controller icon
+			indexicons[index].SetActive(true);
+			regvricons[index].SetActive(false);
+			bothvricons[index].SetActive(false);
+			break;
+		case "1": // Standard VR Controller icon
+			indexicons[index].SetActive(false);
+			regvricons[index].SetActive(true);
+			bothvricons[index].SetActive(false);
+			break;
+		case "2": // Both Controller Types icon
+			indexicons[index].SetActive(false);
+			regvricons[index].SetActive(false);
+			bothvricons[index].SetActive(true);
+			break;
+		default: //uhh how am I here? Is it null somehow? Maybe should set to both by default...
+			Debug.Log("_DisplayVRIcon("+index+") had an invalid VR Icon setting; update AllLessons[currentlang][currentlesson][index][4]");
+			indexicons[index].SetActive(false);
+			regvricons[index].SetActive(false);
+			bothvricons[index].SetActive(false);
+			break;
+		}
+	}
+
+	/***************************************************************************************************************************
+	Hide the display for a VR icon at a specific index.
+	***************************************************************************************************************************/
+	void _HideVRIcon(int index) {
+		indexicons[index].SetActive(false);
+		regvricons[index].SetActive(false);
+		bothvricons[index].SetActive(false);
+	}
+
+
+	/***************************************************************************************************************************
+	Display a Menu button at a specific index, with the given parameters.
+	***************************************************************************************************************************/
+	void _DisplayButton(int index, string text, bool isSelected, bool isColored, bool isValid) {
+
+		// Handle Validation Highlighting
+		if (isColored) {
+			buttontext[index].color = isValid ? COLOR_GREEN : COLOR_RED; // Validated
+		} else {
+			buttontext[index].color = COLOR_WHITE; // Standard
+		}
+	
+		// Handle Selection Highlighting
+		buttons[index].GetComponent<Button>().colors = isSelected ? darkmodeselectedbutton : darkmodebutton;
+		
+		// Handle Text
+		buttontext[index].text = text;
+		
+		// Toggle Display
+		buttons[index].SetActive(true);
+	}
+
+	/***************************************************************************************************************************
+	Hide the specified button.
+	***************************************************************************************************************************/
+	void _HideButton(int index) {
+		buttons[index].SetActive(false);
+	}
+
+	/***************************************************************************************************************************
+	Display the sign on the MoCap Avatar and VRCPlayer.
+	***************************************************************************************************************************/
+	void _DisplaySignVisuals() {
+		if(currentword!=-1){
+			// Update MoCap Avatar Visuals (Nana)
+			// AllLessons[][][][0] = word 
+			// AllLessons[][][][1] = name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
+			// AllLessons[][][][2] = mocap credits. 
+			// AllLessons[][][][3] = video URL.
+			// AllLessons[][][][4] = VR index or regular 0=indexonly , 1=generalvr, 2=both
+			// AllLessons[][][][5] = Sign description string
+			currentsigntext.text = (currentlesson+1)+"-"+(currentword+1)+" "+AllLessons[currentlang][currentlesson][currentword][0];
+			speechbubbletext.text = AllLessons[currentlang][currentlesson][currentword][0];
+			nana.Play(AllLessons[currentlang][currentlesson][currentword][1]); // TODO Look into Animation Transitions
+			signcredittext.text = "The motion data for this sign was signed by: " +  AllLessons[currentlang][currentlesson][currentword][2];
+			descriptiontext.text = AllLessons[currentlang][currentlesson][currentword][5];
+
+			// Update VRCPlayer Visual
+			if (AllLessons[currentlang][currentlesson][currentword][3] != "") { // if url is blank, then don't look for the video
+				if (langurls.Length > 0) { //don't crash the script if i forget to build langurls lol...
+					vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][currentword]);
+				}
 			}
 		}
 	}
 
+	/***************************************************************************************************************************
+	Button Handler for Previous/Next navigation button clicks on Word Selection for main Menu.
+	***************************************************************************************************************************/
+	void _PreviousNextWordButtonPushed(bool isIncrementingWord) {
+		int nextword = isIncrementingWord ? currentword + 1 : currentword - 1;
+		int lessonLength = AllLessons[currentlang][currentlesson][currentword].Length;
+		if (nextword >= 0 && nextword < lessonLength) {
+			currentword = nextword;
+			_DisplayWordSelectMenu();
+		}
+	}
 
+	/***************************************************************************************************************************
+	Button Handler for Back button click on Menu.
+	***************************************************************************************************************************/
+	void _BackButtonPushed() {
+		if(globalmode){
+			//SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.Owner, "ChangeState");
+		}
+		direction=BACKWARDS;
+		_UpdateMenuVariables(NOT_SELECTED);
+		_UpdateAllDisplays();
+	}
 
 	/***************************************************************************************************************************
 	Figures out if the button pushed is the correct one. Displays corrisponding status screen if correct, or try again.
 	***************************************************************************************************************************/
-	public void quizbuttonpushed(int x){
-		Debug.Log("Entered quizbuttonpushed");
+	void _QuizButtonPushed(int x){
+		Debug.Log("Entered _QuizButtonPushed");
 		//Debug.Log("Quizcounter:"+quizcounter+" numofwordsselected:"+numofwordsselected);
 		quiza.SetActive(false);
 		quizb.SetActive(false);
@@ -2087,8 +2325,8 @@ if(globalmode){
 	/***************************************************************************************************************************
 	Generates list of words from selected lessons, starts the quiz
 	***************************************************************************************************************************/
-	public void QuizBigButton(){
-		Debug.Log("Entered QuizBigButton");
+	void _QuizBigButtonPushed(){
+		Debug.Log("Entered _QuizBigButtonPushed");
 		//UnityEngine.Random.Range(0,quizarray.Length+1)
 
 
@@ -2224,242 +2462,51 @@ if(globalmode){
 
 
 	/***************************************************************************************************************************
-	Inverts colors
+	Update loop - if not the owner and global mode is enabled checks for updates to the global variables, and updates the board to follow.
 	***************************************************************************************************************************/
-	public void ToggleDark(){
-		
-	}
-
-
-	/***************************************************************************************************************************
-	Update loop - if not the owner and global mode is enabled checks for updates to the global variables, and updates the board to follow. ignore quiz mode?
-	***************************************************************************************************************************/
-    private void Update()
-    {
+    private void Update() {
         bool isOwner = Networking.IsOwner(gameObject);
-		if(!isOwner & globalmode){//only activate if global mode is on and if they're not the owner of the board.
-			if(globalcurrentboard != currentboard | globalcurrentlang != currentlang | globalcurrentlesson != currentlesson | globalcurrentword != currentword){
-				switch(globalcurrentboard){
-				case 0: //global is on lang select
-					currentboard=globalcurrentboard;
-					DisplayLanguageSelectMenu();
-				break;
-				case 1://global is on lesson select
-					currentlang=globalcurrentlang;
-					DisplayLessonSelectMenu();//need language and lesson number.
-				break;
-				case 2://global is on word select
-					currentlesson=globalcurrentlesson;
-					DisplaySignSelectMenu();
-				break;
-				default:
-				break;
-				}
-				if(globalcurrentword!=currentword){
-					changeword(globalcurrentword);
-				}
+		if (!isOwner & globalmode) { //only activate if global mode is on and if they're not the owner of the board.
+			if (globalcurrentmode != currentmode || 
+			globalcurrentlang != currentlang || 
+			globalcurrentlesson != currentlesson || 
+			globalcurrentword != currentword){
+				_UpdateMenuVariables(NOT_SELECTED);
+				_UpdateAllDisplays();
 			}
-
 		}
-
-
-		GameObject.Find("/Debug/Panel/Text1").GetComponent<Text>().text="Master:"+isOwner;
-		GameObject.Find("/Debug/Panel/Text2").GetComponent<Text>().text="globalcurrentboard:"+globalcurrentboard+" currentboard:"+currentboard;
-		GameObject.Find("/Debug/Panel/Text3").GetComponent<Text>().text="globalcurrentlang:"+globalcurrentlang+" currentlang:"+currentlang;
-		GameObject.Find("/Debug/Panel/Text4").GetComponent<Text>().text="globalcurrentlesson:"+globalcurrentlesson+" currentlesson:"+currentlesson;
-		GameObject.Find("/Debug/Panel/Text5").GetComponent<Text>().text="globalcurrentword:"+globalcurrentword+" currentword:"+currentword;
+		_DebugMenuVariables();
 	}
 
 	/***************************************************************************************************************************
 	Figures out what the button does, and sends to the approperate functions to update the menu.
 	***************************************************************************************************************************/
-	public void buttonpushed(int x) {
-		//figure out what the current signnumber is based on x and prevsign (figure out previous screen first)
-		Debug.Log("Entered Buttonpushed with button #"+x+" pushed. Currentboard:"+currentboard+" Quizmode: "+quizmode + " Globalmode: "+globalmode);
-		if(globalmode){
-			Debug.Log("Global Mode");
-			bool isOwner = Networking.IsOwner(gameObject);
-			if(!isOwner){
-				TakeOwnership();
-			}
-		}
-		if(quizmode)
-		{
-			Debug.Log("Quiz Mode");
-		switch (currentboard) {
-			case 0: //button pushed on lang select, change to lesson select board.
-				currentlang=x;
-				DisplayLessonSelectMenu();//x=language number
-			break;
-			case 1://button pushed on lesson select, mark as selected
-				SelectQuizLesson(x);
-			break;
-			case 2:
-				
-			break;
-			default:
-			Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
-			break;
-			}
-		}
-		else{
-			switch (currentboard) {
-			case 0: //button pushed on lang select, change to lesson select board.
-				currentlang=x;
-				DisplayLessonSelectMenu();//x=language number
-			break;
-			case 1://button pushed on lesson select, change to word select board.
-				currentlesson=x;
-				DisplaySignSelectMenu();
-			break;
-			case 2://button pushed on word select, display word selected.
-				//turn off current playing video (if any)
-				//TurnOffVideo();
-				//do all the sign word change stuff
-				changeword(x);
-			break;
-			default:
-			Debug.Log("Button pushed, but I have no idea what board i'm on. currentboard: "+currentboard + "buttonpushed: "+x);
-			break;
-			}
-		}
+	void _buttonpushed(int buttonIndex) {
+		Debug.Log("Entered _buttonpushed("+buttonIndex+")");
+		
+		// Update Data
+		_UpdateMenuVariables(buttonIndex);
+		
+		// Update Display
+		_UpdateAllDisplays();
 	}
 
 	/***************************************************************************************************************************
 	Takes ownership of the board udonbehavior to update variables?
 	***************************************************************************************************************************/
-        void TakeOwnership()
-        {
-            if (Networking.IsMaster)
-            {
-                if (!Networking.IsOwner(gameObject))
-                {
+        void _TakeOwnership() {
+            if (Networking.IsMaster) {
+                if (!Networking.IsOwner(gameObject)) {
                     Networking.SetOwner(Networking.LocalPlayer, gameObject);
                 }
             }
         }
 
 	/***************************************************************************************************************************
-	Figures out where the back button goes based on the current board, and sends to the approperate functions to update the menu.
-	***************************************************************************************************************************/
-	void BackButtonClicked() {
-		//figure out what the current signnumber is based on x and prevsign (figure out previous screen first)
-		if(quizmode){
-			switch (currentboard) {
-			case 0: //button pushed on lang select, change to lesson select board.
-				Debug.Log("Back button pushed, but the back button should not have been enabled on lang select ");
-			break;
-			case 1://button pushed on lesson select, change to lang select board.
-				DisplayLanguageSelectMenu();//need language and lesson number.
-			break;
-			case 2://button pushed on word select, display lesson select board.
-				DisplayLessonSelectMenu();
-			break;
-			default:
-			Debug.Log("Back button pushed, but I have no idea what board i'm on. currentboard: "+currentboard);
-			break;
-			}
-		}
-		else{
-			switch (currentboard) {
-			case 0: //button pushed on lang select, change to lesson select board.
-				Debug.Log("Back button pushed, but the back button should not have been enabled on lang select ");
-			break;
-			case 1://button pushed on lesson select, change to lang select board.
-				DisplayLanguageSelectMenu();//need language and lesson number.
-			break;
-			case 2://button pushed on word select, display lesson select board.
-				DisplayLessonSelectMenu();
-			break;
-			default:
-			Debug.Log("Back button pushed, but I have no idea what board i'm on. currentboard: "+currentboard);
-			break;
-			}
-		}
-	}
-
-    /***************************************************************************************************************************
-	Called before current variables are changed, to disable videos if any are active (based on presence of url being populated)
-	***************************************************************************************************************************/
-    void TurnOffVideo() {
-		Debug.Log("Entering TurnOffVideo with currentword of: " + currentword);
-		if (currentword!=-1){
-			if (AllLessons[currentlang][currentlesson][currentword][3] != "") { //if url is not empty, turn off the video
-				Debug.Log("/Udon Menu System/Video Container/"+signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1));
-				videocontainer.transform.Find(signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1)).gameObject.SetActive(false);
-			}
-		}
-    }
-	/***************************************************************************************************************************
-	Called to change everything needed to display a sign's motion data. Doesn't care if it's the same sign.
-	***************************************************************************************************************************/
-	void changeword(int buttonnumber) { //wordnum must not be 00.
-		Debug.Log("Entering changeword with buttonbumber of: " + buttonnumber);
-			//turn off old video.
-			if (currentword!=-1)
-			{
-				buttons[currentword].GetComponent<Button>().colors=darkmodebutton;
-				if (AllLessons[currentlang][currentlesson][buttonnumber][3] == "") { //if url is empty, turn off the video
-				Debug.Log("Url empty");
-                vrcplayercomponent.Stop();
-				//	Debug.Log("/Udon Menu System/Video Container/"+signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1));
-					//videocontainer.transform.Find(signlanguagenames[currentlang][0]+" Video L"+(currentlesson+1) +" S"+(currentword+1)).gameObject.SetActive(false);
-				}
-			}
-		
-		if(buttonnumber!=-1){
-
-		buttons[buttonnumber].GetComponent<Button>().colors=darkmodeselectedbutton;
-		//0th value is the word 
-        //1st value is the name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
-        //2nd value is mocap credits. 
-        //3rd value is video URL.
-        //4th value is VR index or regular 0=indexonly , 1=generalvr,2=both
-        //5th value is Sign description string
-		currentsigntext.text=(currentlesson+1)+"-"+(buttonnumber+1)+" "+AllLessons[currentlang][currentlesson][buttonnumber][0];
-		speechbubbletext.text=AllLessons[currentlang][currentlesson][buttonnumber][0];
-		nana.Play(AllLessons[currentlang][currentlesson][buttonnumber][1]);//or do setinterger? But setinterger is hard to figure out unless i re-encode all the states to something easily derived from AllLessons
-		signcredittext.text = "The motion data for this sign was signed by: " +  AllLessons[currentlang][currentlesson][buttonnumber][2];
-		
-		if(AllLessons[currentlang][currentlesson][buttonnumber][3]!=""){//if url is blank, then don't look for the video
-			if(langurls.Length!=0){//don't crash the script if i forget to build langurls lol...
-				vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][buttonnumber]);
-			}
-		}
-		descriptiontext.text = AllLessons[currentlang][currentlesson][buttonnumber][5];
-
-		Debug.Log("Buttonnumber:"+ buttonnumber+" array length:" + AllLessons[currentlang][currentlesson].Length);
-		if(buttonnumber>0){
-			prevButton.SetActive(true);
-		}else{
-			prevButton.SetActive(false);
-		}
-		if((buttonnumber+1)<AllLessons[currentlang][currentlesson].Length){ //buttonnumber is zero indexed, length is not
-			nextButton.SetActive(true);
-		}else{
-			nextButton.SetActive(false);
-		}
-		}
-	currentword=buttonnumber;
-	    if(globalmode){
-			//bool isOwner = Networking.IsOwner(gameObject);
-			if(!Networking.IsOwner(gameObject)){
-				TakeOwnership();
-			}
-			globalcurrentboard=currentboard;
-			globalcurrentlang=currentlang;
-			globalcurrentlesson=currentlesson;
-			globalcurrentword=currentword;
-		}
-	}
-
-
-
-	/***************************************************************************************************************************
 	Changes selected array to true for given lesson. Change button color to indicate selected.
 	***************************************************************************************************************************/
-	void SelectQuizLesson(int x) { //I don't need the lesson number here because I'm displaying all lessons.
-		Debug.Log("Now entering SelectQuizLesson with a language number of " + currentlang + " and a button number of x:"+x);
+	void _SelectQuizLesson(int x) { //I don't need the lesson number here because I'm displaying all lessons.
+		Debug.Log("Now entering _SelectQuizLesson with a language number of " + currentlang + " and a button number of x:"+x);
 		if(quizlessonselection[currentlang][x]==false){
 			buttons[x].GetComponent<Button>().colors=darkmodeselectedbutton;
 			quizlessonselection[currentlang][x]=true;
@@ -2471,133 +2518,55 @@ if(globalmode){
 	}
 
 
+
 	/***************************************************************************************************************************
-	Changes the menu so it displays the Lesson select menu.
+	Outputs debug vars to log or panel
 	***************************************************************************************************************************/
-	void DisplayLessonSelectMenu() {
-		Debug.Log("Now entering DisplayLessonSelectMenu with a language #:" + currentlang);
-		menuheadertext.text = signlanguagenames[currentlang][0] + " Lesson Menu";
-		if(globalmode){
-			menusubheadertext.text = "Global Mode";
-		}
-		else if(quizmode)
-		{
-			menusubheadertext.text = "Quiz Mode";
-		}else
-		{
-			menusubheadertext.text = "Local Mode";
-		}
-		for (int x = 0; x < numofbuttons; x++) {
-			if (x < AllLessons[currentlang].Length) {
-				if (lessonnames[currentlang].Length > x) {
-					buttontext[x].text = (x + 1) + ") " + lessonnames[currentlang][x];
-					if(quizmode){
-						if(quizlessonselection[currentlang][x]){
-							buttons[x].GetComponent<Button>().colors=darkmodeselectedbutton;
-						}else{
-							buttons[x].GetComponent<Button>().colors=darkmodebutton;	
-						}
-					}else{
-					buttons[x].GetComponent<Button>().colors=darkmodebutton;	
-					}
-					buttontext[x].color=new Color(1,1,1,1); //white
-					buttons[x].SetActive(true);
-					indexicons[x].SetActive(false);
-					regvricons[x].SetActive(false);
-					bothvricons[x].SetActive(false);
-				}
-			}else {
-				buttons[x].SetActive(false);
-			}
-		}
-		nextButton.SetActive(false);
-		prevButton.SetActive(false);
-		backbuttons[0].SetActive(true);
-		backbuttons[1].SetActive(true);
-		//maybe need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function...
-		currentboard=1;
-		if(globalmode){
-			bool isOwner = Networking.IsOwner(gameObject);
-			if(!isOwner){
-				TakeOwnership();
-			}else{
-			globalcurrentboard=currentboard;
-			globalcurrentlang=currentlang;
-			globalcurrentlesson=currentlesson;
-			globalcurrentword=currentword;
-		}
-		}
+	void _DebugMenuVariables() 
+	{
+		Text debugtextbox = GameObject.Find("/Debug/Panel/Text1").GetComponent<Text>();
+		//String _message = "";
+		debugtextbox.text="Current Variable contents: " +"\ncurrentmode: " + currentmode + "\ncurrentlang: " + currentlang + 
+				"\ncurrentlesson: " + currentlesson + 
+				"\ncurrentword: " + currentword +
+				"\nglobalcurrentmode: " + globalcurrentmode +
+				"\nglobalcurrentlang: " + globalcurrentlang + 
+				"\nglobalcurrentlesson: " + globalcurrentlesson + 
+				"\nglobalcurrentword: " + globalcurrentword;
+		/*
+		Debug.Log("Current Variable contents: " +"\ncurrentmode: " + currentmode + "\ncurrentlang: " + currentlang + 
+				"\ncurrentlesson: " + currentlesson + 
+				"\ncurrentword: " + currentword +
+				"\nglobalcurrentmode: " + globalcurrentmode +
+				"\nglobalcurrentlang: " + globalcurrentlang + 
+				"\nglobalcurrentlesson: " + globalcurrentlesson + 
+				"\nglobalcurrentword: " + globalcurrentword);*/
 	}
 
 
 	/***************************************************************************************************************************
-	Changes the menu so it displays the available signs in a specific lesson. (Local Mode)
+	Handle VRCPlayer Error
 	***************************************************************************************************************************/
-	void DisplaySignSelectMenu() {
-		Debug.Log("Now entering DisplaySignSelectMenu with a language number of " + currentlang + " and a currentlesson of " + currentlesson);
-		menuheadertext.text = signlanguagenames[currentlang][0] + " - " + lessonnames[currentlang][currentlesson];
-		if(globalmode){
-			menusubheadertext.text = "Global Mode";
-		}else
+	public override void OnVideoError(VideoError videoError) {
+		Debug.LogError("[USharpVideo] Video failed: ");
+		switch (videoError)
 		{
-			menusubheadertext.text = "Local Mode";
+			case VideoError.RateLimited:
+				Debug.LogError("Rate limited, try again in a few seconds");
+				break;
+			case VideoError.PlayerError:
+				Debug.LogError("Video player error");
+				break;
+			case VideoError.InvalidURL:
+				Debug.LogError("Invalid URL");
+				break;
+			case VideoError.AccessDenied:
+				Debug.LogError("Video blocked, enable untrusted URLs");
+				break;
+			default:
+				Debug.LogError("Failed to load video");
+				break;
 		}
-		for (int x = 0; x < numofbuttons; x++) { //update all the buttons in the menu
-			//Debug.Log("x="+x+" AllLessons[currentlang][currentlesson].Length="+AllLessons[currentlang][currentlesson].Length);
-			if (AllLessons[currentlang][currentlesson].Length > x) { //for all signs in the lesson
-				buttons[x].SetActive(true);
-				buttons[x].GetComponent<Button>().colors=darkmodebutton;
-				buttontext[x].text = "    " + (x + 1) + ") " + AllLessons[currentlang][currentlesson][x][0];
-
-					if(AllLessons[currentlang][currentlesson][x][6]=="TRUE"){
-						buttontext[x].color=new Color(.5f,1,.5f,1);//green
-					}else{
-						buttontext[x].color=new Color(1,.5f,.5f,1);//red
-					}
-
-				//Debug.Log("switching on AllLessons[currentlang][currentlesson][x][4]:" + AllLessons[currentlang][currentlesson][x][4]);
-				switch (AllLessons[currentlang][currentlesson][x][4]) { //populate vr icons
-				case "0": //index icon
-					indexicons[x].SetActive(true);
-					regvricons[x].SetActive(false);
-					bothvricons[x].SetActive(false);
-					break;
-				case "1": //regular vr icon
-					indexicons[x].SetActive(false);
-					regvricons[x].SetActive(true);
-					bothvricons[x].SetActive(false);
-					break;
-				case "2": //both vr icon
-					indexicons[x].SetActive(false);
-					regvricons[x].SetActive(false);
-					bothvricons[x].SetActive(true);
-					break;
-				default: //uhh how am I here? Is it null somehow? Maybe should set to both by default...
-					indexicons[x].SetActive(false);
-					regvricons[x].SetActive(false);
-					bothvricons[x].SetActive(false);
-					break;
-				}
-
-			}else { //disable buttons that are outside of the lesson
-				buttons[x].SetActive(false);
-			}
-		}
-		backbuttons[0].SetActive(true);
-		backbuttons[1].SetActive(true);
-		currentboard=2;
-	    if(globalmode){
-			//bool isOwner = Networking.IsOwner(gameObject);
-			if(!Networking.IsOwner(gameObject)){
-				TakeOwnership();
-			}else{
-			globalcurrentboard=currentboard;
-			globalcurrentlang=currentlang;
-			globalcurrentlesson=currentlesson;
-			globalcurrentword=currentword;
-			}
-		}
-		//also need to blank out avatar animationint, current sign text and so on i guess. or maybe this should be in a seperate function... 
 	}
 
 	/***************************************************************************************************************************
@@ -2612,11 +2581,10 @@ if(globalmode){
 	/***************************************************************************************************************************
 	Called to switch the signing avatar's mirror animation parameter and set the toggle box state. 
 	***************************************************************************************************************************/
-	public void ToggleHand()
-    {
-		if(!nana.GetBool("Mirror")){ //if mirror checkbox is off
+	public void ToggleHand() {
+		if (!nana.GetBool("Mirror")) { //if mirror checkbox is off
 			nana.SetBool("Mirror",true);
-		}else{
+		} else {
 			nana.SetBool("Mirror",false);
 		}
 		
@@ -2625,15 +2593,10 @@ if(globalmode){
 	/***************************************************************************************************************************
 	Called to switch the board to global mode and set the toggle box state
 	***************************************************************************************************************************/
-	public void ToggleGlobal()
-    {
-		if(!globalmode){
-			globalmode=true;
-
-		}else{
-			globalmode=false;
-		}
-		redrawmenu();
+	public void ToggleGlobal() {
+		globalmode = !globalmode;
+		_UpdateMenuVariables(NOT_SELECTED);
+		_UpdateAllDisplays();
     }
 
 
@@ -2641,457 +2604,365 @@ if(globalmode){
 	Called to switch the board to quiz mode
 	Handles enabling/disabling ui elements
 	***************************************************************************************************************************/
-	public void ToggleQuiz()
-    {
-
-		Debug.Log("Entered ToggleQuiz with quizmode: "+quizmode);
-		if(!quizmode){
-			quizmode=true;
-		}else{
-			quizmode=false;
+	public void ToggleQuiz() {
+		Debug.Log("Entered ToggleQuiz with quizmode: "+(currentmode == MODE_QUIZ));
+		if (!(currentmode == MODE_QUIZ)) {
+			currentmode=MODE_QUIZ;
+		} else {
+			currentmode=MODE_LOOKUP;
 		}
-		quizp.SetActive(quizmode);
 
-		quiza.SetActive(!quizmode);
-		quizb.SetActive(!quizmode);
-		quizc.SetActive(!quizmode);
-		quizd.SetActive(!quizmode);
-		quizbig.SetActive(quizmode);
-		signingavatars.transform.Find("Nana Avatar/Armature/Canvas").gameObject.SetActive(!quizmode);
+		quizp.SetActive(currentmode == MODE_QUIZ);
+		quiza.SetActive(!(currentmode == MODE_QUIZ));
+		quizb.SetActive(!(currentmode == MODE_QUIZ));
+		quizc.SetActive(!(currentmode == MODE_QUIZ));
+		quizd.SetActive(!(currentmode == MODE_QUIZ));
+		quizbig.SetActive(currentmode == MODE_QUIZ); 
+		signingavatars.transform.Find("Nana Avatar/Armature/Canvas").gameObject.SetActive(!(currentmode == MODE_QUIZ));
 
-		nextButton.SetActive(!quizmode);
-		prevButton.SetActive(!quizmode);
-		currentsign.SetActive(!quizmode);
-		signcredit.SetActive(!quizmode);
-		description.SetActive(!quizmode);
+		nextButton.SetActive(!(currentmode == MODE_QUIZ));
+		prevButton.SetActive(!(currentmode == MODE_QUIZ));
+		currentsign.SetActive(!(currentmode == MODE_QUIZ));
+		signcredit.SetActive(!(currentmode == MODE_QUIZ));
+		description.SetActive(!(currentmode == MODE_QUIZ));
 
 		quiztext.text="Quiz";
 		quiztext2.text="Select lessons and then push the big button below to generate a quiz";
 		quizbig.transform.Find("Text").GetComponent<Text>().text="Start Quiz";
 		quizinprogress=false;
-		redrawmenu();
     }
-	/***************************************************************************************************************************
-	Redraws the menu based on currentboard and other current values.
-	***************************************************************************************************************************/
-	void redrawmenu(){
-		if(quizmode)
-		{
-			switch (currentboard) {
-			case 0: 
-				DisplayLanguageSelectMenu();
-			break;
-			case 1:
-				DisplayLessonSelectMenu();
-			break;
-			case 2://per-word quizzing not supported yet, so go back to lesson select
-				DisplayLessonSelectMenu();
-			break;
-			default:
-			break;
-			}
-		}
-		else
-		{
-			switch (currentboard) {
-			case 0:
-				DisplayLanguageSelectMenu();
-			break;
-			case 1:
-				DisplayLessonSelectMenu();
-			break;
-			case 2:
-				DisplaySignSelectMenu();
-			break;
-			default:
-			break;
-			}
-		}
-	}
 
-string[] reshuffle(string[] texts)
-    {
-        // Knuth shuffle algorithm :: courtesy of Wikipedia :)
-        for (int t = 0; t < texts.Length; t++ )
-        {
-            string tmp = texts[t];
-            int r = UnityEngine.Random.Range(t, texts.Length);
-            texts[t] = texts[r];
-            texts[r] = tmp;
-        }
-		return texts;
-    }
-	public void NextB()
-	{
-	Debug.Log("Next pushed");
-	//Changeword should have checked if +1 would exceed the current words in the lesson and disabled the next/previous button.
-		//TurnOffVideo();
-		changeword(currentword+1);
+	/***************************************************************************************************************************
+	Register Button Handlers
+	***************************************************************************************************************************/
+	public void NextB() {
+		_PreviousNextWordButtonPushed(true);
 	}
-	public void PrevB()
-	{
-		//TurnOffVideo();
-		changeword(currentword-1);
+	public void PrevB() {
+		_PreviousNextWordButtonPushed(false);
 	}
-	public void BackB()
-	{
-	Debug.Log("Back pushed");
-	BackButtonClicked();
+	public void BackB() {
+		_BackButtonPushed();
 	}
 	public void QuizA() {
-		quizbuttonpushed(0);
+		// _QuizButtonPushed(0);
 	}	
 	public void QuizB() {
-		quizbuttonpushed(1);
+		// _QuizButtonPushed(1);
 	}	
 	public void QuizC() {
-		quizbuttonpushed(2);
+		// _QuizButtonPushed(2);
 	}	
 	public void QuizD() {
-		quizbuttonpushed(3);
+		// _QuizButtonPushed(3);
 	}
 	public void B0() {
-		buttonpushed(0);
+		_buttonpushed(0);
 	}
 	public void B1() {
-		buttonpushed(1);
+		_buttonpushed(1);
 	}
 	public void B2() {
-		buttonpushed(2);
+		_buttonpushed(2);
 	}
 	public void B3() {
-		buttonpushed(3);
+		_buttonpushed(3);
 	}
 	public void B4() {
-		buttonpushed(4);
+		_buttonpushed(4);
 	}
 	public void B5() {
-		buttonpushed(5);
+		_buttonpushed(5);
 	}
 	public void B6() {
-		buttonpushed(6);
+		_buttonpushed(6);
 	}
 	public void B7() {
-		buttonpushed(7);
+		_buttonpushed(7);
 	}
 	public void B8() {
-		buttonpushed(8);
+		_buttonpushed(8);
 	}
 	public void B9() {
-		buttonpushed(9);
+		_buttonpushed(9);
 	}
 	public void B10() {
-		buttonpushed(10);
+		_buttonpushed(10);
 	}
 	public void B11() {
-		buttonpushed(11);
+		_buttonpushed(11);
 	}
 	public void B12() {
-		buttonpushed(12);
+		_buttonpushed(12);
 	}
 	public void B13() {
-		buttonpushed(13);
+		_buttonpushed(13);
 	}
 	public void B14() {
-		buttonpushed(14);
+		_buttonpushed(14);
 	}
 	public void B15() {
-		buttonpushed(15);
+		_buttonpushed(15);
 	}
 	public void B16() {
-		buttonpushed(16);
+		_buttonpushed(16);
 	}
 	public void B17() {
-		buttonpushed(17);
+		_buttonpushed(17);
 	}
 	public void B18() {
-		buttonpushed(18);
+		_buttonpushed(18);
 	}
 	public void B19() {
-		buttonpushed(19);
+		_buttonpushed(19);
 	}
 	public void B20() {
-		buttonpushed(20);
+		_buttonpushed(20);
 	}
 	public void B21() {
-		buttonpushed(21);
+		_buttonpushed(21);
 	}
 	public void B22() {
-		buttonpushed(22);
+		_buttonpushed(22);
 	}
 	public void B23() {
-		buttonpushed(23);
+		_buttonpushed(23);
 	}
 	public void B24() {
-		buttonpushed(24);
+		_buttonpushed(24);
 	}
 	public void B25() {
-		buttonpushed(25);
+		_buttonpushed(25);
 	}
 	public void B26() {
-		buttonpushed(26);
+		_buttonpushed(26);
 	}
 	public void B27() {
-		buttonpushed(27);
+		_buttonpushed(27);
 	}
 	public void B28() {
-		buttonpushed(28);
+		_buttonpushed(28);
 	}
 	public void B29() {
-		buttonpushed(29);
+		_buttonpushed(29);
 	}
 	public void B30() {
-		buttonpushed(30);
+		_buttonpushed(30);
 	}
 	public void B31() {
-		buttonpushed(31);
+		_buttonpushed(31);
 	}
 	public void B32() {
-		buttonpushed(32);
+		_buttonpushed(32);
 	}
 	public void B33() {
-		buttonpushed(33);
+		_buttonpushed(33);
 	}
 	public void B34() {
-		buttonpushed(34);
+		_buttonpushed(34);
 	}
 	public void B35() {
-		buttonpushed(35);
+		_buttonpushed(35);
 	}
 	public void B36() {
-		buttonpushed(36);
+		_buttonpushed(36);
 	}
 	public void B37() {
-		buttonpushed(37);
+		_buttonpushed(37);
 	}
 	public void B38() {
-		buttonpushed(38);
+		_buttonpushed(38);
 	}
 	public void B39() {
-		buttonpushed(39);
+		_buttonpushed(39);
 	}
 	public void B40() {
-		buttonpushed(40);
+		_buttonpushed(40);
 	}
 	public void B41() {
-		buttonpushed(41);
+		_buttonpushed(41);
 	}
 	public void B42() {
-		buttonpushed(42);
+		_buttonpushed(42);
 	}
 	public void B43() {
-		buttonpushed(43);
+		_buttonpushed(43);
 	}
 	public void B44() {
-		buttonpushed(44);
+		_buttonpushed(44);
 	}
 	public void B45() {
-		buttonpushed(45);
+		_buttonpushed(45);
 	}
 	public void B46() {
-		buttonpushed(46);
+		_buttonpushed(46);
 	}
 	public void B47() {
-		buttonpushed(47);
+		_buttonpushed(47);
 	}
 	public void B48() {
-		buttonpushed(48);
+		_buttonpushed(48);
 	}
 	public void B49() {
-		buttonpushed(49);
+		_buttonpushed(49);
 	}
 	public void B50() {
-		buttonpushed(50);
+		_buttonpushed(50);
 	}
 	public void B51() {
-		buttonpushed(51);
+		_buttonpushed(51);
 	}
 	public void B52() {
-		buttonpushed(52);
+		_buttonpushed(52);
 	}
 	public void B53() {
-		buttonpushed(53);
+		_buttonpushed(53);
 	}
 	public void B54() {
-		buttonpushed(54);
+		_buttonpushed(54);
 	}
 	public void B55() {
-		buttonpushed(55);
+		_buttonpushed(55);
 	}
 	public void B56() {
-		buttonpushed(56);
+		_buttonpushed(56);
 	}
 	public void B57() {
-		buttonpushed(57);
+		_buttonpushed(57);
 	}
 	public void B58() {
-		buttonpushed(58);
+		_buttonpushed(58);
 	}
 	public void B59() {
-		buttonpushed(59);
+		_buttonpushed(59);
 	}
 	public void B60() {
-		buttonpushed(60);
+		_buttonpushed(60);
 	}
 	public void B61() {
-		buttonpushed(61);
+		_buttonpushed(61);
 	}
 	public void B62() {
-		buttonpushed(62);
+		_buttonpushed(62);
 	}
 	public void B63() {
-		buttonpushed(63);
+		_buttonpushed(63);
 	}
 	public void B64() {
-		buttonpushed(64);
+		_buttonpushed(64);
 	}
 	public void B65() {
-		buttonpushed(65);
+		_buttonpushed(65);
 	}
 	public void B66() {
-		buttonpushed(66);
+		_buttonpushed(66);
 	}
 	public void B67() {
-		buttonpushed(67);
+		_buttonpushed(67);
 	}
 	public void B68() {
-		buttonpushed(68);
+		_buttonpushed(68);
 	}
 	public void B69() {
-		buttonpushed(69);
+		_buttonpushed(69);
 	}
-        public override void OnVideoError(VideoError videoError)
-        {
 
-            Debug.LogError("[USharpVideo] Video failed: ");
 
-            switch (videoError)
-            {
-                case VideoError.RateLimited:
-                    Debug.LogError("Rate limited, try again in a few seconds");
-                    break;
-                case VideoError.PlayerError:
-                    Debug.LogError("Video player error");
-                    break;
-                case VideoError.InvalidURL:
-                    Debug.LogError("Invalid URL");
-                    break;
-                case VideoError.AccessDenied:
-                    Debug.LogError("Video blocked, enable untrusted URLs");
-                    break;
-                default:
-                    Debug.LogError("Failed to load video");
-                    break;
-            }
+	/***************************************************************************************************************************
+	Override the Inspector to populate VRC Urls and Generate a dictionary of signs/words
+	***************************************************************************************************************************/
 
-        }
-//    
+	#if !COMPILER_UDONSHARP && UNITY_EDITOR 
+		[CustomEditor(typeof(MenuControl))]
+		public class CustomInspectorEditor : Editor {
+			public override void OnInspectorGUI() {
+				DrawDefaultInspector();
+				if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target)) return;
+				MenuControl inspectorBehaviour = (MenuControl)target;
+				
+				if(GUILayout.Button("Populate VRCUrls")) {
+					//Debug.Log("AllLessons.Length: "+ inspectorBehaviour.AllLessons.Length);
+					inspectorBehaviour.langurls = new VRCUrl[inspectorBehaviour.AllLessons.Length][][];
+					for (int x = 0; x < inspectorBehaviour.AllLessons.Length; x++) {
+						//Debug.Log("AllLessons[x].Length: "+ inspectorBehaviour.AllLessons[x].Length);
+						VRCUrl[][] lessonurls = new VRCUrl[inspectorBehaviour.AllLessons[x].Length][];
 
-#if !COMPILER_UDONSHARP && UNITY_EDITOR 
-    [CustomEditor(typeof(MenuControl))]
-    public class CustomInspectorEditor : Editor
-    {
-        public override void OnInspectorGUI()
-        {
-			DrawDefaultInspector();
-            if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target)) return;
-            MenuControl inspectorBehaviour = (MenuControl)target;
-            
-            
-			
-            if(GUILayout.Button("Populate VRCUrls"))
-            {
-				//Debug.Log("AllLessons.Length: "+ inspectorBehaviour.AllLessons.Length);
-				inspectorBehaviour.langurls = new VRCUrl[inspectorBehaviour.AllLessons.Length][][];
-				for (int x = 0; x < inspectorBehaviour.AllLessons.Length; x++) {
-					//Debug.Log("AllLessons[x].Length: "+ inspectorBehaviour.AllLessons[x].Length);
-					VRCUrl[][] lessonurls = new VRCUrl[inspectorBehaviour.AllLessons[x].Length][];
-
-					for (int y = 0; y < inspectorBehaviour.AllLessons[x].Length; y++) 
-					{
-						//Debug.Log("AllLessons[x][y].Length: "+ inspectorBehaviour.AllLessons[x][y].Length);
-						VRCUrl[] wordurls = new VRCUrl[inspectorBehaviour.AllLessons[x][y].Length];
-						for (int z = 0; z < inspectorBehaviour.AllLessons[x][y].Length; z++) {
-							
-							//Debug.Log("loop status x:"+x+" y:"+y+" z:"+ z);
-							//Debug.Log("Alllessons 0: "+inspectorBehaviour.AllLessons[x][y][z][0]);
-							//Debug.Log("Alllessons 1: "+inspectorBehaviour.AllLessons[x][y][z][1]);
-							//Debug.Log("Alllessons 2: "+inspectorBehaviour.AllLessons[x][y][z][2]);
-							//Debug.Log("Alllessons 3: "+inspectorBehaviour.AllLessons[x][y][z][3]);
-							
-							wordurls[z] = new VRCUrl(inspectorBehaviour.AllLessons[x][y][z][3]);
+						for (int y = 0; y < inspectorBehaviour.AllLessons[x].Length; y++) {
+							//Debug.Log("AllLessons[x][y].Length: "+ inspectorBehaviour.AllLessons[x][y].Length);
+							VRCUrl[] wordurls = new VRCUrl[inspectorBehaviour.AllLessons[x][y].Length];
+							for (int z = 0; z < inspectorBehaviour.AllLessons[x][y].Length; z++) {
+								
+								//Debug.Log("loop status x:"+x+" y:"+y+" z:"+ z);
+								//Debug.Log("Alllessons 0: "+inspectorBehaviour.AllLessons[x][y][z][0]);
+								//Debug.Log("Alllessons 1: "+inspectorBehaviour.AllLessons[x][y][z][1]);
+								//Debug.Log("Alllessons 2: "+inspectorBehaviour.AllLessons[x][y][z][2]);
+								//Debug.Log("Alllessons 3: "+inspectorBehaviour.AllLessons[x][y][z][3]);
+								
+								wordurls[z] = new VRCUrl(inspectorBehaviour.AllLessons[x][y][z][3]);
+							}
+							lessonurls[y] = wordurls;
 						}
-						lessonurls[y] = wordurls;
+						inspectorBehaviour.langurls[x] = lessonurls;
 					}
-					inspectorBehaviour.langurls[x] = lessonurls;
+					Debug.Log("URLS populated");
+
+					// Generate index of all words, sorted.
+					int lessonnum=1;
+					int wordnumber=1;
+					int totalwords=0;
+					List<List<String>> listofallwords = new List<List<string>>();
+					//List<List<List<String>>> listoflessons = new List<List<List<string>>>();
+					foreach (var lesson in inspectorBehaviour.AllLessons[0]) {
+						wordnumber=1;
+						if (lessonnum+1==28) {
+							continue;
+						}
+						//List<List<String>> listofwords = new List<List<String>>();
+						foreach (var word in lesson) {
+							List<String> worddata = new List<String>();
+							//uh why do i need the word values?
+							/*
+							foreach (var wordvalues in word)
+							{
+								//Console.Write("Added "+wordvalues+"\n");
+								worddata.Add(wordvalues);
+							}
+							*/
+							worddata.Add(word[0]);
+
+							worddata.Add("L"+lessonnum+"-"+wordnumber);
+							//listofwords.Add(worddata); 
+							listofallwords.Add(worddata);
+							totalwords++;
+							wordnumber++;
+						}
+						//listofwords=listofwords.OrderBy(l=>l[0]).ToList();
+						//var listofwordssorted = from word in listofwords
+						//listoflessons.Add(listofwords);
+						lessonnum++;
+					}
+					listofallwords=listofallwords.OrderBy(l=>l[0]).ToList();
+					string dictionarytext="";
+					foreach (var word in listofallwords) {
+						dictionarytext=dictionarytext+word[0]+" "+word[1]+"\n";
+						//Console.Write(word[0]+" "+word[6]+"\n");
+					}
+					FindInActiveObjectByName("DictionaryText").GetOrAddComponent<TMP_Text>().text=dictionarytext;
 				}
-				Debug.Log("URLS populated");
+			}
+		}
 
-				//generate index of all words, sorted.
-
-int lessonnum=1;
-int wordnumber=1;
-int totalwords=0;
-List<List<String>> listofallwords = new List<List<string>>();
-//List<List<List<String>>> listoflessons = new List<List<List<string>>>();
-foreach (var lesson in inspectorBehaviour.AllLessons[0])
-{
-    wordnumber=1;
-	if(lessonnum+1==28){
-		continue;
+		static GameObject FindInActiveObjectByName(string name) {
+		Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
+		for (int i = 0; i < objs.Length; i++){
+			if (objs[i].hideFlags == HideFlags.None) {
+				if (objs[i].name == name){
+					return objs[i].gameObject;
+				}
+			}
+		}
+		return null;
 	}
-    //List<List<String>> listofwords = new List<List<String>>();
-    foreach (var word in lesson)
-    {
-        List<String> worddata = new List<String>();
-        //uh why do i need the word values?
-		/*
-		foreach (var wordvalues in word)
-        {
-            //Console.Write("Added "+wordvalues+"\n");
-            worddata.Add(wordvalues);
-        }
-		*/
-		worddata.Add(word[0]);
-
-        worddata.Add("L"+lessonnum+"-"+wordnumber);
-        //listofwords.Add(worddata); 
-        listofallwords.Add(worddata);
-        totalwords++;
-        wordnumber++;
-    }
-    //listofwords=listofwords.OrderBy(l=>l[0]).ToList();
-    //var listofwordssorted = from word in listofwords
-    //listoflessons.Add(listofwords);
-    lessonnum++;
-}
-listofallwords=listofallwords.OrderBy(l=>l[0]).ToList();
-string dictionarytext="";
-
-foreach (var word in listofallwords){
-    dictionarytext=dictionarytext+word[0]+" "+word[1]+"\n";
-	//Console.Write(word[0]+" "+word[6]+"\n");
-}
-
-FindInActiveObjectByName("DictionaryText").GetOrAddComponent<TMP_Text>().text=dictionarytext;
-            }
-	    }
-    }
-
-	static GameObject FindInActiveObjectByName(string name){
-    Transform[] objs = Resources.FindObjectsOfTypeAll<Transform>() as Transform[];
-    for (int i = 0; i < objs.Length; i++){
-        if (objs[i].hideFlags == HideFlags.None)
-        {
-            if (objs[i].name == name){
-                return objs[i].gameObject;
-            }
-        }
-    }
-return null;
-}
-#endif
-
-
+	#endif
 
 }
