@@ -10,7 +10,6 @@ using VRC.SDK3.Components.Video;
 using VRC.SDK3.Video.Components;
 using VRC.SDK3.Video.Components.AVPro;
 using VRC.SDK3.Video.Components.Base;
-using UnityEngine.Rendering.PostProcessing;
 
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
@@ -1701,15 +1700,15 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	GameObject[] backbuttons = new GameObject[2];
 	GameObject nextButton;
     GameObject prevButton;
+
+	int currentboard=0; // current page
     int currentlang = 0; // currently selected Language
     int currentlesson = -1; // currently selected Lesson
     int currentword = -1; // currently selected Word/Sign
-	[UdonSynced]
-	int globalcurrentlang;
-	[UdonSynced]
-	int globalcurrentlesson;
-	[UdonSynced]
-	int globalcurrentword;
+	[UdonSynced] int globalboard;
+	[UdonSynced] int globalcurrentlang;
+	[UdonSynced] int globalcurrentlesson;
+	[UdonSynced] int globalcurrentword;
 	
 	// VRCPlayer Objects/Variables
 	GameObject videocontainer;
@@ -1772,6 +1771,9 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	const int MENU_LESSON = 1;
 	const int MENU_WORD = 2;
 
+	const int FORWARDS=1;
+	const int BACKWARDS=-1;
+	int direction=FORWARDS;
 
 	// Color Constants
 	Color COLOR_WHITE = new Color(1,1,1,1);
@@ -1790,6 +1792,16 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	Assigns variables for use. Initializes menu by calling DisplayLocalLanguageSelectMenu();
 	***************************************************************************************************************************/
 	void Start() {
+
+		// Initialize Displays
+		_InitializeDarkMode();
+		_InitializePreferenceMenu();
+	
+		_InitializeSigningAvatar();
+		_InitializeMenu();
+		_InitializeVideoPlayer();
+
+		_InitializeQuizMenu();
 
 		// Update Data - Modes
 		currentmode = QuizToggle.GetComponent<Toggle>().isOn ? MODE_QUIZ : MODE_LOOKUP;
@@ -1810,16 +1822,6 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		currentlesson = NOT_SELECTED;
 		currentword = NOT_SELECTED;
 
-
-		// Initialize Displays
-		_InitializeDarkMode();
-		_InitializePreferenceMenu();
-	
-		_InitializeSigningAvatar();
-		_InitializeMenu();
-		_InitializeVideoPlayer();
-
-		_InitializeQuizMenu();
 
 		// Update Display States
 		_UpdateSigningAvatarState();
@@ -1955,28 +1957,29 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Update Menu Variables used to control displays.
 	***************************************************************************************************************************/
-    void _UpdateMenuVariables(string direction, int buttonIndex) {
+    void _UpdateMenuVariables(int buttonIndex) {
 		Debug.Log("Entered _UpdateMenuVariables with direction:" + direction);
 		_DebugMenuVariables();
 		int currentmenu = _GetCurrentMenu();
 		switch(direction){
-			case "back":
+			case BACKWARDS:
 				if (currentlang == NOT_SELECTED) { //on lang menu
 					//Do nothing, as it shouldn't be possible to hit a back button on the lang select
 				} else {
 					if (currentlesson == NOT_SELECTED) { //on lesson menu
-						currentmenu = MENU_LANGUAGE; //go to lang menu
+						currentlang = NOT_SELECTED; //go to lang menu
 					} else { //on word menu
 						currentlesson = NOT_SELECTED; //go to lesson menu
 					}
 				}
+				direction=FORWARDS;
 				break;
 			default: //forward
 				switch (currentmenu) {
 					case MENU_LANGUAGE:
 						currentlang = buttonIndex;
 						currentlesson = NOT_SELECTED;
-						//currentword = NOT_SELECTED;
+						currentword = NOT_SELECTED;
 						break;
 					case MENU_LESSON:
 						if (currentmode == MODE_QUIZ) {
@@ -1996,21 +1999,26 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 				}
 				break;
 		}
-		bool isOwner = Networking.IsOwner(gameObject);
 		if(globalmode){
-			if (isOwner) {
-			globalcurrentlang = currentlang;
-			globalcurrentlesson = currentlesson;
-			globalcurrentword = currentword;
-			} else {//not the owner, so update board vars from global vars
-			currentlang = globalcurrentlang;
-			currentlesson = globalcurrentlesson;
-			currentword = globalcurrentword;
-			}
+			_GlobalModeVarSync();
 		}
 
     }
-
+	/***************************************************************************************************************************
+	Sync Global Vars
+	***************************************************************************************************************************/
+	void _GlobalModeVarSync(){
+		bool isOwner = Networking.IsOwner(gameObject);
+		if (isOwner) {
+			globalcurrentlang = currentlang;
+			globalcurrentlesson = currentlesson;
+			globalcurrentword = currentword;
+		} else {//not the owner, so update board vars from global vars
+			currentlang = globalcurrentlang;
+			currentlesson = globalcurrentlesson;
+			currentword = globalcurrentword;
+		}
+	}
 
 	/***************************************************************************************************************************
 	Update all displays, including Menu, VRC Player, Nana, etc.
@@ -2026,7 +2034,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 				break;
 			case MENU_WORD:
 				_DisplayWordSelectMenu();
-				_DisplaySignVisuals();
+				_DisplaySign();
 				break;
 			default:
 				Debug.Log("UpdateMenuDisplay() failed; currentmenu is: "+currentmenu+")");
@@ -2136,15 +2144,18 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		// Handle Navigation Buttons
 		backbuttons[0].SetActive(true);
 		backbuttons[1].SetActive(true);
+
 		if (currentword > 0){
 			prevButton.SetActive(true);
 		} else {
 			prevButton.SetActive(false);
-		} if ((currentword+1)<AllLessons[currentlang][currentlesson].Length) {
+		}
+		if ((currentword+1)<AllLessons[currentlang][currentlesson].Length && currentword != NOT_SELECTED) {
 			nextButton.SetActive(true);
 		} else {
 			nextButton.SetActive(false);
 		}
+
 		// Bet no one will notice this comment is a RICK ROLL...
 		// Never gonna give you up
 		// Never gonna let you down
@@ -2223,24 +2234,26 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Display the sign on the MoCap Avatar and VRCPlayer.
 	***************************************************************************************************************************/
-	void _DisplaySignVisuals() {
-		// Update MoCap Avatar Visuals (Nana)
-		// AllLessons[][][][0] = word 
-		// AllLessons[][][][1] = name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
-		// AllLessons[][][][2] = mocap credits. 
-		// AllLessons[][][][3] = video URL.
-		// AllLessons[][][][4] = VR index or regular 0=indexonly , 1=generalvr, 2=both
-		// AllLessons[][][][5] = Sign description string
-		currentsigntext.text = (currentlesson+1)+"-"+(currentword+1)+" "+AllLessons[currentlang][currentlesson][currentword][0];
-		speechbubbletext.text = AllLessons[currentlang][currentlesson][currentword][0];
-		nana.Play(AllLessons[currentlang][currentlesson][currentword][1]); // TODO Look into Animation Transitions
-		signcredittext.text = "The motion data for this sign was signed by: " +  AllLessons[currentlang][currentlesson][currentword][2];
-		descriptiontext.text = AllLessons[currentlang][currentlesson][currentword][5];
+	void _DisplaySign() {
+		if(currentword!=NOT_SELECTED){
+			// Update MoCap Avatar Visuals (Nana)
+			// AllLessons[][][][0] = word 
+			// AllLessons[][][][1] = name of the animation state (Used in the animation controller populator script to generate transitions - needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
+			// AllLessons[][][][2] = mocap credits. 
+			// AllLessons[][][][3] = video URL.
+			// AllLessons[][][][4] = VR index or regular 0=indexonly , 1=generalvr, 2=both
+			// AllLessons[][][][5] = Sign description string
+			currentsigntext.text = (currentlesson+1)+"-"+(currentword+1)+" "+AllLessons[currentlang][currentlesson][currentword][0];
+			speechbubbletext.text = AllLessons[currentlang][currentlesson][currentword][0];
+			nana.Play(AllLessons[currentlang][currentlesson][currentword][1]); // TODO Look into Animation Transitions
+			signcredittext.text = "The motion data for this sign was signed by: " +  AllLessons[currentlang][currentlesson][currentword][2];
+			descriptiontext.text = AllLessons[currentlang][currentlesson][currentword][5];
 
-		// Update VRCPlayer Visual
-		if (AllLessons[currentlang][currentlesson][currentword][3] != "") { // if url is blank, then don't look for the video
-			if (langurls.Length > 0) { //don't crash the script if i forget to build langurls lol...
-				vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][currentword]);
+			// Update VRCPlayer Visual
+			if (AllLessons[currentlang][currentlesson][currentword][3] != "") { // if url is blank, then don't look for the video
+				if (langurls.Length > 0) { //don't crash the script if i forget to build langurls lol...
+					vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][currentword]);
+				}
 			}
 		}
 	}
@@ -2249,11 +2262,13 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	Button Handler for Previous/Next navigation button clicks on Word Selection for main Menu.
 	***************************************************************************************************************************/
 	void _PreviousNextWordButtonPushed(bool isIncrementingWord) {
+		Debug.Log("Entered _PreviousNextWordButtonPushed");
 		int nextword = isIncrementingWord ? currentword + 1 : currentword - 1;
-		int lessonLength = AllLessons[currentlang][currentlesson][currentword].Length;
+		int lessonLength = AllLessons[currentlang][currentlesson].Length;
 		if (nextword >= 0 && nextword < lessonLength) {
 			currentword = nextword;
 			_DisplayWordSelectMenu();
+			_DisplaySign();
 		}
 	}
 
@@ -2264,7 +2279,8 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		if(globalmode){
 			//SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.Owner, "ChangeState");
 		}
-		_UpdateMenuVariables("back",0);
+		direction=BACKWARDS;
+		_UpdateMenuVariables(NOT_SELECTED);
 		_UpdateAllDisplays();
 	}
 
@@ -2456,15 +2472,14 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
     private void Update() {
         bool isOwner = Networking.IsOwner(gameObject);
 		if (!isOwner & globalmode) { //only activate if global mode is on and if they're not the owner of the board.
-			if (globalcurrentmode != currentmode | 
-			globalcurrentlang != currentlang | 
-			globalcurrentlesson != currentlesson | 
+			if (globalcurrentmode != currentmode || 
+			globalcurrentlang != currentlang || 
+			globalcurrentlesson != currentlesson || 
 			globalcurrentword != currentword){
-				_UpdateMenuVariables("default",-1);
+				_UpdateMenuVariables(NOT_SELECTED);
 				_UpdateAllDisplays();
 			}
 		}
-
 		_DebugMenuVariables();
 	}
 
@@ -2475,7 +2490,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		Debug.Log("Entered _buttonpushed("+buttonIndex+")");
 		
 		// Update Data
-		_UpdateMenuVariables("normal",buttonIndex);
+		_UpdateMenuVariables(buttonIndex);
 		
 		// Update Display
 		_UpdateAllDisplays();
@@ -2514,7 +2529,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	***************************************************************************************************************************/
 	void _DebugMenuVariables() 
 	{
-		Text debugtextbox = GameObject.Find("/Debug/Panel/Text1").GetComponent<Text>();
+		Text debugtextbox = GameObject.Find("/Debug/Panel/Text").GetComponent<Text>();
 		//String _message = "";
 		debugtextbox.text="Current Variable contents: " +"\ncurrentmode: " + currentmode + "\ncurrentlang: " + currentlang + 
 				"\ncurrentlesson: " + currentlesson + 
@@ -2559,7 +2574,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		}
 	}
 
-		/***************************************************************************************************************************
+	/***************************************************************************************************************************
 	Called to scale signing avatar gameobject
 	***************************************************************************************************************************/
 	public void AvatarScaleSliderValueChanged()
@@ -2585,7 +2600,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	***************************************************************************************************************************/
 	public void ToggleGlobal() {
 		globalmode = !globalmode;
-		_UpdateMenuVariables();
+		_UpdateMenuVariables(NOT_SELECTED);
 		_UpdateAllDisplays();
     }
 
