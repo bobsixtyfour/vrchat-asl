@@ -1,4 +1,4 @@
-﻿// Do not load this script when building
+// Do not load this script when building
 #if UNITY_EDITOR
 //using System.Collections;
 using System.Collections.Generic; //for lists if I ever use em.
@@ -42,7 +42,7 @@ public class GenerateMenuButtons : MonoBehaviour {
 		int columnseperation=1000;
 		//int togglesizedelta=80;
 		int numberpercolumn = 14;
-		int menusizex = 5200;
+		int menusizex = 5300;
 		int menusizey = 1600;
 		int headersizey=60;
 		int textpadding=10;
@@ -116,6 +116,39 @@ GameObject videocontainer = GameObject.Find("/VideoCanvas");
 		menubuttons.transform.SetParent(rootcanvas.transform, false);
 		menubuttons.layer = layer;
 
+		GameObject menubuttonsheader = DefaultControls.CreateText(txtresources);
+		menubuttonsheader.transform.SetParent (rootcanvas.transform, false);
+		menubuttonsheader.name="Menu Header";
+		menubuttonsheader.layer = layer;
+		menubuttonsheader.GetComponent<Text> ().text = "Header";
+		menubuttonsheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+		menubuttonsheader.GetComponent<Text> ().fontStyle = FontStyle.Bold;
+		menubuttonsheader.GetComponent<Text> ().fontSize = 50;		
+		menubuttonsheader.GetComponent<Text> ().color = Color.white;
+		menubuttonsheader.GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
+		menubuttonsheader.GetComponent<RectTransform> ().sizeDelta = new Vector2 (menusizex, headersizey);
+		menubuttonsheader.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (textpadding, menusizey-headersizey-textpadding);
+		menubuttonsheader.GetComponent<RectTransform> ().anchorMax = zerovector2;
+		menubuttonsheader.GetComponent<RectTransform> ().anchorMin = zerovector2;
+		menubuttonsheader.GetComponent<RectTransform> ().pivot = zerovector2;
+
+		GameObject menubuttonssubheader = DefaultControls.CreateText(txtresources);
+		menubuttonssubheader.transform.SetParent (rootcanvas.transform, false);
+		menubuttonssubheader.name="SubHeader";
+		menubuttonssubheader.layer = layer;
+		menubuttonssubheader.GetComponent<Text> ().text = "SubHeader";
+		menubuttonssubheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
+		menubuttonssubheader.GetComponent<Text> ().fontStyle = FontStyle.Bold;
+		menubuttonssubheader.GetComponent<Text> ().fontSize = 50;		
+		menubuttonssubheader.GetComponent<Text> ().color = Color.white;
+		menubuttonssubheader.GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
+		menubuttonssubheader.GetComponent<RectTransform> ().sizeDelta = new Vector2 (menusizex, headersizey);
+		menubuttonssubheader.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (textpadding, menusizey-(headersizey*2)-textpadding);
+		menubuttonssubheader.GetComponent<RectTransform> ().anchorMax = zerovector2;
+		menubuttonssubheader.GetComponent<RectTransform> ().anchorMin = zerovector2;
+		menubuttonssubheader.GetComponent<RectTransform> ().pivot = zerovector2;
+
+/*
 		GameObject menubuttonsheader = new GameObject("Menu Header");
 		menubuttonsheader.transform.SetParent (rootcanvas.transform, false);
 		menubuttonsheader.layer = layer;
@@ -133,7 +166,6 @@ GameObject videocontainer = GameObject.Find("/VideoCanvas");
 		menubuttonsheader.GetComponent<RectTransform> ().anchorMax = zerovector2;
 		menubuttonsheader.GetComponent<RectTransform> ().anchorMin = zerovector2;
 		menubuttonsheader.GetComponent<RectTransform> ().pivot = zerovector2;
-
 
 GameObject menubuttonssubheader = DefaultControls.CreateText(txtresources);
 		menubuttonssubheader.transform.SetParent (rootcanvas.transform, false);
@@ -156,6 +188,7 @@ GameObject menubuttonssubheader = DefaultControls.CreateText(txtresources);
 		menubuttonssubheader.GetComponent<RectTransform> ().anchorMax = zerovector2;
 		menubuttonssubheader.GetComponent<RectTransform> ().anchorMin = zerovector2;
 		menubuttonssubheader.GetComponent<RectTransform> ().pivot = zerovector2;
+		*/
 /*****************************************
 Regenerates Next/Prev Button Events
 *****************************************/
@@ -201,7 +234,7 @@ GameObject quizbuttonbig=GameObject.Find("/Signing Avatars/Canvas/QuizPanel/BigB
 						, "SendCustomEvent") as UnityAction<string>,"QuizD");
 					UnityEventTools.AddStringPersistentListener(quizbuttonbig.GetOrAddComponent<Button>().onClick, //the button/toggle that triggers the action
 						System.Delegate.CreateDelegate(typeof(UnityAction<string>), menuroot.GetOrAddComponent<UdonBehaviour>()//the target of the action
-						, "SendCustomEvent") as UnityAction<string>,"QuizBigButton");
+						, "SendCustomEvent") as UnityAction<string>,"QuizBigButtonPushed");
 
 
 
@@ -219,6 +252,10 @@ GlobalToggle.onValueChanged=new Toggle.ToggleEvent();
 UnityEventTools.AddStringPersistentListener(GlobalToggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<string>), menuroot.GetOrAddComponent<UdonBehaviour>()
 , "SendCustomEvent") as UnityAction<string>,"ToggleGlobal");
 
+Toggle QuizToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Quiz Mode").GetComponent<Toggle>();
+QuizToggle.onValueChanged=new Toggle.ToggleEvent();
+UnityEventTools.AddStringPersistentListener(QuizToggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<string>), menuroot.GetOrAddComponent<UdonBehaviour>()
+, "SendCustomEvent") as UnityAction<string>,"ToggleQuiz");
 
 Slider avatarscaleslider=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Slider").GetComponent<Slider>();
 avatarscaleslider.onValueChanged=new Slider.SliderEvent();
@@ -269,9 +306,9 @@ Create the main array of buttons here
 				}
 					GameObject buttongo=createbutton2(parent:menubuttons, name:"Button "+(x), sizedelta:buttonsize,
 					localPosition:new Vector2 (columnoffset +(menucolumn*columnseperation),(menusizey-headersizey-textpadding-buttonsizey-100-(menurow*rowseperation))),
-					text: "         Button "+(x),txtsizedelta:new Vector2 (750, 100),txtanchoredPosition:new Vector2 (32,0), 
-					alignment:TextAlignmentOptions.Left, nav:no_nav,layer:layer);
-
+					text: "   Button "+(x),txtsizedelta:new Vector2 (750, 100),txtanchoredPosition:new Vector2 (32,0), 
+					alignment:TextAnchor.MiddleLeft, nav:no_nav,layer:layer);
+					//alignment:TextAlignmentOptions.Left
 
 					
 						UnityEventTools.AddStringPersistentListener(buttongo.GetOrAddComponent<Button>().onClick, //the button/toggle that triggers the action
@@ -315,38 +352,38 @@ Create the main array of buttons here
 							indexicongo.transform.SetParent(buttongo.transform, false);
 							indexicongo.layer=layer;
 							indexicongo.AddComponent<RectTransform> ();
-							indexicongo.GetComponent<RectTransform> ().localPosition = new Vector3(514,68,0);
+							indexicongo.GetComponent<RectTransform> ().localPosition = new Vector3(450,68,0);
 							indexicongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
 							indexicongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
 							indexicongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
 							indexicongo.GetComponent<RectTransform> ().pivot = zerovector2;
 							Image indexicon= indexicongo.AddComponent<Image>();
-							indexicon.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Icons/left_index_controller.png");
+							indexicon.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Icons/left_index_controllerdark.png");
 
 
 							GameObject vricongo = new GameObject("Regular VR Icon");
 							vricongo.transform.SetParent(buttongo.transform, false);
 							vricongo.layer=layer;
 							vricongo.AddComponent<RectTransform> ();
-							vricongo.GetComponent<RectTransform> ().localPosition = new Vector3(514,68,0);
+							vricongo.GetComponent<RectTransform> ().localPosition = new Vector3(450,68,0);
 							vricongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
 							vricongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
 							vricongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
 							vricongo.GetComponent<RectTransform> ().pivot = zerovector2;
 							Image vricon= vricongo.AddComponent<Image>();
-							vricon.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Icons/left_htc_controller.png");
+							vricon.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Icons/left_htc_controllerdark.png");
 
 							GameObject allvricongo = new GameObject("Both VR Icon");
 							allvricongo.transform.SetParent(buttongo.transform, false);
 							allvricongo.layer=layer;
 							allvricongo.AddComponent<RectTransform> ();
-							allvricongo.GetComponent<RectTransform> ().localPosition = new Vector3(514,68,0);
+							allvricongo.GetComponent<RectTransform> ().localPosition = new Vector3(450,68,0);
 							allvricongo.GetComponent<RectTransform> ().sizeDelta = new Vector2(64,64);
 							allvricongo.GetComponent<RectTransform> ().anchorMax = zerovector2;
 							allvricongo.GetComponent<RectTransform> ().anchorMin = zerovector2;
 							allvricongo.GetComponent<RectTransform> ().pivot = zerovector2;
 							Image allvricon= allvricongo.AddComponent<Image>();
-							allvricon.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Icons/bothvricon.png");
+							allvricon.sprite = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/Icons/bothvricondark.png");
 //indexicongo.SetActive(false);
 //vricongo.SetActive(false);
 //allvricongo.SetActive(false);
@@ -358,7 +395,9 @@ Create the main array of buttons here
 				GameObject backtolessongo = createbutton2(parent:menubuttons, name:"Left Back Button", sizedelta:backbuttonsize,
 				localPosition: new Vector2(buttonsizey, 0),
 				text: "Back to Previous Menu", fontSize:50, txtsizedelta:backbuttonsize, txtanchoredPosition:new Vector2(20,0), 
-				alignment:TextAlignmentOptions.Center, nav:no_nav,rotatez:90, layer:layer);
+				alignment:TextAnchor.MiddleCenter, nav:no_nav,rotatez:90, layer:layer);
+				//alignment:TextAlignmentOptions.Center,
+
 
 				//backtolessongo.GetOrAddComponent<Button>().onClick=new Button.ButtonClickedEvent();
 						UnityEventTools.AddStringPersistentListener(backtolessongo.GetOrAddComponent<Button>().onClick, //the button/toggle that triggers the action
@@ -369,8 +408,9 @@ Create the main array of buttons here
 				GameObject backtolessongo2 = createbutton2(parent:menubuttons, name:"Right Back Button", sizedelta:backbuttonsize,
 				localPosition: new Vector2(menusizex, 0),
 				text: "Back to Previous Menu", fontSize:50, txtsizedelta:backbuttonsize, txtanchoredPosition:new Vector2(20,0), 
-				alignment:TextAlignmentOptions.Center, nav:no_nav,rotatez:90, layer:layer);
-
+				alignment:TextAnchor.MiddleCenter, nav:no_nav,rotatez:90, layer:layer);
+				//alignment:TextAlignmentOptions.Center,
+				
 				//backtolessongo.GetOrAddComponent<Button>().onClick=new Button.ButtonClickedEvent();
 						UnityEventTools.AddStringPersistentListener(backtolessongo2.GetOrAddComponent<Button>().onClick, //the button/toggle that triggers the action
 						System.Delegate.CreateDelegate(typeof(UnityAction<string>), menuroot.GetOrAddComponent<UdonBehaviour>()//the target of the action
@@ -416,7 +456,8 @@ return null;
 
 //the latest button creation code. now with default values - allowing for optional arguments
 static GameObject createbutton2(GameObject parent, string name,Vector2 sizedelta,Vector3 localPosition,//Vector2 anchoredPosition
-string text,Vector2 txtsizedelta,Vector2 txtanchoredPosition, TextAlignmentOptions alignment,Navigation nav,int layer,int rotatex=0,int rotatey=0,int rotatez=0,int fontSize=50){
+string text,Vector2 txtsizedelta,Vector2 txtanchoredPosition, TextAnchor alignment,//TextAlignmentOptions alignment
+Navigation nav,int layer,int rotatex=0,int rotatey=0,int rotatez=0,int fontSize=50){
 
 DefaultControls.Resources buttonresources = new DefaultControls.Resources();
 buttonresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/InputFieldBackground.psd");
@@ -427,8 +468,9 @@ go.transform.SetParent(parent.transform, false);
 go.name = name;	
 Button b = go.GetOrAddComponent<Button>();
 ColorBlock colorVar = b.colors;
-colorVar.normalColor = new Color( 1, 1, .6f);
-colorVar.highlightedColor = new Color (.8f, 1, 1);
+colorVar.normalColor = new Color( .25f, .25f, .25f);
+colorVar.highlightedColor = new Color (.5f, .5f, .5f);
+colorVar.pressedColor = new Color (.75f, .75f, .75f);
 b.colors = colorVar;
 b.navigation = nav;
 RectTransform gort = go.GetComponent<RectTransform> ();
@@ -440,6 +482,22 @@ gort.anchorMax = new Vector2 (0, 0);
 gort.anchorMin = new Vector2 (0, 0);
 gort.pivot = new Vector2 (0, 0);
 
+GameObject gotext = go.transform.Find("Text").gameObject;
+Text gotmp = gotext.GetComponent<Text>();
+gotmp.resizeTextForBestFit = true;
+gotmp.text = text;
+gotmp.color=Color.white;
+gotmp.fontSize = fontSize;
+gotmp.alignment = alignment;
+
+RectTransform gotextrt = gotext.GetComponent<RectTransform>();
+gotextrt.sizeDelta = txtsizedelta;
+gotextrt.anchoredPosition = txtanchoredPosition;
+gotextrt.anchorMax = new Vector2 (0, 0);
+gotextrt.anchorMin = new Vector2 (0, 0);
+gotextrt.pivot = new Vector2 (0, 0);
+
+/*
 GameObject gotext = go.transform.Find("Text").gameObject;
 
 DestroyImmediate(gotext.GetComponent<Text> ());
@@ -459,7 +517,7 @@ go.transform.Find("Text").GetComponent<RectTransform>().sizeDelta = txtsizedelta
 go.transform.Find("Text").GetComponent<RectTransform>().anchoredPosition = txtanchoredPosition;
 go.transform.Find("Text").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
 go.transform.Find("Text").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
-go.transform.Find("Text").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
+go.transform.Find("Text").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);*/
 return go;
 }
 }
