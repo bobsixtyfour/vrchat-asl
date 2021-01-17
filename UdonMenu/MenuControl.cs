@@ -1,4 +1,4 @@
-using UdonSharp;
+﻿using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDK3.Components;
@@ -988,7 +988,7 @@ new string[]{"Magic","ASL-Magic","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Money","ASL-Money","Anonymous","","2","","FALSE",""},
 new string[]{"Ghost","ASL-Ghost","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Zombie","ASL-Zombie","Anonymous","","2","","TRUE","ShadeAxas"},
-new string[]{"//Undead","ASL-Undead","Anonymous","","2","","FALSE",""},
+//new string[]{"Undead","ASL-Undead","Anonymous","","2","","FALSE",""},
 new string[]{"Soldier","ASL-Soldier","Anonymous","","2","","FALSE",""},
 new string[]{"Police","ASL-Police","Anonymous","","2","","TRUE","ShadeAxas"},
 new string[]{"Nurse","ASL-Nurse","Anonymous","","2","","TRUE","ShadeAxas"},
@@ -1749,8 +1749,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	const int MODE_LOOKUP = 0;
 	const int MODE_QUIZ = 1;
 	int currentmode; // Tracks current mode (Lookup, Quiz, etc.)
-	[UdonSynced]
-	int globalcurrentmode;
+	[UdonSynced] int globalcurrentmode;
 
 	// Preference Menu Objects/Variables - Dark Mode
 	Toggle DarkToggle;
@@ -1788,13 +1787,14 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	Color COLOR_GREEN_LIGHT = new Color(.75f,.75f,.75f,1);
 	Color COLOR_GREEN = new Color(.5f,1,.5f,1);
 	Color COLOR_RED = new Color(1,.5f,.5f,1);
-
+	// Debug
+	Text debugtextbox;
 
 	/***************************************************************************************************************************
 	Assigns variables for use. Initializes menu by calling DisplayLocalLanguageSelectMenu();
 	***************************************************************************************************************************/
 	void Start() {
-
+		 debugtextbox = GameObject.Find("/Debug/Panel/Text").GetComponent<Text>();
 		// Initialize Displays
 		_InitializeDarkMode();
 		_InitializePreferenceMenu();
@@ -1963,7 +1963,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	***************************************************************************************************************************/
     private void _UpdateMenuVariables(int buttonIndex) {
 		Debug.Log("Entered _UpdateMenuVariables with direction:" + direction);
-		_DebugMenuVariables();
+		//_DebugMenuVariables();
 		int currentmenu = _GetCurrentMenu();
 		switch(direction){
 			case BACKWARDS:
@@ -2010,7 +2010,13 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 				break;
 		}
 		if(globalmode){
-			_GlobalModeVarSync();
+			if(buttonIndex==NOT_SELECTED){
+				_GlobalModeVarSync();
+			}else {
+				TakeOwnership();
+				_GlobalModeVarSync();
+			}
+			
 		}
 
     }
@@ -2048,7 +2054,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 				break;
 			default:
 				Debug.Log("UpdateMenuDisplay() failed; currentmenu is: "+currentmenu+")");
-				_DebugMenuVariables();
+				//_DebugMenuVariables();
 				break; 
 		}
 		
@@ -2288,7 +2294,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	private void _BackButtonPushed() {
 		Debug.Log("Entered _BackButtonPushed");
 		if(globalmode){
-			//SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.Owner, "ChangeState");
+			//SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "ChangeState");
 		}
 		direction=BACKWARDS;
 		_UpdateMenuVariables(NOT_SELECTED);
@@ -2541,12 +2547,10 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	/***************************************************************************************************************************
 	Takes ownership of the board udonbehavior to update variables?
 	***************************************************************************************************************************/
-        private void _TakeOwnership() {
-            if (Networking.IsMaster) {
+    public void TakeOwnership() {
                 if (!Networking.IsOwner(gameObject)) {
                     Networking.SetOwner(Networking.LocalPlayer, gameObject);
                 }
-            }
         }
 
 	/***************************************************************************************************************************
@@ -2571,15 +2575,14 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 	***************************************************************************************************************************/
 	private void _DebugMenuVariables() 
 	{
-		Text debugtextbox = GameObject.Find("/Debug/Panel/Text").GetComponent<Text>();
 		//String _message = "";
-		debugtextbox.text="Current Variable contents: " +"\ncurrentmode: " + currentmode + "\ncurrentlang: " + currentlang + 
-				"\ncurrentlesson: " + currentlesson + 
-				"\ncurrentword: " + currentword +
-				"\nglobalcurrentmode: " + globalcurrentmode +
-				"\nglobalcurrentlang: " + globalcurrentlang + 
-				"\nglobalcurrentlesson: " + globalcurrentlesson + 
-				"\nglobalcurrentword: " + globalcurrentword;
+		debugtextbox.text="Current Variable contents: " +
+			"\nOwner: " + Networking.IsOwner(gameObject) + 
+			"\ncurrentmode: " + currentmode + " globalcurrentmode: " + globalcurrentmode +
+			"\ncurrentlang: " + currentlang + " globalcurrentlang: " + globalcurrentlang + 
+			"\ncurrentlesson: " + currentlesson + " globalcurrentlesson: " + globalcurrentlesson + 
+			"\ncurrentword: " + currentword + " globalcurrentword: " + globalcurrentword;
+
 		/*
 		Debug.Log("Current Variable contents: " +"\ncurrentmode: " + currentmode + "\ncurrentlang: " + currentlang + 
 				"\ncurrentlesson: " + currentlesson + 
@@ -2658,7 +2661,9 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		} else {
 			currentmode=MODE_LOOKUP;
 		}
-
+		currentlang = NOT_SELECTED;
+		currentlesson = NOT_SELECTED;
+		currentword = NOT_SELECTED;
 		quizp.SetActive(currentmode == MODE_QUIZ);
 		quiza.SetActive(!(currentmode == MODE_QUIZ));
 		quizb.SetActive(!(currentmode == MODE_QUIZ));
@@ -2679,12 +2684,12 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
 		currentsign.SetActive(!(currentmode == MODE_QUIZ));
 		signcredit.SetActive(!(currentmode == MODE_QUIZ));
 		description.SetActive(!(currentmode == MODE_QUIZ));
-
+		nana.Play("Idle");
 		quiztext.text="Quiz";
 		quiztext2.text="Select lessons and then push the big button below to generate a quiz";
 		quizbig.transform.Find("Text").GetComponent<Text>().text="Start Quiz";
 		quizinprogress=false;
-		_UpdateMenuVariables(NOT_SELECTED);
+		
 		_UpdateAllDisplays();
     }
 
