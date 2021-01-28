@@ -45,7 +45,7 @@ public class bobskeyboard : UdonSharpBehaviour
         
     }
 
-    public void symbol_chair_pushed()
+    public void _pushed_chair()
     {
         if (seated == null)
         {
@@ -67,18 +67,18 @@ public class bobskeyboard : UdonSharpBehaviour
         }
     }
 
-    public void backspace_pushed(){
-        SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_backspace");
+    public void _pushed_Backspace(){
+        SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Backspace");
     }
-    public void network_backspace_pushed(){
+    public void network_pushed_Backspace(){
         if(chatlinebuffer.text.Length>0){
             chatlinebuffer.text=chatlinebuffer.text.Substring(0,chatlinebuffer.text.Length-1);
         }
     }
-    public void symbol_enter_pushed(){
-        SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_backspace");
+    public void _pushed_Return(){
+        SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Return");
     }
-    public void network_enter_pushed(){
+    public void network_pushed_Return(){
         chathistory.text+="\n"+chatlinebuffer.text;
         chatlinebuffer.text="";
     }
@@ -88,16 +88,22 @@ public class bobskeyboard : UdonSharpBehaviour
         {
             _localPlayer = player;
         }
-        chathistory.text+=$"[{DateTime.Now:HH:mm:ss}] {player.displayName} joined.";
+        chathistory.text+=$"\n[{DateTime.Now:HH:mm:ss}] {player.displayName} joined.";
     }
     public override void OnPlayerLeft(VRCPlayerApi player)
     {
-        chathistory.text+=$"[{DateTime.Now:HH:mm:ss}] {player.displayName} left.";
+        chathistory.text+=$"\n[{DateTime.Now:HH:mm:ss}] {player.displayName} left.";
     }
-public void symbol_shift_pushed(){
+
+public void _pushed_shift(){
+    
     shift=!shift;
-    _eventTriggersParent.Find("Shift" + "_L").GetComponent<Image>().color = shift ? _clickedColor : _defaultColor;
-_eventTriggersParent.Find("Shift" + "_R").GetComponent<Image>().color = shift ? _clickedColor : _defaultColor;
+    _eventTriggersParent.Find("key_LShift").GetComponent<Image>().color = shift ? _clickedColor : _defaultColor;
+_eventTriggersParent.Find("key_RShift").GetComponent<Image>().color = shift ? _clickedColor : _defaultColor;
+}
+
+public void _pushed_Shift(){
+_pushed_shift();
 }
 
 
@@ -108,775 +114,832 @@ _eventTriggersParent.Find("Shift" + "_R").GetComponent<Image>().color = shift ? 
 
 
 
-public void letter_a_pushed(){
+
+
+public void _pushed_A(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_a_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_A");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_a_pushed");      
+    Debug.Log("a pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_A");      
 }
 }
 
-public void network_letter_a_pushed(){
+public void network_pushed_A(){
 chatlinebuffer.text+="a";
 }
 
-public void network_shiftletter_a_pushed(){
+public void network_pushed_Upper_A(){
 chatlinebuffer.text+="A";
 }
-public void letter_b_pushed(){
+
+public void _pushed_B(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_b_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_B");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_b_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_B");
 }
 }
 
-public void network_letter_b_pushed(){
+public void network_pushed_B(){
 chatlinebuffer.text+="b";
 }
 
-public void network_shiftletter_b_pushed(){
+public void network_pushed_Upper_B(){
 chatlinebuffer.text+="B";
 }
-public void letter_c_pushed(){
+
+public void _pushed_C(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_c_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_C");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_c_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_C");
 }
 }
 
-public void network_letter_c_pushed(){
+public void network_pushed_C(){
 chatlinebuffer.text+="c";
 }
 
-public void network_shiftletter_c_pushed(){
+public void network_pushed_Upper_C(){
 chatlinebuffer.text+="C";
 }
-public void letter_d_pushed(){
+
+public void _pushed_D(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_d_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_D");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_d_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_D");
 }
 }
 
-public void network_letter_d_pushed(){
+public void network_pushed_D(){
 chatlinebuffer.text+="d";
 }
 
-public void network_shiftletter_d_pushed(){
+public void network_pushed_Upper_D(){
 chatlinebuffer.text+="D";
 }
-public void letter_e_pushed(){
+
+public void _pushed_E(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_e_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_E");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_e_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_E");
 }
 }
 
-public void network_letter_e_pushed(){
+public void network_pushed_E(){
 chatlinebuffer.text+="e";
 }
 
-public void network_shiftletter_e_pushed(){
+public void network_pushed_Upper_E(){
 chatlinebuffer.text+="E";
 }
-public void letter_f_pushed(){
+
+public void _pushed_F(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_f_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_F");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_f_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_F");
 }
 }
 
-public void network_letter_f_pushed(){
+public void network_pushed_F(){
 chatlinebuffer.text+="f";
 }
 
-public void network_shiftletter_f_pushed(){
+public void network_pushed_Upper_F(){
 chatlinebuffer.text+="F";
 }
-public void letter_g_pushed(){
+
+public void _pushed_G(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_g_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_G");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_g_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_G");
 }
 }
 
-public void network_letter_g_pushed(){
+public void network_pushed_G(){
 chatlinebuffer.text+="g";
 }
 
-public void network_shiftletter_g_pushed(){
+public void network_pushed_Upper_G(){
 chatlinebuffer.text+="G";
 }
-public void letter_h_pushed(){
+
+public void _pushed_H(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_h_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_H");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_h_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_H");
 }
 }
 
-public void network_letter_h_pushed(){
+public void network_pushed_H(){
 chatlinebuffer.text+="h";
 }
 
-public void network_shiftletter_h_pushed(){
+public void network_pushed_Upper_H(){
 chatlinebuffer.text+="H";
 }
-public void letter_i_pushed(){
+
+public void _pushed_I(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_i_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_I");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_i_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_I");
 }
 }
 
-public void network_letter_i_pushed(){
+public void network_pushed_I(){
 chatlinebuffer.text+="i";
 }
 
-public void network_shiftletter_i_pushed(){
+public void network_pushed_Upper_I(){
 chatlinebuffer.text+="I";
 }
-public void letter_j_pushed(){
+
+public void _pushed_J(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_j_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_J");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_j_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_J");
 }
 }
 
-public void network_letter_j_pushed(){
+public void network_pushed_J(){
 chatlinebuffer.text+="j";
 }
 
-public void network_shiftletter_j_pushed(){
+public void network_pushed_Upper_J(){
 chatlinebuffer.text+="J";
 }
-public void letter_k_pushed(){
+
+public void _pushed_K(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_k_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_K");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_k_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_K");
 }
 }
 
-public void network_letter_k_pushed(){
+public void network_pushed_K(){
 chatlinebuffer.text+="k";
 }
 
-public void network_shiftletter_k_pushed(){
+public void network_pushed_Upper_K(){
 chatlinebuffer.text+="K";
 }
-public void letter_l_pushed(){
+
+public void _pushed_L(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_l_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_L");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_l_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_L");
 }
 }
 
-public void network_letter_l_pushed(){
+public void network_pushed_L(){
 chatlinebuffer.text+="l";
 }
 
-public void network_shiftletter_l_pushed(){
+public void network_pushed_Upper_L(){
 chatlinebuffer.text+="L";
 }
-public void letter_m_pushed(){
+
+public void _pushed_M(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_m_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_M");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_m_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_M");
 }
 }
 
-public void network_letter_m_pushed(){
+public void network_pushed_M(){
 chatlinebuffer.text+="m";
 }
 
-public void network_shiftletter_m_pushed(){
+public void network_pushed_Upper_M(){
 chatlinebuffer.text+="M";
 }
-public void letter_n_pushed(){
+
+public void _pushed_N(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_n_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_N");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_n_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_N");
 }
 }
 
-public void network_letter_n_pushed(){
+public void network_pushed_N(){
 chatlinebuffer.text+="n";
 }
 
-public void network_shiftletter_n_pushed(){
+public void network_pushed_Upper_N(){
 chatlinebuffer.text+="N";
 }
-public void letter_o_pushed(){
+
+public void _pushed_O(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_o_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_O");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_o_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_O");
 }
 }
 
-public void network_letter_o_pushed(){
+public void network_pushed_O(){
 chatlinebuffer.text+="o";
 }
 
-public void network_shiftletter_o_pushed(){
+public void network_pushed_Upper_O(){
 chatlinebuffer.text+="O";
 }
-public void letter_p_pushed(){
+
+public void _pushed_P(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_p_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_P");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_p_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_P");
 }
 }
 
-public void network_letter_p_pushed(){
+public void network_pushed_P(){
 chatlinebuffer.text+="p";
 }
 
-public void network_shiftletter_p_pushed(){
+public void network_pushed_Upper_P(){
 chatlinebuffer.text+="P";
 }
-public void letter_q_pushed(){
+
+public void _pushed_Q(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_q_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_Q");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_q_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Q");
 }
 }
 
-public void network_letter_q_pushed(){
+public void network_pushed_Q(){
 chatlinebuffer.text+="q";
 }
 
-public void network_shiftletter_q_pushed(){
+public void network_pushed_Upper_Q(){
 chatlinebuffer.text+="Q";
 }
-public void letter_r_pushed(){
+
+public void _pushed_R(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_r_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_R");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_r_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_R");
 }
 }
 
-public void network_letter_r_pushed(){
+public void network_pushed_R(){
 chatlinebuffer.text+="r";
 }
 
-public void network_shiftletter_r_pushed(){
+public void network_pushed_Upper_R(){
 chatlinebuffer.text+="R";
 }
-public void letter_s_pushed(){
+
+public void _pushed_S(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_s_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_S");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_s_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_S");
 }
 }
 
-public void network_letter_s_pushed(){
+public void network_pushed_S(){
 chatlinebuffer.text+="s";
 }
 
-public void network_shiftletter_s_pushed(){
+public void network_pushed_Upper_S(){
 chatlinebuffer.text+="S";
 }
-public void letter_t_pushed(){
+
+public void _pushed_T(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_t_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_T");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_t_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_T");
 }
 }
 
-public void network_letter_t_pushed(){
+public void network_pushed_T(){
 chatlinebuffer.text+="t";
 }
 
-public void network_shiftletter_t_pushed(){
+public void network_pushed_Upper_T(){
 chatlinebuffer.text+="T";
 }
-public void letter_u_pushed(){
+
+public void _pushed_U(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_u_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_U");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_u_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_U");
 }
 }
 
-public void network_letter_u_pushed(){
+public void network_pushed_U(){
 chatlinebuffer.text+="u";
 }
 
-public void network_shiftletter_u_pushed(){
+public void network_pushed_Upper_U(){
 chatlinebuffer.text+="U";
 }
-public void letter_v_pushed(){
+
+public void _pushed_V(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_v_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_V");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_v_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_V");
 }
 }
 
-public void network_letter_v_pushed(){
+public void network_pushed_V(){
 chatlinebuffer.text+="v";
 }
 
-public void network_shiftletter_v_pushed(){
+public void network_pushed_Upper_V(){
 chatlinebuffer.text+="V";
 }
-public void letter_w_pushed(){
+
+public void _pushed_W(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_w_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_W");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_w_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_W");
 }
 }
 
-public void network_letter_w_pushed(){
+public void network_pushed_W(){
 chatlinebuffer.text+="w";
 }
 
-public void network_shiftletter_w_pushed(){
+public void network_pushed_Upper_W(){
 chatlinebuffer.text+="W";
 }
-public void letter_x_pushed(){
+
+public void _pushed_X(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_x_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_X");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_x_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_X");
 }
 }
 
-public void network_letter_x_pushed(){
+public void network_pushed_X(){
 chatlinebuffer.text+="x";
 }
 
-public void network_shiftletter_x_pushed(){
+public void network_pushed_Upper_X(){
 chatlinebuffer.text+="X";
 }
-public void letter_y_pushed(){
+
+public void _pushed_Y(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_y_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_Y");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_y_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Y");
 }
 }
 
-public void network_letter_y_pushed(){
+public void network_pushed_Y(){
 chatlinebuffer.text+="y";
 }
 
-public void network_shiftletter_y_pushed(){
+public void network_pushed_Upper_Y(){
 chatlinebuffer.text+="Y";
 }
-public void letter_z_pushed(){
+
+public void _pushed_Z(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_letter_z_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_Z");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_letter_z_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Z");
 }
 }
 
-public void network_letter_z_pushed(){
+public void network_pushed_Z(){
 chatlinebuffer.text+="z";
 }
 
-public void network_shiftletter_z_pushed(){
+public void network_pushed_Upper_Z(){
 chatlinebuffer.text+="Z";
 }
-public void number_0_pushed(){
+
+public void _pushed_Alpha0(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_number_0_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_RightParen");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_number_0_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha0");
 }
 }
 
-public void network_number_0_pushed(){
+public void network_pushed_Alpha0(){
 chatlinebuffer.text+="0";
 }
 
-public void network_shiftnumber_0_pushed(){
+public void network_pushed_RightParen(){
 chatlinebuffer.text+=")";
 }
-public void number_1_pushed(){
+
+public void _pushed_Alpha1(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_number_1_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Exclaim");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_number_1_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha1");
 }
 }
 
-public void network_number_1_pushed(){
+public void network_pushed_Alpha1(){
 chatlinebuffer.text+="1";
 }
 
-public void network_shiftnumber_1_pushed(){
+public void network_pushed_Exclaim(){
 chatlinebuffer.text+="!";
 }
-public void number_2_pushed(){
+
+public void _pushed_Alpha2(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_number_2_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_At");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_number_2_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha2");
 }
 }
 
-public void network_number_2_pushed(){
+public void network_pushed_Alpha2(){
 chatlinebuffer.text+="2";
 }
 
-public void network_shiftnumber_2_pushed(){
+public void network_pushed_At(){
 chatlinebuffer.text+="@";
 }
-public void number_3_pushed(){
+
+public void _pushed_Alpha3(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_number_3_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Hash");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_number_3_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha3");
 }
 }
 
-public void network_number_3_pushed(){
+public void network_pushed_Alpha3(){
 chatlinebuffer.text+="3";
 }
 
-public void network_shiftnumber_3_pushed(){
+public void network_pushed_Hash(){
 chatlinebuffer.text+="#";
 }
-public void number_4_pushed(){
+
+public void _pushed_Alpha4(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_number_4_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Dollar");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_number_4_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha4");
 }
 }
 
-public void network_number_4_pushed(){
+public void network_pushed_Alpha4(){
 chatlinebuffer.text+="4";
 }
 
-public void network_shiftnumber_4_pushed(){
+public void network_pushed_Dollar(){
 chatlinebuffer.text+="$";
 }
-public void number_5_pushed(){
+
+public void _pushed_Alpha5(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_number_5_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Percent");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_number_5_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha5");
 }
 }
 
-public void network_number_5_pushed(){
+public void network_pushed_Alpha5(){
 chatlinebuffer.text+="5";
 }
 
-public void network_shiftnumber_5_pushed(){
+public void network_pushed_Percent(){
 chatlinebuffer.text+="%";
 }
-public void number_6_pushed(){
+
+public void _pushed_Alpha6(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_number_6_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Caret");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_number_6_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha6");
 }
 }
 
-public void network_number_6_pushed(){
-chatlinebuffer.text+="5";
+public void network_pushed_Alpha6(){
+chatlinebuffer.text+="6";
 }
 
-public void network_shiftnumber_6_pushed(){
+public void network_pushed_Caret(){
 chatlinebuffer.text+="^";
 }
-public void number_7_pushed(){
+
+public void _pushed_Alpha7(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_number_7_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Ampersand");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_number_7_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha7");
 }
 }
 
-public void network_number_7_pushed(){
+public void network_pushed_Alpha7(){
 chatlinebuffer.text+="7";
 }
 
-public void network_shiftnumber_7_pushed(){
+public void network_pushed_Ampersand(){
 chatlinebuffer.text+="&";
 }
-public void number_8_pushed(){
+
+public void _pushed_Alpha8(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_number_8_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Asterisk");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_number_8_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha8");
 }
 }
 
-public void network_number_8_pushed(){
+public void network_pushed_Alpha8(){
 chatlinebuffer.text+="8";
 }
 
-public void network_shiftnumber_8_pushed(){
+public void network_pushed_Asterisk(){
 chatlinebuffer.text+="*";
 }
-public void number_9_pushed(){
+
+public void _pushed_Alpha9(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_number_9_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_LeftParen");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_number_9_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha9");
 }
 }
 
-public void network_number_9_pushed(){
+public void network_pushed_Alpha9(){
 chatlinebuffer.text+="9";
 }
 
-public void network_shiftnumber_9_pushed(){
+public void network_pushed_LeftParen(){
 chatlinebuffer.text+="(";
 }
-public void symbol_space_pushed(){
+
+public void _pushed_Minus(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_space_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Underscore");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_space_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Minus");
 }
 }
 
-public void network_symbol_space_pushed(){
-chatlinebuffer.text+=" ";
-}
-
-public void network_shiftsymbol_space_pushed(){
-chatlinebuffer.text+=" ";
-}
-public void symbol_dash_pushed(){
-if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_dash_pushed");
-symbol_shift_pushed();
-}else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_dash_pushed");
-}
-}
-
-public void network_symbol_dash_pushed(){
+public void network_pushed_Minus(){
 chatlinebuffer.text+="-";
 }
 
-public void network_shiftsymbol_dash_pushed(){
+public void network_pushed_Underscore(){
 chatlinebuffer.text+="_";
 }
-public void symbol_equals_pushed(){
+
+public void _pushed_Equals(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_equals_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Plus");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_equals_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Equals");
 }
 }
 
-public void network_symbol_equals_pushed(){
+public void network_pushed_Equals(){
 chatlinebuffer.text+="=";
 }
 
-public void network_shiftsymbol_equals_pushed(){
+public void network_pushed_Plus(){
 chatlinebuffer.text+="+";
 }
-public void symbol_leftsquarebracket_pushed(){
+
+public void _pushed_LeftBracket(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_leftsquarebracket_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_LeftCurlyBracket");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_leftsquarebracket_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_LeftBracket");
 }
 }
 
-public void network_symbol_leftsquarebracket_pushed(){
+public void network_pushed_LeftBracket(){
 chatlinebuffer.text+="[";
 }
 
-public void network_shiftsymbol_leftsquarebracket_pushed(){
+public void network_pushed_LeftCurlyBracket(){
 chatlinebuffer.text+="{";
 }
-public void symbol_rightsquarebracket_pushed(){
+
+public void _pushed_RightBracket(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_rightsquarebracket_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_RightCurlyBracket");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_rightsquarebracket_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_RightBracket");
 }
 }
 
-public void network_symbol_rightsquarebracket_pushed(){
+public void network_pushed_RightBracket(){
 chatlinebuffer.text+="]";
 }
 
-public void network_shiftsymbol_rightsquarebracket_pushed(){
+public void network_pushed_RightCurlyBracket(){
 chatlinebuffer.text+="}";
 }
-public void symbol_backslash_pushed(){
+
+public void _pushed_Backslash(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_backslash_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Pipe");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_backslash_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Backslash");
 }
 }
 
-public void network_symbol_backslash_pushed(){
+public void network_pushed_Backslash(){
 chatlinebuffer.text+="\\";
 }
 
-public void network_shiftsymbol_backslash_pushed(){
+public void network_pushed_Pipe(){
 chatlinebuffer.text+="|";
 }
-public void symbol_semicolon_pushed(){
+
+public void _pushed_Semicolon(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_semicolon_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Colon");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_semicolon_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Semicolon");
 }
 }
 
-public void network_symbol_semicolon_pushed(){
+public void network_pushed_Semicolon(){
 chatlinebuffer.text+=";";
 }
 
-public void network_shiftsymbol_semicolon_pushed(){
+public void network_pushed_Colon(){
 chatlinebuffer.text+=":";
 }
-public void symbol_quotation_pushed(){
+
+public void _pushed_Quote(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_quotation_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_DoubleQuote");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_quotation_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Quote");
 }
 }
 
-public void network_symbol_quotation_pushed(){
+public void network_pushed_Quote(){
 chatlinebuffer.text+="'";
 }
 
-public void network_shiftsymbol_quotation_pushed(){
+public void network_pushed_DoubleQuote(){
 chatlinebuffer.text+="\"";
 }
-public void symbol_comma_pushed(){
+
+public void _pushed_Comma(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_comma_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Less");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_comma_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Comma");
 }
 }
 
-public void network_symbol_comma_pushed(){
+public void network_pushed_Comma(){
 chatlinebuffer.text+=",";
 }
 
-public void network_shiftsymbol_comma_pushed(){
+public void network_pushed_Less(){
 chatlinebuffer.text+="<";
 }
-public void symbol_period_pushed(){
+
+public void _pushed_Period(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_period_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Greater");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_period_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Period");
 }
 }
 
-public void network_symbol_period_pushed(){
+public void network_pushed_Period(){
 chatlinebuffer.text+=".";
 }
 
-public void network_shiftsymbol_period_pushed(){
+public void network_pushed_Greater(){
 chatlinebuffer.text+=">";
 }
-public void symbol_fowardslash_pushed(){
+
+public void _pushed_Slash(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_fowardslash_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Question");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_fowardslash_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Slash");
 }
 }
 
-public void network_symbol_fowardslash_pushed(){
+public void network_pushed_Slash(){
 chatlinebuffer.text+="/";
 }
 
-public void network_shiftsymbol_fowardslash_pushed(){
+public void network_pushed_Question(){
 chatlinebuffer.text+="?";
 }
-public void symbol_backquote_pushed(){
+
+public void _pushed_BackQuote(){
 if(shift){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_shift_symbol_backquote_pushed");
-symbol_shift_pushed();
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Tilde");
+_pushed_shift();
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_symbol_backquote_pushed");
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_BackQuote");
 }
 }
 
-public void network_symbol_backquote_pushed(){
+public void network_pushed_BackQuote(){
 chatlinebuffer.text+="`";
 }
 
-public void network_shiftsymbol_backquote_pushed(){
+public void network_pushed_Tilde(){
 chatlinebuffer.text+="~";
 }
 
+public void _pushed_CapsLock(){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_CapsLock");
+}
+
+public void network_pushed_CapsLock(){
+chatlinebuffer.text+="";
+}
+
+public void _pushed_Tab(){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Tab");
+}
+
+public void network_pushed_Tab(){
+chatlinebuffer.text+="     ";
+}
+
+
+public void _pushed_Space(){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Space");
+}
+
+public void network_pushed_Space(){
+chatlinebuffer.text+=" ";
+}
 
 
 
