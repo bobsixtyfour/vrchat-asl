@@ -24,7 +24,7 @@ public class bobskeyboard : UdonSharpBehaviour
     private Color _defaultColor = new Color(0x00, 0x60, 0xff, 0x00) / 0x100;
     [SerializeField]
     private Color _clickedColor = new Color(0x00, 0x60, 0xff, 0x80) / 0x100;
-    Transform _eventTriggersParent;
+    public Transform _eventTriggersParent;
     public VRC.SDKBase.VRCStation station;
     [HideInInspector]
     public VRCPlayerApi seated;
@@ -49,10 +49,14 @@ public class bobskeyboard : UdonSharpBehaviour
     {
         if (seated == null)
         {
+            _eventTriggersParent.Find("key_LChair").GetComponent<Image>().color = _clickedColor;
+            _eventTriggersParent.Find("key_RChair").GetComponent<Image>().color = _clickedColor;
             station.UseStation(Networking.LocalPlayer);
         }
         else if(seated == Networking.LocalPlayer)
         {
+            _eventTriggersParent.Find("key_LChair").GetComponent<Image>().color = _defaultColor;
+            _eventTriggersParent.Find("key_RChair").GetComponent<Image>().color = _defaultColor;
             station.ExitStation(Networking.LocalPlayer);
         }
     }
@@ -106,8 +110,10 @@ public void _pushed_Shift(){
 _pushed_shift();
 }
 
-
-
+public void _pushed_CapsLock(){
+    CapsLock=!CapsLock;
+_eventTriggersParent.Find("key_CapsLock").GetComponent<Image>().color = CapsLock ? _clickedColor : _defaultColor;
+}
 
 
 
@@ -120,8 +126,9 @@ public void _pushed_A(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_A");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_A");
 }else{
-    Debug.Log("a pushed");
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_A");      
 }
 }
@@ -138,6 +145,8 @@ public void _pushed_B(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_B");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_B");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_B");
 }
@@ -155,6 +164,8 @@ public void _pushed_C(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_C");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_C");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_C");
 }
@@ -172,6 +183,8 @@ public void _pushed_D(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_D");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_D");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_D");
 }
@@ -189,6 +202,8 @@ public void _pushed_E(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_E");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_E");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_E");
 }
@@ -206,6 +221,8 @@ public void _pushed_F(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_F");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_F");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_F");
 }
@@ -223,6 +240,8 @@ public void _pushed_G(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_G");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_G");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_G");
 }
@@ -240,6 +259,8 @@ public void _pushed_H(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_H");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_H");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_H");
 }
@@ -257,6 +278,8 @@ public void _pushed_I(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_I");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_I");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_I");
 }
@@ -274,6 +297,8 @@ public void _pushed_J(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_J");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_J");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_J");
 }
@@ -291,6 +316,8 @@ public void _pushed_K(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_K");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_K");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_K");
 }
@@ -308,6 +335,8 @@ public void _pushed_L(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_L");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_L");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_L");
 }
@@ -325,6 +354,8 @@ public void _pushed_M(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_M");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_M");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_M");
 }
@@ -342,6 +373,8 @@ public void _pushed_N(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_N");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_N");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_N");
 }
@@ -359,6 +392,8 @@ public void _pushed_O(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_O");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_O");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_O");
 }
@@ -376,6 +411,8 @@ public void _pushed_P(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_P");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_P");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_P");
 }
@@ -393,6 +430,8 @@ public void _pushed_Q(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_Q");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_Q");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Q");
 }
@@ -410,6 +449,8 @@ public void _pushed_R(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_R");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_R");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_R");
 }
@@ -427,6 +468,8 @@ public void _pushed_S(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_S");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_S");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_S");
 }
@@ -444,6 +487,8 @@ public void _pushed_T(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_T");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_T");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_T");
 }
@@ -461,6 +506,8 @@ public void _pushed_U(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_U");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_U");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_U");
 }
@@ -478,6 +525,8 @@ public void _pushed_V(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_V");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_V");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_V");
 }
@@ -495,6 +544,8 @@ public void _pushed_W(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_W");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_W");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_W");
 }
@@ -512,6 +563,8 @@ public void _pushed_X(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_X");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_X");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_X");
 }
@@ -529,6 +582,8 @@ public void _pushed_Y(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_Y");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_Y");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Y");
 }
@@ -546,6 +601,8 @@ public void _pushed_Z(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_Z");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_Z");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Z");
 }
@@ -563,6 +620,8 @@ public void _pushed_Alpha0(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_RightParen");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_RightParen");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha0");
 }
@@ -580,6 +639,8 @@ public void _pushed_Alpha1(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Exclaim");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Exclaim");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha1");
 }
@@ -597,6 +658,8 @@ public void _pushed_Alpha2(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_At");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_At");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha2");
 }
@@ -614,6 +677,8 @@ public void _pushed_Alpha3(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Hash");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Hash");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha3");
 }
@@ -631,6 +696,8 @@ public void _pushed_Alpha4(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Dollar");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Dollar");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha4");
 }
@@ -648,6 +715,8 @@ public void _pushed_Alpha5(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Percent");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Percent");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha5");
 }
@@ -665,6 +734,8 @@ public void _pushed_Alpha6(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Caret");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Caret");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha6");
 }
@@ -682,6 +753,8 @@ public void _pushed_Alpha7(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Ampersand");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Ampersand");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha7");
 }
@@ -699,6 +772,8 @@ public void _pushed_Alpha8(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Asterisk");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Asterisk");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha8");
 }
@@ -716,6 +791,8 @@ public void _pushed_Alpha9(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_LeftParen");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_LeftParen");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Alpha9");
 }
@@ -733,6 +810,8 @@ public void _pushed_Minus(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Underscore");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Underscore");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Minus");
 }
@@ -750,6 +829,8 @@ public void _pushed_Equals(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Plus");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Plus");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Equals");
 }
@@ -767,6 +848,8 @@ public void _pushed_LeftBracket(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_LeftCurlyBracket");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_LeftCurlyBracket");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_LeftBracket");
 }
@@ -784,6 +867,8 @@ public void _pushed_RightBracket(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_RightCurlyBracket");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_RightCurlyBracket");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_RightBracket");
 }
@@ -801,6 +886,8 @@ public void _pushed_Backslash(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Pipe");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Pipe");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Backslash");
 }
@@ -818,6 +905,8 @@ public void _pushed_Semicolon(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Colon");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Colon");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Semicolon");
 }
@@ -835,6 +924,8 @@ public void _pushed_Quote(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_DoubleQuote");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_DoubleQuote");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Quote");
 }
@@ -852,6 +943,8 @@ public void _pushed_Comma(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Less");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Less");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Comma");
 }
@@ -869,6 +962,8 @@ public void _pushed_Period(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Greater");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Greater");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Period");
 }
@@ -886,6 +981,8 @@ public void _pushed_Slash(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Question");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Question");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Slash");
 }
@@ -903,6 +1000,8 @@ public void _pushed_BackQuote(){
 if(shift){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Tilde");
 _pushed_shift();
+}else if(CapsLock){
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Tilde");
 }else{
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_BackQuote");
 }
@@ -916,13 +1015,6 @@ public void network_pushed_Tilde(){
 chatlinebuffer.text+="~";
 }
 
-public void _pushed_CapsLock(){
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_CapsLock");
-}
-
-public void network_pushed_CapsLock(){
-chatlinebuffer.text+="";
-}
 
 public void _pushed_Tab(){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Tab");
