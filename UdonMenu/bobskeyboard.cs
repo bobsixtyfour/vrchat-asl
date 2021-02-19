@@ -62,8 +62,8 @@ new string[]{"key_Period",".",">"},
 new string[]{"key_Slash","/","?"},
 new string[]{"key_BackQuote","`","~"},
 };
-    public Text chatlinebuffer;
-    public Text chathistory;
+    public TextMeshProUGUI chatlinebuffer;
+    public TextMeshProUGUI chathistory;
 
     //public InputField kbinput;
     private VRCPlayerApi _localPlayer;
@@ -98,11 +98,234 @@ public GameObject etroot;
     {
         
         if(sitting == true){//handles keyboard input only if player is in a chair.
-            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)){
-
-            }else{//shift key is not down.
-
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)){//while the buttons are held down...
+                if(shift==false){//don't update if it's already updated
+                    shift=true;
+                    _updatekeys();
+                    _eventTriggersParent.Find("key_LShift").GetComponent<Image>().color = shift ? _clickedColor : _defaultColor;
+                    _eventTriggersParent.Find("key_RShift").GetComponent<Image>().color = shift ? _clickedColor : _defaultColor;
+                }
             }
+            if (Input.GetKeyUp(KeyCode.LeftShift) || Input.GetKeyUp(KeyCode.RightShift)){//while the buttons are held down...
+                if(shift==true){//don't update if it's already updated
+                    shift=false;
+                    _updatekeys();
+                    _eventTriggersParent.Find("key_LShift").GetComponent<Image>().color = shift ? _clickedColor : _defaultColor;
+                    _eventTriggersParent.Find("key_RShift").GetComponent<Image>().color = shift ? _clickedColor : _defaultColor;
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.CapsLock)){//capslock key pushed
+                _pushed_CapsLock();
+            }
+
+if (Input.GetKeyDown(KeyCode.A)){
+_pushed_A();
+}
+
+if (Input.GetKeyDown(KeyCode.B)){
+_pushed_B();
+}
+
+if (Input.GetKeyDown(KeyCode.C)){
+_pushed_C();
+}
+
+if (Input.GetKeyDown(KeyCode.D)){
+_pushed_D();
+}
+
+if (Input.GetKeyDown(KeyCode.E)){
+_pushed_E();
+}
+
+if (Input.GetKeyDown(KeyCode.F)){
+_pushed_F();
+}
+
+if (Input.GetKeyDown(KeyCode.G)){
+_pushed_G();
+}
+
+if (Input.GetKeyDown(KeyCode.H)){
+_pushed_H();
+}
+
+if (Input.GetKeyDown(KeyCode.I)){
+_pushed_I();
+}
+
+if (Input.GetKeyDown(KeyCode.J)){
+_pushed_J();
+}
+
+if (Input.GetKeyDown(KeyCode.K)){
+_pushed_K();
+}
+
+if (Input.GetKeyDown(KeyCode.L)){
+_pushed_L();
+}
+
+if (Input.GetKeyDown(KeyCode.M)){
+_pushed_M();
+}
+
+if (Input.GetKeyDown(KeyCode.N)){
+_pushed_N();
+}
+
+if (Input.GetKeyDown(KeyCode.O)){
+_pushed_O();
+}
+
+if (Input.GetKeyDown(KeyCode.P)){
+_pushed_P();
+}
+
+if (Input.GetKeyDown(KeyCode.Q)){
+_pushed_Q();
+}
+
+if (Input.GetKeyDown(KeyCode.R)){
+_pushed_R();
+}
+
+if (Input.GetKeyDown(KeyCode.S)){
+_pushed_S();
+}
+
+if (Input.GetKeyDown(KeyCode.T)){
+_pushed_T();
+}
+
+if (Input.GetKeyDown(KeyCode.U)){
+_pushed_U();
+}
+
+if (Input.GetKeyDown(KeyCode.V)){
+_pushed_V();
+}
+
+if (Input.GetKeyDown(KeyCode.W)){
+_pushed_W();
+}
+
+if (Input.GetKeyDown(KeyCode.X)){
+_pushed_X();
+}
+
+if (Input.GetKeyDown(KeyCode.Y)){
+_pushed_Y();
+}
+
+if (Input.GetKeyDown(KeyCode.Z)){
+_pushed_Z();
+}
+
+if (Input.GetKeyDown(KeyCode.Alpha0)){
+_pushed_Alpha0();
+}
+
+if (Input.GetKeyDown(KeyCode.Alpha1)){
+_pushed_Alpha1();
+}
+
+if (Input.GetKeyDown(KeyCode.Alpha2)){
+_pushed_Alpha2();
+}
+
+if (Input.GetKeyDown(KeyCode.Alpha3)){
+_pushed_Alpha3();
+}
+
+if (Input.GetKeyDown(KeyCode.Alpha4)){
+_pushed_Alpha4();
+}
+
+if (Input.GetKeyDown(KeyCode.Alpha5)){
+_pushed_Alpha5();
+}
+
+if (Input.GetKeyDown(KeyCode.Alpha6)){
+_pushed_Alpha6();
+}
+
+if (Input.GetKeyDown(KeyCode.Alpha7)){
+_pushed_Alpha7();
+}
+
+if (Input.GetKeyDown(KeyCode.Alpha8)){
+_pushed_Alpha8();
+}
+
+if (Input.GetKeyDown(KeyCode.Alpha9)){
+_pushed_Alpha9();
+}
+
+if (Input.GetKeyDown(KeyCode.Minus)){
+_pushed_Minus();
+}
+
+if (Input.GetKeyDown(KeyCode.Equals)){
+_pushed_Equals();
+}
+
+if (Input.GetKeyDown(KeyCode.LeftBracket)){
+_pushed_LeftBracket();
+}
+
+if (Input.GetKeyDown(KeyCode.RightBracket)){
+_pushed_RightBracket();
+}
+
+if (Input.GetKeyDown(KeyCode.Backslash)){
+_pushed_Backslash();
+}
+
+if (Input.GetKeyDown(KeyCode.Semicolon)){
+_pushed_Semicolon();
+}
+
+if (Input.GetKeyDown(KeyCode.Quote)){
+_pushed_Quote();
+}
+
+if (Input.GetKeyDown(KeyCode.Comma)){
+_pushed_Comma();
+}
+
+if (Input.GetKeyDown(KeyCode.Period)){
+_pushed_Period();
+}
+
+if (Input.GetKeyDown(KeyCode.Slash)){
+_pushed_Slash();
+}
+
+if (Input.GetKeyDown(KeyCode.BackQuote)){
+_pushed_BackQuote();
+}
+
+if (Input.GetKeyDown(KeyCode.CapsLock)){
+_pushed_CapsLock();
+}
+
+if (Input.GetKeyDown(KeyCode.Tab)){
+_pushed_Tab();
+}
+
+if (Input.GetKeyDown(KeyCode.Backspace)){
+_pushed_Backspace();
+}
+
+if (Input.GetKeyDown(KeyCode.Space)){
+_pushed_Space();
+}
+if (Input.GetKeyDown(KeyCode.Return)){
+_pushed_Return();
+}
+
+
         }
         
     }
@@ -124,7 +347,7 @@ public GameObject etroot;
     public void _pushed_chair()
     {
         Debug.Log("entered pushed_chair");
-        if (!sitting)
+        if (sitting==false)
         {
             sitting=true;
             //Debug.Log("seated=null");
