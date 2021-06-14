@@ -1,8 +1,8 @@
-﻿Shader "TypeA/Toon02EdgeShaderMotion"
+﻿Shader "TypeA/Toon02Edge_SM"
 {
 	Properties
 	{
-		//----------------------------------------------------------------------------------------------------
+		//----------------------------------------------------------------------------------------------------	
 		[Header(Motion)]
 		[NoScaleOffset] _MotionDec("MotionDec (decoded motion texture)", 2D) = "black" {}
 		[HideInInspector] _Bone("Bone", 2D) = "black" {}
@@ -15,13 +15,13 @@
 		_Color("MainColor", Color) = (1, 1, 1, 1)
 		_Cutoff("Cutoff",Range(0, 1)) = 0.0
 		[Enum(Opaque,0,Cutout,1,Fade,2,Transparent,3)]_blendMode("BlendMode", Float) = 0
-		[Enum(UnityEngine.Rendering.BlendMode)]_SrcBlend ("SrcBlend", Float) = 1.0
-		[Enum(UnityEngine.Rendering.BlendMode)]_DstBlend ("DstBlend", Float) = 0.0
+		[Enum(UnityEngine.Rendering.BlendMode)]_SrcBlend("SrcBlend", Float) = 1.0
+		[Enum(UnityEngine.Rendering.BlendMode)]_DstBlend("DstBlend", Float) = 0.0
 		[HideInInspector]_ColorMask("__ColorMask",Float) = 15
 		[Toggle]_AlphaToMask("_AlphaToMask", Float) = 0.0
-		[Enum(Off,0,On,1)]_ZWrite ("ZWrite", Float) = 1.0
-		[Enum(UnityEngine.Rendering.CullMode)]_CullMode ("CullMode", Float) = 2.0
-		[Enum(UnityEngine.Rendering.CompareFunction)]_ZTest ("ZTest", Float) = 4
+		[Enum(Off,0,On,1)]_ZWrite("ZWrite", Float) = 1.0
+		[Enum(UnityEngine.Rendering.CullMode)]_CullMode("CullMode", Float) = 2.0
+		[Enum(UnityEngine.Rendering.CompareFunction)]_ZTest("ZTest", Float) = 4
 
 		//----------------------------------------------------------------------------------------------------
 		[Toggle]_StencilMode("__StencilMode", Float) = 0.0
@@ -70,183 +70,77 @@
 		[HideInInspector]_IsHilightColor("__IsHilightColor", Float) = 1
 		[HideInInspector]_IsSystemShadowColor("__IsSystemShadowColor", Float) = 1
 
-		//----------------------------------------------------------------------------------------------------
-		[Toggle]_hilightMode("__hilightMode", Float) = 0.0
-		[NoScaleOffset]_HilightmapTex("HilightMap", 2D) = "black" {}
-		_HilightColor("HilightColor", Color) = (1.0, 1.0, 1.0, 1)
-		[NoScaleOffset]_ToonHilightTex("Toon Hilight", 2D) = "black" {}
-		_HilightIntensity("Hilight Intensity", Range(0.0, 1.0)) = 1.0
-		_ShadowHilightIntensity("Hilight in Shadow", Range(0.0, 1.0)) = 0.6
-		[IntRange]_HilightHardness("Hilight Hardness",Range(1, 100)) = 15
-		_HilightPower("Hilight Power",Range(0, 1)) = 0
-		_HilightSpread("Color Spread",Range(0, 1)) = 0
+			//----------------------------------------------------------------------------------------------------
+			[Toggle]_hilightMode("__hilightMode", Float) = 0.0
+			[NoScaleOffset]_HilightmapTex("HilightMap", 2D) = "black" {}
+			_HilightColor("HilightColor", Color) = (1.0, 1.0, 1.0, 1)
+			[NoScaleOffset]_ToonHilightTex("Toon Hilight", 2D) = "black" {}
+			_HilightIntensity("Hilight Intensity", Range(0.0, 1.0)) = 1.0
+			_ShadowHilightIntensity("Hilight in Shadow", Range(0.0, 1.0)) = 0.6
+			[IntRange]_HilightHardness("Hilight Hardness",Range(1, 100)) = 15
+			_HilightPower("Hilight Power",Range(0, 1)) = 0
+			_HilightSpread("Color Spread",Range(0, 1)) = 0
 
-		//----------------------------------------------------------------------------------------------------
-		[Toggle]_edgeMode("__edgemode", Float) = 1.0
-		_EdgeColor("Edge Color", Color) = (0,0,0,1)
-		[Enum(non,0,Multiply,1,Add,2)]_BCmixMethod("BaseColorMixing", Float) = 0
-		_BaseTexMix("Mixing", Range(0, 1)) = 0
-		[Enum(non,0,Multiply,1,Add,2)]_SCmixMethod("ShadowColorMixing", Float) = 0
-		_ShadowTexMix("Mixing", Range(0, 1)) = 0
-		_EdgeThickness("Edge Thickness", Range(0, 30)) = 1
-		[Enum(not use,0,use,1)]_vc2edge("VertexColor(R) to Edge", float) = 0
+				//----------------------------------------------------------------------------------------------------
+				[Toggle]_edgeMode("__edgemode", Float) = 1.0
+				_EdgeColor("Edge Color", Color) = (0,0,0,1)
+				[Enum(non,0,Multiply,1,Add,2)]_BCmixMethod("BaseColorMixing", Float) = 0
+				_BaseTexMix("Mixing", Range(0, 1)) = 0
+				[Enum(non,0,Multiply,1,Add,2)]_SCmixMethod("ShadowColorMixing", Float) = 0
+				_ShadowTexMix("Mixing", Range(0, 1)) = 0
+				_EdgeThickness("Edge Thickness", Range(0, 30)) = 1
+				[Enum(not use,0,use,1)]_vc2edge("VertexColor(R) to Edge", float) = 0
 
 	}
 
-	SubShader
-	{
-		Tags{ "RenderType"="Opaque"}
+		SubShader
+			{
+				Tags{ "RenderType" = "Opaque"}
 
-		//-------------------------------------------------------------------------------------
-		// Toon02 Forward Base
-		Pass
-		{
-			Name "FORWARDBASE"
-			Tags{ "LightMode"="Forwardbase" }
+				UsePass "TypeA/Toon02_SM/FORWARDBASE"
+				UsePass "TypeA/Toon02_SM/FORWARDADD"
 
-			Stencil{
-				Ref [_RefV]
-				ReadMask [_ReadMask]
-				WriteMask [_WriteMask]
-				Comp [_stComp]
-                Pass [_stPass]
-				Fail [_stFail]
-                ZFail [_stZFail]
+				//-------------------------------------------------------------------------------------
+				// Toon02 Outline Edge Pass
+				Pass
+				{
+					Name "EDGE"
+					Tags{"LightMode" = "ForwardBase" }
+
+					Stencil{
+						Ref[_RefV]
+						ReadMask[_ReadMask]
+						WriteMask[_WriteMask]
+						Comp[_stComp]
+						Pass[_stPass]
+						Fail[_stFail]
+						ZFail[_stZFail]
+					}
+
+					Blend[_SrcBlend][_DstBlend]
+					Cull Front
+					ZWrite On
+
+					CGPROGRAM
+					#pragma target 3.0
+
+					#pragma shader_feature _ _ALPHATEST_ON _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON
+
+					#pragma multi_compile_fog
+					#pragma multi_compile_fwdbase
+
+					#pragma vertex vertForwardBaseEdge
+					#pragma fragment fragForwardBaseEdge
+					#define SHADERMOTION_ON
+
+					#include "TypeAedge.cginc"
+
+					ENDCG
+				}
+				UsePass "TypeA/Toon02_SM/SHADOWCASTER"
 			}
 
-			Blend [_SrcBlend] [_DstBlend]
-			ColorMask [_ColorMask]
-			AlphaToMask [_AlphaToMask]
-			ZWrite [_ZWrite]
-			Cull [_CullMode]
-			ZTest [_ZTest]
-
-			CGPROGRAM
-			#pragma target 3.0
-
-			#pragma shader_feature _ HILIGHT_ENABLED
-			#pragma shader_feature _ DROPSHADOW
-
-			#pragma shader_feature _ _ALPHATEST_ON _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON
-
-			#pragma multi_compile_fog
-			#pragma multi_compile_fwdbase
-
-			#pragma vertex vertForwardBase
-			#pragma fragment fragForwardBase
-			#define SHADERMOTION_ON
-
-			#include "TypeAtoon02Forwardbase.cginc"
-
-			ENDCG
-		}
-
-		//-------------------------------------------------------------------------------------
-		// Toon02 Forward Add
-		
-		Pass
-		{
-			Name "FORWARDADD"
-			Tags{ "LightMode"="ForwardAdd" }
-
-			Stencil{
-				Ref [_RefV]
-				ReadMask [_ReadMask]
-				WriteMask[_WriteMask]
-				Comp [_stComp]
-                Pass [_stPass]
-				Fail [_stFail]
-                ZFail [_stZFail]
-			}
-
-			Blend [_SrcBlend] One
-			Fog { Color (0,0,0,0) }
-			ZWrite Off
-			ZTest LEqual
-			Cull [_CullMode]
-
-			CGPROGRAM
-			#pragma target 3.0
-
-			#pragma shader_feature _ _ALPHATEST_ON _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON
-
-			#pragma multi_compile_fwdadd_fullshadows
-			#pragma multi_compile_fog
-
-			#pragma vertex vertForwardAdd
-			#pragma fragment fragForwardAdd
-			#define SHADERMOTION_ON
-
-			#include "TypeAtoon02Forwardadd.cginc"
-
-			ENDCG
-		}
-
-		//-------------------------------------------------------------------------------------
-		// Toon02 Outline Edge Pass
-		Pass
-		{
-			Name "EDGE"
-			Tags{"LightMode"="ForwardBase" }
-
-			Stencil{
-				Ref [_RefV]
-				ReadMask [_ReadMask]
-				WriteMask [_WriteMask]
-				Comp [_stComp]
-                Pass [_stPass]
-				Fail [_stFail]
-                ZFail [_stZFail]
-			}
-
-			Blend [_SrcBlend] [_DstBlend]
-			Cull Front			
-			ZWrite On
-
-			CGPROGRAM
-			#pragma target 3.0
-
-			#pragma shader_feature _ _ALPHATEST_ON _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON
-
-			#pragma multi_compile_fog
-			#pragma multi_compile_fwdbase
-
-			#pragma vertex vertForwardBaseEdge
-			#pragma fragment fragForwardBaseEdge
-			#define SHADERMOTION_ON
-
-			#include "TypeAedge.cginc"
-
-			ENDCG
-		}
-
-		// ------------------------------------------------------------------
-		//  Shadow rendering pass
-		Pass {
-			Name "SHADOWCASTER"
-			Tags { "LightMode"="ShadowCaster" }
-
-			ZWrite On ZTest LEqual
-
-			CGPROGRAM
-			#pragma target 3.0
-
-			// -------------------------------------
-
-			#pragma shader_feature _ _ALPHATEST_ON _ALPHABLEND_ON _ALPHAPREMULTIPLY_ON
-			#pragma multi_compile_shadowcaster
-
-			#pragma vertex vertShadowCaster
-			#pragma fragment fragShadowCaster
-			#define SHADERMOTION_ON
-
-			#include "TypeAshadow.cginc"
-
-			ENDCG
-		}
-	}
-
-	Fallback "Standard"
-	CustomEditor "TypeAToon02GUI"
+				Fallback "Standard"
+				CustomEditor "TypeAToon02GUI_SM"
 
 }
