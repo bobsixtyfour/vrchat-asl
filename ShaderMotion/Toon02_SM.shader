@@ -91,7 +91,7 @@ _RotationTolerance("RotationTolerance", Range(0, 1)) = 0.1
 		// Toon02 Forward Base
 		Pass
 		{
-			Name "FORWARDBASE_SM"
+			Name "FORWARDBASE"
 			Tags{ "LightMode"="Forwardbase" }
 
 			Stencil{
@@ -136,7 +136,7 @@ _RotationTolerance("RotationTolerance", Range(0, 1)) = 0.1
 		
 		Pass
 		{
-			Name "FORWARDADD_SM"
+			Name "FORWARDADD"
 			Tags{ "LightMode"="ForwardAdd" }
 
 			Stencil{
@@ -175,7 +175,7 @@ _RotationTolerance("RotationTolerance", Range(0, 1)) = 0.1
 		// ------------------------------------------------------------------
 		//  Shadow rendering pass
 		Pass {
-			Name "SHADOWCASTER_SM"
+			Name "SHADOWCASTER"
 			Tags { "LightMode"="ShadowCaster" }
 
 			ZWrite On ZTest LEqual
