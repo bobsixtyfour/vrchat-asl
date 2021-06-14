@@ -2,6 +2,14 @@
 {
 	Properties
 	{
+		//----------------------------------------------------------------------------------------------------	
+		[Header(Motion)]
+		[NoScaleOffset] _MotionDec("MotionDec (decoded motion texture)", 2D) = "black" {}
+		[HideInInspector] _Bone("Bone", 2D) = "black" {}
+		[HideInInspector] _Shape("Shape", 2D) = "black" {}
+		_HumanScale("HumanScale (hips height: 0=original, -1=encoded)", Float) = -1
+		_Layer("Layer (location of motion stripe)", Float) = 0
+		_RotationTolerance("RotationTolerance", Range(0, 1)) = 0.1
 		//----------------------------------------------------------------------------------------------------
 		_Color("MainColor", Color) = (1, 1, 1, 1)
 		_Cutoff("Cutoff",Range(0, 1)) = 0.0
