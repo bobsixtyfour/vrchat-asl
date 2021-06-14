@@ -6,6 +6,16 @@
 
 #include "TypeA2Config.cginc"
 
+#include "TypeA2Function.cginc"
+
+#ifdef SHADERMOTION_ON
+#include "MeshPlayer.hlsl"
+
+UNITY_INSTANCING_BUFFER_START(Props)
+UNITY_DEFINE_INSTANCED_PROP(float, _Layer)
+UNITY_INSTANCING_BUFFER_END(Props)
+#endif
+
 #if (SHADER_TARGET < 30) || defined(SHADER_API_GLES) || defined(SHADER_API_D3D11_9X) || defined (SHADER_API_PSP2)
     #undef UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS
 #endif
@@ -47,12 +57,17 @@ struct VertexOutputShadowCaster
 // some platforms, and then things don't go well.
 
 
-void vertShadowCaster (VertexInputS v,
+//void vertShadowCaster (VertexInputS v,
+void vertShadowCaster (TA_VertexInput v,
     #ifdef UNITY_STANDARD_USE_SHADOW_OUTPUT_STRUCT
     out VertexOutputShadowCaster o,
     #endif
     out float4 opos : SV_POSITION)
 {
+#ifdef SHADERMOTION_ON
+    MorphAndSkinVertex(v, UNITY_ACCESS_INSTANCED_PROP(Props, _Layer));
+#endif
+
     #ifdef UNITY_STANDARD_USE_SHADOW_OUTPUT_STRUCT
 	    UNITY_INITIALIZE_OUTPUT(VertexOutputShadowCaster, o);
     #endif

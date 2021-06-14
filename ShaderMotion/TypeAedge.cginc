@@ -3,6 +3,14 @@
 
 #include "TypeA2Function.cginc"
 
+#ifdef SHADERMOTION_ON
+#include "MeshPlayer.hlsl"
+
+UNITY_INSTANCING_BUFFER_START(Props)
+UNITY_DEFINE_INSTANCED_PROP(float, _Layer)
+UNITY_INSTANCING_BUFFER_END(Props)
+#endif
+
 		struct VertexOutForwardBaseEdge
 		{
 			float4	pos					:	SV_POSITION;
@@ -17,11 +25,16 @@
 		};
 
 
+		//VertexOutForwardBaseEdge vertForwardBaseEdge(VertInputSkin v)
 		VertexOutForwardBaseEdge vertForwardBaseEdge(TA_VertexInput v)
 		{
 		    VertexOutForwardBaseEdge o;
 		    UNITY_INITIALIZE_OUTPUT(VertexOutForwardBaseEdge, o);
 			UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+
+#ifdef SHADERMOTION_ON
+			MorphAndSkinVertex(v, UNITY_ACCESS_INSTANCED_PROP(Props, _Layer));
+#endif
 
 			float4 iv = float4(v.vertex.xyz, 1.0);
 			o.posWorld.xyz = TAPOS_O2W_I4(iv).xyz;

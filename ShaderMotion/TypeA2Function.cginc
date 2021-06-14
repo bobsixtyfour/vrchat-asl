@@ -109,15 +109,24 @@ struct TA_VertexInput
 {
     float4 vertex   : POSITION;
     half3 normal    : NORMAL;
+#ifdef SHADERMOTION_ON
+    float4 uv0      : TEXCOORD0;
+    float4 boneWeights : TEXCOORD1;
+    float2 uv1      : TEXCOORD2;
+    half4 tangent   : TANGENT;
+#else
     float2 uv0      : TEXCOORD0;
     float2 uv1      : TEXCOORD1;
+#ifdef _TANGENT_TO_WORLD
+    half4 tangent   : TANGENT;
+#endif
+#endif 
+
 #if defined(DYNAMICLIGHTMAP_ON) || defined(UNITY_PASS_META)
     float2 uv2      : TEXCOORD2;
 #endif
 	fixed4 color	: COLOR;
-#ifdef _TANGENT_TO_WORLD
-    half4 tangent   : TANGENT;
-#endif
+
 };
 
 float4 TA_TexCoords(TA_VertexInput v)
