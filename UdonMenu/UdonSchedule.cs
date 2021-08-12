@@ -9,7 +9,7 @@ using TMPro;
 public class UdonSchedule : UdonSharpBehaviour
 {
     int lastdayofweekdisplayed=-1;
-    TextMeshProUGUI scheduletextboard;
+    
     void Start()
     {
         string[][] keys = new string[][]{
@@ -29,82 +29,76 @@ public class UdonSchedule : UdonSharpBehaviour
         };
 
 
+        keys = FuturiseArray(keys);
+        keys = SortArray(keys);
 
-
-        scheduletextboard = GameObject.Find("/Schedule/Panel/Text (TMP)").GetComponent<TextMeshProUGUI>();
-        DateTime currentdate, utcdate;
-        TimeSpan difference;
-        currentdate = DateTime.Now;
-        utcdate = DateTime.UtcNow;
-       
         
-        difference = currentdate - utcdate;
-        //Debug.Log("currentdate: "+currentdate + ", utcdate: "+ utcdate + ", diff: "+difference);
-        //Debug.Log("utcdate+difference:" + utcdate.Add(difference));
-        //Debug.Log(DateTime.UtcNow);
+        //scheduletextboard.text = "test";
 
-
-        DateTime date3 = new DateTime(2010, 7, 12, 07, 0, 0);
-        //Debug.Log(date3.ToString("f"));
-        //Debug.Log("Timezone: " + TimeZoneInfo.Local.Id);
-        //Debug.Log("GMT Offset: " + (DateTime.UtcNow - DateTime.Now));
-
-
-        Displaydate(new DateTime(2021, 7, 25, 0, 0, 0).Add(difference), "ASL", "HHHQ", "Jenny0629");
-        Displaydate(new DateTime(2021, 7, 25, 19, 0, 0).Add(difference), "ASL", "SHH", "Crow_Se7en");
-        Displaydate(new DateTime(2021, 7, 25, 20, 0, 0).Add(difference), "LSF", "MRD", "hppedeaf");
-        //Displaydate(new DateTime(2021, 7, 25, 21, 0, 0).Add(difference), "KSL", "SHH", "Korea_Yujin");
-        Displaydate(new DateTime(2021, 7, 19, 19, 0, 0).Add(difference), "LSF", "SHH", "Roineru_FR, MrRikuG935, MaxDeaf_FR");
-        Displaydate(new DateTime(2021, 7, 20, 18, 0, 0).Add(difference), "ASL", "MRD", "Ray_is_Deaf");
-        Displaydate(new DateTime(2021, 7, 20, 19, 0, 0).Add(difference), "DGS", "MRD", "deaf_danielo_89");
-        Displaydate(new DateTime(2021, 8, 11, 22, 0, 0).Add(difference), "ASL", "MRDCS", "DmTheMechanic");
-        Displaydate(new DateTime(2021, 7, 22, 19, 0, 0).Add(difference), "BSL", "GHH", "CathDeafGamer");
-        Displaydate(new DateTime(2021, 7, 23, 01, 0, 0).Add(difference), "ASL-C", "HHHQ", "Fearlesskoolaid");
-        Displaydate(new DateTime(2021, 7, 23, 20, 0, 0).Add(difference), "ASL", "MRD", "Wardragon");
-        Displaydate(new DateTime(2021, 7, 24, 19, 0, 0).Add(difference), "BSL", "GHH", "CathDeafGamer");
-        Displaydate(new DateTime(2021, 7, 24, 20, 0, 0).Add(difference), "LSF-C", "HHHQ", "Roineru_FR");
-        Displaydate(new DateTime(2021, 7, 24, 21, 0, 0).Add(difference), "BSL-C", "HHHQ", "CathDeafGamer");
-
-
-
-
-        // The example displays the following output, in this case for en-us culture:
-        //      8/18/2010 4:32:00 PM
-
-         
-        //find utc time of all events, minus current time % 7 to get offset? add offset to all events to get day/time in current week?
     }
 
+    //pad any old dates with future dates.
+    string[][] FuturiseArray(string[][] tempkeys)
+    {
+        foreach (string[] value in tempkeys)
+        {
+            DateTime temp = DateTime.Parse(value[0]);
+            if (DateTime.Now > temp)//if the time is in the future already, skip?
+            {
+                //Debug.Log("Time: " + temputcdate.ToString("f"));
+                //Debug.Log("days added: " + (span.Days / 7 + 1) * 7);
+                
+                TimeSpan span = DateTime.Now - temp;
+                value[0] = temp.AddDays((span.Days / 7 + 1) * 7).ToString();
+                //Debug.Log("FuturizeArray - Before: "+temp+" Futurized time: " + value[0].ToString());
+            }
+        }
+            return tempkeys;
+    }
 
-    void SortArray(string[][] tempkeys)
+        //take in array and sort it.
+        string[][] SortArray(string[][] tempkeys)
     {
         string[][] temp = new string[1][];
-        for (int i = 0; i < tempkeys[0].Length - 1; i++)
-
+        for (int i = 0; i < tempkeys.Length - 1; i++)
+        {
             // traverse i+1 to array length
-            for (int j = i + 1; j < tempkeys[0].Length; j++)
-
+            for (int j = i + 1; j < tempkeys.Length; j++)
+            {
                 // compare array element with 
                 // all next element
-                if (DateTime.Parse(tempkeys[i][0]) < DateTime.Parse(tempkeys[j][0]))
+                //Debug.Log("Comparing: " +tempkeys[i][0] + " (index #" + i + ") and " + tempkeys[j][0] + " (index #"+j+") compare result: " + DateTime.Compare(DateTime.Parse(tempkeys[i][0]), DateTime.Parse(tempkeys[j][0])));
+                if (DateTime.Compare(DateTime.Parse(tempkeys[i][0]), DateTime.Parse(tempkeys[j][0])) > 0)
                 {
-
+                    //Debug.Log(tempkeys[i][0] + " is greater than " + tempkeys[j][0]);
                     temp[0] = tempkeys[i];
                     tempkeys[i] = tempkeys[j];
                     tempkeys[j] = temp[0];
                 }
+            }
+        }
+        DateTime currentdate, utcdate;
+        TimeSpan difference;
+        currentdate = DateTime.Now;
+        utcdate = DateTime.UtcNow;
 
+
+        difference = currentdate - utcdate;
         // print all element of array
         foreach (string[] value in tempkeys)
         {
-            Debug.Log(value[0] + "," + value[1] + "," + value[2] + "," + value[3]);
+            Displaydate(DateTime.Parse(value[0]).Add(difference), value[1], value[2], value[3]);
+            //Debug.Log("After sort: "+ value[0] + "," + value[1] + "," + value[2] + "," + value[3]);
         }
+        return tempkeys;
     }
 
 
     //have dayofweek in main program, just display selected events here?
     void Displaydate(DateTime tempdate, String shortlang, String shortworld, String teachers)
     {
+        TextMeshProUGUI scheduletextboard = GameObject.Find("/Schedule/Panel/Text (TMP)").GetComponent<TextMeshProUGUI>();
+        //scheduletextboard = GameObject.Find("/Schedule/Panel/Text (TMP)").GetComponent<TextMeshProUGUI>();
         TimeSpan span = DateTime.Now - tempdate;
         //Debug.Log("span: " + span + " span.Days:" + span.Days + " span/7*7:" + span.Days / 7*7);
         if (DateTime.Now > tempdate)//if the time is in the future already, skip?
@@ -180,6 +174,7 @@ public class UdonSchedule : UdonSharpBehaviour
                     break;
             }
 
+            //Debug.Log("scheduletextboard.text: " + scheduletextboard.text);
             if ((int)tempdate.DayOfWeek != lastdayofweekdisplayed)
             {
                 //Debug.Log("0==lastdayofweekdisplayed" + lastdayofweekdisplayed);
