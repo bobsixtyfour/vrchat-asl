@@ -30,32 +30,36 @@ public class UdonSchedule : UdonSharpBehaviour
             new string[]{"08/15/2021 12:00AM","ASL","HHHQ","Jenny0629"},
             new string[]{"08/15/2021 07:00PM","ASL","SHH","Crow_Se7en"},
             new string[]{"08/15/2021 08:00PM","LSF","MRD","hppedeaf"},
+            new string[]{"08/20/2021 09:00PM","KSL","MRD","Korea_Yujin"},
+            new string[]{"08/22/2021 09:00PM","KSL","MRD","Korea_Yujin"},
         };
 
 
         keys = FuturiseArray(keys);
         keys = SortArray(keys);
-for(int x=keys.Length;x<20; x++)//disable unneeded events
+        DisplaySchedule(keys);
+        //disable unneeded events
+        for (int x=keys.Length;x<20; x++)
         {
             GameObject.Find("/Schedule/UpcomingPanel/Content/Event" + x).SetActive(false);
         }
-        
-        //scheduletextboard.text = "test";
-
-    }
+     }
 
     void FixedUpdate()
     {
         if (CurrentTimer == 0)
         {
             currenttimetext.text="Current Time: "+ DateTime.Now.ToString("t");
-            TimeSpan span = DateTime.Now - DateTime.Parse(keys[0][0]);
-            if (span.TotalMinutes > -30 & span.TotalMinutes < 0)
+            TimeSpan span = DateTime.Parse(keys[0][0]) - DateTime.UtcNow;
+            if (span.TotalMinutes < -30 ) //if 30 minutes have passed from the top event
             {
+                //Debug.Log(span.TotalMinutes+" minutes have passed in update");
                 keys = FuturiseArray(keys);
                 keys = SortArray(keys);
+                DisplaySchedule(keys);
+                
             }
-
+            DisplayUpcomingEvent(DateTime.Parse(keys[0][0]).Add(DateTime.Now - DateTime.UtcNow), ExpandShortLang2Long(keys[0][1]), ExpandShortWorld2Long(keys[0][2]), keys[0][3]);
             CurrentTimer = Timer; // Resets the timer
         }
         else
@@ -64,18 +68,27 @@ for(int x=keys.Length;x<20; x++)//disable unneeded events
         }
     }
 
-    //pad any old dates with future dates.
+    /***************************************************************************************************************************
+    pad any old dates with future dates.
+    ***************************************************************************************************************************/
+
     string[][] FuturiseArray(string[][] tempkeys)
     {
+        //debug:
+        /*
         foreach (string[] value in tempkeys)
         {
+            Debug.Log(value[0]);
+        }*/
+
+            foreach (string[] value in tempkeys)
+        {
             DateTime temp = DateTime.Parse(value[0]);
-            if (DateTime.Now > temp)//if the time is in the future already, skip?
+            if (DateTime.Compare(DateTime.UtcNow, temp)>0)//if the time is in the future already, skip?
             {
-                //Debug.Log("Time: " + temputcdate.ToString("f"));
-                //Debug.Log("days added: " + (span.Days / 7 + 1) * 7);
                 
-                TimeSpan span = DateTime.Now - temp;
+                TimeSpan span = DateTime.UtcNow - temp;
+                //Debug.Log("days added: " + (span.Days / 7 + 1) * 7);
                 value[0] = temp.AddDays((span.Days / 7 + 1) * 7).ToString();
                 //Debug.Log("FuturizeArray - Before: "+temp+" Futurized time: " + value[0].ToString());
             }
@@ -83,8 +96,11 @@ for(int x=keys.Length;x<20; x++)//disable unneeded events
             return tempkeys;
     }
 
-        //take in array and sort it.
-        string[][] SortArray(string[][] tempkeys)
+    /***************************************************************************************************************************
+    take in array and sort it.
+    ***************************************************************************************************************************/
+
+    string[][] SortArray(string[][] tempkeys)
     {
         string[][] temp = new string[1][];
         for (int i = 0; i < tempkeys.Length - 1; i++)
@@ -104,122 +120,221 @@ for(int x=keys.Length;x<20; x++)//disable unneeded events
                 }
             }
         }
-        DateTime currentdate, utcdate;
-        TimeSpan difference;
-        currentdate = DateTime.Now;
-        utcdate = DateTime.UtcNow;
-        difference = currentdate - utcdate;
+        
+        return tempkeys;
+    }
+
+    void DisplaySchedule(string[][] tempkeys)
+    {
+
         // print all element of array
         int counter = 0;
         foreach (string[] value in tempkeys)
         {
-            Displaydate(DateTime.Parse(value[0]).Add(difference), value[1], value[2], value[3], counter);
-            //Debug.Log("After sort: "+ value[0] + "," + value[1] + "," + value[2] + "," + value[3]);
+            DisplayScheduleLine(DateTime.Parse(value[0]).Add(DateTime.Now - DateTime.UtcNow),ExpandShortLang2Short(value[1]), ExpandShortWorld2Long(value[2]), value[3], counter);
             counter++;
         }
-        return tempkeys;
+    }
+    
+    void DisplayUpcomingEvent(DateTime tempdate, String eventlongname, String world, String teachers)
+    {
+		TimeSpan interval = tempdate - DateTime.Now;
+        TextMeshProUGUI upcomingtext = GameObject.Find("/Schedule/InfoPanel/NoworUpcoming").GetComponent<TextMeshProUGUI>();
+        //Debug.Log("tempdate:"+tempdate.ToString());
+        //Debug.Log("current time:" + DateTime.Now.ToString());
+        //Debug.Log("interval: " + interval.Days + " days, " + interval.Hours + " hours, " + interval.Minutes + " minutes, " + interval.Seconds + " seconds");
+        upcomingtext.text = interval.Days + "d, " + interval.Hours + "h, " + interval.Minutes + "m, " + interval.Seconds + "s";
+        string days="";
+        string hours = "";
+        string minutes = "";
+        string seconds = "";
+        if (interval.Days > 1)
+        {
+            days = interval.Days + " Days";
+        }
+        else if (interval.Days == 1)
+        {
+            days = interval.Days + " Day";
+        }
+
+        if (interval.Hours > 1)
+        {
+            hours = interval.Hours + " Hours";
+        }
+        else if (interval.Hours == 1)
+        {
+            hours = interval.Hours + " Hour";
+        }
+
+
+        if (interval.Minutes > 1)
+        {
+            minutes = interval.Minutes + " Minutes";
+        }
+        else if (interval.Minutes == 1)
+        {
+            minutes = interval.Minutes + " Minute";
+        }
+
+        if (interval.Seconds > 1)
+        {
+            seconds = interval.Seconds + " Seconds";
+        }
+        else if (interval.Seconds == 1)
+        {
+            seconds = interval.Seconds + " Second";
+        }
+        else if (interval.Seconds == 0)
+        {
+            seconds = interval.Seconds + " Second";
+        }
+        else if (interval.Seconds == -1)
+        {
+            seconds = interval.Seconds + " Second Ago";
+        }
+        else if (interval.Seconds < -1)
+        {
+            seconds = interval.Seconds + " Seconds Ago";
+        }
+
+        if (interval.TotalDays >= 1)
+        {
+            upcomingtext.text = "Next Event:\n"+days;
+            if (hours != "")
+            {
+                upcomingtext.text = upcomingtext.text + " & ";
+            }
+            upcomingtext.text = upcomingtext.text + hours;
+        }
+
+        if (interval.TotalHours >= 1 & interval.TotalHours <24)
+        {
+            upcomingtext.text = "Next Event:\n" + hours;
+            if (minutes != "")
+            {
+                upcomingtext.text = upcomingtext.text + " & ";
+            }
+            upcomingtext.text = upcomingtext.text + minutes;
+        }
+
+        if (interval.TotalMinutes >= 1 & interval.TotalMinutes<60)
+        {
+            upcomingtext.text = "Starting Soon:\n" + minutes;
+            if (seconds != "")
+            {
+                upcomingtext.text = upcomingtext.text + " & ";
+            }
+            upcomingtext.text = upcomingtext.text + seconds;
+        }
+        if (interval.TotalSeconds >= 1 & interval.TotalSeconds<60)
+        {
+            upcomingtext.text = "Starting Now:\n" + seconds;
+        }
+        if(interval.TotalSeconds < 0 & interval.TotalSeconds >= -60)
+        {
+            upcomingtext.text = "Just Started:\n" + seconds;
+        }
+        if (interval.TotalSeconds < -60 & interval.TotalSeconds >= -1800)
+        {
+            upcomingtext.text = "Just Started:\n" + interval.TotalMinutes*-1 +" Minutes Ago";
+        }
+            
+
+        GameObject.Find("/Schedule/InfoPanel/EventName").GetComponent<TextMeshProUGUI>().text = eventlongname;
+        GameObject.Find("/Schedule/InfoPanel/LocationText").GetComponent<TextMeshProUGUI>().text = "Location:\n" + world;
+        GameObject.Find("/Schedule/InfoPanel/HostText").GetComponent<TextMeshProUGUI>().text = "Hosted by:\n" + teachers;
+
     }
 
-
-    //have dayofweek in main program, just display selected events here?
-    void Displaydate(DateTime tempdate, String shortlang, String shortworld, String teachers, int counter)
+    string ExpandShortLang2Short(String shortlang)
     {
-        TextMeshProUGUI daytext = GameObject.Find("/Schedule/UpcomingPanel/Content/Event"+counter+"/Day").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI eventtext = GameObject.Find("/Schedule/UpcomingPanel/Content/Event" + counter + "/EventName").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI desctext = GameObject.Find("/Schedule/UpcomingPanel/Content/Event" + counter + "/EventDetails").GetComponent<TextMeshProUGUI>();
-        //scheduletextboard = GameObject.Find("/Schedule/Panel/Text (TMP)").GetComponent<TextMeshProUGUI>();
-        /*
-        TimeSpan span = DateTime.Now - tempdate;
-        //Debug.Log("span: " + span + " span.Days:" + span.Days + " span/7*7:" + span.Days / 7*7);
-        if (DateTime.Now > tempdate)//if the time is in the future already, skip?
-        {
-            //Debug.Log("Time: " + temputcdate.ToString("f"));
-            //Debug.Log("days added: " + (span.Days / 7 + 1) * 7);
-            tempdate=tempdate.AddDays((span.Days / 7 + 1) * 7);
-        //Debug.Log("Time: " + temputcdate.ToString("f"));
-        }*/
-        //DateTime.UtcNow
-        //TimeSpan span2 = DateTime.UtcNow - tempdate;
-        //Debug.Log("span2: " + span2);
-        //if (DateTime.Now < tempdate && span2.Days>-6) { //display if event hasn't happened yet
-        
-        String eventlongname;
         String eventshortname;
-        String world;
+        //convert shortlang/world to long
+        switch (shortlang)
+        {
+            case "ASL":
+                eventshortname = "ASL Class";
+                break;
+            case "ASL-C":
+                eventshortname = "ASL No Voice Zone";
+                break;
+            case "BSL":
+                eventshortname = "BSL Class";
+                break;
+            case "BSL-C":
+                eventshortname = "BSL No Voice Zone";
+                break;
+            case "DGS":
+                eventshortname = "DGS Class";
+                break;
+            case "DGS-C":
+                eventshortname = "DGS No Voice Zone";
+                break;
+            case "KSL":
+                eventshortname = "KSL Class";
+                break;
+            case "KSL-C":
+                eventshortname = "KSL Social";
+                break;
+            case "LSF":
+                eventshortname = "LSF Class";
+                break;
+            case "LSF-C":
+                eventshortname = "LSF No Voice Zone";
+                break;
+            default:
+                eventshortname = "Error:\n" + shortlang + " is undefined. Contact Bob64";
+                break;
+        }
+        return eventshortname;
+    }
+
+    string ExpandShortLang2Long(String shortlang)
+    {
+        String eventlongname;
         //convert shortlang/world to long
         switch (shortlang)
         {
             case "ASL":
                 eventlongname = "Language Class:\nASL (American Sign Language)";
-                eventshortname = "ASL Class";
                 break;
             case "ASL-C":
                 eventlongname = "Event:\nASL No Voice Zone";
-                eventshortname = "ASL No Voice Zone";
                 break;
             case "BSL":
                 eventlongname = "Language Class:\nBSL (British Sign Language)";
-                eventshortname = "BSL Class";
                 break;
             case "BSL-C":
                 eventlongname = "Event:\nBSL No Voice Zone";
-                eventshortname = "BSL No Voice Zone";
                 break;
             case "DGS":
                 eventlongname = "Language Class:\nDGS (German Sign Language)";
-                eventshortname = "DGS Class";
                 break;
             case "DGS-C":
                 eventlongname = "Event:\nDGS No Voice Zone";
-                eventshortname = "DGS No Voice Zone";
                 break;
             case "KSL":
                 eventlongname = "Language Class:\nKSL (Korean Sign Language)";
-                eventshortname = "KSL Class";
                 break;
             case "KSL-C":
                 eventlongname = "Event:\nKSL No Voice Zone";
-                eventshortname = "KSL Social";
                 break;
             case "LSF":
                 eventlongname = "Language Class:\nLSF (French Sign Language)";
-                eventshortname = "LSF Class";
                 break;
             case "LSF-C":
                 eventlongname = "Event:\nLSF No Voice Zone";
-                eventshortname = "LSF No Voice Zone";
                 break;
             default:
                 eventlongname = "Error:\n" + shortlang + " is undefined. Contact Bob64";
-                eventshortname = "Error:\n" + shortlang + " is undefined. Contact Bob64";
                 break;
         }
+        return eventlongname;
+    }
 
-        /*
-        switch (shortworld)
-            {
-                case "EAW":
-                    world = "Experimental ASL World";
-                    break;
-                case "MRD":
-                    world = "MrDummy_NL's Sign&Fun";
-                    break;
-                case "MRDCS":
-                    world = "MrDummy's Club School";
-                    break;
-                case "HHHQ":
-                    world = "Helping Hands HQ";
-                    break;
-                case "SHH":
-                    world = "School Helping Hands";
-                    break;
-                case "GHH":
-                    world = "Global Helping Hands";
-                    break;
-                default:
-                    world = "Invalid shortworld";
-                    break;
-            }*/
+    string ExpandShortWorld2Long(String shortworld)
+    {
+        string world;
         switch (shortworld)
         {
             case "EAW":
@@ -241,146 +356,25 @@ for(int x=keys.Length;x<20; x++)//disable unneeded events
                 world = "Quest Compatible";
                 break;
             default:
-                world = "Undefined";
+                world = "Error:\n" + shortworld + " is undefined. Contact Bob64";
                 break;
         }
+        return world;
+    }
+
+    /***************************************************************************************************************************
+    Displays the right hand schedule, line by line.
+    ***************************************************************************************************************************/
+    void DisplayScheduleLine(DateTime tempdate, String eventshortname, String world, String teachers, int counter)
+    {
+        TextMeshProUGUI daytext = GameObject.Find("/Schedule/UpcomingPanel/Content/Event"+counter+"/Day").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI eventtext = GameObject.Find("/Schedule/UpcomingPanel/Content/Event" + counter + "/EventName").GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI desctext = GameObject.Find("/Schedule/UpcomingPanel/Content/Event" + counter + "/EventDetails").GetComponent<TextMeshProUGUI>();
+
         daytext.text = tempdate.ToString("dddd") + "\n" + tempdate.Hour % 12 + tempdate.ToString("tt");
         eventtext.text = eventshortname;
         desctext.text = tempdate.ToString("d")+"\nHosted by: "+teachers;
 
-        if (counter == 0)
-        {
-            TimeSpan interval = tempdate- DateTime.Now;
-            TextMeshProUGUI upcomingtext = GameObject.Find("/Schedule/InfoPanel/NoworUpcoming").GetComponent<TextMeshProUGUI>();
-            //Debug.Log("tempdate:"+tempdate.ToString());
-            //Debug.Log("current time:" + DateTime.Now.ToString());
-            //Debug.Log("interval day: " + interval.Days+ ", hours: "+interval.Hours+", minutes: "+interval.Minutes+ ", seconds: " + interval.Seconds);
-            upcomingtext.text = interval.Days + "d, " + interval.Hours + "h, " + interval.Minutes + "m, " + interval.Seconds + "s";
-            if(interval.Days > 1)
-            {
-                if (interval.Hours > 1)
-                {
-                    upcomingtext.text = "Next Event:\n" + interval.Days + " Days & " + interval.Hours + " Hours";
-                }
-                else if (interval.Hours == 1)
-                {
-                    upcomingtext.text = "Next Event:\n" + interval.Days + " Days & " + interval.Hours + " Hour";
-                }
-                else if (interval.Hours == 0)
-                {
-                    upcomingtext.text = "Next Event:\n" + interval.Days + " Days";
-                }
-            }
-            else if(interval.Days == 1)
-            {
-                if (interval.Hours > 1)
-                {
-                    upcomingtext.text = "Next Event:\n" + interval.Days + " Day & " + interval.Hours + " Hours";
-                }
-                else if (interval.Hours == 1 | interval.Hours == 0)
-                {
-                    upcomingtext.text = "Next Event:\n" + interval.Days + " Day & " + interval.Hours + " Hour";
-                }
-                else if (interval.Hours == 0)
-                {
-                    upcomingtext.text = "Next Event:\n" + interval.Days + " Day";
-                }
-            }
-            else if (interval.Days == 0)
-            {
-                if (interval.Hours > 1)
-                {
-                    if (interval.Minutes > 1)
-                    {
-                        upcomingtext.text = "Next Event:\n" + interval.Hours + " Hours & " + interval.Minutes + " Minutes";
-                    }
-                    else if (interval.Minutes == 1)
-                    {
-                        upcomingtext.text = "Next Event:\n" + interval.Hours + " Hours & " + interval.Minutes + " Minute";
-                    }
-                    else if (interval.Minutes == 0)
-                    {
-                        upcomingtext.text = "Next Event:\n" + interval.Hours + " Hours";
-                    }
-                }
-                else if (interval.Hours == 1 )
-                {
-                    if (interval.Minutes > 1)
-                    {
-                        upcomingtext.text = "Next Event:\n" + interval.Hours + " Hour & " + interval.Minutes + " Minutes";
-                    }
-                    else if (interval.Minutes == 1)
-                    {
-                        upcomingtext.text = "Next Event:\n" + interval.Hours + " Hour & " + interval.Minutes + " Minute";
-                    }
-                    else if (interval.Minutes == 0)
-                    {
-                        upcomingtext.text = "Next Event:\n" + interval.Hours + " Hour";
-                    }
-                }
-                else if( interval.Hours == 0)
-                {
-                    if(interval.Minutes > 1)
-                    {
-                        if (interval.Seconds > 1)
-                        {
-                            upcomingtext.text = "Next Event:\n" + interval.Minutes + " Minutes & " + interval.Seconds + " Seconds";
-                        }
-                        else if (interval.Seconds == 1)
-                        {
-                            upcomingtext.text = "Next Event:\n" + interval.Minutes + " Minutes & " + interval.Seconds + " Second";
-                        }
-                        else if (interval.Seconds == 0)
-                        {
-                            upcomingtext.text = "Next Event:\n" + interval.Minutes + " Minutes";
-                        }
-                    }
-                    else if (interval.Minutes == 1)
-                    {
-                        if (interval.Seconds > 1)
-                        {
-                            upcomingtext.text = "Next Event:\n" + interval.Minutes + " Minute & " + interval.Seconds + " Seconds";
-                        }
-                        else if (interval.Seconds == 1)
-                        {
-                            upcomingtext.text = "Next Event:\n" + interval.Minutes + " Minute & " + interval.Seconds + " Second";
-                        }
-                        else if (interval.Seconds == 0)
-                        {
-                            upcomingtext.text = "Next Event:\n" + interval.Minutes + " Minute";
-                        }
-                    }
-                    else if (interval.Minutes == 0)
-                    {
-                        if (interval.Seconds > 1)
-                        {
-                            upcomingtext.text = "Next Event:\n" + interval.Seconds + " Seconds";
-                        }
-                        else if (interval.Seconds == 1)
-                        {
-                            upcomingtext.text = "Next Event:\n" + interval.Seconds + " Second";
-                        }
-                        else if (interval.Seconds == 0)
-                        {
-                            upcomingtext.text = "Next Event:\n Starting Now";
-                        }
-                    }
-                    else if (interval.Minutes<0 & interval.Minutes > -30)
-                    {
-                        upcomingtext.text = "Just Started:\n" + interval.Minutes * -1 + " Minutes Ago";
-                    }
-                }
-            }
 
-
-            GameObject.Find("/Schedule/InfoPanel/EventName").GetComponent<TextMeshProUGUI>().text = eventlongname;
-            GameObject.Find("/Schedule/InfoPanel/LocationText").GetComponent<TextMeshProUGUI>().text = "Location:\n"+world;
-            GameObject.Find("/Schedule/InfoPanel/HostText").GetComponent<TextMeshProUGUI>().text ="Hosted by:\n"+teachers;
-
-        }
-
-        //Debug.Log("scheduletextboard.text: " + scheduletextboard.text);
-
-        //}
     }
 }
