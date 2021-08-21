@@ -35,7 +35,7 @@ public class MenuControl : UdonSharpBehaviour
 */
 
 //if you get the bug where it doesn't recognize new array fields, make private, save/compile, make public again.
-public string [][][][] AllLessons = 
+string [][][][] AllLessons = 
 new string[][][][]{ //all languages
 new string[][][]{//asl lessons
 new string[][]{//Alphabet/Numbers (fingerspelling) (lesson1)
@@ -412,7 +412,7 @@ new string[]{"Future (Initialized)","ASL-Future","GT4Tube","","0","","FALSE","",
 new string[]{"Earlier","ASL-Earlier","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet07/07-39.mp4","0","","TRUE","ShadeAxas",""},
 new string[]{"Midweek","ASL-Midweek","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet07/07-40.mp4","0","Middle + Week.","TRUE","ShadeAxas",""},
 new string[]{"Next Week","ASL-Next Week","Melwil","","2","","FALSE","",""},
-new string[]{"Next Week (Variant 2)", "ASL-Next Week (Variant 2)", "Anonymous","https://vrsignlanguage.net/ASL_videos/sheet07/07-41.mp4","2","This is more English","FALSE","","The avatar is using “next+week” when it should just use the sign that means “next week”"},
+new string[]{"Next Week (Variant 2)","ASL-Next Week (Variant 2)","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet07/07-41.mp4","2","This variant is more English","FALSE","","The avatar is using “next+week” when it should just use the sign that means “next week”"},
 },
 new string[][]{//Lesson 9 (VRChat)
 new string[]{"Gestures","ASL-Gestures","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet08/08-01.mp4","2","","FALSE","","Not reviewed"},
@@ -2150,8 +2150,8 @@ new string[]{"At","Idle","No Data Yet.","https://vrchat.germany-sl.com/Lesson02/
 	***************************************************************************************************************************/
 	private void _InitializePreferenceMenu() {
 		HandToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
-		GlobalToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Global Mode").GetComponent<Toggle>();
-		QuizToggle=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Quiz Mode").GetComponent<Toggle>();
+		GlobalToggle=GameObject.Find("/Preferencesv2/Canvas/Mode Panel/Global Mode").GetComponent<Toggle>();
+		QuizToggle=GameObject.Find("/Preferencesv2/Canvas/Mode Panel/Quiz Mode").GetComponent<Toggle>();
 		avatarscaleslider=GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Slider").GetComponent<Slider>();
 		DarkToggle=GameObject.Find("/Preferencesv2/Canvas/Right Panel/Dark Mode").GetComponent<Toggle>();
 	}
@@ -2330,7 +2330,8 @@ new string[]{"At","Idle","No Data Yet.","https://vrchat.germany-sl.com/Lesson02/
 	Update all displays, including Menu, VRC Player, Nana, etc.
 	***************************************************************************************************************************/
 	private void _UpdateAllDisplays() {
-		int currentmenu = _GetCurrentMenu();
+        Debug.Log("Entered _UpdateAllDisplays" + direction);
+        int currentmenu = _GetCurrentMenu();
 		switch (currentmenu) {
 			case MENU_LANGUAGE:
 				_DisplayLanguageSelectMenu();
@@ -2430,7 +2431,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrchat.germany-sl.com/Lesson02/
 	***************************************************************************************************************************/
 	private void _DisplayWordSelectMenu() {
 		// Handle Menu Header (Breadcrumb)
-		menuheadertext.text = signlanguagenames[currentlang][0] + " - " + lessonnames[currentlang][currentlesson];
+		menuheadertext.text = signlanguagenames[currentlang][0] + " - Lesson #" + currentlesson + " " + lessonnames[currentlang][currentlesson];
 
 		// Handle Selection Buttons
 		string buttonText;
@@ -2551,6 +2552,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrchat.germany-sl.com/Lesson02/
 			// AllLessons[][][][5] = Sign description string
 			currentsigntext.text = (currentlesson+1)+"-"+(currentword+1)+" "+AllLessons[currentlang][currentlesson][currentword][0];
 			speechbubbletext.text = AllLessons[currentlang][currentlesson][currentword][0];
+            Debug.Log("_DisplaySign is attempting to play state: " + AllLessons[currentlang][currentlesson][currentword][1]);
 			nana.Play(AllLessons[currentlang][currentlesson][currentword][1]); // TODO Look into Animation Transitions
 			signcredittext.text = "The motion data for this sign was signed by: " +  AllLessons[currentlang][currentlesson][currentword][2];
 			descriptiontext.text = AllLessons[currentlang][currentlesson][currentword][5];
@@ -2570,6 +2572,11 @@ new string[]{"At","Idle","No Data Yet.","https://vrchat.germany-sl.com/Lesson02/
                 { //don't crash the script if i forget to build langurls lol...
                     vrcplayercomponent.PlayURL(langurls[currentlang][currentlesson][currentword]);
                 }
+
+            }
+            else
+            {
+                vrcplayercomponent.Stop();
             }
         }
     }

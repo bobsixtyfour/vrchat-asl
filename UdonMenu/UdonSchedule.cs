@@ -30,8 +30,11 @@ public class UdonSchedule : UdonSharpBehaviour
             new string[]{"08/15/2021 12:00AM","ASL","HHHQ","Jenny0629"},
             new string[]{"08/15/2021 07:00PM","ASL","SHH","Crow_Se7en"},
             new string[]{"08/15/2021 08:00PM","LSF","MRD","hppedeaf"},
+            new string[]{"08/19/2021 01:00AM","ASL-C","HHHQ","Fearlesskoolaid"},
             new string[]{"08/20/2021 09:00PM","KSL","MRD","Korea_Yujin"},
             new string[]{"08/22/2021 09:00PM","KSL","MRD","Korea_Yujin"},
+            
+
         };
 
 
@@ -49,7 +52,9 @@ public class UdonSchedule : UdonSharpBehaviour
     {
         if (CurrentTimer == 0)
         {
-            currenttimetext.text="Current Time: "+ DateTime.Now.ToString("t");
+            //currenttimetext.text="Current Time: "+ DateTime.Now.ToString("t");
+            //currenttimetext.text = "Current Time: " + DateTime.Now.Hour%12+":"+DateTime.Now.Minute+" "+ DateTime.Now.ToString("tt");
+            currenttimetext.text = "Current Time: " + DateTime.Now.ToString("h:mm tt");
             TimeSpan span = DateTime.Parse(keys[0][0]) - DateTime.UtcNow;
             if (span.TotalMinutes < -30 ) //if 30 minutes have passed from the top event
             {
@@ -371,7 +376,7 @@ public class UdonSchedule : UdonSharpBehaviour
         TextMeshProUGUI eventtext = GameObject.Find("/Schedule/UpcomingPanel/Content/Event" + counter + "/EventName").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI desctext = GameObject.Find("/Schedule/UpcomingPanel/Content/Event" + counter + "/EventDetails").GetComponent<TextMeshProUGUI>();
 
-        daytext.text = tempdate.ToString("dddd") + "\n" + tempdate.Hour % 12 + tempdate.ToString("tt");
+        daytext.text = tempdate.ToString("dddd") + "\n" + tempdate.ToString("h tt");
         eventtext.text = eventshortname;
         desctext.text = tempdate.ToString("d")+"\nHosted by: "+teachers;
 
