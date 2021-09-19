@@ -14,33 +14,36 @@ public class UdonSchedule : UdonSharpBehaviour
     TextMeshProUGUI currenttimetext;
     void Start()
     {
-        currenttimetext = GameObject.Find("/Schedule/UpcomingPanel/Content/Current Time").GetComponent<TextMeshProUGUI>();
-        keys = new string[][]{//all times must be in UTC. Will auto-adjust to end-user system settings.
-            new string[]{"08/09/2021 07:00PM","LSF","MRD","Roineru_FR, MrRikuG935,\nMaxDeaf_FR"},
-            new string[]{"08/10/2021 06:00PM","ASL","MRD","Ray_is_Deaf"},
-            new string[]{"08/11/2021 06:00PM","DGS","MRD","deaf_danielo_89"},
-            new string[]{"08/11/2021 07:00PM","DGS-C","HHHQ","deaf_danielo_89"},
-            new string[]{"08/11/2021 10:00PM","ASL","MRDCS","DmTheMechanic"},
-            new string[]{"08/12/2021 07:00PM","BSL","GHH","CathDeafGamer"},
-            new string[]{"08/13/2021 08:00PM","ASL","MRD","Wardragon"},
-            new string[]{"08/14/2021 12:00AM","BSL","GHH","CathDeafGamer"},
-            new string[]{"08/14/2021 07:00PM","BSL","GHH","CathDeafGamer"},
-            new string[]{"08/14/2021 08:00PM","LSF-C","HHHQ","Roineru_FR"},
-            new string[]{"08/14/2021 09:00PM","BSL-C","HHHQ","CathDeafGamer"},
-            new string[]{"08/15/2021 12:00AM","ASL","HHHQ","Jenny0629"},
-            new string[]{"08/15/2021 07:00PM","ASL","SHH","Crow_Se7en"},
-            new string[]{"08/15/2021 08:00PM","LSF","MRD","hppedeaf"},
-            new string[]{"08/19/2021 01:00AM","ASL-C","HHHQ","Fearlesskoolaid"},
-            new string[]{"08/20/2021 09:00PM","KSL","MRD","Korea_Yujin"},
-            new string[]{"08/22/2021 09:00PM","KSL","MRD","Korea_Yujin"},
-            
-
+        currenttimetext = GameObject.Find("/Schedule/TopRightPanel/Current Time").GetComponent<TextMeshProUGUI>();
+        keys = 
+            new string[][]{//all times must be in UTC. Will auto-adjust to end-user system settings.
+            //utctime,repeat?(Y/N),shortname,eventdesc,questcompatible(Y/N)
+            new string[]{"09/06/2021 06:00PM","Y","ASL-NVZ","HHHQ","Crow_Se7en"},
+            new string[]{"09/06/2021 07:00PM","Y","LSF","MRD","MrRikuG935, MaxDeaf_FR"},
+            new string[]{"09/07/2021 06:00PM","Y","ASL","MRD","Ray_is_Deaf"},
+            new string[]{"09/08/2021 06:00PM","Y","DGS","MRD","deaf_danielo_89"},
+            //new string[]{"08/25/2021 07:00PM","Y","DGS-NVZ","HHHQ","deaf_danielo_89"},
+            new string[]{"09/08/2021 10:00PM","Y","ASL","MRDCS","DmTheMechanic"},
+            new string[]{"09/09/2021 07:00PM","Y","BSL", "MRD", "CathDeafGamer"},
+            //new string[]{"08/26/2021 09:00PM","Y","ASL-NVZ","HHHQ","Fearlesskoolaid"},
+            new string[]{"09/10/2021 08:00PM","Y","ASL","MRD","Wardragon"},
+            new string[]{"09/11/2021 12:00AM","Y","BSL","MRD","CathDeafGamer"},
+            //new string[]{"08/28/2021 06:00PM","Y","LSF","MRD","xKaijo"},
+            new string[]{"09/11/2021 07:00PM","Y","BSL", "MRD", "CathDeafGamer"},
+            new string[]{"09/11/2021 08:00PM","Y","LSF-NVZ","HHHQ","Roineru_FR"},
+            new string[]{"09/11/2021 09:00PM","Y","BSL-NVZ","HHHQ","CathDeafGamer"},
+            //new string[]{"09/12/2021 12:00AM","Y","ASL","HHHQ","Jenny0629"},
+            new string[]{"09/12/2021 07:00PM","Y","ASL","SHH","Crow_Se7en"},
+            new string[]{"09/12/2021 08:00PM","Y","LSF","MRD","hppedeaf"},
+            new string[]{"09/21/2021 07:00PM","Y","BSL","MRD","AvinouSCAC"},
+            //new string[]{"09/11/2021 03:00PM","N","VRCON-DCP","VRCON","Fearlesskoolaid"},
+            //new string[]{"09/12/2021 05:00PM","N","VRCON-INTRO", "VRCON", "Fearlesskoolaid"},
         };
 
 
-        keys = FuturiseArray(keys);
-        keys = SortArray(keys);
-        DisplaySchedule(keys);
+        keys = _FuturiseArray(keys);
+        keys = _SortArray(keys);
+        _DisplaySchedule(keys);
         //disable unneeded events
         for (int x=keys.Length;x<20; x++)
         {
@@ -56,15 +59,20 @@ public class UdonSchedule : UdonSharpBehaviour
             //currenttimetext.text = "Current Time: " + DateTime.Now.Hour%12+":"+DateTime.Now.Minute+" "+ DateTime.Now.ToString("tt");
             currenttimetext.text = "Current Time: " + DateTime.Now.ToString("h:mm tt");
             TimeSpan span = DateTime.Parse(keys[0][0]) - DateTime.UtcNow;
+
             if (span.TotalMinutes < -30 ) //if 30 minutes have passed from the top event
             {
                 //Debug.Log(span.TotalMinutes+" minutes have passed in update");
-                keys = FuturiseArray(keys);
-                keys = SortArray(keys);
-                DisplaySchedule(keys);
+                keys = _FuturiseArray(keys);
+                keys = _SortArray(keys);
+                _DisplaySchedule(keys);
                 
             }
-            DisplayUpcomingEvent(DateTime.Parse(keys[0][0]).Add(DateTime.Now - DateTime.UtcNow), ExpandShortLang2Long(keys[0][1]), ExpandShortWorld2Long(keys[0][2]), keys[0][3]);
+#if UNITY_ANDROID//fix for quest headsets being off by 1 hour?
+            _DisplayUpcomingEvent(DateTime.Parse(keys[0][0]).Add(DateTime.Now - DateTime.UtcNow).AddHours(1), _ExpandShortLang2Long(keys[0][2]), _ExpandShortWorld2Long(keys[0][3]), keys[0][4]);
+#else
+            _DisplayUpcomingEvent(DateTime.Parse(keys[0][0]).Add(DateTime.Now - DateTime.UtcNow), _ExpandShortLang2Long(keys[0][2]), _ExpandShortWorld2Long(keys[0][3]), keys[0][4]);
+#endif
             CurrentTimer = Timer; // Resets the timer
         }
         else
@@ -77,7 +85,7 @@ public class UdonSchedule : UdonSharpBehaviour
     pad any old dates with future dates.
     ***************************************************************************************************************************/
 
-    string[][] FuturiseArray(string[][] tempkeys)
+    string[][] _FuturiseArray(string[][] tempkeys)
     {
         //debug:
         /*
@@ -89,14 +97,16 @@ public class UdonSchedule : UdonSharpBehaviour
             foreach (string[] value in tempkeys)
         {
             DateTime temp = DateTime.Parse(value[0]);
-            if (DateTime.Compare(DateTime.UtcNow, temp)>0)//if the time is in the future already, skip?
+            TimeSpan span;
+            if (DateTime.Compare(DateTime.UtcNow, temp) > 0)//if the time has passed
             {
-                
-                TimeSpan span = DateTime.UtcNow - temp;
+
+                span = DateTime.UtcNow - temp;
                 //Debug.Log("days added: " + (span.Days / 7 + 1) * 7);
                 value[0] = temp.AddDays((span.Days / 7 + 1) * 7).ToString();
-                //Debug.Log("FuturizeArray - Before: "+temp+" Futurized time: " + value[0].ToString());
+                //Debug.Log("FuturizeArray - Before: " + temp + " Futurized time: " + value[0].ToString());
             }
+
         }
             return tempkeys;
     }
@@ -105,7 +115,7 @@ public class UdonSchedule : UdonSharpBehaviour
     take in array and sort it.
     ***************************************************************************************************************************/
 
-    string[][] SortArray(string[][] tempkeys)
+    private string[][] _SortArray(string[][] tempkeys)
     {
         string[][] temp = new string[1][];
         for (int i = 0; i < tempkeys.Length - 1; i++)
@@ -118,7 +128,7 @@ public class UdonSchedule : UdonSharpBehaviour
                 //Debug.Log("Comparing: " +tempkeys[i][0] + " (index #" + i + ") and " + tempkeys[j][0] + " (index #"+j+") compare result: " + DateTime.Compare(DateTime.Parse(tempkeys[i][0]), DateTime.Parse(tempkeys[j][0])));
                 if (DateTime.Compare(DateTime.Parse(tempkeys[i][0]), DateTime.Parse(tempkeys[j][0])) > 0)
                 {
-                    //Debug.Log(tempkeys[i][0] + " is greater than " + tempkeys[j][0]);
+                    //Debug.Log(tempkeys[i][0] + " is greater than " + tempkeys[j][0]); 
                     temp[0] = tempkeys[i];
                     tempkeys[i] = tempkeys[j];
                     tempkeys[j] = temp[0];
@@ -129,19 +139,24 @@ public class UdonSchedule : UdonSharpBehaviour
         return tempkeys;
     }
 
-    void DisplaySchedule(string[][] tempkeys)
+    private void _DisplaySchedule(string[][] tempkeys)
     {
 
         // print all element of array
         int counter = 0;
         foreach (string[] value in tempkeys)
         {
-            DisplayScheduleLine(DateTime.Parse(value[0]).Add(DateTime.Now - DateTime.UtcNow),ExpandShortLang2Short(value[1]), ExpandShortWorld2Long(value[2]), value[3], counter);
+#if UNITY_ANDROID//fix for quest headsets being off by 1 hour?
+_DisplayScheduleLine(DateTime.Parse(value[0]).Add(DateTime.Now - DateTime.UtcNow).AddHours(1), _ExpandShortLang2Short(value[2]), _ExpandShortWorld2Long(value[3]), value[4], counter);
+#else
+            _DisplayScheduleLine(DateTime.Parse(value[0]).Add(DateTime.Now - DateTime.UtcNow), _ExpandShortLang2Short(value[2]), _ExpandShortWorld2Long(value[3]), value[4], counter);
+#endif
+
             counter++;
         }
     }
-    
-    void DisplayUpcomingEvent(DateTime tempdate, String eventlongname, String world, String teachers)
+
+    private void _DisplayUpcomingEvent(DateTime tempdate, String eventlongname, String world, String teachers)
     {
 		TimeSpan interval = tempdate - DateTime.Now;
         TextMeshProUGUI upcomingtext = GameObject.Find("/Schedule/InfoPanel/NoworUpcoming").GetComponent<TextMeshProUGUI>();
@@ -199,7 +214,7 @@ public class UdonSchedule : UdonSharpBehaviour
         }
         else if (interval.Seconds < -1)
         {
-            seconds = interval.Seconds + " Seconds Ago";
+            seconds = interval.Seconds * -1 + " Seconds Ago";
         }
 
         if (interval.TotalDays >= 1)
@@ -241,7 +256,7 @@ public class UdonSchedule : UdonSharpBehaviour
         }
         if (interval.TotalSeconds < -60 & interval.TotalSeconds >= -1800)
         {
-            upcomingtext.text = "Just Started:\n" + interval.TotalMinutes*-1 +" Minutes Ago";
+            upcomingtext.text = "Just Started:\n" + Convert.ToInt16(interval.TotalMinutes * -1) +" Minutes Ago";
         }
             
 
@@ -251,7 +266,7 @@ public class UdonSchedule : UdonSharpBehaviour
 
     }
 
-    string ExpandShortLang2Short(String shortlang)
+    private string _ExpandShortLang2Short(String shortlang)
     {
         String eventshortname;
         //convert shortlang/world to long
@@ -260,33 +275,40 @@ public class UdonSchedule : UdonSharpBehaviour
             case "ASL":
                 eventshortname = "ASL Class";
                 break;
-            case "ASL-C":
+            case "ASL-NVZ":
                 eventshortname = "ASL No Voice Zone";
                 break;
             case "BSL":
                 eventshortname = "BSL Class";
                 break;
-            case "BSL-C":
+            case "BSL-NVZ":
                 eventshortname = "BSL No Voice Zone";
                 break;
             case "DGS":
                 eventshortname = "DGS Class";
                 break;
-            case "DGS-C":
+            case "DGS-NVZ":
                 eventshortname = "DGS No Voice Zone";
                 break;
             case "KSL":
                 eventshortname = "KSL Class";
                 break;
-            case "KSL-C":
+            case "KSL-NVZ":
                 eventshortname = "KSL Social";
                 break;
             case "LSF":
                 eventshortname = "LSF Class";
                 break;
-            case "LSF-C":
+            case "LSF-NVZ":
                 eventshortname = "LSF No Voice Zone";
                 break;
+            case "VRCON-DCP":
+                eventshortname = "VRCON Panel";
+                break;
+            case "VRCON-INTRO":
+                eventshortname = "VRCON Panel";
+                break;
+                
             default:
                 eventshortname = "Error:\n" + shortlang + " is undefined. Contact Bob64";
                 break;
@@ -294,7 +316,7 @@ public class UdonSchedule : UdonSharpBehaviour
         return eventshortname;
     }
 
-    string ExpandShortLang2Long(String shortlang)
+    private string _ExpandShortLang2Long(String shortlang)
     {
         String eventlongname;
         //convert shortlang/world to long
@@ -303,32 +325,38 @@ public class UdonSchedule : UdonSharpBehaviour
             case "ASL":
                 eventlongname = "Language Class:\nASL (American Sign Language)";
                 break;
-            case "ASL-C":
+            case "ASL-NVZ":
                 eventlongname = "Event:\nASL No Voice Zone";
                 break;
             case "BSL":
                 eventlongname = "Language Class:\nBSL (British Sign Language)";
                 break;
-            case "BSL-C":
+            case "BSL-NVZ":
                 eventlongname = "Event:\nBSL No Voice Zone";
                 break;
             case "DGS":
                 eventlongname = "Language Class:\nDGS (German Sign Language)";
                 break;
-            case "DGS-C":
+            case "DGS-NVZ":
                 eventlongname = "Event:\nDGS No Voice Zone";
                 break;
             case "KSL":
                 eventlongname = "Language Class:\nKSL (Korean Sign Language)";
                 break;
-            case "KSL-C":
+            case "KSL-NVZ":
                 eventlongname = "Event:\nKSL No Voice Zone";
                 break;
             case "LSF":
                 eventlongname = "Language Class:\nLSF (French Sign Language)";
                 break;
-            case "LSF-C":
+            case "LSF-NVZ":
                 eventlongname = "Event:\nLSF No Voice Zone";
+                break;
+            case "VRCON-DCP":
+                eventlongname = "VRCON Panel: \nLearn the Dos and Don'ts of \nDeaf culture!";
+                break;
+            case "VRCON-INTRO":
+                eventlongname = "VRCON Panel: \nWe will hold a class with different \nteachers to show bits and pieces of their language.";
                 break;
             default:
                 eventlongname = "Error:\n" + shortlang + " is undefined. Contact Bob64";
@@ -337,7 +365,7 @@ public class UdonSchedule : UdonSharpBehaviour
         return eventlongname;
     }
 
-    string ExpandShortWorld2Long(String shortworld)
+    private string _ExpandShortWorld2Long(String shortworld)
     {
         string world;
         switch (shortworld)
@@ -360,6 +388,9 @@ public class UdonSchedule : UdonSharpBehaviour
             case "GHH":
                 world = "Quest Compatible";
                 break;
+            case "VRCON":
+                world = "Quest Compatible";
+                break;
             default:
                 world = "Error:\n" + shortworld + " is undefined. Contact Bob64";
                 break;
@@ -370,7 +401,7 @@ public class UdonSchedule : UdonSharpBehaviour
     /***************************************************************************************************************************
     Displays the right hand schedule, line by line.
     ***************************************************************************************************************************/
-    void DisplayScheduleLine(DateTime tempdate, String eventshortname, String world, String teachers, int counter)
+    private void _DisplayScheduleLine(DateTime tempdate, String eventshortname, String world, String teachers, int counter)
     {
         TextMeshProUGUI daytext = GameObject.Find("/Schedule/UpcomingPanel/Content/Event"+counter+"/Day").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI eventtext = GameObject.Find("/Schedule/UpcomingPanel/Content/Event" + counter + "/EventName").GetComponent<TextMeshProUGUI>();
