@@ -1,4 +1,4 @@
-﻿
+﻿#if VRC_SDK_VRCSDK3 && UDON
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -15,7 +15,7 @@ public class UdonSchedule : UdonSharpBehaviour
     void Start()
     {
         currenttimetext = GameObject.Find("/Schedule/TopRightPanel/Current Time").GetComponent<TextMeshProUGUI>();
-        keys = 
+        keys =
             new string[][]{//all times must be in UTC. Will auto-adjust to end-user system settings.
             //utctime,repeat?(Y/N),shortname,eventdesc,questcompatible(Y/N)
             new string[]{"09/06/2021 06:00PM","Y","ASL-NVZ","HHHQ","Crow_Se7en"},
@@ -66,7 +66,7 @@ public class UdonSchedule : UdonSharpBehaviour
                 keys = _FuturiseArray(keys);
                 keys = _SortArray(keys);
                 _DisplaySchedule(keys);
-                
+
             }
 #if UNITY_ANDROID//fix for quest headsets being off by 1 hour?
             _DisplayUpcomingEvent(DateTime.Parse(keys[0][0]).Add(DateTime.Now - DateTime.UtcNow).AddHours(1), _ExpandShortLang2Long(keys[0][2]), _ExpandShortWorld2Long(keys[0][3]), keys[0][4]);
@@ -123,19 +123,19 @@ public class UdonSchedule : UdonSharpBehaviour
             // traverse i+1 to array length
             for (int j = i + 1; j < tempkeys.Length; j++)
             {
-                // compare array element with 
+                // compare array element with
                 // all next element
                 //Debug.Log("Comparing: " +tempkeys[i][0] + " (index #" + i + ") and " + tempkeys[j][0] + " (index #"+j+") compare result: " + DateTime.Compare(DateTime.Parse(tempkeys[i][0]), DateTime.Parse(tempkeys[j][0])));
                 if (DateTime.Compare(DateTime.Parse(tempkeys[i][0]), DateTime.Parse(tempkeys[j][0])) > 0)
                 {
-                    //Debug.Log(tempkeys[i][0] + " is greater than " + tempkeys[j][0]); 
+                    //Debug.Log(tempkeys[i][0] + " is greater than " + tempkeys[j][0]);
                     temp[0] = tempkeys[i];
                     tempkeys[i] = tempkeys[j];
                     tempkeys[j] = temp[0];
                 }
             }
         }
-        
+
         return tempkeys;
     }
 
@@ -258,7 +258,7 @@ _DisplayScheduleLine(DateTime.Parse(value[0]).Add(DateTime.Now - DateTime.UtcNow
         {
             upcomingtext.text = "Just Started:\n" + Convert.ToInt16(interval.TotalMinutes * -1) +" Minutes Ago";
         }
-            
+
 
         GameObject.Find("/Schedule/InfoPanel/EventName").GetComponent<TextMeshProUGUI>().text = eventlongname;
         GameObject.Find("/Schedule/InfoPanel/LocationText").GetComponent<TextMeshProUGUI>().text = "Location:\n" + world;
@@ -308,7 +308,7 @@ _DisplayScheduleLine(DateTime.Parse(value[0]).Add(DateTime.Now - DateTime.UtcNow
             case "VRCON-INTRO":
                 eventshortname = "VRCON Panel";
                 break;
-                
+
             default:
                 eventshortname = "Error:\n" + shortlang + " is undefined. Contact Bob64";
                 break;
@@ -414,3 +414,4 @@ _DisplayScheduleLine(DateTime.Parse(value[0]).Add(DateTime.Now - DateTime.UtcNow
 
     }
 }
+#endif

@@ -217,7 +217,7 @@ namespace DevonsTools {
 	public class AnimatorControllerPopulator4: MonoBehaviour { [MenuItem("CONTEXT/AnimatorController/Populate using AnimationInt")]
 		static void Populate(MenuCommand command) {
 
-string [][][][] AllLessons = 
+string [][][][] AllLessons =
 new string[][][][]{ //all languages
 new string[][][]{//asl lessons
 new string[][]{//Alphabet/Numbers (fingerspelling) (lesson9)
@@ -498,7 +498,7 @@ new string[]{"Struggle","ASL-Struggle","Anonymous","https://vrsignlanguage.net/A
 new string[]{"Friendly","ASL-Friendly","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet05/05-41.mp4","2","","TRUE","ShadeAxas",""},
 new string[]{"Mean","ASL-Mean","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet05/05-42.mp4","2","","TRUE","ShadeAxas",""},
 },
-new string[][]{//Lesson 6 (Value) 
+new string[][]{//Lesson 6 (Value)
 new string[]{"More","ASL-More","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet06/06-01.mp4","2","","FALSE","","more should be with closed fists"},
 new string[]{"Less","ASL-Less","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet06/06-02.mp4","2","","TRUE","ShadeAxas",""},
 new string[]{"Big","ASL-Big","Anonymous","https://vrsignlanguage.net/ASL_videos/sheet06/06-03.mp4","2","","TRUE","ShadeAxas",""},
@@ -1951,7 +1951,7 @@ new string[]{"At","Idle","No Data Yet.","https://vrsignlanguage.net/ASL_videos/s
                     }
                     */
 					// Create an AnyState transition to this state with the trigger as its condition
-					
+
 					int value;
 					if (wordlookup.TryGetValue(state.name, out value)) { //if it can find the lookup based on the state name
                     AnimatorStateTransition transition = asm.AddAnyStateTransition(state);

@@ -1,5 +1,5 @@
 ﻿// Do not load this script when building
-#if UNITY_EDITOR
+#if UNITY_EDITOR && VRC_SDK_VRCSDK2
 //using System.Collections;
 using System.Collections.Generic; //for lists
 using UnityEngine;
@@ -20,7 +20,7 @@ namespace BobsMenuSystem
         Start of Arrays variable declarations
         *****************************************/
 
-        //creates an array of arrays. Grouped by lessons. 
+        //creates an array of arrays. Grouped by lessons.
         //0th value is the English translation of the word
         //1st value is the German translation of the word
         //2nd value is video URL.
@@ -1327,7 +1327,7 @@ new string[]{"Spine","Spine",""},
 new string[]{"Skeleton","Skeleton",""},
 new string[]{"Skin","Skin",""},
 }};
-        static string[][][][] AllLessons = { DGSlessons }; //adds array of arrays into another array for easy looping. 
+        static string[][][][] AllLessons = { DGSlessons }; //adds array of arrays into another array for easy looping.
 
         //lessonnames[x][y][z]
         //x=languagenumber
@@ -1455,7 +1455,7 @@ new string[]{"Skin","Skin",""},
             /*****************************************
             Update preferences menu to point to newly created objects.
             *****************************************/
-            //recreate toggle to fix reference? 
+            //recreate toggle to fix reference?
             /*
                 Toggle oldvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
                 DestroyImmediate(oldvideotoggle);
@@ -1466,10 +1466,10 @@ new string[]{"Skin","Skin",""},
                 newvideotoggle.transition= Selectable.Transition.None;
                 newvideotoggle.toggleTransition= Toggle.ToggleTransition.None;
                 newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
-                UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
+                UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>),
                 GameObject.Find("/Menu Root/Local Menu Root/Local Video Container"), "SetActive") as UnityAction<bool>);
 
-                UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
+                UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>),
                 GameObject.Find("/Menu Root/Global Menu Root/Global Video Container"), "SetActive") as UnityAction<bool>);
 
                 //Cleanup existing triggers to reference global/local container
@@ -1707,7 +1707,7 @@ new string[]{"Skin","Skin",""},
                                         //dictlessonnum++;
                                     }
                 */
-                GameObject languagetriggercontainer = new GameObject(signlanguagenames[languagenum][0] + " Trigger Container"); //create language container for a given language to house global triggers. 
+                GameObject languagetriggercontainer = new GameObject(signlanguagenames[languagenum][0] + " Trigger Container"); //create language container for a given language to house global triggers.
                 languagetriggercontainer.transform.SetParent(triggercontainer.transform, false);
                 languagetriggercontainer.layer = layer;
                 VRC_Trigger languagetriggercontainertrigger = languagetriggercontainer.AddComponent<VRC_Trigger>();
@@ -1762,7 +1762,7 @@ new string[]{"Skin","Skin",""},
                 for (int lessonnum = 0; lessonnum < AllLessons[languagenum].Length; lessonnum++)
                 { //for every lesson inside of ASLlessons do:
 
-                    GameObject lessontriggercontainer = new GameObject(signlanguagenames[languagenum][0] + " L" + (lessonnum + 1) + " Trigger Container"); //create lesson container for a given language to house global triggers. 
+                    GameObject lessontriggercontainer = new GameObject(signlanguagenames[languagenum][0] + " L" + (lessonnum + 1) + " Trigger Container"); //create lesson container for a given language to house global triggers.
 
                     lessontriggercontainer.layer = layer;
                     VRC_Trigger lessontriggercontainertrigger = lessontriggercontainer.AddComponent<VRC_Trigger>();
@@ -1933,7 +1933,7 @@ new string[]{"Skin","Skin",""},
                             }
                         }
 
-                        GameObject wordtriggercontainer = new GameObject(signlanguagenames[languagenum][0] + " L" + (lessonnum + 1) + "-W" + (wordnum + 1) + " Trigger Container"); //create lesson container for a given language to house global triggers. 
+                        GameObject wordtriggercontainer = new GameObject(signlanguagenames[languagenum][0] + " L" + (lessonnum + 1) + "-W" + (wordnum + 1) + " Trigger Container"); //create lesson container for a given language to house global triggers.
 
                         wordtriggercontainer.layer = layer;
                         VRC_Trigger wordtriggercontainertrigger = wordtriggercontainer.AddComponent<VRC_Trigger>();
@@ -2041,7 +2041,7 @@ new string[]{"Skin","Skin",""},
                                 videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().renderMode = VideoRenderMode.MaterialOverride;
                                 videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().audioOutputMode = VideoAudioOutputMode.None;
                                 videogo.SetActive(false);
-                                wordtriggercontainertrigger.Triggers[0].Events.Add(//there should only be one trigger to add events to on this list.					
+                                wordtriggercontainertrigger.Triggers[0].Events.Add(//there should only be one trigger to add events to on this list.
                                     new VRC_EventHandler.VrcEvent
                                     {
                                         EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive,
@@ -2051,7 +2051,7 @@ new string[]{"Skin","Skin",""},
                                 );
                             }
 
-                            //assign unity triggers to button 
+                            //assign unity triggers to button
                             Button buttonoffbutton = buttonoffgo.GetOrAddComponent<Button>();
                             buttonoffbutton.onClick = new Button.ButtonClickedEvent();
                             UnityAction<string> worduiaction = System.Delegate.CreateDelegate(typeof(UnityAction<string>), buttontriggers, "ExecuteCustomTrigger") as UnityAction<string>;
@@ -2536,7 +2536,7 @@ new string[]{"Skin","Skin",""},
                         break;
                     }
                 case "numtext":
-                    {	
+                    {
 						go.transform.Find("Text").GetComponent<Text>().resizeTextForBestFit = true;
                         go.transform.Find("Text").GetComponent<Text>().text = textnumber;
                         go.transform.Find("Text").GetComponent<Text>().fontSize = 68;
