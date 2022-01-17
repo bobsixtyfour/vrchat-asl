@@ -1,23 +1,24 @@
 ﻿#if VRC_SDK_VRCSDK3 && UDON
+//using VRC.SDK3.Components.Video;
+using System;
+using TMPro;
 using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDK3.Components;
-using VRC.SDKBase;
-using VRC.Udon;
-using System;
-using TMPro;
-//using VRC.SDK3.Components.Video;
 using VRC.SDK3.Video.Components;
 using VRC.SDK3.Video.Components.AVPro;
 using VRC.SDK3.Video.Components.Base;
+using VRC.SDKBase;
+using VRC.Udon;
 
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-using System.Linq; //for sorting
 using System.Collections.Generic; //for lists if I ever use em.
-using UnityEditor;
+using System.Linq; //for sorting
 using UdonSharpEditor;
+using UnityEditor;
+using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
 namespace Bob64
@@ -3567,7 +3568,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
 
-    internal void _UpdateURLs() {
+    internal void __UpdateURLs() {
         // Generate VRCUrls
         langurls = AllLessons.Select(
             language => language.Select(
@@ -3623,7 +3624,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 
             if (GUILayout.Button("Force populate VRCUrls"))
             {
-                inspectorBehaviour._UpdateURLs();
+                inspectorBehaviour.__UpdateURLs();
             }
         }
     }
@@ -3646,5 +3647,57 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 #endif
 
 }
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+[InitializeOnLoad]
+internal class MenuControlHooks {
+    static MenuControlHooks()
+    {
+        EditorApplication.playModeStateChanged += OnChangePlayMode;
+    }
+
+    // Hook for Play mode
+    static void OnChangePlayMode(PlayModeStateChange state) {
+        if (state == PlayModeStateChange.ExitingEditMode) {
+            Debug.Log("Trying to update VRCUrls (Play mode)...");
+
+            // Get the scene object
+            var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+
+            foreach (var root in roots) {
+                foreach (var menuControl in root.GetComponentsInChildren<MenuControl>()) {
+                    Debug.Log("Updating VRCUrls on MenuControl", menuControl);
+                    menuControl.__UpdateURLs();
+                }
+            }
+        }
+    }
+
+    // Hook for Build & Test / Build & Upload
+    public class UpdateMenuControlOnWorldBuild : IVRCSDKBuildRequestedCallback {
+        public int callbackOrder => 100;
+
+        bool IVRCSDKBuildRequestedCallback.OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType) {
+            if (requestedBuildType == VRCSDKRequestedBuildType.Scene) {
+                Debug.Log("Trying to update VRCUrls (VRCSDK Build)...");
+
+                // Get the scene object
+                var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+
+                foreach (var root in roots) {
+                    foreach (var menuControl in root.GetComponentsInChildren<MenuControl>()) {
+                        Debug.Log("Updating VRCUrls on MenuControl", menuControl);
+                        menuControl.__UpdateURLs();
+                    }
+                }
+
+            }
+
+            return true;
+        }
+    }
+}
+#endif
+
 }
 #endif
