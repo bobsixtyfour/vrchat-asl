@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 public class FixMask
 {  /*
-    
+
     [MenuItem("Assets/Fix Animation Masks")]
     private static void Init()
     {
@@ -19,15 +19,15 @@ public class FixMask
         {
             string path = AssetDatabase.GetAssetPath( obj );
             ModelImporter mi = AssetImporter.GetAtPath(path) as ModelImporter;
- 
+
             Type modelImporterType = typeof(ModelImporter);
- 
+
             MethodInfo updateTransformMaskMethodInfo = modelImporterType.GetMethod("UpdateTransformMask", BindingFlags.NonPublic | BindingFlags.Static);
- 
+
             ModelImporterClipAnimation[] clipAnimations = mi.clipAnimations;
             SerializedObject so = new SerializedObject(mi);
             SerializedProperty clips = so.FindProperty("m_ClipAnimations");
-           
+
            AvatarMask avatarMask= AssetDatabase.LoadAssetAtPath("Assets/upperbody.mask",typeof(AvatarMask)) as AvatarMask;
             //AvatarMask avatarMask = new AvatarMask();
             avatarMask.transformCount = mi.transformPaths.Length;
@@ -36,7 +36,7 @@ public class FixMask
                 avatarMask.SetTransformPath(i,mi.transformPaths[i]);
                 avatarMask.SetTransformActive(i,true);
             }
-           
+
             for( int i=0; i<clipAnimations.Length; i++ )
             {
                 Debug.Log(clipAnimations[i].name );
@@ -48,12 +48,12 @@ public class FixMask
                 clipAnimations[i].lockRootHeightY=true;
             }
             so.ApplyModifiedProperties();
- 
+
             AssetDatabase.ImportAsset(path);
         }
     }
 */
-    
+
     [MenuItem("Assets/Fix Animation Masks")]
     private static void Init()
     {
@@ -62,11 +62,11 @@ public class FixMask
         {
             string path = AssetDatabase.GetAssetPath( obj );
             ModelImporter mi = AssetImporter.GetAtPath(path) as ModelImporter;
- 
+
             Type modelImporterType = typeof(ModelImporter);
- 
+
             MethodInfo updateTransformMaskMethodInfo = modelImporterType.GetMethod("UpdateTransformMask", BindingFlags.NonPublic | BindingFlags.Static);
- 
+
             ModelImporterClipAnimation[] clipAnimations = mi.clipAnimations;
             SerializedObject so = new SerializedObject(mi);
             SerializedProperty clips = so.FindProperty("m_ClipAnimations");
@@ -78,18 +78,18 @@ public class FixMask
                 avatarMask.SetTransformPath(i,mi.transformPaths[i]);
                 avatarMask.SetTransformActive(i,true);
             }
-           
+
             for( int i=0; i<clipAnimations.Length; i++ )
             {
                 SerializedProperty transformMaskProperty = clips.GetArrayElementAtIndex(i).FindPropertyRelative("transformMask");
                 updateTransformMaskMethodInfo.Invoke(mi, new System.Object[]{avatarMask, transformMaskProperty});
             }
             so.ApplyModifiedProperties();
- 
+
             AssetDatabase.ImportAsset(path);
         }
     }
-    
+
         static void SetAnimationImporterSettings(ModelImporter importer, string x)
     {
         //AvatarMask avatarMask= AssetDatabase.LoadAssetAtPath("Assets/upperbody.mask",typeof(AvatarMask)) as AvatarMask;
@@ -112,7 +112,7 @@ public class FixMask
             if (clip.name.StartsWith("ASL--")==true){
                 clip.name=clip.name.Replace("ASL--", "ASL-");
             }
-           
+
             clip.name = Regex.Replace(clip.name, "[0-9]", "");
             clip.name=clip.name.Replace(".", "");
             clip.name=clip.name.Replace("ASL-ASL-", "ASL-");
@@ -150,7 +150,7 @@ public class FixMask
             if (clip.name.StartsWith("ASL--")==true){
                 clip.name=clip.name.Replace("ASL--", "ASL-");
             }
-           
+
             clip.name = Regex.Replace(clip.name, "[0-9]", "");
             clip.name=clip.name.Replace(".", "");
             clip.name=clip.name.Replace("ASL-ASL-", "ASL-");
@@ -169,7 +169,7 @@ public class FixMask
             importer.clipAnimations = clips;
         }
         }
-        
+
 
 /*
         Type modelImporterType = typeof(ModelImporter);
@@ -190,7 +190,7 @@ public class FixMask
 
 
 
-        
+
     }
     [MenuItem("Assets/Set Animation Options - ybot")]
 static void SetAnimationOptions()

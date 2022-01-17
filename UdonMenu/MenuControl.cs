@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿#if VRC_SDK_VRCSDK3 && UDON
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDK3.Components;
@@ -41,7 +42,7 @@ public class MenuControl : UdonSharpBehaviour
         /*
         // AllLessons[][][][0] = word
         // AllLessons[][][][1] = word variant #
-        // AllLessons[][][][3] = mocap credits. 
+        // AllLessons[][][][3] = mocap credits.
         // AllLessons[][][][2] = video URL.
         // AllLessons[][][][4] = Shadermotion (Y)
         // AllLessons[][][][5] = VR index icon? (Y). Blank defaults to both vr icon.
@@ -1062,7 +1063,7 @@ new string[]{"Wine","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Wine.m
 new string[]{"Milk","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Milk.mp4","ShadeAxas","","","2","","","1"},
 new string[]{"Sugar","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sugar.mp4","ShadeAxas","","","2","","","1"},
 },//end of lesson
-new string[][]{//Animals 
+new string[][]{//Animals
 new string[]{"Dog","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Dog.mp4","ShadeAxas","","","2","","","1"},
 new string[]{"Cat","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cat.mp4","ShadeAxas","","","2","","","1"},
 new string[]{"Fox","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fox.mp4","ShadeAxas","","","2","","","1"},
@@ -1738,7 +1739,7 @@ new string[]{"Muet","","https://bob64.vrsignlanguage.net/ShaderMotion/LSF/Muet.m
 
 new string[]{"Ne Peut Pas Lire","","https://bob64.vrsignlanguage.net/ShaderMotion/LSF/NePeutPasLire.mp4","Hppedeaf","","","3","",""},
 },//end of lesson
-},//end of lang 
+},//end of lang
 };//end of array
 
 
@@ -1821,7 +1822,7 @@ new string[] {"LSF","French Sign Language","Y"},
     TextMeshProUGUI speechbubbletext;
     TextMeshProUGUI signcredittext;
     TextMeshProUGUI descriptiontext;
-    
+
     // Main Menu Objects/Variables
     TextMeshProUGUI menuheadertext;
     TextMeshProUGUI menusubheadertext;
@@ -1943,13 +1944,13 @@ new string[] {"LSF","French Sign Language","Y"},
     //Text debugtextbox;
 
     /***************************************************************************************************************************
-	Assigns variables for use. Initializes menu by calling DisplayLocalLanguageSelectMenu(); 
+	Assigns variables for use. Initializes menu by calling DisplayLocalLanguageSelectMenu();
 	***************************************************************************************************************************/
     void Start()
     {
 
             // Initialize Displays
-            
+
         _InitializeDarkMode();
         _InitializePreferenceMenu();
             _InitializeTextColors(false);
@@ -1987,7 +1988,7 @@ new string[] {"LSF","French Sign Language","Y"},
         _UpdateAllDisplays();
 
 
-            
+
     }//end start
 
         /***************************************************************************************************************************
@@ -2001,7 +2002,7 @@ new string[] {"LSF","French Sign Language","Y"},
 
 
             /***************************************************************************************************************************
-            Initialize Variables related to Text coloring. Also handles colorblind text. 
+            Initialize Variables related to Text coloring. Also handles colorblind text.
             ***************************************************************************************************************************/
             private void _InitializeTextColors(bool mode)
         {
@@ -2031,30 +2032,30 @@ new string[] {"LSF","French Sign Language","Y"},
             _UpdateTextHelper();
         }
 /***************************************************************************************************************************
-Update the color on legend to match.    
+Update the color on legend to match.
 ***************************************************************************************************************************/
         private void _UpdateTextHelper()
         {
             //Debug.Log(FloatNormalizedToHex(1f));
             //Debug.Log(DecToHex(255));
-            GameObject.Find("/Legend/Legend Canvas/Color Text").GetComponent<TextMeshProUGUI>().text = 
+            GameObject.Find("/Legend/Legend Canvas/Color Text").GetComponent<TextMeshProUGUI>().text =
                 "<color=#"+ GetStringFromColor(failed) + ">Red<color=#" + GetStringFromColor(standardtextcolor) + "> = Video Failed Verification\n" +
                 "<color=#" + GetStringFromColor(pending) + ">Yellow<color=#" + GetStringFromColor(standardtextcolor) + "> = Video Pending Verification\n" +
                 "<color=#" + GetStringFromColor(verified) + ">Green <color=#" + GetStringFromColor(standardtextcolor) + "> = Video Passed Verification";
-            /*    
+            /*
             Debug.Log(GetStringFromColor(standardtextcolor));
             Debug.Log(GetStringFromColor(verified));
             Debug.Log(GetStringFromColor(pending));
             Debug.Log(GetStringFromColor(failed));*/
         }
         /***************************************************************************************************************************
-helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.  
+helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 ***************************************************************************************************************************/
         private string GetStringFromColor(Color color)
         {
             FloatNormalizedToHex(color.r);
             string red = FloatNormalizedToHex(color.r);
-            
+
             string green = FloatNormalizedToHex(color.g);
             string blue = FloatNormalizedToHex(color.b);
             /*Debug.Log("red:"+ color.r+" normalized " + red);
@@ -2243,7 +2244,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             {
                 Debug.Log("Entered _UpdateSigningAvatarState");
             }
-        
+
         bool isActive = !(currentmode == MODE_QUIZ);
         nextButton.SetActive(isActive);
         prevButton.SetActive(isActive);
@@ -2261,7 +2262,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             {
                 Debug.Log("Entered _UpdateMenuVariables with direction:" + direction);
             }
-            
+
         //_DebugMenuVariables();
         int currentmenu = _GetCurrentMenu();
         switch (direction)
@@ -2427,7 +2428,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 
 
     /***************************************************************************************************************************
-	Change Menu to display Language Selection. 
+	Change Menu to display Language Selection.
 	***************************************************************************************************************************/
     private void _DisplayLanguageSelectMenu()
     {
@@ -2660,8 +2661,8 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
         if (isColored)
         {
             switch (colorcode)
-            { 
-                
+            {
+
                 case "1":
                     buttontext[index].color = failed;
                     break;
@@ -2718,10 +2719,10 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             // Update MoCap Avatar Visuals (Nana)
             currentsigntext.text = (currentlesson + 1) + "-" + (currentword + 1) + ") " + AllLessons[currentlang][currentlesson][currentword][arrayword] + variant;
             speechbubbletext.text = AllLessons[currentlang][currentlesson][currentword][arrayword];
-            
+
             signcredittext.text = "The motion data for this sign was signed by: " + AllLessons[currentlang][currentlesson][currentword][arraycredit];
             descriptiontext.text = AllLessons[currentlang][currentlesson][currentword][arraysigndescription];
-                if ((AllLessons[currentlang][currentlesson][currentword].Length-1) >= arraynumofavatars)//don't break if i forgot to add the numofavatars to the array for other languages 
+                if ((AllLessons[currentlang][currentlesson][currentword].Length-1) >= arraynumofavatars)//don't break if i forgot to add the numofavatars to the array for other languages
                 {
                     //Debug.Log("length of array:"+ AllLessons[currentlang][currentlesson][currentword].Length);
                     switch (AllLessons[currentlang][currentlesson][currentword][arraynumofavatars])
@@ -3079,7 +3080,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
                             videoplayer._LoadURL(langurls[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]]);
                     }
                 }
-            
+
 
         }
 
@@ -3140,15 +3141,15 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
         /*
         Text debugtextbox = GameObject.Find("/Debug/Panel/Text").GetComponent<Text>();
         debugtextbox.text="Current Variable contents: " +
-			"\nOwner: " + Networking.IsOwner(gameObject) + 
+			"\nOwner: " + Networking.IsOwner(gameObject) +
 			//"\ncurrentmode: " + currentmode + " globalcurrentmode: " + globalcurrentmode +
-			"\ncurrentlang: " + currentlang + " globalcurrentlang: " + globalcurrentlang + 
-			"\ncurrentlesson: " + currentlesson + " globalcurrentlesson: " + globalcurrentlesson + 
+			"\ncurrentlang: " + currentlang + " globalcurrentlang: " + globalcurrentlang +
+			"\ncurrentlesson: " + currentlesson + " globalcurrentlesson: " + globalcurrentlesson +
 			"\ncurrentword: " + currentword + " globalcurrentword: " + globalcurrentword;
             */
-		
-    
-				
+
+
+
     }
 
 
@@ -3605,7 +3606,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
                 for (int x = 0; x < inspectorBehaviour.AllLessons[0].Length; x++)
                 {
                     erratatext = erratatext + "<b>Lesson " + (x + 1) + " - " + inspectorBehaviour.lessonnames[0][x] + "</b>\n";
-                    //Debug.Log("x: "+x); 
+                    //Debug.Log("x: "+x);
 
                     //Debug.Log("whatlessonnum:" + x);
                     if ((x + 1) != 28)
@@ -3635,7 +3636,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
                 foreach (var word in listofallwords)
                 {
                     dictionarytext = dictionarytext + word[0] + " " + word[1] + "\n";
-                    
+
                 }
                 FindInActiveObjectByName("DictionaryText").GetOrAddComponent<TextMeshProUGUI>().text = dictionarytext;
                 Debug.Log("Index Populated");
@@ -3667,3 +3668,4 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 
 }
 }
+#endif

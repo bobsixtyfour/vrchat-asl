@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿#if VRC_SDK_VRCSDK3 && UDON
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDK3.Components;
@@ -89,14 +90,14 @@ public GameObject etroot;
          etroot = GameObject.Find("/Keyboards/BobsKeyboard/Keyboard/Canvas_Input/EventTrigger");
          for (int i = 0; i < keys.Length; i++){
                 keyboardkeytext[i]=etroot.transform.Find(keys[i][0]).Find("Text (TMP)").GetComponent<TextMeshProUGUI>();
-                
+
             }
         _updatekeys();
 
     }
     void Update()
     {
-        
+
         if(sitting == true){//handles keyboard input only if player is in a chair.
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)){//while the buttons are held down...
                 if(shift==false){//don't update if it's already updated
@@ -327,7 +328,7 @@ _pushed_Return();
 
 
         }
-        
+
     }
 
     void _updatekeys(){
@@ -370,7 +371,7 @@ _pushed_Return();
     public override void OnStationEntered(VRC.SDKBase.VRCPlayerApi player){
         seated = player;
     }
-    public override void OnStationExited(VRC.SDKBase.VRCPlayerApi player){ 
+    public override void OnStationExited(VRC.SDKBase.VRCPlayerApi player){
         if(seated == player)
         {
             seated = null;
@@ -433,7 +434,7 @@ _pushed_Shift();
 }else if(CapsLock){
 SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_Upper_A");
 }else{
-SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_A");      
+SendCustomNetworkEvent(VRC.Udon.Common.Interfaces.NetworkEventTarget.All, "network_pushed_A");
 }
 }
 
@@ -1342,3 +1343,4 @@ chatlinebuffer.text+=" ";
 
 
 }
+#endif

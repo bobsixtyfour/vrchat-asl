@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if VRC_SDK_VRCSDK3 && UDON
+using System;
 using UdonSharp;
 using UnityEngine;
 using VRC.SDKBase;
@@ -19,14 +20,14 @@ namespace Bob64
 
         void Start()
         {
-            
+
             vrcplayercomponent = ((VRCUnityVideoPlayer)GameObject.Find("/Video Container/Video").GetComponent(typeof(VRCUnityVideoPlayer)));
         }
 
         public void _SetStatusText(string text)
         {
             GameObject.Find("/Video Text/StatusPanel/Text (TMP)").GetComponent<TextMeshProUGUI>().text=text;
-            
+
         }
 
         public void _LoadURL(VRCUrl url)
@@ -48,7 +49,7 @@ namespace Bob64
             {
                 vrcplayercomponent.PlayURL(currenturl);
             }
-            
+
         }
 
         /***************************************************************************************************************************
@@ -87,3 +88,4 @@ Called to change video speed
 
     }
 }
+#endif

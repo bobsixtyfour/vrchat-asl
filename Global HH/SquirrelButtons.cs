@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+#if UNITY_EDITOR && VRC_SDK_VRCSDK2
 
 using UnityEngine;
 using UnityEditor;
@@ -18,12 +18,12 @@ public class Squrrel_HQ : MonoBehaviour
             {"Nice","멋지다","Agréable","Nett"},{"Meet","만나다","Rencontrer","Treffen"},{"Nice to meet you","만나서 반가워","Ravis de te rencontrer.","Freut mich, dich kennenzulernen"},{"Good","좋아,훌륭해","Bon","Gut"},{"Bad","나빠","Mauvais","Schlecht"},
             {"Fine","괜찮아","Bien","fein"},{"Who","누구","Qui","Wer"},{"What","무엇을","Quoi","Was"},{"When","언제","Quand","Wann"},{"Where","어디","Où","Wo"},{"Why","왜","Pourquoi","Warum"},{"Which","어떤것","Lequel","Welche"},{"Understand","이해하다","Comprendre","Verstehen"},
             {"Don’t Understand","이해하지 못하다","Ne pas comprendre","Verstehe nicht"},{"Yes","네,예","Oui","Ja"},{"No","아니","Non","Nein"},{"Please","제발,부디","S’il vous plaît","Bitte"},{"Thanks","고마워","Merci","Vielen Dank"},{"Sorry","미안해","Désolé","Es tut uns leid"},
-            {"Deaf","청각장애인(농아인)","Sourd","gehörlos},{"Hard of Hearing","난청인","Malententand","schwerhörig"},{"Hearing","청력,청인","Entendant";"Hören"},{"Mute","말을 못하다","Muet","Stumm"}
+            {"Deaf","청각장애인(농아인)","Sourd","gehörlos"},{"Hard of Hearing","난청인","Malententand","schwerhörig"},{"Hearing","청력,청인","Entendant","Hören"},{"Mute","말을 못하다","Muet","Stumm"}
             },
             new string[,]{//lesson 2
-			{"Person","사람","Personne",""Person""},{"Learn","배우다","Apprendre",""Lernen},{"Student","학생","Étudiant","Student"},{"Teach","가르치다","Enseigner","Lehren"},{"Teacher","선생님","Enseignant","Lehrer"},
-            {"Friend","친구","Ami","Freund"},{"Slow","느리다","Lent","Langsam"},{"Fast","빠르다","Rapide","Schnell"},{"Like","좋다","Aimer","mögen"},{"Don’t Like","싫다","Ne pas aimer","mag nicht"},{"Want","원하다","Vouloir",""wollen},
-            {"Don’t Want","원하지 않다","Ne pas vouloir","will nicht"},{"Need","필요하다","Besoin","brauchen"},{"Change","바꾸다","Changer";"Veränderung"},{"Same","같다","Même","gleich"},{"Different","다르다","Different","anders"},{"Can","할수있다","Pouvoir","können"},
+			{"Person","사람","Personne","Person"},{"Learn","배우다","Apprendre","Lernen"},{"Student","학생","Étudiant","Student"},{"Teach","가르치다","Enseigner","Lehren"},{"Teacher","선생님","Enseignant","Lehrer"},
+            {"Friend","친구","Ami","Freund"},{"Slow","느리다","Lent","Langsam"},{"Fast","빠르다","Rapide","Schnell"},{"Like","좋다","Aimer","mögen"},{"Don’t Like","싫다","Ne pas aimer","mag nicht"},{"Want","원하다","Vouloir","wollen"},
+            {"Don’t Want","원하지 않다","Ne pas vouloir","will nicht"},{"Need","필요하다","Besoin","brauchen"},{"Change","바꾸다","Changer","Veränderung"},{"Same","같다","Même","gleich"},{"Different","다르다","Different","anders"},{"Can","할수있다","Pouvoir","können"},
             {"Can’t","못하다","Ne pas pouvoir","Kann nicht"},{"Not","그것은 아니다","Pas","Nicht"},{"Use","사용하다","Utiliser","verwenden"},{"Follow","따라가다","Suivre","Folgen"},{"Easy","쉽다","Facile","einfach"},{"Difficult","어렵다","Difficile","Schwer"},
             {"Soft","부드럽다","Doux","Sanft"},{"Hard","단단하다","Dure","Hart"},{"New","새롭다","Nouveau","Neu"},{"Old","나이,늙은","Vieux","alt"},{"Much/Alot","많다","Beaucoup","Viel"}
             },
@@ -35,10 +35,10 @@ public class Squrrel_HQ : MonoBehaviour
             {"Far","멀다","Loin","Weit"},{"House","집","Maison","Haus"},{"Home","집","Maison","Zuhause"},{"Live","살다","Vivre","Leben"},{"True/Sure/Real","진실,정말,진짜","Vrai","Richtig/Sicher/Real"},{"Fake","거짓말,가짜","Faux","Fälschung"}
             },
             new string[,]{//lesson 4
-			{"Normal","평범,보통","Normal";"Normal"},{"Any","전혀,어느","N'importequel","beliebig"},{"Continue","계속","Continuer","Fortsetzen"},{"Stay","계속있다,머물러있다","Rester","Bleibe"},{"Still","여전하다","Encore","Noch"},
+			{"Normal","평범,보통","Normal","Normal"},{"Any","전혀,어느","N'importequel","beliebig"},{"Continue","계속","Continuer","Fortsetzen"},{"Stay","계속있다,머물러있다","Rester","Bleibe"},{"Still","여전하다","Encore","Noch"},
             {"Copy","복사","Copier","Kopieren"},{"Notice","공지,안내","Remarquer","bemerken"},{"Improve","개선","Ameliorer","Verbessern"},{"Gone","사라지다","Disparu","Weg"},{"Test","시험,테스트","Tester","Test"},{"Visit","방문하다","Visiter","Besuch"},
             {"With","와(과)함께","Avec","Mit"},{"Without","없이","Sans","Ohne"},{"Away","없이떨어져/저리가!","Auloin","Weg"},{"Weird","기괴하다,이상하다","Bizarre","Seltsam"},{"Turn","돌다,돌리다","Tourner","abbiegen"},
-            {"More Than","보다 많다","Plusque"},{"Less Than","보다 적다","Moinsque"},{"Correct","옳다,맞다","Correct"},{"High","높다","Haut"},{"Low","낮다","Bas"},{"Way","방식","Chemin"},{"Wish","원하다,바라다","Souhait"},
+            {"More Than","보다 많다","Plusque",""},{"Less Than","보다 적다","Moinsque",""},{"Correct","옳다,맞다","Correct",""},{"High","높다","Haut",""},{"Low","낮다","Bas",""},{"Way","방식","Chemin",""},{"Wish","원하다,바라다","Souhait",""},
             {"Later","늦다","Tard","Später"},{"Perfect","완벽하다","Parfait","Perfekt"},{"Fun","재미,재밌어","Amusant","Spaß"},{"Every","모든,모두","Tout","Jeden"},{"Funny","우습다,웃기다","Drôle","Lustig"}
             },
             new string[,]{//lesson 5
@@ -67,17 +67,17 @@ public class Squrrel_HQ : MonoBehaviour
             {"Nothing","아무것도 아니다","Rien","Nichts"},{"Selective Mutism","불안장애","Mustisme sélectif","Selektive Stummheit"},{"Restaurant","레스토랑,식당","Restaurant","Restaurant"},{"Order","주문,질서","Ordre","Auftrag"},{"Serve","제공,서비스","Service","Dienen"},
             {"Buy","구매,사다","Acheter","Kaufen"},{"Sell","팔다","Vendre","Verkaufen"},{"Taco","타코","Taco","Taco"},{"Burrito","브리또","Burrito","Burrito"},{"Hamburger","햄버거","Hamburger","Hamburger"},{"Spaghetti","스파게티","Spaghetti","Spaghetti"},{"Pizza","피자","Pizza","Pizza"},
             {"IceCream","아이스크림","Crème glacée","Eiscreme"},{"Cake","케이크","Gâteaux","Kuchen"},{"Cookie","과자/쿠키","Biscuit","Plätzchen"},{"Police","경찰","Police","Polizei"},{"FireMan","소방관","Pompier","Feuerwehrmann"},{"Doctor","의사","Docteur","Ärzt"},
-            {"Wonder","궁금하다","Se demander"},{"Water","물","Eau","Wasser"},{"Flower","꽃","Fleur","Blume"},{"Tree","나무","Arbre","Baum"},{"Sea","바다","Océan","Meer"},{"Rock","바위","Roche","Felsen"}
+            {"Wonder","궁금하다","Se demander",""},{"Water","물","Eau","Wasser"},{"Flower","꽃","Fleur","Blume"},{"Tree","나무","Arbre","Baum"},{"Sea","바다","Océan","Meer"},{"Rock","바위","Roche","Felsen"}
             },
             new string[,]{//lesson 9
             {"Forgive","용서","Pardonner","Verzeihen"},{"Leave","떠나다","Partir","Verlassen"},{"Ready","준비","Prêt","Bereit"},{"Skill","솜씨,기술","Abilité","Fertigkeit"},{"Joke","농담","Blague","Scherz"},{"Mistake","실수","Erreur","Fehler"},
             {"Move","행동","Bouger","Bewegung"},{"Lost","잃다","Perdu","Hat verloren"},{"Work","일하다","Travail","Arbeit"},{"Talk","말하다","Parler","Sich unterhalten"},{"Not Yet","아직","Pas encore","Sich unterhalten"},{"Equal","동등하다","Égal","Gleich"},
             {"Number","숫자,번호","Nombre","Nummer"},{"Letter","편지","Lettre","Brief"},{"Place","장소","Lieu","Platz"},{"Start","시작","Commencer","Anfang"},{"Say/Tell","말하다","Dire","Sagen/Erzählen"},{"Fill","채우다","Remplir","Füllen"},
-            {"Tea","차/찻잎","Thé"},{"Come","오다","Venir"},{"Bring","가져오다","Apporter"},{"Explain","설명","Expliquer"},{"Size","크기,사이즈","Taille"},
+            {"Tea","차/찻잎","Thé",""},{"Come","오다","Venir",""},{"Bring","가져오다","Apporter",""},{"Explain","설명","Expliquer",""},{"Size","크기,사이즈","Taille",""},
             {"Retreat","물러가다,후퇴","Fuir","Rückzug"},{"Return","반환,반납","Retourner","Rückkehr"},{"Taste","맛(미각)","Goût","Geschmack"},{"Enjoy","즐기다","Apprécier","Genießen"},{"Reason","이유","Raison","Grund"}
             },
             new string[,]{//lesson 10
-            {"Kind/Type","종류/형태","Sorte/Type"."Art/yp"},{"Limit","제한","Limite","Limit"},{"Have","가지다","Avoir","Haben"},{"Plan","계획","Plan","Planen"},{"Won","이기다","Gagné","Gewonnen"},{"Lost","지다","Perdu","Hat verloren"},
+            {"Kind/Type","종류/형태","Sorte/Type","Art/yp"},{"Limit","제한","Limite","Limit"},{"Have","가지다","Avoir","Haben"},{"Plan","계획","Plan","Planen"},{"Won","이기다","Gagné","Gewonnen"},{"Lost","지다","Perdu","Hat verloren"},
             {"Decide","결정","Décider","Entscheiden"},{"Keep","지키다","Garder","Behalten"},{"Act","행동","Agir","Handlung"},{"Guess","추측","Deviner","Vermuten"},{"Search","찾다,검색","Chercher","Suche"},{"Lock","잠그다","Verrouiller","Sperren"},
             {"Listen","듣다","Écouter","Hör mal zu"},{"Special","특별하다,특히","Spéciale","Besondere"},{"Favor","친절","Faveur","Gefallen"},{"Owe/Debt","빚지다,부채","Dette","Verdanken/Schuld"},{"Argue","다투다","Argumenter","Streiten"},{"Wonder","궁금하다","Se questionner","Wunder"},
             {"Join","가입","Joindre","Beitreten"},{"Realize","깨닫다","Réaliser","Realisieren"},{"Animal","동물","Animale","Tier"},{"Skip","넘어가다","Passer","Überspringen"},{"Calm","차분하다,침착하다","Calme","Ruhe"},
@@ -86,23 +86,23 @@ public class Squrrel_HQ : MonoBehaviour
             new string[,]{//lesson 11
             {"Over","지나치다,과하다","Sur","Über"},{"Holiday","휴일","Temps des fêtes","Urlaub"},{"Freeze","얼다,얼음","Geler","Einfrieren"},{"Discuss","상의","Discuter","Diskutieren"},{"Rule","규칙","Règle","Regel"},
             {"Awkward","어색하다","Gênant","Peinlich"},{"Strange","낯설다","Étrange","Seltsam"},{"Bored","심심하다","Ennuyant","Gelangweilt"},{"Hurt","아프다","Douleur","Verletzt"},{"Love","사랑","Amour","Liebe"},{"Silly","바보","Ridicule","Dumm"},
-            {"Damaged","손해,피해","Endommager","Beschädigt"},{"Jail","감옥","Prison";"Gefängnis"},{"Show","보여주다","Montrer","Anzeigen"},{"Dress","드레스","Robe","Kleid"},{"Pants","바지","Pantalon","Hose"},{"Shoes","신발","Chaussures","Schuhe"},
+            {"Damaged","손해,피해","Endommager","Beschädigt"},{"Jail","감옥","Prison","Gefängnis"},{"Show","보여주다","Montrer","Anzeigen"},{"Dress","드레스","Robe","Kleid"},{"Pants","바지","Pantalon","Hose"},{"Shoes","신발","Chaussures","Schuhe"},
             {"Shirt","셔츠","Chandail","Hemd"},{"Bed","침대","Lit","Bett"},{"Sleep","자다","Dormir","Schlaf"},{"Drink","마시다","Boire","Getränk"},{"Sit","앉다","S'assoir","Sitzen"},{"Stand","서다","Se tenir debout","Stand"},
             {"Jump","뛰다","Sauter","Springen"},{"Picture","사진","Photo","Bild"},{"Happen","우연히","Se produire","Geschehen"},{"Communicate","의사소통","Communiquer","Kommunizieren"},{"Play","놀다","Jouer","abspielen"}
             },
             new string[,]{//lesson 12
-            {"End","끝","Terminer","Ende"},{"Confused","혼란","Confus","Verwirrung"},{"Empty","비다","Vide","Leer"},{"Touch","만지다","Toucher"},{"Car","자동차","Voiture","Auto"},{"Drive","운전하다","Conduire","Fahrt"},
+            {"End","끝","Terminer","Ende"},{"Confused","혼란","Confus","Verwirrung"},{"Empty","비다","Vide","Leer"},{"Touch","만지다","Toucher",""},{"Car","자동차","Voiture","Auto"},{"Drive","운전하다","Conduire","Fahrt"},
             {"Above","보다위에","Au dessus","Über"},{"Stop","정지","Arrêt","Halt/Stopp!"},{"Hate","미워","Haïr","Hassen"},{"Run","달리다","Courir","Lauf"},{"Walk","걷다","Marcher","Gehen"},{"Story","이야기","Histoire","Geschichte"},{"Promise","약속","Promettre","Versprechen"},
             {"Help","돕다","Aider","Hilfe"},{"Agree","동의하다","Être en accord","Zustimmen"},{"Disagree","동의하지 않다","Être en désaccord","Nicht zustimmen"},{"Add","더하다","Ajouter","Hinzufügen"},{"Trust","신뢰","Faire Confiance","Vertrauen"},
             {"Trouble","곤란","Trouble","Schwierigkeiten/Beunruhigen"},{"Gain","얻다","Prendre","Gewinnen"},{"Challenge","도전","Défier","Herausforderung"},{"Replace","대신,교체","Remplacer","Ersetzen"},
             {"Proud","자랑스럽다","Fier","Stolz"},{"Expert","전문가","Expert","Experte"},{"Soda","탄산음료","Soda","Sprudel"},{"Eat","먹다","Manger","Essen"},{"Food","음식","Nourriture","Essen"},{"Name","이름","Nom","Name"}
             },
             new string[,]{//lesson 13
-            {"Big/Huge","크다","Gros/Grand","Groß/Riesig"},{"Small","작다","Petit"."Klein"},{"Beautiful","아름답다","Beau/Belle","Wunderschönen"},{"Ugly","못생기다","Laid","Hässlich"},{"Fat","뚱뚱하다","Gras","Fett"},
+            {"Big/Huge","크다","Gros/Grand","Groß/Riesig"},{"Small","작다","Petit","Klein"},{"Beautiful","아름답다","Beau/Belle","Wunderschönen"},{"Ugly","못생기다","Laid","Hässlich"},{"Fat","뚱뚱하다","Gras","Fett"},
             {"Skinny","날씬하다","Mince","dünn"},{"Weak","약하다","Faible","Schwach"},{"Health","건강","Santé","Gesundheit"},{"Medicine","약","Médicament","Medizin"},{"Build","짓다","Construire","Bauen"},{"Break","부러지다","Briser","Pause"},
             {"Make","만들다","Faire","Machen"},{"Find","찾다","Trouver","Finden"},{"Bully","괴롭히다","Intimider","Schikanieren"},{"Insult","모욕","Insulter","Beleidigung"},{"Simple","간단하다","Simple","Einfach"},{"Complicated","복잡하다","Compliqué","Kompliziert"},
             {"Open","열다","Ouvert","Öffnen"},{"Close","닫다","Fermer","Schließen"},{"Hit","때리다","Frapper","Schlagen"},{"Meat","고기","Viande","Fleisch"},{"Bread","빵","Pain","Brot"},{"Chips","과자","Croustilles","Chips"},{"Melon","메론","Melon","Melone"},
-            {"Event","행사","Évênement","Veranstaltung"},{"Socialize","사교","Socialiser"},"Sozialisieren",{"Hangout/chill","쌀쌀하다","Trainer/Ensemble","Aushängen/Ausruhen"},{"Relax","편하게하다","Relaxer","Entspannen"}
+            {"Event","행사","Évênement","Veranstaltung"},{"Socialize","사교","Socialiser","Sozialisieren"},{"Hangout/chill","쌀쌀하다","Trainer/Ensemble","Aushängen/Ausruhen"},{"Relax","편하게하다","Relaxer","Entspannen"}
             },
             new string[,]{//lesson 14
             {"Under","아래","En dessous","Unter"},{"Private/Secret","개인/비밀","Privé/Secret","Privat/Geheimnis"},{"Emergency","비상/사태","Urgence","Notfall"},{"Favorite","마음에 들다","Favori","Lieblings"},{"Class","수업","Classe","Klasse"},
@@ -126,12 +126,12 @@ public class Squrrel_HQ : MonoBehaviour
             {"I feel sick, I need to rest.","몸이 아파서 쉬어야겠어.","Je me sens malade, j'ai besoin de me reposer.","Mir ist schlecht, ich muss mich ausruhen."},{"Please stop doing that, it's rude.","제발 그렇게하지 마, 무례한 짓이야.","S'il te plait arrête de faire ça, c'est rude.","Bitte hör auf damit, es ist unhöflich."}
             },
             new string[,]{//lesson 16
-            {"Door","문","Porte"},{"Dangerous","위험하다","Dangereux","Tür"},{"Barrow","빌리다","Brouette","Karren"},{"Army","군대","Armée","Armee"},{"Group","그룹,모임","Groupe"},{"Team","팀","Équipe","Mannschaft"},
+            {"Door","문","Porte",""},{"Dangerous","위험하다","Dangereux","Tür"},{"Barrow","빌리다","Brouette","Karren"},{"Army","군대","Armée","Armee"},{"Group","그룹,모임","Groupe",""},{"Team","팀","Équipe","Mannschaft"},
             {"Alright","괜찮다","Bien","In Ordung"},{"Gross","역겹다","Dégueux","Brutto"},{"Feel","느끼다","Sentir","Gefühl"},{"Depression","우울증","Depression","Depression"},{"Anxiety/anxious","불안","Anxiété","Angst/ängstlich"},{"Nervous","긴장하다","Nerveux","Nervös"},
             {"Kiss","키스,뽀뽀","Embrasser","Kuss"},{"Date","날짜","Date","Datum"},{"Sweetheart","애인,연인","Cœurtendre","Schatz"},{"Fall in love","사랑에 빠진다","Tomber en amour","Sich verlieben"},{"Just/Only","그냥/오직","Seulement","Gerade/Nur"},
             {"Sneeze","재채기","Éternuer","Niesen"},{"Cough","기침","Tousser","Husten"},{"Blessyou","축복하다","À tes souhaits","Gesundheit"},{"University","종합대학","Université","Universität"},{"Church","교회","Église","Kirche"},{"Library","도서관","Bibliothèque","Bibliothek"},
             {"Office","사무실","Bureau","Büro"},{"Fancy","공상","Qualité supérieure","Schick"},{"College","전문대학","Collège","Hochschule"},{"Gym","체육관","Gymnase","Fitnessstudio"},{"Workout","운동","Exercicer","Trainieren"}
-            }/*if this is the last lesson, don't put a comma after the } 
+            }/*if this is the last lesson, don't put a comma after the }
 
 				*/
         };
@@ -148,7 +148,7 @@ public class Squrrel_HQ : MonoBehaviour
         int teachermenusizex = 1100;
         int teachermenusizey = 750;
         DefaultControls.Resources resources = new DefaultControls.Resources();
-        
+
         GameObject menuroot = new GameObject("HH Root"); //creates a new "Menu Root gameobject which will be the parent of all newly created objects in the script.
         menuroot.transform.position = new Vector3(0, 0, 0);
         menuroot.layer = layer;
@@ -171,7 +171,7 @@ public class Squrrel_HQ : MonoBehaviour
         podiumtext.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; //change font file here
         podiumtext.GetComponent<Text>().fontStyle = FontStyle.Bold;
         podiumtext.GetComponent<Text>().fontSize = 50;
-        //displaytext.GetComponent<Text> ().color = Color.black; 
+        //displaytext.GetComponent<Text> ().color = Color.black;
         podiumtext.GetComponent<Text>().color = new Color32(0x6D, 0x9E, 0xEB, 0xFF); // RGBA
         podiumtext.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
         podiumtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
@@ -181,7 +181,7 @@ public class Squrrel_HQ : MonoBehaviour
         podiumtext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         podiumtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
 podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//x,y,z
-        
+
         GameObject leftdisplaycanvas = createandreturncanvas("LeftDisplay", menuroot, projectionsizex, projectionsizey, layer);
         leftdisplaycanvas.GetComponent<RectTransform>().position = new Vector3(8.57f, 5.12f, -17.57f);
         leftdisplaycanvas.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 135, 0);//x,y,z
@@ -196,7 +196,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         DestroyImmediate(leftdisplaycanvas.GetComponent<VRC_UiShape>());
         DestroyImmediate(leftdisplaycanvas.GetComponent<ToggleGroup>());
 
-        
+
         GameObject leftdisplaytext = DefaultControls.CreateText(resources);
         leftdisplaytext.transform.SetParent(leftdisplaycanvas.transform, false);
         leftdisplaytext.name = "LeftDisplayText";
@@ -205,7 +205,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         leftdisplaytext.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; //change font file here
         leftdisplaytext.GetComponent<Text>().fontStyle = FontStyle.Bold;
         leftdisplaytext.GetComponent<Text>().fontSize = 300;
-        //leftdisplaytext.GetComponent<Text> ().color = Color.black; 
+        //leftdisplaytext.GetComponent<Text> ().color = Color.black;
         leftdisplaytext.GetComponent<Text>().color = new Color32(0x6D, 0x9E, 0xEB, 0xFF); // RGBA
         leftdisplaytext.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
         leftdisplaytext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
@@ -229,7 +229,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         DestroyImmediate(rightdisplaycanvas.GetComponent<VRC_UiShape>());
         DestroyImmediate(rightdisplaycanvas.GetComponent<ToggleGroup>());
 
-        
+
         GameObject rightdisplaytext = DefaultControls.CreateText(resources);
         rightdisplaytext.transform.SetParent(rightdisplaycanvas.transform, false);
         rightdisplaytext.name = "RightDisplayText";
@@ -238,7 +238,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         rightdisplaytext.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; //change font file here
         rightdisplaytext.GetComponent<Text>().fontStyle = FontStyle.Bold;
         rightdisplaytext.GetComponent<Text>().fontSize = 300;
-        //rightdisplaytext.GetComponent<Text> ().color = Color.black; 
+        //rightdisplaytext.GetComponent<Text> ().color = Color.black;
         rightdisplaytext.GetComponent<Text>().color = new Color32(0x6D, 0x9E, 0xEB, 0xFF); // RGBA
         rightdisplaytext.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
         rightdisplaytext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
@@ -247,7 +247,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         rightdisplaytext.GetComponent<RectTransform>().anchorMin = new Vector2(0, 0);
         rightdisplaytext.GetComponent<RectTransform>().pivot = new Vector2(.5f, .5f);
         rightdisplaytext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
-        
+
 
 
         GameObject aslroot = new GameObject("ASL Root");
@@ -262,7 +262,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         createmenu(aslroot, "ASL", ASLlessons, lessonnames, asllessonmenu, teachermenusizex, teachermenusizey, 300, 40, (teachermenusizey - 100), 80, 40, 300, layer); //creates the lesson chooser menu
 
         //rootcanvas.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 90, 0);//x,y,z
-        
+
     }
     static GameObject createbutton2(GameObject parent, string name, int sizedeltax, int sizedeltay, int rotatex, int rotatey, int rotatez, int anchoredPositionx, int anchoredPositiony, string text, int fontSize, int txtsizeDeltax, int txtsizeDeltay, int txtanchoredPositionx, int txtanchoredPositiony, TextAnchor alignment, int layer)
     {
@@ -420,13 +420,13 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
     static void createlessonboard(GameObject parent, string[,] signarray,string[] lessonnames ,string lang, int lessonnum, GameObject rootcanvas, int rowoffset, int columnoffset, int rowseperation, int columnseperation, int layer) //, int arraypos, int anchoredposx, int anchoredposy, string alignment, int layernum, string text, int posx, int posy
     {
         Navigation no_nav = new Navigation();
-        no_nav.mode = Navigation.Mode.None; //disables navigation so people can't operate ui by moving avatar. 
+        no_nav.mode = Navigation.Mode.None; //disables navigation so people can't operate ui by moving avatar.
         GameObject lessongo = new GameObject(lang + " Lesson " + (lessonnum + 1));
         lessongo.transform.SetParent(parent.transform, false);
         createheadertext(lessongo, lessonnames[lessonnum], 1100, 30, 80, 705, layer);
 		GameObject lessontriggers = new GameObject("LessonTriggers");
 		lessontriggers.transform.SetParent(lessongo.transform, false);
-        
+
         GameObject tablettext = FindInActiveObjectByName("Tablet Text");
 		GameObject ldisplaytext = GameObject.Find("/HH Root/LeftDisplay/LeftDisplayText");
         GameObject rdisplaytext = GameObject.Find("/HH Root/RightDisplay/RightDisplayText");
@@ -456,7 +456,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         DestroyImmediate(scrollview.transform.Find("Scrollbar Horizontal").gameObject);
         DestroyImmediate(scrollview.transform.Find("Viewport").Find("Content").gameObject);
         //scrollviewtransform.Find("Viewport").transform
-        
+
         scrollview.transform.SetParent(lessongo.transform, false);
         //uiSlider.transform.SetParent(canvas.transform, false);
 
@@ -502,7 +502,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
 */
         int column = 0;
         int row = 0;
-        for (int x = 0; x < signarray.GetLength(0); x++) //this is the main loop that processes the array and creates + organizes the buttons in rows+columns. 
+        for (int x = 0; x < signarray.GetLength(0); x++) //this is the main loop that processes the array and creates + organizes the buttons in rows+columns.
         {
             if (x != 0)
             {
@@ -511,7 +511,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
                 row++;
                 }else{
                 column=1;
-                
+
                 }
 /*
                 if (x % 15 == 0) //15  per column
@@ -538,7 +538,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
             eventAction.EventType = VRC_EventHandler.VrcEventType.SetUIText;
             eventAction.ParameterString = signarray[x, 0] + "\n" + signarray[x, 1] + "\n" + signarray[x, 2];
             eventAction.ParameterObjects = new GameObject[]{ldisplaytext, rdisplaytext, podiumdisplaytext, tablettext};
-            
+
             customTrig.Events.Add(eventAction); //this eventaction sets uitext on current sign text
 
             trigComponent.Triggers.Add(customTrig); //adds all event actions to the trigger for this helper gameobject.
@@ -552,7 +552,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
             toggleresources.checkmark = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VRCSDK/Dependencies/VRChat/Resources/PerformanceIcons/Perf_Great_32.png");
             GameObject uiToggle = DefaultControls.CreateToggle(toggleresources);
             Toggle t = uiToggle.GetOrAddComponent<Toggle>();
-            uiToggle.name = lang+" L" + (lessonnum+1) + " - S" + (x+1) +"("+signarray[x,0]+") - Toggle";		
+            uiToggle.name = lang+" L" + (lessonnum+1) + " - S" + (x+1) +"("+signarray[x,0]+") - Toggle";
             uiToggle.transform.SetParent(lessontoggles.transform, false);
             uiToggle.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
             uiToggle.GetComponent<RectTransform>().anchoredPosition = new Vector2((50 + (column * columnseperation)), (-40 + (row * -rowseperation)));
@@ -577,7 +577,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
 			uiToggle.transform.Find("Background").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").gameObject.layer=layer;
 			GameObject checkboxtextgo = new GameObject("Text");
-						
+
 			checkboxtextgo.transform.SetParent(uiToggle.transform.Find("Background").transform, false);
 			Text checkboxtext = checkboxtextgo.AddComponent<Text>();
 			checkboxtextgo.GetComponent<RectTransform>().sizeDelta= new Vector2(0,0);
@@ -593,18 +593,18 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
 			uiToggle.transform.Find("Label").GetComponent<Text>().text =" "+signarray[x,0];
 			uiToggle.transform.Find("Label").GetComponent<Text>().fontSize = 25;
 			uiToggle.transform.Find("Label").GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
-            
+
 			uiToggle.transform.Find("Label").GetComponent<Text>().resizeTextForBestFit=true;
 			uiToggle.transform.Find("Label").GetComponent<Text>().resizeTextMaxSize=25;
 			uiToggle.transform.Find("Label").GetComponent<Text>().resizeTextMinSize=12;
-			
+
             uiToggle.transform.Find("Label").GetComponent<RectTransform>().sizeDelta = new Vector2 (410, 40);
 			uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchoredPosition = new Vector2 (20,-20);
 			uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").gameObject.layer=layer;
-			
+
 			uiToggle.transform.Find("Background").transform.Find("Checkmark").GetComponent<RectTransform>().sizeDelta = new Vector2 (40, 40);
 			uiToggle.transform.Find("Background").transform.Find("Checkmark").GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,0);
 			uiToggle.transform.Find("Background").transform.Find("Checkmark").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);

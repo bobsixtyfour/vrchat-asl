@@ -1,4 +1,5 @@
-﻿using UdonSharp;
+﻿#if VRC_SDK_VRCSDK3 && UDON
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDK3.Components;
@@ -2300,7 +2301,7 @@ public class MenuControl : UdonSharpBehaviour
             "Exercicer"
           }
       }
-      /*if this is the last lesson, don't put a comma after the } 
+      /*if this is the last lesson, don't put a comma after the }
 
       				*/
     };
@@ -2354,7 +2355,7 @@ public class MenuControl : UdonSharpBehaviour
 	//[UdonSynced] int globalcurrentlang; //
 	//[UdonSynced] int globalcurrentlesson = -1;
 	//[UdonSynced] int globalcurrentword = -1;
-	
+
 	// Preference Menu Objects/Variables - Lookup/Quiz Mode
 
 	//const int MODE_LOOKUP = 0;
@@ -2397,7 +2398,7 @@ public class MenuControl : UdonSharpBehaviour
         // Initialize Displays
         //mainscreen = GameObject.Find("/World/Udon Menu System/Main Display Canvas/DisplayText");
         //podium = GameObject.Find("/World/Udon Menu System/Main Display Canvas/DisplayText");
-        
+
 
         _InitializeDarkMode(); //assigns colors to color variables declared in class.
         _InitializeMenu();
@@ -2459,10 +2460,10 @@ Initialize Variables related to Dark Mode
         buttontext = new TextMeshProUGUI[numofbuttons];
         maintext = GameObject.Find("/World/Udon Menu System/Main Display Canvas/DisplayText").GetComponent<Text>();
         podiumtext = GameObject.Find("/World/Udon Menu System/Podium Display Canvas/DisplayText").GetComponent<Text>();
-        
-        
+
+
         menuheadertext = GameObject.Find("/World/Udon Menu System/Menu Canvas/Menu Header").GetComponent<TextMeshProUGUI>();
-        //menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header"); 
+        //menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header");
 
 
         for (int x = 0; x < numofbuttons; x++) {
@@ -2475,7 +2476,7 @@ Initialize Variables related to Dark Mode
 
 	}
 
-    
+
 
 	/***************************************************************************************************************************
 	Update Menu Variables used to control displays.
@@ -2516,10 +2517,10 @@ Initialize Variables related to Dark Mode
     public override void OnDeserialization()
     {
         if (!Networking.IsOwner(gameObject))//if i'm not the owner, i need to update my display to match what the owner sees
-        { 
+        {
                 //_UpdateMenuVariables(NOT_SELECTED);
                 _UpdateAllDisplays();
-            
+
         }
         //_DebugMenuVariables();
     }
@@ -2544,9 +2545,9 @@ Initialize Variables related to Dark Mode
 			default:
 				//Debug.Log("UpdateMenuDisplay() failed; currentmenu is: "+currentmenu+")");
 				//_DebugMenuVariables();
-				break; 
+				break;
 		}
-		
+
 
 	}
 
@@ -2604,7 +2605,7 @@ Initialize Variables related to Dark Mode
 		// Handle Selection Buttons
 		string buttonText;
 		bool isButtonSelected;
-		
+
         //Debug.Log("numofbuttons:" + numofbuttons);
 		for (int i = 0; i < numofbuttons; i++) {
             //Debug.Log("give me the data for: AllLessons[0][27][58][0]" + AllLessons[0][27][58][0]);
@@ -2612,9 +2613,9 @@ Initialize Variables related to Dark Mode
                 //Debug.Log("working on button number: " + i);
                 buttonText = (i + 1) + ") " + Lessons[currentlesson][i][0];
 				isButtonSelected = currentword == i;
-				
+
 				_DisplayButton(i, buttonText, isButtonSelected);
-				
+
 			} else {
 				_HideButton(i);
 			}
@@ -2647,13 +2648,13 @@ Initialize Variables related to Dark Mode
 	private void _DisplayButton(int index, string text, bool isSelected) {
 
 
-	
+
 		// Handle Selection Highlighting
 		buttons[index].GetComponent<Button>().colors = isSelected ? darkmodeselectedbutton : darkmodebutton;
-		
+
 		// Handle Text
 		buttontext[index].text = text;
-		
+
 		// Toggle Display
 		buttons[index].SetActive(true);
 	}
@@ -2671,8 +2672,8 @@ Initialize Variables related to Dark Mode
 	private void _DisplaySign() {
 		if(currentword!=NOT_SELECTED){
 
-            //maintext = GameObject.Find("/World/Udon Menu System/Main Display Canvas/DisplayText").GetComponent<Text>(); 
-            //podiumtext = GameObject.Find("/World/Udon Menu System/Podium Display Canvas/DisplayText").GetComponent<Text>(); 
+            //maintext = GameObject.Find("/World/Udon Menu System/Main Display Canvas/DisplayText").GetComponent<Text>();
+            //podiumtext = GameObject.Find("/World/Udon Menu System/Podium Display Canvas/DisplayText").GetComponent<Text>();
             maintext.text = Lessons[currentlesson][currentword][0]+"\n"+ Lessons[currentlesson][currentword][1]+"\n"+ Lessons[currentlesson][currentword][2];
             podiumtext.text = Lessons[currentlesson][currentword][0] + "\n" + Lessons[currentlesson][currentword][1] + "\n" + Lessons[currentlesson][currentword][2];
 
@@ -2711,7 +2712,7 @@ Initialize Variables related to Dark Mode
             { //on word menu
                 currentlesson = NOT_SELECTED; //go to lesson menu
             }
-        
+
 
        _TakeOwnership();
        RequestSerialization();
@@ -2726,10 +2727,10 @@ Initialize Variables related to Dark Mode
 	***************************************************************************************************************************/
 	private void _buttonpushed(int buttonIndex) {
 		Debug.Log("Entered _buttonpushed("+buttonIndex+")");
-		
+
 		// Update Data
 		_UpdateMenuVariables(buttonIndex);
-		
+
 		// Update Display
 		_UpdateAllDisplays();
 	}
@@ -2748,15 +2749,15 @@ Initialize Variables related to Dark Mode
 	/***************************************************************************************************************************
 	Outputs debug vars to log or panel
 	***************************************************************************************************************************/
-	private void _DebugMenuVariables() 
+	private void _DebugMenuVariables()
 	{
 		//String _message = "";
 		/*
 		debugtextbox.text="Current Variable contents: " +
-			"\nOwner: " + Networking.IsOwner(gameObject) + 
+			"\nOwner: " + Networking.IsOwner(gameObject) +
 			"\ncurrentmode: " + currentmode + " globalcurrentmode: " + globalcurrentmode +
-			"\ncurrentlang: " + currentlang + " globalcurrentlang: " + globalcurrentlang + 
-			"\ncurrentlesson: " + currentlesson + " globalcurrentlesson: " + globalcurrentlesson + 
+			"\ncurrentlang: " + currentlang + " globalcurrentlang: " + globalcurrentlang +
+			"\ncurrentlesson: " + currentlesson + " globalcurrentlesson: " + globalcurrentlesson +
 			"\ncurrentword: " + currentword + " globalcurrentword: " + globalcurrentword;
 
 				*/
@@ -2986,6 +2987,7 @@ Initialize Variables related to Dark Mode
 		_buttonpushed(69);
 	}
 
-    
+
 
 }
+#endif

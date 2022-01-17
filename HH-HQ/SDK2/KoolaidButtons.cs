@@ -1,3 +1,4 @@
+#if UNITY_EDITOR && VRC_SDK_VRCSDK2
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
@@ -129,7 +130,7 @@ public class HH_HQ : MonoBehaviour
             {"Kiss","키스,뽀뽀","Embrasser"},{"Date","날짜","Date"},{"Sweetheart","애인,연인","Cœurtendre"},{"Fall in love","사랑에 빠진다","Tomber en amour"},{"Just/Only","그냥/오직","Seulement"},
             {"Sneeze","재채기","Éternuer"},{"Cough","기침","Tousser"},{"Blessyou","축복하다","À tes souhaits"},{"University","종합대학","Université"},{"Church","교회","Église"},{"Library","도서관","Bibliothèque"},
             {"Office","사무실","Bureau"},{"Fancy","공상","Qualité supérieure"},{"College","전문대학","Collège"},{"Gym","체육관","Gymnase"},{"Workout","운동","Exercicer"}
-            }/*if this is the last lesson, don't put a comma after the } 
+            }/*if this is the last lesson, don't put a comma after the }
 
 				*/
         };
@@ -169,7 +170,7 @@ public class HH_HQ : MonoBehaviour
         podiumtext.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; //change font file here
         podiumtext.GetComponent<Text>().fontStyle = FontStyle.Bold;
         podiumtext.GetComponent<Text>().fontSize = 50;
-        //displaytext.GetComponent<Text> ().color = Color.black; 
+        //displaytext.GetComponent<Text> ().color = Color.black;
         podiumtext.GetComponent<Text>().color = new Color32(0x6D, 0x9E, 0xEB, 0xFF); // RGBA
         podiumtext.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
         podiumtext.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
@@ -179,7 +180,7 @@ public class HH_HQ : MonoBehaviour
         podiumtext.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
         podiumtext.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
 podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//x,y,z
-        
+
 
         GameObject displaycanvas = createandreturncanvas("MainDisplay", menuroot, projectionsizex, projectionsizey, layer);
 
@@ -196,7 +197,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         ToggleGroup deletethistogglegroup = GameObject.Find("/HH Root/MainDisplay").GetComponent<ToggleGroup>();
         DestroyImmediate(deletethistogglegroup);
 
-        
+
         GameObject displaytext = DefaultControls.CreateText(resources);
         displaytext.transform.SetParent(displaycanvas.transform, false);
         displaytext.name = "DisplayText";
@@ -205,7 +206,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         displaytext.GetComponent<Text>().font = Resources.GetBuiltinResource(typeof(Font), "Arial.ttf") as Font; //change font file here
         displaytext.GetComponent<Text>().fontStyle = FontStyle.Bold;
         displaytext.GetComponent<Text>().fontSize = 300;
-        //displaytext.GetComponent<Text> ().color = Color.black; 
+        //displaytext.GetComponent<Text> ().color = Color.black;
         displaytext.GetComponent<Text>().color = new Color32(0x6D, 0x9E, 0xEB, 0xFF); // RGBA
         displaytext.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
         displaytext.GetComponent<RectTransform>().sizeDelta = new Vector2(projectionsizex, projectionsizey);
@@ -373,14 +374,14 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
     static void createlessonboard(GameObject parent, string[,] signarray,string[] lessonnames ,string lang, int lessonnum, GameObject rootcanvas, int rowoffset, int columnoffset, int rowseperation, int columnseperation, int layer) //, int arraypos, int anchoredposx, int anchoredposy, string alignment, int layernum, string text, int posx, int posy
     {
         Navigation no_nav = new Navigation();
-        no_nav.mode = Navigation.Mode.None; //disables navigation so people can't operate ui by moving avatar. 
+        no_nav.mode = Navigation.Mode.None; //disables navigation so people can't operate ui by moving avatar.
         GameObject lessongo = new GameObject(lang + " Lesson " + (lessonnum + 1));
         lessongo.transform.SetParent(parent.transform, false);
         createheadertext(lessongo, lessonnames[lessonnum], 1100, 30, 80, 705, layer);
 		GameObject lessontriggers = new GameObject("LessonTriggers");
 		lessontriggers.transform.SetParent(lessongo.transform, false);
 
-		
+
 
     DefaultControls.Resources scrollviewresources = new DefaultControls.Resources();
     //Set the Slider Background Image someBgSprite;
@@ -406,7 +407,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
 	DestroyImmediate(scrollview.transform.Find("Scrollbar Horizontal").gameObject);
 	DestroyImmediate(scrollview.transform.Find("Viewport").Find("Content").gameObject);
 	//scrollviewtransform.Find("Viewport").transform
-	
+
 	scrollview.transform.SetParent(lessongo.transform, false);
     //uiSlider.transform.SetParent(canvas.transform, false);
 
@@ -452,7 +453,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
 */
         int column = 0;
         int row = 0;
-        for (int x = 0; x < signarray.GetLength(0); x++) //this is the main loop that processes the array and creates + organizes the buttons in rows+columns. 
+        for (int x = 0; x < signarray.GetLength(0); x++) //this is the main loop that processes the array and creates + organizes the buttons in rows+columns.
         {
             if (x != 0)
             {
@@ -461,7 +462,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
                 row++;
                 }else{
                 column=1;
-                
+
                 }
 /*
                 if (x % 15 == 0) //15  per column
@@ -488,7 +489,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
             eventAction.EventType = VRC_EventHandler.VrcEventType.SetUIText;
             eventAction.ParameterString = signarray[x, 0] + "\n" + signarray[x, 1] + "\n" + signarray[x, 2];
             eventAction.ParameterObjects = new GameObject[]{GameObject.Find("/HH Root/MainDisplay/DisplayText"),GameObject.Find("/HH Root/Menu Canvas/Podium Panel/DisplayText")};
-            
+
             customTrig.Events.Add(eventAction); //this eventaction sets uitext on current sign text
 
             trigComponent.Triggers.Add(customTrig); //adds all event actions to the trigger for this helper gameobject.
@@ -502,7 +503,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
             toggleresources.checkmark = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/VRCSDK/Dependencies/VRChat/Resources/PerformanceIcons/Perf_Great_32.png");
             GameObject uiToggle = DefaultControls.CreateToggle(toggleresources);
             Toggle t = uiToggle.GetOrAddComponent<Toggle>();
-            uiToggle.name = lang+" L" + (lessonnum+1) + " - S" + (x+1) +"("+signarray[x,0]+") - Toggle";		
+            uiToggle.name = lang+" L" + (lessonnum+1) + " - S" + (x+1) +"("+signarray[x,0]+") - Toggle";
             uiToggle.transform.SetParent(lessontoggles.transform, false);
             uiToggle.GetComponent<RectTransform>().sizeDelta = new Vector2(0, 0);
             uiToggle.GetComponent<RectTransform>().anchoredPosition = new Vector2((50 + (column * columnseperation)), (-40 + (row * -rowseperation)));
@@ -526,7 +527,7 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
 			uiToggle.transform.Find("Background").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 			uiToggle.transform.Find("Background").gameObject.layer=layer;
-			
+
             GameObject checkboxtextgo = new GameObject("Text");
 			checkboxtextgo.transform.SetParent(uiToggle.transform.Find("Background").transform, false);
 			Text checkboxtext = checkboxtextgo.AddComponent<Text>();
@@ -543,18 +544,18 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
 			uiToggle.transform.Find("Label").GetComponent<Text>().text =" "+signarray[x,0];
 			uiToggle.transform.Find("Label").GetComponent<Text>().fontSize = 25;
 			uiToggle.transform.Find("Label").GetComponent<Text>().alignment = TextAnchor.MiddleLeft;
-            
+
 			uiToggle.transform.Find("Label").GetComponent<Text>().resizeTextForBestFit=true;
 			uiToggle.transform.Find("Label").GetComponent<Text>().resizeTextMaxSize=25;
 			uiToggle.transform.Find("Label").GetComponent<Text>().resizeTextMinSize=12;
-			
+
             uiToggle.transform.Find("Label").GetComponent<RectTransform>().sizeDelta = new Vector2 (410, 40);
 			uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchoredPosition = new Vector2 (20,-20);
 			uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 			uiToggle.transform.Find("Label").gameObject.layer=layer;
-			
+
 			uiToggle.transform.Find("Background").transform.Find("Checkmark").GetComponent<RectTransform>().sizeDelta = new Vector2 (40, 40);
 			uiToggle.transform.Find("Background").transform.Find("Checkmark").GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,0);
 			uiToggle.transform.Find("Background").transform.Find("Checkmark").GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
@@ -580,3 +581,4 @@ podiumtext.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 180, 0);//
         lessongo.SetActive(false);
     }
 }
+#endif

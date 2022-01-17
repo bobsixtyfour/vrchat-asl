@@ -1,5 +1,5 @@
 ﻿// Do not load this script when building
-#if UNITY_EDITOR
+#if UNITY_EDITOR && VRC_SDK_VRCSDK3 && UDON
 //using System.Collections;
 using System.Collections.Generic; //for lists if I ever use em.
 using UnityEngine;
@@ -127,7 +127,7 @@ public class GenerateMenuButtons : MonoBehaviour
                 menubuttonsheader.AddComponent<TextMeshProUGUI> ().text="Header";
         menubuttonsheader.GetComponent<TextMeshProUGUI>().font = Resources.Load<TMP_FontAsset>("NotoSans-Regular SDF");
         menubuttonsheader.GetComponent<TextMeshProUGUI> ().fontStyle = FontStyles.Bold;
-                menubuttonsheader.GetComponent<TextMeshProUGUI> ().fontSize = 50;		
+                menubuttonsheader.GetComponent<TextMeshProUGUI> ().fontSize = 50;
                 menubuttonsheader.GetComponent<TextMeshProUGUI> ().color = Color.white;
                 menubuttonsheader.GetComponent<TextMeshProUGUI> ().alignment = TextAlignmentOptions.Left;
                 menubuttonsheader.GetComponent<TextMeshProUGUI> ().autoSizeTextContainer=false;
@@ -136,7 +136,7 @@ public class GenerateMenuButtons : MonoBehaviour
                 menubuttonsheader.GetComponent<TextMeshProUGUI> ().fontSizeMin=18;
         menubuttonsheader.GetComponent<RectTransform>().anchorMax = zerovector2;
         menubuttonsheader.GetComponent<RectTransform>().anchorMin = zerovector2;
-        
+
                 menubuttonsheader.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (textpadding, menusizey-headersizey-textpadding);
 
                 menubuttonsheader.GetComponent<RectTransform> ().pivot = zerovector2;
@@ -151,7 +151,7 @@ public class GenerateMenuButtons : MonoBehaviour
                 //menubuttonssubheader.GetComponent<TextMesh> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
                 menubuttonssubheader.GetComponent<TextMeshProUGUI> ().font = Resources.Load<TMP_FontAsset>("NotoSans-Regular SDF");
         menubuttonssubheader.GetComponent<TextMeshProUGUI> ().fontStyle = FontStyles.Bold;
-                menubuttonssubheader.GetComponent<TextMeshProUGUI> ().fontSize = 50;		
+                menubuttonssubheader.GetComponent<TextMeshProUGUI> ().fontSize = 50;
                 menubuttonssubheader.GetComponent<TextMeshProUGUI> ().color = Color.white;
                 menubuttonssubheader.GetComponent<TextMeshProUGUI> ().alignment = TextAlignmentOptions.Left;
                 menubuttonssubheader.GetComponent<TextMeshProUGUI> ().autoSizeTextContainer= false;
@@ -160,7 +160,7 @@ public class GenerateMenuButtons : MonoBehaviour
                 menubuttonssubheader.GetComponent<TextMeshProUGUI> ().fontSizeMin=18;
         menubuttonssubheader.GetComponent<RectTransform>().anchorMax = zerovector2;
         menubuttonssubheader.GetComponent<RectTransform>().anchorMin = zerovector2;
-        
+
                 menubuttonssubheader.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (textpadding, menusizey-(headersizey*2)-textpadding);
 
                 menubuttonssubheader.GetComponent<RectTransform> ().pivot = zerovector2;
@@ -430,7 +430,7 @@ public class GenerateMenuButtons : MonoBehaviour
         /*****************************************
         Update menu system to point to newly created objects.
         *****************************************/
-        //recreate toggle to fix reference? 
+        //recreate toggle to fix reference?
         /*
             Toggle oldvideotoggle = GameObject.Find("/Preferencesv2/Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
             DestroyImmediate(oldvideotoggle);
@@ -441,7 +441,7 @@ public class GenerateMenuButtons : MonoBehaviour
             newvideotoggle.transition= Selectable.Transition.None;
             newvideotoggle.toggleTransition= Toggle.ToggleTransition.None;
             newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
-            UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
+            UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>),
             videocontainer, "SetActive") as UnityAction<bool>);
             */
     }//End of main program
@@ -475,7 +475,7 @@ public class GenerateMenuButtons : MonoBehaviour
 
         DefaultControls.Resources buttonresources = new DefaultControls.Resources();
         buttonresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite>("UI/Skin/InputFieldBackground.psd");
-        //toggleresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd"); 
+        //toggleresources.background = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Skin/Background.psd");
         GameObject go = DefaultControls.CreateButton(buttonresources);
         go.layer = layer;
         go.transform.SetParent(parent.transform, false);
