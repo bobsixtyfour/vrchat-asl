@@ -3008,69 +3008,73 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             quizd.SetActive(true);
             quizbig.SetActive(false);
             quizreset.SetActive(true);
-            quizanswer = UnityEngine.Random.Range(0, 4);//pick one of the 4 boxes to have the answer 0-3
-            int quizwrong1 = UnityEngine.Random.Range(0, quizwordmapping.Length);
-            int quizwrong2 = UnityEngine.Random.Range(0, quizwordmapping.Length);
-            int quizwrong3 = UnityEngine.Random.Range(0, quizwordmapping.Length);
-            //prevent the same answer on multiple boxes.
-            while (
-                quizwrong1 == quizcounter | //don't be the same as the answer
-                AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayvariant] != ""| //todo, add "base word" for script to check against to avoid pulling variants.
-                AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword].Contains("/") |
-                AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword] //prevent the same answer on multiple boxes.
-                )
-            {
-                quizwrong1 = UnityEngine.Random.Range(0, quizwordmapping.Length);
+
+            // First collect quiz objects
+            GameObject[] quizObjects = new GameObject[4];
+            quizObjects[0] = quiza;
+            quizObjects[1] = quizb;
+            quizObjects[2] = quizc;
+            quizObjects[3] = quizd;
+            // Pick one of the answers to be correct
+            quizanswer = UnityEngine.Random.Range(0, 4);
+            // Swap the first quiz object with the 'correct' one
+            GameObject temp = quizObjects[quizanswer];
+            quizObjects[quizanswer] = quizObjects[0];
+            quizObjects[0] = temp;
+            // quizObjects[0] is thus randomly one of the 4 quiz objects,
+            // and so we can have quizObjects[0] represent the 'correct' answer
+
+            // We now have to select 3 'wrong' answers
+            // For this we'll do a reservoir sample, as it's constant time(-ish, when considering predicate) and sort-of easy to implement
+            // First fill our reservoir with the default candidates
+            int[] reservoir = new int[3];
+            reservoir[0] = quizcounter <= 0 ? 1 : 0;
+            reservoir[1] = quizcounter <= 1 ? 2 : 1;
+            reservoir[2] = quizcounter <= 2 ? 3 : 2;
+
+            // Then perform candidate swaps
+            float geo_W = Mathf.Exp(Mathf.Log(UnityEngine.Random.Range(0.0f, 1.0f)) / 3.0f);
+            int reservoir_i = quizcounter <= 3 ? 4 : 3;
+            int tests = 0;
+
+            while (reservoir_i < quizwordmapping.Length) {
+                int reservoir_j = reservoir_i + Mathf.FloorToInt(Mathf.Log(UnityEngine.Random.Range(0.0f, 1.0f))/Mathf.Log(1.0f - geo_W)) + 1;
+                tests++;
+
+                //Debug.Log("## Reservoir i = " + reservoir_i.ToString() + "; Reservoir j = " + reservoir_j.ToString() + "; Reservoir Content = " + reservoir[0].ToString() + "," + reservoir[1].ToString() + "," + reservoir[2].ToString() + "; Counter = " + quizcounter.ToString() + "; Tests = " + tests.ToString());
+
+                if (reservoir_j < quizwordmapping.Length) {
+                    if (
+                        // This selection is no good if:
+                        // - It's our current correct answer
+                        reservoir_j == quizcounter ||
+                        // - It's a variant
+                        AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayvariant] != "" ||
+                        // - It has a slash in it
+                        AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword].Contains("/") ||
+                        // - It has the same text content as the correct answer
+                        AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword]
+                    ) {
+                        reservoir_i++;
+                    } else {
+                        // Replace a random item in the reservoir with this item
+                        reservoir_i = reservoir_j;
+                        reservoir[UnityEngine.Random.Range(0, 3)] = reservoir_i;
+                        geo_W *= Mathf.Exp(Mathf.Log(UnityEngine.Random.Range(0.0f, 1.0f)) / 3.0f);
+                    }
+                } else {
+                    reservoir_i = reservoir_j;
+                }
             }
-            while (quizwrong2 == quizcounter | //don't be the same as the answer
-                quizwrong2 == quizwrong1 | //don't be the same as box 1
-                AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayvariant] != "" |
-                AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword].Contains("/") |
-                AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword] //prevent the same answer on multiple boxes.
-                )
-            {
-                quizwrong2 = UnityEngine.Random.Range(0, quizwordmapping.Length);
-            }
-            while (quizwrong3 == quizcounter | //don't be the same as the answer
-                quizwrong3 == quizwrong1 | //don't be the same as box 1
-                quizwrong3 == quizwrong2 | //don't be the same as box 2
-                AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayvariant] != "" |
-                AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword].Contains("/") |
-                AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword]  //prevent the same answer on multiple boxes.
-                )
-            {
-                quizwrong3 = UnityEngine.Random.Range(0, quizwordmapping.Length);
-            }
-            switch (quizanswer)//quizanswer is the box the answer is in. The answer is stored in quizcounter.
-            {
-                case 0:
-                    quiza.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword];
-                    quizb.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword];
-                    quizc.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword];
-                    quizd.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][arrayword];
-                    break;
-                case 1:
-                    quizb.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword];
-                    quiza.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword];
-                    quizc.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword];
-                    quizd.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][arrayword];
-                    break;
-                case 2:
-                    quizc.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword];
-                    quiza.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword];
-                    quizb.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword];
-                    quizd.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][arrayword];
-                    break;
-                case 3:
-                    quizd.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword];
-                    quiza.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword];
-                    quizb.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword];
-                    quizc.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][arrayword];
-                    break;
-                default:
-                    //Debug.Log("How is quizanswer outside of the expected random range?");
-                    break;
-            }
+
+            Debug.Log("Reservoir randomized in " + tests.ToString() + " iterations");
+
+            // quizObjects[0] is a randomly selected 'correct' answer button, and the rest are wrong
+            quizObjects[0].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword];
+            quizObjects[1].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[reservoir[0]][0]][quizwordmapping[reservoir[0]][1]][quizwordmapping[reservoir[0]][2]][arrayword];
+            quizObjects[2].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[reservoir[1]][0]][quizwordmapping[reservoir[1]][1]][quizwordmapping[reservoir[1]][2]][arrayword];
+            quizObjects[3].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[reservoir[2]][0]][quizwordmapping[reservoir[2]][1]][quizwordmapping[reservoir[2]][2]][arrayword];
+
             //nana.Play(AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][1]);
             //add something to hide the sidebar of videos here?
 
