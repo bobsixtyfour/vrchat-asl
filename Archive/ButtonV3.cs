@@ -1,5 +1,5 @@
 ﻿// Do not load this script when building
-#if UNITY_EDITOR
+#if UNITY_EDITOR && VRC_SDK_VRCSDK2
 //using System.Collections;
 using System.Collections.Generic; //for lists if I ever use em.
 using UnityEngine;
@@ -45,11 +45,11 @@ globalnana.SetActive(true);
 	GameObject localmenu = CreateMenu(rootmenu,"Local");
 
 
-	
+
 /*****************************************
 Update menu system to point to newly created objects.
 *****************************************/
-//recreate toggle to fix reference? 
+//recreate toggle to fix reference?
 
 	Toggle oldvideotoggle = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Video Toggle").GetOrAddComponent<Toggle>();
 	DestroyImmediate(oldvideotoggle);
@@ -60,13 +60,13 @@ Update menu system to point to newly created objects.
 	newvideotoggle.transition= Selectable.Transition.None;
 	newvideotoggle.toggleTransition= Toggle.ToggleTransition.None;
 	newvideotoggle.onValueChanged = new Toggle.ToggleEvent();
-	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
+	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>),
 	GameObject.Find("/Menu Root/Local Menu Root/Local Video Container"), "SetActive") as UnityAction<bool>);
 
 
 
 
-	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>), 
+	UnityEventTools.AddPersistentListener(newvideotoggle.onValueChanged, System.Delegate.CreateDelegate(typeof(UnityAction<bool>),
 	GameObject.Find("/Menu Root/Global Menu Root/Global Video Container"), "SetActive") as UnityAction<bool>);
 
 	//Cleanup existing triggers to reference global/local container
@@ -74,7 +74,7 @@ Update menu system to point to newly created objects.
 	//DestroyImmediate(oldglobalhelpertrigger);
 	//VRC_Trigger oldglobalhelpertrigger = GameObject.Find ("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Helper").GetOrAddComponent<VRC_Trigger>();
 	DestroyImmediate(GameObject.Find ("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode/Background/Global Helper").GetOrAddComponent<VRC_Trigger>());
-	
+
 
 	VRC_Trigger newglobalhelpertrigger = GameObject.Find("/Preferencesv2/Preferencesv2 Canvas/Left Panel/Global Mode/Background/Global Helper").GetOrAddComponent<VRC_Trigger>();
 	newglobalhelpertrigger.UsesAdvancedOptions = true;
@@ -135,7 +135,7 @@ Update menu system to point to newly created objects.
 			}
 		}
 	};
-						
+
 /*
 	VRC_Trigger.TriggerEvent ondisabletriggerevent = new VRC_Trigger.TriggerEvent ();
 	ondisabletriggerevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysBufferOne;
@@ -152,7 +152,7 @@ Update menu system to point to newly created objects.
 	disableglobalcontainer.ParameterBoolOp = VRC_EventHandler.VrcBooleanOp.False;
 	disableglobalcontainer.ParameterObject = globalmenu ;
 	ondisabletriggerevent.Events.Add (disableglobalcontainer);
-	
+
 	VRC_Trigger.TriggerEvent onenabletriggerevent = new VRC_Trigger.TriggerEvent ();
 	onenabletriggerevent.BroadcastType = VRC_EventHandler.VrcBroadcastType.AlwaysBufferOne;
 	onenabletriggerevent.TriggerType = VRC_Trigger.TriggerType.OnEnable;
@@ -179,7 +179,7 @@ globalmenu.SetActive(false);
 
     }
     static GameObject CreateMenu(GameObject parent, string mode){
-	
+
     	//Declare some variables + settings.
 
 
@@ -187,10 +187,10 @@ globalmenu.SetActive(false);
 Start of Arrays variable declarations
 *****************************************/
 
-        //creates an array of arrays. Grouped by lessons. 
-        //0th value is the word 
+        //creates an array of arrays. Grouped by lessons.
+        //0th value is the word
         //1st value is the name of the animation trigger (needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
-        //2nd value is mocap credits. 
+        //2nd value is mocap credits.
         //3rd value is video URL.
         //4th value is home sign indicator 0 = normal, 1=homesign
         //5th value is VR index or regular 0=indexonly , 1=generalvr,2=both
@@ -331,13 +331,13 @@ menuroot.layer = layer;
 		else{
 			rootpanel.GetComponent<Image> ().color = new Color(.90f,.90f,1,1); //gets rid of transparency - also can change panel color if I want here. 1=255.
 		}
-		
+
 
 		GameObject langselectmenu = new GameObject("VR Sign Language Select Menu");
 		langselectmenu.transform.SetParent(rootcanvas.transform, false);
 		langselectmenu.layer = layer;
 
-		
+
 		GameObject langselectmenuheader = DefaultControls.CreateText(txtresources);
 		langselectmenuheader.transform.SetParent (langselectmenu.transform, false);
 		langselectmenuheader.name="VR Sign Language Select Menu Header";
@@ -345,7 +345,7 @@ menuroot.layer = layer;
 		langselectmenuheader.GetComponent<Text> ().text = "VR Sign Language Select Menu - "+mode;
 		langselectmenuheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 		langselectmenuheader.GetComponent<Text> ().fontStyle = FontStyle.Bold;
-		langselectmenuheader.GetComponent<Text> ().fontSize = 50;		
+		langselectmenuheader.GetComponent<Text> ().fontSize = 50;
 		langselectmenuheader.GetComponent<Text> ().color = Color.black;
 		langselectmenuheader.GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
 		langselectmenuheader.GetComponent<RectTransform> ().sizeDelta = new Vector2 (menusizex, headersizey);
@@ -372,7 +372,7 @@ MAIN LANGUAGE LOOP HERE
 			langroot.layer = layer;
 			//Debug.Log(signlanguages.Length + " " +languages);
 
-			GameObject languagetriggercontainer = new GameObject(signlanguagenames[languagenum,0]+" Trigger Container"); //create language container for a given language to house global triggers. 
+			GameObject languagetriggercontainer = new GameObject(signlanguagenames[languagenum,0]+" Trigger Container"); //create language container for a given language to house global triggers.
 			//Why use helper gameobjects to store triggers? In order to use toggle groups to handle the disabling of objects using vrc_trigger ondisable compared to manually disabling 40+ seperate objects
 			languagetriggercontainer.transform.SetParent(triggercontainer.transform, false);
 			languagetriggercontainer.layer = layer;
@@ -396,7 +396,7 @@ MAIN LANGUAGE LOOP HERE
 					lessonselectmenuheader.GetComponent<Text> ().text = "VR-"+signlanguagenames[languagenum,0]+" Sign Language - Lesson Menu (Green = contains \"verified\" motion data.) (Yellow = contains \"Unverified\" motion data and verified videos) (Red = no motion data, but contains verified videos) - "+mode;
 					lessonselectmenuheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 					lessonselectmenuheader.GetComponent<Text> ().fontStyle = FontStyle.Bold;
-					lessonselectmenuheader.GetComponent<Text> ().fontSize = 50;		
+					lessonselectmenuheader.GetComponent<Text> ().fontSize = 50;
 					lessonselectmenuheader.GetComponent<Text> ().color = Color.black;
 					lessonselectmenuheader.GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
 					lessonselectmenuheader.GetComponent<RectTransform> ().sizeDelta = new Vector2 (menusizex, headersizey);
@@ -449,7 +449,7 @@ MAIN LESSON LOOP HERE
 					GameObject lessongo = new GameObject(signlanguagenames[languagenum,0]+" Lesson "+(lessonnum+1));
 					lessongo.transform.SetParent(langroot.transform, false);
 					lessongo.layer = layer;
-					
+
 					//create lesson x header
 					GameObject lessongoheader = DefaultControls.CreateText(txtresources);
 					lessongoheader.transform.SetParent (lessongo.transform, false);
@@ -458,7 +458,7 @@ MAIN LESSON LOOP HERE
 					lessongoheader.GetComponent<Text> ().text = "VR-"+signlanguagenames[languagenum,0]+" Sign Language - Lesson " + (lessonnum+1) + " - " + lessonnames[lessonnum]+" - "+mode;
 					lessongoheader.GetComponent<Text> ().font = Resources.GetBuiltinResource (typeof(Font), "Arial.ttf") as Font;
 					lessongoheader.GetComponent<Text> ().fontStyle = FontStyle.Bold;
-					lessongoheader.GetComponent<Text> ().fontSize = 50;		
+					lessongoheader.GetComponent<Text> ().fontSize = 50;
 					lessongoheader.GetComponent<Text> ().color = Color.black;
 					lessongoheader.GetComponent<Text> ().alignment = TextAnchor.MiddleLeft;
 					lessongoheader.GetComponent<RectTransform> ().sizeDelta = new Vector2 (menusizex, headersizey);
@@ -466,7 +466,7 @@ MAIN LESSON LOOP HERE
 					lessongoheader.GetComponent<RectTransform> ().anchorMax = zerovector2;
 					lessongoheader.GetComponent<RectTransform> ().anchorMin = zerovector2;
 					lessongoheader.GetComponent<RectTransform> ().pivot = zerovector2;
-					
+
 					//create video lesson container
 					GameObject videolessoncontainer = new GameObject(signlanguagenames[languagenum,0]+" Video L"+(lessonnum+1));
 					videolessoncontainer.transform.SetParent(langvideocontainer.transform, false);
@@ -519,7 +519,7 @@ if(mode=="Global"){
 					};
 
 
-			
+
 			UnityEventTools.AddStringPersistentListener(b.onClick,
 			System.Delegate.CreateDelegate(typeof(UnityAction<string>), lessonbuttonvrctrigger,"ExecuteCustomTrigger") as UnityAction<string>
 			,"globaltrigger");
@@ -535,7 +535,7 @@ if(mode=="Global"){
 					UnityAction<bool> disablemenu = System.Delegate.CreateDelegate(typeof(UnityAction<bool>), lessonmenu, "SetActive") as UnityAction<bool>;
 					UnityEventTools.AddBoolPersistentListener(b.onClick, disablemenu, false);
 }
-           
+
 
 
 
@@ -702,7 +702,7 @@ MAIN WORD LOOP HERE
 									}
 								}
 							}
-						}; 
+						};
 					}//end else
 					if(AllLessons[languagenum][lessonnum][wordnum,3]!=""){ //if url is blank, then don't create video.
 						//creates the video gameobjects
@@ -716,7 +716,7 @@ MAIN WORD LOOP HERE
 						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().renderMode=VideoRenderMode.MaterialOverride;
 						videogo.GetOrAddComponent<UnityEngine.Video.VideoPlayer>().audioOutputMode=VideoAudioOutputMode.None;
 						videogo.SetActive(false);
-						buttontriggers.Triggers[0].Events.Add(//there should only be one trigger to add events to on this list.					
+						buttontriggers.Triggers[0].Events.Add(//there should only be one trigger to add events to on this list.
 							new VRC_EventHandler.VrcEvent{
 								EventType=VRC_EventHandler.VrcEventType.SetGameObjectActive,
 								ParameterObject=videogo,
@@ -726,7 +726,7 @@ MAIN WORD LOOP HERE
 					}
 
 
-			//assign unity triggers to button 
+			//assign unity triggers to button
 			Button buttonoffbutton = buttonoffgo.GetOrAddComponent<Button>();
 			buttonoffbutton.onClick = new Button.ButtonClickedEvent();
 			UnityAction<string> worduiaction = System.Delegate.CreateDelegate(typeof(UnityAction<string>), buttontriggers,"ExecuteCustomTrigger") as UnityAction<string>;
@@ -754,7 +754,7 @@ wordrow++;
 }//end Global word processing
 
 if(mode=="Local"){
-						GameObject trigger = new GameObject(signlanguagenames[languagenum,0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Trigger");//helper gameobject with vrc_trigger. 
+						GameObject trigger = new GameObject(signlanguagenames[languagenum,0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Trigger");//helper gameobject with vrc_trigger.
 					trigger.transform.SetParent (languagetriggercontainer.transform, false);
 					trigger.layer = layer;
                     VRC_Trigger helpertrigger = trigger.GetOrAddComponent<VRC_Trigger>();
@@ -771,7 +771,7 @@ if(mode=="Local"){
 						setanimationtrigger.ParameterString = AllLessons[languagenum][lessonnum][wordnum,1];
 						setanimationtrigger.ParameterObject = GameObject.Find ("/Nana Avatar");
 						triggeronenableevent.Events.Add (setanimationtrigger); //this eventaction sets animation trigger on avatar controller
-						
+
 						VRC_EventHandler.VrcEvent setspeechbubbletext = new VRC_EventHandler.VrcEvent ();
 						setspeechbubbletext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
 						setspeechbubbletext.ParameterString = AllLessons[languagenum][lessonnum][wordnum,0];
@@ -784,7 +784,7 @@ if(mode=="Local"){
 						setanimationtrigger.ParameterString = "StandIdle";
 						setanimationtrigger.ParameterObject = GameObject.Find ("/Nana Avatar");
 						triggeronenableevent.Events.Add (setanimationtrigger); //this eventaction sets animation trigger on avatar controller
-						
+
 						VRC_EventHandler.VrcEvent setspeechbubbletext = new VRC_EventHandler.VrcEvent ();
 						setspeechbubbletext.EventType = VRC_EventHandler.VrcEventType.SetUIText;
 						setspeechbubbletext.ParameterString = "No Data Yet";
@@ -806,9 +806,9 @@ if(mode=="Local"){
 					setdescription.ParameterString = AllLessons[languagenum][lessonnum][wordnum,6];
 					setdescription.ParameterObject = GameObject.Find ("/Nana Avatar/Canvas/Description Panel/Description Text");
 					triggeronenableevent.Events.Add (setdescription); //this eventaction sets uitext on avatar speech bubble text
-					
+
 					helpertrigger.Triggers.Add(triggeronenableevent); //adds all event actions to the trigger for this helper gameobject.
-					
+
 					//since I'm forking the wordlists from Mr.Dummy, there will be a scenario where there is no video.
 					if(AllLessons[languagenum][lessonnum][wordnum,3]!=""){ //if url is blank, then don't create video.
 						VRC_Trigger.TriggerEvent triggerondisableevent = new VRC_Trigger.TriggerEvent ();
@@ -832,13 +832,13 @@ if(mode=="Local"){
 						activatevideogo.ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.True;
 						activatevideogo.ParameterObject = videogo;
 						triggeronenableevent.Events.Add (activatevideogo); //this eventaction activates the video (if the sign has one)
-						
+
 						VRC_EventHandler.VrcEvent deactivatevideogo = new VRC_EventHandler.VrcEvent ();
 						deactivatevideogo.EventType = VRC_EventHandler.VrcEventType.SetGameObjectActive;
 						deactivatevideogo.ParameterBoolOp=VRC_EventHandler.VrcBooleanOp.False;
 						deactivatevideogo.ParameterObject = videogo;
 						triggerondisableevent.Events.Add (deactivatevideogo); //this eventaction deactivates the video (if the sign has one)
-						
+
 						helpertrigger.Triggers.Add(triggerondisableevent); //adds all event actions to the trigger for this helper gameobject.
 					}//end url is blank check
 				trigger.SetActive(false); //disables the gameobject since the UI toggle with enable them to activate the triggers.
@@ -846,7 +846,7 @@ if(mode=="Local"){
 					//create lesson toggles
 					GameObject uiToggle = DefaultControls.CreateToggle(toggleresources);
 					Toggle t = uiToggle.GetOrAddComponent<Toggle>();
-					uiToggle.gameObject.name = signlanguagenames[languagenum,0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Toggle";				
+					uiToggle.gameObject.name = signlanguagenames[languagenum,0]+" " + (lessonnum+1) + "-" + (wordnum+1) +" - Toggle";
 					uiToggle.transform.SetParent(lessongo.transform, false);
 					uiToggle.layer=layer;
 					uiToggle.GetComponent<RectTransform> ().sizeDelta = new Vector2 (0, 0);
@@ -876,7 +876,7 @@ if(mode=="Local"){
 					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().anchorMin = new Vector2 (0, 0);
 					uiToggle.transform.Find("Label").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 					uiToggle.transform.Find("Label").gameObject.layer=layer;
-					
+
 					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().sizeDelta = new Vector2 (64, 64);
 					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2 (0,0);
 					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().anchorMax = new Vector2 (0, 0);
@@ -884,9 +884,9 @@ if(mode=="Local"){
 					uiToggle.transform.Find("Background").gameObject.transform.Find("Checkmark").gameObject.GetComponent<RectTransform>().pivot = new Vector2 (0, 0);
 					uiToggle.transform.Find("Background").gameObject.layer=layer;
 
-					//0th value is the word 
+					//0th value is the word
 					//1st value is the name of the animation trigger (needed to support multiple languages, and handle cases of multiple "words" with the same sign.)
-					//2nd value is mocap credits. 
+					//2nd value is mocap credits.
 					//3rd value is video URL.
 					//4th value is home sign indicator 0 = normal, 1=homesign
 					//5th value is VR index or regular 0=indexonly , 1=generalvr,2=both
@@ -962,7 +962,7 @@ if(mode=="Local"){
 					End of word loop.
 					*****************************************/
 
-					
+
 				if(mode=="Global"){
 				//I need another loop to add all the triggers to deactivate videos for global mode
 				//these triggers belong on the helper gameobjects.
@@ -1009,12 +1009,12 @@ if(mode=="Local"){
 				//Create back button
 				GameObject backtolessongo = createbutton2(parent:lessongo, name:"Return to VR-" + signlanguagenames[languagenum,0] + " Lesson Menu", sizedelta:backbuttonsize,
 				anchoredPosition: new Vector2(buttonsizey, 0),
-				text: "Return to VR-" + signlanguagenames[languagenum,0] + " Lesson Menu", fontSize:50, txtsizedelta:backbuttonsize, txtanchoredPosition:new Vector2(20,0), 
+				text: "Return to VR-" + signlanguagenames[languagenum,0] + " Lesson Menu", fontSize:50, txtsizedelta:backbuttonsize, txtanchoredPosition:new Vector2(20,0),
 				alignment:TextAnchor.MiddleCenter, nav:no_nav,rotatez:90, layer:layer);
 
 				Button backbutton = backtolessongo.GetOrAddComponent<Button>();
 				backbutton.onClick = new Button.ButtonClickedEvent();
-				
+
 				if(mode=="Local"){
 				//try disabling all the checkboxes first before doing anything else?
 				UnityAction disablealltoggles = System.Delegate.CreateDelegate(typeof(UnityAction), rootcanvastogglegroup,"SetAllTogglesOff") as UnityAction;
@@ -1035,7 +1035,7 @@ if(mode=="Local"){
 				{
 
 
-					
+
 				VRC_Trigger vrcbacktolessontrigger = backtolessongo.GetOrAddComponent<VRC_Trigger>();
 				vrcbacktolessontrigger.UsesAdvancedOptions = true;
 				vrcbacktolessontrigger.Triggers=new List<VRC_Trigger.TriggerEvent>(){
@@ -1091,16 +1091,16 @@ if(mode=="Local"){
 							);
 						}
 
-				UnityEventTools.AddStringPersistentListener(backbutton.onClick, 
+				UnityEventTools.AddStringPersistentListener(backbutton.onClick,
 				System.Delegate.CreateDelegate(typeof(UnityAction<string>), vrcbacktolessontrigger,"ExecuteCustomTrigger") as UnityAction<string>,
 				"globaltrigger");
 			}
-				
+
 				langroot.SetActive(false);
 				lessongo.SetActive(false);
 				videolessoncontainer.SetActive(false);
 
-				} 
+				}
 				/*****************************************
 				End of lesson loop.
 				*****************************************/
@@ -1170,17 +1170,17 @@ if(mode=="Local"){
 						}
 					}
 				};
-				UnityEventTools.AddStringPersistentListener(langselectbutton.onClick, 
+				UnityEventTools.AddStringPersistentListener(langselectbutton.onClick,
 				System.Delegate.CreateDelegate(typeof(UnityAction<string>), vrclangselecttrigger,"ExecuteCustomTrigger") as UnityAction<string>,
 				"globaltrigger");
 			}
-			
+
 
 
 			//Create return to Language Menu
 			GameObject backtolanguagemenu = createbutton2(parent:lessonmenu, name:"Return to Language Menu", sizedelta:backbuttonsize,
 			anchoredPosition: new Vector2(buttonsizey, 0),
-			text: "Return to Language Menu", fontSize:50, txtsizedelta:backbuttonsize, txtanchoredPosition:new Vector2(20,0), 
+			text: "Return to Language Menu", fontSize:50, txtsizedelta:backbuttonsize, txtanchoredPosition:new Vector2(20,0),
 			alignment:TextAnchor.MiddleCenter, nav:no_nav,rotatez:90, layer:layer);
 
 			Button languagebackbutton = backtolanguagemenu.GetOrAddComponent<Button>();
@@ -1234,7 +1234,7 @@ if(mode=="Local"){
 
 
 				//UnityAction<string> disablelessonmenu = System.Delegate.CreateDelegate(typeof(UnityAction<string>), backtolanguagemenu,"ExecuteCustomTrigger") as UnityAction<string>;
-				UnityEventTools.AddStringPersistentListener(languagebackbutton.onClick, 
+				UnityEventTools.AddStringPersistentListener(languagebackbutton.onClick,
 				System.Delegate.CreateDelegate(typeof(UnityAction<string>), backtolanguagemenutrigger,"ExecuteCustomTrigger") as UnityAction<string>,
 				"globaltrigger");
 				}
@@ -1242,7 +1242,7 @@ if(mode=="Local"){
 
 				langvideocontainer.SetActive(false);
 			//globaltriggercontainer.SetActive(false);
-			
+
 	}
 	/*****************************************
 	End of language loop.
@@ -1293,7 +1293,7 @@ buttonresources.standard = AssetDatabase.GetBuiltinExtraResource<Sprite> ("UI/Sk
 GameObject go = DefaultControls.CreateButton(buttonresources);
 go.layer = layer;
 go.transform.SetParent(parent.transform, false);
-go.name = name;	
+go.name = name;
 Button b = go.GetOrAddComponent<Button>();
 b.navigation = nav;
 go.GetComponent<RectTransform> ().sizeDelta = sizedelta;

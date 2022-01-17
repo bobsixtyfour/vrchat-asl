@@ -1,22 +1,24 @@
-﻿using UdonSharp;
+﻿#if VRC_SDK_VRCSDK3 && UDON
+//using VRC.SDK3.Components.Video;
+using System;
+using TMPro;
+using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
 using VRC.SDK3.Components;
-using VRC.SDKBase;
-using VRC.Udon;
-using System;
-using TMPro;
-//using VRC.SDK3.Components.Video;
 using VRC.SDK3.Video.Components;
 using VRC.SDK3.Video.Components.AVPro;
 using VRC.SDK3.Video.Components.Base;
+using VRC.SDKBase;
+using VRC.Udon;
 
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-using System.Linq; //for sorting
 using System.Collections.Generic; //for lists if I ever use em.
-using UnityEditor;
+using System.Linq; //for sorting
 using UdonSharpEditor;
+using UnityEditor;
+using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
 namespace Bob64
@@ -41,7 +43,7 @@ public class MenuControl : UdonSharpBehaviour
         /*
         // AllLessons[][][][0] = word
         // AllLessons[][][][1] = word variant #
-        // AllLessons[][][][3] = mocap credits. 
+        // AllLessons[][][][3] = mocap credits.
         // AllLessons[][][][2] = video URL.
         // AllLessons[][][][4] = Shadermotion (Y)
         // AllLessons[][][][5] = VR index icon? (Y). Blank defaults to both vr icon.
@@ -1062,7 +1064,7 @@ new string[]{"Wine","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Wine.m
 new string[]{"Milk","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Milk.mp4","ShadeAxas","","","2","","","1"},
 new string[]{"Sugar","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sugar.mp4","ShadeAxas","","","2","","","1"},
 },//end of lesson
-new string[][]{//Animals 
+new string[][]{//Animals
 new string[]{"Dog","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Dog.mp4","ShadeAxas","","","2","","","1"},
 new string[]{"Cat","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cat.mp4","ShadeAxas","","","2","","","1"},
 new string[]{"Fox","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fox.mp4","ShadeAxas","","","2","","","1"},
@@ -1738,7 +1740,7 @@ new string[]{"Muet","","https://bob64.vrsignlanguage.net/ShaderMotion/LSF/Muet.m
 
 new string[]{"Ne Peut Pas Lire","","https://bob64.vrsignlanguage.net/ShaderMotion/LSF/NePeutPasLire.mp4","Hppedeaf","","","3","",""},
 },//end of lesson
-},//end of lang 
+},//end of lang
 };//end of array
 
 
@@ -1821,7 +1823,7 @@ new string[] {"LSF","French Sign Language","Y"},
     TextMeshProUGUI speechbubbletext;
     TextMeshProUGUI signcredittext;
     TextMeshProUGUI descriptiontext;
-    
+
     // Main Menu Objects/Variables
     TextMeshProUGUI menuheadertext;
     TextMeshProUGUI menusubheadertext;
@@ -1943,13 +1945,13 @@ new string[] {"LSF","French Sign Language","Y"},
     //Text debugtextbox;
 
     /***************************************************************************************************************************
-	Assigns variables for use. Initializes menu by calling DisplayLocalLanguageSelectMenu(); 
+	Assigns variables for use. Initializes menu by calling DisplayLocalLanguageSelectMenu();
 	***************************************************************************************************************************/
     void Start()
     {
 
             // Initialize Displays
-            
+
         _InitializeDarkMode();
         _InitializePreferenceMenu();
             _InitializeTextColors(false);
@@ -1987,7 +1989,7 @@ new string[] {"LSF","French Sign Language","Y"},
         _UpdateAllDisplays();
 
 
-            
+
     }//end start
 
         /***************************************************************************************************************************
@@ -2001,7 +2003,7 @@ new string[] {"LSF","French Sign Language","Y"},
 
 
             /***************************************************************************************************************************
-            Initialize Variables related to Text coloring. Also handles colorblind text. 
+            Initialize Variables related to Text coloring. Also handles colorblind text.
             ***************************************************************************************************************************/
             private void _InitializeTextColors(bool mode)
         {
@@ -2031,30 +2033,30 @@ new string[] {"LSF","French Sign Language","Y"},
             _UpdateTextHelper();
         }
 /***************************************************************************************************************************
-Update the color on legend to match.    
+Update the color on legend to match.
 ***************************************************************************************************************************/
         private void _UpdateTextHelper()
         {
             //Debug.Log(FloatNormalizedToHex(1f));
             //Debug.Log(DecToHex(255));
-            GameObject.Find("/Legend/Legend Canvas/Color Text").GetComponent<TextMeshProUGUI>().text = 
+            GameObject.Find("/Legend/Legend Canvas/Color Text").GetComponent<TextMeshProUGUI>().text =
                 "<color=#"+ GetStringFromColor(failed) + ">Red<color=#" + GetStringFromColor(standardtextcolor) + "> = Video Failed Verification\n" +
                 "<color=#" + GetStringFromColor(pending) + ">Yellow<color=#" + GetStringFromColor(standardtextcolor) + "> = Video Pending Verification\n" +
                 "<color=#" + GetStringFromColor(verified) + ">Green <color=#" + GetStringFromColor(standardtextcolor) + "> = Video Passed Verification";
-            /*    
+            /*
             Debug.Log(GetStringFromColor(standardtextcolor));
             Debug.Log(GetStringFromColor(verified));
             Debug.Log(GetStringFromColor(pending));
             Debug.Log(GetStringFromColor(failed));*/
         }
         /***************************************************************************************************************************
-helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.  
+helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 ***************************************************************************************************************************/
         private string GetStringFromColor(Color color)
         {
             FloatNormalizedToHex(color.r);
             string red = FloatNormalizedToHex(color.r);
-            
+
             string green = FloatNormalizedToHex(color.g);
             string blue = FloatNormalizedToHex(color.b);
             /*Debug.Log("red:"+ color.r+" normalized " + red);
@@ -2243,7 +2245,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             {
                 Debug.Log("Entered _UpdateSigningAvatarState");
             }
-        
+
         bool isActive = !(currentmode == MODE_QUIZ);
         nextButton.SetActive(isActive);
         prevButton.SetActive(isActive);
@@ -2261,7 +2263,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             {
                 Debug.Log("Entered _UpdateMenuVariables with direction:" + direction);
             }
-            
+
         //_DebugMenuVariables();
         int currentmenu = _GetCurrentMenu();
         switch (direction)
@@ -2427,7 +2429,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 
 
     /***************************************************************************************************************************
-	Change Menu to display Language Selection. 
+	Change Menu to display Language Selection.
 	***************************************************************************************************************************/
     private void _DisplayLanguageSelectMenu()
     {
@@ -2660,8 +2662,8 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
         if (isColored)
         {
             switch (colorcode)
-            { 
-                
+            {
+
                 case "1":
                     buttontext[index].color = failed;
                     break;
@@ -2718,10 +2720,10 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             // Update MoCap Avatar Visuals (Nana)
             currentsigntext.text = (currentlesson + 1) + "-" + (currentword + 1) + ") " + AllLessons[currentlang][currentlesson][currentword][arrayword] + variant;
             speechbubbletext.text = AllLessons[currentlang][currentlesson][currentword][arrayword];
-            
+
             signcredittext.text = "The motion data for this sign was signed by: " + AllLessons[currentlang][currentlesson][currentword][arraycredit];
             descriptiontext.text = AllLessons[currentlang][currentlesson][currentword][arraysigndescription];
-                if ((AllLessons[currentlang][currentlesson][currentword].Length-1) >= arraynumofavatars)//don't break if i forgot to add the numofavatars to the array for other languages 
+                if ((AllLessons[currentlang][currentlesson][currentword].Length-1) >= arraynumofavatars)//don't break if i forgot to add the numofavatars to the array for other languages
                 {
                     //Debug.Log("length of array:"+ AllLessons[currentlang][currentlesson][currentword].Length);
                     switch (AllLessons[currentlang][currentlesson][currentword][arraynumofavatars])
@@ -3006,69 +3008,73 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             quizd.SetActive(true);
             quizbig.SetActive(false);
             quizreset.SetActive(true);
-            quizanswer = UnityEngine.Random.Range(0, 4);//pick one of the 4 boxes to have the answer 0-3
-            int quizwrong1 = UnityEngine.Random.Range(0, quizwordmapping.Length);
-            int quizwrong2 = UnityEngine.Random.Range(0, quizwordmapping.Length);
-            int quizwrong3 = UnityEngine.Random.Range(0, quizwordmapping.Length);
-            //prevent the same answer on multiple boxes.
-            while (
-                quizwrong1 == quizcounter | //don't be the same as the answer
-                AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayvariant] != ""| //todo, add "base word" for script to check against to avoid pulling variants.
-                AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword].Contains("/") |
-                AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword] //prevent the same answer on multiple boxes.
-                )
-            {
-                quizwrong1 = UnityEngine.Random.Range(0, quizwordmapping.Length);
+
+            // First collect quiz objects
+            GameObject[] quizObjects = new GameObject[4];
+            quizObjects[0] = quiza;
+            quizObjects[1] = quizb;
+            quizObjects[2] = quizc;
+            quizObjects[3] = quizd;
+            // Pick one of the answers to be correct
+            quizanswer = UnityEngine.Random.Range(0, 4);
+            // Swap the first quiz object with the 'correct' one
+            GameObject temp = quizObjects[quizanswer];
+            quizObjects[quizanswer] = quizObjects[0];
+            quizObjects[0] = temp;
+            // quizObjects[0] is thus randomly one of the 4 quiz objects,
+            // and so we can have quizObjects[0] represent the 'correct' answer
+
+            // We now have to select 3 'wrong' answers
+            // For this we'll do a reservoir sample, as it's constant time(-ish, when considering predicate) and sort-of easy to implement
+            // First fill our reservoir with the default candidates
+            int[] reservoir = new int[3];
+            reservoir[0] = quizcounter <= 0 ? 1 : 0;
+            reservoir[1] = quizcounter <= 1 ? 2 : 1;
+            reservoir[2] = quizcounter <= 2 ? 3 : 2;
+
+            // Then perform candidate swaps
+            float geo_W = Mathf.Exp(Mathf.Log(UnityEngine.Random.Range(0.0f, 1.0f)) / 3.0f);
+            int reservoir_i = quizcounter <= 3 ? 4 : 3;
+            int tests = 0;
+
+            while (reservoir_i < quizwordmapping.Length) {
+                int reservoir_j = reservoir_i + Mathf.FloorToInt(Mathf.Log(UnityEngine.Random.Range(0.0f, 1.0f))/Mathf.Log(1.0f - geo_W)) + 1;
+                tests++;
+
+                //Debug.Log("## Reservoir i = " + reservoir_i.ToString() + "; Reservoir j = " + reservoir_j.ToString() + "; Reservoir Content = " + reservoir[0].ToString() + "," + reservoir[1].ToString() + "," + reservoir[2].ToString() + "; Counter = " + quizcounter.ToString() + "; Tests = " + tests.ToString());
+
+                if (reservoir_j < quizwordmapping.Length) {
+                    if (
+                        // This selection is no good if:
+                        // - It's our current correct answer
+                        reservoir_j == quizcounter ||
+                        // - It's a variant
+                        AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayvariant] != "" ||
+                        // - It has a slash in it
+                        AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword].Contains("/") ||
+                        // - It has the same text content as the correct answer
+                        AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword]
+                    ) {
+                        reservoir_i++;
+                    } else {
+                        // Replace a random item in the reservoir with this item
+                        reservoir_i = reservoir_j;
+                        reservoir[UnityEngine.Random.Range(0, 3)] = reservoir_i;
+                        geo_W *= Mathf.Exp(Mathf.Log(UnityEngine.Random.Range(0.0f, 1.0f)) / 3.0f);
+                    }
+                } else {
+                    reservoir_i = reservoir_j;
+                }
             }
-            while (quizwrong2 == quizcounter | //don't be the same as the answer
-                quizwrong2 == quizwrong1 | //don't be the same as box 1
-                AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayvariant] != "" |
-                AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword].Contains("/") |
-                AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword] //prevent the same answer on multiple boxes.
-                )
-            {
-                quizwrong2 = UnityEngine.Random.Range(0, quizwordmapping.Length);
-            }
-            while (quizwrong3 == quizcounter | //don't be the same as the answer
-                quizwrong3 == quizwrong1 | //don't be the same as box 1
-                quizwrong3 == quizwrong2 | //don't be the same as box 2
-                AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayvariant] != "" |
-                AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword].Contains("/") |
-                AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword]  //prevent the same answer on multiple boxes.
-                )
-            {
-                quizwrong3 = UnityEngine.Random.Range(0, quizwordmapping.Length);
-            }
-            switch (quizanswer)//quizanswer is the box the answer is in. The answer is stored in quizcounter.
-            {
-                case 0:
-                    quiza.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword];
-                    quizb.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword];
-                    quizc.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword];
-                    quizd.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][arrayword];
-                    break;
-                case 1:
-                    quizb.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword];
-                    quiza.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword];
-                    quizc.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword];
-                    quizd.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][arrayword];
-                    break;
-                case 2:
-                    quizc.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword];
-                    quiza.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword];
-                    quizb.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword];
-                    quizd.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][arrayword];
-                    break;
-                case 3:
-                    quizd.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword];
-                    quiza.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong1][0]][quizwordmapping[quizwrong1][1]][quizwordmapping[quizwrong1][2]][arrayword];
-                    quizb.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong2][0]][quizwordmapping[quizwrong2][1]][quizwordmapping[quizwrong2][2]][arrayword];
-                    quizc.transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizwrong3][0]][quizwordmapping[quizwrong3][1]][quizwordmapping[quizwrong3][2]][arrayword];
-                    break;
-                default:
-                    //Debug.Log("How is quizanswer outside of the expected random range?");
-                    break;
-            }
+
+            Debug.Log("Reservoir randomized in " + tests.ToString() + " iterations");
+
+            // quizObjects[0] is a randomly selected 'correct' answer button, and the rest are wrong
+            quizObjects[0].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword];
+            quizObjects[1].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[reservoir[0]][0]][quizwordmapping[reservoir[0]][1]][quizwordmapping[reservoir[0]][2]][arrayword];
+            quizObjects[2].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[reservoir[1]][0]][quizwordmapping[reservoir[1]][1]][quizwordmapping[reservoir[1]][2]][arrayword];
+            quizObjects[3].transform.Find("Text (TMP)").GetComponent<TextMeshProUGUI>().text = AllLessons[quizwordmapping[reservoir[2]][0]][quizwordmapping[reservoir[2]][1]][quizwordmapping[reservoir[2]][2]][arrayword];
+
             //nana.Play(AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][1]);
             //add something to hide the sidebar of videos here?
 
@@ -3077,9 +3083,13 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
                     if (langurls.Length > 0)
                     { //don't crash the script if i forget to build langurls lol...
                             videoplayer._LoadURL(langurls[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]]);
+                    } else {
+                        Debug.Log("[Quiz] langurls empty, video not loaded");
                     }
+                } else {
+                    Debug.Log("[Quiz] URL was blank, video not loaded");
                 }
-            
+
 
         }
 
@@ -3140,20 +3150,16 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
         /*
         Text debugtextbox = GameObject.Find("/Debug/Panel/Text").GetComponent<Text>();
         debugtextbox.text="Current Variable contents: " +
-			"\nOwner: " + Networking.IsOwner(gameObject) + 
+			"\nOwner: " + Networking.IsOwner(gameObject) +
 			//"\ncurrentmode: " + currentmode + " globalcurrentmode: " + globalcurrentmode +
-			"\ncurrentlang: " + currentlang + " globalcurrentlang: " + globalcurrentlang + 
-			"\ncurrentlesson: " + currentlesson + " globalcurrentlesson: " + globalcurrentlesson + 
+			"\ncurrentlang: " + currentlang + " globalcurrentlang: " + globalcurrentlang +
+			"\ncurrentlesson: " + currentlesson + " globalcurrentlesson: " + globalcurrentlesson +
 			"\ncurrentword: " + currentword + " globalcurrentword: " + globalcurrentword;
             */
-		
-    
-				
+
+
+
     }
-
-
-
-
 
 
     /***************************************************************************************************************************
@@ -3250,6 +3256,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
     /***************************************************************************************************************************
 	Register Button Handlers
 	***************************************************************************************************************************/
+    #region Button Handlers
     public void NextB()
     {
         _PreviousNextWordButtonPushed(true);
@@ -3558,6 +3565,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
     {
         _buttonpushed(69);
     }
+    #endregion
 
 
     /***************************************************************************************************************************
@@ -3565,6 +3573,52 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 	***************************************************************************************************************************/
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
+
+    internal void __UpdateURLs() {
+        // Generate VRCUrls
+        langurls = AllLessons.Select(
+            language => language.Select(
+                lesson => lesson.Select(
+                    word => new VRCUrl(word[arrayurl])
+                ).ToArray()
+            ).ToArray()
+        ).ToArray();
+        Debug.Log("URLs populated");
+
+        // Format dictionary text
+        string dictionaryText = string.Join("\n",
+            AllLessons[0].SelectMany(
+                (lesson, lesson_index) => lesson.Select(
+                    // Tuple of word & its location on the board
+                    (word, word_index) => (word[arrayword], $"L{lesson_index + 1}-{word_index + 1}")
+                )
+            // Sort by word and then combine
+            ).OrderBy(pair => pair.Item1).Select(pair => $"{pair.Item1} {pair.Item2}")
+        );
+
+        // Format errata text
+        string errataText = string.Join("",
+            AllLessons[0].Select(
+                (lesson, lesson_index) =>
+                    // Lesson header
+                    $"<b>Lesson {lesson_index + 1} - {lessonnames[0][lesson_index]}</b>\n"
+                    // & comments when they exist
+                    + string.Join("", lesson.Select(
+                        // Null if no array validation comment
+                        (word, word_index) => word[arrayvalidationcomment] != "" ? $"\nL{lesson_index + 1}-{word_index + 1} [{word[arrayword]}]: {word[arrayvalidationcomment]}\n" : null
+                    // Filter to only existing comments
+                    ).Where(word => word != null))
+            )
+        );
+
+        FindInActiveObjectByName("DictionaryText").GetOrAddComponent<TextMeshProUGUI>().text = dictionaryText;
+        Debug.Log("Index Populated");
+
+        FindInActiveObjectByName("ErrataText").GetOrAddComponent<TextMeshProUGUI>().text = errataText;
+        Debug.Log("Errata populated");
+        //todo, if parameters are supported by buttons. Instantiate buttons instead of text, to allow jumping direct to a specific word.
+    }
+
     [CustomEditor(typeof(MenuControl))]
     public class CustomInspectorEditor : Editor
     {
@@ -3574,76 +3628,13 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target)) return;
             MenuControl inspectorBehaviour = (MenuControl)target;
 
-            if (GUILayout.Button("Populate VRCUrls"))
+            if (GUILayout.Button("Force populate VRCUrls"))
             {
+                inspectorBehaviour.__UpdateURLs();
+            }
 
-                inspectorBehaviour.langurls = new VRCUrl[inspectorBehaviour.AllLessons.Length][][];
-                for (int x = 0; x < inspectorBehaviour.AllLessons.Length; x++)
-                {
-                    //Debug.Log("AllLessons[x].Length: "+ inspectorBehaviour.AllLessons[x].Length);
-                    VRCUrl[][] lessonurls = new VRCUrl[inspectorBehaviour.AllLessons[x].Length][];
-
-                    for (int y = 0; y < inspectorBehaviour.AllLessons[x].Length; y++)
-                    {
-
-                        //Debug.Log("AllLessons[x][y].Length: "+ inspectorBehaviour.AllLessons[x][y].Length);
-                        VRCUrl[] wordurls = new VRCUrl[inspectorBehaviour.AllLessons[x][y].Length];
-                        for (int z = 0; z < inspectorBehaviour.AllLessons[x][y].Length; z++)
-                        {
-                            wordurls[z] = new VRCUrl(inspectorBehaviour.AllLessons[x][y][z][arrayurl]);
-                        }
-                        lessonurls[y] = wordurls;
-                    }
-                    inspectorBehaviour.langurls[x] = lessonurls;
-                }
-                Debug.Log("URLS populated");
-                string erratatext = "";
-                // Generate index of all words, sorted.
-                List<List<String>> listofallwords = new List<List<string>>();
-
-                //Debug.Log("AllLessons.Length: " + inspectorBehaviour.AllLessons[0].Length);
-                for (int x = 0; x < inspectorBehaviour.AllLessons[0].Length; x++)
-                {
-                    erratatext = erratatext + "<b>Lesson " + (x + 1) + " - " + inspectorBehaviour.lessonnames[0][x] + "</b>\n";
-                    //Debug.Log("x: "+x); 
-
-                    //Debug.Log("whatlessonnum:" + x);
-                    if ((x + 1) != 28)
-                    {
-                        //Debug.Log("awhatlessonnum:" + x);
-                        for (int y = 0; y < inspectorBehaviour.AllLessons[0][x].Length; y++)
-                        {
-                            List<String> worddata = new List<String>();
-                            worddata.Add(inspectorBehaviour.AllLessons[0][x][y][arrayword]);
-                            //Debug.Log(inspectorBehaviour.AllLessons[0][x][y][0]  + " L" + (x+1) + "-" + (y+1));
-                            worddata.Add("L" + (x + 1) + "-" + (y + 1));
-                            listofallwords.Add(worddata);
-
-                            //add errata data
-                            if (inspectorBehaviour.AllLessons[0][x][y][8] != "")
-                            {
-                                erratatext = erratatext + "\nL" + (x + 1) + "-" + (y + 1) + " [" + inspectorBehaviour.AllLessons[0][x][y][arrayword] + "]: " + inspectorBehaviour.AllLessons[0][x][y][arrayvalidationcomment] +"\n";
-                            }
-
-                        }
-                    }
-
-                }
-
-                listofallwords = listofallwords.OrderBy(l => l[0]).ToList();
-                string dictionarytext = "";
-                foreach (var word in listofallwords)
-                {
-                    dictionarytext = dictionarytext + word[0] + " " + word[1] + "\n";
-                    
-                }
-                FindInActiveObjectByName("DictionaryText").GetOrAddComponent<TextMeshProUGUI>().text = dictionarytext;
-                Debug.Log("Index Populated");
-
-                FindInActiveObjectByName("ErrataText").GetOrAddComponent<TextMeshProUGUI>().text = erratatext;
-                Debug.Log("Errata populated");
-                //todo, if parameters are supported by buttons. Instantiate buttons instead of text, to allow jumping direct to a specific word.
-
+            if (GUILayout.Button("Clear langurls")) {
+                inspectorBehaviour.langurls = new VRCUrl[][][] {};
             }
         }
     }
@@ -3666,4 +3657,59 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 #endif
 
 }
+
+#if !COMPILER_UDONSHARP && UNITY_EDITOR
+[InitializeOnLoad]
+internal class MenuControlHooks {
+    static MenuControlHooks()
+    {
+        EditorApplication.playModeStateChanged += OnChangePlayMode;
+    }
+
+    // Hook for Play mode
+    static void OnChangePlayMode(PlayModeStateChange state) {
+        if (state == PlayModeStateChange.ExitingEditMode) {
+            Debug.Log("Trying to update VRCUrls (Play mode)...");
+
+            // Get the scene object
+            var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+
+            foreach (var root in roots) {
+                foreach (var menuControl in root.GetUdonSharpComponentsInChildren<MenuControl>()) {
+                    Debug.Log("Updating VRCUrls on MenuControl", menuControl);
+                    menuControl.__UpdateURLs();
+                    menuControl.ApplyProxyModifications();
+                }
+            }
+        }
+    }
+
+    // Hook for Build & Test / Build & Upload
+    public class UpdateMenuControlOnWorldBuild : IVRCSDKBuildRequestedCallback {
+        public int callbackOrder => 100;
+
+        bool IVRCSDKBuildRequestedCallback.OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType) {
+            if (requestedBuildType == VRCSDKRequestedBuildType.Scene) {
+                Debug.Log("Trying to update VRCUrls (VRCSDK Build)...");
+
+                // Get the scene object
+                var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
+
+                foreach (var root in roots) {
+                    foreach (var menuControl in root.GetUdonSharpComponentsInChildren<MenuControl>()) {
+                        Debug.Log("Updating VRCUrls on MenuControl", menuControl);
+                        menuControl.__UpdateURLs();
+                        menuControl.ApplyProxyModifications();
+                    }
+                }
+
+            }
+
+            return true;
+        }
+    }
 }
+#endif
+
+}
+#endif
