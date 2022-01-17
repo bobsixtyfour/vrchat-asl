@@ -3566,6 +3566,52 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 	***************************************************************************************************************************/
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
+
+    internal void _UpdateURLs() {
+        // Generate VRCUrls
+        langurls = AllLessons.Select(
+            language => language.Select(
+                lesson => lesson.Select(
+                    word => new VRCUrl(word[arrayurl])
+                ).ToArray()
+            ).ToArray()
+        ).ToArray();
+        Debug.Log("URLs populated");
+
+        // Format dictionary text
+        string dictionaryText = string.Join("\n",
+            AllLessons[0].SelectMany(
+                (lesson, lesson_index) => lesson.Select(
+                    // Tuple of word & its location on the board
+                    (word, word_index) => (word[arrayword], $"L{lesson_index + 1}-{word_index + 1}")
+                )
+            // Sort by word and then combine
+            ).OrderBy(pair => pair.Item1).Select(pair => $"{pair.Item1} {pair.Item2}")
+        );
+
+        // Format errata text
+        string errataText = string.Join("",
+            AllLessons[0].Select(
+                (lesson, lesson_index) =>
+                    // Lesson header
+                    $"<b>Lesson {lesson_index + 1} - {lessonnames[0][lesson_index]}</b>\n"
+                    // & comments when they exist
+                    + string.Join("", lesson.Select(
+                        // Null if no array validation comment
+                        (word, word_index) => word[arrayvalidationcomment] != "" ? $"\nL{lesson_index + 1}-{word_index + 1} [{word[arrayword]}]: {word[arrayvalidationcomment]}\n" : null
+                    // Filter to only existing comments
+                    ).Where(word => word != null))
+            )
+        );
+
+        FindInActiveObjectByName("DictionaryText").GetOrAddComponent<TextMeshProUGUI>().text = dictionaryText;
+        Debug.Log("Index Populated");
+
+        FindInActiveObjectByName("ErrataText").GetOrAddComponent<TextMeshProUGUI>().text = errataText;
+        Debug.Log("Errata populated");
+        //todo, if parameters are supported by buttons. Instantiate buttons instead of text, to allow jumping direct to a specific word.
+    }
+
     [CustomEditor(typeof(MenuControl))]
     public class CustomInspectorEditor : Editor
     {
@@ -3575,76 +3621,9 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             if (UdonSharpGUI.DrawDefaultUdonSharpBehaviourHeader(target)) return;
             MenuControl inspectorBehaviour = (MenuControl)target;
 
-            if (GUILayout.Button("Populate VRCUrls"))
+            if (GUILayout.Button("Force populate VRCUrls"))
             {
-
-                inspectorBehaviour.langurls = new VRCUrl[inspectorBehaviour.AllLessons.Length][][];
-                for (int x = 0; x < inspectorBehaviour.AllLessons.Length; x++)
-                {
-                    //Debug.Log("AllLessons[x].Length: "+ inspectorBehaviour.AllLessons[x].Length);
-                    VRCUrl[][] lessonurls = new VRCUrl[inspectorBehaviour.AllLessons[x].Length][];
-
-                    for (int y = 0; y < inspectorBehaviour.AllLessons[x].Length; y++)
-                    {
-
-                        //Debug.Log("AllLessons[x][y].Length: "+ inspectorBehaviour.AllLessons[x][y].Length);
-                        VRCUrl[] wordurls = new VRCUrl[inspectorBehaviour.AllLessons[x][y].Length];
-                        for (int z = 0; z < inspectorBehaviour.AllLessons[x][y].Length; z++)
-                        {
-                            wordurls[z] = new VRCUrl(inspectorBehaviour.AllLessons[x][y][z][arrayurl]);
-                        }
-                        lessonurls[y] = wordurls;
-                    }
-                    inspectorBehaviour.langurls[x] = lessonurls;
-                }
-                Debug.Log("URLS populated");
-                string erratatext = "";
-                // Generate index of all words, sorted.
-                List<List<String>> listofallwords = new List<List<string>>();
-
-                //Debug.Log("AllLessons.Length: " + inspectorBehaviour.AllLessons[0].Length);
-                for (int x = 0; x < inspectorBehaviour.AllLessons[0].Length; x++)
-                {
-                    erratatext = erratatext + "<b>Lesson " + (x + 1) + " - " + inspectorBehaviour.lessonnames[0][x] + "</b>\n";
-                    //Debug.Log("x: "+x);
-
-                    //Debug.Log("whatlessonnum:" + x);
-                    if ((x + 1) != 28)
-                    {
-                        //Debug.Log("awhatlessonnum:" + x);
-                        for (int y = 0; y < inspectorBehaviour.AllLessons[0][x].Length; y++)
-                        {
-                            List<String> worddata = new List<String>();
-                            worddata.Add(inspectorBehaviour.AllLessons[0][x][y][arrayword]);
-                            //Debug.Log(inspectorBehaviour.AllLessons[0][x][y][0]  + " L" + (x+1) + "-" + (y+1));
-                            worddata.Add("L" + (x + 1) + "-" + (y + 1));
-                            listofallwords.Add(worddata);
-
-                            //add errata data
-                            if (inspectorBehaviour.AllLessons[0][x][y][8] != "")
-                            {
-                                erratatext = erratatext + "\nL" + (x + 1) + "-" + (y + 1) + " [" + inspectorBehaviour.AllLessons[0][x][y][arrayword] + "]: " + inspectorBehaviour.AllLessons[0][x][y][arrayvalidationcomment] +"\n";
-                            }
-
-                        }
-                    }
-
-                }
-
-                listofallwords = listofallwords.OrderBy(l => l[0]).ToList();
-                string dictionarytext = "";
-                foreach (var word in listofallwords)
-                {
-                    dictionarytext = dictionarytext + word[0] + " " + word[1] + "\n";
-
-                }
-                FindInActiveObjectByName("DictionaryText").GetOrAddComponent<TextMeshProUGUI>().text = dictionarytext;
-                Debug.Log("Index Populated");
-
-                FindInActiveObjectByName("ErrataText").GetOrAddComponent<TextMeshProUGUI>().text = erratatext;
-                Debug.Log("Errata populated");
-                //todo, if parameters are supported by buttons. Instantiate buttons instead of text, to allow jumping direct to a specific word.
-
+                inspectorBehaviour._UpdateURLs();
             }
         }
     }
