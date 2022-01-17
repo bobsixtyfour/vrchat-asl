@@ -3079,7 +3079,11 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
                     if (langurls.Length > 0)
                     { //don't crash the script if i forget to build langurls lol...
                             videoplayer._LoadURL(langurls[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]]);
+                    } else {
+                        Debug.Log("[Quiz] langurls empty, video not loaded");
                     }
+                } else {
+                    Debug.Log("[Quiz] URL was blank, video not loaded");
                 }
 
 
@@ -3152,10 +3156,6 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 
 
     }
-
-
-
-
 
 
     /***************************************************************************************************************************
@@ -3252,6 +3252,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
     /***************************************************************************************************************************
 	Register Button Handlers
 	***************************************************************************************************************************/
+    #region Button Handlers
     public void NextB()
     {
         _PreviousNextWordButtonPushed(true);
@@ -3560,6 +3561,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
     {
         _buttonpushed(69);
     }
+    #endregion
 
 
     /***************************************************************************************************************************
@@ -3626,6 +3628,10 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
             {
                 inspectorBehaviour.__UpdateURLs();
             }
+
+            if (GUILayout.Button("Clear langurls")) {
+                inspectorBehaviour.langurls = new VRCUrl[][][] {};
+            }
         }
     }
 
@@ -3665,9 +3671,10 @@ internal class MenuControlHooks {
             var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
 
             foreach (var root in roots) {
-                foreach (var menuControl in root.GetComponentsInChildren<MenuControl>()) {
+                foreach (var menuControl in root.GetUdonSharpComponentsInChildren<MenuControl>()) {
                     Debug.Log("Updating VRCUrls on MenuControl", menuControl);
                     menuControl.__UpdateURLs();
+                    menuControl.ApplyProxyModifications();
                 }
             }
         }
@@ -3685,9 +3692,10 @@ internal class MenuControlHooks {
                 var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
 
                 foreach (var root in roots) {
-                    foreach (var menuControl in root.GetComponentsInChildren<MenuControl>()) {
+                    foreach (var menuControl in root.GetUdonSharpComponentsInChildren<MenuControl>()) {
                         Debug.Log("Updating VRCUrls on MenuControl", menuControl);
                         menuControl.__UpdateURLs();
+                        menuControl.ApplyProxyModifications();
                     }
                 }
 
