@@ -1,4 +1,4 @@
-#if VRC_SDK_VRCSDK3 && UDON
+﻿#if VRC_SDK_VRCSDK3 && UDON
 //using VRC.SDK3.Components.Video;
 using System;
 using TMPro;
@@ -64,6 +64,7 @@ new string[]{"Example Beginner Conversation","","https://bob64.vrsignlanguage.ne
 new string[]{"How to Sign Example","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/HowtoSignExample.mp4","Tenri","I","","2","","","1"},
 new string[]{"Your Avatar Cute Thanks","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/YourAvatarCuteThanks.mp4","Tenri","I","","2","","","1"},
 new string[]{"BSL Test","","https://bob64.vrsignlanguage.net/ShaderMotion/2021-10-24%2021-05-52.mp4","Sheezy93","","","2","","",""},
+new string[]{"MorningTest.mp4","","https://bob64.vrsignlanguage.net/ShaderMotion/MorningTest.mp4","Catsgirl_nya","I","","2","","",""},
 new string[]{"2 avatar test","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/2avatartest.mp4","Tenri","","","2","","","2"},
 new string[]{"4 avatar test","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/4avatartest.mp4","Tenri","","","2","","","4"},
 },
@@ -175,7 +176,8 @@ new string[][]{//Daily Use
 new string[]{"Meaning","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Meaning.mp4","Tenri","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"(What Does That) Mean?","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/(WhatDoesThat)Mean.mp4","Tenri","B","Meaning with body language to change it into a question","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 
-new string[]{"Hello","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hello.mp4","Tenri","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Hello","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hello-v1.mp4","Tenri","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Hello","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hello-v2.mp4","Nemsi","B","","2","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"How (are) You","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/How(are)You.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"What's Up?","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/WhatsUp.mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Nice (to) Meet You","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Nice(to)MeetYou.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -210,12 +212,14 @@ new string[]{"I Love You","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/
 new string[]{"Love It","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/LoveIt-v1.mp4","Tenri","B","Also known as 'Kiss Fist'. Used when you love something. eg: Coffee, love it.","2","","","1"},
 new string[]{"Love It","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/LoveIt-v2.mp4","Tenri","B","Also known as 'Kiss Fist'. Used when you love something. eg: Coffee, love it.","2","","","1"},
 new string[]{"ILY (I Love You)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ILY(ILoveYou).mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Go Away","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/GoAway.mp4","Melwil","B","","2","","","1"},
-new string[]{"Go","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Go.mp4","Melwil","B","","2","","","1"},
+new string[]{"Go Away","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/GoAway-v1.mp4","Melwil","B","","2","","","1"},
+new string[]{"Go Away","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/GoAway-v2.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Go","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Go-v1.mp4","Melwil","B","","2","","","1"},
+new string[]{"Go","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Go-v2.mp4","Nemsi","B","","2","","","1"},
 new string[]{"Follow","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Follow.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Come","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Come.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Hearing (Person)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hearing(Person).mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-
+new string[]{"Blind","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Blind.mp4","DmTheMechanic","","","2","","","1"},
 new string[]{"Deaf","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Deaf.mp4","Melwil","B","Can be done in either order","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Hard of Hearing","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/HardofHearing.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 
@@ -241,7 +245,8 @@ new string[]{"In","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/In.mp4",
 
 new string[]{"Out","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Out.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 
-new string[]{"Outside (Outdoors)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Outside(Outdoors).mp4","Tenri","B","","2","","","1"},
+new string[]{"Outside (Outdoors)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Outside(Outdoors)-v1.mp4","Tenri","B","","2","","","1"},
+new string[]{"Outside (Outdoors)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Outside(Outdoors)-v2.mp4","Nemsi","B","","2","","","1"},
 new string[]{"Under","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Under.mp4","Melwil","B","","2","","",""},
 
 new string[]{"Behind","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Behind.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -250,7 +255,8 @@ new string[]{"Above","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Abov
 new string[]{"Below","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Below.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Left (Direction)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Left(Direction).mp4","Melwil","B","","2","","",""},
 new string[]{"Right (Direction)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Right(Direction).mp4","Melwil","B","","2","","",""},
-new string[]{"Here","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Here.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Here","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Here-v1.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Here","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Here-v2.mp4","Nemsi","B","","2","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Beside","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beside.mp4","DmTheMechanic","B","","2","","","1"},
 new string[]{"Back (To Return)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Back(ToReturn)-v1.mp4","Melwil","I","Lexical/Loan Sign (where it fingerspelling becomes its own sign)","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Back (To Return)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Back(ToReturn)-v2.mp4","ShadeAxas","G","Lexical/Loan Sign (where it fingerspelling becomes its own sign)","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -281,7 +287,7 @@ new string[]{"Have","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Have.m
 new string[]{"Get / Recieve","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/GetRecieve.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 
 new string[]{"Need","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Need.mp4","Melwil","I","","1","","","1"},
-
+new string[]{"Should","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Should.mp4","Nemsi","I","","2","","",""},
 new string[]{"Must","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Must-v1.mp4","Melwil","I","","2","","","1"},
 new string[]{"Must","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Must-v2.mp4","ShadeAxas","G","","2","","","1"},
 new string[]{"Not","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Not.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -296,7 +302,8 @@ new string[]{"Again / Repeat","","https://bob64.vrsignlanguage.net/ShaderMotion/
 new string[]{"All Right","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllRight.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Be Right Back (BRB)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/BeRightBack(BRB).mp4","Tenri","B","","2","","","1"},
 new string[]{"Internet","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Internet.mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Browsing (the) Internet","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Browsing(the)Internet.mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Browsing (the) Internet","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Browsing(the)Internet-v1.mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Browsing (the) Internet","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Browsing(the)Internet-v2.mp4","Nemsi","I","","2","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Denial","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Denial.mp4","Melwil","B","Denial as refuse to admit to something. Dening access is a different sign.","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Design","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Design.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Don't Know","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/DontKnow.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -319,7 +326,8 @@ new string[]{"Language","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/La
 new string[]{"Learn","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Learn.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Live","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Live-v1.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Live","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Live-v2.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Make (Create)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Make(Create).mp4","Tenri","B","","2","","","1"},
+new string[]{"Make (Create)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Make(Create)-v1.mp4","Tenri","B","","2","","","1"},
+new string[]{"Make (Create)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Make(Create)-v2.mp4","Nemsi","B","","2","","","1"},
 new string[]{"Movie","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Movie.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Name","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Name-v1.mp4","Tenri","B","","2","","","1"},
 new string[]{"Name","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Name-v2.mp4","Nemsi","B","","2","","","1"},
@@ -327,7 +335,8 @@ new string[]{"New","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/New.mp4
 new string[]{"Old","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Old.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"People","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/People-v1.mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"People","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/People-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Person","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Person.mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Person","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Person-v1.mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Person","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Person-v2.mp4","Nemsi","I","","2","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Play","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Play-v1.mp4","Melwil","I","This is the verb 'Play', not the noun.","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Play","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Play-v2.mp4","ShadeAxas","G","This is the verb 'Play', not the noun.","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Read","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Read.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -346,7 +355,8 @@ new string[]{"Understand","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/
 new string[]{"Very","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Very.mp4","Melwil","B","","3","CODAPop, DmTheMechanic","","1"},
 new string[]{"Word","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Word.mp4","DmTheMechanic","B","","2","","","1"},
 new string[]{"Work","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Work.mp4","Melwil","B","","3","CODAPop, DmTheMechanic","","1"},
-new string[]{"Write","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Write.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Write","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Write-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Write","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Write-v2.mp4","ShadeAxas","B","","2","","","1"},
 },
 new string[][]{//People
 new string[]{"Adult","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Adult-v1.mp4","Nemsi","B","","2","","","1"},
@@ -368,6 +378,8 @@ new string[]{"Dead","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Dead.m
 new string[]{"Divorce","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Divorce.mp4","Nemsi","B","","2","","","1"},
 new string[]{"Enemy","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Enemy-v1.mp4","Melwil","B","","2","","","1"},
 new string[]{"Enemy","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Enemy-v2.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Enemy","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Enemy-v3.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Enemy","4","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Enemy-v4.mp4","Nemsi","B","","2","","","1"},
 new string[]{"Everyone","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Everyone.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Family","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Family-v1.mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Family","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Family-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -393,15 +405,21 @@ new string[]{"Young","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Young
 },
 new string[][]{//Feelings / Reactions
 new string[]{"Alive","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Alive.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Angry","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Angry.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Attention","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Attention.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Angry","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Angry-v1.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, ShadeAxas","Rename to mad?","1"},
+new string[]{"Angry","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Angry-v2.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Attention","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Attention-v1.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Attention","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Attention-v2.mp4","Nemsi","B","","2","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 
 new string[]{"Bored","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bored.mp4","DmTheMechanic","B","So bored, your picking your nose","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Care / Precious","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/CarePrecious.mp4","DmTheMechanic","B","This sign has two different meanings","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Careful","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Careful.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Confused","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Confused-v1.mp4","DmTheMechanic","I","","1","","","1"},
-new string[]{"Confused","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Confused-v2.mp4","ShadeAxas","G","","1","","","1"},
-new string[]{"Cry","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cry.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Careful","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Careful-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Careful","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Careful-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Confused","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Confused-v1.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Confused","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Confused-v2.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Cry","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cry-v1.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Cry","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cry-v2.mp4","Nemsi","B","","2","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Cry","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cry-v3.mp4","Nemsi","B","","2","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+/*
 new string[]{"Curious","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Curious-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Curious","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Curious-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Cute","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cute.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -428,7 +446,7 @@ new string[]{"Hate","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hate-
 new string[]{"Hate","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hate-v3.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Hungry","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hungry.mp4","DmTheMechanic","B","Same sign for 'Wish'","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Wish","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Wish.mp4","ShadeAxas","B","Same sign for 'Hungry'","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Jealous","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Jealous.mp4","DarkEternal","I","","1","","ray fails this one","1"},
+new string[]{"Jealous","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Jealous.mp4","DmTheMechanic","I","","2","","","1"},
 new string[]{"Laughing","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Laughing.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Like","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Like-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Like","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Like-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -437,7 +455,8 @@ new string[]{"Lonely","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lone
 new string[]{"Mean (Unkind)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Mean(Unkind)-v1.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Mean (Unkind)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Mean(Unkind)-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Nevermind","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Nevermind-v1.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-
+new string[]{"Nevermind","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Nevermind-v2.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Nevermind","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Nevermind-v3.mp4","Nemsi","B","","2","","","1"},
 new string[]{"Nice","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Nice.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Pity","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pity-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Pity","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pity-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -446,35 +465,42 @@ new string[]{"Sad","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sad.mp4
 new string[]{"Scared","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Scared-v1.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Scared","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Scared-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Shame","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Shame.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Shy","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Shy.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Shy","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Shy-v1.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Shy","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Shy-v2.mp4","Nemsi","B","","2","","","1"},
 new string[]{"Sleep","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sleep.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Sleepy","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sleepy.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-new string[]{"Smart","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Smart-v1.mp4","Tenri","I","","1","","Needs to be off the forehead","1"},
-new string[]{"Smart","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Smart-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Smart","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Smart-v1.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Smart","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Smart-v2.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Smart","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Smart-v3.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Stressed","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Stressed.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Struggle","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Struggle.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 
 new string[]{"Surprised","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Surprised-v1.mp4","DmTheMechanic","B","Same sign for 'awake/woke'","2","","","1"},
 new string[]{"Surprised","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Surprised-v2.mp4","ShadeAxas","B","Same sign for 'awake/woke'","2","","","1"},
-new string[]{"Tired","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tired.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Tired","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tired-v1.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Tired","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tired-v2.mp4","Nemsi","B","","2","","","1"},
+    */
 },
 new string[][]{ //Value
 new string[]{"Alphabetical Order","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AlphabeticalOrder-v1.mp4","DmTheMechanic","I","","2","","","1"},
 new string[]{"Alphabetical Order","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AlphabeticalOrder-v2.mp4","DmTheMechanic","I","","2","","","1"},
 
-new string[]{"All","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/All-v1.mp4","Melwil","B","","1","CODAPop, DmTheMechanic, ShadeAxas","Redo, hand starts at weird spot, needs to be more inline","1"},
-new string[]{"All","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/All-v2.mp4","Melwil","B","","1","CODAPop, DmTheMechanic, ShadeAxas","Redo, A handshape gets lost","1"},
+new string[]{"All","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/All-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"All","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/All-v2.mp4","Nemsi","B","","2","","","1"},
+new string[]{"All","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/All-v3.mp4","Nemsi","B","","2","","","1"},
+new string[]{"All","4","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/All-v4.mp4","Nemsi","B","","2","","","1"},
 new string[]{"Always","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Always.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 
 new string[]{"Both","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Both-v1.mp4","DmTheMechanic","B","","2","","","1"},
 new string[]{"Both","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Both-v2.mp4","DmTheMechanic","B","","2","","","1"},
 
-new string[]{"Early","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Early.mp4","Melwil","I","","1","","Moves wrong way, should be more 'across' the hand","1"},
-new string[]{"Empty","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Empty-v1.mp4","Melwil","I","","1","","Non dominant hand oriented wrong","1"},
+new string[]{"Early","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Early.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Empty","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Empty-v1.mp4","Nemsi","I","","2","","","1"},
 new string[]{"Empty","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Empty-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Ever","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Ever.mp4","Melwil","B","This means: so far, since, up till now.","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 
-new string[]{"Everything","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Everything.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Everything","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Everything-v1.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Everything","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Everything-v2.mp4","Nemsi","B","","2","","","1"},
 new string[]{"Everytime","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Everytime.mp4","Melwil","B","","1","","Every looks strange, needs to go down instead of rotating","1"},
 
 
@@ -483,39 +509,43 @@ new string[]{"Free","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Free-
 new string[]{"Enough","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Enough.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 
 new string[]{"Half","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Half.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
-
-new string[]{"Hard","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hard-v2.mp4","DarkEternal","I","","1","","","1"},
-new string[]{"Heavy","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Heavy.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
+new string[]{"Hard","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hard.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Heavy","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Heavy-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Heavy","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Heavy-v2.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 
 new string[]{"Large / Big","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/LargeBig.mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
 new string[]{"Last","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Last-v1.mp4","DmTheMechanic","I","","2","","","1"},
 new string[]{"Last","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Last-v2.mp4","DmTheMechanic","I","","2","","","1"},
 new string[]{"Last","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Last-v3.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
 
-new string[]{"Light (Weight)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Light(Weight)-v1.mp4","Melwil","I","Needs to look less like whats up.","1","","","1"},
+new string[]{"Light (Weight)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Light(Weight)-v1.mp4","Nemsi","I","","2","","","1"},
 new string[]{"Light (Weight)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Light(Weight)-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
 new string[]{"Satisfied","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Satisfied.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
 
 new string[]{"Long","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Long.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
 
 new string[]{"More","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/More.mp4","DarkEternal","I","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
-new string[]{"A Lot","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ALot.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
+new string[]{"A Lot","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ALot-v1.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
+new string[]{"A Lot","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ALot-v2.mp4","Nemsi","B","","2","","","1"},
 
 new string[]{"Nothing","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Nothing.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
-new string[]{"Often","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Often.mp4","Melwil","B","","2","","TBD","1"},
+new string[]{"Often","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Often-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Often","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Often-v2.mp4","Melwil","B","","2","","","1"},
 new string[]{"Quarter (Fraction)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Quarter(Fraction).mp4","Melwil","I","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
 
 
 
-new string[]{"Short (Time)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Short(Time).mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
+new string[]{"Short (Time)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Short(Time)-v1.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
+new string[]{"Short (Time)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Short(Time)-v2.mp4","Nemsi","B","","2","","","1"},
 
 new string[]{"Small","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Small.mp4","Tenri","B","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
 
-new string[]{"Sometimes","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sometimes.mp4","Melwil","B","Finger and hands not close enough","1","","","1"},
+new string[]{"Sometimes","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sometimes.mp4","Nemsi","B","","2","","","1"},
 
 
 new string[]{"Third","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Third-v1.mp4","DmTheMechanic","I","","2","","","1"},
-new string[]{"Third","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Third-v2.mp4","ShadeAxas","G","","1","","Rework","1"},
+new string[]{"Third","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Third-v2.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Third","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Third-v3.mp4","ShadeAxas","G","","1","","Redo General VR version","1"},
 new string[]{"Tiny","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tiny.mp4","Melwil","I","VRC Home sign. IRL you would use your thumb and index finger","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
 new string[]{"Unsatisfied","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Unsatisfied.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, ShadeAxas, catsgirl_nya","","1"},
 
@@ -523,202 +553,230 @@ new string[]{"Unsatisfied","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL
 
 },
 new string[][]{ //Time
-new string[]{"Time","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Time.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Year","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Year.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Season","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Season.mp4","ShadeAxas","B","","1","","Rotate plane along palm","1"},
-new string[]{"Month","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Month.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Week","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Week.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Afternoon","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Afternoon.mp4","Catsgirl_nya","B","","2","","","1"},
+new string[]{"All Day","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllDay.mp4","Catsgirl_nya","B","","2","","","1"},
+new string[]{"All Night","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllNight.mp4","Catsgirl_nya","B","","2","","","1"},
+new string[]{"Autumn / Fall","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AutumnFall.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Break (Rest)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Break(Rest).mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Day","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Day.mp4","ShadeAxas","B","Dominant hand's elbow rests on back of non-dominant hand","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Weekend","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Weekend.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+
+new string[]{"Evening","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Evening.mp4","ShadeAxas","B","","1","","Elbow Avatar Issues","1"},
+new string[]{"Friday","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Friday-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Friday","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Friday-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Future","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Future.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Future (Initialized)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Future(Initialized).mp4","ShadeAxas","G","","1","","Need Index version","1"},
 new string[]{"Hour","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hour.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Later","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Later-v1.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Later","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Later-v2.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Midweek","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Midweek.mp4","","I","","1","","Need Index version","1"},
 new string[]{"Minute","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Minute.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Monday","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Monday.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Month","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Month.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Morning","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Morning.mp4","Catsgirl_nya","B","","2","","","1"},
+new string[]{"Never","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Never.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Next Week","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/NextWeek.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Night","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Night.mp4","Catsgirl_nya","B","","2","","","1"},
+new string[]{"Noon","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Noon.mp4","Catsgirl_nya","I","","2","","","1"},
+new string[]{"Now","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Now-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Now","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Now-v2.mp4","ShadeAxas","G","","1","","needs 'A' handshape general vr version","1"},
+new string[]{"Past","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Past.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Saturday","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Saturday.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Season","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Season.mp4","ShadeAxas","B","","1","","Rotate plane along palm","1"},
 new string[]{"Second (Time)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Second(Time)-v1.mp4","ShadeAxas","B","","2","","","1"},
 
+new string[]{"Soon","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Soon-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Soon","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Soon-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Spring (Season)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Spring(Season).mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Summer","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Summer.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Sunday","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sunday.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Sunrise","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sunrise-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Sunrise","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sunrise-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Sunset","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sunset-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Sunset","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sunset-v2.mp4","ShadeAxas","G","","1","","Elbow Avatar Issues","1"},
+new string[]{"Thursday","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Thursday-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Thursday","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Thursday-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Time","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Time.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Today","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Today-v1.mp4","Tenri","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Today","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Today-v2.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Today","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Today-v3.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Tomorrow","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tomorrow.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Yesterday","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Yesterday.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Morning","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Morning-v1.mp4","Nemsi","B","Elbow Avatar Issues","1","","","1"},
-new string[]{"Morning","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Morning-v2.mp4","ShadeAxas","B","Elbow Avatar Issues","1","","","1"},
-new string[]{"Afternoon","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Afternoon.mp4","ShadeAxas","B","Elbow Avatar Issues","1","","","1"},
-new string[]{"Evening","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Evening.mp4","ShadeAxas","B","Elbow Avatar Issues","1","","","1"},
-new string[]{"Night","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Night.mp4","ShadeAxas","B","Elbow Avatar Issues","1","","","1"},
-new string[]{"Sunrise","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sunrise-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Sunrise","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sunrise-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Sunset","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sunset-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Sunset","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sunset-v2.mp4","ShadeAxas","G","Elbow Avatar Issue","1","","","1"},
-new string[]{"All Day","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllDay.mp4","ShadeAxas","B","Elbow Avatar Issue","1","","","1"},
-new string[]{"All Night","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllNight-v1.mp4","DmTheMechanic","B","Elbow Avatar Issue","1","","","1"},
-new string[]{"All Night","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllNight-v2.mp4","DmTheMechanic","B","Elbow Avatar Issue","1","","","1"},
-new string[]{"All Night","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllNight-v3.mp4","ShadeAxas","B","Elbow Avatar Issue","1","","","1"},
-new string[]{"Sunday","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sunday.mp4","ShadeAxas","B","Hand above the other, should be same height","1","","","1"},
-new string[]{"Monday","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Monday.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Tuesday","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tuesday.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Wednesday","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Wednesday-v1.mp4","Tenri","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Wednesday","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Wednesday-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Thursday","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Thursday-v1.mp4","Nemsi","B","","2","","","1"},
-new string[]{"Thursday","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Thursday-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Friday","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Friday-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Friday","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Friday-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Saturday","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Saturday.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Autumn / Fall","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AutumnFall.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Winter","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Winter-v1.mp4","Nemsi","I","","2","","","1"},
-new string[]{"Winter","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Winter-v2.mp4","ShadeAxas","B","Looks like cold","1","","","1"},
-new string[]{"Spring (Season)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Spring(Season).mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Summer","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Summer.mp4","ShadeAxas","B","Redo","1","","","1"},
-new string[]{"Now","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Now-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Now","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Now-v2.mp4","ShadeAxas","G","needs 'A' handshape","1","","","1"},
-new string[]{"Never","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Never.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Soon","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Soon-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Soon","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Soon-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Later","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Later-v1.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Later","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Later-v2.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Past","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Past.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Future","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Future.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Week","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Week.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Weekend","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Weekend.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Will","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Will.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Future (Initialized)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Future(Initialized).mp4","","I","","1","","Need Index version","1"},
-
-new string[]{"Midweek","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Midweek.mp4","","I","","1","","Need Index version","1"},
-new string[]{"Next Week","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/NextWeek.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
-new string[]{"Break (Rest)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Break(Rest).mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Winter","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Winter-v1.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Winter","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Winter-v2.mp4","ShadeAxas","B","","1","","Looks like cold","1"},
+new string[]{"Year","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Year.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Yesterday","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Yesterday.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 },
 new string[][]{//Lesson 9 (VRChat)
-new string[]{"Gestures","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Gestures.mp4","ShadeAxas","B","","2","","Don't remember what ray says","1"},
-new string[]{"World","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/World.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Record","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Record.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Discord","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Discord.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Streaming","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Streaming.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"VR Headset","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/VRHeadset.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Add Friend","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AddFriend.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Avatar","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Avatar.mp4","ShadeAxas","B","Same sign as clothes but on vrchat it means avatar as well","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Block","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Block-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Block","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Block-v2.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Camera (Picture)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Camera(Picture)-v1.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Camera (Picture)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Camera(Picture)-v2.mp4","Nemsi","B","","2","","","1"},
+
+new string[]{"Cancel","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cancel.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Climb","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Climb.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Computer","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Computer.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Crash","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Crash-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Crash","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Crash-v2.mp4","Nemsi","B","VRChat home sign","2","","","1"},
 
 
-new string[]{"Computer","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Computer.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Discord","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Discord.mp4","ShadeAxas","B","VRChat home sign","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Donate","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Donate-v1.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Donate","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Donate-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Event","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Event-v1.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Event","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Event-v2.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Event","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Event-v3.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Fall (Down)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fall(Down)-v1.mp4","Nemsi","B","","2","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Fall (Down)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fall(Down)-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Gestures","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Gestures.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","Don't remember what ray says","1"},
+new string[]{"Hide","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hide.mp4","Nemsi","B","","2","","","1"},
 
-new string[]{"Public","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Public.mp4","ShadeAxas","B","","2","","","1"},
 
+new string[]{"Lag","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lag.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Leave","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Leave-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Leave","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Leave-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Login","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Login.mp4","ShadeAxas","B","VRChat home sign","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Logout","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Logout.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
 
-new string[]{"Add Friend","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AddFriend.mp4","ShadeAxas","B","","2","","","1"},
-
-new string[]{"Recharge","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Recharge.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Visit","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Visit.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Request","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Request.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Login","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Login.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Logout","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Logout.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Schedule","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Schedule.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Event","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Event.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Online","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Online-v1.mp4","Tenri","I","","2","","","1"},
-new string[]{"Online","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Online-v2.mp4","Tenri","I","","2","","","1"},
-new string[]{"Online","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Online-v3.mp4","ShadeAxas","G","","2","","","1"},
 new string[]{"Offline","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Offline-v1.mp4","Tenri","I","","2","","","1"},
-new string[]{"Offline","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Offline-v2.mp4","DmTheMechanic","I","","2","","","1"},
-new string[]{"Offline","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Offline-v3.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Cancel","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cancel.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Offline","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Offline-v2.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Offline","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Offline-v3.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Online","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Online-v1.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Online","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Online-v2.mp4","Tenri","I","","2","","","1"},
+new string[]{"Online","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Online-v3.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Online","4","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Online-v4.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Photo / Picture","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/PhotoPicture-v1.mp4","Nemsi","B","","2","","",""},
+new string[]{"Photo / Picture","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/PhotoPicture-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
 new string[]{"Portal","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Portal.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Camera","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Camera.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Avatar","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Avatar.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Photo","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Photo.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Join","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Join.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Leave","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Leave.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Climbing","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Climbing.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Falling","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Falling.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Walk","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Walk.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Hide","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hide.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Block","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Block.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Crash","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Crash.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Lagging","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lagging.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Restart","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Restart.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Send","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Send.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Receive","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Receive.mp4","ShadeAxas","B","","2","","","1"},
 
-new string[]{"Donation","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Donation.mp4","ShadeAxas","G","","2","","","1"},
+new string[]{"Public / General","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/PublicGeneral.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Receive / Get / Obtain / Acquire","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ReceiveGetObtainAcquire.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Recharge","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Recharge.mp4","ShadeAxas","B","Also means plug in","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Record","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Record-v1.mp4","Nemsi","G","","2","","","1"},
+new string[]{"Record","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Record-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Request","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Request.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Restart","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Restart.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Schedule","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Schedule.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+
+new string[]{"Send","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Send-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Send","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Send-v2.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Send","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Send-v3.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Streaming","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Streaming.mp4","ShadeAxas","B","VRChat home sign","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Visit","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Visit-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Visit","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Visit-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"VR Headset","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/VRHeadset.mp4","ShadeAxas","B","VRChat home sign","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Walk","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Walk.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"VRChat World","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/VRChatWorld.mp4","ShadeAxas","G","VRChat home sign","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
 },
 new string[][]{//Lesson 10 (Verbs & Actions p1)
-new string[]{"Add","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Add.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Admit","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Admit.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Agree","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Agree-v1.mp4","Tenri","B","","2","","","1"},
-new string[]{"Agree","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Agree-v2.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Allow","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Allow.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Argue","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Argue-v1.mp4","Melwil","B","","2","","",""},
-new string[]{"Argue","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Argue-v2.mp4","Melwil","B","","2","","",""},
-new string[]{"Ask","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Ask.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Assist","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Assist.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Assistant","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Assistant.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Attach","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Attach.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Attack","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Attack.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Battle","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Battle.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Beat (Overcome)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beat(Overcome).mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Become","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Become.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Beg","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beg.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Begin / Start","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/BeginStart.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Behave","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Behave-v1.mp4","DmTheMechanic","I","","2","","","1"},
-new string[]{"Behave","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Behave-v2.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Believe","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Believe.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Blame","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Blame.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Add","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Add-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Add","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Add-v2.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Add","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Add-v3.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Admit","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Admit.mp4","ShadeAxas","B","Can be done two-handed","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Agree","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Agree-v1.mp4","Tenri","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Agree","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Agree-v2.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Agree","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Agree-v3.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Allow","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Allow.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Argue","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Argue.mp4","Melwil","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","",""},
+new string[]{"Ask","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Ask-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Ask","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Ask-v2.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Assist","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Assist.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Assistant","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Assistant.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Attach","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Attach.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Attack","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Attack-v1.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Attack","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Attack-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Battle","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Battle.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Beat (Overcome)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beat(Overcome).mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Become","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Become.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Beg","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beg-v1.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Beg","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beg-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Begin / Start","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/BeginStart.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Behave","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Behave-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Behave","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Behave-v2.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Believe / Belief","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/BelieveBelief.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Blame","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Blame.mp4","Nemsi","B","","2","","","1"},
 
-new string[]{"Blush","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Blush.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Bother / Harass","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/BotherHarass.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Defeat (Overcome)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Defeat(Overcome).mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Defend","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Defend.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Disagree","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Disagree.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Draw (Tie)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Draw(Tie).mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Edit","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Edit.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Erase","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Erase.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Fight","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fight.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Give Up","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/GiveUp.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Increase","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Increase.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Lose","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lose.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Overlook","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Overlook.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Proposal","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Proposal.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Punish","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Punish.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Remove","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Remove.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Skip","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Skip-v1.mp4","DmTheMechanic","I","","2","","","1"},
-new string[]{"Skip","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Skip-v2.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Win","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Win.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Blush","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Blush-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Blush","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Blush-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Bother / Harass / Distrub / Annoy","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/BotherHarassDistrubAnnoy.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Defeat (Overcome)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Defeat(Overcome).mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Defend","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Defend-v1.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Defend","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Defend-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Disagree","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Disagree.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Draw / Tie (Same Score)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/DrawTie(SameScore)-v1.mp4","Nemsi","I","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Draw / Tie (Same Score)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/DrawTie(SameScore)-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Edit","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Edit.mp4","ShadeAxas","B","","1","","Doesn't indicate finger bend","1"},
+new string[]{"Erase","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Erase.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+
+new string[]{"Fight","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fight-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Fight","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fight-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Give Up","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/GiveUp.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Increase / Gain","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/IncreaseGain.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Lose (Game)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lose(Game).mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Lose (Object)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lose(Object).mp4","Nemsi","B","","2","","","1"},
+new string[]{"Overlook","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Overlook.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Propose / Suggest","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ProposeSuggest.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Punish","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Punish.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Remove","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Remove-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Remove","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Remove-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Skip","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Skip-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Skip","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Skip-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Win","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Win-v1.mp4","Nemsi","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
+new string[]{"Win","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Win-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Catsgirl_nya, Nemsi","","1"},
 },
 new string[][]{//Lesson 11 (Verbs & Actions p2)
-new string[]{"Bend","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bend.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Bow","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bow.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Break (Damage)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Break(Damage).mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Breathe","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Breathe.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Bring","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bring.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Build / Construct","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/BuildConstruct-v1.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Build / Construct","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/BuildConstruct-v2.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Bully","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bully.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Burn","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Burn.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Buy","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Buy.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Call (Phone)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Call(Phone)-v1.mp4","DmTheMechanic","I","","2","","","1"},
-new string[]{"Call (Phone)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Call(Phone)-v2.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Call (Summon)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Call(Summon).mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Care","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Care.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Carry","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Carry.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Catch","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Catch.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Cause","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cause.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Challenge","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Challenge.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Chance","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Chance.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Break (Damage)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Break(Damage).mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+new string[]{"Breathe","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Breathe.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+new string[]{"Bring","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bring.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+new string[]{"Build","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Build.mp4","Nemsi","B","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+new string[]{"Bully","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bully-v1.mp4","Nemsi","I","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+new string[]{"Bully","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bully-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+
+new string[]{"Fire","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fire-v2.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+new string[]{"Buy","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Buy-v1.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Buy","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Buy-v2.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Call (Phone)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Call(Phone)-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+new string[]{"Call (Phone)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Call(Phone)-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+new string[]{"Call (Summon)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Call(Summon).mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+new string[]{"Cause","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cause.mp4","Nemsi","B","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
+new string[]{"Challenge","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Challenge.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi","End pose could be better","1"},
+new string[]{"Chance","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Chance.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi","","1"},
 new string[]{"Cheat","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cheat-v1.mp4","DmTheMechanic","I","","2","","","1"},
 new string[]{"Cheat","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cheat-v2.mp4","DmTheMechanic","I","","2","","","1"},
-new string[]{"Cheat","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cheat-v3.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Check","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Check.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Choose","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Choose-v1.mp4","DmTheMechanic","I","","2","","","1"},
-new string[]{"Choose","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Choose-v2.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Claim","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Claim.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Clean","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Clean.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Clear","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Clear.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Close (Shut)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Close(Shut).mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Comfort","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Comfort.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Command","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Command.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Communicate","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Communicate-v1.mp4","Melwil","I","","2","","","1"},
-new string[]{"Communicate","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Communicate-v2.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Compare","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Compare.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Complain","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Complain.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Compliment","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Compliment.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Concentrate","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Concentrate.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Control","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Control-v1.mp4","DmTheMechanic","I","","2","","","1"},
-new string[]{"Control","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Control-v2.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Cook","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cook.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Copy","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Copy.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Cheat","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cheat-v3.mp4","Nemsi","I","","2","","","1"},
+new string[]{"Check","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Check-v1.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Check","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Check-v2.mp4","ShadeAxas","B","","3","","","1"},
+new string[]{"Choose","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Choose-v1.mp4","DmTheMechanic","I","","3","","","1"},
 
-new string[]{"Correct (Fix)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Correct(Fix).mp4","ShadeAxas","B","Correct as in 'I'm gonna correct that issue.'","2","","","1"},
+new string[]{"Choose","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Choose-v3.mp4","ShadeAxas","G","","3","","","1"},
+new string[]{"Claim","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Claim.mp4","ShadeAxas","B","","3","","","1"},
+new string[]{"Clean","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Clean.mp4","ShadeAxas","B","","3","","","1"},
+new string[]{"Clear","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Clear.mp4","ShadeAxas","B","","3","","","1"},
+new string[]{"Close (Shut)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Close(Shut)-v1.mp4","Nemsi","B","","3","","","1"},
+new string[]{"Close (Shut)","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Close(Shut)-v2.mp4","ShadeAxas","B","Close the box","3","","","1"},
+new string[]{"Comfort","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Comfort.mp4","Nemsi","B","","3","","","1"},
+new string[]{"Command / Order","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/CommandOrder-v1.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Command / Order","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/CommandOrder-v2.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Command / Order","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/CommandOrder-v3.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Communicate","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Communicate.mp4","ShadeAxas","G","","3","","","1"},
+new string[]{"Compare","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Compare.mp4","Nemsi","B","","3","","","1"},
+new string[]{"Complain","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Complain.mp4","ShadeAxas","B","","3","","","1"},
+new string[]{"Compliment","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Compliment.mp4","ShadeAxas","B","","3","","","1"},
+new string[]{"Concentrate","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Concentrate.mp4","ShadeAxas","B","","3","","","1"},
+new string[]{"Construct","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Construct.mp4","Nemsi","B","","3","","","1"},
+new string[]{"Control","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Control-v1.mp4","DmTheMechanic","I","","3","","","1"},
+new string[]{"Control","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Control-v2.mp4","ShadeAxas","G","","3","","","1"},
+new string[]{"Cook","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cook-v1.mp4","Nemsi","B","","3","","","1"},
+new string[]{"Cook","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cook-v2.mp4","ShadeAxas","B","","3","","","1"},
+new string[]{"Copy","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Copy.mp4","ShadeAxas","B","","3","","","1"},
+new string[]{"Correct (Right)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Correct(Right).mp4","Nemsi","B","Correct as in 'You're correct that I'm playing VRChat.'","3","","","1"},
+new string[]{"Correct (Fix)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Correct(Fix).mp4","ShadeAxas","B","Correct as in 'I'm gonna correct that issue.'","3","","","1"},
 },
 new string[][]{//Verbs & Actions p3
 new string[]{"Cough","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cough.mp4","ShadeAxas","B","","2","","","1"},
@@ -807,6 +865,7 @@ new string[]{"Insult","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Insu
 new string[][]{//Verbs & Actions p5
 new string[]{"Interact","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Interact.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Interfere","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Interfere.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Join","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Join.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Judge","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Judge-v1.mp4","DmTheMechanic","I","","2","","","1"},
 new string[]{"Judge","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Judge-v2.mp4","DmTheMechanic","I","","2","","","1"},
 new string[]{"Judge","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Judge-v3.mp4","ShadeAxas","G","","2","","","1"},
@@ -836,7 +895,6 @@ new string[]{"Mistake","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Mi
 new string[]{"Mistake","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Mistake-v2.mp4","ShadeAxas","G","","2","","","1"},
 new string[]{"Mount","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Mount.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Move","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Move.mp4","ShadeAxas","B","","2","","","1"},
-
 new string[]{"Nod","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Nod.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Note","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Note.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Notice","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Notice.mp4","ShadeAxas","B","","2","","","1"},
@@ -850,7 +908,6 @@ new string[]{"Offend","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Offe
 new string[]{"Offer","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Offer.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Okay (Approve)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Okay(Approve).mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Open","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Open.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Order","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Order.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Owe","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Owe.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Own","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Own.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Pass","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pass.mp4","ShadeAxas","B","","2","","","1"},
@@ -877,7 +934,8 @@ new string[]{"Pull","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pull.m
 new string[]{"Punch","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Punch.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Push","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Push.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Put","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Put.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Question","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Question.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Question","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Question-v1.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Question","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Question-v2.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Questions","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Questions.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Quit","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Quit.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Quote","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Quote.mp4","ShadeAxas","B","","2","","","1"},
@@ -966,7 +1024,8 @@ new string[]{"Shower","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Show
 new string[]{"Socialize","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Socialize.mp4","DmTheMechanic","B","","2","","","1"},
 new string[]{"Sting","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sting.mp4","Melwil","I","","2","","",""},
 new string[]{"Support","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Support.mp4","DmTheMechanic","B","","2","","","1"},
-new string[]{"Take Care","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/TakeCare.mp4","DmTheMechanic","B","Note: this is actually two signs: Take (up) + Care","2","","","1"},
+new string[]{"Take Care","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/TakeCare-v1.mp4","Nemsi","B","","3","","","1"},
+new string[]{"Take Care","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/TakeCare-v2.mp4","DmTheMechanic","B","Note: this is actually two signs: Take (up) + Care","2","","","1"},
 new string[]{"Touch","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Touch-v1.mp4","DmTheMechanic","I","","2","","","1"},
 new string[]{"Touch","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Touch-v2.mp4","DmTheMechanic","I","","2","","","1"},
 
@@ -1013,120 +1072,129 @@ new string[]{"Wristwatch","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL
 new string[]{"Wristwatch","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Wristwatch-v2.mp4","DmTheMechanic","I","","2","","","1"},
 },//end of lesson
 new string[][]{//Food
-new string[]{"Drunk","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Drunk.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Hungover","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hungover.mp4","ShadeAxas","I","","2","","","1"},
-new string[]{"Corn","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Corn.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Vegetable","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Vegetable.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Cookie","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cookie.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Cake","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cake.mp4","DmTheMechanic","B","","2","","","1"},
-new string[]{"Yogurt","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Yogurt.mp4","DmTheMechanic","I","","2","","","1"},
-new string[]{"Lemon","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lemon.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Nuts","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Nuts.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Grapes","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Grapes.mp4","ShadeAxas","B","","2","","","1"},
-
-new string[]{"Icecream","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Icecream.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Pear","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pear.mp4","DmTheMechanic","B","","2","","","1"},
-new string[]{"Butter","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Butter.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Banana","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Banana.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Pumpkin","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pumpkin-v1.mp4","CODApop","I","","2","","","1"},
-new string[]{"Pumpkin","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pumpkin-v2.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Fruit","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fruit-v1.mp4","CODApop","I","","2","","","1"},
-new string[]{"Fruit","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fruit-v2.mp4","ShadeAxas","G","","2","","","1"},
 new string[]{"Apple","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Apple-v1.mp4","CODApop","I","","2","","","1"},
 new string[]{"Apple","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Apple-v2.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Tomato","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tomato.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Orange (Fruit)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Orange(Fruit).mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Banana","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Banana.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Beer","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beer-v1.mp4","DmTheMechanic","I","","2","","","1"},
+new string[]{"Beer","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beer-v2.mp4","CODApop","I","","2","","","1"},
 new string[]{"Bread","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bread.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Butter","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Butter.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Cabbage","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cabbage.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Cake","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cake.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Carrot","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Carrot.mp4","ShadeAxas","B","","2","","","1"},
+
 new string[]{"Cheese","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cheese.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Water","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Water-v1.mp4","CODApop","I","","2","","","1"},
-new string[]{"Water","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Water-v2.mp4","ShadeAxas","G","","2","","","1"},
+new string[]{"Coke","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Coke.mp4","CODApop","B","","2","","","1"},
+new string[]{"Cookie","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cookie.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Corn","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Corn.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Drunk","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Drunk.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Egg","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Egg.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Fruit","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fruit-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Fruit","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fruit-v2.mp4","ShadeAxas","G","","2","","","1"},
+new string[]{"Grapes","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Grapes.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Hamburger","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hamburger.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Hot Dog","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/HotDog.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Sandwich","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sandwich.mp4","ShadeAxas","B","","2","","","1"},
-
-
-new string[]{"Egg","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Egg.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Salt","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Salt.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Meat","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Meat.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Carrot","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Carrot.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Cabbage","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cabbage.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Spaghetti","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Spaghetti.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Pizza","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pizza.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Sushi","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sushi.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Potato","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Potato.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Juice","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Juice.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Soda","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Soda.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Beer","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beer.mp4","DmTheMechanic","I","","2","","","1"},
-new string[]{"Wine","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Wine.mp4","ShadeAxas","G","","2","","","1"},
-
+new string[]{"Hungover","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hungover.mp4","Melwil","I","","2","","","1"},
+new string[]{"Icecream","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Icecream.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Juice","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Juice-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Juice","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Juice-v2.mp4","ShadeAxas","G","","2","","","1"},
+new string[]{"Lemon","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lemon.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Meat","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Meat-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Meat","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Meat-v2.mp4","ShadeAxas","B","","2","","","1"},
 new string[]{"Milk","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Milk.mp4","ShadeAxas","B","","2","","","1"},
+
+new string[]{"Nuts","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Nuts.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Orange (Fruit)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Orange(Fruit).mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Pear","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pear.mp4","DmTheMechanic","B","","2","","","1"},
+
+new string[]{"Pizza","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pizza-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Pizza","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pizza-v2.mp4","CODApop","I","","2","","","1"},
+new string[]{"Pizza","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pizza-v3.mp4","CODApop","I","","2","","","1"},
+new string[]{"Pizza","4","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pizza-v4.mp4","ShadeAxas","G","","2","","","1"},
+new string[]{"Potato","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Potato-v1.mp4","CODApop","B","","2","","","1"},
+new string[]{"Potato","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Potato-v2.mp4","ShadeAxas","G","","2","","","1"},
+new string[]{"Pumpkin","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pumpkin-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Pumpkin","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pumpkin-v2.mp4","ShadeAxas","G","","2","","","1"},
+new string[]{"Salt","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Salt-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Salt","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Salt-v2.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Sandwich","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sandwich.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Soda","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Soda-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Soda","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Soda-v2.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Spaghetti","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Spaghetti-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Spaghetti","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Spaghetti-v2.mp4","ShadeAxas","G","","2","","","1"},
 new string[]{"Sugar","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sugar.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Sushi","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sushi-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Sushi","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sushi-v2.mp4","ShadeAxas","B","","2","","","1"},
+
+new string[]{"Tomato","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tomato.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Vegetable","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Vegetable.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Water","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Water-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Water","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Water-v2.mp4","ShadeAxas","G","","2","","","1"},
+new string[]{"Wine","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Wine-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Wine","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Wine-v2.mp4","ShadeAxas","G","","2","","","1"},
+new string[]{"Yogurt","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Yogurt.mp4","DmTheMechanic","I","","2","","","1"},
 },//end of lesson
 new string[][]{//Animals 
-new string[]{"Dog","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Dog.mp4","ShadeAxas","","","2","","","1"},
-new string[]{"Cat","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cat.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Fox","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fox.mp4","ShadeAxas","G","","2","","","1"},
-new string[]{"Cow","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cow.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Sheep","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sheep.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Duck","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Duck.mp4","ShadeAxas","B","","2","","","1"},
-new string[]{"Turkey (Bird)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Turkey(Bird).mp4","DmTheMechanic","B","","2","","","1"},
-
-new string[]{"Chicken","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Chicken.mp4","DmTheMechanic","B","","2","","","1"},
-new string[]{"Owl","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Owl.mp4","DmTheMechanic","I","","2","","","1"},
-
-
 new string[]{"Bear","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bear.mp4","DmTheMechanic","B","","2","","","1"},
+
+new string[]{"Cat","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cat-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Cat","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cat-v2.mp4","ShadeAxas","G","","2","","","1"},
+new string[]{"Chicken","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Chicken.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Cow","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cow-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Cow","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cow-v2.mp4","ShadeAxas","B","","2","","","1"},
+
+new string[]{"Dog","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Dog.mp4","ShadeAxas","","","2","","","1"},
+
+new string[]{"Duck","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Duck.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Fish","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fish.mp4","DmTheMechanic","B","","2","","","1"},
+
+new string[]{"Fox","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fox-v1.mp4","CODApop","I","","2","","","1"},
+new string[]{"Fox","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fox-v2.mp4","ShadeAxas","G","","2","","","1"},
 new string[]{"Lion","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lion-v1.mp4","DmTheMechanic","B","","2","","","1"},
 new string[]{"Lion","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lion-v2.mp4","DmTheMechanic","B","","2","","","1"},
 
-
-new string[]{"Rabbit","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Rabbit.mp4","DmTheMechanic","B","","2","","","1"},
-new string[]{"Turtle","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Turtle.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Owl","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Owl.mp4","DmTheMechanic","I","","2","","","1"},
 new string[]{"Pig","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pig.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Rabbit","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Rabbit.mp4","DmTheMechanic","B","","2","","","1"},
 
+new string[]{"Sheep","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sheep.mp4","ShadeAxas","B","","2","","","1"},
 
-new string[]{"Fish","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fish.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Turkey (Bird)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Turkey(Bird).mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Turtle","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Turtle.mp4","DmTheMechanic","B","","2","","","1"},
 },//end of lesson
 new string[][]{//Machines
-new string[]{"Rocket","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Rocket.mp4","DmTheMechanic","B","","2","","",""},
+new string[]{"Rocket","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Rocket.mp4","DmTheMechanic","B","","2","","","1"},
+
+new string[]{"Car","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Car-v1.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Car","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Car-v2.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Car","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Car-v3.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Truck","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Truck.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Bicycle","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bicycle.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Motorcycle","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Motorcycle.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Train (Vehicle)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Train(Vehicle).mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Robot","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Robot.mp4","DmTheMechanic","B","","2","","","1"},
+
+
+new string[]{"Helicopter","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Helicopter.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Bus","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bus.mp4","DmTheMechanic","I","","2","","","1"},
 
 
 
-new string[]{"Bicycle","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bicycle.mp4","DmTheMechanic","B","","2","","",""},
-new string[]{"Motorcycle","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Motorcycle.mp4","DmTheMechanic","B","","2","","",""},
-new string[]{"Train (Vehicle)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Train(Vehicle).mp4","DmTheMechanic","B","","2","","",""},
-new string[]{"Robot","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Robot.mp4","DmTheMechanic","B","","2","","",""},
-
-
-new string[]{"Helicopter","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Helicopter.mp4","DmTheMechanic","B","","2","","",""},
-new string[]{"Bus","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bus.mp4","DmTheMechanic","I","","2","","",""},
 
 
 
 
-
-
-
-new string[]{"Tank","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tank.mp4","DmTheMechanic","B","","2","","",""},
+new string[]{"Tank","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tank.mp4","DmTheMechanic","B","","2","","","1"},
 
 },//end of lesson
 new string[][]{//Places
-new string[]{"Bathroom","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bathroom.mp4","DmTheMechanic","B","","2","","",""},
+new string[]{"Bathroom","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bathroom.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Room","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Room-v1.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Room","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Room-v2.mp4","DmTheMechanic","B","","2","","","1"},
 
+new string[]{"House","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/House.mp4","DmTheMechanic","B","","2","","","1"},
 
-new string[]{"House","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/House.mp4","DmTheMechanic","B","","2","","",""},
-
-new string[]{"Apartment","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Apartment.mp4","DmTheMechanic","B","","2","","",""},
-
-
-
-
-
-
-
-new string[]{"Island","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Island.mp4","DmTheMechanic","I","","2","","",""},
-new string[]{"Sun","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sun.mp4","DmTheMechanic","B","Please don't mistake it as 'Shower'","2","","",""},
-new string[]{"Moon","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Moon.mp4","DmTheMechanic","I","","2","","",""},
+new string[]{"Apartment","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Apartment.mp4","DmTheMechanic","B","","2","","","1"},
 
 
 
@@ -1134,39 +1202,50 @@ new string[]{"Moon","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Moon.m
 
 
 
+new string[]{"Island","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Island.mp4","DmTheMechanic","I","","2","","","1"},
+new string[]{"Sun","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Sun.mp4","DmTheMechanic","B","Please don't mistake it as 'Shower'","2","","","1"},
+new string[]{"Moon","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Moon.mp4","DmTheMechanic","I","","2","","","1"},
+
+
+
+new string[]{"Heaven","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Heaven.mp4","DmTheMechanic","B","","2","","","1"},
+
+
+
+new string[]{"Beach","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beach.mp4","DmTheMechanic","B","","2","","","1"},
+
+
+
+
+new string[]{"Church","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Church.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Store","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Store.mp4","DmTheMechanic","B","","2","","",""},
+
+new string[]{"Prison","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Prison.mp4","DmTheMechanic","B","","2","","",""},
+
+
+
+new string[]{"Hotel","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hotel.mp4","DmTheMechanic","I","","2","","",""},
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+new string[]{"World","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/World.mp4","Nemsi","I","IRL sign for world","2","","","1"},
 },//end of lesson
 new string[][]{//Stuff
+new string[]{"Liquid","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Liquid.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Electricity / Battery","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ElectricityBattery.mp4","DmTheMechanic","I","","2","","","1"},
 
 
+new string[]{"Shovel","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Shovel.mp4","DmTheMechanic","B","","2","","",""},
 
 
+new string[]{"Box","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Box.mp4","DmTheMechanic","B","","2","","",""},
 
-
-
-
-
-
-
-
-
+new string[]{"Paper","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Paper.mp4","DmTheMechanic","B","","2","","",""},
+new string[]{"Pencil","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pencil.mp4","DmTheMechanic","B","","2","","",""},
+new string[]{"Eraser","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Eraser.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Book","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Book.mp4","DmTheMechanic","B","","2","","","1"},
 
 
 
@@ -1193,31 +1272,31 @@ new string[][]{//Weather
 
 
 
-
 },//end of lesson
 new string[][]{//Clothing
+new string[]{"Belt","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Belt.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Bikini","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bikini.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Bra","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bra.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Diapers","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Diapers.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Dress","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Dress.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Hat","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hat.mp4","DmTheMechanic","B","","2","","","1"},
 
 
 
+new string[]{"Pants","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Pants.mp4","DmTheMechanic","B","","2","","","1"},
 
 
+new string[]{"Shirt","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Shirt.mp4","DmTheMechanic","B","","2","","","1"},
+new string[]{"Shorts","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Shorts.mp4","DmTheMechanic","B","","2","","","1"},
 
-
-
-
-
-
-
-
-
-
-
-
+new string[]{"Swim Trunks","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/SwimTrunks.mp4","DmTheMechanic","B","","2","","","1"},
 
 },//end of lesson
 new string[][]{//Accessories
 
 
+
+new string[]{"Bow Tie","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/BowTie.mp4","Melwil","B","","2","","",""},
 
 
 
@@ -1230,8 +1309,6 @@ new string[][]{//Accessories
 
 
 new string[]{"Tie (Necktie)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tie(Necktie).mp4","Melwil","B","","2","","",""},
-new string[]{"Bow Tie","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/BowTie.mp4","Melwil","B","","2","","",""},
-
 
 
 },//end of lesson
@@ -1280,6 +1357,15 @@ new string[][]{//Non Manual Markers
 new string[]{"Or","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Or-v2.mp4","Melwil","B","","2","","",""},
 
 
+},//end of lesson
+new string[][]{//Conceptual Accuracy
+new string[]{"Bend","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bend-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Bend","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bend-v2.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Carry","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Carry-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Carry","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Carry-v2.mp4","ShadeAxas","B","","2","","","1"},
+new string[]{"Catch","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Catch-v1.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Catch","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Catch-v2.mp4","Nemsi","B","","2","","","1"},
+new string[]{"Catch","3","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Catch-v3.mp4","ShadeAxas","B","","2","","","1"},
 },//end of lesson
 new string[][]{//Holidays / Special Days
 
@@ -1445,7 +1531,8 @@ new string[][]{//Talk / Asking exercises (SEE)
 
 
 },//end of lesson
-new string[][]{//Countries
+new string[][]{//Countries / Locations
+
 
 
 
@@ -1988,7 +2075,7 @@ new string[]{"Ne Peut Pas Lire","","https://bob64.vrsignlanguage.net/ShaderMotio
         //GameObject [][][][] videos;
         [System.NonSerialized]
     string[][] lessonnames = { //can be unique per language, as long as they match the number of array
-		new string[] { //ASL lesson names - can be unique per language.
+new string[] { //ASL lesson names - can be unique per language.
 "Shadermotion Test",
 "Alphabet (Fingerspelling)",
 "Numbers",
@@ -2019,6 +2106,7 @@ new string[]{"Ne Peut Pas Lire","","https://bob64.vrsignlanguage.net/ShaderMotio
 "Accessories",
 "Fantasy / Characters",
 "Non Manual Markers",
+"Conceptual Accuracy",
 "Holidays / Special Days",
 "Home stuff",
 "Nature / Environment",
@@ -2027,7 +2115,8 @@ new string[]{"Ne Peut Pas Lire","","https://bob64.vrsignlanguage.net/ShaderMotio
 "Colors",
 "Materials",
 "Medical",
-        },
+
+},
 new string[] { //BSL
 "Daily Use",
 "Pointing use Question / Answer",
@@ -2500,7 +2589,7 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
     }
 
     /***************************************************************************************************************************
-	Update Menu Variables used to control displays.
+	Update Menu Variables used to control displays. This should only be called from button-pushes if globalmode is activated, since it takes ownership + pushes a resync.
 	***************************************************************************************************************************/
     private void _UpdateMenuVariables(int buttonIndex)
     {
@@ -3303,12 +3392,19 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
                             AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword].Contains("/") ||
                             // - It has the same text content as the correct answer
                             AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword]
+                            
                         )
                         {
+                            Debug.Log(AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword]);
+                            Debug.Log("Equals Comparison: " + AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword].Equals(AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword]));
+                            Debug.Log(AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword] + " failed check vs " + AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword]);
                             reservoir_i++;
                         }
                         else
                         {
+                            Debug.Log("== Comparison: " +AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword] == AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword]);
+                            Debug.Log("Equals Comparison: " + AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword].Equals(AllLessons[quizwordmapping[quizcounter][0]][quizwordmapping[quizcounter][1]][quizwordmapping[quizcounter][2]][arrayword]));
+                            Debug.Log("Placing " + AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayword] + "v"+ AllLessons[quizwordmapping[reservoir_j][0]][quizwordmapping[reservoir_j][1]][quizwordmapping[reservoir_j][2]][arrayvariant] + " into answer pool...");
                             // Replace a random item in the reservoir with this item
                             reservoir_i = reservoir_j;
                             reservoir[UnityEngine.Random.Range(0, 3)] = reservoir_i;
@@ -3432,17 +3528,12 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
     {
         if (HandToggle.isOn)
         {
-                nanaavatars[0].transform.localScale = Vector3.Scale(new Vector3(1, 1, 1), new Vector3(avatarscaleslider.value, avatarscaleslider.value, avatarscaleslider.value));
-                nanaavatars[1].transform.localScale = Vector3.Scale(new Vector3(1, 1, 1), new Vector3(avatarscaleslider.value, avatarscaleslider.value, avatarscaleslider.value));
-                nanaavatars[2].transform.localScale = Vector3.Scale(new Vector3(1, 1, 1), new Vector3(avatarscaleslider.value, avatarscaleslider.value, avatarscaleslider.value));
-                nanaavatars[3].transform.localScale = Vector3.Scale(new Vector3(1, 1, 1), new Vector3(avatarscaleslider.value, avatarscaleslider.value, avatarscaleslider.value));
+                signingavatars.transform.localScale = Vector3.Scale(new Vector3(1, 1, 1), new Vector3(avatarscaleslider.value, avatarscaleslider.value, avatarscaleslider.value));
             }
         else
         {
-                nanaavatars[0].transform.localScale = Vector3.Scale(new Vector3(-1, 1, 1), new Vector3(avatarscaleslider.value, avatarscaleslider.value, avatarscaleslider.value));
-                nanaavatars[1].transform.localScale = Vector3.Scale(new Vector3(-1, 1, 1), new Vector3(avatarscaleslider.value, avatarscaleslider.value, avatarscaleslider.value));
-                nanaavatars[2].transform.localScale = Vector3.Scale(new Vector3(-1, 1, 1), new Vector3(avatarscaleslider.value, avatarscaleslider.value, avatarscaleslider.value));
-                nanaavatars[3].transform.localScale = Vector3.Scale(new Vector3(-1, 1, 1), new Vector3(avatarscaleslider.value, avatarscaleslider.value, avatarscaleslider.value));
+                signingavatars.transform.localScale = Vector3.Scale(new Vector3(-1, 1, 1), new Vector3(avatarscaleslider.value, avatarscaleslider.value, avatarscaleslider.value));
+
             }
 
     }
@@ -3489,7 +3580,8 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
         public void _ToggleGlobal()
     {
         globalmode = !globalmode;
-        _UpdateMenuVariables(NOT_SELECTED);
+            //_UpdateMenuVariables(NOT_SELECTED);
+            _GlobalModeVarSync();
         _UpdateAllDisplays();
     }
 
