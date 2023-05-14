@@ -8,7 +8,7 @@ using TMPro;
 using VRC.SDK3.Data;
 using VRC.Udon.Common.Interfaces;
 
-namespace Bob64
+namespace Bob64.UdonSchedule
 {
 
 
@@ -30,66 +30,38 @@ namespace Bob64
         {
             VRCStringDownloader.LoadUrl(jsoneventsurl, (IUdonEventReceiver)this);
             //VRCStringDownloader.LoadUrl(jsoneventsurl);
-            currenttimetext = GameObject.Find("/Schedule/TopRightPanel/Current Time").GetComponent<TextMeshProUGUI>();
+            currenttimetext = gameObject.transform.Find("TopRightPanel/Current Time").GetComponent<TextMeshProUGUI>();
 
             events =
-                new string[][]{//all times must be in UTC. Will auto-adjust to end-user system settings.
+                new string[][]{//all datetimes must be in unixtimestamp. Will auto-adjust to end-user system settings.
                            //date in utc, repeating (Y/N), lang short, classname, Location, teacher 
                 //Monday
-                new string[]{"04/24/2023 08:00PM","Y", "ASL No Voice Zone", "Event:\nASL No Voice Zone", "Quest Compatible","kw856"},
-                //new string[]{"04/05/2023 07:00PM", "Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "MrRikuG935"},
+                new string[]{ "1683576000", "Y", "ASL No Voice Zone", "Event:\nASL No Voice Zone", "Quest Compatible","kw856"},
 
                 //Tuesday
-                new string[]{"04/25/2023 06:00PM","Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Ray_is_Deaf"},
-                new string[]{"04/25/2023 08:00PM","Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre & Korea_Yujin"},
+                new string[]{ "1683655200", "Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Ray_is_Deaf"},
+                new string[]{ "1683662400", "Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre & Korea_Yujin"},
                 
-                //new string[]{"04/14/2023 09:00PM","Y", "BSL Class", "Language Class:\nBSL (British Sign Language)", "Quest Compatible", "AvinouSCAC"},
-                /*new string[]{"04/10/2023 11:00PM","Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},*/
-
                 //Wednesday
-                new string[]{"04/26/2023 01:00PM","Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre"},
-                new string[]{"04/26/2023 07:30PM","Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
-                //new string[]{"04/11/2023 07:00PM","Y", "BSL Class", "Language Class:\nBSL (British Sign Language)", "Quest Compatible", "TachDeafGamer"},
-                //new string[]{"04/11/2023 09:00PM","Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "jenny0629 "},
-                //new string[]{"04/15/2023 10:15PM","Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
-                new string[]{"04/26/2023 10:00PM","Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "PC Only","DmTheMechanic"},
+                new string[]{ "1683723600", "Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre"},
+                new string[]{ "1683747000", "Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
+                new string[]{ "1683806400", "Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "PC Only","DmTheMechanic"},
            
                 //Thursday
-                new string[]{"04/27/2023 12:00PM","Y", "JSL Class", "Language Class:\nJSL (Japanese Sign Language)", "Quest Compatible", "RafaelDeaf"},
-                //new string[]{"04/16/2023 09:00PM","Y", "BSL Class", "Language Class:\nBSL (British Sign Language)", "Quest Compatible", "Sheezy93 & AvinouSCAC"},
-                
-                
+                new string[]{ "1683853200", "Y", "JSL Class", "Language Class:\nJSL (Japanese Sign Language)", "Quest Compatible", "RafaelDeaf"},
 
                 //Friday
-                new string[]{"04/28/2023 01:00AM","Y", "ASL No Voice Zone", "Event:\nASL No Voice Zone", "Quest Compatible", "ShadeAxas"},
-                //new string[]{"04/13/2023 08:00PM","Y", "DGS Class", "Language Class:\nDGS (German Sign Language)", "Quest Compatible", "deaf_danielo_89"},
-                new string[]{"04/28/2023 08:00PM","Y", "KSL No Voice Zone", "Event:\nKSL No Voice Zone", "Quest Compatible", "Korea_Yujin"},
-                new string[]{"04/28/2023 08:30PM","Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
-                new string[]{"04/28/2023 09:15PM","Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "PC Only","Wardragon"},
+                new string[]{ "1683923400", "Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
+                new string[]{ "1683926100", "Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "PC Only","Wardragon"},
                 
                 //Saturday
-                //new string[]{"04/14/2023 01:00AM","Y", "BSL Class", "Language Class:\nBSL (British Sign Language)", "Quest Compatible", "Sheezy93 & AvinouSCAC"},
-                //new string[]{"04/14/2023 05:00PM","Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Jenny0629"},
-                new string[]{"04/29/2023 01:00PM","Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre"},
-                //new string[]{"04/18/2023 08:00PM","Y", "BSL Class", "Language Class:\nBSL (British Sign Language)", "Quest Compatible", "TachDeafGamer"},
-                new string[]{"04/29/2023 07:00PM","Y", "DGS Class", "Language Class:\nDGS (German Sign Language)", "Quest Compatible", "deaf_danielo_89"},
-                //new string[]{"04/14/2023 08:00PM","Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "xKaijo"},
-                //new string[]{"04/14/2023 09:00PM","Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Deaf_Otaku"},
-                new string[]{"04/29/2023 08:00PM","Y", "LSF No Voice Zone", "Event:\nLSF No Voice Zone", "Quest Compatible", "xKaijo"},
-                //new string[]{"04/18/2023 10:00PM","Y", "BSL No Voice Zone", "Event:\nBSL No Voice Zone", "Quest Compatible", "AvinouSCAC"},
-                
+                new string[]{ "1684008000", "Y", "DGS Class", "Language Class:\nDGS (German Sign Language)", "Quest Compatible", "deaf_danielo_89"},
+                new string[]{ "1684008000", "Y", "LSF No Voice Zone", "Event:\nLSF No Voice Zone", "Quest Compatible", "xKaijo"},
 
-                
                 //Sunday
-                //new string[]{"04/19/2023 01:00AM","Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Jenny0629"},
-                new string[]{"04/30/2023 07:00PM","Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Crow_Se7en"},
-                new string[]{"04/30/2023 08:00PM","Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre"},
-                new string[]{"04/30/2023 08:30PM","Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
-                    //new string[]{"04/19/2023 08:00PM","Y", "BSL Class", "Language Class:\nBSL (British Sign Language)", "Quest Compatible", "AvinouSCAC"},
-                    //new string[]{"04/15/2023 01:00AM","Y", "JSL Class", "Language Class:\nJSL (Japanese Sign Language)", "Quest Compatible", "RafaelDeaf"},
-                    //new string[]{"04/19/2023 10:00PM","Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Starbun"},
-                    //new string[]{"04/19/2023 10:00PM","Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
-                    //new string[]{"04/15/2023 04:00AM","N", "HH Festival", "Special Event:\nHelping Hands Festival - Trance, Dance, and EDM", "PC Only", "DecentM, ShadeAxas, FearlessKoolaid, CODApop" }
+                new string[]{ "1684090800", "Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Crow_Se7en"},
+                new string[]{ "1684094400", "Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre"},
+                new string[]{ "1684096200", "Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
 
                 };
 
@@ -101,14 +73,15 @@ namespace Bob64
             /*
             for (int x = events.Length; x < 20; x++)
             {
-                GameObject.Find("/Schedule/UpcomingPanel/Content/Event" + x).SetActive(false);
+                scheduleroot.transform.Find("UpcomingPanel/Content/Event" + x).SetActive(false);
             }
             */
         }
 
+        //called when string loading is successful.
         public override void OnStringLoadSuccess(IVRCStringDownload result)
         {
-            //Debug.Log("String Loaded");
+            Debug.Log("String Loaded");
 
             eventsjsonStr = result.Result;
             if (VRCJson.TryDeserializeFromJson(eventsjsonStr, out datatokenevents))
@@ -139,9 +112,8 @@ namespace Bob64
                             
 
                             //Debug.Log(message: $"From element {i}, got values for: language: {language}, presenter: {presenter}, timestamp: {UnixTimeToUtc(long.Parse(timestamp)/1000).ToString("g")}");
-                            jsonevents[i]=new string[] { UnixTimeToUtc(long.Parse(timestamp) / 1000).ToString("g"),"Y", _ConvertJsonLang2Short(language), _ConvertJsonLang2Long(language), location, presenter };
+                            jsonevents[i]=new string[] { (long.Parse(timestamp)/1000).ToString(),"Y", _ConvertJsonLang2Short(language), _ConvertJsonLang2Long(language), location, presenter };
 
-                                //new string[]{"04/19/2023 08:00PM","Y", "BSL Class", "Language Class:\nBSL (British Sign Language)", "Quest Compatible", "AvinouSCAC"},
                                 /*
                                 Debug.Log(message: $"Successfully got value from element {i}: {temptoken}");
                                 //Debug.Log(temptoken["language"].String);
@@ -154,8 +126,8 @@ namespace Bob64
                         }
                     }
                     events = jsonevents;
-                    events = _FuturiseArray(events);
-                    events = _SortArray(events);
+                    events = _FuturiseArray(events); //in the off-chance that the json has dates that have already passed.
+                    events = _SortArray(events); //in the off-chance that the json has dates out-of-order.
                     _DisplaySchedule(events);
 
 
@@ -187,21 +159,17 @@ namespace Bob64
 
         public static DateTime UnixTimeToUtc(long unixTime)
         {
-            /*
-            // Unix timestamp is in seconds, so convert to TimeSpan
-            var timeSpan = TimeSpan.FromSeconds(unixTime);
 
-            // Create a new DateTime object for January 1, 1970 (the Unix epoch)
-            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-
-            // Add the TimeSpan to the epoch to get the UTC DateTime
-            var utcDateTime = epoch.Add(timeSpan);
-            return utcDateTime;
-            */
             return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(unixTime);
 
             ///DateTime utcDateTime = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(unixTime);
         }
+
+        public static long ToUnixDateTime(DateTime dateTime)
+        {
+            return (long)(dateTime.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+        }
+
         /***************************************************************************************************************************
         Displays the right hand schedule, line by line. Incomplete
         ***************************************************************************************************************************/
@@ -220,7 +188,8 @@ namespace Bob64
                 //currenttimetext.text="Current Time: "+ DateTime.Now.ToString("t");
                 //currenttimetext.text = "Current Time: " + DateTime.Now.Hour%12+":"+DateTime.Now.Minute+" "+ DateTime.Now.ToString("tt");
                 currenttimetext.text = "Current Time: " + DateTime.Now.ToString("h:mm tt");
-                TimeSpan span = DateTime.Parse(events[0][0]) - DateTime.UtcNow;
+                DateTime temp = UnixTimeToUtc(long.Parse(events[0][0]));
+                TimeSpan span = temp - DateTime.UtcNow;
 
                 if (span.TotalMinutes < -30) //if 30 minutes have passed from the top event
                 {
@@ -230,10 +199,10 @@ namespace Bob64
                     _DisplaySchedule(events);
 
                 }
-#if UNITY_ANDROID//fix for quest headsets being off by 1 hour?
-            _DisplayUpcomingEvent(DateTime.Parse(events[0][0]).Add(DateTime.Now - DateTime.UtcNow).AddHours(1), events[0][3], events[0][4], events[0][5]);
+            #if UNITY_ANDROID//fix for quest headsets being off by 1 hour
+                        _DisplayUpcomingEvent(temp.Add(DateTime.Now - DateTime.UtcNow).AddHours(1), events[0][3], events[0][4], events[0][5]);
 #else
-                _DisplayUpcomingEvent(DateTime.Parse(events[0][0]).Add(DateTime.Now - DateTime.UtcNow), events[0][3], events[0][4], events[0][5]);
+                            _DisplayUpcomingEvent(temp.Add(DateTime.Now - DateTime.UtcNow), events[0][3], events[0][4], events[0][5]);
 #endif
                 CurrentTimer = Timer; // Resets the timer
             }
@@ -260,15 +229,16 @@ namespace Bob64
             {
                 if (value[1] == "Y")//If repeating is Y, futurize, otherwise do nothing.
                 {
-                    DateTime temp = DateTime.Parse(value[0]);
+                    DateTime temp = UnixTimeToUtc(long.Parse(value[0]));
                     TimeSpan span;
+                    //Debug.Log("Current UTC Time:" + DateTime.UtcNow + " event time: " + temp.ToString());
                     if (DateTime.Compare(DateTime.UtcNow, temp) > 0)//if the time is in the future already, skip?
                     {
-
                         span = DateTime.UtcNow - temp;
-                        //Debug.Log("days added: " + (span.Days / 7 + 1) * 7);
-                        value[0] = temp.AddDays((span.Days / 7 + 1) * 7).ToString();
-                        //Debug.Log("FuturizeArray - Before: " + temp + " Futurized time: " + value[0].ToString());
+                        //Debug.Log("Span: "+ span.Days.ToString() + " days added: " + (span.Days / 7 + 1) * 7);
+                        //Debug.Log("Date after adding days" + temp.AddDays((span.Days / 7 + 1) * 7).ToString());
+                        value[0] = ToUnixDateTime(temp.AddDays((span.Days / 7 + 1) * 7)).ToString();
+                        //Debug.Log("FuturizeArray - Before: " + temp + " Futurized time: " + UnixTimeToUtc(long.Parse(value[0])).ToString());
                     }
                 }
             }
@@ -290,7 +260,7 @@ namespace Bob64
                     // compare array element with 
                     // all next element
                     //Debug.Log("Comparing: " +tempkeys[i][0] + " (index #" + i + ") and " + tempkeys[j][0] + " (index #"+j+") compare result: " + DateTime.Compare(DateTime.Parse(tempkeys[i][0]), DateTime.Parse(tempkeys[j][0])));
-                    if (DateTime.Compare(DateTime.Parse(tempkeys[i][0]), DateTime.Parse(tempkeys[j][0])) > 0)
+                    if(long.Parse(tempkeys[i][0]) > long.Parse(tempkeys[j][0]) )
                     {
                         //Debug.Log(tempkeys[i][0] + " is greater than " + tempkeys[j][0]); 
                         temp[0] = tempkeys[i];
@@ -311,13 +281,14 @@ namespace Bob64
             foreach (string[] value in tempkeys)
             {
                 //Debug.Log("comparing value:"+value[0]+"compare result:"+DateTime.Compare(DateTime.UtcNow, DateTime.Parse(value[0])));
-                if (DateTime.Compare(DateTime.UtcNow, DateTime.Parse(value[0])) < 0)//utcnow is earlier than the date, don't display if the event is in the past.
+                DateTime temp = UnixTimeToUtc(long.Parse(value[0]));
+                if (DateTime.Compare(DateTime.UtcNow, temp) < 0)//utcnow is earlier than the date, don't display if the event is in the past.
                 {
-                    GameObject.Find("/Schedule/UpcomingPanel/Content/Event (" + counter + ")").SetActive(true);
+                    gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")").gameObject.SetActive(true);
 #if UNITY_ANDROID//fix for quest headsets being off by 1 hour?
-                        _DisplayScheduleLine(DateTime.Parse(value[0]).Add(DateTime.Now - DateTime.UtcNow).AddHours(1), value[2], value[4], value[5], counter);
+                        _DisplayScheduleLine(temp.Add(DateTime.Now - DateTime.UtcNow).AddHours(1), value[2], value[4], value[5], counter);
 #else
-                    _DisplayScheduleLine(DateTime.Parse(value[0]).Add(DateTime.Now - DateTime.UtcNow), value[2], value[4], value[5], counter);
+                    _DisplayScheduleLine(temp.Add(DateTime.Now - DateTime.UtcNow), value[2], value[4], value[5], counter);
 #endif
 
                     counter++;
@@ -327,14 +298,14 @@ namespace Bob64
             //disable unneeded events
             for (counter = events.Length; counter < 25; counter++)
             {
-                GameObject.Find("/Schedule/UpcomingPanel/Content/Event (" + counter + ")").SetActive(false);
+                gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")").gameObject.SetActive(false);
             }
         }
 
         private void _DisplayUpcomingEvent(DateTime tempdate, String eventlongname, String world, String teachers)
         {
             TimeSpan interval = tempdate - DateTime.Now;
-            TextMeshProUGUI upcomingtext = GameObject.Find("/Schedule/InfoPanel/NoworUpcoming").GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI upcomingtext = gameObject.transform.Find("InfoPanel/NoworUpcoming").GetComponent<TextMeshProUGUI>();
             //Debug.Log("tempdate:"+tempdate.ToString());
             //Debug.Log("current time:" + DateTime.Now.ToString());
             //Debug.Log("interval: " + interval.Days + " days, " + interval.Hours + " hours, " + interval.Minutes + " minutes, " + interval.Seconds + " seconds");
@@ -435,9 +406,9 @@ namespace Bob64
             }
 
 
-            GameObject.Find("/Schedule/InfoPanel/EventName").GetComponent<TextMeshProUGUI>().text = eventlongname;
-            GameObject.Find("/Schedule/InfoPanel/LocationText").GetComponent<TextMeshProUGUI>().text = "Location:\n" + world;
-            GameObject.Find("/Schedule/InfoPanel/HostText").GetComponent<TextMeshProUGUI>().text = "Hosted by:\n" + teachers;
+            gameObject.transform.Find("InfoPanel/EventName").GetComponent<TextMeshProUGUI>().text = eventlongname;
+            gameObject.transform.Find("InfoPanel/LocationText").GetComponent<TextMeshProUGUI>().text = "Location:\n" + world;
+            gameObject.transform.Find("InfoPanel/HostText").GetComponent<TextMeshProUGUI>().text = "Hosted by:\n" + teachers;
 
         }
 
@@ -475,7 +446,7 @@ namespace Bob64
         private string _ConvertJsonLang2Long(String shortlang)
         {
             String eventlongname;
-            //convert shortlang/world to long
+            //converts the json language to a more descriptive form
             switch (shortlang)
             {
                 case "ASL":
@@ -508,13 +479,21 @@ namespace Bob64
                 case "LSF No Voice Zone":
                     eventlongname = "Event:\nLSF No Voice Zone";
                     break;
-                default:
+                case "JSL":
+                    eventlongname = "Language Class:\nJSL (Japanese Sign Language)";
+                    break;
+                case "JSL No Voice Zone":
+                    eventlongname = "Event:\nJSL No Voice Zone";
+                    break;
+
+                default://fallback to whatever the input string is
                     eventlongname = shortlang;
                     break;
             }
             return eventlongname;
         }
            
+        //not used anywhere at the moment. Was used to potentially determine quest compatibility.
         private string _ExpandShortWorld2Long(String shortworld)
     {
         string world;
@@ -529,7 +508,7 @@ namespace Bob64
             case "MrDummy's Club School":
                 world = "Quest Compatible";
                 break;
-            case "HHHQ":
+            case "Helping Hands HQ":
                 world = "Quest Compatible";
                 break;
             case "School Helping Hands":
@@ -541,7 +520,7 @@ namespace Bob64
             case "Zade's ASL & JSL World":
                 world = "Quest Compatible";
                 break;
-            default:
+            default: //fallback to whatever the input string is
                 world = shortworld;
                 break;
         }
@@ -553,74 +532,12 @@ namespace Bob64
         ***************************************************************************************************************************/
         private void _DisplayScheduleLine(DateTime tempdate, String eventshortname, String world, String teachers, int counter)
         {
-            GameObject.Find("/Schedule/UpcomingPanel/Content/Event (" + counter + ")/Box1").GetComponent<TextMeshProUGUI>().text = tempdate.ToString("dddd") + "\n" + tempdate.ToString("h tt");
-            GameObject.Find("/Schedule/UpcomingPanel/Content/Event (" + counter + ")/Box2").GetComponent<TextMeshProUGUI>().text = tempdate.ToString("d");
-            GameObject.Find("/Schedule/UpcomingPanel/Content/Event (" + counter + ")/Box3").GetComponent<TextMeshProUGUI>().text = eventshortname;
-            GameObject.Find("/Schedule/UpcomingPanel/Content/Event (" + counter + ")/Box4").GetComponent<TextMeshProUGUI>().text = "Hosted by: " + teachers;
+            gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")/Box1").GetComponent<TextMeshProUGUI>().text = tempdate.ToString("dddd") + "\n" + tempdate.ToString("h tt");
+            gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")/Box2").GetComponent<TextMeshProUGUI>().text = tempdate.ToString("d");
+            gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")/Box3").GetComponent<TextMeshProUGUI>().text = eventshortname;
+            gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")/Box4").GetComponent<TextMeshProUGUI>().text = "Hosted by: " + teachers;
         }
     }
 
-    /*
-#if !COMPILER_UDONSHARP && UNITY_EDITOR
-    [InitializeOnLoad]
-    internal class MenuControlHooks
-    {
-        static MenuControlHooks()
-        {
-            EditorApplication.playModeStateChanged += OnChangePlayMode;
-        }
 
-        // Hook for Play mode
-        static void OnChangePlayMode(PlayModeStateChange state)
-        {
-            if (state == PlayModeStateChange.ExitingEditMode)
-            {
-                Debug.Log("Trying to update VRCUrls (Play mode)...");
-
-                // Get the scene object
-                var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
-
-                foreach (var root in roots)
-                {
-                    foreach (var menuControl in root.GetComponentsInChildren<MenuControl>())
-                    {
-                        Debug.Log("Updating VRCUrls on MenuControl", menuControl);
-                        menuControl.__UpdateURLs();
-                        //menuControl.ApplyProxyModifications();
-                    }
-                }
-            }
-        }
-
-        // Hook for Build & Test / Build & Upload
-        public class UpdateMenuControlOnWorldBuild : IVRCSDKBuildRequestedCallback
-        {
-            public int callbackOrder => 100;
-
-            bool IVRCSDKBuildRequestedCallback.OnBuildRequested(VRCSDKRequestedBuildType requestedBuildType)
-            {
-                if (requestedBuildType == VRCSDKRequestedBuildType.Scene)
-                {
-                    Debug.Log("Trying to update VRCUrls (VRCSDK Build)...");
-
-                    // Get the scene object
-                    var roots = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects();
-
-                    foreach (var root in roots)
-                    {
-                        foreach (var menuControl in root.GetComponentsInChildren<MenuControl>())
-                        {
-                            Debug.Log("Updating VRCUrls on MenuControl", menuControl);
-                            menuControl.__UpdateURLs();
-                            //menuControl.ApplyProxyModifications();
-                        }
-                    }
-
-                }
-
-                return true;
-            }
-        }
-    }
-#endif*/
 }
