@@ -1,34 +1,41 @@
 ﻿#if VRC_SDK_VRCSDK3 && UDON
-//using VRC.SDK3.Components.Video;
 using System;
 using TMPro;
 using UdonSharp;
 using UnityEngine;
 using UnityEngine.UI;
-using VRC.SDK3.Components;
-using VRC.SDK3.Video.Components;
-using VRC.SDK3.Video.Components.AVPro;
-using VRC.SDK3.Video.Components.Base;
 using VRC.SDKBase;
-using VRC.Udon;
+using VRC.SDK3.Data;
+
 
 
 #if !COMPILER_UDONSHARP && UNITY_EDITOR
-using System.Collections.Generic; //for lists if I ever use em.
+//using System.Collections.Generic; //for lists if I ever use em.
 using System.Linq; //for sorting
 using UdonSharpEditor;
 using UnityEditor;
 using VRC.SDKBase.Editor.BuildPipeline;
 #endif
 
-namespace Bob64
+namespace Bob64.MenuControl
 {
 
-
+    
 public class MenuControl : UdonSharpBehaviour
 {
+        private DataList searchresults = new DataList();
         private bool locked = false;
-        private bool debug = false;
+        [SerializeField] private bool debug = false;
+        [SerializeField] GameObject wordindexgo;
+        [SerializeField] GameObject erratago;
+        [SerializeField] GameObject searchindexroot;
+        [SerializeField] GameObject searchindexdropdown;
+        [SerializeField] GameObject searchindexinput;
+        [SerializeField] TextMeshProUGUI SearchResultsText;
+        //search vars
+        int searchlang=0;
+        string searchtext = "";
+
         //array accessor consts for easier upkeeping due to the array potentially getting new fields later.
         private const int arrayword_english = 0;
         private const int arrayword_japanese = 0;
@@ -37,9 +44,8 @@ public class MenuControl : UdonSharpBehaviour
         private const int arrayword_chinese_romanized = 0;
         private const int arrayword_french = 0;
         private const int arrayvariant = 1;
-        private const int arraycredit = 3;
         private const int arrayurl = 2; //not sure why anything would be using this because it should be pointed to the vrcurl array
-        //private const int arrayshadermotion = 4;
+        private const int arraycredit = 3;
         private const int arrayvricon = 4;
         private const int arraysigndescription = 5;
         private const int arrayvalidation = 6;
@@ -231,6 +237,8 @@ new string[]{"Below","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Below
 new string[]{"Beside","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Beside.mp4","DmTheMechanic","B","","3","","","1"},
 new string[]{"Can","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Can.mp4","Tenri","B","","3","","","1"},
 new string[]{"Can't","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cant.mp4","Nemsi","B","","3","Dm, Zade","","1"},
+new string[]{"Explain","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Explain-v1.mp4","Undeadsee","I","","2","","","1"},
+new string[]{"Explain","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Explain-v2.mp4","Undeadsee","G","","2","","","1"},
 new string[]{"For","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/For.mp4","DmTheMechanic","B","","3","","","1"},
 new string[]{"For What","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ForWhat.mp4","DmTheMechanic","B","","3","","","1"},
 new string[]{"From","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/From.mp4","Bou","B","","3","CODAPop, DmTheMechanic, ShadeAxas, Nemsi, Bou","",""},
@@ -340,6 +348,7 @@ new string[]{"Teacher","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Tea
 new string[]{"Tie / Even / Equal / Fair","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/TieEvenEqualFair.mp4","Melwil","B","Draw or Tie, as in the same score at the end of a game or a equal score.","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Understand","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Understand.mp4","Melwil","B","","3","CODAPop, DmTheMechanic","","1"},
 new string[]{"Very","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Very.mp4","Melwil","B","","3","CODAPop, DmTheMechanic","","1"},
+new string[]{"Whatever","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Whatever.mp4","Undeadsee","B","","2","CODAPop, DmTheMechanic, Shadeaxas","","1"},
 new string[]{"Word","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Word.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
 new string[]{"Work","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Work.mp4","Melwil","B","","3","CODAPop, DmTheMechanic","","1"},
 new string[]{"Write","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Write.mp4","Nemsi","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
@@ -400,6 +409,8 @@ new string[]{"Care (About)","","https://bob64.vrsignlanguage.net/ShaderMotion/AS
 new string[]{"Careful","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Careful-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Careful","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Careful-v2.mp4","ShadeAxas","G","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Cherish","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cherish.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, Shadeaxas","",""},
+new string[]{"Complicated","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Complicated-v1.mp4","Undeadsee","I","","2","","","1"},
+new string[]{"Complicated","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Complicated-v2.mp4","Undeadsee","G","","2","","","1"},
 new string[]{"Confused","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Confused.mp4","Nemsi","I","","3","CODAPop, DmTheMechanic, Shadeaxas","Confused motion could be shorter","1"},
 new string[]{"Cry","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cry.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
 new string[]{"Curious","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Curious-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, ShadeAxas","","1"},
@@ -488,6 +499,8 @@ new string[]{"Every / Each","","https://bob64.vrsignlanguage.net/ShaderMotion/AS
 new string[]{"Everything","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Everything-v1.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic","","1"},
 new string[]{"Everything","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Everything-v2.mp4","Nemsi","B","","1","","Redo","1"},
 new string[]{"Everytime","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Everytime.mp4","DmTheMechanic","B","","3","Dm, Zade","","1"},
+new string[]{"Exact / Precise","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ExactPrecise-v1.mp4","Undeadsee","I","","2","","","1"},
+new string[]{"Exact / Precise","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ExactPrecise-v2.mp4","Undeadsee","G","","2","","","1"},
 new string[]{"Fat","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fat.mp4","DmTheMechanic","B","","3","Dm, Zade","","1"},
 new string[]{"First","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/First.mp4","DmTheMechanic","B","","3","Dm, Zade","","1"},
 new string[]{"Free","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Free-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic","","1"},
@@ -559,6 +572,7 @@ new string[]{"Noon","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Noon.m
 new string[]{"Now","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Now-v1.mp4","DmTheMechanic","I","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Now","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Now-v2.mp4","ShadeAxas","G","","1","","needs 'A' handshape general vr version","1"},
 new string[]{"Past","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Past.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
+new string[]{"Review","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Review.mp4","Undeadsee","B","","2","","","1"},
 new string[]{"Saturday","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Saturday.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Nemsi, catsgirl_nya","","1"},
 new string[]{"Season","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Season.mp4","ShadeAxas","B","","1","","Rotate plane along palm","1"},
 new string[]{"Second (Time)","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Second(Time)-v1.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
@@ -612,6 +626,7 @@ new string[]{"Event","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Even
 new string[]{"Fall (Down)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fall(Down).mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
 new string[]{"Gestures","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Gestures.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","Don't remember what ray says","1"},
 new string[]{"Hide","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hide.mp4","Nemsi","B","","3","CODAPop, DmTheMechanic","","1"},
+new string[]{"Index (VR Headset)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Index(VRHeadset).mp4","Undeadsee","B","","2","","","1"},
 new string[]{"Invite","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Invite.mp4","DmTheMechanic","B","","2","","","1"},
 new string[]{"Laptop","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Laptop.mp4","DmTheMechanic","B","","3","CODAPop, DmTheMechanic, ShadeAxas, Nemsi, Bou","","1"},
 new string[]{"Lag","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lag.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
@@ -629,6 +644,7 @@ new string[]{"Online","4","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Onl
 new string[]{"Photo / Picture","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/PhotoPicture.mp4","Nemsi","B","","3","CODAPop, DmTheMechanic","",""},
 new string[]{"Private","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Private.mp4","DmTheMechanic","B","","3","DM, Nemsi, Bou","","1"},
 new string[]{"Public / General","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/PublicGeneral.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
+new string[]{"Quest (VR Headset)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Quest(VRHeadset).mp4","Undeadsee","B","","2","","","1"},
 new string[]{"Receive / Get / Obtain / Acquire","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ReceiveGetObtainAcquire.mp4","ShadeAxas","B","","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
 new string[]{"Recharge","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Recharge.mp4","ShadeAxas","B","Also means plug in","3","CODAPop, DmTheMechanic, Shadeaxas","","1"},
 new string[]{"Record","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Record-v1.mp4","Nemsi","G","","1","","Redo","1"},
@@ -1065,6 +1081,7 @@ new string[]{"Fish","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fish-
 new string[]{"Fox","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fox-v1.mp4","CODApop","I","","3","Dm, Shade","","1"},
 new string[]{"Fox","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Fox-v2.mp4","ShadeAxas","G","","3","Dm, Shade","","1"},
 new string[]{"Frog","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Frog.mp4","Kw856","I","","3","Amarante, bou, Nemsi, DmTheMechanic","","1"},
+new string[]{"Jellyfish","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Jellyfish.mp4","Undeadsee","B","","2","","","1"},
 new string[]{"Lion","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lion-v1.mp4","DmTheMechanic","B","","3","Dm, Shade","","1"},
 new string[]{"Lion","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lion-v2.mp4","DmTheMechanic","B","","3","Dm, Shade","","1"},
 new string[]{"Mouse (Animal)","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Mouse(Animal).mp4","Bou","B","","3","DM, Shade, Nemsi, Zade","","1"},
@@ -1606,26 +1623,23 @@ new string[]{"Health","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Hea
 
 },//end of lesson
 new string[][]{//LGBT
-new string[]{"Ally / Advocate","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllyAdvocate-v1.mp4","girlenjoyer","B","","2","","","1"},
-new string[]{"Ally / Advocate","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllyAdvocate-v2.mp4","girlenjoyer","B","","2","","","1"},
-new string[]{"Asexual / Ace","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AsexualAce-v1.mp4","girlenjoyer","B","","2","","","1"},
-new string[]{"Asexual / Ace","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AsexualAce-v2.mp4","girlenjoyer","B","","3","","","1"},
-
+new string[]{"Ally / Advocate / Support","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllyAdvocateSupport.mp4","girlenjoyer","B","","2","","","1"},
+new string[]{"Ally / Advocate","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AllyAdvocate.mp4","girlenjoyer","B","IRL: the hands are supposed to be touching/contacting each other","2","","","1"},
+new string[]{"Asexual / Ace","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/AsexualAce.mp4","girlenjoyer","B","","3","","","1"},
 new string[]{"Bisexual","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Bisexual.mp4","girlenjoyer","I","","3","","",""},
-new string[]{"Butch / Masculine","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ButchMasculine.mp4","girlenjoyer","I","","3","","",""},
-new string[]{"Cisgender","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cisgender.mp4","girlenjoyer","","","2","","",""},
+new string[]{"Butch / Masculine","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ButchMasculine.mp4","girlenjoyer","B","","2","","",""},
+new string[]{"Cisgender","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Cisgender.mp4","girlenjoyer","I","","2","","",""},
 new string[]{"Closeted","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Closeted.mp4","girlenjoyer","B","","2","","",""},
 new string[]{"Coming Out","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ComingOut.mp4","girlenjoyer","B","","2","","",""},
-new string[]{"Demi","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Demi.mp4","girlenjoyer","","","2","","",""},
-new string[]{"Drag King","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/DragKing.mp4","girlenjoyer","","","2","","",""},
-new string[]{"Drag Queen","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/DragQueen.mp4","girlenjoyer","","","2","","",""},
-new string[]{"Expression","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Expression.mp4","girlenjoyer","B","","2","","",""},
+new string[]{"Demi-","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Demi-.mp4","girlenjoyer","I","examples: demisexual, demiromantic, demigender...","2","","",""},
+new string[]{"Drag King","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/DragKing.mp4","girlenjoyer","B","","2","","",""},
+new string[]{"Drag Queen","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/DragQueen.mp4","girlenjoyer","B","","2","","",""},
+new string[]{"Express / Expression","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/ExpressExpression.mp4","girlenjoyer","B","","3","","",""},
 new string[]{"Femme / Feminine","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/FemmeFeminine.mp4","girlenjoyer","I","","3","","",""},
-new string[]{"Flag","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Flag-v1.mp4","girlenjoyer","I","","3","","",""},
-new string[]{"Flag","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Flag-v2.mp4","girlenjoyer","I","","2","","",""},
-new string[]{"Flag / Banner","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/FlagBanner.mp4","girlenjoyer","I","","2","","",""},
-new string[]{"Fluid / Fluidity","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/FluidFluidity-v1.mp4","girlenjoyer","I","","2","","",""},
-new string[]{"Fluid / Fluidity","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/FluidFluidity-v2.mp4","girlenjoyer","I","","2","","",""},
+new string[]{"Flag / Banner","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/FlagBanner.mp4","girlenjoyer","I","","3","","",""},
+new string[]{"Flag","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Flag.mp4","girlenjoyer","I","","3","","",""},
+new string[]{"Fluid / Fluidity / Spectrum","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/FluidFluiditySpectrum.mp4","girlenjoyer","I","Example: Genderfluid","2","","",""},
+new string[]{"Fluid / Fluidity","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/FluidFluidity.mp4","girlenjoyer","I","","2","","",""},
 new string[]{"Gay","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Gay.mp4","girlenjoyer","I","","3","","",""},
 new string[]{"Identity","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Identity.mp4","girlenjoyer","I","","2","","",""},
 new string[]{"Intersex","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Intersex.mp4","girlenjoyer","I","","2","","",""},
@@ -1669,7 +1683,7 @@ new string[]{"Education","1","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/
 new string[]{"Education","2","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Education-v2.mp4","DmTheMechanic","B","","2","","",""},
 new string[]{"Economics","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Economics.mp4","DmTheMechanic","B","","2","","",""},
 new string[]{"Biology","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Biology.mp4","DmTheMechanic","B","","2","","",""},
-
+new string[]{"Lesson","","https://bob64.vrsignlanguage.net/ShaderMotion/ASL/Lesson.mp4","Undeadsee","B","","2","","",""},
 
 
 
@@ -2302,14 +2316,18 @@ new string[] {"TEST", "Shadermotion Test", "Y"},
         int currentlang = 0; // currently selected Language
     int currentlesson = -1; // currently selected Lesson
     int currentword = -1; // currently selected Word/Sign
-    [UdonSynced] int globalboard;
+        int lastlang=-1;//used to prevent reloading of the same word on the video player
+        int lastlesson = -1;//used to prevent reloading of the same word on the video player
+        int lastword = -1;//used to prevent reloading of the same word on the video player
+
+        [UdonSynced] int globalboard;
     [UdonSynced] int globalcurrentlang;
     [UdonSynced] int globalcurrentlesson;
     [UdonSynced] int globalcurrentword;
 
     // Video Player Objects/Variables
     //GameObject videocontainer;
-    private VideoPlayerControl videoplayer;
+    private Bob64.VideoPlayerController.VideoPlayerControl videoplayer;
     //GameObject videoplayer;
     //VRCUnityVideoPlayer vrcplayercomponent;
     //TextMeshProUGUI videostatus;
@@ -2410,10 +2428,20 @@ new string[] {"TEST", "Shadermotion Test", "Y"},
 	***************************************************************************************************************************/
     void Start()
     {
+            DataList test = new DataList();
+            DataList test2 = new DataList();
 
+            test.Add("a");
+            test.Add("b");
+            test2.Add(test);
+
+            if (debug)
+            {
+                Debug.Log("Entered Start");
+            }
             // Initialize Displays
 
-        _InitializeDarkMode();
+            _InitializeDarkMode();
         _InitializePreferenceMenu();
             _InitializeTextColors(false);
 
@@ -2459,7 +2487,10 @@ new string[] {"TEST", "Shadermotion Test", "Y"},
         ***************************************************************************************************************************/
         public void _UpdateColorSettings()
         {
-            Debug.Log("_UpdateColorSettings Called");
+            if (debug)
+            {
+                Debug.Log("Entered _UpdateColorSettings");
+            }
             _InitializeTextColors(ColorToggle.isOn);
             _UpdateAllDisplays();
         }
@@ -2470,7 +2501,11 @@ new string[] {"TEST", "Shadermotion Test", "Y"},
             ***************************************************************************************************************************/
             private void _InitializeTextColors(bool mode)
         {
-            Debug.Log("_InitializeTextColors Called with mode: " + mode);
+            if (debug)
+            {
+                Debug.Log("Entered _InitializeTextColors with mode: " + mode);
+            }
+
             switch (mode)
             {
                 case false: //default
@@ -2500,6 +2535,10 @@ Update the color on legend to match.
 ***************************************************************************************************************************/
         private void _UpdateTextHelper()
         {
+            if (debug)
+            {
+                Debug.Log("Entered _UpdateTextHelper");
+            }
             //Debug.Log(FloatNormalizedToHex(1f));
             //Debug.Log(DecToHex(255));
             GameObject.Find("/Legend/Legend Canvas/Color Text").GetComponent<TextMeshProUGUI>().text =
@@ -2517,6 +2556,10 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 ***************************************************************************************************************************/
         private string GetStringFromColor(Color color)
         {
+            if (debug)
+            {
+                Debug.Log("Entered GetStringFromColor");
+            }
             FloatNormalizedToHex(color.r);
             string red = FloatNormalizedToHex(color.r);
 
@@ -2533,6 +2576,10 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 ***************************************************************************************************************************/
         private string FloatNormalizedToHex(float value)
         {
+            if (debug)
+            {
+                Debug.Log("Entered FloatNormalizedToHex");
+            }
             //Debug.Log("floatnormnalizedtohext:" + Mathf.RoundToInt(value * 255f));
             return DecToHex(Mathf.RoundToInt(value * 255f));
         }
@@ -2541,6 +2588,10 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
         ***************************************************************************************************************************/
         private string DecToHex(int value)
         {
+            if (debug)
+            {
+                Debug.Log("Entered DecToHex");
+            }
             return value.ToString("X2");//x2=hex with 2 digits
         }
 
@@ -2550,7 +2601,11 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
         ***************************************************************************************************************************/
         private void _InitializeDarkMode()
     {
-        darkmodebutton = new ColorBlock();
+            if (debug)
+            {
+                Debug.Log("Entered _InitializeDarkMode");
+            }
+            darkmodebutton = new ColorBlock();
         darkmodebutton.normalColor = COLOR_GREY_DARK;
         darkmodebutton.highlightedColor = COLOR_GREY_MEDIUM;
         darkmodebutton.pressedColor = COLOR_GREY_LIGHT;
@@ -2575,7 +2630,11 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 	***************************************************************************************************************************/
     private void _InitializePreferenceMenu()
     {
-        GlobalToggle = GameObject.Find("/Preferencesv2/Canvas/Mode Panel/Global Mode").GetComponent<Toggle>();
+            if (debug)
+            {
+                Debug.Log("Entered _InitializePreferenceMenu");
+            }
+            GlobalToggle = GameObject.Find("/Preferencesv2/Canvas/Mode Panel/Global Mode").GetComponent<Toggle>();
         QuizToggle = GameObject.Find("/Preferencesv2/Canvas/Mode Panel/Quiz Mode").GetComponent<Toggle>();
         HandToggle = GameObject.Find("/Preferencesv2/Canvas/Left Panel/Hand Toggle").GetComponent<Toggle>();
         avatarscaleslider = GameObject.Find("/Preferencesv2/Canvas/Left Panel/Avatar Scale Slider").GetComponent<Slider>();
@@ -2590,8 +2649,11 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
 	***************************************************************************************************************************/
     private void _InitializeSigningAvatar()
     {
-
-        signingavatars = GameObject.Find("/Signing Avatars");
+            if (debug)
+            {
+                Debug.Log("Entered _InitializeSigningAvatar");
+            }
+            signingavatars = GameObject.Find("/Signing Avatars");
             nanaavatars[0] = signingavatars.transform.Find("Nana Avatar (SM)").gameObject;
             nanaavatars[1] = signingavatars.transform.Find("Nana Avatar (SM) (1)").gameObject;
             nanaavatars[2] = signingavatars.transform.Find("Nana Avatar (SM) (2)").gameObject;
@@ -2648,6 +2710,10 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
         ***************************************************************************************************************************/
         private void _InitializeMenu()
         {
+            if (debug)
+            {
+                Debug.Log("Entered _InitializeMenu");
+            }
             menuheadertext = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header").GetComponent<TextMeshProUGUI>();
             //menuheader = GameObject.Find("/Udon Menu System/Root Canvas/Menu Header");
             menusubheadertext = GameObject.Find("/Udon Menu System/Root Canvas/Menu SubHeader").GetComponent<TextMeshProUGUI>();
@@ -2676,7 +2742,11 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
         ***************************************************************************************************************************/
         private void _InitializeVideoPlayer()
         {
-            videoplayer = GameObject.Find("/Video Container/Video").GetComponent<VideoPlayerControl>();
+            if (debug)
+            {
+                Debug.Log("Entered _InitializeVideoPlayer");
+            }
+            videoplayer = GameObject.Find("/Video Container/Video").GetComponent<Bob64.VideoPlayerController.VideoPlayerControl>();
             //videoplayer._SetStatusText("If the video doesn't update, wait like 5 seconds, and then push reload. ->");
         }
 
@@ -2685,7 +2755,11 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
         ***************************************************************************************************************************/
         private void _InitializeQuizMenu()
     {
-        quizp = GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel");
+            if (debug)
+            {
+                Debug.Log("Entered _InitializeQuizMenu");
+            }
+            quizp = GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel");
         quiza = GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/A");
         quizb = GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/B");
         quizc = GameObject.Find("/Signing Avatars/QuizCanvas/QuizPanel/C");
@@ -2807,10 +2881,15 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
     ***************************************************************************************************************************/
     public override void OnDeserialization()
     {
-
-        _GlobalModeVarSync();
-        _UpdateAllDisplays();
-
+            if (debug)
+            {
+                Debug.Log("Entered OnDeserialization");
+            }
+            if (globalmode)//only do anythign if globalmode is on.
+            {
+                _GlobalModeVarSync();
+                _UpdateAllDisplays();
+            }
         //_DebugMenuVariables();
     }
 
@@ -3244,19 +3323,23 @@ helperfunction since colorutility.tohtmlstringrgb isn't in udon. urgh.
     ***************************************************************************************************************************/
     private void _DisplayVideo()
     {
-        if (currentword != NOT_SELECTED)
-        {
+            if (debug)
+            {
+                Debug.Log("Entered _DisplayVideo");
+            }
+            if (currentword == NOT_SELECTED) return;
+
             // Update VRCPlayer Visual
-            if (AllLessons[currentlang][currentlesson][currentword][arrayurl] != "")
-            { // if url is blank, then don't look for the video
+            if (AllLessons[currentlang][currentlesson][currentword][arrayurl] == "") return; // if url is blank, then don't attempt to load the video
+            //if (lastlang == currentlang && lastlesson == currentlesson && lastword == currentword) return; //hmm this will conflict with auto-retry if rate limited or if user pushes the same button to force a reload.
+
                 if (langurls.Length > 0)
                 { //don't crash the script if i forget to build langurls lol...
                         //Debug.Log(langurls[currentlang][currentlesson][currentword]);
                         lastvideoloadattempt = DateTime.Now;
                         videoplayer._LoadURL(langurls[currentlang][currentlesson][currentword]);
                 }
-            }
-        }
+
     }
 
         /***************************************************************************************************************************
@@ -3345,8 +3428,11 @@ Called to display rate limit message
 	***************************************************************************************************************************/
     public void _QuizResetButtonPushed()
     {
-        //Debug.Log("Entered _QuizResetButtonPushed");
-        quiza.SetActive(false);
+            if (debug)
+            {
+                Debug.Log("Entered _QuizResetButtonPushed");
+            }
+            quiza.SetActive(false);
         quizb.SetActive(false);
         quizc.SetActive(false);
         quizd.SetActive(false);
@@ -3426,12 +3512,15 @@ Called to display rate limit message
 	***************************************************************************************************************************/
     public void _QuizBigButtonPushed()
     {
-        Debug.Log("Entered QuizBigButtonPushed");
+            if (debug)
+            {
+                Debug.Log("Entered _QuizBigButtonPushed");
+            }
 
-        //UnityEngine.Random.Range(0,quizarray.Length+1)
+            //UnityEngine.Random.Range(0,quizarray.Length+1)
 
 
-        if (!quizinprogress)
+            if (!quizinprogress)
         {
             quizcounter = 0;
             quizscore = 0;
@@ -3622,23 +3711,121 @@ Called to display rate limit message
         private void _buttonpushed(int buttonIndex)
     {
             //Debug.Log("Entered _buttonpushed(" + buttonIndex + ")");
-            if (!locked)
-            {
-                // Update Data
-                _UpdateMenuVariables(buttonIndex);
+            if (locked) return;
+            // Update Data
+            _UpdateMenuVariables(buttonIndex);
 
                 // Update Display
                 _UpdateAllDisplays();
-            }
+
 
     }
 
-    /***************************************************************************************************************************
-	Takes ownership of the board udonbehavior to update variables?
-	***************************************************************************************************************************/
-    public void TakeOwnership()
+        /***************************************************************************************************************************
+        WordIndexButtonFunction - assuming udon calls it correctly once I have the buttons setup
+        ***************************************************************************************************************************/
+        private void _wordindexbuttonpushed(int lang, int lesson, int word)
+        {
+            //Debug.Log("Entered _buttonpushed(" + buttonIndex + ")");
+            if (locked) return;
+
+                // Update Data
+                currentlang = lang;
+                currentlesson = lesson;
+                currentword = word;
+
+                // Update Display
+                _UpdateAllDisplays();
+
+        }
+        public void _setsearchlanguage()
+        {
+            if (debug)
+            {
+                Debug.Log("Entered _setsearchlanguage");
+            }
+            //GameObject temp = searchindexroot.transform.Find("Dropdown").gameObject;
+            searchlang = searchindexdropdown.GetComponent<Dropdown>().value;
+            _dosearch();
+
+        }
+        public void _searchvaluechanged()
+        {
+            if (debug)
+            {
+                Debug.Log("Entered _searchvaluechanged");
+            }
+            searchtext = searchindexinput.GetComponent<InputField>().text;
+
+            _dosearch();
+
+
+        }
+        private void _dosearch()
+        {
+            if (debug)
+            {
+                Debug.Log("Entered _dosearch");
+            }
+            string results="";
+            SearchResultsText.text = "";
+            if (searchtext == "")
+            {
+                SearchResultsText.text = "Welcome to the experimental searchable word index. \nPlease enter a query below.";
+                return;
+            }
+
+            //int length = 0; //why do i need length again?
+            for(int lesson =0; lesson < AllLessons[searchlang].Length; lesson++)//drill down to each lesson in the searchlang
+            {
+                //Debug.Log("lesson: " + lesson);
+                for(int word = 0; word < AllLessons[searchlang][lesson].Length; word++)
+                {
+                    //Debug.Log("word: " + word + "eng: " + AllLessons[searchlang][lesson][word][arrayword_english]);
+                    /*
+                    DataList temp = new DataList()
+                    {
+                        AllLessons[searchlang][lesson][word][arrayword_english],lesson,word 
+                    };*/
+
+                    int index = AllLessons[searchlang][lesson][word][arrayword_english].ToLower().IndexOf(searchtext.ToLower(), StringComparison.OrdinalIgnoreCase);
+                    if ( index >= 0)
+                    {
+                        DataList temp = new DataList();
+
+
+                        string wrappedString = AllLessons[searchlang][lesson][word][arrayword_english].Substring(0, index) + "<color=\"red\">" + AllLessons[searchlang][lesson][word][arrayword_english].Substring(index, searchtext.Length) + "</color>" + AllLessons[searchlang][lesson][word][arrayword_english].Substring(index + searchtext.Length);
+
+
+
+
+                        //Debug.Log("searching lang:" + searchlang + " lesson:" + lesson + " word:" + word);
+                        temp.Add(wrappedString);
+                        temp.Add(lesson);
+                        temp.Add(word);
+                        searchresults.Add(temp);
+                        results += wrappedString + " - L"+lesson+"-"+word+"\n";
+                        //update real-time?
+                        SearchResultsText.text = results;
+                    }
+                    
+                    //searchresults[0].Add
+                }
+            }
+            searchresults.Sort();
+
+        }
+
+/***************************************************************************************************************************
+Takes ownership of the board udonbehavior to update variables?
+***************************************************************************************************************************/
+public void TakeOwnership()
     {
-        if (!Networking.IsOwner(gameObject))
+            if (debug)
+            {
+                Debug.Log("Entered TakeOwnership");
+            }
+            if (!Networking.IsOwner(gameObject))
         {
             Networking.SetOwner(Networking.LocalPlayer, gameObject);
         }
@@ -4166,6 +4353,7 @@ Called to display rate limit message
                 // Sort by word and then combine
                 ).OrderBy(pair => pair.Item1).Select(pair => $"{pair.Item1} {pair.Item2}")
             );
+            //Debug.Log("Word Index populated?");
 
             // Format errata text
             string errataText = string.Join("",
@@ -4182,10 +4370,13 @@ Called to display rate limit message
                 )
             );
 
-            FindInActiveObjectByName("DictionaryText").GetComponent<TextMeshProUGUI>().text = dictionaryText;
-            Debug.Log("Index Populated");
+            wordindexgo.GetComponent<TextMeshProUGUI>().text = dictionaryText;
 
-            FindInActiveObjectByName("ErrataText").GetComponent<TextMeshProUGUI>().text = errataText;
+
+            Debug.Log("Index Populated");
+            //Debug.Log(dictionaryText);
+
+            erratago.GetComponent<TextMeshProUGUI>().text = errataText;
             Debug.Log("Errata populated");
             //todo, if parameters are supported by buttons. Instantiate buttons instead of text, to allow jumping direct to a specific word.
         }
