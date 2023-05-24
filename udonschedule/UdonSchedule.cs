@@ -14,6 +14,7 @@ namespace Bob64.UdonSchedule
 
     public class UdonSchedule : UdonSharpBehaviour
     {
+        [SerializeField] private bool debug = false;
         public float Timer = 1.0f;
         private float CurrentTimer = 0;
         string[][] fallbackevents;
@@ -29,12 +30,13 @@ namespace Bob64.UdonSchedule
         void Start()
         {
             VRCStringDownloader.LoadUrl(jsoneventsurl, (IUdonEventReceiver)this);
-            //VRCStringDownloader.LoadUrl(jsoneventsurl);
+
             currenttimetext = gameObject.transform.Find("TopRightPanel/Current Time").GetComponent<TextMeshProUGUI>();
 
-            events =
+            fallbackevents =
                 new string[][]{//all datetimes must be in unixtimestamp. Will auto-adjust to end-user system settings.
                            //date in utc, repeating (Y/N), lang short, classname, Location, teacher 
+                //new string[]{ "0", "Y", "Warning", "Events failed to load", "Check Discord For Event Schedule","Bob64"},
                 //Monday
                 new string[]{ "1683576000", "Y", "ASL No Voice Zone", "Event:\nASL No Voice Zone", "Quest Compatible","kw856"},
 
@@ -65,10 +67,8 @@ namespace Bob64.UdonSchedule
 
                 };
 
+            events = fallbackevents;
 
-            events = _FuturiseArray(events);
-            events = _SortArray(events);
-            _DisplaySchedule(events);
             //disable unneeded events
             /*
             for (int x = events.Length; x < 20; x++)
@@ -96,7 +96,7 @@ namespace Bob64.UdonSchedule
 
                 else if (datatokenevents.TokenType == TokenType.DataList)
                 {
-                    //Debug.Log(message: $"Successfully deserialized as a list with {datatokenevents.DataList.Count} count");
+                    Debug.Log(message: $"Successfully deserialized as a list with {datatokenevents.DataList.Count} count");
                     jsonevents = new string[datatokenevents.DataList.Count][]; //Declare jagged array
 
                     for (int i = 0; i < datatokenevents.DataList.Count; i++)
@@ -125,11 +125,20 @@ namespace Bob64.UdonSchedule
                             Debug.Log(message: $"Failed to get value from element {i}.");
                         }
                     }
+                    if (datatokenevents.DataList.Count > 0) {
+                        
                     events = jsonevents;
                     events = _FuturiseArray(events); //in the off-chance that the json has dates that have already passed.
                     events = _SortArray(events); //in the off-chance that the json has dates out-of-order.
                     _DisplaySchedule(events);
-
+                        Debug.Log("JSON events loaded.");
+                    }
+                    else
+                    {
+                        Debug.Log("Json deserialized with 0 count, fallback to hardcoded events");
+                        events = fallbackevents;
+                        //Debug.Log("event length: " + events.Length);
+                    }
 
                 }
                 else
@@ -183,11 +192,12 @@ namespace Bob64.UdonSchedule
         ***************************************************************************************************************************/
         void FixedUpdate()
         {
-            if (CurrentTimer == 0)
+            if (CurrentTimer == 0 & events.Length > 0)
             {
                 //currenttimetext.text="Current Time: "+ DateTime.Now.ToString("t");
                 //currenttimetext.text = "Current Time: " + DateTime.Now.Hour%12+":"+DateTime.Now.Minute+" "+ DateTime.Now.ToString("tt");
                 currenttimetext.text = "Current Time: " + DateTime.Now.ToString("h:mm tt");
+
                 DateTime temp = UnixTimeToUtc(long.Parse(events[0][0]));
                 TimeSpan span = temp - DateTime.UtcNow;
 
