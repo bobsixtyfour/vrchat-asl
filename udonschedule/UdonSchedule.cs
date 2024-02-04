@@ -310,11 +310,11 @@ namespace Bob64.UdonSchedule
                 if (DateTime.Compare(DateTime.UtcNow, temp) < 0)//utcnow is earlier than the date, don't display if the event is in the past.
                 {
                     gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")").gameObject.SetActive(true);
-#if UNITY_ANDROID//fix for quest headsets being off by 1 hour?
-                        _DisplayScheduleLine(temp.Add(DateTime.Now - DateTime.UtcNow).AddHours(1), value[2], value[4], value[5], counter);
-#else
+//#if UNITY_ANDROID//fix for quest headsets being off by 1 hour?
+                        //_DisplayScheduleLine(temp.Add(DateTime.Now - DateTime.UtcNow).AddHours(1), value[2], value[4], value[5], counter);
+//#else
                     _DisplayScheduleLine(temp.Add(DateTime.Now - DateTime.UtcNow), value[2], value[4], value[5], counter);
-#endif
+//#endif
 
                     counter++;
                 }
@@ -557,7 +557,7 @@ namespace Bob64.UdonSchedule
         ***************************************************************************************************************************/
         private void _DisplayScheduleLine(DateTime tempdate, String eventshortname, String world, String teachers, int counter)
         {
-            gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")/Box1").GetComponent<TextMeshProUGUI>().text = tempdate.ToString("dddd") + "\n" + tempdate.ToString("h tt");
+            gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")/Box1").GetComponent<TextMeshProUGUI>().text = tempdate.ToString("dddd") + "\n" + tempdate.ToString("h:mm tt");
             gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")/Box2").GetComponent<TextMeshProUGUI>().text = tempdate.ToString("d");
             gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")/Box3").GetComponent<TextMeshProUGUI>().text = eventshortname;
             gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")/Box4").GetComponent<TextMeshProUGUI>().text = "Hosted by: " + teachers;
