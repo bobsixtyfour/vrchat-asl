@@ -15,7 +15,7 @@ namespace Bob64.UdonSchedule
     public class UdonSchedule : UdonSharpBehaviour
     {
         [SerializeField] private bool debug = false;
-        public int Timer = 1;
+        public int Timer = 1; //update every 1 seconds
         private float CurrentTimer = 0;
         string[][] events =
                 new string[][]{//all datetimes must be in unixtimestamp. Will auto-adjust to end-user system settings.
@@ -228,12 +228,7 @@ namespace Bob64.UdonSchedule
                 _DisplaySchedule(events);
 
             }
-            #if UNITY_ANDROID//fix for quest headsets being off by 1 hour
-                                    _DisplayUpcomingEvent(temp.Add(DateTime.Now - DateTime.UtcNow).AddHours(1), events[0][3], events[0][4], events[0][5]);
-            #else
-                        _DisplayUpcomingEvent(temp.Add(DateTime.Now - DateTime.UtcNow), events[0][3], events[0][4], events[0][5]);
-            #endif
-
+            _DisplayUpcomingEvent(temp.Add(DateTime.Now - DateTime.UtcNow), events[0][3], events[0][4], events[0][5]);
 
         }
 
@@ -310,11 +305,8 @@ namespace Bob64.UdonSchedule
                 if (DateTime.Compare(DateTime.UtcNow, temp) < 0)//utcnow is earlier than the date, don't display if the event is in the past.
                 {
                     gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")").gameObject.SetActive(true);
-//#if UNITY_ANDROID//fix for quest headsets being off by 1 hour?
-                        //_DisplayScheduleLine(temp.Add(DateTime.Now - DateTime.UtcNow).AddHours(1), value[2], value[4], value[5], counter);
-//#else
+
                     _DisplayScheduleLine(temp.Add(DateTime.Now - DateTime.UtcNow), value[2], value[4], value[5], counter);
-//#endif
 
                     counter++;
                 }
