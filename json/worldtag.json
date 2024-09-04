@@ -235,7 +235,7 @@
     },
     {
         "Name": "Cyberponk",
-        "Tag": "Fluent NGT Member",
+        "Tag": "Fluent NGT Member\n<size=60%>Community Guide",
         "Color": "1",
         "Community": "hh"
     },
@@ -349,13 +349,43 @@
     },
     {
         "Name": "undeadsee",
-        "Tag": "World Contributor",
+        "Tag": "Community Guide\n<size=60%>World Contributor",
         "Color": "3",
         "Community": "hh"
     },
     {
         "Name": "LunaAshes",
         "Tag": "World Contributor",
+        "Color": "3",
+        "Community": "hh"
+    },
+    {
+        "Name": "vallychu",
+        "Tag": "Community Guide",
+        "Color": "3",
+        "Community": "hh"
+    },
+    {
+        "Name": "♥~Stephii~♥",
+        "Tag": "Community Guide",
+        "Color": "3",
+        "Community": "hh"
+    },
+    {
+        "Name": "Earth_",
+        "Tag": "Community Guide",
+        "Color": "3",
+        "Community": "hh"
+    },
+    {
+        "Name": "Zazz",
+        "Tag": "Community Guide",
+        "Color": "3",
+        "Community": "hh"
+    },
+    {
+        "Name": "Murk_Vr",
+        "Tag": "Community Guide",
         "Color": "3",
         "Community": "hh"
     },
