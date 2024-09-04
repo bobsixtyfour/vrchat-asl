@@ -17,39 +17,6 @@ namespace Bob64.UdonSchedule
         [SerializeField] private bool debug = false;
         public int Timer = 1; //update every 1 seconds
         private float CurrentTimer = 0;
-        string[][] events =
-                new string[][]{//all datetimes must be in unixtimestamp. Will auto-adjust to end-user system settings.
-                           //date in utc, repeating (Y/N), lang short, classname, Location, teacher 
-                //new string[]{ "0", "Y", "Warning", "Events failed to load", "Check Discord For Event Schedule","Bob64"},
-                //Monday
-                new string[]{ "0", "N", "No Event Data", "Event:\nTo Be Determined (TBD)", "TBD","TBD"},
-                /*
-                //Tuesday
-                new string[]{ "1683655200", "Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Ray_is_Deaf"},
-                new string[]{ "1683662400", "Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre & Korea_Yujin"},
-                
-                //Wednesday
-                new string[]{ "1683723600", "Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre"},
-                new string[]{ "1683747000", "Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
-                new string[]{ "1683806400", "Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "PC Only","DmTheMechanic"},
-           
-                //Thursday
-                new string[]{ "1683853200", "Y", "JSL Class", "Language Class:\nJSL (Japanese Sign Language)", "Quest Compatible", "RafaelDeaf"},
-
-                //Friday
-                new string[]{ "1683923400", "Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
-                new string[]{ "1683926100", "Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "PC Only","Wardragon"},
-                
-                //Saturday
-                new string[]{ "1684008000", "Y", "DGS Class", "Language Class:\nDGS (German Sign Language)", "Quest Compatible", "deaf_danielo_89"},
-                new string[]{ "1684008000", "Y", "LSF No Voice Zone", "Event:\nLSF No Voice Zone", "Quest Compatible", "xKaijo"},
-
-                //Sunday
-                new string[]{ "1684090800", "Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Crow_Se7en"},
-                new string[]{ "1684094400", "Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre"},
-                new string[]{ "1684096200", "Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
-                */
-                };
         string[][] jsonevents;
         //string[][] events;
         [SerializeField] TextMeshProUGUI currenttimetext;
@@ -64,19 +31,6 @@ namespace Bob64.UdonSchedule
             Debug.Log("start");
             VRCStringDownloader.LoadUrl(jsoneventsurl, (IUdonEventReceiver)this);
 
-            //currenttimetext = gameObject.transform.Find("TopRightPanel/Current Time").GetComponent<TextMeshProUGUI>();
-
-            
-
-            //events = fallbackevents;
-
-            //disable unneeded events
-            /*
-            for (int x = events.Length; x < 20; x++)
-            {
-                scheduleroot.transform.Find("UpcomingPanel/Content/Event" + x).SetActive(false);
-            }
-            */
         }
 
         //called when string loading is successful.
@@ -128,11 +82,11 @@ namespace Bob64.UdonSchedule
                     }
                     if (datatokenevents.DataList.Count > 0)
                     {
-                        
-                        events = jsonevents;
-                        events = _FuturiseArray(events); //in the off-chance that the json has dates that have already passed.
-                        events = _SortArray(events); //in the off-chance that the json has dates out-of-order.
-                        _DisplaySchedule(events);
+
+
+                        jsonevents = _FuturiseArray(jsonevents); //in the off-chance that the json has dates that have already passed.
+                        jsonevents = _SortArray(jsonevents); //in the off-chance that the json has dates out-of-order.
+                        _DisplaySchedule(jsonevents);
                             Debug.Log("JSON events loaded.");
                     }
                     else
@@ -214,21 +168,21 @@ namespace Bob64.UdonSchedule
                 Debug.Log("currenttimer:" + CurrentTimer);
             }
 
-            if (events.Length == 0) return;
+            if (jsonevents.Length == 0) return;
 
             currenttimetext.text = "Current Time: " + DateTime.Now.ToString("h:mm tt");
 
-            DateTime temp = UnixTimeToUtc(long.Parse(events[0][0]));
+            DateTime temp = UnixTimeToUtc(long.Parse(jsonevents[0][0]));
             TimeSpan span = temp - DateTime.UtcNow;
 
             if (span.TotalMinutes < -30) //if 30 minutes have passed from the top event
             {
-                events = _FuturiseArray(events);
-                events = _SortArray(events);
-                _DisplaySchedule(events);
+                jsonevents = _FuturiseArray(jsonevents);
+                jsonevents = _SortArray(jsonevents);
+                _DisplaySchedule(jsonevents);
 
             }
-            _DisplayUpcomingEvent(temp.Add(DateTime.Now - DateTime.UtcNow), events[0][3], events[0][4], events[0][5]);
+            _DisplayUpcomingEvent(temp.Add(DateTime.Now - DateTime.UtcNow), jsonevents[0][3], jsonevents[0][4], jsonevents[0][5]);
 
         }
 
@@ -314,7 +268,7 @@ namespace Bob64.UdonSchedule
             }
             //Debug.Log("Events.Length: "+events.Length);
             //disable unneeded events
-            for (counter = events.Length; counter < 25; counter++)
+            for (counter = jsonevents.Length; counter < 25; counter++)
             {
                 gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")").gameObject.SetActive(false);
             }
