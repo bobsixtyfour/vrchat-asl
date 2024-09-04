@@ -22,8 +22,8 @@ namespace Bob64.UdonSchedule
                            //date in utc, repeating (Y/N), lang short, classname, Location, teacher 
                 //new string[]{ "0", "Y", "Warning", "Events failed to load", "Check Discord For Event Schedule","Bob64"},
                 //Monday
-                new string[]{ "1683576000", "Y", "ASL No Voice Zone", "Event:\nASL No Voice Zone", "Quest Compatible","kw856"},
-
+                new string[]{ "0", "N", "No Event Data", "Event:\nTo Be Determined (TBD)", "TBD","TBD"},
+                /*
                 //Tuesday
                 new string[]{ "1683655200", "Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Ray_is_Deaf"},
                 new string[]{ "1683662400", "Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre & Korea_Yujin"},
@@ -48,7 +48,7 @@ namespace Bob64.UdonSchedule
                 new string[]{ "1684090800", "Y", "ASL Class", "Language Class:\nASL (American Sign Language)", "Quest Compatible", "Crow_Se7en"},
                 new string[]{ "1684094400", "Y", "KSL Class", "Language Class:\nKSL (Korean Sign Language)", "Quest Compatible", "Simulacre"},
                 new string[]{ "1684096200", "Y", "LSF Class", "Language Class:\nLSF (French Sign Language)", "Quest Compatible", "Getomeulou"},
-
+                */
                 };
         string[][] jsonevents;
         //string[][] events;
@@ -300,6 +300,7 @@ namespace Bob64.UdonSchedule
             int counter = 0;
             foreach (string[] value in tempkeys)
             {
+                gameObject.transform.Find("UpcomingPanel/Content/Event (" + counter + ")").gameObject.SetActive(false);
                 //Debug.Log("comparing value:"+value[0]+"compare result:"+DateTime.Compare(DateTime.UtcNow, DateTime.Parse(value[0])));
                 DateTime temp = UnixTimeToUtc(long.Parse(value[0]));
                 if (DateTime.Compare(DateTime.UtcNow, temp) < 0)//utcnow is earlier than the date, don't display if the event is in the past.
@@ -326,7 +327,11 @@ namespace Bob64.UdonSchedule
             //Debug.Log("tempdate:"+tempdate.ToString());
             //Debug.Log("current time:" + DateTime.Now.ToString());
             //Debug.Log("interval: " + interval.Days + " days, " + interval.Hours + " hours, " + interval.Minutes + " minutes, " + interval.Seconds + " seconds");
-            upcomingtext.text = interval.Days + "d, " + interval.Hours + "h, " + interval.Minutes + "m, " + interval.Seconds + "s";
+            //upcomingtext.text = interval.Days + "d, " + interval.Hours + "h, " + interval.Minutes + "m, " + interval.Seconds + "s";
+
+                upcomingtext.text = "Check back later";
+
+
             string days = "";
             string hours = "";
             string minutes = "";
@@ -422,7 +427,7 @@ namespace Bob64.UdonSchedule
                 upcomingtext.text = "Just Started:\n" + Convert.ToInt16(interval.TotalMinutes * -1) + " Minutes Ago";
             }
 
-
+ 
             gameObject.transform.Find("InfoPanel/EventName").GetComponent<TextMeshProUGUI>().text = eventlongname;
             gameObject.transform.Find("InfoPanel/LocationText").GetComponent<TextMeshProUGUI>().text = "Location:\n" + world;
             gameObject.transform.Find("InfoPanel/HostText").GetComponent<TextMeshProUGUI>().text = "Hosted by:\n" + teachers;
