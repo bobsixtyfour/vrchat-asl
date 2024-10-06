@@ -54,12 +54,6 @@
         "Community": "hh"
     },
     {
-        "Name": "wardragon",
-        "Tag": "Fluent ASL Member",
-        "Color": "1",
-        "Community": "hh"
-    },
-    {
         "Name": "Catsgirl_nya",
         "Tag": "Fluent ASL Member\n<size=60%>World Contributor",
         "Color": "1",
@@ -90,12 +84,6 @@
         "Community": "hh"
     },
     {
-        "Name": "ChristianNar",
-        "Tag": "Fluent ASL Member",
-        "Color": "1",
-        "Community": "hh"
-    },
-    {
         "Name": "Danyy59（Deaf）",
         "Tag": "Fluent ASL Member",
         "Color": "1",
@@ -115,12 +103,6 @@
     },
     {
         "Name": "エリック・グローナー",
-        "Tag": "Fluent ASL Member",
-        "Color": "1",
-        "Community": "hh"
-    },
-    {
-        "Name": "TheDeafValkyrie",
         "Tag": "Fluent ASL Member",
         "Color": "1",
         "Community": "hh"
@@ -177,12 +159,6 @@
         "Name": "deaf_danielo_89",
         "Tag": "Fluent DGS Teacher",
         "Color": "0",
-        "Community": "hh"
-    },
-    {
-        "Name": "BTZN",
-        "Tag": "Fluent DGS Member",
-        "Color": "1",
         "Community": "hh"
     },
     {
@@ -390,9 +366,21 @@
         "Community": "hh"
     },
     {
+        "Name": "GT4tube",
+        "Tag": "Fluent PJM Member\n<size=60%>Sign World Creator",
+        "Color": "1",
+        "Community": "gs"
+    },
+    {
+        "Name": "ChristianNar",
+        "Tag": "Fluent ASL Member",
+        "Color": "1",
+        "Community": "gs"
+    },
+    {
         "Name": "Nemsi",
-        "Tag": "Fluent ASL User\n<size=60%>World Contributor",
-        "Color": "0",
+        "Tag": "Fluent ASL Teacher\n<size=60%>World Contributor",
+        "Color": "1",
         "Community": "gs"
     },
     {
@@ -403,14 +391,32 @@
     },
     {
         "Name": "Getomeulou",
-        "Tag": "Fluent LSF User",
-        "Color": "0",
+        "Tag": "Fluent LSF Teacher",
+        "Color": "1",
+        "Community": "gs"
+    },
+	{
+        "Name": "TheDeafValkyrie",
+        "Tag": "Fluent ASL Member",
+        "Color": "1",
         "Community": "gs"
     },
     {
-        "Name": "GT4tube",
-        "Tag": "Fluent PJM User\n<size=60%>Sign World Creator",
+        "Name": "wardragon",
+        "Tag": "Fluent ASL Member",
+        "Color": "1",
+        "Community": "hh/gs"
+    },
+    {
+        "Name": "BTZN",
+        "Tag": "Fluent DGS Member",
+        "Color": "1",
+        "Community": "hh/gs"
+    },
+    {
+        "Name": "AlexDeafHero",
+        "Tag": "Fluent ASL Member",
         "Color": "1",
         "Community": "gs"
-    }
+    },
 ]
