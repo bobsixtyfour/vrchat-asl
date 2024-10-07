@@ -269,14 +269,14 @@
         "Name": "Shawarmachine",
         "Tag": "HH World Creator",
         "ESWTag": "HH World Creator",
-        "Color": "2",
+        "Color": "3",
         "Community": "hh"
     },
     {
         "Name": "DecentM",
         "Tag": "HH World Creator",
         "ESWTag": "HH World Creator",
-        "Color": "2",
+        "Color": "3",
         "Community": "hh"
     },
     {
@@ -374,7 +374,7 @@
         "Name": "undeadsee",
         "Tag": "Community Guide\n<size=60%>World Contributor",
         "ESWTag": "Community Guide\n<size=60%>World Contributor",
-        "Color": "3",
+        "Color": "2",
         "Community": "hh"
     },
     {
@@ -388,28 +388,28 @@
         "Name": "vallychu",
         "Tag": "Community Guide",
         "ESWTag": "Community Guide",
-        "Color": "3",
+        "Color": "2",
         "Community": "hh"
     },
     {
         "Name": "♥~Stephii~♥",
         "Tag": "Community Guide",
         "ESWTag": "Community Guide",
-        "Color": "3",
+        "Color": "2",
         "Community": "hh"
     },
     {
         "Name": "Zazz",
         "Tag": "Community Guide",
         "ESWTag": "Community Guide",
-        "Color": "3",
+        "Color": "2",
         "Community": "hh"
     },
     {
         "Name": "Murk_Vr",
         "Tag": "Community Guide",
         "ESWTag": "Community Guide",
-        "Color": "3",
+        "Color": "2",
         "Community": "hh"
     },
     {
@@ -430,7 +430,7 @@
         "Name": "Nemsi",
         "Tag": "Fluent ASL Teacher",
         "ESWTag": "Fluent ASL Teacher\n<size=60%>World Contributor",
-        "Color": "1",
+        "Color": "0",
         "Community": "gs"
     },
     {
@@ -444,7 +444,7 @@
         "Name": "Getomeulou",
         "Tag": "Fluent LSF Teacher",
         "ESWTag": "Fluent LSF Teacher",
-        "Color": "1",
+        "Color": "0",
         "Community": "gs"
     },
 	{
@@ -479,7 +479,7 @@
         "Name": "Bob64",
         "Tag": "HH World Creator",
         "ESWTag": "You're my friends now.\n<size=60%>We're having soft tacos later!",
-        "Color": "1",
+        "Color": "4",
         "Community": "hh/gs"
     }
 ]
