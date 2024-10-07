@@ -414,15 +414,15 @@
     },
     {
         "Name": "GT4tube",
-        "Tag": "Fluent PJM Member\n<size=60%>Sign World Creator",
-        "ESWTag": "Fluent PJM Member\n<size=60%>Sign World Creator",
+        "Tag": "Fluent PJM Member\n<size=60%>GS World Creator",
+        "ESWTag": "Fluent PJM Member\n<size=60%>GS World Creator",
         "Color": "1",
         "Community": "gs"
     },
     {
         "Name": "ChristianNar",
         "Tag": "Fluent ASL Member",
-        "ESWTag": "Fluent ASL Member",
+        "ESWTag": "Fluent ASL Member\n<size=60%>GS World Creator",
         "Color": "1",
         "Community": "gs"
     },
