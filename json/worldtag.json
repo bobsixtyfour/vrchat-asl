@@ -253,8 +253,8 @@
     },
     {
         "Name": "MrDummy_NL",
-        "Tag": "Fluent NGT Member\n<size=60%>HH World Creator",
-        "ESWTag": "Fluent NGT Member\n<size=60%>HH World Creator",
+        "Tag": "Fluent NGT Member\n<size=60%>Helping Hands Community World Creator",
+        "ESWTag": "Fluent NGT Member\n<size=60%>Helping Hands Community World Creator",
         "Color": "1",
         "Community": "hh"
     },
@@ -267,15 +267,15 @@
     },
     {
         "Name": "Shawarmachine",
-        "Tag": "HH World Creator",
-        "ESWTag": "HH World Creator",
+        "Tag": "Helping Hands Community World Creator",
+        "ESWTag": "Helping Hands Community World Creator",
         "Color": "3",
         "Community": "hh"
     },
     {
         "Name": "DecentM",
-        "Tag": "HH World Creator",
-        "ESWTag": "HH World Creator",
+        "Tag": "Helping Hands Community World Creator",
+        "ESWTag": "Helping Hands Community World Creator",
         "Color": "3",
         "Community": "hh"
     },
@@ -344,7 +344,7 @@
     },
     {
         "Name": "LUK003",
-        "Tag": "World Contributor",
+        "Tag": "",
         "ESWTag": "World Contributor",
         "Color": "3",
         "Community": "hh"
@@ -414,15 +414,15 @@
     },
     {
         "Name": "GT4tube",
-        "Tag": "Fluent PJM Member\n<size=60%>GS World Creator",
-        "ESWTag": "Fluent PJM Member\n<size=60%>GS World Creator",
+        "Tag": "Fluent PJM Member",
+        "ESWTag": "Fluent PJM Member\n<size=60%>Global Sign Language Community World Creator",
         "Color": "1",
         "Community": "gs"
     },
     {
         "Name": "ChristianNar",
         "Tag": "Fluent ASL Member",
-        "ESWTag": "Fluent ASL Member\n<size=60%>GS World Creator",
+        "ESWTag": "Fluent ASL Member\n<size=60%>Global Sign Language Community World Creator",
         "Color": "1",
         "Community": "gs"
     },
@@ -466,7 +466,7 @@
         "Tag": "Fluent DGS Member",
         "ESWTag": "Fluent DGS Member",
         "Color": "1",
-        "Community": "gs"
+        "Community": "gs/hh"
     },
     {
         "Name": "AlexDeafHero",
