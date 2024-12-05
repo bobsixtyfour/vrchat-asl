@@ -239,15 +239,15 @@
     },
     {
         "Name": "Cyberponk",
-        "Tag": "Fluent NGT Member\n<size=60%>Community Guide",
-        "ESWTag": "Fluent NGT Member\n<size=60%>Community Guide",
+        "Tag": "Fluent NGT Member",
+        "ESWTag": "Fluent NGT Member",
         "Color": "1",
         "Community": "hh"
     },
     {
         "Name": "MrDummy_NL",
-        "Tag": "Fluent NGT Member\n<size=60%>Helping Hands Community World Creator",
-        "ESWTag": "Fluent NGT Member\n<size=60%>Helping Hands Community World Creator",
+        "Tag": "Fluent NGT Member",
+        "ESWTag": "Fluent NGT Member",
         "Color": "1",
         "Community": "hh"
     },
@@ -257,20 +257,6 @@
         "ESWTag": "Fluent ÖGS Member",
         "Color": "1",
         "Community": "gs/hh"
-    },
-    {
-        "Name": "Shawarmachine",
-        "Tag": "Helping Hands Community World Creator",
-        "ESWTag": "Helping Hands Community World Creator",
-        "Color": "3",
-        "Community": "hh"
-    },
-    {
-        "Name": "DecentM",
-        "Tag": "Helping Hands Community World Creator",
-        "ESWTag": "Helping Hands Community World Creator",
-        "Color": "3",
-        "Community": "hh"
     },
     {
         "Name": "Gorialis",
@@ -344,7 +330,7 @@
     },
     {
         "Name": "flyineko｜假飞猫",
-        "Tag": "World Contributor",
+        "Tag": "",
         "ESWTag": "World Contributor",
         "Color": "3",
         "Community": "hh"
@@ -364,58 +350,24 @@
         "Community": "hh"
     },
     {
-        "Name": "undeadsee",
-        "Tag": "Community Guide\n<size=60%>World Contributor",
-        "ESWTag": "Community Guide\n<size=60%>World Contributor",
-        "Color": "2",
-        "Community": "hh"
-    },
-    {
         "Name": "LunaAshes",
         "Tag": "",
         "ESWTag": "World Contributor",
         "Color": "3",
         "Community": "hh"
     },
-    {
-        "Name": "vallychu",
-        "Tag": "Community Guide",
-        "ESWTag": "Community Guide",
-        "Color": "2",
-        "Community": "hh"
-    },
-    {
-        "Name": "♥~Stephii~♥",
-        "Tag": "Community Guide",
-        "ESWTag": "Community Guide",
-        "Color": "2",
-        "Community": "hh"
-    },
-    {
-        "Name": "Zazz",
-        "Tag": "Community Guide",
-        "ESWTag": "Community Guide",
-        "Color": "2",
-        "Community": "hh"
-    },
-    {
-        "Name": "Murk_Vr",
-        "Tag": "Community Guide",
-        "ESWTag": "Community Guide",
-        "Color": "2",
-        "Community": "hh"
-    },
+
     {
         "Name": "GT4tube",
         "Tag": "Fluent PJM Member",
-        "ESWTag": "Fluent PJM Member\n<size=60%>Global Sign Language Community World Creator",
+        "ESWTag": "Fluent PJM Member",
         "Color": "1",
         "Community": "gs"
     },
     {
         "Name": "ChristianNar",
         "Tag": "Fluent ASL Member",
-        "ESWTag": "Fluent ASL Member\n<size=60%>Global Sign Language Community World Creator",
+        "ESWTag": "Fluent ASL Member",
         "Color": "1",
         "Community": "gs"
     },
